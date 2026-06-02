@@ -1,7 +1,17 @@
 # Meu Valor Líquido
 
+[![CI](https://github.com/matteusoberdan95-sys/meu-valor-liquido/actions/workflows/ci.yml/badge.svg)](https://github.com/matteusoberdan95-sys/meu-valor-liquido/actions/workflows/ci.yml)
+
 Plataforma brasileira de calculadoras trabalhistas, fiscais e financeiras para ajudar o usuário a entender quanto recebe, quanto desconta e quanto sobra.
 
+Repositório: https://github.com/matteusoberdan95-sys/meu-valor-liquido
+
+## Clonar o projeto
+
+```powershell
+git clone https://github.com/matteusoberdan95-sys/meu-valor-liquido.git
+cd meu-valor-liquido
+```
 ## Stack
 
 - C# e .NET 10
