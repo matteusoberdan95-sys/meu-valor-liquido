@@ -1,0 +1,105 @@
+@page "/calculadoras/{slug}"
+@model MeuValorLiquido.WebApp.Pages.Calculadoras.DetailsModel
+@{
+    ViewData["Title"] = Model.Definition?.SeoTitle ?? "Calculadora";
+    ViewData["Description"] = Model.Definition?.SeoDescription ?? "Calculadora do Meu Valor Líquido.";
+}
+
+@if (Model.Definition is null)
+{
+    <h1>Calculadora não encontrada</h1>
+    <p>Confira a lista de calculadoras disponíveis.</p>
+    <a asp-page="/Calculadoras/Index">Voltar para calculadoras</a>
+}
+else
+{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">Início</a></li>
+            <li class="breadcrumb-item"><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Definition.Name</li>
+        </ol>
+    </nav>
+
+    <h1>@Model.Definition.Name</h1>
+    <p class="lead">@Model.Definition.Summary</p>
+
+    <form method="post" class="card card-body mb-4" asp-route-slug="@Model.Definition.Slug">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Input.Amount" class="form-label">Valor principal</label>
+                <input asp-for="Input.Amount" class="form-control" inputmode="decimal" />
+                <span asp-validation-for="Input.Amount" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.SecondaryAmount" class="form-label">Valor secundário ou dias</label>
+                <input asp-for="Input.SecondaryAmount" class="form-control" inputmode="decimal" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Months" class="form-label">Meses</label>
+                <input asp-for="Input.Months" class="form-control" inputmode="numeric" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Rate" class="form-label">Taxa (%)</label>
+                <input asp-for="Input.Rate" class="form-control" inputmode="decimal" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Hours" class="form-label">Horas</label>
+                <input asp-for="Input.Hours" class="form-control" inputmode="decimal" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Dependents" class="form-label">Dependentes</label>
+                <input asp-for="Input.Dependents" class="form-control" inputmode="numeric" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.TransportDiscount" class="form-label">Descontos extras</label>
+                <input asp-for="Input.TransportDiscount" class="form-control" inputmode="decimal" />
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Calcular</button>
+    </form>
+
+    @if (Model.Result is not null)
+    {
+        <section class="card mb-4">
+            <div class="card-body">
+                <h2 class="h4">Resultado em formato de extrato</h2>
+                <p><strong>Valor bruto/base:</strong> @Model.Result.GrossAmount</p>
+                <h3 class="h5">Detalhamento</h3>
+                <ul class="list-group mb-3">
+                    @foreach (var item in Model.Result.LineItems)
+                    {
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>@item.Label</span>
+                            <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                        </li>
+                    }
+                </ul>
+                <p class="fs-4"><strong>Valor líquido/resultado estimado:</strong> @Model.Result.EstimatedNetAmount</p>
+                <p>@Model.Result.Explanation</p>
+                <p class="alert alert-warning">@Model.Result.LegalDisclaimer</p>
+            </div>
+        </section>
+    }
+
+    <section class="mb-4">
+        <h2>Perguntas frequentes</h2>
+        @foreach (var faq in Model.Definition.FaqItems)
+        {
+            <details class="mb-2">
+                <summary>@faq.Question</summary>
+                <p>@faq.Answer</p>
+            </details>
+        }
+    </section>
+
+    <section>
+        <h2>Como usar esta calculadora</h2>
+        <p>Preencha os campos principais, confira as premissas no resultado e use a estimativa como apoio para entender sua situação financeira. Para decisões formais, consulte documentos oficiais ou um profissional habilitado.</p>
+    </section>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

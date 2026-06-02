@@ -1,0 +1,25 @@
+@page "/calculadoras"
+@model MeuValorLiquido.WebApp.Pages.Calculadoras.IndexModel
+@{
+    ViewData["Title"] = "Calculadoras";
+    ViewData["Description"] = "Escolha uma calculadora trabalhista, fiscal ou financeira.";
+}
+
+<h1>Calculadoras</h1>
+<p>Escolha uma calculadora para estimar descontos, líquidos, juros ou parcelas. Os resultados são educativos e não substituem conferência profissional.</p>
+
+<div class="row g-3">
+    @foreach (var calculator in Model.Calculators)
+    {
+        <article class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <span class="badge text-bg-secondary">@calculator.Category</span>
+                    <h2 class="h5 mt-2">@calculator.Name</h2>
+                    <p>@calculator.Summary</p>
+                    <a class="btn btn-outline-primary" asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">Calcular</a>
+                </div>
+            </div>
+        </article>
+    }
+</div>

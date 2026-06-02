@@ -1,0 +1,43 @@
+@page "/contato"
+@model MeuValorLiquido.WebApp.Pages.ContatoModel
+@{
+    ViewData["Title"] = "Contato";
+    ViewData["Description"] = "Fale com o Meu Valor Líquido.";
+}
+
+<h1>Contato</h1>
+<p>Envie sua mensagem. No ambiente local, o envio é mockado para Mailpit/logs.</p>
+
+@if (Model.Sent)
+{
+    <div class="alert alert-success">Mensagem enviada com sucesso.</div>
+}
+
+<form method="post" class="card card-body" asp-rate-limit="form-policy">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Input.Name" class="form-label">Nome</label>
+        <input asp-for="Input.Name" class="form-control" />
+        <span asp-validation-for="Input.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label">E-mail</label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Subject" class="form-label">Assunto</label>
+        <input asp-for="Input.Subject" class="form-control" />
+        <span asp-validation-for="Input.Subject" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Message" class="form-label">Mensagem</label>
+        <textarea asp-for="Input.Message" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Input.Message" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Calculadoras trabalhistas, fiscais e financeiras";
+    ViewData["Description"] = "Entenda quanto você realmente recebe, quanto desconta e quanto sobra com calculadoras simples para brasileiros.";
+}
+
+<section class="py-4">
+    <h1>Entenda quanto você realmente recebe</h1>
+    <p class="lead">Calculadoras trabalhistas, fiscais e financeiras com resultado em formato de extrato, explicação simples e aviso legal.</p>
+    <a class="btn btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
+</section>
+
+<section class="row g-3">
+    @foreach (var calculator in Model.Calculators)
+    {
+        <article class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <span class="badge text-bg-light">@calculator.Category</span>
+                    <h2 class="h5 mt-2">@calculator.Name</h2>
+                    <p>@calculator.Summary</p>
+                    <a asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">Abrir calculadora</a>
+                </div>
+            </div>
+        </article>
+    }
+</section>

@@ -1,0 +1,22 @@
+@page "/blog/{slug}"
+@model MeuValorLiquido.WebApp.Pages.Blog.PostModel
+@{
+    ViewData["Title"] = Model.Post?.Title ?? "Artigo";
+    ViewData["Description"] = Model.Post?.Summary ?? "Artigo educativo do Meu Valor Líquido.";
+}
+
+@if (Model.Post is null)
+{
+    <h1>Artigo não encontrado</h1>
+    <a asp-page="/Blog/Index">Voltar para o blog</a>
+}
+else
+{
+    <article>
+        <h1>@Model.Post.Title</h1>
+        <p class="text-muted">Publicado em @Model.Post.PublishedAt.ToString("dd/MM/yyyy")</p>
+        <p class="lead">@Model.Post.Summary</p>
+        <p>@Model.Post.Content</p>
+        <p>Este conteúdo tem finalidade educativa e não substitui orientação profissional.</p>
+    </article>
+}

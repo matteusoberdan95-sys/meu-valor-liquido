@@ -1,0 +1,34 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="src/Core/MeuValorLiquido.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Ads/">
+    <Project Path="src/Modules/Ads/MeuValorLiquido.Modules.Ads.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Calculators/">
+    <Project Path="src/Modules/Calculators/MeuValorLiquido.Modules.Calculators.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Contact/">
+    <Project Path="src/Modules/Contact/MeuValorLiquido.Modules.Contact.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Content/">
+    <Project Path="src/Modules/Content/MeuValorLiquido.Modules.Content.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Newsletter/">
+    <Project Path="src/Modules/Newsletter/MeuValorLiquido.Modules.Newsletter.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/MeuValorLiquido.Shared.csproj" />
+  </Folder>
+  <Folder Name="/src/WebApp/">
+    <Project Path="src/WebApp/MeuValorLiquido.WebApp.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MeuValorLiquido.Calculators.Tests/MeuValorLiquido.Calculators.Tests.csproj" />
+    <Project Path="tests/MeuValorLiquido.Core.Tests/MeuValorLiquido.Core.Tests.csproj" />
+    <Project Path="tests/MeuValorLiquido.Integration.Tests/MeuValorLiquido.Integration.Tests.csproj" />
+    <Project Path="tests/MeuValorLiquido.WebApp.Tests/MeuValorLiquido.WebApp.Tests.csproj" />
+  </Folder>
+</Solution>
