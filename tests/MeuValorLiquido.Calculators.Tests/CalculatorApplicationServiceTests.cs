@@ -1,19 +1,21 @@
 using Bogus;
 using FluentAssertions;
 using MeuValorLiquido.Modules.Calculators;
+using MeuValorLiquido.Modules.Calculators.Tax;
 
 namespace MeuValorLiquido.Calculators.Tests;
 
 public class CalculatorApplicationServiceTests
 {
     private readonly CalculatorApplicationService service = new(
-        new CalculatorCatalogService(),
-        new CalculatorInputValidator());
+        new InMemoryCalculatorCatalogService(),
+        new CalculatorInputValidator(),
+        new CalculationEngine(new InssCalculator(), new IrrfCalculator()));
 
     [Fact]
     public void Catalog_Should_Contain_The_Ten_Mvp_Calculators()
     {
-        var catalog = new CalculatorCatalogService();
+        var catalog = new InMemoryCalculatorCatalogService();
 
         catalog.GetAll().Should().HaveCount(10);
         catalog.GetBySlug("salario-liquido").Should().NotBeNull();
