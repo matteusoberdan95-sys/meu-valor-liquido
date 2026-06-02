@@ -1,5 +1,15 @@
 using System.Threading.RateLimiting;
+using System.Xml.Linq;
 using MeuValorLiquido.Core.Abstractions;
+using MeuValorLiquido.Modules.Ads;
+using MeuValorLiquido.Modules.Calculators;
+using MeuValorLiquido.Modules.Contact;
+using MeuValorLiquido.Modules.Content;
+using MeuValorLiquido.Modules.Newsletter;
+using MeuValorLiquido.WebApp.Data;
+using MeuValorLiquido.WebApp.Infrastructure;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +20,28 @@ builder.Host.UseSerilog((context, configuration) =>
         .ReadFrom.Configuration(context.Configuration)
         .WriteTo.Console();
 });
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var useInMemoryDatabase = builder.Configuration.GetValue<bool>("Database:UseInMemory")
+    || builder.Environment.IsEnvironment("Testing");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    if (useInMemoryDatabase)
+    {
+        options.UseInMemoryDatabase("meu-valor-liquido");
+    }
+    else
+    {
+        options.UseNpgsql(connectionString);
+    }
+});
+
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<AppDbContext>("database");
+
+builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("Mail"));
+builder.Services.AddResponseCompression();
 
 builder.Services.AddRazorPages();
 builder.Services.AddProblemDetails();
@@ -28,13 +60,17 @@ builder.Services.AddRateLimiter(options =>
 });
 
 builder.Services.AddCalculatorsModule();
-builder.Services.AddSingleton<IContentService, InMemoryContentService>();
+builder.Services.AddScoped<ICalculatorCatalogService, EfCalculatorCatalogService>();
+builder.Services.AddScoped<IContentService, EfContentService>();
 builder.Services.AddSingleton<IAdSlotProvider, PlaceholderAdSlotProvider>();
-builder.Services.AddSingleton<INewsletterService, InMemoryNewsletterService>();
-builder.Services.AddSingleton<IEmailSender, LocalEmailSender>();
-builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<INewsletterService, EfNewsletterService>();
+builder.Services.AddScoped<IContactService, EfContactService>();
+builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
+builder.Services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());
 
 var app = builder.Build();
+
+await app.InitializeDatabaseAsync();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -42,6 +78,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseResponseCompression();
 app.UseHttpsRedirection();
 app.UseSecurityHeaders();
 
@@ -50,29 +87,44 @@ app.UseRateLimiter();
 
 app.UseAuthorization();
 
+app.MapHealthChecks("/health");
+app.MapGet("/sitemap.xml", async (AppDbContext db) =>
+{
+    XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
+    var baseUrl = builder.Configuration["Site:BaseUrl"] ?? "https://meuvalorliquido.com.br";
+
+    var urls = new List<XElement>
+    {
+        CreateUrl(ns, $"{baseUrl}/"),
+        CreateUrl(ns, $"{baseUrl}/calculadoras"),
+        CreateUrl(ns, $"{baseUrl}/sobre"),
+        CreateUrl(ns, $"{baseUrl}/contato"),
+        CreateUrl(ns, $"{baseUrl}/blog"),
+        CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
+        CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
+        CreateUrl(ns, $"{baseUrl}/aviso-legal")
+    };
+
+    var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
+    urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}")));
+
+    var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();
+    urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}")));
+
+    var document = new XDocument(new XElement(ns + "urlset", urls));
+    return Results.Content(document.ToString(), "application/xml");
+});
+
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
 app.Run();
 
+static XElement CreateUrl(XNamespace ns, string location) =>
+    new(ns + "url", new XElement(ns + "loc", location));
+
 public partial class Program;
-
-internal sealed class LocalEmailSender : IEmailSender
-{
-    private readonly ILogger<LocalEmailSender> logger;
-
-    public LocalEmailSender(ILogger<LocalEmailSender> logger)
-    {
-        this.logger = logger;
-    }
-
-    public Task SendAsync(EmailMessage message, CancellationToken cancellationToken = default)
-    {
-        logger.LogInformation("Mock email sent to {Recipient} with subject {Subject}", message.To, message.Subject);
-        return Task.CompletedTask;
-    }
-}
 
 internal static class SecurityHeadersExtensions
 {

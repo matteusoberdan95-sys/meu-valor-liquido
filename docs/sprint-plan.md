@@ -1,49 +1,54 @@
 # Sprint Plan
 
-## Sprint 0 - Arquitetura, setup e decisões técnicas
+## Status do roadmap
 
-Objetivo: fechar Modular Monolith, stack, backlog e ADR.
+| Sprint | Tema | Status |
+|--------|------|--------|
+| 0–1 | Arquitetura e bootstrap | Concluído |
+| 2 | Core + fluxo calculadora | Concluído |
+| 3–4 | Calculadoras MVP + tabelas 2026 | Concluído |
+| 5 | Content, SEO, páginas legais | Concluído (base) |
+| 6 | Testes e segurança | Concluído (base) |
+| 7 | Local production-like | Concluído (base) |
+| 8 | PostgreSQL + EF + seeds | Concluído |
+| 9 | INSS/IRRF versionáveis | Concluído |
+| 10 | UX por calculadora + ads | Concluído |
+| 11 | Sitemap dinâmico + conteúdo DB | Concluído |
+| 12 | Mailpit SMTP + contato persistido | Concluído |
+| 13 | Health, compressão, docs locais | Concluído |
 
-Definition of Done: decisões documentadas e Prompt 2 executável.
+## Sprint 8 - Persistência e infraestrutura real
 
-## Sprint 1 - Bootstrap do repositório e estrutura modular
+Objetivo: PostgreSQL, EF Core, migrations, seed e health check.
 
-Objetivo: solução compilável, projetos, Docker Compose e docs base.
+Definition of Done: `dotnet ef database update` + app lê catálogo/blog do banco.
 
-Definition of Done: restore, build, test e docker compose config passam.
+## Sprint 9 - Calculadoras com tabelas 2026
 
-## Sprint 2 - Core, Shared e Calculators mockado
+Objetivo: `IInssCalculator` / `IIrrfCalculator` e `CalculationEngine` testáveis.
 
-Objetivo: primitives, helpers e fluxo de calculadora end-to-end.
+Definition of Done: testes de regressão fiscal passando.
 
-Definition of Done: resultado em extrato, validação e aviso legal.
+## Sprint 10 - UX e financeiras
 
-## Sprint 3 - Primeiras calculadoras trabalhistas
+Objetivo: campos por calculadora (`CalculatorFieldProfile`) e placeholders de anúncio.
 
-Objetivo: salário líquido, férias, décimo terceiro, rescisão e hora extra.
+Definition of Done: formulários contextuais nas páginas `/calculadoras/{slug}`.
 
-Definition of Done: testes de cálculo e páginas públicas.
+## Sprint 11 - SEO e conteúdo
 
-## Sprint 4 - Financeiras e PJ vs CLT
+Objetivo: sitemap dinâmico, conteúdo educativo no banco, blog via EF.
 
-Objetivo: INSS, IRRF, PJ vs CLT, juros compostos e financiamento.
+Definition of Done: `/sitemap.xml` lista calculadoras e posts publicados.
 
-Definition of Done: 10 calculadoras MVP funcionais.
+## Sprint 12 - Contato e Mailpit
 
-## Sprint 5 - Content, SEO e páginas institucionais
+Objetivo: SMTP Mailpit, mensagens de contato persistidas.
 
-Objetivo: blog, páginas legais, sitemap, robots e conteúdo educativo.
+Definition of Done: formulário de contato grava no PostgreSQL e envia e-mail local.
 
-Definition of Done: páginas mínimas para base de AdSense.
+## Sprint 13 - Qualidade local
 
-## Sprint 6 - Testes, segurança, performance e AdSense readiness
+Objetivo: ambiente documentado, testes verdes, compressão e health.
 
-Objetivo: estabilizar qualidade e checklist de monetização.
-
-Definition of Done: testes verdes e checklist sem pendências críticas.
-
-## Sprint 7 - Staging/local production-like
-
-Objetivo: ambiente local próximo de produção e preparação de release.
-
-Definition of Done: Docker, docs e checklist de release validados.
+Definition of Done: `dotnet test` verde + `docs/setup-local.md` atualizado.

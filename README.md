@@ -23,23 +23,32 @@ cd meu-valor-liquido
 - xUnit, FluentAssertions e Bogus
 - Docker Compose com PostgreSQL e Mailpit
 
-## Como rodar
+## Como rodar localmente
 
-```powershell
-dotnet restore .\MeuValorLiquido.slnx
-dotnet build .\MeuValorLiquido.slnx
-dotnet test .\MeuValorLiquido.slnx
-dotnet run --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
-```
-
-Para infraestrutura local:
+1. Suba PostgreSQL e Mailpit:
 
 ```powershell
 copy .env.example .env
-docker compose up --build
+docker compose up -d postgres mailpit
 ```
 
-Mailpit fica disponível em `http://localhost:8025`.
+2. Atualize o banco e execute a aplicação:
+
+```powershell
+dotnet restore .\MeuValorLiquido.slnx
+dotnet ef database update --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
+dotnet run --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
+```
+
+3. Acesse http://localhost:5000 (calculadoras, blog, contato).
+
+Detalhes em [docs/setup-local.md](docs/setup-local.md).
+
+## Testes
+
+```powershell
+dotnet test .\MeuValorLiquido.slnx
+```
 
 ## Arquitetura
 

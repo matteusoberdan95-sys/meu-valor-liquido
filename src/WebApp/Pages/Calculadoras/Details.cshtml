@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = Model.Definition?.SeoTitle ?? "Calculadora";
     ViewData["Description"] = Model.Definition?.SeoDescription ?? "Calculadora do Meu Valor Líquido.";
+    var profile = Model.FieldProfile;
 }
 
 @if (Model.Definition is null)
@@ -24,38 +25,64 @@ else
     <h1>@Model.Definition.Name</h1>
     <p class="lead">@Model.Definition.Summary</p>
 
+    @if (Model.TopAdSlot is not null)
+    {
+        <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+    }
+
     <form method="post" class="card card-body mb-4" asp-route-slug="@Model.Definition.Slug">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row g-3">
-            <div class="col-md-6">
-                <label asp-for="Input.Amount" class="form-label">Valor principal</label>
-                <input asp-for="Input.Amount" class="form-control" inputmode="decimal" />
-                <span asp-validation-for="Input.Amount" class="text-danger"></span>
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Input.SecondaryAmount" class="form-label">Valor secundário ou dias</label>
-                <input asp-for="Input.SecondaryAmount" class="form-control" inputmode="decimal" />
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Input.Months" class="form-label">Meses</label>
-                <input asp-for="Input.Months" class="form-control" inputmode="numeric" />
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Input.Rate" class="form-label">Taxa (%)</label>
-                <input asp-for="Input.Rate" class="form-control" inputmode="decimal" />
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Input.Hours" class="form-label">Horas</label>
-                <input asp-for="Input.Hours" class="form-control" inputmode="decimal" />
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Input.Dependents" class="form-label">Dependentes</label>
-                <input asp-for="Input.Dependents" class="form-control" inputmode="numeric" />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Input.TransportDiscount" class="form-label">Descontos extras</label>
-                <input asp-for="Input.TransportDiscount" class="form-control" inputmode="decimal" />
-            </div>
+            @if (profile.ShowAmount)
+            {
+                <div class="col-md-6">
+                    <label asp-for="Input.Amount" class="form-label">@profile.AmountLabel</label>
+                    <input asp-for="Input.Amount" class="form-control" inputmode="decimal" />
+                    <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                </div>
+            }
+            @if (profile.ShowSecondaryAmount)
+            {
+                <div class="col-md-6">
+                    <label asp-for="Input.SecondaryAmount" class="form-label">@profile.SecondaryAmountLabel</label>
+                    <input asp-for="Input.SecondaryAmount" class="form-control" inputmode="decimal" />
+                </div>
+            }
+            @if (profile.ShowMonths)
+            {
+                <div class="col-md-4">
+                    <label asp-for="Input.Months" class="form-label">@profile.MonthsLabel</label>
+                    <input asp-for="Input.Months" class="form-control" inputmode="numeric" />
+                </div>
+            }
+            @if (profile.ShowRate)
+            {
+                <div class="col-md-4">
+                    <label asp-for="Input.Rate" class="form-label">@profile.RateLabel</label>
+                    <input asp-for="Input.Rate" class="form-control" inputmode="decimal" />
+                </div>
+            }
+            @if (profile.ShowHours)
+            {
+                <div class="col-md-4">
+                    <label asp-for="Input.Hours" class="form-label">@profile.HoursLabel</label>
+                    <input asp-for="Input.Hours" class="form-control" inputmode="decimal" />
+                </div>
+            }
+            @if (profile.ShowDependents)
+            {
+                <div class="col-md-4">
+                    <label asp-for="Input.Dependents" class="form-label">@profile.DependentsLabel</label>
+                    <input asp-for="Input.Dependents" class="form-control" inputmode="numeric" />
+                </div>
+            }
+            @if (profile.ShowTransportDiscount)
+            {
+                <div class="col-md-8">
+                    <label asp-for="Input.TransportDiscount" class="form-label">@profile.TransportDiscountLabel</label>
+                    <input asp-for="Input.TransportDiscount" class="form-control" inputmode="decimal" />
+                </div>
+            }
         </div>
         <button class="btn btn-primary mt-3" type="submit">Calcular</button>
     </form>
@@ -83,6 +110,11 @@ else
         </section>
     }
 
+    @if (Model.BottomAdSlot is not null)
+    {
+        <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+    }
+
     <section class="mb-4">
         <h2>Perguntas frequentes</h2>
         @foreach (var faq in Model.Definition.FaqItems)
@@ -96,7 +128,7 @@ else
 
     <section>
         <h2>Como usar esta calculadora</h2>
-        <p>Preencha os campos principais, confira as premissas no resultado e use a estimativa como apoio para entender sua situação financeira. Para decisões formais, consulte documentos oficiais ou um profissional habilitado.</p>
+        <p>@(Model.Definition.EducationalContent ?? "Preencha os campos indicados e use o resultado como estimativa educativa.")</p>
     </section>
 }
 

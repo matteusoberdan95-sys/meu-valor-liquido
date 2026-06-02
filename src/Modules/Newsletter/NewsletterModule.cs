@@ -4,13 +4,13 @@ public sealed record NewsletterSubscriber(string Email, DateTimeOffset Subscribe
 
 public interface INewsletterService
 {
-    NewsletterSubscriber Subscribe(string email);
+    Task<NewsletterSubscriber> SubscribeAsync(string email, CancellationToken cancellationToken = default);
 }
 
 public sealed class InMemoryNewsletterService : INewsletterService
 {
-    public NewsletterSubscriber Subscribe(string email)
+    public Task<NewsletterSubscriber> SubscribeAsync(string email, CancellationToken cancellationToken = default)
     {
-        return new NewsletterSubscriber(email.Trim().ToLowerInvariant(), DateTimeOffset.UtcNow, IsConfirmed: false);
+        return Task.FromResult(new NewsletterSubscriber(email.Trim().ToLowerInvariant(), DateTimeOffset.UtcNow, IsConfirmed: false));
     }
 }
