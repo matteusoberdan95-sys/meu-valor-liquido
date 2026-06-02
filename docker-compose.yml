@@ -22,11 +22,13 @@ services:
       - "8025:8025"
 
   webapp:
+    profiles: ["full"]
     build:
       context: .
       dockerfile: infra/docker/WebApp.Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=${POSTGRES_DB:-meu_valor_liquido};Username=${POSTGRES_USER:-meu_valor_liquido};Password=${POSTGRES_PASSWORD:-change-me-local}
       Mail__Host: mailpit
       Mail__Port: 1025
