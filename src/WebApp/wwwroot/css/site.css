@@ -455,6 +455,48 @@ body {
   margin-top: 0.25rem;
 }
 
+.valora-choice-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .valora-choice-group { grid-template-columns: repeat(2, 1fr); }
+}
+
+.valora-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 2px solid var(--valora-outline-variant);
+  border-radius: var(--valora-radius-lg);
+  background: var(--valora-surface-container-lowest);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.valora-choice:has(input:checked) {
+  border-color: var(--valora-primary);
+  background: var(--valora-surface-container-low);
+  box-shadow: 0 0 0 2px rgb(0 104 95 / 12%);
+}
+
+.valora-choice input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.125rem;
+  accent-color: var(--valora-primary);
+  flex-shrink: 0;
+}
+
+.valora-choice-text {
+  font-weight: 600;
+  color: var(--valora-on-surface);
+  line-height: 1.4;
+}
+
 .valora-form-row {
   display: grid;
   grid-template-columns: 1fr;

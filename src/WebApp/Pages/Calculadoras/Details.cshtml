@@ -46,6 +46,26 @@ else
                 <h2 class="valora-h3">Informe seus dados</h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="valora-form-row">
+                    @if (profile.ShowTerminationReason)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.TerminationReasonLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.TerminationReasonLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
+                                {
+                                    var optionId = $"Input_TerminationReason_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.TerminationReason"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
+                            <p class="valora-helper">Escolha se você foi demitido pela empresa ou pediu demissão.</p>
+                        </div>
+                    }
                     @if (profile.ShowAmount)
                     {
                         <div>
@@ -96,16 +116,6 @@ else
                             <input asp-for="Input.TransportDiscount" class="valora-input" inputmode="decimal" />
                         </div>
                     }
-                    @if (profile.ShowTerminationReason)
-                    {
-                        <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.TerminationReason" class="valora-label">@profile.TerminationReasonLabel</label>
-                            <select asp-for="Input.TerminationReason" class="valora-input"
-                                    asp-items="Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>()">
-                            </select>
-                            <p class="valora-helper">Escolha se você foi demitido pela empresa ou pediu demissão.</p>
-                        </div>
-                    }
                 </div>
                 <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
             </form>
@@ -126,6 +136,13 @@ else
             {
                 <section class="valora-result-panel" aria-live="polite">
                     <h2 class="valora-h3" style="color: inherit; margin-bottom: 1rem;">Extrato estimado</h2>
+                    @if (Model.Definition.Slug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <div class="valora-result-line">
+                            <span>Tipo de desligamento</span>
+                            <strong>@Model.Input.TerminationReason.GetDisplayName()</strong>
+                        </div>
+                    }
                     <div class="valora-result-line">
                         <span>Valor bruto/base</span>
                         <strong>@Model.Result.GrossAmount</strong>
