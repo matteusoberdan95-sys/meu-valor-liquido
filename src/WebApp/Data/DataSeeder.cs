@@ -10,6 +10,7 @@ public static class DataSeeder
     {
         if (await db.CalculatorCatalog.AnyAsync(cancellationToken))
         {
+            await SeedBlogPostsAsync(db, cancellationToken);
             return;
         }
 
@@ -71,70 +72,47 @@ public static class DataSeeder
             }
         }
 
-        if (!await db.BlogPosts.AnyAsync(cancellationToken))
-        {
-            db.BlogPosts.AddRange(
-                new BlogPostEntity
-                {
-                    Slug = "o-que-e-salario-liquido",
-                    Title = "O que é salário líquido?",
-                    Summary = "Entenda a diferença entre salário bruto e salário líquido.",
-                    Content = "Salário líquido é o valor estimado que sobra após descontos como INSS, IRRF e benefícios. Use a calculadora para simular seu caso.",
-                    PublishedAt = new DateOnly(2026, 6, 1)
-                },
-                new BlogPostEntity
-                {
-                    Slug = "como-calcular-ferias",
-                    Title = "Como calcular férias",
-                    Summary = "Veja os principais componentes do cálculo de férias.",
-                    Content = "As férias normalmente consideram a remuneração do período, o adicional de um terço e descontos estimados de INSS e IRRF.",
-                    PublishedAt = new DateOnly(2026, 6, 1)
-                },
-                new BlogPostEntity
-                {
-                    Slug = "como-calcular-rescisao-clt",
-                    Title = "Como calcular rescisão CLT",
-                    Summary = "Conheça os itens comuns em uma estimativa de rescisão.",
-                    Content = "Uma rescisão pode incluir saldo de salário, proporcionais, férias, décimo terceiro e verbas específicas conforme o tipo de desligamento.",
-                    PublishedAt = new DateOnly(2026, 6, 1)
-                });
-        }
-
         await db.SaveChangesAsync(cancellationToken);
-        await SeedAdditionalBlogPostsAsync(db, cancellationToken);
+        await SeedBlogPostsAsync(db, cancellationToken);
     }
 
-    public static async Task SeedAdditionalBlogPostsAsync(AppDbContext db, CancellationToken cancellationToken = default)
+    public static async Task SeedBlogPostsAsync(AppDbContext db, CancellationToken cancellationToken = default)
     {
-        var posts =
-            new (string Slug, string Title, string Summary, string Content)[]
-            {
-                ("como-calcular-inss", "Como calcular INSS", "Entenda as faixas progressivas do INSS.", "O INSS é calculado por faixas sobre o salário de contribuição, respeitando o teto vigente."),
-                ("entenda-o-irrf", "Entenda o IRRF", "Saiba como funciona o imposto retido na fonte.", "O IRRF considera a base de cálculo após INSS e deduções por dependente."),
-                ("pj-ou-clt-qual-melhor", "PJ ou CLT: qual é melhor?", "Compare remuneração PJ e CLT de forma educativa.", "A escolha depende de tributação, benefícios, estabilidade e custos operacionais."),
-                ("guia-decimo-terceiro", "Guia do décimo terceiro", "Como estimar o 13º salário.", "O décimo terceiro pode ser integral ou proporcional, com descontos de INSS e IRRF."),
-                ("juros-compostos-guia", "Juros compostos: guia prático", "Projete investimentos com capitalização composta.", "Juros compostos fazem o valor crescer sobre o montante acumulado a cada período.")
-            };
-
-        foreach (var post in posts)
+        foreach (var article in BlogArticleSeedData.GetAll())
         {
-            if (await db.BlogPosts.AnyAsync(x => x.Slug == post.Slug, cancellationToken))
+            var exists = await db.BlogPosts.AnyAsync(x => x.Slug == article.Slug, cancellationToken);
+            if (!exists)
             {
+                db.BlogPosts.Add(MapToEntity(article));
                 continue;
             }
 
-            db.BlogPosts.Add(new BlogPostEntity
+            var existing = await db.BlogPosts.FirstAsync(x => x.Slug == article.Slug, cancellationToken);
+            if (existing.Content.Length < 500)
             {
-                Slug = post.Slug,
-                Title = post.Title,
-                Summary = post.Summary,
-                Content = post.Content,
-                PublishedAt = new DateOnly(2026, 6, 2)
-            });
+                existing.Title = article.Title;
+                existing.Summary = article.Summary;
+                existing.Content = article.Content;
+                existing.Category = article.Category;
+                existing.RelatedCalculatorSlug = article.RelatedCalculatorSlug;
+                existing.PublishedAt = article.PublishedAt;
+            }
         }
 
         await db.SaveChangesAsync(cancellationToken);
     }
+
+    private static BlogPostEntity MapToEntity(BlogArticleSeed article) => new()
+    {
+        Slug = article.Slug,
+        Title = article.Title,
+        Summary = article.Summary,
+        Content = article.Content,
+        PublishedAt = article.PublishedAt,
+        Category = article.Category,
+        RelatedCalculatorSlug = article.RelatedCalculatorSlug,
+        IsPublished = true
+    };
 
     private static string GetEducationalContent(string slug) => slug switch
     {

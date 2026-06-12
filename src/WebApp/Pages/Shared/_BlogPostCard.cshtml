@@ -1,0 +1,19 @@
+@model MeuValorLiquido.Modules.Content.BlogPost
+
+@{
+    var readingMinutes = BlogContentHelper.EstimateReadingMinutes(Model.Content);
+}
+
+<article class="valora-blog-card">
+    @if (!string.IsNullOrEmpty(Model.Category))
+    {
+        <span class="valora-badge @CalculatorUiHelper.GetBadgeClass(Model.Category)" style="margin-bottom: 0.75rem;">@Model.Category</span>
+    }
+    <h2 class="valora-h3">@Model.Title</h2>
+    <p class="valora-text-muted valora-text-sm">@Model.PublishedAt.ToString("dd/MM/yyyy") · @readingMinutes min de leitura</p>
+    <p class="valora-text-muted">@Model.Summary</p>
+    <a asp-page="/Blog/Post" asp-route-slug="@Model.Slug">
+        Ler artigo
+        <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: text-bottom;">arrow_forward</span>
+    </a>
+</article>

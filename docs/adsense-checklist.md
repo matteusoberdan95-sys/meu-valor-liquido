@@ -7,7 +7,7 @@ Antes de solicitar:
 - Home publicada.
 - Página de calculadoras.
 - 10 calculadoras funcionais.
-- 10 a 20 artigos úteis.
+- 15 artigos úteis no blog (seed editorial Sprint 15).
 - Sobre.
 - Contato.
 - Política de Privacidade.

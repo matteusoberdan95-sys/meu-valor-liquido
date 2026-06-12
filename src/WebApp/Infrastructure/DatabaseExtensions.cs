@@ -19,6 +19,5 @@ public static class DatabaseExtensions
         }
 
         await DataSeeder.SeedAsync(db);
-        await DataSeeder.SeedAdditionalBlogPostsAsync(db);
     }
 }

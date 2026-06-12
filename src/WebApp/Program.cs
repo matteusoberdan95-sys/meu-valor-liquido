@@ -135,7 +135,7 @@ internal static class SecurityHeadersExtensions
             context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
             context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
             context.Response.Headers.TryAdd("Referrer-Policy", "strict-origin-when-cross-origin");
-            context.Response.Headers.TryAdd("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:");
+            context.Response.Headers.TryAdd("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:");
             await next();
         });
     }

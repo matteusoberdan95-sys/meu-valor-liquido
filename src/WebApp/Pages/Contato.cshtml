@@ -5,37 +5,37 @@
     ViewData["Description"] = "Fale com o Meu Valor Líquido.";
 }
 
-<h1>Contato</h1>
-<p>Envie sua mensagem. No ambiente local, o envio é mockado para Mailpit/logs.</p>
+<h1 class="valora-h1">Contato</h1>
+<p class="valora-lead valora-section">Envie sua mensagem. No ambiente local, o envio é mockado para Mailpit/logs.</p>
 
 @if (Model.Sent)
 {
-    <div class="alert alert-success">Mensagem enviada com sucesso.</div>
+    <div class="valora-alert-success">Mensagem enviada com sucesso.</div>
 }
 
-<form method="post" class="card card-body">
+<form method="post" class="valora-form-card valora-stack-md" style="max-width: 36rem;">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="mb-3">
-        <label asp-for="Input.Name" class="form-label">Nome</label>
-        <input asp-for="Input.Name" class="form-control" />
+    <div>
+        <label asp-for="Input.Name" class="valora-label">Nome</label>
+        <input asp-for="Input.Name" class="valora-input" />
         <span asp-validation-for="Input.Name" class="text-danger"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="Input.Email" class="form-label">E-mail</label>
-        <input asp-for="Input.Email" class="form-control" />
+    <div>
+        <label asp-for="Input.Email" class="valora-label">E-mail</label>
+        <input asp-for="Input.Email" class="valora-input" type="email" />
         <span asp-validation-for="Input.Email" class="text-danger"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="Input.Subject" class="form-label">Assunto</label>
-        <input asp-for="Input.Subject" class="form-control" />
+    <div>
+        <label asp-for="Input.Subject" class="valora-label">Assunto</label>
+        <input asp-for="Input.Subject" class="valora-input" />
         <span asp-validation-for="Input.Subject" class="text-danger"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="Input.Message" class="form-label">Mensagem</label>
-        <textarea asp-for="Input.Message" class="form-control" rows="5"></textarea>
+    <div>
+        <label asp-for="Input.Message" class="valora-label">Mensagem</label>
+        <textarea asp-for="Input.Message" class="valora-textarea"></textarea>
         <span asp-validation-for="Input.Message" class="text-danger"></span>
     </div>
-    <button class="btn btn-primary" type="submit">Enviar</button>
+    <button class="valora-btn valora-btn-primary" type="submit">Enviar</button>
 </form>
 
 @section Scripts {

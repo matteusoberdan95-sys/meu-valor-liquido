@@ -61,6 +61,8 @@ public sealed class AppDbContext : DbContext, IAppDbContext
             entity.HasIndex(x => x.Slug).IsUnique();
             entity.Property(x => x.Slug).HasMaxLength(120).IsRequired();
             entity.Property(x => x.Title).HasMaxLength(160).IsRequired();
+            entity.Property(x => x.Category).HasMaxLength(40);
+            entity.Property(x => x.RelatedCalculatorSlug).HasMaxLength(80);
         });
 
         modelBuilder.Entity<ContactMessageEntity>(entity =>

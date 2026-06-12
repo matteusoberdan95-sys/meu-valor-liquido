@@ -2,41 +2,59 @@
 
 ## Pré-requisitos
 
-- .NET 10 SDK
-- Docker Desktop
+- Docker Desktop (recomendado)
+- .NET 10 SDK (apenas para desenvolvimento e testes fora do Docker)
 
-## Opção A — Infra no Docker + app no Visual Studio/Cursor (recomendado)
+## Opção A — Tudo com um comando Docker (recomendado)
 
-1. Suba PostgreSQL e Mailpit:
+Front (Razor Pages + CSS/JS) e back (ASP.NET Core + PostgreSQL) sobem juntos:
 
 ```powershell
 cd meu-valor-liquido
 copy .env.example .env
-docker compose up -d postgres mailpit
+docker compose up --build
 ```
 
-2. Aplique migrations e rode a WebApp:
+Para rodar em segundo plano:
 
 ```powershell
-dotnet restore .\MeuValorLiquido.slnx
+docker compose up --build -d
+```
+
+Acesse:
+
+| Serviço | URL |
+|---------|-----|
+| **Site (front + API)** | http://localhost:8080 |
+| Health | http://localhost:8080/health |
+| Mailpit (e-mails) | http://localhost:8025 |
+| PostgreSQL | localhost:5432 |
+
+O container `webapp` aplica migrations e seed automaticamente na inicialização.
+
+Parar tudo:
+
+```powershell
+docker compose down
+```
+
+Remover volumes (reset do banco):
+
+```powershell
+docker compose down -v
+```
+
+## Opção B — Infra no Docker + app no Visual Studio/Cursor
+
+Útil para hot reload durante desenvolvimento:
+
+```powershell
+docker compose up -d postgres mailpit
 dotnet ef database update --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
 dotnet run --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
 ```
 
-3. Acesse:
-
 - WebApp: http://localhost:5000
-- Health: http://localhost:5000/health
-- Mailpit: http://localhost:8025
-- PostgreSQL: localhost:5432
-
-## Opção B — Tudo no Docker
-
-```powershell
-docker compose --profile full up --build
-```
-
-- WebApp: http://localhost:8080
 
 ## Opção C — Sem PostgreSQL (memória)
 

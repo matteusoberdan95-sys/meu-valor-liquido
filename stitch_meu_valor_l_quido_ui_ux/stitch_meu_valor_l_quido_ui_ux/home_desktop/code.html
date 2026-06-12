@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meu Valor Líquido | Calculadoras Financeiras e Trabalhistas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#d9e3f6",
+                      "secondary-container": "#d6e0f3",
+                      "surface-dim": "#d3daea",
+                      "tertiary-fixed": "#ffddb8",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f0f3ff",
+                      "secondary-fixed-dim": "#bdc7d9",
+                      "on-primary-container": "#f4fffc",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#6d7a77",
+                      "outline-variant": "#bcc9c6",
+                      "inverse-surface": "#2a313d",
+                      "on-secondary-container": "#596373",
+                      "surface-container": "#e7eefe",
+                      "primary-fixed": "#89f5e7",
+                      "background": "#f9f9ff",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "tertiary-container": "#a36700",
+                      "surface": "#f9f9ff",
+                      "inverse-primary": "#6bd8cb",
+                      "on-primary-fixed-variant": "#005049",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#3d4756",
+                      "on-tertiary-fixed": "#2a1700",
+                      "surface-tint": "#006a61",
+                      "on-surface-variant": "#3d4947",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "primary-container": "#008378",
+                      "on-primary-fixed": "#00201d",
+                      "on-tertiary-container": "#fffbff",
+                      "tertiary": "#825100",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e2e8f8",
+                      "surface-bright": "#f9f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#121c2a",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-error-container": "#93000a",
+                      "secondary": "#555f6f",
+                      "primary": "#00685f",
+                      "on-surface": "#151c27",
+                      "surface-variant": "#dce2f3",
+                      "surface-container-highest": "#dce2f3",
+                      "on-background": "#151c27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "8px",
+                      "stack-sm": "12px",
+                      "margin-desktop": "32px",
+                      "stack-md": "24px",
+                      "container-max": "1200px",
+                      "stack-lg": "48px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "h1-mobile": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "h1": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "lead": ["Inter"],
+                      "button": ["Inter"],
+                      "h3": ["Inter"],
+                      "body": ["Inter"],
+                      "h2": ["Inter"]
+              },
+              "fontSize": {
+                      "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "lead": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "button": ["16px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h2": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #006a61 0%, #004d46 100%);
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]">
+<div class="max-w-container-max mx-auto h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim md:hidden">menu</span>
+<span class="font-h3 text-h3-mobile md:text-h3 text-primary dark:text-primary-fixed-dim tracking-tight">Meu Valor Líquido</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-primary-fixed-dim font-button border-b-2 border-primary py-1" href="/">Início</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-button hover:text-primary transition-colors" href="#calculadoras">Calculadoras</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-button hover:text-primary transition-colors" href="#blog">Blog</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-button hover:text-primary transition-colors" href="#contato">Contato</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-button active:scale-95 transition-transform duration-150">Entrar</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="py-stack-lg flex flex-col items-center text-center gap-stack-md">
+<div class="relative w-full h-[400px] rounded-xl overflow-hidden mb-stack-md">
+
+<div class="absolute inset-0 flex flex-col items-center justify-center p-gutter">
+<h1 class="font-h1 text-h1-mobile md:text-h1 max-w-3xl text-primary">
+                        Entenda quanto você realmente recebe, quanto desconta e quanto sobra.
+                    </h1>
+<p class="font-lead text-lead text-on-surface-variant mt-stack-sm max-w-2xl">
+                        A ferramenta definitiva para planejamento financeiro e cálculos trabalhistas precisos no Brasil.
+                    </p>
+<div class="mt-stack-md flex gap-4">
+<a class="bg-primary text-on-primary px-8 py-3 rounded-xl font-button shadow-md hover:bg-primary-container transition-all" href="#calculadoras">Ver calculadoras</a>
+<a class="border-2 border-primary text-primary px-8 py-3 rounded-xl font-button hover:bg-primary/5 transition-all" href="#blog">Saber mais</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Signals -->
+<section class="py-stack-md border-y border-outline-variant/30">
+<div class="flex flex-wrap justify-around items-center gap-gutter text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-button">Gratuito</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">smartphone</span>
+<span class="font-button">Mobile-first</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-button">Estimativa educativa</span>
+</div>
+</div>
+</section>
+<!-- Calculator Grid -->
+<section class="py-stack-lg" id="calculadoras">
+<div class="flex justify-between items-end mb-stack-md">
+<div>
+<h2 class="font-h2 text-h2 text-primary">Calculadoras</h2>
+<p class="text-on-surface-variant font-body">Ferramentas precisas para sua vida financeira.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- CLT Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#DBEAFE] text-[#1E40AF]">Trabalhista</span>
+<span class="material-symbols-outlined text-4xl text-primary">payments</span>
+<h3 class="font-h3 text-h3">Salário Líquido CLT</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Calcule descontos de INSS, FGTS e IRRF baseados na tabela vigente.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+<!-- IRRF Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F3E8FF] text-[#6B21A8]">Fiscal</span>
+<span class="material-symbols-outlined text-4xl text-primary">account_balance_wallet</span>
+<h3 class="font-h3 text-h3">Cálculo de IRRF</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Descubra quanto será retido de Imposto de Renda na fonte do seu salário.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+<!-- Juros Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#E0F2F1] text-[#00695C]">Financeiro</span>
+<span class="material-symbols-outlined text-4xl text-primary">trending_up</span>
+<h3 class="font-h3 text-h3">Juros Compostos</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Simule o crescimento do seu patrimônio com aportes mensais e taxas de juros.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+<!-- Rescisão Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#DBEAFE] text-[#1E40AF]">Trabalhista</span>
+<span class="material-symbols-outlined text-4xl text-primary">person_remove</span>
+<h3 class="font-h3 text-h3">Cálculo de Rescisão</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Estimativa de verbas rescisórias para demissões com ou sem justa causa.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+<!-- Décimo Terceiro Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#DBEAFE] text-[#1E40AF]">Trabalhista</span>
+<span class="material-symbols-outlined text-4xl text-primary">celebration</span>
+<h3 class="font-h3 text-h3">13º Salário</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Calcule o valor bruto e líquido das duas parcelas do seu abono natalino.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+<!-- Simples Nacional Card -->
+<div class="bento-card bg-surface-container-lowest p-gutter rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-4">
+<span class="self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F3E8FF] text-[#6B21A8]">Fiscal</span>
+<span class="material-symbols-outlined text-4xl text-primary">store</span>
+<h3 class="font-h3 text-h3">Simples Nacional</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Estimativa de impostos para empresas enquadradas no Simples Nacional.</p>
+<button class="bg-primary text-on-primary w-full py-2 rounded-lg font-button">Calcular agora</button>
+</div>
+</div>
+</section>
+<!-- Disclaimer Alert -->
+<div class="bg-[#FEF3C7] border border-amber-400 p-stack-md rounded-xl flex gap-4 items-start mb-stack-lg">
+<span class="material-symbols-outlined text-amber-600">warning</span>
+<p class="text-sm text-on-surface-variant">
+<strong>Aviso Legal:</strong> Nossas calculadoras fornecem estimativas baseadas em legislação vigente e fórmulas padrões. Elas têm caráter exclusivamente educativo e informativo, não substituindo a consultoria de um contador ou advogado trabalhista especializado.
+            </p>
+</div>
+<!-- Ad Placeholder -->
+<div class="w-full h-[90px] bg-[#E5E7EB] border border-dashed border-outline-variant flex items-center justify-center mb-stack-lg">
+<span class="text-xs font-label-caps text-on-surface-variant uppercase">Espaço reservado para anúncio futuro</span>
+</div>
+<!-- Blog Teaser Section -->
+<section class="py-stack-lg" id="blog">
+<div class="flex justify-between items-center mb-stack-md">
+<h2 class="font-h2 text-h2 text-primary">Últimos Artigos</h2>
+<a class="text-primary font-button hover:underline flex items-center gap-1" href="#">
+                    Ver todos <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Article Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-surface-container">
+<img alt="Finanças Pessoais" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional close-up of a sleek digital tablet displaying financial growth charts and stock market data in a modern office. The lighting is soft and natural, emphasizing a corporate and professional environment with teal and white accents. The composition is clean and minimalist, suggesting clarity and precision in financial planning and labor calculations for the Brazilian market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACzRSkwwA_75g2v-C_MGujEmL3hGwhYRfN2G--wLaodpJKWHMDDQW83iUCfyFFArNMfEwxXpet6xVVg1AqMUAJR6mB0Fls1j9DBmQfyn2whoLPXt3dBmoJczSQ-cWz_voYLApY3nWeixvGXwNxdcZNBGJhc6C0HXq8KprEESPZE-MjMNLz2BLDlYzPnZ987mW6Rwhv1X4Yv9bPAP7AuAEr8F1kJC70oAEM_Mhjy8zrlwnBMxoCuvkPXHLMdiffwi1YpHVd8-AEFC36"/>
+</div>
+<h3 class="font-h3 text-primary mb-2 group-hover:text-primary-container transition-colors">Mudanças no IRRF 2024: O que você precisa saber</h3>
+<p class="font-body-sm text-on-surface-variant line-clamp-2">Entenda as novas faixas de isenção e como elas impactam diretamente o seu salário líquido este ano.</p>
+<p class="mt-2 text-xs font-label-caps text-outline">Leitura de 5 min</p>
+</div>
+<!-- Article Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-surface-container">
+<img alt="Legislação Trabalhista" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro shot of a fountain pen resting on top of a stack of official legal documents with a Brazilian flag subtly blurred in the background. The scene is illuminated with warm, professional lighting, conveying a sense of authority and public utility. The color palette features deep forest greens and ivory whites, maintaining a corporate modern aesthetic that feels trustworthy and transparent for financial insights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFzEIAOjLcvAMk4LescYs_oeJZHc5w8T80LtCrhn7S-GGGDjXCcW57NVAMXykUZxN5AD6BYktBl4Kr2ZVFWdfOfhTCGU9qjc5LYDd8boHNYME-5ELRvU4pYHrmstoPKy4mBk7zpV6dHVma1GL8FkY54rXmkxVeDKZsy0qAyBmUkVop4PUe53VKGztW7ZmYOESzlYX0bhThedVrSOJH2eUdEvUegfcSbU5pS0V48FBac_htW6J2DrREIxL9FWvtCV1iNDqLz8tUaZe8"/>
+</div>
+<h3 class="font-h3 text-primary mb-2 group-hover:text-primary-container transition-colors">Guia Completo: Como funciona o FGTS Digital</h3>
+<p class="font-body-sm text-on-surface-variant line-clamp-2">Tudo sobre a nova plataforma de recolhimento do FGTS e as facilidades para empregadores e trabalhadores.</p>
+<p class="mt-2 text-xs font-label-caps text-outline">Leitura de 7 min</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface border-t border-outline-variant mt-stack-lg">
+<div class="w-full py-stack-lg px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-md max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-h3 text-h3 text-primary dark:text-primary-fixed-dim">Meu Valor Líquido</span>
+<p class="font-body-sm text-body-sm text-on-secondary-container dark:text-secondary-fixed-dim">© 2024 Meu Valor Líquido. Todos os direitos reservados.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-sm text-body-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline transition-opacity" href="#">Privacidade</a>
+<a class="font-body-sm text-body-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline transition-opacity" href="#">Termos</a>
+<a class="font-body-sm text-body-sm text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline transition-opacity" href="#">Aviso Legal</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for active state on buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('active:scale-95');
+            });
+        });
+    </script>
+</body></html>

@@ -65,6 +65,10 @@ public class BlogPostEntity
 
     public DateOnly PublishedAt { get; set; }
 
+    public string? Category { get; set; }
+
+    public string? RelatedCalculatorSlug { get; set; }
+
     public bool IsPublished { get; set; } = true;
 }
 

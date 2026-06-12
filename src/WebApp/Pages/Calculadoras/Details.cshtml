@@ -9,9 +9,9 @@
 
 @if (Model.Definition is null)
 {
-    <h1>Calculadora não encontrada</h1>
-    <p>Confira a lista de calculadoras disponíveis.</p>
-    <a asp-page="/Calculadoras/Index">Voltar para calculadoras</a>
+    <h1 class="valora-h1">Calculadora não encontrada</h1>
+    <p class="valora-text-muted">Confira a lista de calculadoras disponíveis.</p>
+    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Voltar para calculadoras</a>
 }
 else
 {
@@ -20,17 +20,19 @@ else
     }
 
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-page="/Index">Início</a></li>
-            <li class="breadcrumb-item"><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Model.Definition.Name</li>
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">@Model.Definition.Name</li>
         </ol>
     </nav>
 
-    <header class="mb-3">
+    <header class="valora-section">
         <partial name="Shared/_CalculatorCategoryBadge" model="Model.Definition.Category" />
-        <h1 class="mt-2">@Model.Definition.Name</h1>
-        <p class="lead">@Model.Definition.Summary</p>
+        <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.Definition.Name</h1>
+        <p class="valora-lead">@Model.Definition.Summary</p>
     </header>
 
     @if (Model.TopAdSlot is not null)
@@ -38,105 +40,131 @@ else
         <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
     }
 
-    <form method="post" class="mvl-form-card p-4 mb-4" asp-route-slug="@Model.Definition.Slug">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row g-3">
-            @if (profile.ShowAmount)
-            {
-                <div class="col-md-6">
-                    <label asp-for="Input.Amount" class="form-label">@profile.AmountLabel</label>
-                    <input asp-for="Input.Amount" class="form-control" inputmode="decimal" />
-                    <span asp-validation-for="Input.Amount" class="text-danger"></span>
+    <div class="valora-calc-layout valora-section">
+        <div class="valora-stack-md">
+            <form method="post" class="valora-form-card valora-stack-md" asp-route-slug="@Model.Definition.Slug">
+                <h2 class="valora-h3">Informe seus dados</h2>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="valora-form-row">
+                    @if (profile.ShowAmount)
+                    {
+                        <div>
+                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" />
+                            <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                        </div>
+                    }
+                    @if (profile.ShowSecondaryAmount)
+                    {
+                        <div>
+                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" />
+                        </div>
+                    }
+                    @if (profile.ShowMonths)
+                    {
+                        <div>
+                            <label asp-for="Input.Months" class="valora-label">@profile.MonthsLabel</label>
+                            <input asp-for="Input.Months" class="valora-input" inputmode="numeric" />
+                        </div>
+                    }
+                    @if (profile.ShowRate)
+                    {
+                        <div>
+                            <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
+                            <input asp-for="Input.Rate" class="valora-input" inputmode="decimal" />
+                        </div>
+                    }
+                    @if (profile.ShowHours)
+                    {
+                        <div>
+                            <label asp-for="Input.Hours" class="valora-label">@profile.HoursLabel</label>
+                            <input asp-for="Input.Hours" class="valora-input" inputmode="decimal" />
+                        </div>
+                    }
+                    @if (profile.ShowDependents)
+                    {
+                        <div>
+                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <input asp-for="Input.Dependents" class="valora-input" inputmode="numeric" />
+                        </div>
+                    }
+                    @if (profile.ShowTransportDiscount)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <input asp-for="Input.TransportDiscount" class="valora-input" inputmode="decimal" />
+                        </div>
+                    }
                 </div>
-            }
-            @if (profile.ShowSecondaryAmount)
-            {
-                <div class="col-md-6">
-                    <label asp-for="Input.SecondaryAmount" class="form-label">@profile.SecondaryAmountLabel</label>
-                    <input asp-for="Input.SecondaryAmount" class="form-control" inputmode="decimal" />
-                </div>
-            }
-            @if (profile.ShowMonths)
-            {
-                <div class="col-md-4">
-                    <label asp-for="Input.Months" class="form-label">@profile.MonthsLabel</label>
-                    <input asp-for="Input.Months" class="form-control" inputmode="numeric" />
-                </div>
-            }
-            @if (profile.ShowRate)
-            {
-                <div class="col-md-4">
-                    <label asp-for="Input.Rate" class="form-label">@profile.RateLabel</label>
-                    <input asp-for="Input.Rate" class="form-control" inputmode="decimal" />
-                </div>
-            }
-            @if (profile.ShowHours)
-            {
-                <div class="col-md-4">
-                    <label asp-for="Input.Hours" class="form-label">@profile.HoursLabel</label>
-                    <input asp-for="Input.Hours" class="form-control" inputmode="decimal" />
-                </div>
-            }
-            @if (profile.ShowDependents)
-            {
-                <div class="col-md-4">
-                    <label asp-for="Input.Dependents" class="form-label">@profile.DependentsLabel</label>
-                    <input asp-for="Input.Dependents" class="form-control" inputmode="numeric" />
-                </div>
-            }
-            @if (profile.ShowTransportDiscount)
-            {
-                <div class="col-md-8">
-                    <label asp-for="Input.TransportDiscount" class="form-label">@profile.TransportDiscountLabel</label>
-                    <input asp-for="Input.TransportDiscount" class="form-control" inputmode="decimal" />
-                </div>
-            }
+                <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
+            </form>
+
+            <div class="valora-disclaimer">
+                <span class="material-symbols-outlined">warning</span>
+                <p style="margin: 0;">Os resultados são estimativas educativas baseados nas tabelas vigentes. Consulte seu RH ou contador para valores oficiais.</p>
+            </div>
+
+            <section class="valora-card">
+                <h2 class="valora-h3">Como usar esta calculadora</h2>
+                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent ?? "Preencha os campos indicados e use o resultado como estimativa educativa.")</p>
+            </section>
         </div>
-        <button class="btn btn-primary mvl-btn-primary mt-3" type="submit">Calcular</button>
-    </form>
 
-    @if (Model.Result is not null)
-    {
-        <section class="mvl-result-card p-4 mb-4" aria-live="polite">
-            <h2 class="h4">Resultado em formato de extrato</h2>
-            <p class="mb-3"><strong>Valor bruto/base:</strong> @Model.Result.GrossAmount</p>
-            <h3 class="h6 text-muted text-uppercase">Detalhamento</h3>
-            <div class="mb-3">
-                @foreach (var item in Model.Result.LineItems)
-                {
-                    <div class="mvl-extract-line @(item.Type == CalculationLineType.Discount ? "mvl-extract-discount" : "")">
-                        <span>@item.Label</span>
-                        <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+        <aside class="valora-calc-sidebar valora-stack-md">
+            @if (Model.Result is not null)
+            {
+                <section class="valora-result-panel" aria-live="polite">
+                    <h2 class="valora-h3" style="color: inherit; margin-bottom: 1rem;">Extrato estimado</h2>
+                    <div class="valora-result-line">
+                        <span>Valor bruto/base</span>
+                        <strong>@Model.Result.GrossAmount</strong>
                     </div>
-                }
-            </div>
-            <div class="mvl-result-total">
-                Valor líquido/resultado estimado: @Model.Result.EstimatedNetAmount
-            </div>
-            <p class="mt-3 mb-0">@Model.Result.Explanation</p>
-            <div class="mvl-disclaimer mt-3">@Model.Result.LegalDisclaimer</div>
-        </section>
-    }
+                    @foreach (var item in Model.Result.LineItems)
+                    {
+                        <div class="valora-result-line @(item.Type == CalculationLineType.Discount ? "discount" : "")">
+                            <span>@item.Label</span>
+                            <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                        </div>
+                    }
+                    <div class="valora-result-total">
+                        <span class="valora-result-total-label">VALOR LÍQUIDO ESTIMADO</span>
+                        <span class="valora-result-total-value">@Model.Result.EstimatedNetAmount</span>
+                    </div>
+                    <p class="valora-text-sm" style="margin: 1rem 0 0; opacity: 0.9;">@Model.Result.Explanation</p>
+                </section>
+                <div class="valora-disclaimer">
+                    <span class="material-symbols-outlined">info</span>
+                    <p style="margin: 0;">@Model.Result.LegalDisclaimer</p>
+                </div>
+            }
+            else
+            {
+                <section class="valora-result-panel" style="opacity: 0.85;">
+                    <h2 class="valora-h3" style="color: inherit; margin-bottom: 0.5rem;">Seu resultado aparece aqui</h2>
+                    <p class="valora-text-sm" style="margin: 0; opacity: 0.9;">Preencha o formulário e clique em Calcular para ver o extrato estimado.</p>
+                </section>
+            }
 
-    @if (Model.BottomAdSlot is not null)
-    {
-        <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
-    }
+            @if (Model.BottomAdSlot is not null)
+            {
+                <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+            }
+        </aside>
+    </div>
 
-    <section class="mvl-faq mb-4">
-        <h2 class="h4">Perguntas frequentes</h2>
+    <section class="valora-faq valora-section">
+        <h2 class="valora-h2">Perguntas frequentes</h2>
         @foreach (var faq in Model.Definition.FaqItems)
         {
             <details>
-                <summary>@faq.Question</summary>
-                <p class="mb-0 mt-2">@faq.Answer</p>
+                <summary>
+                    @faq.Question
+                    <span class="material-symbols-outlined">expand_more</span>
+                </summary>
+                <p class="faq-body">@faq.Answer</p>
             </details>
         }
-    </section>
-
-    <section class="mb-4">
-        <h2 class="h4">Como usar esta calculadora</h2>
-        <p>@(Model.Definition.EducationalContent ?? "Preencha os campos indicados e use o resultado como estimativa educativa.")</p>
     </section>
 }
 

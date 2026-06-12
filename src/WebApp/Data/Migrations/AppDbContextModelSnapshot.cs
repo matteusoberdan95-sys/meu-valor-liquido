@@ -30,6 +30,10 @@ namespace MeuValorLiquido.WebApp.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Category")
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
@@ -39,6 +43,10 @@ namespace MeuValorLiquido.WebApp.Data.Migrations
 
                     b.Property<DateOnly>("PublishedAt")
                         .HasColumnType("date");
+
+                    b.Property<string>("RelatedCalculatorSlug")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
 
                     b.Property<string>("Slug")
                         .IsRequired()

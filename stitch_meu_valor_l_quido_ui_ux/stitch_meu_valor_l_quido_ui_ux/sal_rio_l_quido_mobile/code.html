@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calculadora de Salário Líquido - Meu Valor Líquido</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d9e3f6",
+                    "secondary-container": "#d6e0f3",
+                    "surface-dim": "#d3daea",
+                    "tertiary-fixed": "#ffddb8",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f0f3ff",
+                    "secondary-fixed-dim": "#bdc7d9",
+                    "on-primary-container": "#f4fffc",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#6d7a77",
+                    "outline-variant": "#bcc9c6",
+                    "inverse-surface": "#2a313d",
+                    "on-secondary-container": "#596373",
+                    "surface-container": "#e7eefe",
+                    "primary-fixed": "#89f5e7",
+                    "background": "#f9f9ff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary-container": "#a36700",
+                    "surface": "#f9f9ff",
+                    "inverse-primary": "#6bd8cb",
+                    "on-primary-fixed-variant": "#005049",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#3d4756",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-tint": "#006a61",
+                    "on-surface-variant": "#3d4947",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "primary-container": "#008378",
+                    "on-primary-fixed": "#00201d",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary": "#825100",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e2e8f8",
+                    "surface-bright": "#f9f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#121c2a",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-error-container": "#93000a",
+                    "secondary": "#555f6f",
+                    "primary": "#00685f",
+                    "on-surface": "#151c27",
+                    "surface-variant": "#dce2f3",
+                    "surface-container-highest": "#dce2f3",
+                    "on-background": "#151c27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "base": "8px",
+                    "stack-sm": "12px",
+                    "margin-desktop": "32px",
+                    "stack-md": "24px",
+                    "container-max": "1200px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "h1-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h1": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "lead": ["Inter"],
+                    "button": ["Inter"],
+                    "h3": ["Inter"],
+                    "body": ["Inter"],
+                    "h2": ["Inter"]
+            },
+            "fontSize": {
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "lead": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "button": ["16px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 max-w-container-max mx-auto bg-surface shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-h3 text-h3-mobile md:text-h3 text-primary tracking-tight">Meu Valor Líquido</h1>
+</div>
+<button class="text-primary font-button px-4 py-2 active:scale-95 transition-transform duration-150">Entrar</button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col gap-stack-md">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-on-surface-variant font-body-sm overflow-x-auto scroll-hide whitespace-nowrap">
+<span class="hover:text-primary cursor-pointer">Início</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="hover:text-primary cursor-pointer">Calculadoras</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Salário Líquido</span>
+</nav>
+<!-- Hero Section -->
+<div class="flex flex-col gap-2">
+<h1 class="font-h1-mobile text-h1-mobile md:text-h1 text-on-surface">Calculadora de Salário Líquido</h1>
+<p class="font-lead text-lead text-on-surface-variant">Calcule seu salário após descontos de INSS e IRRF.</p>
+</div>
+<!-- Top Ad Placeholder -->
+<div class="w-full bg-surface-container border border-outline-variant h-[90px] flex items-center justify-center rounded-lg">
+<span class="text-on-surface-variant text-[12px] font-label-caps uppercase">Espaço reservado para anúncio futuro</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Form Card (Col 1-7) -->
+<section class="lg:col-span-7 bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1),0px_2px_4px_-1px_rgba(0,0,0,0.06)] flex flex-col gap-6">
+<div class="flex flex-col gap-stack-md">
+<!-- Salário Bruto -->
+<div class="flex flex-col gap-2">
+<label class="font-button text-on-surface" for="salario-bruto">Salário Bruto</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-body">R$</span>
+<input class="w-full pl-12 pr-4 h-12 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="salario-bruto" placeholder="0,00" type="number"/>
+</div>
+<span class="text-body-sm text-on-surface-variant">O valor total do seu salário sem descontos.</span>
+</div>
+<!-- Dependentes -->
+<div class="flex flex-col gap-2">
+<label class="font-button text-on-surface" for="dependentes">Número de Dependentes</label>
+<input class="w-full px-4 h-12 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="dependentes" min="0" type="number" value="0"/>
+<span class="text-body-sm text-on-surface-variant">Pessoas que dependem financeiramente de você.</span>
+</div>
+<!-- Outros Descontos -->
+<div class="flex flex-col gap-2">
+<label class="font-button text-on-surface" for="outros-descontos">Outros Descontos</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-body">R$</span>
+<input class="w-full pl-12 pr-4 h-12 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" id="outros-descontos" placeholder="0,00" type="number"/>
+</div>
+<span class="text-body-sm text-on-surface-variant">Vale-transporte, plano de saúde, etc.</span>
+</div>
+<button class="w-full h-12 bg-[#006a61] text-white font-button rounded-lg active:translate-y-[1px] transition-all hover:bg-opacity-90 shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+                        Calcular
+                    </button>
+</div>
+</section>
+<!-- Result Card (Col 8-12) -->
+<aside class="lg:col-span-5 bg-surface-container-low p-6 rounded-xl border border-primary-container/20 flex flex-col gap-6 h-fit">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long">receipt_long</span>
+<h2 class="font-h3 text-on-surface">Extrato Detalhado</h2>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Salário Bruto</span>
+<span class="font-body text-on-surface">R$ 0,00</span>
+</div>
+<div class="flex justify-between items-center text-error">
+<span class="flex items-center gap-1">INSS <span class="material-symbols-outlined text-sm" data-icon="info">info</span></span>
+<span>- R$ 0,00</span>
+</div>
+<div class="flex justify-between items-center text-error">
+<span class="flex items-center gap-1">IRRF <span class="material-symbols-outlined text-sm" data-icon="info">info</span></span>
+<span>- R$ 0,00</span>
+</div>
+<div class="flex justify-between items-center text-error">
+<span>Outros Descontos</span>
+<span>- R$ 0,00</span>
+</div>
+<div class="mt-4 pt-6 border-t border-outline-variant flex flex-col gap-1">
+<span class="text-on-surface-variant font-label-caps uppercase">Valor Líquido Estimado</span>
+<span class="text-h2 font-h2 text-primary">R$ 0,00</span>
+</div>
+</div>
+<!-- Yellow Disclaimer -->
+<div class="bg-[#FEF3C7] border border-[#F59E0B]/30 p-4 rounded-lg flex gap-3">
+<span class="material-symbols-outlined text-[#D97706]" data-icon="warning">warning</span>
+<p class="text-body-sm text-[#92400E]">Resultado estimado para fins educativos. Não substitui orientação jurídica, contábil ou financeira.</p>
+</div>
+</aside>
+</div>
+<!-- How to Use Section -->
+<section class="mt-stack-lg bg-surface-container-highest/30 p-gutter rounded-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined bg-primary text-white p-2 rounded-lg" data-icon="lightbulb">lightbulb</span>
+                Como usar a calculadora
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="flex flex-col gap-3 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<span class="text-h3 text-primary/30 font-h3">01</span>
+<h3 class="font-h3 text-on-surface">Insira o Bruto</h3>
+<p class="text-body-sm text-on-surface-variant">Digite o valor total do seu salário conforme registrado em carteira ou contrato.</p>
+</div>
+<div class="flex flex-col gap-3 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<span class="text-h3 text-primary/30 font-h3">02</span>
+<h3 class="font-h3 text-on-surface">Informe Dependentes</h3>
+<p class="text-body-sm text-on-surface-variant">Informe o número de dependentes para cálculo correto das deduções do Imposto de Renda.</p>
+</div>
+<div class="flex flex-col gap-3 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<span class="text-h3 text-primary/30 font-h3">03</span>
+<h3 class="font-h3 text-on-surface">Veja o Resultado</h3>
+<p class="text-body-sm text-on-surface-variant">Confira o detalhamento de cada desconto oficial e o valor que cairá na sua conta.</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-h2 text-h2 text-on-surface">Dúvidas Frequentes</h2>
+<div class="flex flex-col gap-2">
+<!-- FAQ 1 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden">
+<summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-surface-container transition-colors list-none">
+<span class="font-button text-on-surface">O que é salário líquido?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface-variant text-body-sm border-t border-outline-variant/30">
+                        O salário líquido é o valor que o trabalhador efetivamente recebe em sua conta bancária após todos os descontos obrigatórios (como INSS e IRRF) e facultativos (como vale-refeição ou convênio médico).
+                    </div>
+</details>
+<!-- FAQ 2 -->
+<details class="group bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden">
+<summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-surface-container transition-colors list-none">
+<span class="font-button text-on-surface">Como é calculado o INSS?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface-variant text-body-sm border-t border-outline-variant/30">
+                        O INSS é calculado com base em alíquotas progressivas que variam conforme a faixa salarial. Atualmente, as alíquotas variam de 7,5% a 14%, aplicadas de forma fatiada sobre o salário bruto até o teto da previdência.
+                    </div>
+</details>
+</div>
+</section>
+<!-- Bottom Ad Placeholder -->
+<div class="w-full bg-surface-container border border-outline-variant h-[250px] flex items-center justify-center rounded-lg mt-stack-lg">
+<span class="text-on-surface-variant text-[12px] font-label-caps uppercase">Espaço reservado para anúncio futuro</span>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant mt-stack-lg">
+<div class="max-w-container-max mx-auto py-stack-lg px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="flex flex-col gap-2 items-center md:items-start">
+<span class="font-h3 text-h3 text-primary">Meu Valor Líquido</span>
+<p class="text-on-secondary-container font-body-sm text-center md:text-left">© 2024 Meu Valor Líquido. Todos os direitos reservados.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-on-secondary-container hover:text-primary underline font-body-sm transition-opacity opacity-80 hover:opacity-100" href="#">Privacidade</a>
+<a class="text-on-secondary-container hover:text-primary underline font-body-sm transition-opacity opacity-80 hover:opacity-100" href="#">Termos</a>
+<a class="text-on-secondary-container hover:text-primary underline font-body-sm transition-opacity opacity-80 hover:opacity-100" href="#">Aviso Legal</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface shadow-[0px_-2px_10px_rgba(0,0,0,0.05)] border-t border-outline-variant/20 px-6 py-3 flex justify-between items-center z-50">
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold">Início</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+<span class="text-[10px] font-button">Calculadoras</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="text-[10px] font-button">Blog</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="text-[10px] font-button">Contato</span>
+</div>
+</nav>
+<!-- Floating Action Button (Only relevant for Home/Dash) - Suppressed as per instructions for Details page -->
+<script>
+        // Micro-interaction for inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.classList.add('transition-transform');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simple mock calculation logic for visual feedback
+        const btnCalcular = document.querySelector('button.bg-\\[\\#006a61\\]');
+        btnCalcular.addEventListener('click', () => {
+            const btnText = btnCalcular.innerHTML;
+            btnCalcular.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Calculando...';
+            
+            setTimeout(() => {
+                btnCalcular.innerHTML = btnText;
+                // Add a small pulse effect to the result card
+                const resultCard = document.querySelector('aside');
+                resultCard.classList.add('ring-2', 'ring-primary', 'ring-opacity-50');
+                setTimeout(() => {
+                    resultCard.classList.remove('ring-2', 'ring-primary', 'ring-opacity-50');
+                }, 1000);
+            }, 800);
+        });
+    </script>
+</body></html>

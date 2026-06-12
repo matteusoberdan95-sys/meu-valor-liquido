@@ -3,18 +3,13 @@
 @{
     ViewData["Title"] = "Blog";
     ViewData["Description"] = "Conteúdos educativos sobre salário, descontos, cálculos trabalhistas e finanças pessoais.";
+    ViewData["CanonicalPath"] = "/blog";
 }
 
-<h1>Blog</h1>
-<p>Conteúdos educativos para entender melhor seus descontos e seu dinheiro.</p>
+<h1 class="valora-h1">Blog</h1>
+<p class="valora-lead valora-section">@Model.Posts.Count artigos educativos para entender melhor seus descontos e seu dinheiro.</p>
 
 @foreach (var post in Model.Posts)
 {
-    <article class="card mb-3">
-        <div class="card-body">
-            <h2 class="h4">@post.Title</h2>
-            <p>@post.Summary</p>
-            <a asp-page="/Blog/Post" asp-route-slug="@post.Slug">Ler artigo</a>
-        </div>
-    </article>
+    <partial name="Shared/_BlogPostCard" model="post" />
 }

@@ -6,7 +6,7 @@
 |--------|------|--------|
 | 0–13 | Fundação, calculadoras, infra, docs | Concluído |
 | **14** | **UI/UX, SEO avançado, newsletter** | **Concluído** |
-| 15 | Conteúdo editorial (10–20 artigos) | Planejado |
+| **15** | **Conteúdo editorial (15 artigos)** | **Concluído** |
 | 16 | Staging e deploy | Planejado |
 
 ## Sprint 14 - UI/UX, SEO avançado e newsletter
@@ -25,10 +25,21 @@ Entregas:
 
 Definition of Done: `dotnet test` verde; páginas com meta tags e schema; newsletter funcional.
 
-## Sprint 15 - Conteúdo editorial (próxima)
+## Sprint 15 - Conteúdo editorial (concluída)
 
 Objetivo: expandir blog para 10–20 artigos originais (readiness AdSense).
 
-## Sprint 16 - Staging e deploy
+Entregas:
+- 15 artigos editoriais em `BlogArticleSeedData.cs` com conteúdo estruturado (HTML)
+- Campos `Category` e `RelatedCalculatorSlug` em `BlogPostEntity`
+- Seed idempotente com upgrade de stubs antigos
+- Blog: cards com data/categoria/tempo de leitura, breadcrumbs, CTA calculadora, artigos relacionados
+- Home: seção "Últimos artigos"
+- Testes: contagem mínima, links para calculadoras, 404, sitemap
+- Migration `AddBlogPostCategoryAndCalculatorLink`
+
+Definition of Done: `dotnet test` verde; ≥15 artigos no blog; cross-linking blog ↔ calculadoras.
+
+## Sprint 16 - Staging e deploy (próxima)
 
 Objetivo: ambiente staging, CI/CD deploy, domínio e HTTPS.

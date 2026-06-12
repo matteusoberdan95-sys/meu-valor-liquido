@@ -1,0 +1,13 @@
+**/.git
+**/.vs
+**/.vscode
+**/bin
+**/obj
+**/node_modules
+tests/
+stitch_meu_valor_l_quido_ui_ux/
+*.md
+!README.md
+.env
+.env.*
+!.env.example

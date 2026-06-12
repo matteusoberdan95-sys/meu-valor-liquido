@@ -5,7 +5,9 @@ public sealed record BlogPost(
     string Title,
     string Summary,
     string Content,
-    DateOnly PublishedAt);
+    DateOnly PublishedAt,
+    string? Category = null,
+    string? RelatedCalculatorSlug = null);
 
 public interface IContentService
 {

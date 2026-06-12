@@ -9,8 +9,8 @@
 
 @if (Model.Post is null)
 {
-    <h1>Artigo não encontrado</h1>
-    <a asp-page="/Blog/Index">Voltar para o blog</a>
+    <h1 class="valora-h1">Artigo não encontrado</h1>
+    <a class="valora-btn valora-btn-outline" asp-page="/Blog/Index">Voltar para o blog</a>
 }
 else
 {
@@ -18,11 +18,51 @@ else
         <partial name="Shared/_JsonLdArticle" model="Model.Post" />
     }
 
-    <article class="mvl-form-card p-4">
-        <h1>@Model.Post.Title</h1>
-        <p class="text-muted">Publicado em @Model.Post.PublishedAt.ToString("dd/MM/yyyy")</p>
-        <p class="lead">@Model.Post.Summary</p>
-        <div class="article-body">@Model.Post.Content</div>
-        <div class="mvl-disclaimer mt-4">Este conteúdo tem finalidade educativa e não substitui orientação profissional.</div>
+    <nav aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li><a asp-page="/Blog/Index">Blog</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">@Model.Post.Title</li>
+        </ol>
+    </nav>
+
+    <article class="valora-form-card valora-stack-md">
+        @if (!string.IsNullOrEmpty(Model.Post.Category))
+        {
+            <partial name="Shared/_CalculatorCategoryBadge" model="Model.Post.Category" />
+        }
+        <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.Post.Title</h1>
+        <p class="valora-text-muted valora-text-sm">
+            Publicado em @Model.Post.PublishedAt.ToString("dd/MM/yyyy") · @Model.ReadingMinutes min de leitura
+        </p>
+        <p class="valora-lead">@Model.Post.Summary</p>
+
+        @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
+        {
+            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="@Model.Post.RelatedCalculatorSlug">
+                <span class="material-symbols-outlined">calculate</span>
+                Calcular agora
+            </a>
+        }
+
+        <div class="valora-article-body">@Html.Raw(Model.Post.Content)</div>
+
+        <div class="valora-disclaimer">
+            <span class="material-symbols-outlined">info</span>
+            <p style="margin: 0;">Este conteúdo tem finalidade educativa e não substitui orientação profissional.</p>
+        </div>
     </article>
+
+    @if (Model.RelatedPosts.Count > 0)
+    {
+        <section class="valora-section">
+            <h2 class="valora-h2">Artigos relacionados</h2>
+            @foreach (var related in Model.RelatedPosts)
+            {
+                <partial name="Shared/_BlogPostCard" model="related" />
+            }
+        </section>
+    }
 }

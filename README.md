@@ -6,6 +6,7 @@ Plataforma brasileira de calculadoras trabalhistas, fiscais e financeiras para a
 
 Repositório: https://github.com/matteusoberdan95-sys/meu-valor-liquido
 
+Design UI/UX baseado nos protótipos Stitch em `stitch_meu_valor_l_quido_ui_ux/` — ver [docs/ui-ux-stitch.md](docs/ui-ux-stitch.md).
 ## Clonar o projeto
 
 ```powershell
@@ -21,28 +22,20 @@ cd meu-valor-liquido
 - FluentValidation
 - Serilog
 - xUnit, FluentAssertions e Bogus
-- Docker Compose com PostgreSQL e Mailpit
+- Docker Compose com PostgreSQL, Mailpit e WebApp (front + back)
 
 ## Como rodar localmente
 
-1. Suba PostgreSQL e Mailpit:
+**Um comando — tudo no Docker:**
 
 ```powershell
 copy .env.example .env
-docker compose up -d postgres mailpit
+docker compose up --build
 ```
 
-2. Atualize o banco e execute a aplicação:
+Acesse http://localhost:8080 (calculadoras, blog, contato). Mailpit: http://localhost:8025
 
-```powershell
-dotnet restore .\MeuValorLiquido.slnx
-dotnet ef database update --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
-dotnet run --project .\src\WebApp\MeuValorLiquido.WebApp.csproj
-```
-
-3. Acesse http://localhost:5000 (calculadoras, blog, contato).
-
-Detalhes em [docs/setup-local.md](docs/setup-local.md).
+Detalhes e opções alternativas em [docs/setup-local.md](docs/setup-local.md).
 
 ## Testes
 
