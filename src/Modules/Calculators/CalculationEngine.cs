@@ -92,19 +92,37 @@ public sealed class CalculationEngine
         var salaryBalance = salary / 30m * workedDays;
         var thirteenth = salary * Math.Min(months, 12) / 12m;
         var vacation = thirteenth + thirteenth / 3m;
-        var fgtsFine = salary * Math.Min(months, 12) * 0.08m * 0.40m;
-        var gross = salaryBalance + thirteenth + vacation + fgtsFine;
+        var fgtsBalance = salary * Math.Min(months, 12) * 0.08m;
+        var fgtsFine = fgtsBalance * 0.40m;
+        var isDismissal = input.TerminationReason == TerminationReason.DismissalWithoutCause;
+
+        var gross = salaryBalance + thirteenth + vacation + (isDismissal ? fgtsFine : 0m);
         var inss = inssCalculator.Calculate(salaryBalance + thirteenth + vacation);
         var net = gross - inss;
 
-        return Build(definition, gross, net,
-        [
+        var lines = new List<CalculationLineItem>
+        {
             Income("Saldo de salário", salaryBalance),
             Income("13º proporcional", thirteenth),
-            Income("Férias proporcionais + 1/3", vacation),
-            Income("Multa FGTS estimada (40%)", fgtsFine),
-            Discount("INSS estimado", inss)
-        ], "Rescisão simplificada; multa de FGTS e verbas variam conforme o tipo de desligamento.");
+            Income("Férias proporcionais + 1/3", vacation)
+        };
+
+        if (isDismissal)
+        {
+            lines.Add(Income("Multa FGTS estimada (40%)", fgtsFine));
+        }
+        else
+        {
+            lines.Add(Information("Multa FGTS (40%)", 0m));
+        }
+
+        lines.Add(Discount("INSS estimado", inss));
+
+        var explanation = isDismissal
+            ? "Demissão sem justa causa: inclui multa de 40% sobre o saldo FGTS estimado. Pode haver direito ao seguro-desemprego, conforme regras da legislação."
+            : "Pedido de demissão: sem multa FGTS de 40% e sem seguro-desemprego. Mantém saldo de salário e verbas proporcionais de férias e 13º.";
+
+        return Build(definition, gross, net, lines, explanation);
     }
 
     private CalculationResult CalculateOvertime(CalculatorDefinition definition, CalculatorInput input)

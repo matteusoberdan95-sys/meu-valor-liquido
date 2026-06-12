@@ -1,5 +1,7 @@
 using MeuValorLiquido.Modules.Calculators.Tax;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace MeuValorLiquido.Modules.Calculators;
 
 public static class CalculatorsModule
@@ -28,6 +30,15 @@ public sealed record CalculatorDefinition(
 
 public sealed record FaqItem(string Question, string Answer);
 
+public enum TerminationReason
+{
+    [Display(Name = "Demitido sem justa causa")]
+    DismissalWithoutCause,
+
+    [Display(Name = "Pediu demissão")]
+    Resignation
+}
+
 public sealed record CalculatorInput(
     decimal Amount,
     decimal SecondaryAmount = 0m,
@@ -35,7 +46,8 @@ public sealed record CalculatorInput(
     decimal Rate = 0m,
     decimal Hours = 0m,
     int Dependents = 0,
-    decimal TransportDiscount = 0m);
+    decimal TransportDiscount = 0m,
+    TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type);
 

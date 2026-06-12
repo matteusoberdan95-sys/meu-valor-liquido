@@ -96,6 +96,16 @@ else
                             <input asp-for="Input.TransportDiscount" class="valora-input" inputmode="decimal" />
                         </div>
                     }
+                    @if (profile.ShowTerminationReason)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.TerminationReason" class="valora-label">@profile.TerminationReasonLabel</label>
+                            <select asp-for="Input.TerminationReason" class="valora-input"
+                                    asp-items="Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>()">
+                            </select>
+                            <p class="valora-helper">Escolha se você foi demitido pela empresa ou pediu demissão.</p>
+                        </div>
+                    }
                 </div>
                 <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
             </form>

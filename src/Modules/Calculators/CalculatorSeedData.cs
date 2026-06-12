@@ -7,7 +7,7 @@ public static class CalculatorSeedData
         Create("salario-liquido", "Salário líquido", "Trabalhista", "Estime quanto sobra do salário após INSS, IRRF e descontos comuns."),
         Create("ferias", "Férias", "Trabalhista", "Calcule uma estimativa de férias com adicional constitucional de um terço."),
         Create("decimo-terceiro", "Décimo terceiro", "Trabalhista", "Estime o décimo terceiro proporcional ou integral com descontos."),
-        Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule uma rescisão CLT com saldo, proporcionais e multa estimada de FGTS."),
+        Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule rescisão por demissão ou pedido de demissão com verbas proporcionais e multa FGTS quando aplicável."),
         Create("hora-extra", "Hora extra", "Trabalhista", "Calcule o valor estimado de horas extras com percentual adicional."),
         Create("inss", "INSS", "Fiscal", "Estime o desconto de INSS pela tabela progressiva de 2026."),
         Create("irrf", "IRRF", "Fiscal", "Estime o imposto de renda retido na fonte a partir da base informada."),
