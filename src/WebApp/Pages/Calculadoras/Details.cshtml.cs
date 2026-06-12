@@ -1,5 +1,7 @@
 namespace MeuValorLiquido.WebApp.Pages.Calculadoras;
 
+using MeuValorLiquido.Modules.Calculators;
+
 public class DetailsModel : PageModel
 {
     private readonly ICalculatorApplicationService calculatorService;
@@ -30,11 +32,16 @@ public class DetailsModel : PageModel
     public AdSlotDefinition? BottomAdSlot { get; private set; }
 
     [BindProperty]
-    public CalculatorInput Input { get; set; } = new(4000m, Months: 12, Rate: 50m);
+    public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
 
     public IActionResult OnGet(string slug)
     {
         LoadPage(slug);
+        if (Definition is not null)
+        {
+            Input = CalculatorInputDefaults.ForSlug(slug);
+        }
+
         return Page();
     }
 

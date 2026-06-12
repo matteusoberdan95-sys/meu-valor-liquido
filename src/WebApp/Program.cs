@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Threading.RateLimiting;
 using System.Xml.Linq;
 using MeuValorLiquido.Core.Abstractions;
@@ -13,6 +14,10 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var brazilianCulture = new CultureInfo("pt-BR");
+CultureInfo.DefaultThreadCurrentCulture = brazilianCulture;
+CultureInfo.DefaultThreadCurrentUICulture = brazilianCulture;
 
 builder.Host.UseSerilog((context, configuration) =>
 {

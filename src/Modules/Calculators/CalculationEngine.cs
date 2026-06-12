@@ -88,17 +88,21 @@ public sealed class CalculationEngine
     {
         var salary = input.Amount;
         var months = Math.Clamp(input.Months, 1, 240);
-        var workedDays = input.SecondaryAmount <= 0 ? 15m : Math.Clamp(input.SecondaryAmount, 1m, 30m);
+        var workedDays = input.SecondaryAmount <= 0 ? 15m : Math.Clamp(input.SecondaryAmount, 1m, 31m);
+        var proportionalMonths = Math.Min(months, 12);
+        var proportionalBase = salary * proportionalMonths / 12m;
+
         var salaryBalance = salary / 30m * workedDays;
-        var thirteenth = salary * Math.Min(months, 12) / 12m;
-        var vacation = thirteenth + thirteenth / 3m;
-        var fgtsBalance = salary * Math.Min(months, 12) * 0.08m;
+        var thirteenth = proportionalBase;
+        var vacation = proportionalBase + proportionalBase / 3m;
+        var fgtsBalance = salary * proportionalMonths * 0.08m;
         var fgtsFine = fgtsBalance * 0.40m;
         var isDismissal = input.TerminationReason == TerminationReason.DismissalWithoutCause;
+        var noticeDeduction = !isDismissal && !input.CompletedNoticePeriod ? salary : 0m;
 
-        var gross = salaryBalance + thirteenth + vacation + (isDismissal ? fgtsFine : 0m);
+        var totalVerbas = salaryBalance + thirteenth + vacation + (isDismissal ? fgtsFine : 0m);
         var inss = inssCalculator.Calculate(salaryBalance + thirteenth + vacation);
-        var net = gross - inss;
+        var net = totalVerbas - inss - noticeDeduction;
 
         var lines = new List<CalculationLineItem>
         {
@@ -114,15 +118,21 @@ public sealed class CalculationEngine
         else
         {
             lines.Add(Information("Multa FGTS (40%)", 0m));
+            if (noticeDeduction > 0m)
+            {
+                lines.Add(Discount("Desconto aviso prévio (30 dias)", noticeDeduction));
+            }
         }
 
         lines.Add(Discount("INSS estimado", inss));
 
         var explanation = isDismissal
             ? "Demissão sem justa causa: inclui multa de 40% sobre o saldo FGTS estimado. Pode haver direito ao seguro-desemprego, conforme regras da legislação."
-            : "Pedido de demissão: sem multa FGTS de 40% e sem seguro-desemprego. Mantém saldo de salário e verbas proporcionais de férias e 13º.";
+            : noticeDeduction > 0m
+                ? "Pedido de demissão sem cumprir aviso prévio: desconta-se até 30 dias de salário. Sem multa FGTS e sem seguro-desemprego."
+                : "Pedido de demissão com aviso cumprido: sem multa FGTS e sem seguro-desemprego. Mantém saldo de salário e verbas proporcionais de férias e 13º.";
 
-        return Build(definition, gross, net, lines, explanation);
+        return Build(definition, totalVerbas, net, lines, explanation);
     }
 
     private CalculationResult CalculateOvertime(CalculatorDefinition definition, CalculatorInput input)

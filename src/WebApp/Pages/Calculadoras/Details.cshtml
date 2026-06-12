@@ -66,11 +66,38 @@ else
                             <p class="valora-helper">Escolha se você foi demitido pela empresa ou pediu demissão.</p>
                         </div>
                     }
+                    @if (profile.ShowNoticePeriod)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.NoticePeriodLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.NoticePeriodLabel">
+                                <label class="valora-choice" for="Input_CompletedNoticePeriod_true">
+                                    <input type="radio" asp-for="Input.CompletedNoticePeriod" id="Input_CompletedNoticePeriod_true" value="true" />
+                                    <span class="valora-choice-text">Sim, cumpri aviso</span>
+                                </label>
+                                <label class="valora-choice" for="Input_CompletedNoticePeriod_false">
+                                    <input type="radio" asp-for="Input.CompletedNoticePeriod" id="Input_CompletedNoticePeriod_false" value="false" />
+                                    <span class="valora-choice-text">Não cumpri aviso</span>
+                                </label>
+                            </div>
+                            <p class="valora-helper">No pedido de demissão sem aviso, a empresa pode descontar até 30 dias de salário.</p>
+                        </div>
+                    }
                     @if (profile.ShowAmount)
                     {
                         <div>
                             <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
-                            <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" />
+                            @if (profile.AmountIsCurrency)
+                            {
+                                <div class="valora-input-prefix">
+                                    <span class="valora-prefix">R$</span>
+                                    <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" placeholder="0,00" />
+                                </div>
+                            }
+                            else
+                            {
+                                <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" />
+                            }
                             <span asp-validation-for="Input.Amount" class="text-danger"></span>
                         </div>
                     }
@@ -78,7 +105,21 @@ else
                     {
                         <div>
                             <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
-                            <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" />
+                            @if (profile.SecondaryAmountIsDays)
+                            {
+                                <input asp-for="Input.SecondaryAmount" class="valora-input" type="number" min="1" max="31" step="1" />
+                            }
+                            else if (profile.AmountIsCurrency)
+                            {
+                                <div class="valora-input-prefix">
+                                    <span class="valora-prefix">R$</span>
+                                    <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" placeholder="0,00" />
+                                </div>
+                            }
+                            else
+                            {
+                                <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" />
+                            }
                         </div>
                     }
                     @if (profile.ShowMonths)
@@ -144,7 +185,7 @@ else
                         </div>
                     }
                     <div class="valora-result-line">
-                        <span>Valor bruto/base</span>
+                        <span>Total bruto das verbas</span>
                         <strong>@Model.Result.GrossAmount</strong>
                     </div>
                     @foreach (var item in Model.Result.LineItems)

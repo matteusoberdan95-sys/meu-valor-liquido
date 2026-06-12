@@ -47,7 +47,8 @@ public sealed record CalculatorInput(
     decimal Hours = 0m,
     int Dependents = 0,
     decimal TransportDiscount = 0m,
-    TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause);
+    TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause,
+    bool CompletedNoticePeriod = false);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type);
 

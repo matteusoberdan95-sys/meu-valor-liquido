@@ -9,6 +9,9 @@ public sealed record CalculatorFieldProfile(
     bool ShowDependents = false,
     bool ShowTransportDiscount = false,
     bool ShowTerminationReason = false,
+    bool ShowNoticePeriod = false,
+    bool SecondaryAmountIsDays = false,
+    bool AmountIsCurrency = true,
     string AmountLabel = "Valor principal",
     string SecondaryAmountLabel = "Valor secundário",
     string MonthsLabel = "Meses",
@@ -16,7 +19,8 @@ public sealed record CalculatorFieldProfile(
     string HoursLabel = "Horas",
     string DependentsLabel = "Dependentes",
     string TransportDiscountLabel = "Descontos extras",
-    string TerminationReasonLabel = "Tipo de desligamento");
+    string TerminationReasonLabel = "Tipo de desligamento",
+    string NoticePeriodLabel = "Cumpriu aviso prévio de 30 dias?");
 
 public interface ICalculatorFieldProfileProvider
 {
@@ -36,8 +40,11 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             MonthsLabel: "Meses na empresa",
             ShowSecondaryAmount: true,
             SecondaryAmountLabel: "Dias trabalhados no mês",
+            SecondaryAmountIsDays: true,
             ShowTerminationReason: true,
-            TerminationReasonLabel: "Tipo de desligamento"),
+            TerminationReasonLabel: "Tipo de desligamento",
+            ShowNoticePeriod: true,
+            NoticePeriodLabel: "Cumpriu aviso prévio de 30 dias?"),
         ["hora-extra"] = new(AmountLabel: "Valor da hora", ShowHours: true, ShowRate: true, RateLabel: "Adicional (%)"),
         ["inss"] = new(AmountLabel: "Salário de contribuição"),
         ["irrf"] = new(AmountLabel: "Base de cálculo", ShowDependents: true),

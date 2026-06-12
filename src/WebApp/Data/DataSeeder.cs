@@ -121,7 +121,7 @@ public static class DataSeeder
         "ferias" =>
             "A calculadora considera o salário base mais o adicional de 1/3 constitucional e aplica descontos estimados.",
         "rescisao-clt" =>
-            "Informe salário, tempo de empresa, dias trabalhados no mês e se foi demitido ou pediu demissão. A multa FGTS de 40% entra apenas na demissão sem justa causa.",
+            "Informe salário, tempo de empresa, dias trabalhados no mês e tipo de desligamento. No pedido de demissão sem aviso prévio, desconta-se até 30 dias de salário. A multa FGTS de 40% entra apenas na demissão sem justa causa.",
         "inss" =>
             "O INSS é calculado de forma progressiva por faixas, respeitando o teto de contribuição vigente.",
         _ => "Use os campos indicados para obter uma estimativa educativa. Consulte um profissional para decisões formais."

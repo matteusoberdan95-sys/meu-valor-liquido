@@ -44,4 +44,39 @@ public class TerminationCalculationTests
         dismissal.Value!.EstimatedNetAmount.Amount.Should()
             .BeGreaterThan(resignation.Value!.EstimatedNetAmount.Amount);
     }
+
+    [Fact]
+    public void Termination_Resignation_1850_9Months_NoNotice_Should_Deduct_Notice_And_Be_Realistic()
+    {
+        var input = new CalculatorInput(
+            Amount: 1850m,
+            SecondaryAmount: 30m,
+            Months: 9,
+            TerminationReason: TerminationReason.Resignation,
+            CompletedNoticePeriod: false);
+
+        var result = service.Calculate("rescisao-clt", input);
+
+        result.IsSuccess.Should().BeTrue();
+        result.Value!.LineItems.Should().Contain(item => item.Label == "Desconto aviso prévio (30 dias)");
+        result.Value.EstimatedNetAmount.Amount.Should().BeApproximately(2715.66m, 1m);
+        result.Value.EstimatedNetAmount.Amount.Should().BeLessThan(3500m);
+    }
+
+    [Fact]
+    public void Termination_Resignation_With_Notice_Should_Not_Deduct_Notice()
+    {
+        var input = new CalculatorInput(
+            Amount: 1850m,
+            SecondaryAmount: 30m,
+            Months: 9,
+            TerminationReason: TerminationReason.Resignation,
+            CompletedNoticePeriod: true);
+
+        var result = service.Calculate("rescisao-clt", input);
+
+        result.IsSuccess.Should().BeTrue();
+        result.Value!.LineItems.Should().NotContain(item => item.Label == "Desconto aviso prévio (30 dias)");
+        result.Value.EstimatedNetAmount.Amount.Should().BeApproximately(4565.66m, 1m);
+    }
 }
