@@ -53,6 +53,14 @@ public static class DataSeeder
             var faqSort = 0;
             foreach (var faq in definition.FaqItems)
             {
+                var exists = await db.FaqItems.AnyAsync(
+                    x => x.CalculatorSlug == definition.Slug && x.Question == faq.Question,
+                    cancellationToken);
+                if (exists)
+                {
+                    continue;
+                }
+
                 db.FaqItems.Add(new FaqItemEntity
                 {
                     CalculatorSlug = definition.Slug,
@@ -90,6 +98,39 @@ public static class DataSeeder
                     Content = "Uma rescisão pode incluir saldo de salário, proporcionais, férias, décimo terceiro e verbas específicas conforme o tipo de desligamento.",
                     PublishedAt = new DateOnly(2026, 6, 1)
                 });
+        }
+
+        await db.SaveChangesAsync(cancellationToken);
+        await SeedAdditionalBlogPostsAsync(db, cancellationToken);
+    }
+
+    public static async Task SeedAdditionalBlogPostsAsync(AppDbContext db, CancellationToken cancellationToken = default)
+    {
+        var posts =
+            new (string Slug, string Title, string Summary, string Content)[]
+            {
+                ("como-calcular-inss", "Como calcular INSS", "Entenda as faixas progressivas do INSS.", "O INSS é calculado por faixas sobre o salário de contribuição, respeitando o teto vigente."),
+                ("entenda-o-irrf", "Entenda o IRRF", "Saiba como funciona o imposto retido na fonte.", "O IRRF considera a base de cálculo após INSS e deduções por dependente."),
+                ("pj-ou-clt-qual-melhor", "PJ ou CLT: qual é melhor?", "Compare remuneração PJ e CLT de forma educativa.", "A escolha depende de tributação, benefícios, estabilidade e custos operacionais."),
+                ("guia-decimo-terceiro", "Guia do décimo terceiro", "Como estimar o 13º salário.", "O décimo terceiro pode ser integral ou proporcional, com descontos de INSS e IRRF."),
+                ("juros-compostos-guia", "Juros compostos: guia prático", "Projete investimentos com capitalização composta.", "Juros compostos fazem o valor crescer sobre o montante acumulado a cada período.")
+            };
+
+        foreach (var post in posts)
+        {
+            if (await db.BlogPosts.AnyAsync(x => x.Slug == post.Slug, cancellationToken))
+            {
+                continue;
+            }
+
+            db.BlogPosts.Add(new BlogPostEntity
+            {
+                Slug = post.Slug,
+                Title = post.Title,
+                Summary = post.Summary,
+                Content = post.Content,
+                PublishedAt = new DateOnly(2026, 6, 2)
+            });
         }
 
         await db.SaveChangesAsync(cancellationToken);

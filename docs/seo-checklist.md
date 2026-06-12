@@ -10,4 +10,4 @@
 - FAQ por página.
 - Páginas institucionais completas.
 - Boa experiência mobile.
-- Article schema e FAQ schema em fase futura.
+- Article schema e FAQ schema (FAQPage e Article implementados na Sprint 14).

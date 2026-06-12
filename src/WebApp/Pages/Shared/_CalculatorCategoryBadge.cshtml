@@ -1,0 +1,13 @@
+@model string
+
+@{
+    var css = Model.ToLowerInvariant() switch
+    {
+        "trabalhista" => "mvl-category-trabalhista",
+        "fiscal" => "mvl-category-fiscal",
+        "financeiro" => "mvl-category-financeiro",
+        _ => "text-bg-secondary"
+    };
+}
+
+<span class="badge mvl-category-badge @css">@Model</span>

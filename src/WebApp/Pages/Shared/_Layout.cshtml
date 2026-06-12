@@ -1,37 +1,62 @@
-﻿<!DOCTYPE html>
+﻿@inject IConfiguration Configuration
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="@ViewData["Description"]" />
-    <title>@ViewData["Title"] - Meu Valor Líquido</title>
-    <script type="importmap"></script>
+    @{
+        var title = ViewData["Title"]?.ToString() ?? "Meu Valor Líquido";
+        var description = ViewData["Description"]?.ToString() ?? "Calculadoras trabalhistas, fiscais e financeiras para brasileiros.";
+        var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? $"{Context.Request.Scheme}://{Context.Request.Host}";
+        var canonicalPath = ViewData["CanonicalPath"]?.ToString() ?? Context.Request.Path.Value ?? "/";
+        var canonicalUrl = $"{baseUrl}{canonicalPath}";
+        var ogType = ViewData["OgType"]?.ToString() ?? "website";
+    }
+    <meta name="description" content="@description" />
+    <link rel="canonical" href="@canonicalUrl" />
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:type" content="@ogType" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Meu Valor Líquido" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="@title" />
+    <meta name="twitter:description" content="@description" />
+    <title>@title - Meu Valor Líquido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Head", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light mvl-navbar mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Meu Valor Líquido</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand mvl-brand" asp-page="/Index">Meu Valor Líquido</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-sm-2">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Início</a>
+                            <a class="nav-link mvl-nav-link" asp-page="/Index">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Calculadoras/Index">Calculadoras</a>
+                            <a class="nav-link mvl-nav-link" asp-page="/Calculadoras/Index">Calculadoras</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Blog/Index">Blog</a>
+                            <a class="nav-link mvl-nav-link" asp-page="/Blog/Index">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Contato">Contato</a>
+                            <a class="nav-link mvl-nav-link" asp-page="/Newsletter">Newsletter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mvl-nav-link" asp-page="/Contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -39,24 +64,35 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="mvl-footer mt-auto">
         <div class="container">
-            &copy; 2026 - Meu Valor Líquido -
-            <a asp-page="/PoliticaDePrivacidade">Privacidade</a> -
-            <a asp-page="/TermosDeUso">Termos</a> -
-            <a asp-page="/AvisoLegal">Aviso legal</a>
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <strong class="mvl-brand">Meu Valor Líquido</strong>
+                    <p class="text-muted mb-0 small">Entenda quanto você recebe, quanto desconta e quanto sobra.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex flex-wrap gap-3 justify-content-md-end">
+                        <a asp-page="/Sobre">Sobre</a>
+                        <a asp-page="/PoliticaDePrivacidade">Privacidade</a>
+                        <a asp-page="/TermosDeUso">Termos</a>
+                        <a asp-page="/AvisoLegal">Aviso legal</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3" />
+            <p class="text-muted small mb-0">&copy; @DateTime.UtcNow.Year Meu Valor Líquido. Resultados estimados para fins educativos.</p>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -4,51 +4,31 @@
 
 | Sprint | Tema | Status |
 |--------|------|--------|
-| 0–1 | Arquitetura e bootstrap | Concluído |
-| 2 | Core + fluxo calculadora | Concluído |
-| 3–4 | Calculadoras MVP + tabelas 2026 | Concluído |
-| 5 | Content, SEO, páginas legais | Concluído (base) |
-| 6 | Testes e segurança | Concluído (base) |
-| 7 | Local production-like | Concluído (base) |
-| 8 | PostgreSQL + EF + seeds | Concluído |
-| 9 | INSS/IRRF versionáveis | Concluído |
-| 10 | UX por calculadora + ads | Concluído |
-| 11 | Sitemap dinâmico + conteúdo DB | Concluído |
-| 12 | Mailpit SMTP + contato persistido | Concluído |
-| 13 | Health, compressão, docs locais | Concluído |
+| 0–13 | Fundação, calculadoras, infra, docs | Concluído |
+| **14** | **UI/UX, SEO avançado, newsletter** | **Concluído** |
+| 15 | Conteúdo editorial (10–20 artigos) | Planejado |
+| 16 | Staging e deploy | Planejado |
 
-## Sprint 8 - Persistência e infraestrutura real
+## Sprint 14 - UI/UX, SEO avançado e newsletter
 
-Objetivo: PostgreSQL, EF Core, migrations, seed e health check.
+Objetivo: elevar a experiência visual, SEO técnico e captura de e-mail.
 
-Definition of Done: `dotnet ef database update` + app lê catálogo/blog do banco.
+Entregas:
+- Design system CSS (cores, tipografia DM Sans, cards, extrato, hero)
+- Layout renovado (navbar, footer, trust badges)
+- Filtro por categoria nas calculadoras
+- Open Graph + Twitter Cards + canonical
+- JSON-LD: WebSite (home), FAQPage (calculadoras), Article (blog)
+- Página `/newsletter` com persistência e Mailpit
+- 5 artigos adicionais no seed do blog
+- Testes de SEO e página newsletter
 
-## Sprint 9 - Calculadoras com tabelas 2026
+Definition of Done: `dotnet test` verde; páginas com meta tags e schema; newsletter funcional.
 
-Objetivo: `IInssCalculator` / `IIrrfCalculator` e `CalculationEngine` testáveis.
+## Sprint 15 - Conteúdo editorial (próxima)
 
-Definition of Done: testes de regressão fiscal passando.
+Objetivo: expandir blog para 10–20 artigos originais (readiness AdSense).
 
-## Sprint 10 - UX e financeiras
+## Sprint 16 - Staging e deploy
 
-Objetivo: campos por calculadora (`CalculatorFieldProfile`) e placeholders de anúncio.
-
-Definition of Done: formulários contextuais nas páginas `/calculadoras/{slug}`.
-
-## Sprint 11 - SEO e conteúdo
-
-Objetivo: sitemap dinâmico, conteúdo educativo no banco, blog via EF.
-
-Definition of Done: `/sitemap.xml` lista calculadoras e posts publicados.
-
-## Sprint 12 - Contato e Mailpit
-
-Objetivo: SMTP Mailpit, mensagens de contato persistidas.
-
-Definition of Done: formulário de contato grava no PostgreSQL e envia e-mail local.
-
-## Sprint 13 - Qualidade local
-
-Objetivo: ambiente documentado, testes verdes, compressão e health.
-
-Definition of Done: `dotnet test` verde + `docs/setup-local.md` atualizado.
+Objetivo: ambiente staging, CI/CD deploy, domínio e HTTPS.

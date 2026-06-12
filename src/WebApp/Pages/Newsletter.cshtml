@@ -1,0 +1,30 @@
+@page "/newsletter"
+@model MeuValorLiquido.WebApp.Pages.NewsletterModel
+@{
+    ViewData["Title"] = "Newsletter";
+    ViewData["Description"] = "Receba novidades sobre calculadoras, conteúdos e atualizações do Meu Valor Líquido.";
+    ViewData["CanonicalPath"] = "/newsletter";
+}
+
+<h1>Newsletter</h1>
+<p class="lead">Cadastre seu e-mail para receber conteúdos educativos sobre salário, descontos e finanças pessoais.</p>
+
+@if (Model.Subscribed)
+{
+    <div class="alert alert-success">Inscrição registrada! Confira sua caixa de entrada (ambiente local: Mailpit).</div>
+}
+
+<form method="post" class="mvl-form-card p-4 col-lg-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">E-mail</label>
+        <input asp-for="Email" class="form-control" type="email" placeholder="seu@email.com" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <p class="small text-muted">Não enviamos spam. Você pode cancelar a inscrição a qualquer momento.</p>
+    <button class="btn btn-primary mvl-btn-primary" type="submit">Inscrever-se</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

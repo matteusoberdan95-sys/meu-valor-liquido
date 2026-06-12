@@ -23,6 +23,7 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/termos-de-uso")]
     [InlineData("/aviso-legal")]
     [InlineData("/blog")]
+    [InlineData("/newsletter")]
     [InlineData("/health")]
     [InlineData("/sitemap.xml")]
     public async Task Public_Page_Should_Load(string url)

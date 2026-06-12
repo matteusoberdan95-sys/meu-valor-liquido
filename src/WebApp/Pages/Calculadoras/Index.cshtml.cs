@@ -11,8 +11,18 @@ public class IndexModel : PageModel
 
     public IReadOnlyList<CalculatorDefinition> Calculators { get; private set; } = [];
 
+    public IReadOnlyList<string> Categories { get; private set; } = [];
+
+    [BindProperty(SupportsGet = true, Name = "categoria")]
+    public string? Category { get; set; }
+
     public void OnGet()
     {
-        Calculators = catalogService.GetAll();
+        var all = catalogService.GetAll();
+        Categories = all.Select(c => c.Category).Distinct().OrderBy(c => c).ToList();
+
+        Calculators = string.IsNullOrWhiteSpace(Category)
+            ? all
+            : all.Where(c => c.Category.Equals(Category, StringComparison.OrdinalIgnoreCase)).ToList();
     }
 }

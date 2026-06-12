@@ -42,6 +42,8 @@ public sealed class EfCalculatorCatalogService : ICalculatorCatalogService
             .AsNoTracking()
             .Where(x => x.CalculatorSlug == entity.Slug)
             .OrderBy(x => x.SortOrder)
+            .AsEnumerable()
+            .DistinctBy(x => x.Question)
             .Select(x => new FaqItem(x.Question, x.Answer))
             .ToList();
 

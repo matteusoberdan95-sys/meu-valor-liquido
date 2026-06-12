@@ -1,0 +1,27 @@
+@model MeuValorLiquido.Modules.Content.BlogPost
+@inject IConfiguration Configuration
+@using System.Text.Json
+
+@{
+    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br";
+    var schema = new Dictionary<string, object>
+    {
+        ["@context"] = "https://schema.org",
+        ["@type"] = "Article",
+        ["headline"] = Model.Title,
+        ["description"] = Model.Summary,
+        ["datePublished"] = Model.PublishedAt.ToString("yyyy-MM-dd"),
+        ["author"] = new Dictionary<string, string>
+        {
+            ["@type"] = "Organization",
+            ["name"] = "Meu Valor Líquido"
+        },
+        ["publisher"] = new Dictionary<string, object>
+        {
+            ["@type"] = "Organization",
+            ["name"] = "Meu Valor Líquido"
+        },
+        ["mainEntityOfPage"] = $"{baseUrl}/blog/{Model.Slug}"
+    };
+}
+<script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(schema))</script>
