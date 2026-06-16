@@ -1,7 +1,4 @@
-using FluentAssertions;
-
 namespace MeuValorLiquido.Integration.Tests;
-
 public class InfrastructureSmokeTests
 {
     [Fact]

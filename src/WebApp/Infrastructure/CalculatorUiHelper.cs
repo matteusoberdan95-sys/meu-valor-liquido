@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public static class CalculatorUiHelper
 {
     private static readonly Dictionary<string, string> Icons = new(StringComparer.OrdinalIgnoreCase)

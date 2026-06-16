@@ -1,8 +1,4 @@
-using MeuValorLiquido.Modules.Content;
-using MeuValorLiquido.WebApp.Infrastructure;
-
 namespace MeuValorLiquido.WebApp.Pages.Blog;
-
 public class PostModel : PageModel
 {
     private readonly IContentService contentService;

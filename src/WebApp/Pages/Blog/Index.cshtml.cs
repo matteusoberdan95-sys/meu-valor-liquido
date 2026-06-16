@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Pages.Blog;
-
 public class IndexModel : PageModel
 {
     private readonly IContentService contentService;

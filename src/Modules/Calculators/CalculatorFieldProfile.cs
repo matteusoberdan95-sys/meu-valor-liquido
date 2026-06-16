@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 public sealed record CalculatorFieldProfile(
     bool ShowAmount = true,
     bool ShowSecondaryAmount = false,

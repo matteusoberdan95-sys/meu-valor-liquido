@@ -1,9 +1,4 @@
-using MeuValorLiquido.Core.Abstractions;
-using MeuValorLiquido.WebApp.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Data;
-
 public sealed class AppDbContext : DbContext, IAppDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)

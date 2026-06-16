@@ -1,11 +1,4 @@
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Content;
-using MeuValorLiquido.WebApp.Infrastructure;
-using MeuValorLiquido.Shared.Seo;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace MeuValorLiquido.WebApp.Pages;
-
 public class MapaDoSiteModel : PageModel
 {
     private readonly ICalculatorCatalogService calculatorCatalog;

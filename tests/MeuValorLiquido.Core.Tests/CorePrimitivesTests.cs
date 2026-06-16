@@ -1,12 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.Core.Errors;
-using MeuValorLiquido.Core.Results;
-using DateRangeValue = MeuValorLiquido.Core.DateRange.DateRange;
-using MoneyValue = MeuValorLiquido.Core.Money.Money;
-using PercentageValue = MeuValorLiquido.Core.Percentage.Percentage;
-
 namespace MeuValorLiquido.Core.Tests;
-
 public class CorePrimitivesTests
 {
     [Fact]

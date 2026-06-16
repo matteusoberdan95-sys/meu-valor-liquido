@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Newsletter;
-
 public sealed record NewsletterSubscriber(string Email, DateTimeOffset SubscribedAt, bool IsConfirmed);
 
 public interface INewsletterService

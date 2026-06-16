@@ -1,7 +1,4 @@
-using MeuValorLiquido.Shared.Seo;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed record BreadcrumbItem(string Name, string Path);
 
 /// <summary>Centraliza metadados SEO para Razor Pages via ViewData.</summary>

@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 public static class GrossSalarySolver
 {
     public const decimal Tolerance = 0.01m;

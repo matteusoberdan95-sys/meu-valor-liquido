@@ -1,24 +1,24 @@
 namespace MeuValorLiquido.WebApp.Pages.Calculadoras;
-
-using MeuValorLiquido.Modules.Calculators;
-
 public class DetailsModel : PageModel
 {
     private readonly ICalculatorApplicationService calculatorService;
     private readonly ICalculatorCatalogService catalogService;
     private readonly ICalculatorFieldProfileProvider fieldProfileProvider;
     private readonly IAdSlotProvider adSlotProvider;
+    private readonly CalculatorShareLinkBuilder shareLinkBuilder;
 
     public DetailsModel(
         ICalculatorApplicationService calculatorService,
         ICalculatorCatalogService catalogService,
         ICalculatorFieldProfileProvider fieldProfileProvider,
-        IAdSlotProvider adSlotProvider)
+        IAdSlotProvider adSlotProvider,
+        CalculatorShareLinkBuilder shareLinkBuilder)
     {
         this.calculatorService = calculatorService;
         this.catalogService = catalogService;
         this.fieldProfileProvider = fieldProfileProvider;
         this.adSlotProvider = adSlotProvider;
+        this.shareLinkBuilder = shareLinkBuilder;
     }
 
     public CalculatorDefinition? Definition { get; private set; }
@@ -30,6 +30,8 @@ public class DetailsModel : PageModel
     public AdSlotDefinition? TopAdSlot { get; private set; }
 
     public AdSlotDefinition? BottomAdSlot { get; private set; }
+
+    public CalculatorShareViewModel? Share { get; private set; }
 
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
@@ -46,6 +48,8 @@ public class DetailsModel : PageModel
             {
                 Input = Input with { Amount = presetGross };
             }
+
+            TryApplySharedCalculation(slug);
         }
 
         return Page();
@@ -71,8 +75,42 @@ public class DetailsModel : PageModel
             return Page();
         }
 
+        var token = CalculatorInputShareCodec.Encode(Input);
+        return Redirect($"/calculadoras/{slug}?r={Uri.EscapeDataString(token)}");
+    }
+
+    private void TryApplySharedCalculation(string slug)
+    {
+        if (!CalculatorInputShareCodec.TryDecode(Request.Query["r"], out var sharedInput))
+        {
+            return;
+        }
+
+        Input = sharedInput;
+        var result = calculatorService.Calculate(slug, Input);
+        if (result.IsFailure)
+        {
+            return;
+        }
+
         Result = result.Value;
-        return Page();
+        BuildShare(slug);
+    }
+
+    private void BuildShare(string slug)
+    {
+        if (Result is null)
+        {
+            return;
+        }
+
+        var shareUrl = shareLinkBuilder.BuildShareUrl(slug, Input, Request);
+        var shareText = CalculatorShareTextBuilder.Build(Result, shareUrl);
+        Share = new CalculatorShareViewModel(
+            shareUrl,
+            shareText,
+            CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
+            shareLinkBuilder.BuildPdfUrl(slug, Input));
     }
 
     private void LoadPage(string slug)

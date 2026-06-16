@@ -562,6 +562,32 @@ body {
   letter-spacing: -0.02em;
 }
 
+.valora-share-actions {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--valora-radius-md);
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border);
+}
+
+.valora-share-buttons {
+  flex-wrap: wrap;
+}
+
+.valora-share-buttons .valora-btn {
+  flex: 1 1 auto;
+  min-width: 9rem;
+}
+
+.valora-share-feedback {
+  margin: 0.75rem 0 0;
+}
+
+.valora-share-whatsapp:hover {
+  border-color: #25d366;
+  color: #128c7e;
+}
+
 /* Calculator layout */
 .valora-calc-layout {
   display: grid;

@@ -1,9 +1,4 @@
-using MeuValorLiquido.Modules.Content;
-using MeuValorLiquido.WebApp.Data;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed class EfContentService : IContentService
 {
     private readonly AppDbContext db;

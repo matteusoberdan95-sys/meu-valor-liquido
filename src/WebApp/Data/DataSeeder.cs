@@ -1,9 +1,4 @@
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.WebApp.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Data;
-
 public static class DataSeeder
 {
     public static async Task SeedAsync(AppDbContext db, CancellationToken cancellationToken = default)

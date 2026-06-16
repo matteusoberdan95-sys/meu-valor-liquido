@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 public static class CalculatorSeedData
 {
     public static IReadOnlyList<CalculatorDefinition> GetDefinitions() =>

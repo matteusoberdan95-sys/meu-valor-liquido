@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators.Tax;
-
 /// <summary>
 /// INSS e IRRF na rescisão: cada verba salarial é calculada separadamente.
 /// Férias (vencidas/proporcionais + 1/3) e aviso prévio indenizado são isentos (Instrução Normativa RFB).

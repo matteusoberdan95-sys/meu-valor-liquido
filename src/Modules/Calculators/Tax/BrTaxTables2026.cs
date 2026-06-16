@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators.Tax;
-
 /// <summary>
 /// Tabelas vigentes a partir de janeiro/2026 (Portaria Interministerial MPS/MF nº 13/2026).
 /// IRRF com redução adicional conforme Lei nº 15.270/2025.

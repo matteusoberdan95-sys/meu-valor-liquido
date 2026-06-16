@@ -1,9 +1,4 @@
-using FluentAssertions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-
 namespace MeuValorLiquido.WebApp.Tests;
-
 public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient client;

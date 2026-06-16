@@ -1,8 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-
 namespace MeuValorLiquido.Modules.Calculators;
-
 public static class TerminationReasonExtensions
 {
     public static string GetDisplayName(this TerminationReason reason)

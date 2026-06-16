@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 internal static class TerminationTenureHelper
 {
     public static string MonthName(int month) => month switch

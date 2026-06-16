@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 public sealed record TerminationBenefits(
     decimal SalaryBalance,
     decimal Thirteenth,

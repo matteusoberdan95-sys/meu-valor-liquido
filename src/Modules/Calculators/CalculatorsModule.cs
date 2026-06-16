@@ -1,7 +1,3 @@
-using MeuValorLiquido.Modules.Calculators.Tax;
-
-using System.ComponentModel.DataAnnotations;
-
 namespace MeuValorLiquido.Modules.Calculators;
 
 public static class CalculatorsModule

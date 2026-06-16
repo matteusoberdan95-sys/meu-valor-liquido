@@ -1,8 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.Modules.Calculators;
-
 namespace MeuValorLiquido.Calculators.Tests;
-
 public class TerminationCalculationTests
 {
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();

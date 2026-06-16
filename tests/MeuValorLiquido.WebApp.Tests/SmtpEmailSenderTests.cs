@@ -1,8 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.WebApp.Infrastructure;
-
 namespace MeuValorLiquido.WebApp.Tests;
-
 public class SmtpEmailSenderTests
 {
     [Theory]

@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Data;
-
 public sealed record BlogArticleSeed(
     string Slug,
     string Title,

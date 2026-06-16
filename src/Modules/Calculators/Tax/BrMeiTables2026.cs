@@ -1,7 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators.Tax;
-
-using System.ComponentModel.DataAnnotations;
-
 public enum MeiActivityType
 {
     [Display(Name = "Comércio ou indústria")]

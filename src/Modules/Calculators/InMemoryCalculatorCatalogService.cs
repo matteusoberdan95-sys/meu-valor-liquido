@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
 public sealed class InMemoryCalculatorCatalogService : ICalculatorCatalogService
 {
     private static readonly IReadOnlyList<CalculatorDefinition> Calculators = CalculatorSeedData.GetDefinitions();

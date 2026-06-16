@@ -1,5 +1,35 @@
 # Sprint Plan
 
+## Sprint 5 - PDF do resultado (concluída)
+
+**Objetivo:** valor percebido e retorno ao site via extrato baixável, sem anúncios no PDF.
+
+**Entregas:**
+- `CalculatorResultPdfGenerator` (QuestPDF, licença Community)
+- Endpoints `GET /calculadoras/{slug}/resultado.pdf?r=` e `GET /salario-liquido/{valor}/resultado.pdf`
+- Botão "Baixar PDF" no partial `_CalculatorResultShare`
+- Reutilização do token `?r=` do Sprint 4
+- Testes de endpoint PDF
+
+**Definition of Done:** PDF com marca do site, disclaimer e link; sem ads; `dotnet test` verde.
+
+---
+
+## Sprint 4 - Resultado compartilhável (concluída)
+
+**Objetivo:** viralidade orgânica via WhatsApp sem armazenar dados no servidor.
+
+**Entregas:**
+- `CalculatorInputShareCodec` (token `?r=` na URL)
+- `CalculatorShareTextBuilder` e botões WhatsApp / copiar link / copiar texto
+- PRG após calcular (link compartilhável reproduz o extrato)
+- Partial `_CalculatorResultShare` nas calculadoras e faixas salariais
+- Web Share API em dispositivos compatíveis
+
+**Definition of Done:** compartilhamento voluntário; canonical sem query; testes verdes.
+
+---
+
 ## Sprint 3 - Páginas por faixa salarial (concluída)
 
 **Objetivo:** tráfego programático útil sem thin content.
@@ -134,6 +164,8 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **5** | **PDF do resultado** | **Concluído** |
+| **4** | **Resultado compartilhável** | **Concluído** |
 | **3** | **Páginas por faixa salarial** | **Concluído** |
 | **2** | **Salário bruto necessário** | **Concluído** |
 | **1** | **SEO técnico essencial** | **Concluído** |

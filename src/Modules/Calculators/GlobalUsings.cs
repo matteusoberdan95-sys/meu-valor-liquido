@@ -1,5 +1,11 @@
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+global using System.Text;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using FluentValidation;
 global using MeuValorLiquido.Core.Errors;
 global using MeuValorLiquido.Core.Results;
+global using MeuValorLiquido.Modules.Calculators.Tax;
 global using Microsoft.Extensions.DependencyInjection;
 global using Money = MeuValorLiquido.Core.Money.Money;

@@ -1,22 +1,18 @@
-using System.Text.RegularExpressions;
-using MeuValorLiquido.Modules.Ads;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Shared.Seo;
-using MeuValorLiquido.WebApp.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace MeuValorLiquido.WebApp.Pages.SalarioLiquido;
-
 public partial class FaixaModel : PageModel
 {
     private readonly NetSalaryCalculator netSalaryCalculator;
     private readonly IAdSlotProvider adSlotProvider;
+    private readonly CalculatorShareLinkBuilder shareLinkBuilder;
 
-    public FaixaModel(NetSalaryCalculator netSalaryCalculator, IAdSlotProvider adSlotProvider)
+    public FaixaModel(
+        NetSalaryCalculator netSalaryCalculator,
+        IAdSlotProvider adSlotProvider,
+        CalculatorShareLinkBuilder shareLinkBuilder)
     {
         this.netSalaryCalculator = netSalaryCalculator;
         this.adSlotProvider = adSlotProvider;
+        this.shareLinkBuilder = shareLinkBuilder;
     }
 
     public SalaryBandPageContent PageContent { get; private set; } = null!;
@@ -28,6 +24,8 @@ public partial class FaixaModel : PageModel
     public AdSlotDefinition? TopAdSlot { get; private set; }
 
     public AdSlotDefinition? BottomAdSlot { get; private set; }
+
+    public CalculatorShareViewModel? Share { get; private set; }
 
     public IActionResult OnGet(int valor)
     {
@@ -49,6 +47,18 @@ public partial class FaixaModel : PageModel
         SeoMetadataHelper.Apply(
             ViewData,
             new SeoMetadata(PageContent.Title, PageContent.Description, SalaryBandCatalog.SlugPath(valor)));
+
+        var shareUrl = shareLinkBuilder.BuildAbsoluteUrl(SalaryBandCatalog.SlugPath(valor), Request);
+        var shareText =
+            $"*Meu Valor Líquido* — Salário de {Money.From(valor)}\n" +
+            $"Líquido estimado: {Money.From(Breakdown.Net)}\n" +
+            $"INSS: {Money.From(Breakdown.Inss)} | IRRF: {Money.From(Breakdown.Irrf)}\n\n" +
+            $"Ver detalhes: {shareUrl}";
+        Share = new CalculatorShareViewModel(
+            shareUrl,
+            shareText,
+            CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
+            CalculatorShareLinkBuilder.BuildSalaryBandPdfUrl(valor));
 
         return Page();
     }

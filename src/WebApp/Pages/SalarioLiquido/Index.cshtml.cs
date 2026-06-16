@@ -1,9 +1,4 @@
-using MeuValorLiquido.Shared.Seo;
-using MeuValorLiquido.WebApp.Infrastructure;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace MeuValorLiquido.WebApp.Pages.SalarioLiquido;
-
 public class IndexModel : PageModel
 {
     public IReadOnlyList<int> Bands { get; private set; } = [];

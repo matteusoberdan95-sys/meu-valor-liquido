@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Data.Entities;
-
 public class CalculatorCategoryEntity
 {
     public int Id { get; set; }

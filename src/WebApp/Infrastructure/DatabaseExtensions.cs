@@ -1,8 +1,4 @@
-using MeuValorLiquido.WebApp.Data;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public static class DatabaseExtensions
 {
     public static async Task InitializeDatabaseAsync(this WebApplication app)

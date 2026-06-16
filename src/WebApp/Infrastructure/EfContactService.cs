@@ -1,10 +1,4 @@
-using MeuValorLiquido.Core.Abstractions;
-using MeuValorLiquido.Modules.Contact;
-using MeuValorLiquido.WebApp.Data;
-using MeuValorLiquido.WebApp.Data.Entities;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed class EfContactService : IContactService
 {
     private readonly AppDbContext db;

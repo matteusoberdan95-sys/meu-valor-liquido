@@ -1,10 +1,4 @@
-using Bogus;
-using FluentAssertions;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.Calculators.Tests;
-
 public class CalculatorApplicationServiceTests
 {
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();

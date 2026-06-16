@@ -1,10 +1,4 @@
-using System.Text.RegularExpressions;
-using FluentAssertions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-
 namespace MeuValorLiquido.WebApp.Tests;
-
 public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient client;

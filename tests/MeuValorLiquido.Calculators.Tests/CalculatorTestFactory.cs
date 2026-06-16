@@ -1,8 +1,4 @@
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.Calculators.Tests;
-
 internal static class CalculatorTestFactory
 {
     public static CalculationEngine CreateEngine()

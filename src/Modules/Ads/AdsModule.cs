@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Ads;
-
 public sealed record AdSlotDefinition(string Key, string Label, bool IsEnabled);
 
 public interface IAdSlotProvider

@@ -1,8 +1,4 @@
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Content;
-
 namespace MeuValorLiquido.WebApp.Pages;
-
 public class IndexModel : PageModel
 {
     private readonly ICalculatorCatalogService catalogService;

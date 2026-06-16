@@ -1,9 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.Calculators.Tests;
-
 public class GrossSalarySolverTests
 {
     private readonly NetSalaryCalculator netSalary = new(new InssCalculator(), new IrrfCalculator());

@@ -1,7 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
-using System.ComponentModel.DataAnnotations;
-
 public enum SalaryConversionBasis
 {
     [Display(Name = "Salário mensal")]

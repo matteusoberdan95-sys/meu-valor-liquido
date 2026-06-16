@@ -1,9 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.Calculators.Tests;
-
 public class TaxCalculatorTests
 {
     private readonly InssCalculator inss = new();

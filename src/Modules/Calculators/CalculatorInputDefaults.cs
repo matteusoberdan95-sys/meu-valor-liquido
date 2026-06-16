@@ -1,7 +1,4 @@
 namespace MeuValorLiquido.Modules.Calculators;
-
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 public static class CalculatorInputDefaults
 {
     public static CalculatorInput ForSlug(string slug) => slug.ToLowerInvariant() switch

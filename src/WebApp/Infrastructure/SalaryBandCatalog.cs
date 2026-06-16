@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 /// <summary>Valores brutos indexáveis para páginas programáticas de salário líquido.</summary>
 public static class SalaryBandCatalog
 {

@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public static class BlogContentHelper
 {
     public static int EstimateReadingMinutes(string htmlContent)

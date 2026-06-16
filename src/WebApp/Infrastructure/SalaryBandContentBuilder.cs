@@ -1,9 +1,4 @@
-using MeuValorLiquido.Core.Money;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed record SalaryBandFaqItem(string Question, string Answer);
 
 public sealed record SalaryBandPageContent(

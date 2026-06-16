@@ -1,10 +1,4 @@
-using MailKit.Net.Smtp;
-using MeuValorLiquido.Core.Abstractions;
-using Microsoft.Extensions.Options;
-using MimeKit;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed class MailOptions
 {
     public string Host { get; set; } = "localhost";

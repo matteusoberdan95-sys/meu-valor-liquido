@@ -1,18 +1,3 @@
-using System.Globalization;
-using System.Threading.RateLimiting;
-using System.Xml.Linq;
-using MeuValorLiquido.Core.Abstractions;
-using MeuValorLiquido.Modules.Ads;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Contact;
-using MeuValorLiquido.Modules.Content;
-using MeuValorLiquido.Modules.Newsletter;
-using MeuValorLiquido.WebApp.Data;
-using MeuValorLiquido.WebApp.Infrastructure;
-using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var brazilianCulture = new CultureInfo("pt-BR");
@@ -64,6 +49,8 @@ builder.Services.AddRateLimiter(options =>
             }));
 });
 
+builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
+builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
 builder.Services.AddScoped<ICalculatorCatalogService, EfCalculatorCatalogService>();
 builder.Services.AddScoped<IContentService, EfContentService>();
@@ -74,6 +61,8 @@ builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
 builder.Services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());
 
 var app = builder.Build();
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 await app.InitializeDatabaseAsync();
 
@@ -93,6 +82,7 @@ app.UseRateLimiter();
 app.UseAuthorization();
 
 app.MapHealthChecks("/health");
+CalculatorPdfEndpoints.Map(app);
 app.MapGet("/calculadora-salario-bruto", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: true));
 app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: false));
 app.MapGet("/sitemap.xml", async (AppDbContext db) =>

@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.WebApp.Pages.Calculadoras;
-
 public class IndexModel : PageModel
 {
     private readonly ICalculatorCatalogService catalogService;

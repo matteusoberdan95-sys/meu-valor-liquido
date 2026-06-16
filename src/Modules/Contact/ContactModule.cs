@@ -1,7 +1,4 @@
-using MeuValorLiquido.Core.Abstractions;
-
 namespace MeuValorLiquido.Modules.Contact;
-
 public sealed record ContactMessageRequest(string Name, string Email, string Subject, string Message);
 
 public interface IContactService

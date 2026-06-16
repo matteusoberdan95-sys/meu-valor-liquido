@@ -78,6 +78,11 @@
             </div>
         </section>
 
+        @if (Model.Share is not null)
+        {
+            <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+        }
+
         @if (Model.BottomAdSlot is not null)
         {
             <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
@@ -95,3 +100,7 @@
         </details>
     }
 </section>
+
+@section Scripts {
+    <script src="~/js/calculator-share.js" asp-append-version="true"></script>
+}

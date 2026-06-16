@@ -1,11 +1,4 @@
-using MeuValorLiquido.Core.Abstractions;
-using MeuValorLiquido.Modules.Newsletter;
-using MeuValorLiquido.WebApp.Data;
-using MeuValorLiquido.WebApp.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed class EfNewsletterService : INewsletterService
 {
     private readonly AppDbContext db;

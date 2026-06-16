@@ -1,7 +1,4 @@
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.Modules.Calculators;
-
 public sealed class CalculationEngine
 {
     private static readonly string Disclaimer =

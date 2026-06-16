@@ -1,10 +1,4 @@
-using FluentAssertions;
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.Modules.Calculators.Tax;
-using MeuValorLiquido.WebApp.Infrastructure;
-
 namespace MeuValorLiquido.WebApp.Tests;
-
 public class SalaryBandTests
 {
     [Fact]

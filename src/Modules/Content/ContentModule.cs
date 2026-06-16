@@ -1,5 +1,4 @@
 namespace MeuValorLiquido.Modules.Content;
-
 public sealed record BlogPost(
     string Slug,
     string Title,

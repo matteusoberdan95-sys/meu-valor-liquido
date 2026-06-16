@@ -1,0 +1,37 @@
+@model MeuValorLiquido.WebApp.Infrastructure.CalculatorShareViewModel
+
+<section class="valora-share-actions" aria-label="Compartilhar resultado" data-share-root>
+    <h3 class="valora-h3" style="font-size: 1rem; margin-bottom: 0.75rem;">Compartilhar estimativa</h3>
+    <p class="valora-text-muted valora-text-sm" style="margin: 0 0 1rem;">
+        Envie por WhatsApp ou copie o link para revisar depois. Compartilhamento voluntário.
+    </p>
+    <div class="valora-gap-buttons valora-share-buttons">
+        <a class="valora-btn valora-btn-outline valora-share-whatsapp"
+           href="@Model.WhatsAppUrl"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span class="material-symbols-outlined" style="font-size: 1.125rem;">chat</span>
+            WhatsApp
+        </a>
+        <button type="button" class="valora-btn valora-btn-outline" data-share-copy="link">
+            <span class="material-symbols-outlined" style="font-size: 1.125rem;">link</span>
+            Copiar link
+        </button>
+        <button type="button" class="valora-btn valora-btn-outline" data-share-copy="text">
+            <span class="material-symbols-outlined" style="font-size: 1.125rem;">content_copy</span>
+            Copiar texto
+        </button>
+        @if (!string.IsNullOrEmpty(Model.PdfUrl))
+        {
+            <a class="valora-btn valora-btn-outline"
+               href="@Model.PdfUrl"
+               download>
+                <span class="material-symbols-outlined" style="font-size: 1.125rem;">picture_as_pdf</span>
+                Baixar PDF
+            </a>
+        }
+    </div>
+    <p class="valora-text-muted valora-text-sm valora-share-feedback" data-share-feedback hidden aria-live="polite"></p>
+    <textarea id="calculator-share-url" hidden readonly>@Model.ShareUrl</textarea>
+    <textarea id="calculator-share-text" hidden readonly>@Model.ShareText</textarea>
+</section>

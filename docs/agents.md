@@ -1,5 +1,16 @@
 # Agents
 
+## Convenções obrigatórias
+
+Leia **`docs/CODING_CONVENTIONS.md`** antes de editar código.
+
+Resumo para agentes:
+
+- **GlobalUsings por projeto** — não adicione `using` nas classes; exceção: migrations EF.
+- **Calculators** — toda lógica fiscal/cálculo no módulo; WebApp só orquestra UI, SEO, PDF e share.
+- **Sprints** — atualize `docs/sprint-plan.md` e `CHANGELOG.md` ao concluir entregas.
+- **AdSense** — sem anúncios em PDF, e-mail ou widget; ver `docs/ADSENSE_COMPLIANCE.md`.
+
 ## Product Owner Agent
 
 Define escopo, prioridades, backlog e critérios de aceite. Atua em `docs`, `README.md` e planejamento.

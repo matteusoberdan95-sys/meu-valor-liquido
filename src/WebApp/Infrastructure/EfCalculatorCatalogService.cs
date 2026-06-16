@@ -1,10 +1,4 @@
-using MeuValorLiquido.Modules.Calculators;
-using MeuValorLiquido.WebApp.Data;
-using MeuValorLiquido.WebApp.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-
 namespace MeuValorLiquido.WebApp.Infrastructure;
-
 public sealed class EfCalculatorCatalogService : ICalculatorCatalogService
 {
     private readonly AppDbContext db;

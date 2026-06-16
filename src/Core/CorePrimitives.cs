@@ -8,8 +8,6 @@ namespace MeuValorLiquido.Core.Errors
 
 namespace MeuValorLiquido.Core.Results
 {
-    using MeuValorLiquido.Core.Errors;
-
     public class Result
     {
         protected Result(bool isSuccess, Error error)

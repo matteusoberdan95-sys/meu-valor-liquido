@@ -1,8 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.RateLimiting;
-
 namespace MeuValorLiquido.WebApp.Pages;
-
 [EnableRateLimiting("form-policy")]
 public class NewsletterModel : PageModel
 {

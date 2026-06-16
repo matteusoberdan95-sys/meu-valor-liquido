@@ -424,6 +424,10 @@ else
                     <span class="material-symbols-outlined">info</span>
                     <p style="margin: 0;">@Model.Result.LegalDisclaimer</p>
                 </div>
+                @if (Model.Share is not null)
+                {
+                    <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+                }
             }
             else
             {
@@ -458,4 +462,8 @@ else
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script src="~/js/calculator-input-masks.js" asp-append-version="true"></script>
+    @if (Model.Share is not null)
+    {
+        <script src="~/js/calculator-share.js" asp-append-version="true"></script>
+    }
 }
