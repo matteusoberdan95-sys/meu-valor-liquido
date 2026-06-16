@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 7
+- Calculadora `proposta-salarial`: comparativo atual x proposto, ganho líquido, % real no bolso, share/PDF e aliases SEO.
+
 ## Sprint 6
 - Modo explicação simples: abas Extrato/Explicação, passos em linguagem direta e links para calculadoras relacionadas.
 

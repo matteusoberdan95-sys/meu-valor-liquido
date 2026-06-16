@@ -70,6 +70,15 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             SecondaryAmountLabel: "Desconto vale-refeição/alimentação",
             ShowOtherDiscounts: true,
             OtherDiscountsLabel: "Outros descontos"),
+        ["proposta-salarial"] = new(
+            AmountLabel: "Salário bruto atual",
+            ShowSecondaryAmount: true,
+            SecondaryAmountLabel: "Salário bruto proposto",
+            ShowDependents: true,
+            ShowTransportDiscount: true,
+            TransportDiscountLabel: "Desconto vale-transporte",
+            ShowOtherDiscounts: true,
+            OtherDiscountsLabel: "Outros descontos mensais"),
         ["ferias"] = new(AmountLabel: "Salário base", ShowDependents: true),
         ["decimo-terceiro"] = new(AmountLabel: "Salário base", ShowMonths: true, MonthsLabel: "Meses trabalhados no ano", ShowDependents: true),
         ["rescisao-clt"] = new(

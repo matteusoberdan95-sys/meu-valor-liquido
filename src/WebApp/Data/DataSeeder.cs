@@ -179,7 +179,9 @@ public static class DataSeeder
         "salario-liquido" =>
             "Informe o salário bruto, dependentes e descontos opcionais. O resultado mostra INSS, IRRF e o líquido estimado com base nas tabelas de 2026. Para o caminho inverso, use a <a href=\"/calculadoras/salario-bruto-necessario\">calculadora de salário bruto necessário</a>. Consulte também as <a href=\"/salario-liquido\">páginas por valor bruto</a>.",
         "salario-bruto-necessario" =>
-            "Informe o salário líquido que você quer receber, dependentes e descontos (vale-transporte, vale-refeição e outros). A ferramenta estima o bruto necessário com busca binária sobre INSS e IRRF 2026. Compare com a <a href=\"/calculadoras/salario-liquido\">calculadora de salário líquido</a>.",
+            "Informe o salário líquido que você quer receber, dependentes e descontos (vale-transporte, vale-refeição e outros). A ferramenta estima o bruto necessário com busca binária sobre INSS e IRRF 2026. Compare com a <a href=\"/calculadoras/salario-liquido\">calculadora de salário líquido</a> ou simule um aumento na <a href=\"/calculadoras/proposta-salarial\">proposta salarial</a>.",
+        "proposta-salarial" =>
+            "Informe o salário bruto atual e o valor proposto pela empresa, além de dependentes e descontos que se mantêm iguais. O resultado mostra ganho líquido mensal e anual, percentual real no bolso e opções para compartilhar com RH. Veja também <a href=\"/calculadoras/salario-bruto-necessario\">quanto bruto pedir para um líquido alvo</a>.",
         "ferias" =>
             "A calculadora considera o salário base mais o adicional de 1/3 constitucional e aplica descontos estimados.",
         "rescisao-clt" =>

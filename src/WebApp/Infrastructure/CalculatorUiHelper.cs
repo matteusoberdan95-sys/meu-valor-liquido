@@ -5,6 +5,7 @@ public static class CalculatorUiHelper
     {
         ["salario-liquido"] = "payments",
         ["salario-bruto-necessario"] = "price_check",
+        ["proposta-salarial"] = "handshake",
         ["ferias"] = "beach_access",
         ["decimo-terceiro"] = "celebration",
         ["rescisao-clt"] = "logout",

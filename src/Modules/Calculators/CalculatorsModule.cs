@@ -178,6 +178,12 @@ public sealed class CalculatorApplicationService : ICalculatorApplicationService
             return Result<CalculationResult>.Failure(new Error("Calculators.InvalidInput", validation.Errors[0].ErrorMessage));
         }
 
+        if (slug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) && input.SecondaryAmount <= 0m)
+        {
+            return Result<CalculationResult>.Failure(
+                new Error("Calculators.InvalidInput", "Informe o salário bruto proposto."));
+        }
+
         var result = engine.Calculate(definition, input);
         return result is null
             ? Result<CalculationResult>.Failure(new Error("Calculators.NotImplemented", "Calculadora ainda não implementada."))

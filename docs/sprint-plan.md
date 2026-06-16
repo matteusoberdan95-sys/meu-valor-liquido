@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 7 - Proposta salarial (concluída)
+
+**Objetivo:** ferramenta compartilhável para negociação salarial com foco no líquido real.
+
+**Entregas:**
+- Calculadora `proposta-salarial` (bruto atual x proposto, ganho líquido mensal/anual, % bruto x % líquido)
+- Texto de compartilhamento otimizado para WhatsApp/RH
+- Aliases `/proposta-salarial` e `/comparar-proposta-salarial`
+- Integração com share, PDF, explicação simples e links cruzados
+- CTA na home
+
+**Definition of Done:** 17 calculadoras; compartilhamento reproduz comparativo; `dotnet test` verde.
+
+---
+
 ## Sprint 6 - Modo explicação simples (concluída)
 
 **Objetivo:** aumentar tempo na página e páginas por sessão com linguagem acessível e links internos.
@@ -179,6 +194,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **7** | **Proposta salarial** | **Concluído** |
 | **6** | **Modo explicação simples** | **Concluído** |
 | **5** | **PDF do resultado** | **Concluído** |
 | **4** | **Resultado compartilhável** | **Concluído** |

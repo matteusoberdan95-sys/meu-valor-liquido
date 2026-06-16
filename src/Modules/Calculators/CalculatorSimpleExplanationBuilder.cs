@@ -90,6 +90,13 @@ public static class CalculatorSimpleExplanationBuilder
                     "Informamos quanto de bruto costuma ser necessário para chegar perto desse líquido.",
                     Money.From(input.Amount).ToString())
             ],
+            "proposta-salarial" =>
+            [
+                (
+                    "Comparativo atual x proposta",
+                    "Usamos os mesmos dependentes e descontos nos dois cenários para a comparação ser justa.",
+                    null)
+            ],
             "rescisao-clt" =>
             [
                 (

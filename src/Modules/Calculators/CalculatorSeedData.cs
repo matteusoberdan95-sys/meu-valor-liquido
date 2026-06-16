@@ -5,6 +5,7 @@ public static class CalculatorSeedData
     [
         Create("salario-liquido", "Salário líquido", "Trabalhista", "Estime quanto sobra do salário após INSS, IRRF e descontos comuns."),
         CreateRequiredGrossSalary(),
+        CreateSalaryProposal(),
         Create("ferias", "Férias", "Trabalhista", "Calcule uma estimativa de férias com adicional constitucional de um terço."),
         Create("decimo-terceiro", "Décimo terceiro", "Trabalhista", "Estime o décimo terceiro proporcional ou integral com descontos."),
         Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule todos os tipos de desligamento: demissão, pedido de demissão, acordo 484-A e justa causa."),
@@ -55,5 +56,28 @@ public static class CalculatorSeedData
                     "Posso usar para negociar salário?",
                     "Sim, como referência educativa. Confirme valores com RH ou contador antes de formalizar proposta."),
                 new FaqItem("Os dados são salvos?", "Não. O cálculo é feito na hora e não fica armazenado no servidor.")
+            ]);
+
+    private static CalculatorDefinition CreateSalaryProposal() =>
+        new(
+            "proposta-salarial",
+            "Proposta salarial",
+            "Trabalhista",
+            "Compare salário atual e proposta: veja quanto entra no bolso, diferença anual e compartilhe a simulação.",
+            "Proposta salarial: compare bruto x líquido | Meu Valor Líquido",
+            "Simule aumento ou redução salarial com INSS e IRRF 2026. Ideal para negociação com RH — compartilhe o resultado.",
+            [
+                new FaqItem(
+                    "Por que o aumento no líquido é menor que no bruto?",
+                    "INSS e IRRF são progressivos. Parte do aumento bruto vira contribuição e imposto, então o ganho real no bolso costuma ser menor que o percentual anunciado no bruto."),
+                new FaqItem(
+                    "Posso usar na negociação com a empresa?",
+                    "Sim, como referência educativa. Mostre quanto a proposta representa no líquido mensal e anual. Confirme valores finais com RH ou contrato."),
+                new FaqItem(
+                    "Os descontos são os mesmos nos dois cenários?",
+                    "Sim. Dependentes, vale-transporte e outros descontos informados são aplicados igualmente para comparar de forma justa."),
+                new FaqItem(
+                    "Como compartilhar com meu gestor?",
+                    "Após calcular, use WhatsApp, copiar link ou baixar PDF. O link reproduz a mesma simulação sem salvar dados no servidor.")
             ]);
 }

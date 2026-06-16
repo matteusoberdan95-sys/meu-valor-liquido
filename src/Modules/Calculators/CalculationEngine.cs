@@ -28,6 +28,7 @@ public sealed class CalculationEngine
         {
             "salario-liquido" => CalculateNetSalary(definition, input),
             "salario-bruto-necessario" => CalculateRequiredGrossSalary(definition, input),
+            "proposta-salarial" => CalculateSalaryProposal(definition, input),
             "ferias" => CalculateVacation(definition, input),
             "decimo-terceiro" => CalculateThirteenthSalary(definition, input),
             "rescisao-clt" => CalculateTermination(definition, input),
@@ -109,6 +110,54 @@ public sealed class CalculationEngine
             BrTaxTables2026.Year + ".";
 
         return Build(definition, gross, breakdown.Net, lines, explanation);
+    }
+
+    private CalculationResult CalculateSalaryProposal(CalculatorDefinition definition, CalculatorInput input)
+    {
+        var currentGross = input.Amount;
+        var proposedGross = input.SecondaryAmount;
+        var current = netSalaryCalculator.Calculate(
+            currentGross,
+            input.Dependents,
+            input.TransportDiscount,
+            otherDiscounts: input.OtherDiscounts);
+        var proposed = netSalaryCalculator.Calculate(
+            proposedGross,
+            input.Dependents,
+            input.TransportDiscount,
+            otherDiscounts: input.OtherDiscounts);
+
+        var netDiff = proposed.Net - current.Net;
+        var annualDiff = netDiff * 12m;
+        var grossIncreasePercent = currentGross > 0m
+            ? (proposedGross - currentGross) / currentGross * 100m
+            : 0m;
+        var netIncreasePercent = current.Net > 0m
+            ? netDiff / current.Net * 100m
+            : 0m;
+
+        var lines = new List<CalculationLineItem>
+        {
+            Information("Salário bruto atual", currentGross),
+            Information("Salário bruto proposto", proposedGross),
+            Information("Líquido atual estimado", current.Net),
+            Information("Líquido proposto estimado", proposed.Net),
+            netDiff >= 0m
+                ? Income("Ganho líquido mensal", netDiff)
+                : Discount("Redução líquida mensal", Math.Abs(netDiff)),
+            Information("Ganho ou perda anual (12 meses)", annualDiff),
+            PercentInformation("Aumento no bruto", grossIncreasePercent),
+            PercentInformation("Aumento no líquido", netIncreasePercent)
+        };
+
+        var explanation = netDiff >= 0m
+            ? $"A proposta eleva o bruto em {grossIncreasePercent:0.#}% e o líquido em {netIncreasePercent:0.#}% " +
+              $"(cerca de {Money.From(netDiff)} por mês, {Money.From(annualDiff)} no ano). " +
+              "Impostos progressivos explicam por que o ganho no bolso é diferente do percentual no bruto."
+            : $"A proposta reduz o líquido em {Money.From(Math.Abs(netDiff))} por mês " +
+              $"({Money.From(Math.Abs(annualDiff))} no ano) em relação ao cenário atual.";
+
+        return Build(definition, proposedGross, proposed.Net, lines, explanation);
     }
 
     private CalculationResult CalculateVacation(CalculatorDefinition definition, CalculatorInput input)
@@ -538,4 +587,7 @@ public sealed class CalculationEngine
 
     private static CalculationLineItem CountInformation(string label, int count) =>
         new(label, Money.From(0m), CalculationLineType.Information, count.ToString());
+
+    private static CalculationLineItem PercentInformation(string label, decimal percent) =>
+        new(label, Money.From(0m), CalculationLineType.Information, $"{percent:0.##}%");
 }

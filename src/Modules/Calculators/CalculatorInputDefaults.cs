@@ -12,6 +12,7 @@ public static class CalculatorInputDefaults
             CompletedNoticePeriod: false),
         "salario-liquido" => new(3000m, Dependents: 0),
         "salario-bruto-necessario" => new(3500m, Dependents: 0, TransportDiscount: 150m, SecondaryAmount: 50m, OtherDiscounts: 100m),
+        "proposta-salarial" => new(4000m, SecondaryAmount: 4800m, Dependents: 0, TransportDiscount: 200m),
         "ferias" => new(3000m, Dependents: 0),
         "decimo-terceiro" => new(3000m, Months: 9, Dependents: 0),
         "hora-extra" => new(25m, Hours: 10m, Rate: 50m),

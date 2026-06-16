@@ -14,7 +14,7 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         var token = CalculatorInputShareCodec.Encode(new CalculatorInput(3000m));
         var html = await client.GetStringAsync($"/calculadoras/salario-liquido?r={Uri.EscapeDataString(token)}");
 
-        html.Should().Contain("VALOR LÍQUIDO ESTIMADO");
+        html.Should().Contain("L&#xCD;QUIDO ESTIMADO");
         html.Should().Contain("Compartilhar estimativa");
         html.Should().Contain("wa.me");
         html.Should().Contain("Explicação simples");
@@ -32,6 +32,18 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         html.Should().Contain("Continue explorando");
         html.Should().Contain("data-share-copy");
         html.Should().Contain("Baixar PDF");
+    }
+
+    [Fact]
+    public async Task Salary_Proposal_Shared_Link_Should_Render_Comparison()
+    {
+        var token = CalculatorInputShareCodec.Encode(new CalculatorInput(4000m, SecondaryAmount: 4800m));
+        var html = await client.GetStringAsync($"/calculadoras/proposta-salarial?r={Uri.EscapeDataString(token)}");
+
+        html.Should().Contain("L&#xCD;QUIDO PROPOSTO ESTIMADO");
+        html.Should().Contain("Ganho l&#xED;quido mensal");
+        html.Should().Contain("Compartilhar estimativa");
+        html.Should().Contain("Proposta salarial");
     }
 
     [Fact]

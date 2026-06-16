@@ -32,7 +32,7 @@
             </div>
         }
         <div class="valora-result-line">
-            <span>Total bruto das verbas</span>
+            <span>@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "Salário bruto proposto" : "Total bruto das verbas")</span>
             <strong>@Model.Result.GrossAmount</strong>
         </div>
         @foreach (var item in Model.Result.LineItems)
@@ -50,7 +50,7 @@
             </div>
         }
         <div class="valora-result-total">
-            <span class="valora-result-total-label">VALOR LÍQUIDO ESTIMADO</span>
+            <span class="valora-result-total-label">@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "LÍQUIDO PROPOSTO ESTIMADO" : "VALOR LÍQUIDO ESTIMADO")</span>
             <span class="valora-result-total-value">@Model.Result.EstimatedNetAmount</span>
         </div>
         <p class="valora-text-sm" style="margin: 1rem 0 0; opacity: 0.9;">@Model.Result.Explanation</p>

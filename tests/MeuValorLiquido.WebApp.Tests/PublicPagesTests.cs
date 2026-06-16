@@ -15,6 +15,7 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/calculadoras")]
     [InlineData("/calculadoras/salario-liquido")]
     [InlineData("/calculadoras/salario-bruto-necessario")]
+    [InlineData("/calculadoras/proposta-salarial")]
     [InlineData("/salario-liquido")]
     [InlineData("/salario-liquido/3000")]
     [InlineData("/sobre")]
@@ -44,6 +45,19 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
 
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.MovedPermanently);
         response.Headers.Location!.ToString().Should().Contain("salario-bruto-necessario");
+    }
+
+    [Fact]
+    public async Task Proposta_Salarial_Alias_Should_Redirect_To_Calculator()
+    {
+        using var noRedirectClient = factory
+            .WithWebHostBuilder(builder => builder.UseEnvironment("Testing"))
+            .CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+
+        var response = await noRedirectClient.GetAsync("/proposta-salarial");
+
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.Redirect);
+        response.Headers.Location!.ToString().Should().Contain("proposta-salarial");
     }
 
     [Fact]

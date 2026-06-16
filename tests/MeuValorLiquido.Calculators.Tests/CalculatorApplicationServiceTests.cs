@@ -4,13 +4,14 @@ public class CalculatorApplicationServiceTests
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();
 
     [Fact]
-    public void Catalog_Should_Contain_Sixteen_Calculators()
+    public void Catalog_Should_Contain_Seventeen_Calculators()
     {
         var catalog = new InMemoryCalculatorCatalogService();
 
-        catalog.GetAll().Should().HaveCount(16);
+        catalog.GetAll().Should().HaveCount(17);
         catalog.GetBySlug("salario-liquido").Should().NotBeNull();
         catalog.GetBySlug("salario-bruto-necessario").Should().NotBeNull();
+        catalog.GetBySlug("proposta-salarial").Should().NotBeNull();
     }
 
     [Fact]

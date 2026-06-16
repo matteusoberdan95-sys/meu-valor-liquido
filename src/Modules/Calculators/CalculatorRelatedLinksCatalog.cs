@@ -7,6 +7,7 @@ public static class CalculatorRelatedLinksCatalog
         {
             ["salario-liquido"] =
             [
+                new("proposta-salarial", "Compare aumento salarial com o que você ganha hoje."),
                 new("inss", "Veja como o INSS progressivo incide sobre o bruto."),
                 new("irrf", "Entenda a base e as faixas do imposto de renda."),
                 new("salario-bruto-necessario", "Descubra o bruto para um líquido desejado."),
@@ -16,9 +17,17 @@ public static class CalculatorRelatedLinksCatalog
             ["salario-bruto-necessario"] =
             [
                 new("salario-liquido", "Confira o extrato a partir do salário bruto."),
+                new("proposta-salarial", "Compare proposta de aumento com o salário atual."),
                 new("inss", "Detalhe a contribuição previdenciária."),
                 new("irrf", "Simule o IRRF com dependentes."),
                 new("conversor-salario", "Compare o bruto em outras bases de tempo.")
+            ],
+            ["proposta-salarial"] =
+            [
+                new("salario-liquido", "Veja o extrato detalhado do salário líquido."),
+                new("salario-bruto-necessario", "Descubra o bruto para um líquido alvo."),
+                new("conversor-salario", "Converta valores entre mês, dia e hora."),
+                new("pj-vs-clt", "Compare com proposta em PJ, se aplicável.")
             ],
             ["ferias"] =
             [
