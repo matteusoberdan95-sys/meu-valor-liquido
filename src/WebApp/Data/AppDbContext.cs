@@ -18,6 +18,8 @@ public sealed class AppDbContext : DbContext, IAppDbContext
 
     public DbSet<NewsletterSubscriberEntity> NewsletterSubscribers => Set<NewsletterSubscriberEntity>();
 
+    public DbSet<AggregatedMetricEntity> AggregatedMetrics => Set<AggregatedMetricEntity>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CalculatorCategoryEntity>(entity =>
@@ -74,6 +76,15 @@ public sealed class AppDbContext : DbContext, IAppDbContext
             entity.HasKey(x => x.Id);
             entity.HasIndex(x => x.Email).IsUnique();
             entity.Property(x => x.Email).HasMaxLength(200).IsRequired();
+        });
+
+        modelBuilder.Entity<AggregatedMetricEntity>(entity =>
+        {
+            entity.ToTable("aggregated_metrics");
+            entity.HasKey(x => x.Id);
+            entity.HasIndex(x => new { x.MetricDate, x.EventType, x.Dimension }).IsUnique();
+            entity.Property(x => x.EventType).HasMaxLength(40).IsRequired();
+            entity.Property(x => x.Dimension).HasMaxLength(80).IsRequired();
         });
     }
 }

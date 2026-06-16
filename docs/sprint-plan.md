@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 13 - Métricas internas agregadas (concluída)
+
+**Objetivo:** decisões de produto com contadores diários sem PII.
+
+**Entregas:**
+- Tabela `aggregated_metrics` (data, evento, dimensão, contagem)
+- `IProductMetricsService` com registro em cálculos, PDFs e widget embed
+- `POST /api/metrics/collect` para share e painel local (rate limit)
+- Painel `/metricas-internas` (noindex) com totais e top calculadoras
+- `product-metrics.js` integrado ao share e painel local
+
+**Definition of Done:** sem IP, e-mail ou valores salariais; eventos server-only bloqueados na API; `dotnet test` verde.
+
+---
+
 ## Sprint 12 - Performance e Core Web Vitals (concluída)
 
 **Objetivo:** melhorar LCP/CLS e reduzir carga no servidor para readiness AdSense.

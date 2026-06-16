@@ -1,0 +1,94 @@
+@page "/metricas-internas"
+@model MeuValorLiquido.WebApp.Pages.MetricasInternas.IndexModel
+@{
+    ViewData["Title"] = "Métricas internas agregadas";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.InternalMetricsBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Métricas internas</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Métricas internas</h1>
+<p class="valora-lead">
+    Contadores agregados por dia — sem IP, e-mail, valores de salário ou identificação de usuários.
+</p>
+
+<section class="valora-section valora-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));">
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Cálculos</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalCalculations.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">PDFs</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalPdfDownloads.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Compartilhamentos</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalShareCopies.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Salvos no painel</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalPanelSaves.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Views widget</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalWidgetViews.ToString("N0")</p>
+    </article>
+</section>
+
+<p class="valora-text-muted valora-text-sm valora-section">
+    Período: @Model.Summary.From.ToString("dd/MM/yyyy") — @Model.Summary.To.ToString("dd/MM/yyyy") (UTC).
+</p>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h2">Calculadoras mais usadas</h2>
+    @if (Model.Summary.TopCalculations.Count == 0)
+    {
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Ainda sem dados no período.</p>
+    }
+    else
+    {
+        <ul class="valora-related-tools-list">
+            @foreach (var row in Model.Summary.TopCalculations)
+            {
+                <li>
+                    <span class="valora-related-tool-name">@row.Label</span>
+                    <span class="valora-related-tool-teaser">@row.Count.ToString("N0") cálculos</span>
+                </li>
+            }
+        </ul>
+    }
+</section>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h2">PDFs mais baixados</h2>
+    @if (Model.Summary.TopPdfDownloads.Count == 0)
+    {
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Ainda sem downloads no período.</p>
+    }
+    else
+    {
+        <ul class="valora-related-tools-list">
+            @foreach (var row in Model.Summary.TopPdfDownloads)
+            {
+                <li>
+                    <span class="valora-related-tool-name">@row.Label</span>
+                    <span class="valora-related-tool-teaser">@row.Count.ToString("N0") PDFs</span>
+                </li>
+            }
+        </ul>
+    }
+</section>
+
+<div class="valora-disclaimer valora-section">
+    <span class="material-symbols-outlined">shield</span>
+    <p style="margin: 0;">Uso interno para priorizar produto e conteúdo. Não substitui Google Analytics nem Search Console.</p>
+</div>

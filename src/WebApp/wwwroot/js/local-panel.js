@@ -163,6 +163,7 @@
 
         updateBadges();
         showFeedback(root, "Salvo no seu painel local.");
+        window.MvlMetrics?.collect("panel_save", button.dataset.slug ?? null);
       });
     });
   };

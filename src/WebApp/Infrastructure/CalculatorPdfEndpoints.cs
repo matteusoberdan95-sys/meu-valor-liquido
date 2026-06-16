@@ -8,13 +8,14 @@ internal static class CalculatorPdfEndpoints
         app.MapGet("/salario-liquido/{valor:int}/resultado.pdf", DownloadSalaryBandPdf);
     }
 
-    private static IResult DownloadCalculatorPdf(
+    private static async Task<IResult> DownloadCalculatorPdf(
         string slug,
         string? r,
         ICalculatorCatalogService catalogService,
         ICalculatorApplicationService calculatorService,
         CalculatorResultPdfGenerator pdfGenerator,
         CalculatorShareLinkBuilder shareLinkBuilder,
+        IProductMetricsService productMetricsService,
         HttpContext httpContext)
     {
         if (string.IsNullOrWhiteSpace(r) || !CalculatorInputShareCodec.TryDecode(r, out var input))
@@ -36,15 +37,17 @@ internal static class CalculatorPdfEndpoints
         var shareUrl = shareLinkBuilder.BuildShareUrl(slug, input, httpContext.Request);
         var siteUrl = shareLinkBuilder.BuildAbsoluteUrl("/", httpContext.Request);
         var pdf = pdfGenerator.Generate(calculation.Value, shareUrl, siteUrl);
+        await productMetricsService.RecordAsync(ProductMetricEvents.PdfDownload, slug);
 
         return Results.File(pdf, "application/pdf", $"{slug}-resultado.pdf");
     }
 
-    private static IResult DownloadSalaryBandPdf(
+    private static async Task<IResult> DownloadSalaryBandPdf(
         int valor,
         NetSalaryCalculator netSalaryCalculator,
         CalculatorResultPdfGenerator pdfGenerator,
         CalculatorShareLinkBuilder shareLinkBuilder,
+        IProductMetricsService productMetricsService,
         HttpContext httpContext)
     {
         if (!SalaryBandCatalog.IsValid(valor))
@@ -57,6 +60,7 @@ internal static class CalculatorPdfEndpoints
         var shareUrl = shareLinkBuilder.BuildAbsoluteUrl(path, httpContext.Request);
         var siteUrl = shareLinkBuilder.BuildAbsoluteUrl("/", httpContext.Request);
         var pdf = pdfGenerator.GenerateSalaryBand(valor, breakdown, shareUrl, siteUrl);
+        await productMetricsService.RecordAsync(ProductMetricEvents.PdfDownload, $"salario-liquido-{valor}");
 
         return Results.File(pdf, "application/pdf", $"salario-liquido-{valor}.pdf");
     }

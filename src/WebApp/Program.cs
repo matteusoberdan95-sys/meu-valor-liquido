@@ -31,6 +31,7 @@ builder.Services.AddHealthChecks()
     .AddDbContextCheck<AppDbContext>("database");
 
 builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("Mail"));
+builder.Services.Configure<MetricsOptions>(builder.Configuration.GetSection(MetricsOptions.SectionName));
 builder.Services.AddMemoryCache();
 builder.Services.AddResponseCompression(options =>
 {
@@ -65,6 +66,15 @@ builder.Services.AddRateLimiter(options =>
                 Window = TimeSpan.FromMinutes(1),
                 QueueLimit = 0
             }));
+    options.AddPolicy("metrics-policy", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            context.Connection.RemoteIpAddress?.ToString() ?? "anonymous",
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 120,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0
+            }));
 });
 
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
@@ -83,6 +93,7 @@ builder.Services.AddScoped<IContentService>(sp =>
 builder.Services.AddSingleton<IAdSlotProvider, PlaceholderAdSlotProvider>();
 builder.Services.AddScoped<INewsletterService, EfNewsletterService>();
 builder.Services.AddScoped<IContactService, EfContactService>();
+builder.Services.AddScoped<IProductMetricsService, EfProductMetricsService>();
 builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
 builder.Services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());
 
@@ -111,6 +122,7 @@ app.UseAuthorization();
 
 app.MapHealthChecks("/health");
 CalculatorPdfEndpoints.Map(app);
+ProductMetricsEndpoints.Map(app);
 app.MapGet("/calculadora-salario-bruto", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: true));
 app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: false));
 app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));

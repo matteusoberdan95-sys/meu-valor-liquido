@@ -96,3 +96,16 @@ public class NewsletterSubscriberEntity
 
     public bool IsConfirmed { get; set; }
 }
+
+public class AggregatedMetricEntity
+{
+    public int Id { get; set; }
+
+    public DateOnly MetricDate { get; set; }
+
+    public string EventType { get; set; } = string.Empty;
+
+    public string Dimension { get; set; } = string.Empty;
+
+    public long Count { get; set; }
+}

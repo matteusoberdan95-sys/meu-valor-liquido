@@ -1,11 +1,15 @@
 global using System.Net;
+global using System.Net.Http.Json;
 global using System.Text;
 global using System.Text.RegularExpressions;
 global using FluentAssertions;
 global using MeuValorLiquido.Core.Money;
 global using MeuValorLiquido.Modules.Calculators;
 global using MeuValorLiquido.Modules.Calculators.Tax;
+global using MeuValorLiquido.WebApp.Data;
 global using MeuValorLiquido.WebApp.Infrastructure;
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.Extensions.Caching.Memory;
+global using Microsoft.Extensions.Options;

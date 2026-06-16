@@ -46,16 +46,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const recordShare = () => {
+    const slug = root.getAttribute("data-share-calculator-slug");
+    window.MvlMetrics?.collect("share_copy", slug);
+  };
+
   root.querySelectorAll("[data-share-copy]").forEach((button) => {
     button.addEventListener("click", async () => {
       const mode = button.getAttribute("data-share-copy");
       if (mode === "link") {
         await copyValue(urlField?.value ?? "", "Link copiado.");
+        recordShare();
         return;
       }
 
       if (mode === "text") {
         await copyValue(textField?.value ?? "", "Texto copiado.");
+        recordShare();
       }
     });
   });

@@ -6,19 +6,22 @@ public class DetailsModel : PageModel
     private readonly ICalculatorFieldProfileProvider fieldProfileProvider;
     private readonly IAdSlotProvider adSlotProvider;
     private readonly CalculatorShareLinkBuilder shareLinkBuilder;
+    private readonly IProductMetricsService productMetricsService;
 
     public DetailsModel(
         ICalculatorApplicationService calculatorService,
         ICalculatorCatalogService catalogService,
         ICalculatorFieldProfileProvider fieldProfileProvider,
         IAdSlotProvider adSlotProvider,
-        CalculatorShareLinkBuilder shareLinkBuilder)
+        CalculatorShareLinkBuilder shareLinkBuilder,
+        IProductMetricsService productMetricsService)
     {
         this.calculatorService = calculatorService;
         this.catalogService = catalogService;
         this.fieldProfileProvider = fieldProfileProvider;
         this.adSlotProvider = adSlotProvider;
         this.shareLinkBuilder = shareLinkBuilder;
+        this.productMetricsService = productMetricsService;
     }
 
     public CalculatorDefinition? Definition { get; private set; }
@@ -40,7 +43,7 @@ public class DetailsModel : PageModel
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
 
-    public IActionResult OnGet(string slug)
+    public async Task<IActionResult> OnGetAsync(string slug)
     {
         if (!TryBeginRequest(slug, out var reject))
         {
@@ -65,12 +68,16 @@ public class DetailsModel : PageModel
             }
 
             TryApplySharedCalculation(slug);
+            if (IsEmbedMode)
+            {
+                await productMetricsService.RecordAsync(ProductMetricEvents.WidgetView, slug);
+            }
         }
 
         return Page();
     }
 
-    public IActionResult OnPost(string slug)
+    public async Task<IActionResult> OnPostAsync(string slug)
     {
         if (!TryBeginRequest(slug, out var reject))
         {
@@ -94,6 +101,8 @@ public class DetailsModel : PageModel
             ModelState.AddModelError(string.Empty, result.Error.Message);
             return Page();
         }
+
+        await productMetricsService.RecordAsync(ProductMetricEvents.CalculatorCalculation, slug);
 
         var token = CalculatorInputShareCodec.Encode(Input);
         var embedQuery = IsEmbedMode ? "&embed=1" : string.Empty;

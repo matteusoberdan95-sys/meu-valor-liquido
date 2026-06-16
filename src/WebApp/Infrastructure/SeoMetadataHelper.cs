@@ -115,4 +115,10 @@ public static class SeoMetadataHelper
         new("Início", "/"),
         new("Widget incorporável", "/widget")
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> InternalMetricsBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Métricas internas", "/metricas-internas")
+    ];
 }

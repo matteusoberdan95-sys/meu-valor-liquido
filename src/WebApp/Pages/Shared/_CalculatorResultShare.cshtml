@@ -1,6 +1,6 @@
 @model MeuValorLiquido.WebApp.Infrastructure.CalculatorShareViewModel
 
-<section class="valora-share-actions" aria-label="Compartilhar resultado" data-share-root>
+<section class="valora-share-actions" aria-label="Compartilhar resultado" data-share-root @(Model.LocalPanel is not null ? $"data-share-calculator-slug=\"{Model.LocalPanel.Slug}\"" : null)>
     <h3 class="valora-h3" style="font-size: 1rem; margin-bottom: 0.75rem;">Compartilhar estimativa</h3>
     <p class="valora-text-muted valora-text-sm" style="margin: 0 0 1rem;">
         Envie por WhatsApp ou copie o link para revisar depois. Compartilhamento voluntário.

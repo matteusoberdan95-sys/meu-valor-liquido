@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 13
+- Métricas internas agregadas: contadores diários por evento/calculadora, API de coleta client-side e painel `/metricas-internas` sem PII.
+
 ## Sprint 12
 - Performance: cache em memória (catálogo/conteúdo), output cache do sitemap, Brotli, cache de assets, jQuery sob demanda, defer e CLS nos slots.
 
