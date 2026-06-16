@@ -1,5 +1,7 @@
 # SEO Checklist
 
+Checklist resumido. Versão completa com status por página: `docs/SEO_CHECKLIST.md`.
+
 - URLs amigáveis.
 - Title e meta description únicos.
 - H1 único por página.

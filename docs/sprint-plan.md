@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 0 - Auditoria, organização e segurança (concluída)
+
+**Objetivo:** entender o projeto, corrigir problemas básicos e preparar base para crescimento.
+
+**Entregas:**
+- Auditoria documentada em `docs/ROADMAP_MONETIZACAO.md`
+- `docs/SEO_CHECKLIST.md` e `docs/ADSENSE_COMPLIANCE.md`
+- E-mail mascarado em logs (`SmtpEmailSender`)
+- Slots de anúncio com altura/margem para reduzir CLS
+- Política de logging em `docs/security-checklist.md`
+
+**Definition of Done:** `dotnet test` verde; documentação Sprint 0; sem PII em logs de e-mail.
+
+---
+
 ## Meta de produto
 
 Monetizar rapidamente via **Google AdSense**, priorizando:
@@ -72,6 +87,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **0** | **Auditoria, segurança, docs monetização** | **Concluído** |
 | 0–13 | Fundação, calculadoras, infra, docs | Concluído |
 | **14** | **UI/UX, SEO avançado, newsletter** | **Concluído** |
 | **15** | **Conteúdo editorial (15 artigos)** | **Concluído** |

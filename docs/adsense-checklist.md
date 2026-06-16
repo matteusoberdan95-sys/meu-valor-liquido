@@ -1,6 +1,6 @@
 # AdSense Checklist
 
-Não integrar AdSense real no MVP.
+Não integrar AdSense real no MVP. Regras de layout e compliance: `docs/ADSENSE_COMPLIANCE.md`.
 
 Antes de solicitar:
 

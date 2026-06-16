@@ -41,11 +41,28 @@ public sealed class SmtpEmailSender : IEmailSender
             await client.ConnectAsync(options.Host, options.Port, MailKit.Security.SecureSocketOptions.None, cancellationToken);
             await client.SendAsync(mime, cancellationToken);
             await client.DisconnectAsync(true, cancellationToken);
-            logger.LogInformation("E-mail enviado para {Recipient} via {Host}:{Port}", message.To, options.Host, options.Port);
+            logger.LogInformation("E-mail enviado para {RecipientMasked} via {Host}:{Port}", MaskEmail(message.To), options.Host, options.Port);
         }
         catch (Exception ex)
         {
-            logger.LogWarning(ex, "Falha ao enviar e-mail para {Recipient}. Verifique se o Mailpit está ativo.", message.To);
+            logger.LogWarning(ex, "Falha ao enviar e-mail para {RecipientMasked}. Verifique se o Mailpit está ativo.", MaskEmail(message.To));
         }
+    }
+
+    /// <summary>Mascara e-mail nos logs para evitar PII (LGPD / boas práticas).</summary>
+    public static string MaskEmail(string? email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+        {
+            return "[vazio]";
+        }
+
+        var at = email.IndexOf('@');
+        if (at <= 0)
+        {
+            return "***";
+        }
+
+        return email[0] + "***" + email[at..];
     }
 }

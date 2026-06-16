@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Sprint 14: design system, Open Graph, JSON-LD, newsletter, filtros de categoria.
+- Sprint 0: auditoria, `ROADMAP_MONETIZACAO`, `SEO_CHECKLIST`, `ADSENSE_COMPLIANCE`, mascaramento de e-mail em logs, slots de anúncio com margem/CLS.
 - PostgreSQL + EF Core com migrations e seed inicial.
 - Tabelas INSS/IRRF 2026, `CalculationEngine` e perfis de campos por calculadora.
 - Sitemap dinâmico, health check, Mailpit via SMTP, contato persistido.

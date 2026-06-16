@@ -723,16 +723,17 @@ body {
   padding-top: 0.75rem;
 }
 
-/* Ad slot */
+/* Ad slot — altura reservada para reduzir CLS; ver docs/ADSENSE_COMPLIANCE.md */
 .ad-slot {
   background: var(--valora-surface-container-low);
   border: 1px dashed var(--valora-outline-variant) !important;
   border-radius: var(--valora-radius-md);
-  min-height: 90px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 0.75rem;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
