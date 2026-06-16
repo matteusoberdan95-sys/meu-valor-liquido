@@ -103,4 +103,10 @@ public static class SeoMetadataHelper
         new("Dúvidas populares", "/duvidas"),
         new(title, PopularQuestionsCatalog.SlugPath(slug))
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> LocalPanelBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Meu painel", "/meu-painel")
+    ];
 }

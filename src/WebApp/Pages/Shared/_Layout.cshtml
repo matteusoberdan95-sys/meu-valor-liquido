@@ -53,6 +53,12 @@
                     <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
                     <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
                     <li><a class="@(IsActive("/newsletter") ? "active" : "")" asp-page="/Newsletter">Newsletter</a></li>
+                    <li>
+                        <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
+                            Meu painel
+                            <span class="valora-nav-badge" data-local-panel-count hidden>0</span>
+                        </a>
+                    </li>
                     <li><a class="@(IsActive("/contato") ? "active" : "")" asp-page="/Contato">Contato</a></li>
                 </ul>
             </nav>
@@ -65,6 +71,7 @@
             <a asp-page="/Calculadoras/Index">Calculadoras</a>
             <a asp-page="/Blog/Index">Blog</a>
             <a asp-page="/Newsletter">Newsletter</a>
+            <a asp-page="/MeuPainel/Index">Meu painel</a>
             <a asp-page="/Contato">Contato</a>
         </div>
     </header>
@@ -96,6 +103,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/local-panel.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

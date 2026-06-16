@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 10
+- Painel local (`/meu-painel`): salvar simulações em `localStorage`, reabrir, remover e badge no menu — sem login.
+
 ## Sprint 9
 - Dúvidas populares: hub `/duvidas`, 17 páginas com FAQ schema, links para calculadoras e perguntas relacionadas.
 

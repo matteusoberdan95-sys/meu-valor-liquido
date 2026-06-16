@@ -1,0 +1,59 @@
+@page "/meu-painel"
+@model MeuValorLiquido.WebApp.Pages.MeuPainel.IndexModel
+@{
+    ViewData["Title"] = "Meu painel — simulações salvas";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.LocalPanelBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Meu painel</li>
+    </ol>
+</nav>
+
+<header class="valora-section">
+    <h1 class="valora-h1">Meu painel</h1>
+    <p class="valora-lead">
+        Simulações que você salvou para revisar depois. Tudo fica no seu navegador — não pedimos login e não enviamos esses números ao servidor.
+    </p>
+</header>
+
+<section class="valora-section valora-card valora-local-panel" data-local-panel-page>
+    <div class="valora-local-panel-toolbar">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;" data-local-panel-count-label>
+            Carregando simulações…
+        </p>
+        <button type="button" class="valora-btn valora-btn-outline valora-btn-sm" data-local-panel-clear hidden>
+            Limpar tudo
+        </button>
+    </div>
+
+    <div class="valora-local-panel-empty" data-local-panel-empty hidden>
+        <span class="material-symbols-outlined" style="font-size: 2.5rem; color: var(--valora-muted);">bookmark_add</span>
+        <h2 class="valora-h3">Nenhuma simulação salva ainda</h2>
+        <p class="valora-text-muted valora-text-sm">
+            Depois de calcular, use <strong>Salvar no painel</strong> no bloco de compartilhamento.
+        </p>
+        <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ir para calculadoras</a>
+    </div>
+
+    <ul class="valora-local-panel-list" data-local-panel-list hidden></ul>
+</section>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h3">Privacidade</h2>
+    <p class="valora-text-muted valora-text-sm" style="margin: 0;">
+        Os dados ficam em <code>localStorage</code> deste navegador. Limpar cache, usar outro aparelho ou navegador anônimo remove o histórico.
+        Não usamos essas simulações para anúncios nem analytics individualizados.
+    </p>
+</section>
+
+<div class="valora-disclaimer valora-section">
+    <span class="material-symbols-outlined">info</span>
+    <p style="margin: 0;">Estimativas educativas. Confirme valores com holerite, contrato ou profissional habilitado.</p>
+</div>

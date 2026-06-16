@@ -123,7 +123,8 @@ public class DetailsModel : PageModel
             shareUrl,
             shareText,
             CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
-            shareLinkBuilder.BuildPdfUrl(slug, Input));
+            shareLinkBuilder.BuildPdfUrl(slug, Input),
+            LocalPanelSaveContextBuilder.FromCalculation(Definition!, Result, Input));
     }
 
     private void LoadPage(string slug)

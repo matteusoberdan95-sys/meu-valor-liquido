@@ -32,6 +32,7 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         html.Should().Contain("Continue explorando");
         html.Should().Contain("data-share-copy");
         html.Should().Contain("Baixar PDF");
+        html.Should().Contain("data-local-panel-save");
     }
 
     [Fact]

@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 10 - Painel local (localStorage) (concluída)
+
+**Objetivo:** retenção sem login — o usuário salva simulações no próprio navegador e volta depois.
+
+**Entregas:**
+- `LocalPanelSaveContext` + botão **Salvar no painel** no bloco de compartilhamento
+- Página `/meu-painel` (alias `/painel`) com lista, reabrir, remover e limpar tudo
+- `local-panel.js` com `localStorage`, badge no menu e aviso de privacidade
+- Integração em calculadoras compartilháveis e faixas `/salario-liquido/{valor}`
+- Sitemap, mapa do site, CTA na home e link no menu
+
+**Definition of Done:** dados só no cliente; reabrir via link `?r=`; `dotnet test` verde.
+
+---
+
 ## Sprint 9 - Dúvidas populares (concluída)
 
 **Objetivo:** capturar cauda longa de busca com respostas educativas e internal linking para calculadoras.

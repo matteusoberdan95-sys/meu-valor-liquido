@@ -88,6 +88,7 @@ app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect
 app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
 app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
 app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: false));
+app.MapGet("/painel", () => Results.Redirect("/meu-painel", permanent: false));
 app.MapGet("/sitemap.xml", async (AppDbContext db) =>
 {
     XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
@@ -105,6 +106,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/salario-liquido"),
         CreateUrl(ns, $"{baseUrl}/clt-pj"),
         CreateUrl(ns, $"{baseUrl}/duvidas"),
+        CreateUrl(ns, $"{baseUrl}/meu-painel"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
         CreateUrl(ns, $"{baseUrl}/aviso-legal")

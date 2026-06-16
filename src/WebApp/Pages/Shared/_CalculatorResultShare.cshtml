@@ -30,7 +30,27 @@
                 Baixar PDF
             </a>
         }
+        @if (Model.LocalPanel is not null)
+        {
+            <button type="button"
+                    class="valora-btn valora-btn-outline"
+                    data-local-panel-save
+                    data-slug="@Model.LocalPanel.Slug"
+                    data-calculator-name="@Model.LocalPanel.CalculatorName"
+                    data-summary="@Model.LocalPanel.Summary"
+                    data-net-amount="@Model.LocalPanel.NetAmount"
+                    data-share-url="@Model.ShareUrl">
+                <span class="material-symbols-outlined" style="font-size: 1.125rem;">bookmark_add</span>
+                Salvar no painel
+            </button>
+        }
     </div>
+    @if (Model.LocalPanel is not null)
+    {
+        <p class="valora-text-muted valora-text-sm" style="margin: 0.75rem 0 0;">
+            <a asp-page="/MeuPainel/Index">Abrir meu painel</a> para ver tudo que você salvou neste navegador.
+        </p>
+    }
     <p class="valora-text-muted valora-text-sm valora-share-feedback" data-share-feedback hidden aria-live="polite"></p>
     <textarea id="calculator-share-url" hidden readonly>@Model.ShareUrl</textarea>
     <textarea id="calculator-share-text" hidden readonly>@Model.ShareText</textarea>

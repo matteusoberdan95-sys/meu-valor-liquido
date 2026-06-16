@@ -63,7 +63,8 @@ public partial class FaixaModel : PageModel
             shareUrl,
             shareText,
             CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
-            CalculatorShareLinkBuilder.BuildSalaryBandPdfUrl(valor));
+            CalculatorShareLinkBuilder.BuildSalaryBandPdfUrl(valor),
+            LocalPanelSaveContextBuilder.FromSalaryBand(valor, Breakdown.Net));
 
         var explanation = CalculatorResultExplanationFactory.BuildForSalaryBand(valor, Breakdown, catalogService);
         ResultPanel = new SalaryBandResultPanelViewModel(

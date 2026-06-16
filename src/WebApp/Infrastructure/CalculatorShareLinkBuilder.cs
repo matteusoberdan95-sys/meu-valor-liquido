@@ -40,4 +40,5 @@ public sealed record CalculatorShareViewModel(
     string ShareUrl,
     string ShareText,
     string WhatsAppUrl,
-    string? PdfUrl = null);
+    string? PdfUrl = null,
+    LocalPanelSaveContext? LocalPanel = null);
