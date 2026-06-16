@@ -35,11 +35,18 @@ public class DetailsModel : PageModel
 
     public CalculatorResultPanelViewModel? ResultPanel { get; private set; }
 
+    public bool IsEmbedMode { get; private set; }
+
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
 
     public IActionResult OnGet(string slug)
     {
+        if (!TryBeginRequest(slug, out var reject))
+        {
+            return reject!;
+        }
+
         LoadPage(slug);
         if (Definition is not null)
         {
@@ -65,6 +72,11 @@ public class DetailsModel : PageModel
 
     public IActionResult OnPost(string slug)
     {
+        if (!TryBeginRequest(slug, out var reject))
+        {
+            return reject!;
+        }
+
         LoadPage(slug);
         if (Definition is null)
         {
@@ -84,7 +96,27 @@ public class DetailsModel : PageModel
         }
 
         var token = CalculatorInputShareCodec.Encode(Input);
-        return Redirect($"/calculadoras/{slug}?r={Uri.EscapeDataString(token)}");
+        var embedQuery = IsEmbedMode ? "&embed=1" : string.Empty;
+        return Redirect($"/calculadoras/{slug}?r={Uri.EscapeDataString(token)}{embedQuery}");
+    }
+
+    private bool TryBeginRequest(string slug, out IActionResult? reject)
+    {
+        reject = null;
+        IsEmbedMode = string.Equals(Request.Query["embed"].ToString(), "1", StringComparison.Ordinal);
+        if (!IsEmbedMode)
+        {
+            return true;
+        }
+
+        if (!EmbedWidgetCatalog.IsEmbeddable(slug))
+        {
+            reject = NotFound();
+            return false;
+        }
+
+        ViewData["Robots"] = SeoMetadataHelper.NoIndexRobots;
+        return true;
     }
 
     private void TryApplySharedCalculation(string slug)
@@ -107,12 +139,13 @@ public class DetailsModel : PageModel
             Result,
             Input,
             slug,
-            CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService));
+            CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
+            ShowSimpleExplanation: !IsEmbedMode);
     }
 
     private void BuildShare(string slug)
     {
-        if (Result is null)
+        if (Result is null || IsEmbedMode)
         {
             return;
         }
@@ -136,6 +169,13 @@ public class DetailsModel : PageModel
         }
 
         FieldProfile = fieldProfileProvider.GetProfile(slug);
+        if (IsEmbedMode)
+        {
+            TopAdSlot = null;
+            BottomAdSlot = null;
+            return;
+        }
+
         var slots = adSlotProvider.GetSlots();
         TopAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-top");
         BottomAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-bottom");

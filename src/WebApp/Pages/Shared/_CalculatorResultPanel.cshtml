@@ -1,6 +1,8 @@
 @model MeuValorLiquido.WebApp.Infrastructure.CalculatorResultPanelViewModel
 
 <section class="valora-result-panel" aria-live="polite" data-result-view-root>
+    @if (Model.ShowSimpleExplanation)
+    {
     <div class="valora-result-view-toggle" role="tablist" aria-label="Formato do resultado">
         <button type="button"
                 class="valora-result-view-btn"
@@ -21,6 +23,7 @@
             Explicação simples
         </button>
     </div>
+    }
 
     <div id="result-panel-extract" class="valora-result-view-panel" data-result-panel="extract" role="tabpanel">
         <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Extrato estimado</h2>
@@ -56,6 +59,8 @@
         <p class="valora-text-sm" style="margin: 1rem 0 0; opacity: 0.9;">@Model.Result.Explanation</p>
     </div>
 
+    @if (Model.ShowSimpleExplanation)
+    {
     <div id="result-panel-simple" class="valora-result-view-panel" data-result-panel="simple" role="tabpanel" hidden>
         <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Entenda em passos</h2>
         <p class="valora-text-sm" style="margin: 0 0 1rem; opacity: 0.9;">
@@ -78,9 +83,10 @@
             }
         </ol>
     </div>
+    }
 </section>
 
-@if (Model.Explanation.RelatedLinks.Count > 0)
+@if (Model.ShowSimpleExplanation && Model.Explanation.RelatedLinks.Count > 0)
 {
     <section class="valora-related-tools" aria-label="Ferramentas relacionadas">
         <h3 class="valora-h3" style="font-size: 1rem; margin-bottom: 0.75rem;">Continue explorando</h3>

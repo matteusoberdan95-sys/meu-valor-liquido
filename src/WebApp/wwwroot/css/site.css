@@ -671,6 +671,56 @@ body {
   font-size: 0.875rem;
 }
 
+.valora-embed-body {
+  margin: 0;
+  background: var(--valora-bg);
+}
+
+.valora-embed-main {
+  padding: 1rem;
+}
+
+.valora-embed-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 1rem;
+  font-size: 0.75rem;
+  color: var(--valora-muted);
+  border-top: 1px solid var(--valora-border);
+}
+
+.valora-embed-footer a {
+  color: var(--valora-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-embed-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-embed-header {
+  margin-bottom: 0.5rem;
+}
+
+.valora-embed-result .valora-result-panel {
+  margin-top: 0;
+}
+
+.valora-widget-code {
+  width: 100%;
+  min-height: 8rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
 .valora-result-view-toggle {
   display: flex;
   gap: 0.5rem;

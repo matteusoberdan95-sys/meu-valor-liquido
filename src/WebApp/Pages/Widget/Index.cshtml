@@ -1,0 +1,61 @@
+@page "/widget"
+@model MeuValorLiquido.WebApp.Pages.Widget.IndexModel
+@{
+    ViewData["Title"] = "Widget incorporável — calculadoras para seu site";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.WidgetHubBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Widget incorporável</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Widget incorporável</h1>
+<p class="valora-lead">
+    Incorpore calculadoras educativas no seu site com um iframe. Gratuito, sem login e com link de atribuição ao Meu Valor Líquido.
+</p>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h3">Regras de uso</h2>
+    <ul class="valora-text-muted valora-text-sm" style="margin: 0; padding-left: 1.25rem;">
+        <li>Mantenha o link de atribuição visível abaixo do iframe.</li>
+        <li>Não remova o aviso de estimativa educativa nem apresente o widget como cálculo oficial.</li>
+        <li>Não coloque anúncios sobrepostos ao iframe nem incentive clique em anúncios via widget.</li>
+        <li>O visitante pode abrir a versão completa no site para compartilhar ou salvar no painel local.</li>
+    </ul>
+</section>
+
+@foreach (var widget in Model.Widgets)
+{
+    var iframeCode = EmbedCodeBuilder.BuildIframeHtml(Model.BaseUrl, widget);
+    <section class="valora-section valora-card valora-widget-doc" id="widget-@widget.Slug">
+        <h2 class="valora-h2">@widget.Name</h2>
+        <p class="valora-text-muted valora-text-sm">@widget.Summary</p>
+
+        <div class="valora-widget-preview" style="margin: 1rem 0;">
+            <iframe src="@EmbedWidgetCatalog.WidgetPath(widget.Slug)"
+                    width="100%"
+                    height="@widget.RecommendedHeight"
+                    style="border:0;border-radius:12px;max-width:100%;"
+                    title="@widget.Name — Meu Valor Líquido"
+                    loading="lazy"></iframe>
+        </div>
+
+        <label class="valora-label" for="code-@widget.Slug">Código para copiar</label>
+        <textarea id="code-@widget.Slug" class="valora-input valora-widget-code" readonly rows="6">@iframeCode</textarea>
+        <div class="valora-gap-buttons" style="margin-top: 0.75rem;">
+            <button type="button" class="valora-btn valora-btn-outline" data-copy-widget="@widget.Slug">Copiar código</button>
+            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="@widget.Slug">Abrir versão completa</a>
+        </div>
+    </section>
+}
+
+@section Scripts {
+    <script src="~/js/widget-hub.js" asp-append-version="true"></script>
+}

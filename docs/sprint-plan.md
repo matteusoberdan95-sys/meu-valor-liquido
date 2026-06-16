@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 11 - Widget incorporável (concluída)
+
+**Objetivo:** referência legítima em blogs e portais com iframe gratuito e atribuição ao site.
+
+**Entregas:**
+- `EmbedWidgetCatalog` com 8 calculadoras incorporáveis
+- Hub `/widget` (alias `/incorporar`) com preview, código copiável e regras de uso
+- Rotas `/widget/{slug}` → calculadora em modo `?embed=1` sem anúncios nem share
+- `_EmbedLayout`, `EmbedFramePolicy` (`frame-ancestors *`) e CSP específica
+- Sitemap, mapa do site e CTA na home
+
+**Definition of Done:** sem ads no embed; slugs não listados retornam 404; `dotnet test` verde.
+
+---
+
 ## Sprint 10 - Painel local (localStorage) (concluída)
 
 **Objetivo:** retenção sem login — o usuário salva simulações no próprio navegador e volta depois.

@@ -89,6 +89,11 @@ app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-
 app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
 app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: false));
 app.MapGet("/painel", () => Results.Redirect("/meu-painel", permanent: false));
+app.MapGet("/incorporar", () => Results.Redirect("/widget", permanent: false));
+app.MapGet("/widget/{slug}", (string slug) =>
+    EmbedWidgetCatalog.IsEmbeddable(slug)
+        ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
+        : Results.NotFound());
 app.MapGet("/sitemap.xml", async (AppDbContext db) =>
 {
     XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
@@ -107,6 +112,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/clt-pj"),
         CreateUrl(ns, $"{baseUrl}/duvidas"),
         CreateUrl(ns, $"{baseUrl}/meu-painel"),
+        CreateUrl(ns, $"{baseUrl}/widget"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
         CreateUrl(ns, $"{baseUrl}/aviso-legal")
@@ -142,10 +148,27 @@ internal static class SecurityHeadersExtensions
     {
         return app.Use(async (context, next) =>
         {
-            context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
-            context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
-            context.Response.Headers.TryAdd("Referrer-Policy", "strict-origin-when-cross-origin");
-            context.Response.Headers.TryAdd("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:");
+            context.Response.OnStarting(() =>
+            {
+                context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
+                context.Response.Headers.TryAdd("Referrer-Policy", "strict-origin-when-cross-origin");
+
+                if (EmbedFramePolicy.AllowsEmbedding(context.Request.Path, context.Request.Query))
+                {
+                    context.Response.Headers.Remove("X-Frame-Options");
+                    context.Response.Headers["Content-Security-Policy"] = EmbedFramePolicy.BuildEmbedContentSecurityPolicy();
+                }
+                else
+                {
+                    context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
+                    context.Response.Headers.TryAdd(
+                        "Content-Security-Policy",
+                        "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:");
+                }
+
+                return Task.CompletedTask;
+            });
+
             await next();
         });
     }

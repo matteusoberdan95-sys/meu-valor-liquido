@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 11
+- Widget incorporável: hub `/widget`, iframe para 8 calculadoras, modo embed sem anúncios e headers `frame-ancestors *`.
+
 ## Sprint 10
 - Painel local (`/meu-painel`): salvar simulações em `localStorage`, reabrir, remover e badge no menu — sem login.
 

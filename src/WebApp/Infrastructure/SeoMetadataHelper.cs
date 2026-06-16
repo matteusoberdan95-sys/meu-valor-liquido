@@ -109,4 +109,10 @@ public static class SeoMetadataHelper
         new("Início", "/"),
         new("Meu painel", "/meu-painel")
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> WidgetHubBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Widget incorporável", "/widget")
+    ];
 }

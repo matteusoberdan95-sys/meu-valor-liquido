@@ -1,0 +1,38 @@
+@inject IConfiguration Configuration
+@{
+    var title = ViewData["Title"]?.ToString() ?? "Meu Valor Líquido";
+    var description = ViewData["Description"]?.ToString() ?? "Calculadora incorporada.";
+    var robots = ViewData["Robots"]?.ToString() ?? SeoMetadataHelper.NoIndexRobots;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="@robots" />
+    <meta name="description" content="@description" />
+    <title>@title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Head", required: false)
+</head>
+<body class="valora-embed-body">
+    <main class="valora-embed-main" role="main">
+        @RenderBody()
+    </main>
+    <footer class="valora-embed-footer">
+        <a href="@(Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br")" target="_blank" rel="noopener noreferrer">
+            Meu Valor Líquido
+        </a>
+        <span aria-hidden="true">·</span>
+        <span>Estimativa educativa</span>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

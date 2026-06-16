@@ -5,6 +5,11 @@
     ViewData["Description"] = Model.Definition?.SeoDescription ?? "Calculadora do Meu Valor Líquido.";
     ViewData["CanonicalPath"] = Model.Definition is null ? "/calculadoras" : $"/calculadoras/{Model.Definition.Slug}";
     var profile = Model.FieldProfile;
+    if (Model.IsEmbedMode)
+    {
+        Layout = "Shared/_EmbedLayout";
+        ViewData["Title"] = Model.Definition?.Name ?? "Calculadora";
+    }
 }
 
 @if (Model.Definition is null)
@@ -16,35 +21,51 @@
 }
 else
 {
-    @section Head {
-        <partial name="Shared/_JsonLdFaq" model="Model.Definition.FaqItems" />
-        <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CalculatorBreadcrumbs(Model.Definition.Name, Model.Definition.Slug)" />
+    if (!Model.IsEmbedMode)
+    {
+        @section Head {
+            <partial name="Shared/_JsonLdFaq" model="Model.Definition.FaqItems" />
+            <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CalculatorBreadcrumbs(Model.Definition.Name, Model.Definition.Slug)" />
+        }
     }
 
-    <nav aria-label="breadcrumb">
-        <ol class="valora-breadcrumb">
-            <li><a asp-page="/Index">Início</a></li>
-            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-            <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
-            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-            <li class="active" aria-current="page">@Model.Definition.Name</li>
-        </ol>
-    </nav>
+    if (!Model.IsEmbedMode)
+    {
+        <nav aria-label="breadcrumb">
+            <ol class="valora-breadcrumb">
+                <li><a asp-page="/Index">Início</a></li>
+                <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                <li class="active" aria-current="page">@Model.Definition.Name</li>
+            </ol>
+        </nav>
+    }
 
-    <header class="valora-section">
-        <partial name="Shared/_CalculatorCategoryBadge" model="Model.Definition.Category" />
-        <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.Definition.Name</h1>
-        <p class="valora-lead">@Model.Definition.Summary</p>
+    <header class="@(Model.IsEmbedMode ? "valora-embed-header" : "valora-section")">
+        @if (!Model.IsEmbedMode)
+        {
+            <partial name="Shared/_CalculatorCategoryBadge" model="Model.Definition.Category" />
+        }
+        <h1 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-h1")" style="@(Model.IsEmbedMode ? "margin: 0;" : "margin-top: 0.75rem;")">@Model.Definition.Name</h1>
+        @if (!Model.IsEmbedMode)
+        {
+            <p class="valora-lead">@Model.Definition.Summary</p>
+        }
+        else
+        {
+            <p class="valora-text-muted valora-text-sm" style="margin: 0.35rem 0 0;">@Model.Definition.Summary</p>
+        }
     </header>
 
-    @if (Model.TopAdSlot is not null)
+    @if (!Model.IsEmbedMode && Model.TopAdSlot is not null)
     {
         <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
     }
 
-    <div class="valora-calc-layout valora-section">
+    <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : "valora-calc-layout valora-section")">
         <div class="valora-stack-md">
-            <form method="post" class="valora-form-card valora-stack-md" asp-route-slug="@Model.Definition.Slug">
+            <form method="post" class="valora-form-card valora-stack-md" asp-route-slug="@Model.Definition.Slug" asp-route-embed="@(Model.IsEmbedMode ? "1" : null)">
                 <h2 class="valora-h3">Informe seus dados</h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="valora-form-row">
@@ -373,6 +394,8 @@ else
                 <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
             </form>
 
+            @if (!Model.IsEmbedMode)
+            {
             <div class="valora-disclaimer">
                 <span class="material-symbols-outlined">warning</span>
                 <p style="margin: 0;">Os resultados são estimativas educativas baseados nas tabelas vigentes. Consulte seu RH ou contador para valores oficiais.</p>
@@ -382,9 +405,10 @@ else
                 <h2 class="valora-h3">Como usar esta calculadora</h2>
                 <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent is null ? "Preencha os campos indicados e use o resultado como estimativa educativa." : Html.Raw(Model.Definition.EducationalContent))</p>
             </section>
+            }
         </div>
 
-        <aside class="valora-calc-sidebar valora-stack-md">
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : "valora-calc-sidebar valora-stack-md")">
             @if (Model.ResultPanel is not null)
             {
                 <partial name="Shared/_CalculatorResultPanel" model="Model.ResultPanel" />
@@ -405,13 +429,15 @@ else
                 </section>
             }
 
-            @if (Model.BottomAdSlot is not null)
+            @if (!Model.IsEmbedMode && Model.BottomAdSlot is not null)
             {
                 <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
             }
         </aside>
     </div>
 
+    @if (!Model.IsEmbedMode)
+    {
     <section class="valora-faq valora-section">
         <h2 class="valora-h2">Perguntas frequentes</h2>
         @foreach (var faq in Model.Definition.FaqItems)
@@ -425,12 +451,13 @@ else
             </details>
         }
     </section>
+    }
 }
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script src="~/js/calculator-input-masks.js" asp-append-version="true"></script>
-    @if (Model.ResultPanel is not null)
+    @if (Model.ResultPanel is not null && Model.ResultPanel.ShowSimpleExplanation)
     {
         <script src="~/js/calculator-result-views.js" asp-append-version="true"></script>
     }
