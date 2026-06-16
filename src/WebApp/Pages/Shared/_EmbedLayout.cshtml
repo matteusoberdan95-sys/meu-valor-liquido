@@ -13,7 +13,6 @@
     <meta name="description" content="@description" />
     <title>@title</title>
     <link rel="icon" href="~/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="~/images/icons/icon-32.png" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +26,7 @@
         @RenderBody()
     </main>
     <footer class="valora-embed-footer">
-        <img class="valora-brand-logo" src="~/images/brand/logo-horizontal.png" asp-append-version="true" alt="Meu Valor Líquido" width="160" height="32" style="height: 1.25rem; width: auto;" />
+        <partial name="Shared/_BrandMark" view-data='new ViewDataDictionary(ViewData) { { "BrandMarkClass", "valora-brand-mark--compact" } }' />
         <span aria-hidden="true">·</span>
         <a href="@(Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br")" target="_blank" rel="noopener noreferrer">Abrir no site</a>
         <span aria-hidden="true">·</span>

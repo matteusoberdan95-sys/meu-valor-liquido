@@ -6,7 +6,18 @@
     ViewData["Title"] = "Calculadoras trabalhistas, fiscais e financeiras";
     ViewData["Description"] = "Entenda quanto você realmente recebe, quanto desconta e quanto sobra com calculadoras simples para brasileiros.";
     ViewData["CanonicalPath"] = "/";
+    ViewData["BottomNavTab"] = "home";
     var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br";
+    var featuredSlugs = new[] { "salario-liquido", "pj-vs-clt", "simulador-mei", "ferias" };
+    var featured = featuredSlugs
+        .Select(slug => Model.Calculators.FirstOrDefault(c => c.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase)))
+        .Where(c => c is not null)
+        .Cast<CalculatorDefinition>()
+        .ToList();
+    if (featured.Count < 4)
+    {
+        featured = Model.Calculators.Take(4).ToList();
+    }
     var webSiteSchema = new Dictionary<string, object>
     {
         ["@context"] = "https://schema.org",
@@ -22,86 +33,100 @@
     <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(webSiteSchema))</script>
 }
 
-<section class="valora-hero valora-section">
-    <div class="valora-hero-split">
-        <div>
-            <span class="valora-hero-badge">Calculadoras gratuitas · Tabelas 2026</span>
-            <h1 class="valora-h1">Entenda quanto você recebe, quanto desconta e quanto sobra</h1>
-            <p class="valora-lead">Ferramentas trabalhistas, fiscais e financeiras com extrato claro, explicação simples e aviso legal em cada resultado.</p>
-            <div class="valora-gap-buttons" style="margin-top: 1.5rem;">
-                <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">
-                    <span class="material-symbols-outlined" style="font-size: 1.125rem;">calculate</span>
-                    Ver calculadoras
+<div class="valora-stitch-home">
+    <section class="valora-stitch-hero valora-stitch-hero--split">
+        <div class="valora-stitch-hero-content">
+            <span class="valora-stitch-pill">Simulador 2026 atualizado</span>
+            <h1 class="valora-stitch-hero-title">Entenda quanto sobra de verdade no seu bolso</h1>
+            <p class="valora-stitch-hero-lead">
+                Cálculos precisos de salário líquido, férias, rescisão e impostos para CLT, PJ e MEI.
+            </p>
+            <div class="valora-stitch-hero-actions">
+                <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
+                    <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                    Simular salário líquido
                 </a>
-                <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">Salário líquido</a>
+                <a class="valora-stitch-btn valora-stitch-btn--outline" asp-page="/Calculadoras/Details" asp-route-slug="rescisao-clt">
+                    <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                    Cálculo de rescisão
+                </a>
             </div>
-            <div class="valora-trust-row" style="margin-top: 1.5rem;">
-                <span class="valora-trust-item"><span class="material-symbols-outlined">verified</span> Gratuito</span>
-                <span class="valora-trust-item"><span class="material-symbols-outlined">smartphone</span> Mobile-first</span>
-                <span class="valora-trust-item"><span class="material-symbols-outlined">school</span> Estimativa educativa</span>
+            <div class="valora-stitch-trust-row">
+                <span><span class="material-symbols-outlined" aria-hidden="true">verified</span> Gratuito</span>
+                <span><span class="material-symbols-outlined" aria-hidden="true">smartphone</span> Mobile-first</span>
+                <span><span class="material-symbols-outlined" aria-hidden="true">school</span> Educativo</span>
             </div>
         </div>
-        <div class="valora-hero-visual" aria-hidden="true">
-            <div class="valora-hero-visual-bar"></div>
-            <div class="valora-hero-visual-field"></div>
-            <div class="valora-hero-visual-field"></div>
-            <div class="valora-hero-visual-btn">Calcular</div>
+        <div class="valora-stitch-hero-workspace" aria-hidden="true">
+            <div class="valora-stitch-hero-workspace-inner">
+                <span class="material-symbols-outlined">laptop_mac</span>
+                <div class="valora-stitch-hero-workspace-bar"></div>
+                <div class="valora-stitch-hero-workspace-bar valora-stitch-hero-workspace-bar--short"></div>
+            </div>
         </div>
-    </div>
-</section>
-
-<section class="valora-section">
-    <h2 class="valora-h2">Acesso rápido</h2>
-    <div class="valora-filter-chips">
-        <a class="valora-filter-chip" asp-page="/CltPj/Index">CLT x PJ</a>
-        <a class="valora-filter-chip" asp-page="/Duvidas/Index">Dúvidas populares</a>
-        <a class="valora-filter-chip" asp-page="/MeuPainel/Index">Meu painel</a>
-        <a class="valora-filter-chip" asp-page="/Widget/Index">Widget</a>
-        <a class="valora-filter-chip" asp-page="/Blog/Index">Blog</a>
-    </div>
-</section>
-
-<section class="valora-section">
-    <h2 class="valora-h2">Calculadoras populares</h2>
-    <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1.5rem;">As mais usadas para entender descontos e valor líquido.</p>
-    <div class="valora-card-grid">
-        @foreach (var calculator in Model.Calculators.Take(6))
-        {
-            <article class="valora-card @CalculatorUiHelper.GetAccentCardClass(calculator.Category)">
-                <a class="valora-calc-card" asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
-                    <div class="valora-calc-card-icon">
-                        <span class="material-symbols-outlined">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
-                    </div>
-                    <partial name="Shared/_CalculatorCategoryBadge" model="calculator.Category" />
-                    <h3 class="valora-h3" style="margin-top: 0.75rem;">@calculator.Name</h3>
-                    <p class="valora-text-muted valora-text-sm" style="flex: 1;">@calculator.Summary</p>
-                    <div class="valora-calc-card-footer">
-                        Calcular
-                        <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
-                    </div>
-                </a>
-            </article>
-        }
-    </div>
-    @if (Model.Calculators.Count > 6)
-    {
-        <p style="margin-top: 1.5rem; text-align: center;">
-            <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Index">Ver todas as @Model.Calculators.Count calculadoras</a>
-        </p>
-    }
-</section>
-
-@if (Model.RecentPosts.Count > 0)
-{
-    <section class="valora-section">
-        <h2 class="valora-h2">Últimos artigos</h2>
-        <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1.5rem;">Conteúdos educativos sobre salário, impostos e finanças.</p>
-        @foreach (var post in Model.RecentPosts)
-        {
-            <partial name="Shared/_BlogPostCard" model="post" />
-        }
-        <p style="margin-top: 1rem; text-align: center;">
-            <a class="valora-btn valora-btn-outline" asp-page="/Blog/Index">Ver todos os artigos</a>
-        </p>
     </section>
-}
+
+    <form class="valora-stitch-search" method="get" asp-page="/Calculadoras/Index" role="search">
+        <span class="material-symbols-outlined valora-stitch-search-icon" aria-hidden="true">search</span>
+        <input type="search" name="q" class="valora-stitch-search-input" placeholder="O que você quer calcular?" aria-label="Buscar calculadoras" />
+    </form>
+
+    <section class="valora-stitch-section">
+        <div class="valora-stitch-section-head">
+            <h2 class="valora-stitch-section-title">Calculadoras</h2>
+            <a class="valora-stitch-link" asp-page="/Calculadoras/Index">Ver todas</a>
+        </div>
+        <div class="valora-stitch-bento">
+            @foreach (var calculator in featured)
+            {
+                <a class="valora-stitch-bento-card @CalculatorUiHelper.GetBentoAccentClass(calculator.Category, calculator.Slug)"
+                   asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
+                    <div class="@CalculatorUiHelper.GetBentoIconColorClass(calculator.Category, calculator.Slug)">
+                        <span class="material-symbols-outlined valora-stitch-bento-icon" aria-hidden="true">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
+                    </div>
+                    <h3 class="valora-stitch-bento-title">@calculator.Name</h3>
+                    <p class="valora-stitch-bento-category">@calculator.Category</p>
+                </a>
+            }
+        </div>
+    </section>
+
+    <div class="valora-stitch-ad-slot" role="complementary" aria-label="Espaço publicitário">
+        <span class="valora-stitch-ad-label">Espaço publicitário</span>
+        <p class="valora-stitch-ad-text">Publicidade</p>
+    </div>
+
+    <section class="valora-stitch-teaser">
+        <div class="valora-stitch-teaser-content">
+            <h2 class="valora-stitch-teaser-title">Relatórios completos</h2>
+            <p class="valora-stitch-teaser-text">Veja o detalhamento de INSS, FGTS e IRRF em gráficos intuitivos.</p>
+            <a class="valora-stitch-teaser-btn" asp-page="/MeuPainel/Index">Conhecer painel</a>
+        </div>
+        <div class="valora-stitch-teaser-decoration" aria-hidden="true"></div>
+    </section>
+
+    @if (Model.RecentPosts.Count > 0)
+    {
+        <section class="valora-stitch-section valora-stitch-section--articles">
+            <div class="valora-stitch-section-head">
+                <h2 class="valora-stitch-section-title">Últimos artigos</h2>
+                <a class="valora-stitch-link" asp-page="/Blog/Index">Ver blog</a>
+            </div>
+            <div class="valora-stitch-articles">
+                @foreach (var post in Model.RecentPosts.Take(3))
+                {
+                    <a class="valora-stitch-article-card" asp-page="/Blog/Post" asp-route-slug="@post.Slug">
+                        <h3 class="valora-stitch-article-title">@post.Title</h3>
+                        <p class="valora-stitch-article-summary">@post.Summary</p>
+                    </a>
+                }
+            </div>
+        </section>
+    }
+
+    <div class="valora-stitch-disclaimer">
+        <p>
+            <strong>Aviso:</strong> Esta é uma ferramenta educativa. Os valores são estimativas baseadas na legislação vigente e não substituem o parecer de um contador profissional.
+        </p>
+    </div>
+</div>

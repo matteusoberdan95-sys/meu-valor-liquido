@@ -1,0 +1,35 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=postgres;Port=5432;Database=meu_valor_liquido;Username=CHANGE_ME;Password=CHANGE_ME"
+  },
+  "Database": {
+    "UseInMemory": false
+  },
+  "Site": {
+    "BaseUrl": "https://meuvalorliquido.com.br"
+  },
+  "Ads": {
+    "Enabled": false,
+    "PublisherId": "",
+    "CalculatorTopSlotId": "",
+    "CalculatorBottomSlotId": ""
+  },
+  "Mail": {
+    "Host": "smtp.example.com",
+    "Port": 587,
+    "UseSsl": true,
+    "UserName": "CHANGE_ME",
+    "Password": "CHANGE_ME",
+    "FromAddress": "noreply@meuvalorliquido.com.br",
+    "FromName": "Meu Valor Líquido"
+  },
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft.AspNetCore": "Warning"
+      }
+    }
+  },
+  "AllowedHosts": "meuvalorliquido.com.br;www.meuvalorliquido.com.br"
+}

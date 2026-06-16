@@ -1,0 +1,31 @@
+@{
+    var currentPath = Context.Request.Path.Value ?? "/";
+    var tab = ViewData["BottomNavTab"]?.ToString();
+    if (string.IsNullOrEmpty(tab))
+    {
+        if (currentPath.StartsWith("/duvidas", StringComparison.OrdinalIgnoreCase)) tab = "help";
+        else if (currentPath.StartsWith("/meu-painel", StringComparison.OrdinalIgnoreCase)) tab = "profile";
+        else if (currentPath.StartsWith("/calculadoras", StringComparison.OrdinalIgnoreCase) || currentPath.StartsWith("/salario-liquido", StringComparison.OrdinalIgnoreCase) || currentPath.StartsWith("/clt-pj", StringComparison.OrdinalIgnoreCase)) tab = "calc";
+        else tab = "home";
+    }
+    string ItemClass(string key) => tab == key ? "valora-bottom-nav-item valora-bottom-nav-item--active" : "valora-bottom-nav-item";
+}
+
+<nav class="valora-bottom-nav" aria-label="Navegação principal mobile">
+    <a class="@ItemClass("home")" asp-page="/Index">
+        <span class="material-symbols-outlined" aria-hidden="true">home</span>
+        <span>Início</span>
+    </a>
+    <a class="@ItemClass("calc")" asp-page="/Calculadoras/Index">
+        <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+        <span>Cálculos</span>
+    </a>
+    <a class="@ItemClass("help")" asp-page="/Duvidas/Index">
+        <span class="material-symbols-outlined" aria-hidden="true">help</span>
+        <span>Ajuda</span>
+    </a>
+    <a class="@ItemClass("profile")" asp-page="/MeuPainel/Index">
+        <span class="material-symbols-outlined" aria-hidden="true">person</span>
+        <span>Perfil</span>
+    </a>
+</nav>

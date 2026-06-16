@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## Sprint 21 (em andamento)
+- Plano Stitch; remoção Gemini; shell; home mobile+desktop; central calculadoras bento (Sprint 22).
+
+## Sprint 19
+- Deploy readiness: ForwardedHeaders, compose prod, exemplo nginx, SMTP TLS/auth, GoLiveSmokeTests e CI docker-build.
+
 ## Sprint 15–18
 - Redesign UI/UX v2 (Stitch Valores Públicos): brand assets Gemini, tokens CSS, home, calculadoras, hubs, ad slots e embed.
 

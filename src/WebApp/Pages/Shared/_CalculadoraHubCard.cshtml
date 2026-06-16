@@ -1,0 +1,20 @@
+@model CalculatorDefinition
+
+<a class="valora-stitch-hub-card" asp-page="/Calculadoras/Details" asp-route-slug="@Model.Slug">
+    <div class="valora-stitch-hub-card-head">
+        <div class="valora-stitch-hub-icon @CalculatorUiHelper.GetHubIconBgClass(Model.Category, Model.Slug)">
+            <span class="material-symbols-outlined" aria-hidden="true">@CalculatorUiHelper.GetIcon(Model.Slug)</span>
+        </div>
+        <h3 class="valora-stitch-hub-card-title">@Model.Name</h3>
+    </div>
+    <p class="valora-stitch-hub-card-summary">@Model.Summary</p>
+    <div class="valora-stitch-hub-card-footer">
+        <span class="@CalculatorUiHelper.GetBentoIconColorClass(Model.Category, Model.Slug) valora-stitch-hub-card-tag">
+            @CalculatorUiHelper.GetHubCardTag(Model.Slug)
+        </span>
+        <span class="valora-stitch-hub-card-link">
+            Acessar
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+        </span>
+    </div>
+</a>

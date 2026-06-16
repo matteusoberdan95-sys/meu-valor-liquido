@@ -1,19 +1,43 @@
 # Sprint Plan
 
-## Sprint 19 - Deploy e go-live (próxima)
+## Sprint 21 — Fidelidade Stitch (em andamento)
 
-**Objetivo:** publicar com nova identidade visual (Valores Públicos) e solicitar AdSense.
+**Entregas:** plano, remoção Gemini, shell, home mobile+desktop, central calculadoras bento.
 
-**Agents:** Infrastructure, Security, SEO/Content, Documentation.
+**Próximo:** Sprint 23 — calculadora salário líquido (detail).
+
+---
+
+## Sprint 20 - Monetização AdSense pós-aprovação (próxima)
+
+**Objetivo:** integrar anúncios reais nos slots existentes após aprovação Google.
+
+**Agents:** Monetization/AdSense, WebApp/Frontend, Security.
 
 **Entregas:**
-- CI verde (`.github/workflows/ci.yml`)
-- Ambiente produção: domínio, HTTPS, `Site:BaseUrl` em variáveis de ambiente
-- `favicon.ico`, `og-default.png` e logo servidos em produção
-- Smoke test: calculadoras, blog, institucionais, share/PDF, health
-- Revisão `docs/adsense-checklist.md` e solicitar conta AdSense
+- Ativar `_AdSenseScript` com `Ads:PublisherId` e slot IDs reais
+- `Ads:Enabled=true` apenas em produção via ambiente
+- Revisão CSP e cookie consent
+- Monitoramento CLS e políticas no painel AdSense
 
-**Definition of Done:** site público estável; checklist AdSense manual OK; `dotnet test` verde no CI.
+**Definition of Done:** anúncios visíveis nos slots rotulados; `dotnet test` verde; checklist compliance OK.
+
+---
+
+## Sprint 19 - Deploy e go-live (concluída)
+
+**Objetivo:** publicar com nova identidade visual e readiness operacional para AdSense.
+
+**Entregas:**
+- `ForwardedHeaders` para reverse proxy HTTPS
+- `docker-compose.prod.yml`, `.env.prod.example`, `appsettings.Production.json.example`
+- Exemplo nginx: `infra/nginx/meu-valor-liquido.conf.example`
+- SMTP produção: TLS + autenticação opcional em `SmtpEmailSender`
+- `GoLiveSmokeTests` (rotas, assets, sitemap, health, headers)
+- CI: job `docker-build`
+- `docs/DEPLOY.md` e `docs/adsense-checklist.md` atualizados
+
+**Definition of Done:** pipeline e testes de go-live verdes; documentação de deploy completa. Deploy real (domínio/HTTPS) é passo operacional manual.
 
 ---
 

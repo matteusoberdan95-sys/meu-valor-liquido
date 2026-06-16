@@ -1,15 +1,29 @@
 # Deploy e go-live
 
-Checklist para Sprint 19 após o redesign UI (Sprints 15–18).
+Checklist Sprint 19 — publicar com a identidade Valores Públicos e solicitar AdSense.
 
-## Pré-requisitos
+## 1. Pré-requisitos (código)
 
-- [ ] `dotnet test MeuValorLiquido.slnx` verde localmente e no CI
-- [ ] `docs/adsense-checklist.md` revisado
-- [ ] `docs/ADSENSE_COMPLIANCE.md` — slots com label “Espaço publicitário”
-- [ ] Brand assets em `wwwroot/`: favicon, `og-default.png`, logo
+- [x] `dotnet test MeuValorLiquido.slnx` verde localmente e no CI
+- [x] `GoLiveSmokeTests` — rotas, assets, sitemap, health, headers
+- [x] CI com job `docker-build` (imagem `infra/docker/WebApp.Dockerfile`)
+- [x] `docs/adsense-checklist.md` revisado
+- [x] Brand assets em `wwwroot/`
 
-## Variáveis de produção
+## 2. Ambiente de produção
+
+### Opção A — Docker Compose (recomendado)
+
+```powershell
+copy .env.prod.example .env.prod
+# Edite senhas, SITE_BASE_URL (https://) e SMTP
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+```
+
+### Opção B — `dotnet run` + PostgreSQL gerenciado
+
+1. Copie `src/WebApp/appsettings.Production.json.example` → `appsettings.Production.json` (não versionado).
+2. Defina variáveis de ambiente ou secrets no host.
 
 | Variável | Exemplo |
 |----------|---------|
@@ -17,20 +31,36 @@ Checklist para Sprint 19 após o redesign UI (Sprints 15–18).
 | `ConnectionStrings__DefaultConnection` | PostgreSQL produção |
 | `ASPNETCORE_ENVIRONMENT` | `Production` |
 | `Ads__Enabled` | `false` até aprovação AdSense |
+| `Mail__Host` / `Mail__Port` / `Mail__UseSsl` | SMTP real |
+| `Mail__UserName` / `Mail__Password` | Se o provedor exigir auth |
 
-## Smoke test pós-deploy
+### HTTPS e reverse proxy
 
-1. `/` — logo, hero, OG tags com PNG
+O app escuta HTTP na porta **8080** (container) ou **5000** (dev). Coloque **nginx/Caddy** na frente com TLS.
+
+Exemplo: `infra/nginx/meu-valor-liquido.conf.example` — repasse `X-Forwarded-Proto` e `X-Forwarded-For` (o app usa `ForwardedHeaders`).
+
+Certificado gratuito: [Let's Encrypt](https://letsencrypt.org/) + certbot.
+
+## 3. Smoke test pós-deploy
+
+1. `/` — logo, hero, OG PNG
 2. `/calculadoras/salario-liquido` — calcular, extrato, share
 3. `/blog`, `/duvidas`, `/como-calculamos`
 4. `/favicon.ico`, `/images/og-default.png`
-5. `/health`, `/sitemap.xml`, `/robots.txt`
-6. Formulário contato + newsletter (Mail/SMTP produção)
+5. `/health` → `Healthy`
+6. `/sitemap.xml`, `/robots.txt`
+7. Formulário contato + newsletter (verificar caixa SMTP)
 
-## AdSense
+## 4. AdSense
 
-1. Solicitar conta com site público estável
-2. Após aprovação: `Ads__Enabled=true`, `Ads__PublisherId`, slot IDs via ambiente
-3. Monitorar Core Web Vitals e políticas no painel Google
+1. Site público estável com domínio e HTTPS
+2. Solicitar conta em [Google AdSense](https://www.google.com/adsense/)
+3. Após aprovação: `Ads__Enabled=true`, `Ads__PublisherId`, IDs dos slots
+4. Monitorar Core Web Vitals e políticas
 
-Ver também: `docs/setup-local.md` (Docker) e `docker-compose.yml`.
+## 5. Próxima sprint
+
+**Sprint 20 — Monetização AdSense pós-aprovação:** ativar script real nos slots existentes.
+
+Ver também: `docs/setup-local.md`, `docker-compose.yml` (dev com Mailpit).

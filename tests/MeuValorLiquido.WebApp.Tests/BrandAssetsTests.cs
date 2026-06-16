@@ -10,28 +10,27 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
-    public async Task Home_Should_Include_Brand_Logo_And_Favicon()
+    public async Task Home_Should_Use_Text_Brand_Mark_And_Favicon()
     {
         var html = await client.GetStringAsync("/");
 
-        html.Should().Contain("logo-horizontal");
+        html.Should().Contain("valora-brand-mark");
+        html.Should().Contain("Meu Valor Líquido");
         html.Should().Contain("favicon");
-        html.Should().Contain("apple-touch-icon");
+        html.Should().NotContain("logo-horizontal");
     }
 
     [Fact]
-    public async Task Home_Should_Use_Png_Og_Image()
+    public async Task Home_Should_Use_Svg_Og_Image()
     {
         var html = await client.GetStringAsync("/");
 
-        html.Should().Contain("og-default.png");
+        html.Should().Contain("og-default.svg");
     }
 
     [Theory]
     [InlineData("/favicon.ico")]
-    [InlineData("/images/brand/logo-horizontal.png")]
-    [InlineData("/images/og-default.png")]
-    [InlineData("/apple-touch-icon.png")]
+    [InlineData("/images/og-default.svg")]
     public async Task Brand_Asset_Should_Be_Served(string path)
     {
         var response = await client.GetAsync(path);

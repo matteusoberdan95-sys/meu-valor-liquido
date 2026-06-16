@@ -6,7 +6,7 @@ public static class CalculatorUiHelper
         ["salario-liquido"] = "payments",
         ["salario-bruto-necessario"] = "price_check",
         ["proposta-salarial"] = "handshake",
-        ["ferias"] = "beach_access",
+        ["ferias"] = "event_repeat",
         ["decimo-terceiro"] = "celebration",
         ["rescisao-clt"] = "logout",
         ["hora-extra"] = "schedule",
@@ -16,7 +16,7 @@ public static class CalculatorUiHelper
         ["juros-compostos"] = "trending_up",
         ["financiamento"] = "house",
         ["fgts"] = "savings",
-        ["simulador-mei"] = "storefront",
+        ["simulador-mei"] = "request_quote",
         ["custo-funcionario"] = "groups",
         ["multa-atraso"] = "gavel",
         ["conversor-salario"] = "swap_horiz"
@@ -39,5 +39,49 @@ public static class CalculatorUiHelper
         "fiscal" => "valora-card--accent-fiscal",
         "financeiro" => "valora-card--accent-financeiro",
         _ => "valora-card--accent-financeiro"
+    };
+
+    public static string GetBentoAccentClass(string category, string slug) =>
+        slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
+            ? "valora-stitch-bento-card--warning"
+            : category.ToLowerInvariant() switch
+            {
+                "trabalhista" => "valora-stitch-bento-card--trabalhista",
+                "fiscal" => "valora-stitch-bento-card--fiscal",
+                "financeiro" => "valora-stitch-bento-card--financeiro",
+                _ => "valora-stitch-bento-card--financeiro"
+            };
+
+    public static string GetBentoIconColorClass(string category, string slug) =>
+        slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
+            ? "valora-bento-icon--warning"
+            : category.ToLowerInvariant() switch
+            {
+                "trabalhista" => "valora-bento-icon--trabalhista",
+                "fiscal" => "valora-bento-icon--fiscal",
+                "financeiro" => "valora-bento-icon--financeiro",
+                _ => "valora-bento-icon--financeiro"
+            };
+
+    public static string GetHubIconBgClass(string category, string slug) =>
+        slug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase)
+            ? "valora-hub-icon-bg--warning"
+            : category.ToLowerInvariant() switch
+            {
+                "trabalhista" => "valora-hub-icon-bg--trabalhista",
+                "fiscal" => "valora-hub-icon-bg--fiscal",
+                "financeiro" => "valora-hub-icon-bg--financeiro",
+                _ => "valora-hub-icon-bg--financeiro"
+            };
+
+    public static string GetHubCardTag(string slug) => slug.ToLowerInvariant() switch
+    {
+        "pj-vs-clt" => "Novo layout",
+        "ferias" => "Completa",
+        "custo-funcionario" => "Empresarial",
+        "decimo-terceiro" => "Essencial",
+        "simulador-mei" => "MEI",
+        "rescisao-clt" => "CLT",
+        _ => "Popular"
     };
 }

@@ -1328,3 +1328,903 @@ body {
   border-color: var(--valora-primary);
   box-shadow: 0 0 0 2px rgb(0 104 95 / 15%);
 }
+
+/* —— Stitch fidelity: shell + home (Sprint 21) —— */
+
+.valora-app.valora-has-bottom-nav {
+  padding-bottom: 4.5rem;
+}
+
+@media (min-width: 992px) {
+  .valora-app.valora-has-bottom-nav { padding-bottom: 0; }
+  .valora-bottom-nav { display: none; }
+}
+
+.valora-header--stitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgb(255 255 255 / 90%);
+}
+
+.valora-page-shell {
+  padding-top: 4.5rem;
+}
+
+.valora-main {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .valora-main { padding: 0 2rem 2rem; }
+}
+
+.valora-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--valora-primary);
+}
+
+.valora-brand-mark-icon {
+  font-size: 1.75rem;
+  color: var(--valora-primary-container);
+}
+
+.valora-brand-mark-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--valora-primary);
+}
+
+.valora-brand-mark--footer .valora-brand-mark-text { font-size: 1rem; }
+.valora-brand-mark--footer { justify-content: center; margin-bottom: 0.5rem; }
+.valora-brand-mark--compact .valora-brand-mark-text { font-size: 0.875rem; }
+.valora-brand-mark--compact .valora-brand-mark-icon { font-size: 1.25rem; }
+
+.valora-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--valora-surface-container-lowest);
+  border-top: 1px solid var(--valora-border-subtle);
+}
+
+.valora-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+  text-decoration: none;
+  color: var(--valora-on-surface-variant);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.valora-bottom-nav-item .material-symbols-outlined { font-size: 1.375rem; }
+
+.valora-bottom-nav-item--active {
+  background: var(--valora-primary-container);
+  color: var(--valora-on-primary);
+}
+
+.valora-footer--stitch {
+  background: var(--valora-surface-container-low);
+  border-top: 1px solid var(--valora-border-subtle);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.valora-footer--stitch .valora-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.valora-footer-tagline {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+  max-width: 28rem;
+}
+
+.valora-footer-copy {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-outline);
+}
+
+/* Home Stitch mobile_1 */
+.valora-stitch-home { max-width: 28rem; margin: 0 auto; }
+
+@media (min-width: 992px) {
+  .valora-stitch-home { max-width: none; }
+}
+
+.valora-stitch-hero { text-align: center; margin-bottom: 2rem; }
+
+.valora-stitch-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgb(0 78 71 / 10%);
+  color: var(--valora-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-hero-title {
+  font-size: clamp(1.75rem, 6vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--valora-on-surface);
+  margin: 0 0 1rem;
+}
+
+.valora-stitch-hero-lead {
+  font-size: 1rem;
+  color: var(--valora-text-muted);
+  max-width: 20rem;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+
+.valora-stitch-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valora-stitch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  border-radius: var(--valora-radius-xl);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+
+.valora-stitch-btn:active { transform: scale(0.98); }
+
+.valora-stitch-btn--primary {
+  background: var(--valora-primary);
+  color: var(--valora-on-primary);
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-btn--outline {
+  border: 2px solid var(--valora-primary);
+  color: var(--valora-primary);
+  background: transparent;
+}
+
+.valora-stitch-search {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.valora-stitch-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--valora-outline);
+  pointer-events: none;
+}
+
+.valora-stitch-search-input {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 1rem 0 3rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 9999px;
+  background: var(--valora-surface);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.valora-stitch-search-input:focus {
+  outline: none;
+  border-color: var(--valora-primary-container);
+  box-shadow: 0 0 0 2px rgb(0 104 95 / 15%);
+}
+
+.valora-stitch-section { margin-bottom: 2rem; }
+
+.valora-stitch-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-link {
+  color: var(--valora-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-stitch-bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.valora-stitch-bento-card {
+  display: block;
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  text-decoration: none;
+  color: inherit;
+}
+
+.valora-stitch-bento-card--trabalhista { border-left: 4px solid var(--valora-trabalhista-blue); }
+.valora-stitch-bento-card--fiscal { border-left: 4px solid var(--valora-fiscal-purple); }
+.valora-stitch-bento-card--financeiro { border-left: 4px solid var(--valora-financeiro-teal); }
+.valora-stitch-bento-card--warning { border-left: 4px solid var(--valora-warning-border); }
+
+.valora-bento-icon--trabalhista { color: var(--valora-trabalhista-blue); }
+.valora-bento-icon--fiscal { color: var(--valora-fiscal-purple); }
+.valora-bento-icon--financeiro { color: var(--valora-financeiro-teal); }
+.valora-bento-icon--warning { color: var(--valora-warning-border); }
+
+.valora-stitch-bento-icon { font-size: 2rem; }
+
+.valora-stitch-bento-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.25rem;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-bento-category {
+  margin: 0;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-ad-slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6.25rem;
+  margin-bottom: 2rem;
+  background: var(--valora-surface-container-low);
+  border: 1px dashed var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  overflow: hidden;
+}
+
+.valora-stitch-ad-label {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  color: var(--valora-outline-variant);
+}
+
+.valora-stitch-ad-text {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-outline-variant);
+}
+
+.valora-stitch-teaser {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  background: var(--valora-primary-container);
+  color: var(--valora-on-primary-container);
+}
+
+.valora-stitch-teaser-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.valora-stitch-teaser-text {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.valora-stitch-teaser-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--valora-surface);
+  color: var(--valora-primary);
+  border-radius: var(--valora-radius-md);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-teaser-decoration {
+  position: absolute;
+  right: -2.5rem;
+  bottom: -2.5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: rgb(147 228 216 / 10%);
+}
+
+.valora-stitch-disclaimer {
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px dashed var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  text-align: center;
+}
+
+.valora-stitch-disclaimer p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  line-height: 1.5;
+}
+
+/* Home desktop (Stitch home_meu_valor_l_quido_desktop) */
+@media (min-width: 992px) {
+  .valora-stitch-home { max-width: var(--valora-container-max); }
+
+  .valora-stitch-hero--split {
+    display: grid;
+    grid-template-columns: 1fr 18rem;
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+
+  .valora-stitch-hero-lead { margin-left: 0; max-width: 36rem; }
+
+  .valora-stitch-hero-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .valora-stitch-trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--valora-text-muted);
+  }
+
+  .valora-stitch-trust-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .valora-stitch-trust-row .material-symbols-outlined { font-size: 1.125rem; color: var(--valora-primary-container); }
+
+  .valora-stitch-hero-workspace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    height: 12rem;
+    border: 1px solid var(--valora-border-subtle);
+    border-radius: var(--valora-radius-xl);
+    background: linear-gradient(135deg, var(--valora-surface-container-low) 0%, var(--valora-surface) 100%);
+    box-shadow: var(--valora-shadow);
+  }
+
+  .valora-stitch-hero-workspace-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .valora-stitch-hero-workspace-inner > .material-symbols-outlined {
+    font-size: 3rem;
+    color: var(--valora-primary-container);
+    opacity: 0.85;
+  }
+
+  .valora-stitch-hero-workspace-bar {
+    height: 0.5rem;
+    width: 80%;
+    background: var(--valora-border-subtle);
+    border-radius: 9999px;
+  }
+
+  .valora-stitch-hero-workspace-bar--short { width: 55%; }
+
+  .valora-stitch-bento {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .valora-stitch-search { max-width: 28rem; }
+
+  .valora-stitch-articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.valora-stitch-hero-workspace { display: none; }
+
+@media (min-width: 992px) {
+  .valora-stitch-hero-workspace { display: flex; }
+}
+
+.valora-stitch-trust-row { display: none; }
+
+.valora-stitch-article-card {
+  display: block;
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.valora-stitch-article-card:hover { border-color: var(--valora-primary-container); }
+
+.valora-stitch-article-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-article-summary {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+  line-height: 1.45;
+}
+
+.valora-stitch-pill--trabalhista {
+  background: rgb(19 81 180 / 10%);
+  color: var(--valora-trabalhista-blue);
+}
+
+/* Central calculadoras (Stitch central_de_calculadoras) */
+.valora-stitch-calc-hub { max-width: var(--valora-container-max); margin: 0 auto; }
+
+.valora-stitch-calc-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-hero {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 1.5rem 0;
+  }
+}
+
+.valora-stitch-calc-hero-copy { flex: 1; }
+
+.valora-stitch-calc-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-calc-lead {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--valora-text-muted);
+  line-height: 1.55;
+  max-width: 40rem;
+}
+
+.valora-stitch-calc-hero-visual {
+  display: none;
+  width: 18rem;
+  height: 12rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  background: linear-gradient(135deg, #e8f5f3 0%, var(--valora-surface) 100%);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.valora-stitch-calc-hero-visual .material-symbols-outlined {
+  font-size: 4rem;
+  color: var(--valora-primary-container);
+  opacity: 0.35;
+}
+
+@media (min-width: 1024px) {
+  .valora-stitch-calc-hero-visual { display: flex; }
+}
+
+.valora-stitch-calc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-filter-chip {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 9999px;
+  background: var(--valora-surface);
+  color: var(--valora-on-surface-variant);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-stitch-filter-chip.active,
+.valora-stitch-filter-chip:hover {
+  border-color: var(--valora-primary-container);
+  color: var(--valora-primary-container);
+  background: rgb(0 104 95 / 6%);
+}
+
+.valora-stitch-calc-query {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-calc-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-bento { grid-template-columns: repeat(12, 1fr); }
+}
+
+.valora-stitch-calc-featured {
+  position: relative;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-featured { grid-column: span 8; }
+}
+
+.valora-stitch-calc-featured-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-calc-featured-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.valora-stitch-calc-featured-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-calc-featured-head .material-symbols-outlined { font-size: 1.75rem; }
+
+.valora-stitch-calc-badge-popular {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  background: rgb(245 158 11 / 20%);
+  color: var(--valora-warning-border);
+}
+
+.valora-stitch-calc-featured-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.valora-stitch-calc-featured-summary {
+  margin: 0 0 1.5rem;
+  color: var(--valora-text-muted);
+  line-height: 1.5;
+}
+
+.valora-stitch-calc-checks {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .valora-stitch-calc-checks { grid-template-columns: repeat(4, 1fr); }
+}
+
+.valora-stitch-calc-checks li {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-calc-checks .material-symbols-outlined { font-size: 1rem; color: var(--valora-primary-container); }
+
+.valora-stitch-btn--inline {
+  display: inline-flex;
+  width: auto;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.valora-stitch-calc-featured-watermark {
+  display: none;
+  font-size: 10rem;
+  opacity: 0.08;
+  color: var(--valora-primary);
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-featured-watermark { display: block; }
+}
+
+.valora-stitch-calc-ad {
+  background: var(--valora-surface-container-low);
+  border: 1px dashed var(--valora-outline-variant);
+  border-radius: var(--valora-radius-xl);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-ad { grid-column: span 4; min-height: 250px; }
+}
+
+.valora-stitch-calc-ad-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8rem;
+  background: var(--valora-surface-variant);
+  border-radius: var(--valora-radius-md);
+  margin: 0.5rem 0;
+  color: var(--valora-outline);
+}
+
+.valora-stitch-calc-ad-body .material-symbols-outlined { font-size: 2.5rem; }
+
+.valora-stitch-calc-ad-note {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-hub-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.valora-stitch-hub-card:hover { border-color: var(--valora-primary-container); }
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-bento > .valora-stitch-hub-card { grid-column: span 4; }
+}
+
+.valora-stitch-hub-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.valora-stitch-hub-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--valora-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valora-hub-icon-bg--trabalhista { background: rgb(19 81 180 / 10%); color: var(--valora-trabalhista-blue); }
+.valora-hub-icon-bg--fiscal { background: rgb(107 33 168 / 10%); color: var(--valora-fiscal-purple); }
+.valora-hub-icon-bg--financeiro { background: rgb(0 104 95 / 10%); color: var(--valora-financeiro-teal); }
+.valora-hub-icon-bg--warning { background: rgb(245 158 11 / 10%); color: var(--valora-warning-border); }
+
+.valora-stitch-hub-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.valora-stitch-hub-card-summary {
+  flex: 1;
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--valora-text-muted);
+  line-height: 1.45;
+}
+
+.valora-stitch-hub-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-hub-card-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.valora-stitch-hub-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-hub-card-link .material-symbols-outlined { font-size: 1.125rem; }
+
+.valora-stitch-calc-suggest {
+  background: var(--valora-primary);
+  color: var(--valora-on-primary);
+  border-radius: var(--valora-radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-suggest {
+    grid-column: span 8;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.valora-stitch-calc-suggest-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.valora-stitch-calc-suggest-text {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.valora-stitch-calc-suggest-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--valora-surface);
+  color: var(--valora-primary);
+  border-radius: var(--valora-radius-md);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.valora-stitch-calc-disclaimer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px dashed var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+}
+
+.valora-stitch-calc-disclaimer p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  line-height: 1.55;
+}
+
+.valora-stitch-calc-disclaimer .material-symbols-outlined {
+  font-size: 1.125rem;
+  color: var(--valora-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.valora-stitch-calc-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .valora-stitch-calc-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-calc-list { grid-template-columns: repeat(3, 1fr); }
+}

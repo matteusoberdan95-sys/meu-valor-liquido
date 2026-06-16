@@ -1,0 +1,8 @@
+@* Marca Stitch: ícone + texto — sem imagens Gemini *@
+@{
+    var brandMarkClass = ViewData["BrandMarkClass"]?.ToString();
+}
+<a class="valora-brand-mark @brandMarkClass" asp-page="/Index">
+    <span class="material-symbols-outlined valora-brand-mark-icon" aria-hidden="true">water_drop</span>
+    <span class="valora-brand-mark-text">Meu Valor Líquido</span>
+</a>

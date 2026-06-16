@@ -5,8 +5,7 @@ public sealed record BreadcrumbItem(string Name, string Path);
 public static class SeoMetadataHelper
 {
     public const string SiteName = "Meu Valor Líquido";
-    public const string DefaultOgImagePath = "/images/og-default.png";
-    public const string LogoHorizontalPath = "/images/brand/logo-horizontal.png";
+    public const string DefaultOgImagePath = "/images/og-default.svg";
     public const string DefaultRobots = "index,follow";
     public const string NoIndexRobots = "noindex,nofollow";
 

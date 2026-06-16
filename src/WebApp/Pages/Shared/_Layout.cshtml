@@ -4,6 +4,7 @@
     var currentPath = Context.Request.Path.Value ?? "/";
     bool IsActive(string path) =>
         path == "/" ? currentPath == "/" : currentPath.StartsWith(path, StringComparison.OrdinalIgnoreCase);
+    var hideBottomNav = ViewData["HideBottomNav"] as bool? == true;
 }
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -37,36 +38,31 @@
     <meta name="twitter:image" content="@ogImageUrl" />
     <title>@title - Meu Valor Líquido</title>
     <link rel="icon" href="~/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="~/images/icons/icon-32.png" asp-append-version="true" />
-    <link rel="apple-touch-icon" href="~/apple-touch-icon.png" asp-append-version="true" />
     <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Head", required: false)
 </head>
-<body>
-    <header class="valora-header">
+<body class="valora-app@(hideBottomNav ? "" : " valora-has-bottom-nav")">
+    <header class="valora-header valora-header--stitch">
         <div class="valora-container valora-header-inner">
-            <a class="valora-brand" asp-page="/Index">
-                <img class="valora-brand-logo" src="~/images/brand/logo-horizontal.png" asp-append-version="true" alt="Meu Valor Líquido" width="200" height="40" />
-            </a>
-            <nav aria-label="Principal">
+            <partial name="Shared/_BrandMark" />
+            <nav class="valora-nav-desktop" aria-label="Principal">
                 <ul class="valora-nav">
                     <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
                     <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
                     <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
-                    <li><a class="@(IsActive("/newsletter") ? "active" : "")" asp-page="/Newsletter">Newsletter</a></li>
+                    <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
                     <li>
                         <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
                             Meu painel
                             <span class="valora-nav-badge" data-local-panel-count hidden>0</span>
                         </a>
                     </li>
-                    <li><a class="@(IsActive("/contato") ? "active" : "")" asp-page="/Contato">Contato</a></li>
                 </ul>
             </nav>
             <button class="valora-nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>
@@ -77,24 +73,22 @@
             <a asp-page="/Index">Início</a>
             <a asp-page="/Calculadoras/Index">Calculadoras</a>
             <a asp-page="/Blog/Index">Blog</a>
-            <a asp-page="/Newsletter">Newsletter</a>
+            <a asp-page="/Duvidas/Index">Ajuda</a>
             <a asp-page="/MeuPainel/Index">Meu painel</a>
             <a asp-page="/Contato">Contato</a>
         </div>
     </header>
 
-    <div class="valora-container" style="padding-top: 2rem; padding-bottom: 2rem;">
-        <main role="main">
+    <div class="valora-page-shell">
+        <main class="valora-main" role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="valora-footer">
+    <footer class="valora-footer valora-footer--stitch">
         <div class="valora-container valora-footer-inner">
-            <div>
-                <img class="valora-brand-logo valora-brand-logo--footer" src="~/images/brand/logo-horizontal.png" asp-append-version="true" alt="Meu Valor Líquido" width="180" height="36" />
-                <p class="valora-text-muted valora-text-sm" style="margin: 0.5rem 0 0;">Entenda quanto você recebe, quanto desconta e quanto sobra.</p>
-            </div>
+            <partial name="Shared/_BrandMark" view-data='new ViewDataDictionary(ViewData) { { "BrandMarkClass", "valora-brand-mark--footer" } }' />
+            <p class="valora-footer-tagline">Ferramenta educativa para cálculos trabalhistas e fiscais.</p>
             <div class="valora-footer-links">
                 <a asp-page="/Sobre">Sobre</a>
                 <a asp-page="/ComoCalculamos">Como calculamos</a>
@@ -103,11 +97,14 @@
                 <a asp-page="/TermosDeUso">Termos</a>
                 <a asp-page="/AvisoLegal">Aviso legal</a>
             </div>
-        </div>
-        <div class="valora-container" style="margin-top: 1.5rem; text-align: center;">
-            <p class="valora-text-muted valora-text-sm" style="margin: 0;">&copy; @DateTime.UtcNow.Year Meu Valor Líquido. Resultados estimados para fins educativos.</p>
+            <p class="valora-footer-copy">&copy; @DateTime.UtcNow.Year Meu Valor Líquido. Resultados estimados para fins educativos.</p>
         </div>
     </footer>
+
+    @if (!hideBottomNav)
+    {
+        <partial name="Shared/_BottomNav" />
+    }
 
     <partial name="_CookieConsent" />
 

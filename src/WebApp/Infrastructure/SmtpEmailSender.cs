@@ -5,9 +5,18 @@ public sealed class MailOptions
 
     public int Port { get; set; } = 1025;
 
+    public bool UseSsl { get; set; }
+
+    public string? UserName { get; set; }
+
+    public string? Password { get; set; }
+
     public string FromAddress { get; set; } = "noreply@meuvalorliquido.local";
 
     public string FromName { get; set; } = "Meu Valor Líquido";
+
+    public MailKit.Security.SecureSocketOptions GetSecureSocketOptions() =>
+        UseSsl ? MailKit.Security.SecureSocketOptions.StartTls : MailKit.Security.SecureSocketOptions.None;
 }
 
 public sealed class SmtpEmailSender : IEmailSender
@@ -32,7 +41,11 @@ public sealed class SmtpEmailSender : IEmailSender
         try
         {
             using var client = new SmtpClient();
-            await client.ConnectAsync(options.Host, options.Port, MailKit.Security.SecureSocketOptions.None, cancellationToken);
+            await client.ConnectAsync(options.Host, options.Port, options.GetSecureSocketOptions(), cancellationToken);
+            if (!string.IsNullOrWhiteSpace(options.UserName))
+            {
+                await client.AuthenticateAsync(options.UserName, options.Password ?? string.Empty, cancellationToken);
+            }
             await client.SendAsync(mime, cancellationToken);
             await client.DisconnectAsync(true, cancellationToken);
             logger.LogInformation("E-mail enviado para {RecipientMasked} via {Host}:{Port}", MaskEmail(message.To), options.Host, options.Port);

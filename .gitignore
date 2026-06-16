@@ -6,6 +6,7 @@ obj/
 *.user
 *.suo
 .env
+.env.prod
 appsettings.Production.json
 TestResults/
 coverage/
