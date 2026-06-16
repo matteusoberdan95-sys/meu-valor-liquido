@@ -1,0 +1,40 @@
+@page "/mapa-do-site"
+@model MeuValorLiquido.WebApp.Pages.MapaDoSiteModel
+@{
+    ViewData["Title"] = "Mapa do site";
+}
+
+<h1 class="valora-h1">Mapa do site</h1>
+<p class="valora-lead">Encontre rapidamente calculadoras, conteúdo e páginas institucionais.</p>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Calculadoras</h2>
+    <ul class="valora-footer-links" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+        @foreach (var calculator in Model.Calculators)
+        {
+            <li><a asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">@calculator.Name</a></li>
+        }
+    </ul>
+</section>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Blog</h2>
+    <ul class="valora-footer-links" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+        @foreach (var post in Model.Posts)
+        {
+            <li><a asp-page="/Blog/Post" asp-route-slug="@post.Slug">@post.Title</a></li>
+        }
+    </ul>
+</section>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Institucional</h2>
+    <ul class="valora-footer-links" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+        <li><a asp-page="/Sobre">Sobre</a></li>
+        <li><a asp-page="/Contato">Contato</a></li>
+        <li><a asp-page="/Newsletter">Newsletter</a></li>
+        <li><a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a></li>
+        <li><a asp-page="/TermosDeUso">Termos de Uso</a></li>
+        <li><a asp-page="/AvisoLegal">Aviso Legal</a></li>
+    </ul>
+</section>

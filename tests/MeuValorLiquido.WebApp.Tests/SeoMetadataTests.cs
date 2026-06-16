@@ -37,6 +37,44 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
 
         html.Should().Contain("property=\"og:title\"");
         html.Should().Contain("property=\"og:description\"");
+        html.Should().Contain("property=\"og:image\"");
+        html.Should().Contain("name=\"twitter:image\"");
         html.Should().Contain("rel=\"canonical\"");
+        html.Should().Contain("name=\"robots\"");
+    }
+
+    [Fact]
+    public async Task Calculator_Page_Should_Include_Breadcrumb_JsonLd()
+    {
+        var html = await client.GetStringAsync("/calculadoras/salario-liquido");
+
+        html.Should().Contain("BreadcrumbList");
+    }
+
+    [Fact]
+    public async Task Error_Page_Should_Use_NoIndex()
+    {
+        var html = await client.GetStringAsync("/Error");
+
+        html.Should().Contain("name=\"robots\"");
+        html.Should().Contain("noindex,nofollow");
+    }
+
+    [Fact]
+    public async Task Sitemap_Should_Include_Newsletter_And_Site_Map_Page()
+    {
+        var xml = await client.GetStringAsync("/sitemap.xml");
+
+        xml.Should().Contain("/newsletter");
+        xml.Should().Contain("/mapa-do-site");
+    }
+
+    [Fact]
+    public async Task Mapa_Do_Site_Should_List_Calculators()
+    {
+        var html = await client.GetStringAsync("/mapa-do-site");
+
+        html.Should().Contain("/calculadoras/salario-liquido");
+        html.Should().Contain("salario-liquido");
     }
 }

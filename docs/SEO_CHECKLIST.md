@@ -14,15 +14,15 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 | Title único | OK | `ViewData["Title"]` + sufixo no `_Layout.cshtml` |
 | Meta description única | OK | `ViewData["Description"]` |
 | Canonical | Parcial | `ViewData["CanonicalPath"]`; fallback usa `Request.Path` |
-| Open Graph básico | OK | `og:title`, `og:description`, `og:url`, `og:locale` |
-| `og:image` | Pendente | Sprint 1 |
-| Twitter Card | Parcial | `summary` sem imagem |
-| `meta robots` por página | Pendente | Modelo `SeoMetadata.Robots` existe; não aplicado no layout |
+| Open Graph básico | OK | `og:title`, `og:description`, `og:url`, `og:locale`, `og:image` |
+| `og:image` | OK | `/images/og-default.svg` (substituir por PNG 1200×630 em produção) |
+| Twitter Card | OK | `summary_large_image` + `twitter:image` |
+| `meta robots` por página | OK | Layout + `noindex` em erro e 404 de conteúdo |
 | `robots.txt` | OK | `src/WebApp/wwwroot/robots.txt` |
-| `sitemap.xml` dinâmico | Parcial | `Program.cs`; falta `/newsletter` |
+| `sitemap.xml` dinâmico | OK | `Program.cs`; inclui newsletter e mapa do site |
 | H1 único | OK | Revisar em novas páginas |
 | Breadcrumbs (HTML) | OK | Calculadoras e blog |
-| BreadcrumbList JSON-LD | Pendente | Sprint 1 |
+| BreadcrumbList JSON-LD | OK | `_JsonLdBreadcrumb.cshtml` |
 | FAQPage JSON-LD | OK | `_JsonLdFaq.cshtml` |
 | Article JSON-LD | OK | `_JsonLdArticle.cshtml` |
 | WebSite JSON-LD | OK | Home |
@@ -79,7 +79,7 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 | Privacidade | `/politica-de-privacidade` | Sim | **Revisar antes do AdSense** |
 | Termos | `/termos-de-uso` | Sim | Enxuto |
 | Aviso legal | `/aviso-legal` | Sim | OK |
-| Newsletter | `/newsletter` | Sim | **Fora do sitemap** — corrigir Sprint 1 |
+| Newsletter | `/newsletter` | Sim | OK no sitemap |
 
 ### Páginas que devem ser `noindex` (Sprint 1)
 

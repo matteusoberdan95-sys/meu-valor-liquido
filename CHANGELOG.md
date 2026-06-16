@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Sprint 1: SEO técnico (SeoMetadataHelper, og:image, BreadcrumbList, mapa do site).
 - Sprint 0: auditoria, `ROADMAP_MONETIZACAO`, `SEO_CHECKLIST`, `ADSENSE_COMPLIANCE`, mascaramento de e-mail em logs, slots de anúncio com margem/CLS.
 - PostgreSQL + EF Core com migrations e seed inicial.
 - Tabelas INSS/IRRF 2026, `CalculationEngine` e perfis de campos por calculadora.

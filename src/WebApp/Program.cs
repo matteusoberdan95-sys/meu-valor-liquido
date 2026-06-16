@@ -105,6 +105,8 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/sobre"),
         CreateUrl(ns, $"{baseUrl}/contato"),
         CreateUrl(ns, $"{baseUrl}/blog"),
+        CreateUrl(ns, $"{baseUrl}/newsletter"),
+        CreateUrl(ns, $"{baseUrl}/mapa-do-site"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
         CreateUrl(ns, $"{baseUrl}/aviso-legal")

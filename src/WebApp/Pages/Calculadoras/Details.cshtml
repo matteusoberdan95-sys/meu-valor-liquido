@@ -9,6 +9,7 @@
 
 @if (Model.Definition is null)
 {
+    ViewData["Robots"] = SeoMetadataHelper.NoIndexRobots;
     <h1 class="valora-h1">Calculadora não encontrada</h1>
     <p class="valora-text-muted">Confira a lista de calculadoras disponíveis.</p>
     <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Voltar para calculadoras</a>
@@ -17,6 +18,7 @@ else
 {
     @section Head {
         <partial name="Shared/_JsonLdFaq" model="Model.Definition.FaqItems" />
+        <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CalculatorBreadcrumbs(Model.Definition.Name, Model.Definition.Slug)" />
     }
 
     <nav aria-label="breadcrumb">

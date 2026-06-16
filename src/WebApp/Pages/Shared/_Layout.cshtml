@@ -14,9 +14,13 @@
         var description = ViewData["Description"]?.ToString() ?? "Calculadoras trabalhistas, fiscais e financeiras para brasileiros.";
         var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? $"{Context.Request.Scheme}://{Context.Request.Host}";
         var canonicalPath = ViewData["CanonicalPath"]?.ToString() ?? Context.Request.Path.Value ?? "/";
-        var canonicalUrl = $"{baseUrl}{canonicalPath}";
+        var canonicalUrl = SeoMetadataHelper.BuildCanonicalUrl(baseUrl, canonicalPath);
         var ogType = ViewData["OgType"]?.ToString() ?? "website";
+        var robots = ViewData["Robots"]?.ToString() ?? SeoMetadataHelper.DefaultRobots;
+        var ogImagePath = ViewData["OgImagePath"]?.ToString();
+        var ogImageUrl = SeoMetadataHelper.BuildOgImageUrl(baseUrl, ogImagePath);
     }
+    <meta name="robots" content="@robots" />
     <meta name="description" content="@description" />
     <link rel="canonical" href="@canonicalUrl" />
     <meta property="og:title" content="@title" />
@@ -24,10 +28,12 @@
     <meta property="og:type" content="@ogType" />
     <meta property="og:url" content="@canonicalUrl" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Meu Valor Líquido" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:site_name" content="@SeoMetadataHelper.SiteName" />
+    <meta property="og:image" content="@ogImageUrl" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="@title" />
     <meta name="twitter:description" content="@description" />
+    <meta name="twitter:image" content="@ogImageUrl" />
     <title>@title - Meu Valor Líquido</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,6 +83,7 @@
             </div>
             <div class="valora-footer-links">
                 <a asp-page="/Sobre">Sobre</a>
+                <a asp-page="/MapaDoSite">Mapa do site</a>
                 <a asp-page="/PoliticaDePrivacidade">Privacidade</a>
                 <a asp-page="/TermosDeUso">Termos</a>
                 <a asp-page="/AvisoLegal">Aviso legal</a>

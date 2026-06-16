@@ -1,0 +1,22 @@
+@model IReadOnlyList<MeuValorLiquido.WebApp.Infrastructure.BreadcrumbItem>
+@inject IConfiguration Configuration
+@using System.Text.Json
+
+@if (Model.Count > 0)
+{
+    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/')
+        ?? $"{Context.Request.Scheme}://{Context.Request.Host}";
+    var schema = new Dictionary<string, object>
+    {
+        ["@context"] = "https://schema.org",
+        ["@type"] = "BreadcrumbList",
+        ["itemListElement"] = Model.Select((item, index) => new Dictionary<string, object>
+        {
+            ["@type"] = "ListItem",
+            ["position"] = index + 1,
+            ["name"] = item.Name,
+            ["item"] = $"{baseUrl}{item.Path}"
+        }).ToList()
+    };
+    <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(schema))</script>
+}

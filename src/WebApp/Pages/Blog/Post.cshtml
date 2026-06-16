@@ -9,6 +9,7 @@
 
 @if (Model.Post is null)
 {
+    ViewData["Robots"] = SeoMetadataHelper.NoIndexRobots;
     <h1 class="valora-h1">Artigo não encontrado</h1>
     <a class="valora-btn valora-btn-outline" asp-page="/Blog/Index">Voltar para o blog</a>
 }
@@ -16,6 +17,7 @@ else
 {
     @section Head {
         <partial name="Shared/_JsonLdArticle" model="Model.Post" />
+        <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.BlogPostBreadcrumbs(Model.Post.Title, Model.Post.Slug)" />
     }
 
     <nav aria-label="breadcrumb">

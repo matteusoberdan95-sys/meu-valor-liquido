@@ -1,5 +1,22 @@
 # Sprint Plan
 
+## Sprint 1 - SEO técnico essencial (concluída)
+
+**Objetivo:** preparar indexação, rastreamento e apresentação nos buscadores.
+
+**Entregas:**
+- `SeoMetadataHelper` centralizado
+- `meta robots`, `og:image`, `twitter:image` no layout
+- `BreadcrumbList` JSON-LD em calculadoras e blog
+- Página `/mapa-do-site`
+- Sitemap com `/newsletter` e `/mapa-do-site`
+- `/Error` em português com `noindex`
+- Imagem OG padrão em `wwwroot/images/og-default.svg`
+
+**Definition of Done:** testes SEO verdes; metadados centralizados.
+
+---
+
 ## Sprint 0 - Auditoria, organização e segurança (concluída)
 
 **Objetivo:** entender o projeto, corrigir problemas básicos e preparar base para crescimento.
@@ -87,6 +104,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **1** | **SEO técnico essencial** | **Concluído** |
 | **0** | **Auditoria, segurança, docs monetização** | **Concluído** |
 | 0–13 | Fundação, calculadoras, infra, docs | Concluído |
 | **14** | **UI/UX, SEO avançado, newsletter** | **Concluído** |
