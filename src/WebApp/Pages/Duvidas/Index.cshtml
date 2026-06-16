@@ -1,0 +1,56 @@
+@page "/duvidas"
+@model MeuValorLiquido.WebApp.Pages.Duvidas.IndexModel
+@{
+    ViewData["Title"] = "Dúvidas populares sobre salário, CLT e impostos";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.PopularQuestionsHubBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Dúvidas populares</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Dúvidas populares</h1>
+<p class="valora-lead">
+    Respostas diretas sobre salário, impostos e trabalho — sempre com link para simular na calculadora certa.
+</p>
+
+@foreach (var category in Model.Categories)
+{
+    <section class="valora-section">
+        <h2 class="valora-h2">@category</h2>
+        <div class="valora-card-grid">
+            @foreach (var question in Model.Questions.Where(q => q.Category == category))
+            {
+                <article class="valora-card">
+                    <a class="valora-calc-card" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">
+                        <div class="valora-calc-card-icon">
+                            <span class="material-symbols-outlined">help</span>
+                        </div>
+                        <partial name="Shared/_CalculatorCategoryBadge" model="question.Category" />
+                        <h3 class="valora-h3" style="margin-top: 0.75rem;">@question.Title</h3>
+                        <p class="valora-text-muted valora-text-sm" style="flex: 1;">@question.SeoDescription</p>
+                        <div class="valora-calc-card-footer">
+                            Ler resposta
+                            <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
+                        </div>
+                    </a>
+                </article>
+            }
+        </div>
+    </section>
+}
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h3">Prefere calcular?</h2>
+    <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+        Todas as respostas são educativas. Para números do seu caso, use as calculadoras.
+    </p>
+    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
+</section>

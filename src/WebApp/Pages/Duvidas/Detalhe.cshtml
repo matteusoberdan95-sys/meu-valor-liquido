@@ -1,0 +1,92 @@
+@page "/duvidas/{slug}"
+@model MeuValorLiquido.WebApp.Pages.Duvidas.DetalheModel
+@{
+    ViewData["Title"] = Model.Question.Title;
+    ViewData["Description"] = Model.Question.SeoDescription;
+    ViewData["CanonicalPath"] = PopularQuestionsCatalog.SlugPath(Model.Question.Slug);
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdFaq" model="Model.FaqSchemaItems" />
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.PopularQuestionBreadcrumbs(Model.Question.Title, Model.Question.Slug)" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li><a asp-page="/Duvidas/Index">Dúvidas populares</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">@Model.Question.Title</li>
+    </ol>
+</nav>
+
+<header class="valora-section">
+    <partial name="Shared/_CalculatorCategoryBadge" model="Model.Question.Category" />
+    <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.Question.Title</h1>
+    <p class="valora-lead">@Model.Question.SeoDescription</p>
+</header>
+
+@if (Model.TopAdSlot is not null)
+{
+    <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+}
+
+<article class="valora-section valora-card valora-prose valora-article-body">
+    @Html.Raw(Model.Question.AnswerHtml)
+</article>
+
+@if (Model.RelatedCalculator is not null)
+{
+    <section class="valora-section valora-card" style="text-align: center;">
+        <h2 class="valora-h3">Simule agora</h2>
+        <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+            @Model.RelatedCalculator.Summary
+        </p>
+        <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="@Model.RelatedCalculator.Slug">
+            Abrir @Model.RelatedCalculator.Name
+        </a>
+    </section>
+}
+
+<section class="valora-faq valora-section">
+    <h2 class="valora-h2">Perguntas relacionadas</h2>
+    @foreach (var faq in Model.Question.FaqItems)
+    {
+        <details>
+            <summary>
+                @faq.Question
+                <span class="material-symbols-outlined">expand_more</span>
+            </summary>
+            <div class="faq-body valora-article-body">@Html.Raw(faq.AnswerHtml)</div>
+        </details>
+    }
+</section>
+
+@if (Model.RelatedQuestions.Count > 0)
+{
+    <section class="valora-section">
+        <h2 class="valora-h2">Leia também</h2>
+        <ul class="valora-related-tools-list">
+            @foreach (var related in Model.RelatedQuestions)
+            {
+                <li>
+                    <a class="valora-related-tool-link" asp-page="/Duvidas/Detalhe" asp-route-slug="@related.Slug">
+                        <span class="valora-related-tool-name">@related.Title</span>
+                        <span class="valora-related-tool-teaser">@related.SeoDescription</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </section>
+}
+
+@if (Model.BottomAdSlot is not null)
+{
+    <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+}
+
+<div class="valora-disclaimer valora-section">
+    <span class="material-symbols-outlined">info</span>
+    <p style="margin: 0;">Conteúdo educativo. Não substitui orientação jurídica, contábil ou de RH.</p>
+</div>

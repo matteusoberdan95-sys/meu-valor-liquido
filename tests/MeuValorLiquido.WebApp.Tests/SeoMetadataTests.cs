@@ -64,6 +64,8 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
         xml.Should().Contain("/mapa-do-site");
         xml.Should().Contain("/salario-liquido");
         xml.Should().Contain("/salario-liquido/3000");
+        xml.Should().Contain("/duvidas");
+        xml.Should().Contain("/duvidas/como-calcular-salario-liquido");
     }
 
     [Fact]

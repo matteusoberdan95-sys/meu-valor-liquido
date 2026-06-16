@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 9
+- Dúvidas populares: hub `/duvidas`, 17 páginas com FAQ schema, links para calculadoras e perguntas relacionadas.
+
 ## Sprint 8
 - CLT x PJ avançada: comparativo detalhado, hub `/clt-pj`, páginas programáticas e solver de faturamento equivalente.
 

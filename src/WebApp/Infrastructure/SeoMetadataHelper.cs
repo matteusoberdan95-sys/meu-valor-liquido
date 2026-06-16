@@ -90,4 +90,17 @@ public static class SeoMetadataHelper
         new("CLT x PJ", "/clt-pj"),
         new($"{CltPjBandCatalog.FormatCurrency(cltGross)} CLT", CltPjBandCatalog.SlugPath(cltGross))
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> PopularQuestionsHubBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Dúvidas populares", "/duvidas")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> PopularQuestionBreadcrumbs(string title, string slug) =>
+    [
+        new("Início", "/"),
+        new("Dúvidas populares", "/duvidas"),
+        new(title, PopularQuestionsCatalog.SlugPath(slug))
+    ];
 }

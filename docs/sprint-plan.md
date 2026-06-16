@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 9 - Dúvidas populares (concluída)
+
+**Objetivo:** capturar cauda longa de busca com respostas educativas e internal linking para calculadoras.
+
+**Entregas:**
+- `PopularQuestionsCatalog` com 17 perguntas (slug, categoria, FAQ, links relacionados)
+- Hub `/duvidas` e páginas `/duvidas/{slug}`
+- JSON-LD FAQPage + breadcrumbs; CTA para calculadora relacionada
+- Sitemap, mapa do site e CTA na home
+- Testes de hub, detalhe, catálogo e sitemap
+
+**Definition of Done:** conteúdo único por pergunta; links cruzados; `dotnet test` verde.
+
+---
+
 ## Sprint 8 - CLT x PJ avançada (concluída)
 
 **Objetivo:** página âncora do site com comparativo tributário útil e tráfego programático.

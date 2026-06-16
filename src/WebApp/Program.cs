@@ -104,6 +104,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/mapa-do-site"),
         CreateUrl(ns, $"{baseUrl}/salario-liquido"),
         CreateUrl(ns, $"{baseUrl}/clt-pj"),
+        CreateUrl(ns, $"{baseUrl}/duvidas"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
         CreateUrl(ns, $"{baseUrl}/aviso-legal")
@@ -113,6 +114,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
     urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}")));
     urls.AddRange(SalaryBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{SalaryBandCatalog.SlugPath(b)}")));
     urls.AddRange(CltPjBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{CltPjBandCatalog.SlugPath(b)}")));
+    urls.AddRange(PopularQuestionsCatalog.GetAll().Select(q => CreateUrl(ns, $"{baseUrl}{PopularQuestionsCatalog.SlugPath(q.Slug)}")));
 
     var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();
     urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}")));
