@@ -9,9 +9,9 @@ public class NewCalculatorsTests
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();
 
     [Fact]
-    public void Catalog_Should_Contain_Fifteen_Calculators()
+    public void Catalog_Should_Contain_Sixteen_Calculators()
     {
-        new InMemoryCalculatorCatalogService().GetAll().Should().HaveCount(15);
+        new InMemoryCalculatorCatalogService().GetAll().Should().HaveCount(16);
     }
 
     [Fact]
@@ -98,6 +98,7 @@ public class NewCalculatorsTests
     [InlineData("custo-funcionario")]
     [InlineData("multa-atraso")]
     [InlineData("conversor-salario")]
+    [InlineData("salario-bruto-necessario")]
     public void New_Calculators_Should_Return_Result(string slug)
     {
         var result = service.Calculate(slug, CalculatorInputDefaults.ForSlug(slug));

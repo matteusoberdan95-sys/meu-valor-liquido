@@ -11,6 +11,7 @@ public sealed class CalculationEngine
     private readonly IInssCalculator inssCalculator;
     private readonly IIrrfCalculator irrfCalculator;
     private readonly ITerminationTaxCalculator terminationTaxCalculator;
+    private readonly NetSalaryCalculator netSalaryCalculator;
 
     public CalculationEngine(
         IInssCalculator inssCalculator,
@@ -20,6 +21,7 @@ public sealed class CalculationEngine
         this.inssCalculator = inssCalculator;
         this.irrfCalculator = irrfCalculator;
         this.terminationTaxCalculator = terminationTaxCalculator;
+        this.netSalaryCalculator = new NetSalaryCalculator(inssCalculator, irrfCalculator);
     }
 
     public CalculationResult? Calculate(CalculatorDefinition definition, CalculatorInput input)
@@ -27,6 +29,7 @@ public sealed class CalculationEngine
         return definition.Slug.ToLowerInvariant() switch
         {
             "salario-liquido" => CalculateNetSalary(definition, input),
+            "salario-bruto-necessario" => CalculateRequiredGrossSalary(definition, input),
             "ferias" => CalculateVacation(definition, input),
             "decimo-terceiro" => CalculateThirteenthSalary(definition, input),
             "rescisao-clt" => CalculateTermination(definition, input),
@@ -47,18 +50,67 @@ public sealed class CalculationEngine
 
     private CalculationResult CalculateNetSalary(CalculatorDefinition definition, CalculatorInput input)
     {
-        var gross = input.Amount;
-        var inss = inssCalculator.Calculate(gross);
-        var irrf = irrfCalculator.Calculate(gross - inss, input.Dependents);
-        var transport = Math.Min(input.TransportDiscount, gross);
-        var net = gross - inss - irrf - transport;
+        var breakdown = netSalaryCalculator.Calculate(
+            input.Amount,
+            input.Dependents,
+            input.TransportDiscount);
 
-        return Build(definition, gross, net,
+        return Build(definition, breakdown.Gross, breakdown.Net,
         [
-            Discount("INSS", inss),
-            Discount("IRRF", irrf),
-            Discount("Vale-transporte/outros descontos", transport)
+            Discount("INSS", breakdown.Inss),
+            Discount("IRRF", breakdown.Irrf),
+            Discount("Vale-transporte/outros descontos", breakdown.TransportDiscount)
         ], "Salário líquido com INSS progressivo e IRRF com redução legal de " + BrTaxTables2026.Year + ".");
+    }
+
+    private CalculationResult CalculateRequiredGrossSalary(CalculatorDefinition definition, CalculatorInput input)
+    {
+        var targetNet = input.Amount;
+        var transport = input.TransportDiscount;
+        var meal = input.SecondaryAmount;
+        var other = input.OtherDiscounts;
+
+        var gross = GrossSalarySolver.Solve(
+            netSalaryCalculator,
+            targetNet,
+            input.Dependents,
+            transport,
+            meal,
+            other);
+
+        var breakdown = netSalaryCalculator.Calculate(gross, input.Dependents, transport, meal, other);
+        var difference = breakdown.Net - targetNet;
+
+        var lines = new List<CalculationLineItem>
+        {
+            Information("Salário líquido desejado", targetNet),
+            Discount("INSS", breakdown.Inss),
+            Discount("IRRF", breakdown.Irrf)
+        };
+
+        if (breakdown.TransportDiscount > 0m)
+        {
+            lines.Add(Discount("Vale-transporte", breakdown.TransportDiscount));
+        }
+
+        if (breakdown.MealVoucherDiscount > 0m)
+        {
+            lines.Add(Discount("Vale-refeição/alimentação", breakdown.MealVoucherDiscount));
+        }
+
+        if (breakdown.OtherDiscounts > 0m)
+        {
+            lines.Add(Discount("Outros descontos", breakdown.OtherDiscounts));
+        }
+
+        lines.Add(Information("Diferença vs. líquido desejado", difference));
+
+        var explanation =
+            $"Para receber cerca de {Money.From(targetNet)} líquido, estimamos salário bruto de {Money.From(gross)}. " +
+            "O cálculo usa busca binária sobre as mesmas regras de INSS progressivo e IRRF com redução legal de " +
+            BrTaxTables2026.Year + ".";
+
+        return Build(definition, gross, breakdown.Net, lines, explanation);
     }
 
     private CalculationResult CalculateVacation(CalculatorDefinition definition, CalculatorInput input)

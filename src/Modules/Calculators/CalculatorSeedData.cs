@@ -5,6 +5,7 @@ public static class CalculatorSeedData
     public static IReadOnlyList<CalculatorDefinition> GetDefinitions() =>
     [
         Create("salario-liquido", "Salário líquido", "Trabalhista", "Estime quanto sobra do salário após INSS, IRRF e descontos comuns."),
+        CreateRequiredGrossSalary(),
         Create("ferias", "Férias", "Trabalhista", "Calcule uma estimativa de férias com adicional constitucional de um terço."),
         Create("decimo-terceiro", "Décimo terceiro", "Trabalhista", "Estime o décimo terceiro proporcional ou integral com descontos."),
         Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule todos os tipos de desligamento: demissão, pedido de demissão, acordo 484-A e justa causa."),
@@ -35,4 +36,25 @@ public static class CalculatorSeedData
                 new FaqItem("Os dados são salvos?", "No MVP, os cálculos pessoais não são persistidos. O histórico fica previsto para uma fase futura com autenticação.")
             ]);
     }
+
+    private static CalculatorDefinition CreateRequiredGrossSalary() =>
+        new(
+            "salario-bruto-necessario",
+            "Salário bruto necessário",
+            "Trabalhista",
+            "Descubra quanto de salário bruto você precisa para receber o líquido desejado.",
+            "Quanto preciso ganhar para receber X líquido? Calculadora 2026 | Meu Valor Líquido",
+            "Informe o salário líquido desejado, dependentes e descontos. Estime o bruto necessário com INSS e IRRF 2026.",
+            [
+                new FaqItem(
+                    "Como funciona a calculadora inversa de salário?",
+                    "Ela estima o salário bruto usando busca binária sobre as mesmas regras da calculadora de salário líquido (INSS progressivo e IRRF 2026)."),
+                new FaqItem(
+                    "O resultado é exato?",
+                    "É uma estimativa com precisão de centavos. Pequenas diferenças podem ocorrer por arredondamentos das tabelas."),
+                new FaqItem(
+                    "Posso usar para negociar salário?",
+                    "Sim, como referência educativa. Confirme valores com RH ou contador antes de formalizar proposta."),
+                new FaqItem("Os dados são salvos?", "Não. O cálculo é feito na hora e não fica armazenado no servidor.")
+            ]);
 }

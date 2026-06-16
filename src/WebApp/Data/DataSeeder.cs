@@ -10,6 +10,7 @@ public static class DataSeeder
     {
         if (await db.CalculatorCatalog.AnyAsync(cancellationToken))
         {
+            await SeedMissingCalculatorsAsync(db, cancellationToken);
             await SeedBlogPostsAsync(db, cancellationToken);
             return;
         }
@@ -76,6 +77,70 @@ public static class DataSeeder
         await SeedBlogPostsAsync(db, cancellationToken);
     }
 
+    private static async Task SeedMissingCalculatorsAsync(AppDbContext db, CancellationToken cancellationToken)
+    {
+        var existingSlugs = await db.CalculatorCatalog
+            .Select(x => x.Slug)
+            .ToListAsync(cancellationToken);
+
+        var missing = CalculatorSeedData.GetDefinitions()
+            .Where(d => !existingSlugs.Contains(d.Slug, StringComparer.OrdinalIgnoreCase))
+            .ToList();
+
+        if (missing.Count == 0)
+        {
+            return;
+        }
+
+        var categories = await db.CalculatorCategories.ToListAsync(cancellationToken);
+        var maxSort = await db.CalculatorCatalog.MaxAsync(x => (int?)x.SortOrder, cancellationToken) ?? -1;
+
+        foreach (var definition in missing)
+        {
+            var category = categories.FirstOrDefault(c =>
+                string.Equals(c.Name, definition.Category, StringComparison.OrdinalIgnoreCase));
+
+            if (category is null)
+            {
+                category = new CalculatorCategoryEntity
+                {
+                    Name = definition.Category,
+                    SortOrder = categories.Count
+                };
+                db.CalculatorCategories.Add(category);
+                await db.SaveChangesAsync(cancellationToken);
+                categories.Add(category);
+            }
+
+            db.CalculatorCatalog.Add(new CalculatorCatalogEntity
+            {
+                Slug = definition.Slug,
+                Name = definition.Name,
+                CategoryId = category.Id,
+                Summary = definition.Summary,
+                SeoTitle = definition.SeoTitle,
+                SeoDescription = definition.SeoDescription,
+                EducationalContent = GetEducationalContent(definition.Slug),
+                SortOrder = ++maxSort,
+                IsActive = true
+            });
+
+            var faqSort = 0;
+            foreach (var faq in definition.FaqItems)
+            {
+                db.FaqItems.Add(new FaqItemEntity
+                {
+                    CalculatorSlug = definition.Slug,
+                    Question = faq.Question,
+                    Answer = faq.Answer,
+                    SortOrder = faqSort++
+                });
+            }
+        }
+
+        await db.SaveChangesAsync(cancellationToken);
+    }
+
     public static async Task SeedBlogPostsAsync(AppDbContext db, CancellationToken cancellationToken = default)
     {
         foreach (var article in BlogArticleSeedData.GetAll())
@@ -117,7 +182,9 @@ public static class DataSeeder
     private static string GetEducationalContent(string slug) => slug switch
     {
         "salario-liquido" =>
-            "Informe o salário bruto, dependentes e descontos opcionais. O resultado mostra INSS, IRRF e o líquido estimado com base nas tabelas de 2026.",
+            "Informe o salário bruto, dependentes e descontos opcionais. O resultado mostra INSS, IRRF e o líquido estimado com base nas tabelas de 2026. Para o caminho inverso, use a <a href=\"/calculadoras/salario-bruto-necessario\">calculadora de salário bruto necessário</a>.",
+        "salario-bruto-necessario" =>
+            "Informe o salário líquido que você quer receber, dependentes e descontos (vale-transporte, vale-refeição e outros). A ferramenta estima o bruto necessário com busca binária sobre INSS e IRRF 2026. Compare com a <a href=\"/calculadoras/salario-liquido\">calculadora de salário líquido</a>.",
         "ferias" =>
             "A calculadora considera o salário base mais o adicional de 1/3 constitucional e aplica descontos estimados.",
         "rescisao-clt" =>

@@ -54,6 +54,7 @@ public sealed record CalculatorInput(
     decimal Hours = 0m,
     int Dependents = 0,
     decimal TransportDiscount = 0m,
+    decimal OtherDiscounts = 0m,
     TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause,
     bool CompletedNoticePeriod = false,
     int CompleteYears = 0,
@@ -123,6 +124,14 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.TransportDiscount)
             .GreaterThanOrEqualTo(0)
             .WithMessage("O desconto de vale-transporte não pode ser negativo.");
+
+        RuleFor(input => input.SecondaryAmount)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O desconto de vale-refeição não pode ser negativo.");
+
+        RuleFor(input => input.OtherDiscounts)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("Outros descontos não podem ser negativos.");
 
         RuleFor(input => input.MonthsSinceLastVacation)
             .InclusiveBetween(0, 12)

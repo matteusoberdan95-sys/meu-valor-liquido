@@ -5,6 +5,7 @@ public static class CalculatorUiHelper
     private static readonly Dictionary<string, string> Icons = new(StringComparer.OrdinalIgnoreCase)
     {
         ["salario-liquido"] = "payments",
+        ["salario-bruto-necessario"] = "price_check",
         ["ferias"] = "beach_access",
         ["decimo-terceiro"] = "celebration",
         ["rescisao-clt"] = "logout",

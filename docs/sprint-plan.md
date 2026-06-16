@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 2 - Salário bruto necessário (concluída)
+
+**Objetivo:** calculadora inversa de alto valor para SEO e negociação salarial.
+
+**Entregas:**
+- `NetSalaryCalculator` e `GrossSalarySolver` (busca binária)
+- Calculadora `salario-bruto-necessario` com campos de líquido desejado, dependentes e descontos
+- Aliases `/calculadora-salario-bruto` e `/quanto-preciso-ganhar-para-receber-liquido`
+- Destaque na home, links cruzados com salário líquido, seed incremental no banco
+- Testes unitários (`GrossSalarySolverTests`)
+
+**Definition of Done:** 16 calculadoras; consistência forward/inverse; `dotnet test` verde.
+
+---
+
 ## Sprint 1 - SEO técnico essencial (concluída)
 
 **Objetivo:** preparar indexação, rastreamento e apresentação nos buscadores.
@@ -104,6 +119,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **2** | **Salário bruto necessário** | **Concluído** |
 | **1** | **SEO técnico essencial** | **Concluído** |
 | **0** | **Auditoria, segurança, docs monetização** | **Concluído** |
 | 0–13 | Fundação, calculadoras, infra, docs | Concluído |

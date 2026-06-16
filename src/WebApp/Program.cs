@@ -93,6 +93,8 @@ app.UseRateLimiter();
 app.UseAuthorization();
 
 app.MapHealthChecks("/health");
+app.MapGet("/calculadora-salario-bruto", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: true));
+app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: false));
 app.MapGet("/sitemap.xml", async (AppDbContext db) =>
 {
     XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";

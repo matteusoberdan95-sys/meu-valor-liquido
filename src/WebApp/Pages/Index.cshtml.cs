@@ -20,7 +20,15 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        Calculators = catalogService.GetAll();
+        var all = catalogService.GetAll();
+        var featured = new[] { "salario-bruto-necessario", "salario-liquido" };
+        Calculators = all
+            .OrderBy(c =>
+            {
+                var index = Array.IndexOf(featured, c.Slug);
+                return index >= 0 ? index : featured.Length + all.ToList().IndexOf(c);
+            })
+            .ToList();
         RecentPosts = contentService.GetPublishedPosts().Take(3).ToList();
     }
 }

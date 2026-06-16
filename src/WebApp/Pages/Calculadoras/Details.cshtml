@@ -359,6 +359,16 @@ else
                             </div>
                         </div>
                     }
+                    @if (profile.ShowOtherDiscounts)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                        </div>
+                    }
                 </div>
                 <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
             </form>
@@ -370,7 +380,7 @@ else
 
             <section class="valora-card">
                 <h2 class="valora-h3">Como usar esta calculadora</h2>
-                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent ?? "Preencha os campos indicados e use o resultado como estimativa educativa.")</p>
+                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent is null ? "Preencha os campos indicados e use o resultado como estimativa educativa." : Html.Raw(Model.Definition.EducationalContent))</p>
             </section>
         </div>
 

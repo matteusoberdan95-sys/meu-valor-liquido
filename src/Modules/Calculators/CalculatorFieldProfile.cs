@@ -8,6 +8,7 @@ public sealed record CalculatorFieldProfile(
     bool ShowHours = false,
     bool ShowDependents = false,
     bool ShowTransportDiscount = false,
+    bool ShowOtherDiscounts = false,
     bool ShowTerminationReason = false,
     bool ShowNoticePeriod = false,
     bool ShowHasUnpaidVacation = false,
@@ -30,6 +31,7 @@ public sealed record CalculatorFieldProfile(
     string HoursLabel = "Horas",
     string DependentsLabel = "Dependentes",
     string TransportDiscountLabel = "Descontos extras",
+    string OtherDiscountsLabel = "Outros descontos",
     string TerminationReasonLabel = "Tipo de desligamento",
     string NoticePeriodLabel = "Cumpriu aviso prévio de 30 dias?",
     string HasUnpaidVacationLabel = "Possui férias vencidas (não gozadas)?",
@@ -60,6 +62,15 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
     private static readonly Dictionary<string, CalculatorFieldProfile> Profiles = new(StringComparer.OrdinalIgnoreCase)
     {
         ["salario-liquido"] = new(AmountLabel: "Salário bruto", ShowDependents: true, ShowTransportDiscount: true, TransportDiscountLabel: "Vale-transporte e outros descontos"),
+        ["salario-bruto-necessario"] = new(
+            AmountLabel: "Salário líquido desejado",
+            ShowDependents: true,
+            ShowTransportDiscount: true,
+            TransportDiscountLabel: "Desconto vale-transporte",
+            ShowSecondaryAmount: true,
+            SecondaryAmountLabel: "Desconto vale-refeição/alimentação",
+            ShowOtherDiscounts: true,
+            OtherDiscountsLabel: "Outros descontos"),
         ["ferias"] = new(AmountLabel: "Salário base", ShowDependents: true),
         ["decimo-terceiro"] = new(AmountLabel: "Salário base", ShowMonths: true, MonthsLabel: "Meses trabalhados no ano", ShowDependents: true),
         ["rescisao-clt"] = new(

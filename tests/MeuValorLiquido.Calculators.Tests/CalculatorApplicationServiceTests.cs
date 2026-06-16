@@ -10,12 +10,13 @@ public class CalculatorApplicationServiceTests
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();
 
     [Fact]
-    public void Catalog_Should_Contain_The_Fifteen_Calculators()
+    public void Catalog_Should_Contain_Sixteen_Calculators()
     {
         var catalog = new InMemoryCalculatorCatalogService();
 
-        catalog.GetAll().Should().HaveCount(15);
+        catalog.GetAll().Should().HaveCount(16);
         catalog.GetBySlug("salario-liquido").Should().NotBeNull();
+        catalog.GetBySlug("salario-bruto-necessario").Should().NotBeNull();
     }
 
     [Fact]
