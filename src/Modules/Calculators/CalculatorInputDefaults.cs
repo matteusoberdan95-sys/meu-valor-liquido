@@ -23,6 +23,7 @@ public static class CalculatorInputDefaults
         "custo-funcionario" => new(4000m, SecondaryAmount: 500m),
         "multa-atraso" => new(1000m, SecondaryAmount: 45m, Rate: 1m, Hours: 2m),
         "conversor-salario" => new(3000m, SalaryBasis: SalaryConversionBasis.Monthly),
+        "pj-vs-clt" => new(5000m, SecondaryAmount: 8000m, Dependents: 0, Rate: 6m),
         _ => new(3000m, Months: 12, Rate: 50m)
     };
 }

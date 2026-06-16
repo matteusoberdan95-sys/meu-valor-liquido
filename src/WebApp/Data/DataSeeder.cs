@@ -198,6 +198,9 @@ public static class DataSeeder
             "Padrão comum: 2% de multa + 1% de juros ao mês proporcional aos dias. Ajuste conforme seu contrato.",
         "conversor-salario" =>
             "Converta entre mensal, diário (÷30) e hora (divisor 220h para jornada 44h). Altere a jornada se necessário.",
+        "pj-vs-clt" =>
+            "Informe salário bruto CLT, faturamento PJ (opcional), dependentes, alíquota do Simples e despesas fixas. " +
+            "Veja o faturamento PJ equivalente ao líquido CLT e explore páginas por valor em <a href=\"/clt-pj\">CLT x PJ</a>.",
         _ => "Use os campos indicados para obter uma estimativa educativa. Consulte um profissional para decisões formais."
     };
 }

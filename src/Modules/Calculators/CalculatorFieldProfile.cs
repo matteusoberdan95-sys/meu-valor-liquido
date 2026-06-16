@@ -115,7 +115,17 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowOvertimeShiftType: true),
         ["inss"] = new(AmountLabel: "Salário de contribuição"),
         ["irrf"] = new(AmountLabel: "Base de cálculo (após INSS)", ShowDependents: true),
-        ["pj-vs-clt"] = new(AmountLabel: "Salário bruto CLT", ShowSecondaryAmount: true, SecondaryAmountLabel: "Faturamento PJ", ShowDependents: true),
+        ["pj-vs-clt"] = new(
+            AmountLabel: "Salário bruto CLT",
+            ShowSecondaryAmount: true,
+            SecondaryAmountLabel: "Faturamento PJ mensal (opcional)",
+            ShowDependents: true,
+            ShowTransportDiscount: true,
+            TransportDiscountLabel: "Descontos CLT (vale-transporte etc.)",
+            ShowRate: true,
+            RateLabel: "Alíquota Simples Nacional (%)",
+            ShowOtherDiscounts: true,
+            OtherDiscountsLabel: "Despesas fixas PJ (contador, software etc.)"),
         ["juros-compostos"] = new(AmountLabel: "Valor inicial", ShowMonths: true, ShowRate: true, RateLabel: "Taxa mensal (%)"),
         ["financiamento"] = new(AmountLabel: "Valor financiado", ShowMonths: true, MonthsLabel: "Prazo (meses)", ShowRate: true, RateLabel: "Taxa mensal (%)"),
         ["fgts"] = new(

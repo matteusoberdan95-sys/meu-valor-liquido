@@ -9,17 +9,20 @@ public sealed class CalculationEngine
     private readonly IIrrfCalculator irrfCalculator;
     private readonly ITerminationTaxCalculator terminationTaxCalculator;
     private readonly NetSalaryCalculator netSalaryCalculator;
+    private readonly CltPjComparisonCalculator cltPjComparisonCalculator;
 
     public CalculationEngine(
         IInssCalculator inssCalculator,
         IIrrfCalculator irrfCalculator,
         ITerminationTaxCalculator terminationTaxCalculator,
-        NetSalaryCalculator netSalaryCalculator)
+        NetSalaryCalculator netSalaryCalculator,
+        CltPjComparisonCalculator cltPjComparisonCalculator)
     {
         this.inssCalculator = inssCalculator;
         this.irrfCalculator = irrfCalculator;
         this.terminationTaxCalculator = terminationTaxCalculator;
         this.netSalaryCalculator = netSalaryCalculator;
+        this.cltPjComparisonCalculator = cltPjComparisonCalculator;
     }
 
     public CalculationResult? Calculate(CalculatorDefinition definition, CalculatorInput input)
@@ -389,20 +392,47 @@ public sealed class CalculationEngine
 
     private CalculationResult CalculatePjVsClt(CalculatorDefinition definition, CalculatorInput input)
     {
-        var cltGross = input.Amount;
-        var pjGross = input.SecondaryAmount <= 0 ? input.Amount * 1.3m : input.SecondaryAmount;
-        var inss = inssCalculator.Calculate(cltGross);
-        var cltNet = cltGross - inss - irrfCalculator.Calculate(cltGross - inss, input.Dependents);
-        var pjInss = BrTaxTables2026.MinimumWage * 0.11m;
-        var pjIrrf = irrfCalculator.Calculate(Math.Max(0m, pjGross * 0.28m - pjInss), 0);
-        var pjNet = pjGross - pjGross * 0.06m - pjInss - pjIrrf;
+        var comparison = cltPjComparisonCalculator.Compare(input);
+        var clt = comparison.Clt;
+        var pj = comparison.Pj;
+        var simplesLabel = $"{comparison.SimplesRatePercent:0.#}%";
 
-        return Build(definition, Math.Max(cltGross, pjGross), Math.Max(cltNet, pjNet),
-        [
-            Information("CLT líquido estimado", cltNet),
-            Information("PJ líquido estimado (Simples ~6% + INSS + IRRF)", pjNet),
-            Information("Diferença estimada", pjNet - cltNet)
-        ], "Comparação educativa. PJ real depende de anexo Simples, pró-labore, despesas e regime tributário.");
+        var lines = new List<CalculationLineItem>
+        {
+            Information("CLT — salário bruto", clt.Gross),
+            Discount("CLT — INSS", clt.Inss),
+            Discount("CLT — IRRF", clt.Irrf),
+        };
+
+        if (clt.Discounts > 0m)
+        {
+            lines.Add(Discount("CLT — outros descontos", clt.Discounts));
+        }
+
+        lines.Add(Information("CLT — líquido estimado", clt.Net));
+        lines.Add(Information("PJ — faturamento mensal", pj.Revenue));
+        lines.Add(Discount($"PJ — Simples Nacional ({simplesLabel})", pj.SimplesTax));
+        lines.Add(Information($"PJ — pró-labore ({comparison.ProLaboreSharePercent:0.#}%)", pj.ProLabore));
+        lines.Add(Discount("PJ — INSS sobre pró-labore", pj.Inss));
+        lines.Add(Discount("PJ — IRRF sobre pró-labore", pj.Irrf));
+
+        if (pj.Expenses > 0m)
+        {
+            lines.Add(Discount("PJ — despesas fixas", pj.Expenses));
+        }
+
+        lines.Add(Information("PJ — líquido pessoal estimado", pj.Net));
+        lines.Add(Information("Faturamento PJ equivalente ao líquido CLT", comparison.EquivalentPjRevenue));
+        lines.Add(Information("Diferença de líquido (PJ − CLT)", comparison.NetDifference));
+
+        var explanation =
+            $"Para um CLT de {Money.From(clt.Gross)} (líquido {Money.From(clt.Net)}), faturar cerca de " +
+            $"{Money.From(comparison.EquivalentPjRevenue)} como PJ tende a equivaler ao bolso, " +
+            $"com Simples de {simplesLabel} e pró-labore de {comparison.ProLaboreSharePercent:0.#}%. " +
+            "Regime real, anexo do Simples, pró-labore mínimo e custos variam — use como referência educativa.";
+
+        var winnerNet = Math.Max(clt.Net, pj.Net);
+        return Build(definition, Math.Max(clt.Gross, pj.Revenue), winnerNet, lines, explanation);
     }
 
     private CalculationResult CalculateCompoundInterest(CalculatorDefinition definition, CalculatorInput input)

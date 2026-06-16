@@ -714,6 +714,31 @@ body {
   line-height: 1.45;
 }
 
+.valora-clt-pj-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 480px) {
+  .valora-clt-pj-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.valora-clt-pj-heading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0 0 0.5rem;
+}
+
+.valora-clt-pj-total {
+  margin-top: 0.75rem;
+  padding: 0.875rem;
+}
+
 /* Calculator layout */
 .valora-calc-layout {
   display: grid;

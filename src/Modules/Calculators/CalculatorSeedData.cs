@@ -12,7 +12,7 @@ public static class CalculatorSeedData
         Create("hora-extra", "Hora extra", "Trabalhista", "Calcule horas extras com adicional de CCT, jornada semanal, turno noturno e DSR."),
         Create("inss", "INSS", "Fiscal", "Estime o desconto de INSS pela tabela progressiva oficial de 2026 (Portaria MPS/MF nº 13)."),
         Create("irrf", "IRRF", "Fiscal", "Estime o IRRF com tabela progressiva e redução legal de 2026 (Lei 15.270/2025)."),
-        Create("pj-vs-clt", "PJ vs CLT", "Financeiro", "Compare uma estimativa simples entre remuneração PJ e salário líquido CLT."),
+        CreateCltPj(),
         Create("juros-compostos", "Juros compostos", "Financeiro", "Projete o crescimento de um valor com taxa mensal e prazo."),
         Create("financiamento", "Financiamento", "Financeiro", "Estime uma parcela fixa usando a fórmula Price."),
         Create("fgts", "FGTS", "Trabalhista", "Calcule depósitos mensais de 8%, saldo acumulado e multa rescisória."),
@@ -56,6 +56,29 @@ public static class CalculatorSeedData
                     "Posso usar para negociar salário?",
                     "Sim, como referência educativa. Confirme valores com RH ou contador antes de formalizar proposta."),
                 new FaqItem("Os dados são salvos?", "Não. O cálculo é feito na hora e não fica armazenado no servidor.")
+            ]);
+
+    private static CalculatorDefinition CreateCltPj() =>
+        new(
+            "pj-vs-clt",
+            "PJ vs CLT",
+            "Financeiro",
+            "Compare CLT e PJ com extrato detalhado, pró-labore, Simples Nacional e faturamento equivalente.",
+            "PJ vs CLT: comparativo avançado de líquido | Meu Valor Líquido",
+            "Simule salário CLT x faturamento PJ com INSS, IRRF, Simples e pró-labore. Descubra quanto faturar para equivaler ao líquido CLT.",
+            [
+                new FaqItem(
+                    "Como o PJ é estimado nesta calculadora?",
+                    "Usamos faturamento mensal, alíquota do Simples Nacional (padrão 6%), pró-labore de 28% sobre o faturamento, INSS e IRRF sobre o pró-labore, além de despesas fixas opcionais."),
+                new FaqItem(
+                    "O que é faturamento PJ equivalente?",
+                    "É o valor de faturamento estimado para que o líquido pessoal na PJ fique próximo ao líquido CLT informado, com os mesmos parâmetros tributários."),
+                new FaqItem(
+                    "PJ sempre compensa mais que CLT?",
+                    "Não necessariamente. Depende do faturamento, regime tributário, despesas, benefícios CLT (férias, 13º, FGTS) e estabilidade. Esta ferramenta compara apenas o líquido mensal estimado."),
+                new FaqItem(
+                    "Posso comparar com MEI?",
+                    "Para MEI com DAS fixo, use o <a href=\"/calculadoras/simulador-mei\">simulador MEI</a>. Esta página foca em PJ no Simples com pró-labore.")
             ]);
 
     private static CalculatorDefinition CreateSalaryProposal() =>

@@ -1,0 +1,79 @@
+@page "/clt-pj/{valor:int}-clt-equivale-a-quanto-pj"
+@model MeuValorLiquido.WebApp.Pages.CltPj.ComparacaoModel
+@{
+    ViewData["Title"] = Model.PageContent.Title;
+    ViewData["Description"] = Model.PageContent.Description;
+    ViewData["CanonicalPath"] = CltPjBandCatalog.SlugPath(Model.PageContent.CltGross);
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdFaq" model="Model.FaqSchemaItems" />
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CltPjBandBreadcrumbs(Model.PageContent.CltGross)" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li><a asp-page="/CltPj/Index">CLT x PJ</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">@CltPjBandCatalog.FormatCurrency(Model.PageContent.CltGross)</li>
+    </ol>
+</nav>
+
+<header class="valora-section">
+    <span class="valora-badge valora-badge-financeiro">Financeiro</span>
+    <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.PageContent.Title</h1>
+    <p class="valora-lead">Comparativo educativo com Simples @Model.Comparison.SimplesRatePercent.ToString("0.#")% e pró-labore de @Model.Comparison.ProLaboreSharePercent.ToString("0.#")%.</p>
+</header>
+
+@if (Model.TopAdSlot is not null)
+{
+    <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+}
+
+<div class="valora-page-layout">
+    <div class="valora-stack-md">
+        <section class="valora-card valora-prose">
+            @Html.Raw(Model.PageContent.IntroHtml)
+            @Html.Raw(Model.PageContent.ContextHtml)
+            @Html.Raw(Model.PageContent.TipsHtml)
+        </section>
+
+        <div class="valora-disclaimer">
+            <span class="material-symbols-outlined">warning</span>
+            <p style="margin: 0;">Estimativa educativa. Não considera benefícios CLT (FGTS, férias, 13º) nem custos ocultos de PJ.</p>
+        </div>
+    </div>
+
+    <aside class="valora-calc-sidebar valora-stack-md">
+        <partial name="Shared/_CltPjComparisonPanel" model="Model.Comparison" />
+
+        <section class="valora-card">
+            <h2 class="valora-h3">Personalizar cenário</h2>
+            <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+                Informe faturamento PJ real, dependentes, Simples e despesas.
+            </p>
+            <div class="valora-gap-buttons">
+                <a class="valora-btn valora-btn-primary" href="/calculadoras/pj-vs-clt?valor=@Model.PageContent.CltGross">Calculadora completa</a>
+                <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido" asp-route-valor="@Model.PageContent.CltGross">Salário líquido CLT</a>
+            </div>
+        </section>
+
+        @if (Model.BottomAdSlot is not null)
+        {
+            <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+        }
+    </aside>
+</div>
+
+<section class="valora-faq valora-section">
+    <h2 class="valora-h2">Perguntas frequentes</h2>
+    @foreach (var faq in Model.PageContent.FaqItems)
+    {
+        <details>
+            <summary>@faq.Question</summary>
+            <p class="valora-text-muted valora-text-sm">@Html.Raw(faq.Answer)</p>
+        </details>
+    }
+</section>

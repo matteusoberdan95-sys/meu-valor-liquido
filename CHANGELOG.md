@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 8
+- CLT x PJ avançada: comparativo detalhado, hub `/clt-pj`, páginas programáticas e solver de faturamento equivalente.
+
 ## Sprint 7
 - Calculadora `proposta-salarial`: comparativo atual x proposto, ganho líquido, % real no bolso, share/PDF e aliases SEO.
 

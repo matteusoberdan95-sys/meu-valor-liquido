@@ -6,7 +6,8 @@ internal static class CalculatorTestFactory
         var inss = new InssCalculator();
         var irrf = new IrrfCalculator();
         var netSalary = new NetSalaryCalculator(inss, irrf);
-        return new CalculationEngine(inss, irrf, new TerminationTaxCalculator(inss, irrf), netSalary);
+        var cltPj = new CltPjComparisonCalculator(netSalary, inss, irrf);
+        return new CalculationEngine(inss, irrf, new TerminationTaxCalculator(inss, irrf), netSalary, cltPj);
     }
 
     public static CalculatorApplicationService CreateService() =>

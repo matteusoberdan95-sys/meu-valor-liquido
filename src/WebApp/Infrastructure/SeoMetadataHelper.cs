@@ -77,4 +77,17 @@ public static class SeoMetadataHelper
         new("Salário líquido por valor", "/salario-liquido"),
         new(SalaryBandCatalog.FormatCurrency(gross), SalaryBandCatalog.SlugPath(gross))
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> CltPjHubBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("CLT x PJ", "/clt-pj")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> CltPjBandBreadcrumbs(int cltGross) =>
+    [
+        new("Início", "/"),
+        new("CLT x PJ", "/clt-pj"),
+        new($"{CltPjBandCatalog.FormatCurrency(cltGross)} CLT", CltPjBandCatalog.SlugPath(cltGross))
+    ];
 }

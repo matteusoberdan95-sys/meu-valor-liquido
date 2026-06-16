@@ -50,6 +50,12 @@ public class DetailsModel : PageModel
             {
                 Input = Input with { Amount = presetGross };
             }
+            else if (slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase)
+                && decimal.TryParse(Request.Query["valor"], out var cltPreset)
+                && cltPreset > 0m)
+            {
+                Input = CalculatorInputDefaults.ForSlug(slug) with { Amount = cltPreset };
+            }
 
             TryApplySharedCalculation(slug);
         }

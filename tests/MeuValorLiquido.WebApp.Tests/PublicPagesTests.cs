@@ -16,6 +16,8 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/calculadoras/salario-liquido")]
     [InlineData("/calculadoras/salario-bruto-necessario")]
     [InlineData("/calculadoras/proposta-salarial")]
+    [InlineData("/clt-pj")]
+    [InlineData("/clt-pj/5000-clt-equivale-a-quanto-pj")]
     [InlineData("/salario-liquido")]
     [InlineData("/salario-liquido/3000")]
     [InlineData("/sobre")]

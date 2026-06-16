@@ -8,6 +8,11 @@ public static class CalculatorShareTextBuilder
             return BuildSalaryProposalShareText(result, shareUrl);
         }
 
+        if (result.Slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase))
+        {
+            return BuildCltPjShareText(result, shareUrl);
+        }
+
         var lines = new List<string>
         {
             $"*Meu Valor Líquido* — {result.Title}",
@@ -73,6 +78,40 @@ public static class CalculatorShareTextBuilder
             string.Empty,
             $"Ver simulação: {shareUrl}",
             "Referência educativa — confirme com RH ou contrato."
+        };
+
+        return string.Join('\n', lines);
+    }
+
+    private static string BuildCltPjShareText(CalculationResult result, string shareUrl)
+    {
+        decimal ReadAmount(string label)
+        {
+            var item = result.LineItems.FirstOrDefault(line =>
+                line.Label.Equals(label, StringComparison.OrdinalIgnoreCase));
+            return item?.Amount.Amount ?? 0m;
+        }
+
+        var cltNet = ReadAmount("CLT — líquido estimado");
+        var pjNet = ReadAmount("PJ — líquido pessoal estimado");
+        var equivalent = ReadAmount("Faturamento PJ equivalente ao líquido CLT");
+        var diff = pjNet - cltNet;
+
+        var lines = new List<string>
+        {
+            "*Meu Valor Líquido* — PJ vs CLT",
+            $"Estimativa educativa ({BrTaxTables2026.Year})",
+            string.Empty,
+            $"CLT líquido: {Money.From(cltNet)}",
+            $"PJ líquido: {Money.From(pjNet)}",
+            $"PJ equivalente ao CLT: {Money.From(equivalent)} de faturamento",
+            string.Empty,
+            diff >= 0m
+                ? $"*Diferença: +{Money.From(diff)} a favor do PJ (neste cenário)*"
+                : $"*Diferença: {Money.From(diff)} — CLT líquido maior neste cenário*",
+            string.Empty,
+            $"Simular: {shareUrl}",
+            "Não substitui contador nem análise de benefícios CLT."
         };
 
         return string.Join('\n', lines);

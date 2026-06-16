@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 8 - CLT x PJ avançada (concluída)
+
+**Objetivo:** página âncora do site com comparativo tributário útil e tráfego programático.
+
+**Entregas:**
+- `CltPjComparisonCalculator` com pró-labore, Simples configurável e solver de faturamento equivalente
+- Calculadora `pj-vs-clt` com extrato detalhado CLT/PJ e texto de compartilhamento
+- Hub `/clt-pj` e 18 páginas `/clt-pj/{valor}-clt-equivale-a-quanto-pj`
+- `CltPjContentBuilder`, sitemap, mapa do site, alias `/clt-vs-pj`
+- CTA na home
+
+**Definition of Done:** conteúdo único por faixa CLT; testes verdes; links cruzados com calculadoras.
+
+---
+
 ## Sprint 7 - Proposta salarial (concluída)
 
 **Objetivo:** ferramenta compartilhável para negociação salarial com foco no líquido real.
@@ -194,6 +209,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **8** | **CLT x PJ avançada** | **Concluído** |
 | **7** | **Proposta salarial** | **Concluído** |
 | **6** | **Modo explicação simples** | **Concluído** |
 | **5** | **PDF do resultado** | **Concluído** |

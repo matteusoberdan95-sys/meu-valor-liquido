@@ -1,0 +1,60 @@
+@model MeuValorLiquido.Modules.Calculators.CltPjComparisonBreakdown
+
+<section class="valora-result-panel" aria-live="polite">
+    <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Comparativo estimado</h2>
+
+    <div class="valora-clt-pj-columns">
+        <div class="valora-clt-pj-column">
+            <h3 class="valora-clt-pj-heading">CLT</h3>
+            <div class="valora-result-line">
+                <span>Salário bruto</span>
+                <strong>@Money.From(Model.Clt.Gross)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>INSS</span>
+                <strong>- @Money.From(Model.Clt.Inss)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>IRRF</span>
+                <strong>- @Money.From(Model.Clt.Irrf)</strong>
+            </div>
+            <div class="valora-result-total valora-clt-pj-total">
+                <span class="valora-result-total-label">L&#xCD;QUIDO CLT</span>
+                <span class="valora-result-total-value">@Money.From(Model.Clt.Net)</span>
+            </div>
+        </div>
+
+        <div class="valora-clt-pj-column">
+            <h3 class="valora-clt-pj-heading">PJ</h3>
+            <div class="valora-result-line">
+                <span>Faturamento</span>
+                <strong>@Money.From(Model.Pj.Revenue)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>Simples (@Model.SimplesRatePercent.ToString("0.#")%)</span>
+                <strong>- @Money.From(Model.Pj.SimplesTax)</strong>
+            </div>
+            <div class="valora-result-line">
+                <span>Pró-labore (@Model.ProLaboreSharePercent.ToString("0.#")%)</span>
+                <strong>@Money.From(Model.Pj.ProLabore)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>INSS + IRRF</span>
+                <strong>- @Money.From(Model.Pj.Inss + Model.Pj.Irrf)</strong>
+            </div>
+            <div class="valora-result-total valora-clt-pj-total">
+                <span class="valora-result-total-label">L&#xCD;QUIDO PJ</span>
+                <span class="valora-result-total-value">@Money.From(Model.Pj.Net)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="valora-result-line" style="margin-top: 1rem;">
+        <span>Faturamento PJ equivalente</span>
+        <strong>@Money.From(Model.EquivalentPjRevenue)</strong>
+    </div>
+    <div class="valora-result-line">
+        <span>Diferença (PJ − CLT)</span>
+        <strong>@Money.From(Model.NetDifference)</strong>
+    </div>
+</section>

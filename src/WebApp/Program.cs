@@ -87,6 +87,7 @@ app.MapGet("/calculadora-salario-bruto", () => Results.Redirect("/calculadoras/s
 app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: false));
 app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
 app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
+app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: false));
 app.MapGet("/sitemap.xml", async (AppDbContext db) =>
 {
     XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
@@ -102,6 +103,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/newsletter"),
         CreateUrl(ns, $"{baseUrl}/mapa-do-site"),
         CreateUrl(ns, $"{baseUrl}/salario-liquido"),
+        CreateUrl(ns, $"{baseUrl}/clt-pj"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
         CreateUrl(ns, $"{baseUrl}/aviso-legal")
@@ -110,6 +112,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
     var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
     urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}")));
     urls.AddRange(SalaryBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{SalaryBandCatalog.SlugPath(b)}")));
+    urls.AddRange(CltPjBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{CltPjBandCatalog.SlugPath(b)}")));
 
     var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();
     urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}")));

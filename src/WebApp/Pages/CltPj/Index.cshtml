@@ -1,0 +1,53 @@
+@page "/clt-pj"
+@model MeuValorLiquido.WebApp.Pages.CltPj.IndexModel
+@{
+    ViewData["Title"] = "CLT x PJ: quanto faturar para equivaler ao salário CLT (2026)";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CltPjHubBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">CLT x PJ</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">CLT x PJ: quanto faturar para equivaler?</h1>
+<p class="valora-lead">
+    Páginas educativas que estimam o faturamento PJ necessário para chegar perto do líquido CLT,
+    com Simples Nacional, pró-labore e impostos de @BrTaxTables2026.Year.
+</p>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Escolha um salário CLT bruto</h2>
+    <div class="valora-card-grid">
+        @foreach (var band in Model.Bands)
+        {
+            <article class="valora-card">
+                <a class="valora-calc-card" asp-page="/CltPj/Comparacao" asp-route-valor="@band">
+                    <div class="valora-calc-card-icon">
+                        <span class="material-symbols-outlined">compare_arrows</span>
+                    </div>
+                    <h3 class="valora-h3" style="margin-top: 0.75rem;">@CltPjBandCatalog.FormatCurrency(band) CLT</h3>
+                    <p class="valora-text-muted valora-text-sm" style="flex: 1;">Quanto PJ faturar para equivaler</p>
+                    <div class="valora-calc-card-footer">
+                        Comparar
+                        <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
+                    </div>
+                </a>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h3">Simulação completa</h2>
+    <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+        Informe faturamento PJ real, alíquota do Simples, dependentes CLT e despesas fixas.
+    </p>
+    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="pj-vs-clt">Abrir calculadora PJ vs CLT</a>
+</section>
