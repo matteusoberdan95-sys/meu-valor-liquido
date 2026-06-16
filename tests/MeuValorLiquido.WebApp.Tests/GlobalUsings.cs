@@ -8,3 +8,4 @@ global using MeuValorLiquido.Modules.Calculators.Tax;
 global using MeuValorLiquido.WebApp.Infrastructure;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.Extensions.Caching.Memory;

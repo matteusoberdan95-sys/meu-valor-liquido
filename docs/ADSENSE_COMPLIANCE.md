@@ -93,7 +93,7 @@ Antes de ativar AdSense:
 - [ ] Páginas institucionais revisadas
 - [ ] Nenhum texto incentivando clique
 - [ ] Slots com espaçamento validado em desktop e mobile
-- [ ] Core Web Vitals aceitáveis (Sprint 12)
+- [x] Core Web Vitals — cache, defer, slots com altura fixa (Sprint 12)
 - [ ] Publisher ID via variável de ambiente (não hardcoded)
 - [ ] Rollback documentado (desabilitar slot por config)
 

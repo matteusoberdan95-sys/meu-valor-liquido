@@ -1038,7 +1038,10 @@ body {
   background: var(--valora-surface-container-low);
   border: 1px dashed var(--valora-outline-variant) !important;
   border-radius: var(--valora-radius-md);
+  box-sizing: border-box;
   min-height: 120px;
+  height: 120px;
+  contain: layout style paint;
   display: flex;
   align-items: center;
   justify-content: center;

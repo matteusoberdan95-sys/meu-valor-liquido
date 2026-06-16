@@ -1,5 +1,21 @@
 # Sprint Plan
 
+## Sprint 12 - Performance e Core Web Vitals (concluída)
+
+**Objetivo:** melhorar LCP/CLS e reduzir carga no servidor para readiness AdSense.
+
+**Entregas:**
+- `CachedCalculatorCatalogService` e `CachedContentService` (`IMemoryCache`, 10 min)
+- Output cache do `sitemap.xml` (1 h) e compressão Brotli/Gzip
+- `StaticAssetCacheMiddleware` com `Cache-Control` longo para `/css`, `/js`, `/lib`, `/images`
+- jQuery só em páginas com validação; scripts globais com `defer`; preload de `site.css`
+- Slots de anúncio com altura fixa e `contain` para reduzir CLS
+- Testes de cache, headers e carregamento condicional de scripts
+
+**Definition of Done:** testes verdes; home sem jQuery; assets estáticos com cache imutável.
+
+---
+
 ## Sprint 11 - Widget incorporável (concluída)
 
 **Objetivo:** referência legítima em blogs e portais com iframe gratuito e atribuição ao site.

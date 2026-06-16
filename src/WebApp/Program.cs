@@ -31,7 +31,25 @@ builder.Services.AddHealthChecks()
     .AddDbContextCheck<AppDbContext>("database");
 
 builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("Mail"));
-builder.Services.AddResponseCompression();
+builder.Services.AddMemoryCache();
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Fastest;
+});
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Fastest;
+});
+builder.Services.AddOutputCache(options =>
+{
+    options.AddPolicy("sitemap", policy => policy.Expire(PerformanceCacheDurations.Sitemap));
+});
 
 builder.Services.AddRazorPages();
 builder.Services.AddProblemDetails();
@@ -52,8 +70,16 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
 builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
-builder.Services.AddScoped<ICalculatorCatalogService, EfCalculatorCatalogService>();
-builder.Services.AddScoped<IContentService, EfContentService>();
+builder.Services.AddScoped<EfCalculatorCatalogService>();
+builder.Services.AddScoped<ICalculatorCatalogService>(sp =>
+    new CachedCalculatorCatalogService(
+        sp.GetRequiredService<EfCalculatorCatalogService>(),
+        sp.GetRequiredService<IMemoryCache>()));
+builder.Services.AddScoped<EfContentService>();
+builder.Services.AddScoped<IContentService>(sp =>
+    new CachedContentService(
+        sp.GetRequiredService<EfContentService>(),
+        sp.GetRequiredService<IMemoryCache>()));
 builder.Services.AddSingleton<IAdSlotProvider, PlaceholderAdSlotProvider>();
 builder.Services.AddScoped<INewsletterService, EfNewsletterService>();
 builder.Services.AddScoped<IContactService, EfContactService>();
@@ -74,10 +100,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseResponseCompression();
 app.UseHttpsRedirection();
+app.UseStaticAssetCacheHeaders();
 app.UseSecurityHeaders();
 
 app.UseRouting();
 app.UseRateLimiter();
+app.UseOutputCache();
 
 app.UseAuthorization();
 
@@ -129,7 +157,7 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
 
     var document = new XDocument(new XElement(ns + "urlset", urls));
     return Results.Content(document.ToString(), "application/xml");
-});
+}).CacheOutput("sitemap");
 
 app.MapStaticAssets();
 app.MapRazorPages()

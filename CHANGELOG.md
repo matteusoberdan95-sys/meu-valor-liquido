@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 12
+- Performance: cache em memória (catálogo/conteúdo), output cache do sitemap, Brotli, cache de assets, jQuery sob demanda, defer e CLS nos slots.
+
 ## Sprint 11
 - Widget incorporável: hub `/widget`, iframe para 8 calculadoras, modo embed sem anúncios e headers `frame-ancestors *`.
 
