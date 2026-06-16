@@ -15,7 +15,7 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 | Meta description única | OK | `ViewData["Description"]` |
 | Canonical | Parcial | `ViewData["CanonicalPath"]`; fallback usa `Request.Path` |
 | Open Graph básico | OK | `og:title`, `og:description`, `og:url`, `og:locale`, `og:image` |
-| `og:image` | OK | `/images/og-default.svg` (substituir por PNG 1200×630 em produção) |
+| `og:image` | OK | `/images/og-default.png` (1200×630, Sprint 15) |
 | Twitter Card | OK | `summary_large_image` + `twitter:image` |
 | `meta robots` por página | OK | Layout + `noindex` em erro e 404 de conteúdo |
 | `robots.txt` | OK | `src/WebApp/wwwroot/robots.txt` |

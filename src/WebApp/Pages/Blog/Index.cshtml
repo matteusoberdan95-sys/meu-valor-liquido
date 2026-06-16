@@ -6,6 +6,18 @@
     ViewData["CanonicalPath"] = "/blog";
 }
 
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.BlogBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Blog</li>
+    </ol>
+</nav>
+
 <h1 class="valora-h1">Blog</h1>
 <p class="valora-lead valora-section">@Model.Posts.Count artigos educativos para entender melhor seus descontos e seu dinheiro.</p>
 

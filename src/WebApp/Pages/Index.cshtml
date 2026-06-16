@@ -23,22 +23,41 @@
 }
 
 <section class="valora-hero valora-section">
-    <h1 class="valora-h1">Entenda quanto você realmente recebe</h1>
-    <p class="valora-lead">Calculadoras trabalhistas, fiscais e financeiras com resultado em formato de extrato, explicação simples e aviso legal.</p>
-    <div class="valora-gap-buttons" style="margin-top: 2rem;">
-        <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="proposta-salarial">Comparar proposta salarial</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/CltPj/Index">CLT x PJ</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/Duvidas/Index">Dúvidas populares</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/MeuPainel/Index">Meu painel</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/Widget/Index">Widget incorporável</a>
-        <a class="valora-btn valora-btn-outline" asp-page="/Blog/Index">Ler o blog</a>
+    <div class="valora-hero-split">
+        <div>
+            <span class="valora-hero-badge">Calculadoras gratuitas · Tabelas 2026</span>
+            <h1 class="valora-h1">Entenda quanto você recebe, quanto desconta e quanto sobra</h1>
+            <p class="valora-lead">Ferramentas trabalhistas, fiscais e financeiras com extrato claro, explicação simples e aviso legal em cada resultado.</p>
+            <div class="valora-gap-buttons" style="margin-top: 1.5rem;">
+                <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">
+                    <span class="material-symbols-outlined" style="font-size: 1.125rem;">calculate</span>
+                    Ver calculadoras
+                </a>
+                <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">Salário líquido</a>
+            </div>
+            <div class="valora-trust-row" style="margin-top: 1.5rem;">
+                <span class="valora-trust-item"><span class="material-symbols-outlined">verified</span> Gratuito</span>
+                <span class="valora-trust-item"><span class="material-symbols-outlined">smartphone</span> Mobile-first</span>
+                <span class="valora-trust-item"><span class="material-symbols-outlined">school</span> Estimativa educativa</span>
+            </div>
+        </div>
+        <div class="valora-hero-visual" aria-hidden="true">
+            <div class="valora-hero-visual-bar"></div>
+            <div class="valora-hero-visual-field"></div>
+            <div class="valora-hero-visual-field"></div>
+            <div class="valora-hero-visual-btn">Calcular</div>
+        </div>
     </div>
-    <div class="valora-trust-row">
-        <span class="valora-trust-item"><span class="material-symbols-outlined">verified</span> Gratuito</span>
-        <span class="valora-trust-item"><span class="material-symbols-outlined">smartphone</span> Mobile-first</span>
-        <span class="valora-trust-item"><span class="material-symbols-outlined">calendar_today</span> Tabelas 2026</span>
-        <span class="valora-trust-item"><span class="material-symbols-outlined">school</span> Estimativa educativa</span>
+</section>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Acesso rápido</h2>
+    <div class="valora-filter-chips">
+        <a class="valora-filter-chip" asp-page="/CltPj/Index">CLT x PJ</a>
+        <a class="valora-filter-chip" asp-page="/Duvidas/Index">Dúvidas populares</a>
+        <a class="valora-filter-chip" asp-page="/MeuPainel/Index">Meu painel</a>
+        <a class="valora-filter-chip" asp-page="/Widget/Index">Widget</a>
+        <a class="valora-filter-chip" asp-page="/Blog/Index">Blog</a>
     </div>
 </section>
 
@@ -48,7 +67,7 @@
     <div class="valora-card-grid">
         @foreach (var calculator in Model.Calculators.Take(6))
         {
-            <article class="valora-card">
+            <article class="valora-card @CalculatorUiHelper.GetAccentCardClass(calculator.Category)">
                 <a class="valora-calc-card" asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
                     <div class="valora-calc-card-icon">
                         <span class="material-symbols-outlined">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>

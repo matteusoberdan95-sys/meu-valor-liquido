@@ -28,7 +28,7 @@
         <div class="valora-card-grid">
             @foreach (var question in Model.Questions.Where(q => q.Category == category))
             {
-                <article class="valora-card">
+                <article class="valora-card valora-card--accent-trabalhista">
                     <a class="valora-calc-card" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">
                         <div class="valora-calc-card-icon">
                             <span class="material-symbols-outlined">help</span>

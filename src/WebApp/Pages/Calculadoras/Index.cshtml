@@ -1,65 +1,60 @@
 @page "/calculadoras"
 @model MeuValorLiquido.WebApp.Pages.Calculadoras.IndexModel
 @{
-    ViewData["Title"] = "Calculadoras";
+    ViewData["Title"] = "Central de calculadoras";
     ViewData["Description"] = "Escolha uma calculadora trabalhista, fiscal ou financeira.";
     ViewData["CanonicalPath"] = "/calculadoras";
 }
 
-<h1 class="valora-h1">Calculadoras</h1>
-<p class="valora-lead valora-section">Estime descontos, líquidos, juros ou parcelas. Os resultados são educativos e não substituem conferência profissional.</p>
+<h1 class="valora-h1">Central de calculadoras</h1>
+<p class="valora-lead valora-section">Estime descontos, líquidos, juros ou parcelas. Resultados educativos com extrato e aviso legal.</p>
 
-<div class="valora-page-layout">
-    <aside class="valora-sidebar" aria-label="Filtrar por categoria">
-        <p class="valora-sidebar-title">CATEGORIAS</p>
-        <a class="valora-filter-btn @(string.IsNullOrEmpty(Model.Category) ? "active" : "")"
-           asp-page="/Calculadoras/Index">
-            <span class="material-symbols-outlined">apps</span>
-            Todas
+<div class="valora-filter-chips valora-section" aria-label="Filtrar por categoria">
+    <a class="valora-filter-chip @(string.IsNullOrEmpty(Model.Category) ? "active" : "")"
+       asp-page="/Calculadoras/Index">
+        <span class="material-symbols-outlined" style="font-size: 1rem;">apps</span>
+        Todas
+    </a>
+    @foreach (var category in Model.Categories)
+    {
+        var icon = category.ToLowerInvariant() switch
+        {
+            "trabalhista" => "work",
+            "fiscal" => "receipt_long",
+            "financeiro" => "savings",
+            _ => "category"
+        };
+        <a class="valora-filter-chip @(Model.Category == category ? "active" : "")"
+           asp-page="/Calculadoras/Index" asp-route-categoria="@category">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">@icon</span>
+            @category
         </a>
-        @foreach (var category in Model.Categories)
-        {
-            var icon = category.ToLowerInvariant() switch
-            {
-                "trabalhista" => "work",
-                "fiscal" => "receipt_long",
-                "financeiro" => "savings",
-                _ => "category"
-            };
-            <a class="valora-filter-btn @(Model.Category == category ? "active" : "")"
-               asp-page="/Calculadoras/Index" asp-route-categoria="@category">
-                <span class="material-symbols-outlined">@icon</span>
-                @category
-            </a>
-        }
-    </aside>
+    }
+</div>
 
-    <div>
-        @if (Model.Calculators.Count == 0)
+@if (Model.Calculators.Count == 0)
+{
+    <p class="valora-text-muted">Nenhuma calculadora encontrada nesta categoria.</p>
+}
+else
+{
+    <div class="valora-card-grid">
+        @foreach (var calculator in Model.Calculators)
         {
-            <p class="valora-text-muted">Nenhuma calculadora encontrada nesta categoria.</p>
-        }
-        else
-        {
-            <div class="valora-card-grid">
-                @foreach (var calculator in Model.Calculators)
-                {
-                    <article class="valora-card">
-                        <a class="valora-calc-card" asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
-                            <div class="valora-calc-card-icon">
-                                <span class="material-symbols-outlined">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
-                            </div>
-                            <partial name="Shared/_CalculatorCategoryBadge" model="calculator.Category" />
-                            <h2 class="valora-h3" style="margin-top: 0.75rem;">@calculator.Name</h2>
-                            <p class="valora-text-muted valora-text-sm" style="flex: 1;">@calculator.Summary</p>
-                            <div class="valora-calc-card-footer">
-                                Calcular
-                                <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
-                            </div>
-                        </a>
-                    </article>
-                }
-            </div>
+            <article class="valora-card @CalculatorUiHelper.GetAccentCardClass(calculator.Category)">
+                <a class="valora-calc-card" asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
+                    <div class="valora-calc-card-icon">
+                        <span class="material-symbols-outlined">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
+                    </div>
+                    <partial name="Shared/_CalculatorCategoryBadge" model="calculator.Category" />
+                    <h2 class="valora-h3" style="margin-top: 0.75rem;">@calculator.Name</h2>
+                    <p class="valora-text-muted valora-text-sm" style="flex: 1;">@calculator.Summary</p>
+                    <div class="valora-calc-card-footer">
+                        Acessar
+                        <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
+                    </div>
+                </a>
+            </article>
         }
     </div>
-</div>
+}

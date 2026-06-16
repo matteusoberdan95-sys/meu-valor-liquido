@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 15–18
+- Redesign UI/UX v2 (Stitch Valores Públicos): brand assets Gemini, tokens CSS, home, calculadoras, hubs, ad slots e embed.
+
 ## Sprint 14
 - Institucional + AdSense readiness: páginas expandidas, `/como-calculamos`, `AdsOptions` configurável e banner de cookies.
 

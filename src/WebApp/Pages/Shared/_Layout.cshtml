@@ -36,6 +36,9 @@
     <meta name="twitter:description" content="@description" />
     <meta name="twitter:image" content="@ogImageUrl" />
     <title>@title - Meu Valor Líquido</title>
+    <link rel="icon" href="~/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/icons/icon-32.png" asp-append-version="true" />
+    <link rel="apple-touch-icon" href="~/apple-touch-icon.png" asp-append-version="true" />
     <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,7 +51,9 @@
 <body>
     <header class="valora-header">
         <div class="valora-container valora-header-inner">
-            <a class="valora-brand" asp-page="/Index">Meu Valor Líquido</a>
+            <a class="valora-brand" asp-page="/Index">
+                <img class="valora-brand-logo" src="~/images/brand/logo-horizontal.png" asp-append-version="true" alt="Meu Valor Líquido" width="200" height="40" />
+            </a>
             <nav aria-label="Principal">
                 <ul class="valora-nav">
                     <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
@@ -87,7 +92,7 @@
     <footer class="valora-footer">
         <div class="valora-container valora-footer-inner">
             <div>
-                <strong class="valora-brand">Meu Valor Líquido</strong>
+                <img class="valora-brand-logo valora-brand-logo--footer" src="~/images/brand/logo-horizontal.png" asp-append-version="true" alt="Meu Valor Líquido" width="180" height="36" />
                 <p class="valora-text-muted valora-text-sm" style="margin: 0.5rem 0 0;">Entenda quanto você recebe, quanto desconta e quanto sobra.</p>
             </div>
             <div class="valora-footer-links">

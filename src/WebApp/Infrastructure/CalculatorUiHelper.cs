@@ -32,4 +32,12 @@ public static class CalculatorUiHelper
         "financeiro" => "valora-badge-financeiro",
         _ => "valora-badge-trabalhista"
     };
+
+    public static string GetAccentCardClass(string category) => category.ToLowerInvariant() switch
+    {
+        "trabalhista" => "valora-card--accent-trabalhista",
+        "fiscal" => "valora-card--accent-fiscal",
+        "financeiro" => "valora-card--accent-financeiro",
+        _ => "valora-card--accent-financeiro"
+    };
 }

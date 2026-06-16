@@ -1,32 +1,39 @@
-/* Valora Design System — baseado em stitch_meu_valor_liquido_ui_ux/valora/DESIGN.md */
+/* Valora Design System — stitch_redesign_meu_valor_l_quido/valores_p_blicos/DESIGN.md */
 
 :root {
-  --valora-primary: #00685f;
-  --valora-primary-container: #008378;
+  --valora-primary: #004e47;
+  --valora-primary-container: #00685f;
   --valora-on-primary: #ffffff;
-  --valora-on-primary-container: #f4fffc;
+  --valora-on-primary-container: #93e4d8;
   --valora-background: #f9f9ff;
-  --valora-surface: #f9f9ff;
+  --valora-surface: #ffffff;
   --valora-surface-container-lowest: #ffffff;
-  --valora-surface-container-low: #f0f3ff;
-  --valora-surface-container: #e7eefe;
-  --valora-on-surface: #151c27;
-  --valora-on-surface-variant: #3d4947;
-  --valora-outline: #6d7a77;
-  --valora-outline-variant: #bcc9c6;
-  --valora-secondary-container: #d6e0f3;
-  --valora-on-secondary-container: #596373;
+  --valora-surface-container-low: #f3f3f9;
+  --valora-surface-container: #ededf3;
+  --valora-on-surface: #191c20;
+  --valora-on-surface-variant: #3e4947;
+  --valora-text-main: #1a202c;
+  --valora-text-muted: #4a5568;
+  --valora-outline: #6e7977;
+  --valora-outline-variant: #bec9c6;
+  --valora-border-subtle: #e2e8f0;
+  --valora-secondary: #225abd;
+  --valora-secondary-container: #6a98ff;
+  --valora-trabalhista-blue: #1351b4;
+  --valora-financeiro-teal: #00685f;
+  --valora-fiscal-purple: #6b21a8;
   --valora-warning-bg: #fef3c7;
   --valora-warning-border: #f59e0b;
   --valora-warning-text: #92400e;
-  --valora-badge-trabalhista-bg: #dbeafe;
-  --valora-badge-trabalhista-text: #1e40af;
-  --valora-badge-fiscal-bg: #f3e8ff;
+  --valora-badge-trabalhista-bg: rgb(19 81 180 / 10%);
+  --valora-badge-trabalhista-text: #1351b4;
+  --valora-badge-fiscal-bg: rgb(107 33 168 / 10%);
   --valora-badge-fiscal-text: #6b21a8;
-  --valora-badge-financeiro-bg: #e0f2f1;
-  --valora-badge-financeiro-text: #00695c;
+  --valora-badge-financeiro-bg: rgb(0 104 95 / 10%);
+  --valora-badge-financeiro-text: #00685f;
   --valora-container-max: 1200px;
-  --valora-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  --valora-shadow: 0 4px 6px -1px rgb(0 0 0 / 6%), 0 2px 4px -1px rgb(0 0 0 / 4%);
+  --valora-shadow-result: 0 8px 24px rgb(0 0 0 / 4%);
   --valora-radius-sm: 0.25rem;
   --valora-radius-md: 0.5rem;
   --valora-radius-lg: 0.75rem;
@@ -71,8 +78,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--valora-surface);
-  box-shadow: var(--valora-shadow);
+  background: rgb(255 255 255 / 95%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--valora-border-subtle);
 }
 
 .valora-header-inner {
@@ -83,11 +91,23 @@ body {
 }
 
 .valora-brand {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--valora-primary);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  letter-spacing: -0.02em;
+  line-height: 0;
+}
+
+.valora-brand-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+  max-width: min(200px, 55vw);
+  object-fit: contain;
+}
+
+.valora-brand-logo--footer {
+  height: 1.75rem;
+  max-width: 180px;
 }
 
 .valora-nav {
@@ -281,13 +301,12 @@ body {
 .valora-btn:active { transform: translateY(1px); }
 
 .valora-btn-primary {
-  background: var(--valora-primary);
+  background: var(--valora-primary-container);
   color: var(--valora-on-primary);
-  box-shadow: var(--valora-shadow);
 }
 
 .valora-btn-primary:hover {
-  background: var(--valora-primary-container);
+  background: var(--valora-primary);
   color: var(--valora-on-primary);
 }
 
@@ -304,16 +323,157 @@ body {
 /* Cards */
 .valora-card {
   background: var(--valora-surface-container-lowest);
-  border: 1px solid rgb(188 201 198 / 20%);
-  border-radius: var(--valora-radius-xl);
-  box-shadow: var(--valora-shadow);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  box-shadow: none;
   padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .valora-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%);
+  border-color: var(--valora-primary-container);
+  box-shadow: var(--valora-shadow);
+  transform: none;
+}
+
+.valora-card--accent-trabalhista { border-left: 4px solid var(--valora-trabalhista-blue); }
+.valora-card--accent-fiscal { border-left: 4px solid var(--valora-fiscal-purple); }
+.valora-card--accent-financeiro { border-left: 4px solid var(--valora-financeiro-teal); }
+
+.valora-monetary-display {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--valora-primary-container);
+  line-height: 1.2;
+}
+
+.valora-hero-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgb(0 104 95 / 10%);
+  color: var(--valora-primary-container);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+.valora-hero-split {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .valora-hero-split { grid-template-columns: 1fr 1fr; }
+}
+
+.valora-hero-visual {
+  background: var(--valora-surface-container-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--valora-shadow-result);
+}
+
+.valora-hero-visual-bar {
+  height: 2.5rem;
+  background: var(--valora-primary-container);
+  border-radius: var(--valora-radius-md);
+  margin-bottom: 1rem;
+}
+
+.valora-hero-visual-field {
+  height: 2.75rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-md);
+  background: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.valora-hero-visual-btn {
+  height: 2.75rem;
+  background: var(--valora-primary-container);
+  border-radius: var(--valora-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.valora-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.valora-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 9999px;
+  background: #fff;
+  color: var(--valora-on-surface-variant);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.valora-filter-chip:hover,
+.valora-filter-chip.active {
+  border-color: var(--valora-primary-container);
+  color: var(--valora-primary-container);
+  background: rgb(0 104 95 / 6%);
+}
+
+.valora-result-card {
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  background: #fff;
+  box-shadow: var(--valora-shadow-result);
+  padding: 1.25rem;
+}
+
+.valora-input-currency {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-sm);
+  overflow: hidden;
+  background: #fff;
+}
+
+.valora-input-currency:focus-within {
+  border-color: var(--valora-primary-container);
+  box-shadow: 0 0 0 2px rgb(0 104 95 / 15%);
+}
+
+.valora-input-currency-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  background: var(--valora-surface-container-low);
+  color: var(--valora-text-muted);
+  font-weight: 600;
+  border-right: 1px solid var(--valora-border-subtle);
+}
+
+.valora-input-currency input {
+  flex: 1;
+  border: 0;
+  padding: 0.75rem;
+  font-size: 1rem;
+  min-width: 0;
+  outline: none;
+  background: transparent;
 }
 
 .valora-card-grid {
@@ -509,49 +669,45 @@ body {
 
 /* Result panel */
 .valora-result-panel {
-  background: var(--valora-primary-container);
-  color: var(--valora-on-primary-container);
-  border-radius: var(--valora-radius-xl);
+  background: #fff;
+  color: var(--valora-text-main);
+  border: 1px solid var(--valora-border-subtle);
+  border-left: 4px solid var(--valora-primary-container);
+  border-radius: var(--valora-radius-lg);
   padding: 1.5rem;
-  box-shadow: 0 10px 25px rgb(0 0 0 / 12%);
+  box-shadow: var(--valora-shadow-result);
   position: relative;
-  overflow: hidden;
 }
 
 .valora-result-panel::before {
-  content: "";
-  position: absolute;
-  top: -2rem;
-  right: -2rem;
-  width: 8rem;
-  height: 8rem;
-  background: rgb(255 255 255 / 8%);
-  border-radius: 50%;
+  display: none;
 }
 
 .valora-result-line {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgb(255 255 255 / 20%);
+  border-bottom: 1px solid var(--valora-border-subtle);
   font-size: 0.9375rem;
+  color: var(--valora-text-main);
 }
 
-.valora-result-line.discount { font-style: italic; opacity: 0.9; }
+.valora-result-line.discount { color: var(--valora-text-muted); }
 
 .valora-result-total {
   margin-top: 1rem;
   padding: 1.25rem;
-  background: rgb(255 255 255 / 10%);
-  border-radius: var(--valora-radius-lg);
+  background: var(--valora-surface-container-low);
+  border-radius: var(--valora-radius-md);
   text-align: center;
+  border: 1px solid var(--valora-border-subtle);
 }
 
 .valora-result-total-label {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  opacity: 0.8;
+  color: var(--valora-text-muted);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -559,7 +715,8 @@ body {
 .valora-result-total-value {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+  color: var(--valora-primary-container);
 }
 
 .valora-share-actions {
@@ -1034,6 +1191,21 @@ body {
 }
 
 /* Ad slot — altura reservada para reduzir CLS; ver docs/ADSENSE_COMPLIANCE.md */
+.ad-slot-wrap {
+  margin: 1.5rem 0;
+}
+
+.ad-slot-label {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--valora-outline);
+  margin-bottom: 0.5rem;
+}
+
 .ad-slot {
   background: var(--valora-surface-container-low);
   border: 1px dashed var(--valora-outline-variant) !important;
@@ -1045,11 +1217,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin: 0;
   padding: 0.75rem;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--valora-outline);
 }

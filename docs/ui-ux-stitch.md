@@ -1,45 +1,53 @@
-# UI/UX — Design Stitch / Valora
+# UI/UX — Design Stitch v2 / Valores Públicos
 
-A pasta `stitch_meu_valor_l_quido_ui_ux/` na raiz do repositório contém os protótipos gerados no Google Stitch e o design system **Valora**.
+Redesign em [`stitch_redesign_meu_valor_l_quido/`](../stitch_redesign_meu_valor_l_quido/).
 
-## Estrutura
+A pasta legada `stitch_meu_valor_l_quido_ui_ux/` (Valora v1) permanece apenas como referência histórica.
 
-```
-stitch_meu_valor_l_quido_ui_ux/
-└── stitch_meu_valor_l_quido_ui_ux/
-    ├── valora/DESIGN.md          # Tokens, tipografia e componentes
-    ├── home_desktop/             # Home (desktop)
-    ├── home_mobile/              # Home (mobile)
-    ├── calculadoras_index_*      # Listagem de calculadoras
-    ├── sal_rio_l_quido_*         # Calculadora de salário líquido
-    ├── blog_mobile/              # Blog
-    └── contato_mobile/           # Contato
-```
+## Design system canônico
 
-Cada pasta de tela inclui `code.html` (HTML/Tailwind de referência) e `screen.png` (screenshot).
+- **Nome:** Valores Públicos
+- **Arquivo:** `stitch_redesign_meu_valor_l_quido/valores_p_blicos/DESIGN.md`
+- **Primary:** `#00685F` / `#004E47`
+- **Fonte:** Inter + Material Symbols Outlined
+- **CSS:** `src/WebApp/wwwroot/css/site.css` (classes `valora-*`)
 
-## Implementação no WebApp
+Descartar `lumina_modern/` (variante azul não usada nas telas).
 
-O design foi portado para CSS puro em `src/WebApp/wwwroot/css/site.css` (classes `valora-*`), sem depender do Tailwind CDN em produção.
+## Brand assets (Gemini)
 
-| Stitch / Valora | WebApp |
-|-----------------|--------|
-| Inter + Material Symbols | `_Layout.cshtml` (Google Fonts) |
-| Tokens de cor (`#00685f`, `#f9f9ff`, etc.) | `:root` em `site.css` |
-| Header sticky, nav, footer | `_Layout.cshtml` |
-| Cards de calculadora + ícones | `Index.cshtml`, `Calculadoras/Index.cshtml` |
-| Sidebar de categorias | `Calculadoras/Index.cshtml` |
-| Form + extrato (2 colunas) | `Calculadoras/Details.cshtml` |
-| Badges por categoria | `_CalculatorCategoryBadge.cshtml` |
-| FAQ accordion | `Calculadoras/Details.cshtml` |
-| Ad placeholders | `_AdSlot.cshtml` |
-| Mapeamento slug → ícone | `Infrastructure/CalculatorUiHelper.cs` |
+| Asset | Caminho WebApp |
+|-------|----------------|
+| Logo horizontal | `wwwroot/images/brand/logo-horizontal.png` |
+| Favicon | `wwwroot/favicon.ico`, `images/icons/icon-32.png` |
+| Apple touch | `wwwroot/apple-touch-icon.png` |
+| OG image | `wwwroot/images/og-default.png` |
+| PWA | `images/icons/icon-192.png`, `icon-512.png` |
 
-## Referência rápida (DESIGN.md)
+Origem: `stitch_redesign_meu_valor_l_quido/icons/`
 
-- **Primary:** `#00685f`
-- **Background:** `#f9f9ff`
-- **Fonte:** Inter
-- **Ícones:** Material Symbols Outlined
+## Mapeamento Stitch → WebApp
 
-Ao criar novas telas ou ajustar UX, consulte primeiro os HTMLs em `stitch_meu_valor_l_quido_ui_ux/` e mantenha consistência com as classes `valora-*`.
+| Stitch | WebApp |
+|--------|--------|
+| `home_meu_valor_l_quido_*` | `Pages/Index.cshtml` |
+| `central_de_calculadoras_*` | `Pages/Calculadoras/Index.cshtml` |
+| `calculadora_sal_rio_l_quido_*` | `Pages/Calculadoras/Details.cshtml` |
+| `comparador_clt_x_pj_*` | `Pages/CltPj/` |
+| `faq_hub_*` | `Pages/Duvidas/` |
+| `blog_hub_*` / `artigo_*` | `Pages/Blog/` |
+| `metodologia_*` / `como_calculamos_*` | `Pages/ComoCalculamos.cshtml` |
+| `meu_painel_*` | `Pages/MeuPainel/Index.cshtml` |
+
+Páginas sem mockup Stitch seguem o mesmo design system: Widget, Newsletter, Contato, institucionais, faixas salariais, embed.
+
+## Componentes WebApp
+
+| Padrão Stitch | Implementação |
+|---------------|---------------|
+| Cards com borda sutil | `.valora-card` + `--accent-*` |
+| Chips de filtro | `.valora-filter-chip` |
+| Resultado / extrato | `.valora-result-panel` |
+| Valores R$ | `.valora-monetary-display` |
+| Anúncios | `_AdSlot.cshtml` → “Espaço publicitário” |
+| Logo | `_Layout.cshtml` → `logo-horizontal.png` |

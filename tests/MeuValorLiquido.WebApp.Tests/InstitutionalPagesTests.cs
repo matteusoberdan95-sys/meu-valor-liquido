@@ -37,7 +37,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     {
         var html = await client.GetStringAsync("/calculadoras/salario-liquido");
 
-        html.Should().Contain("Espaço reservado para anúncio");
+        html.Should().Contain("Espaço publicitário");
         html.Should().NotContain("adsbygoogle");
     }
 }

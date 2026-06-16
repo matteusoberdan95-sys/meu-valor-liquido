@@ -66,7 +66,8 @@ Implementação:
 
 ### Rótulos dos placeholders
 
-- Usar texto neutro: “Espaço reservado para anúncio”.
+- Usar texto neutro: “Espaço publicitário” (implementado em `_AdSlot.cshtml`).
+- Placeholder interno do módulo Ads pode manter texto técnico; a UI exibe o rótulo público.
 - **Não** usar: “Clique no anúncio”, “Anúncio importante”, setas apontando para o slot.
 
 ### Mobile

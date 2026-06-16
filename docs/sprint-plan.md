@@ -1,5 +1,60 @@
 # Sprint Plan
 
+## Sprint 19 - Deploy e go-live (próxima)
+
+**Objetivo:** publicar com nova identidade visual (Valores Públicos) e solicitar AdSense.
+
+**Agents:** Infrastructure, Security, SEO/Content, Documentation.
+
+**Entregas:**
+- CI verde (`.github/workflows/ci.yml`)
+- Ambiente produção: domínio, HTTPS, `Site:BaseUrl` em variáveis de ambiente
+- `favicon.ico`, `og-default.png` e logo servidos em produção
+- Smoke test: calculadoras, blog, institucionais, share/PDF, health
+- Revisão `docs/adsense-checklist.md` e solicitar conta AdSense
+
+**Definition of Done:** site público estável; checklist AdSense manual OK; `dotnet test` verde no CI.
+
+---
+
+## Sprint 18 - Lacunas UI + AdSense UX (concluída)
+
+**Objetivo:** páginas sem mockup Stitch no novo visual; slots e embed alinhados.
+
+**Entregas:**
+- Widget, Newsletter, Contato, institucionais, faixas salariais com tokens Valores Públicos
+- `_EmbedLayout` com favicon e logo
+- `_AdSlot` com label “Espaço publicitário”
+- Cookie consent estilizado
+
+**Definition of Done:** páginas públicas consistentes; testes de ads/institucionais verdes.
+
+---
+
+## Sprint 17 - Hubs de conteúdo (concluída)
+
+**Entregas:** CLT x PJ, Dúvidas, Blog, Como calculamos, Meu painel — cards com accent border e breadcrumbs.
+
+---
+
+## Sprint 16 - Núcleo UI (concluída)
+
+**Entregas:** Home hero split, central de calculadoras com chips, painel de resultado branco, badges institucionais.
+
+---
+
+## Sprint 15 - Brand + tokens + shell (concluída)
+
+**Entregas:**
+- Ícones Gemini em `wwwroot/` (logo, favicon, OG PNG, apple-touch)
+- Tokens Valores Públicos em `site.css`
+- Logo no `_Layout`; `SeoMetadataHelper.DefaultOgImagePath` → PNG
+- `BrandAssetsTests`
+
+**Definition of Done:** marca visível em todas as páginas; `dotnet test` verde.
+
+---
+
 ## Sprint 14 - Institucional + AdSense readiness (concluída)
 
 **Objetivo:** confiança para aprovação AdSense — páginas institucionais completas e infraestrutura de anúncios configurável.
@@ -207,7 +262,7 @@
 - Página `/mapa-do-site`
 - Sitemap com `/newsletter` e `/mapa-do-site`
 - `/Error` em português com `noindex`
-- Imagem OG padrão em `wwwroot/images/og-default.svg`
+- Imagem OG padrão em `wwwroot/images/og-default.png`
 
 **Definition of Done:** testes SEO verdes; metadados centralizados.
 
