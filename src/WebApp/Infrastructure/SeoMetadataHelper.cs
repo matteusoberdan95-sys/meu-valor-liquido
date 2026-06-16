@@ -67,4 +67,17 @@ public static class SeoMetadataHelper
         new("Blog", "/blog"),
         new(postTitle, $"/blog/{slug}")
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> SalaryBandHubBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Salário líquido por valor", "/salario-liquido")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> SalaryBandBreadcrumbs(int gross) =>
+    [
+        new("Início", "/"),
+        new("Salário líquido por valor", "/salario-liquido"),
+        new(SalaryBandCatalog.FormatCurrency(gross), SalaryBandCatalog.SlugPath(gross))
+    ];
 }

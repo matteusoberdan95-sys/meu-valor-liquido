@@ -11,6 +11,7 @@ public static class CalculatorsModule
         services.AddScoped<IInssCalculator, InssCalculator>();
         services.AddScoped<IIrrfCalculator, IrrfCalculator>();
         services.AddScoped<ITerminationTaxCalculator, TerminationTaxCalculator>();
+        services.AddScoped<NetSalaryCalculator>();
         services.AddScoped<CalculationEngine>();
         services.AddSingleton<ICalculatorFieldProfileProvider, CalculatorFieldProfileProvider>();
         services.AddScoped<ICalculatorApplicationService, CalculatorApplicationService>();

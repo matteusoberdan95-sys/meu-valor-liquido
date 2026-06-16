@@ -67,6 +67,8 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
 
         xml.Should().Contain("/newsletter");
         xml.Should().Contain("/mapa-do-site");
+        xml.Should().Contain("/salario-liquido");
+        xml.Should().Contain("/salario-liquido/3000");
     }
 
     [Fact]

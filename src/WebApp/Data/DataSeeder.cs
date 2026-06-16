@@ -182,7 +182,7 @@ public static class DataSeeder
     private static string GetEducationalContent(string slug) => slug switch
     {
         "salario-liquido" =>
-            "Informe o salário bruto, dependentes e descontos opcionais. O resultado mostra INSS, IRRF e o líquido estimado com base nas tabelas de 2026. Para o caminho inverso, use a <a href=\"/calculadoras/salario-bruto-necessario\">calculadora de salário bruto necessário</a>.",
+            "Informe o salário bruto, dependentes e descontos opcionais. O resultado mostra INSS, IRRF e o líquido estimado com base nas tabelas de 2026. Para o caminho inverso, use a <a href=\"/calculadoras/salario-bruto-necessario\">calculadora de salário bruto necessário</a>. Consulte também as <a href=\"/salario-liquido\">páginas por valor bruto</a>.",
         "salario-bruto-necessario" =>
             "Informe o salário líquido que você quer receber, dependentes e descontos (vale-transporte, vale-refeição e outros). A ferramenta estima o bruto necessário com busca binária sobre INSS e IRRF 2026. Compare com a <a href=\"/calculadoras/salario-liquido\">calculadora de salário líquido</a>.",
         "ferias" =>

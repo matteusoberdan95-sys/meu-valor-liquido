@@ -1,0 +1,55 @@
+@page "/salario-liquido"
+@model MeuValorLiquido.WebApp.Pages.SalarioLiquido.IndexModel
+@{
+    ViewData["Title"] = "Salário líquido por valor bruto (2026)";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.SalaryBandHubBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Salário líquido por valor</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Quanto sobra do seu salário bruto?</h1>
+<p class="valora-lead">
+    Páginas educativas com INSS e IRRF estimados para valores de salário comuns em @DateTime.Now.Year.
+    Cada página traz contexto sobre faixas de desconto e links para simular dependentes e benefícios.
+</p>
+
+<section class="valora-section">
+    <h2 class="valora-h2">Escolha um valor bruto</h2>
+    <div class="valora-card-grid">
+        @foreach (var band in Model.Bands)
+        {
+            <article class="valora-card">
+                <a class="valora-calc-card" asp-page="/SalarioLiquido/Faixa" asp-route-valor="@band">
+                    <div class="valora-calc-card-icon">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                    <h3 class="valora-h3" style="margin-top: 0.75rem;">@SalaryBandCatalog.FormatCurrency(band)</h3>
+                    <p class="valora-text-muted valora-text-sm" style="flex: 1;">Ver líquido estimado, INSS e IRRF</p>
+                    <div class="valora-calc-card-footer">
+                        Consultar
+                        <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
+                    </div>
+                </a>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h3">Precisa de mais detalhes?</h2>
+    <p class="valora-text-muted valora-text-sm" style="margin: 0;">
+        Use a <a asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">calculadora de salário líquido</a>
+        para dependentes e descontos, ou a
+        <a asp-page="/Calculadoras/Details" asp-route-slug="salario-bruto-necessario">calculadora inversa</a>
+        para descobrir o bruto necessário.
+    </p>
+</section>

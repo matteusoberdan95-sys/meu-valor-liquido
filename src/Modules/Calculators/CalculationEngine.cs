@@ -16,12 +16,13 @@ public sealed class CalculationEngine
     public CalculationEngine(
         IInssCalculator inssCalculator,
         IIrrfCalculator irrfCalculator,
-        ITerminationTaxCalculator terminationTaxCalculator)
+        ITerminationTaxCalculator terminationTaxCalculator,
+        NetSalaryCalculator netSalaryCalculator)
     {
         this.inssCalculator = inssCalculator;
         this.irrfCalculator = irrfCalculator;
         this.terminationTaxCalculator = terminationTaxCalculator;
-        this.netSalaryCalculator = new NetSalaryCalculator(inssCalculator, irrfCalculator);
+        this.netSalaryCalculator = netSalaryCalculator;
     }
 
     public CalculationResult? Calculate(CalculatorDefinition definition, CalculatorInput input)

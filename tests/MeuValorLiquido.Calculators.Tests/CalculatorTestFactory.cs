@@ -9,7 +9,8 @@ internal static class CalculatorTestFactory
     {
         var inss = new InssCalculator();
         var irrf = new IrrfCalculator();
-        return new CalculationEngine(inss, irrf, new TerminationTaxCalculator(inss, irrf));
+        var netSalary = new NetSalaryCalculator(inss, irrf);
+        return new CalculationEngine(inss, irrf, new TerminationTaxCalculator(inss, irrf), netSalary);
     }
 
     public static CalculatorApplicationService CreateService() =>

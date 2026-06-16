@@ -20,6 +20,8 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/calculadoras")]
     [InlineData("/calculadoras/salario-liquido")]
     [InlineData("/calculadoras/salario-bruto-necessario")]
+    [InlineData("/salario-liquido")]
+    [InlineData("/salario-liquido/3000")]
     [InlineData("/sobre")]
     [InlineData("/contato")]
     [InlineData("/politica-de-privacidade")]
@@ -47,5 +49,12 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
 
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.MovedPermanently);
         response.Headers.Location!.ToString().Should().Contain("salario-bruto-necessario");
+    }
+
+    [Fact]
+    public async Task Invalid_Salary_Band_Should_Return_NotFound()
+    {
+        var response = await client.GetAsync("/salario-liquido/3333");
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.NotFound);
     }
 }

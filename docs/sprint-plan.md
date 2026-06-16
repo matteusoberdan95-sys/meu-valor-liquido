@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 3 - Páginas por faixa salarial (concluída)
+
+**Objetivo:** tráfego programático útil sem thin content.
+
+**Entregas:**
+- Hub `/salario-liquido` com 18 valores brutos indexáveis
+- Páginas `/salario-liquido/{valor}` com extrato, contexto editorial e FAQ por faixa
+- `SalaryBandCatalog` e `SalaryBandContentBuilder`
+- Sitemap, mapa do site, links cruzados com calculadoras
+- Prefill `?valor=` na calculadora de salário líquido
+
+**Definition of Done:** conteúdo único por faixa; `dotnet test` verde; URLs no sitemap.
+
+---
+
 ## Sprint 2 - Salário bruto necessário (concluída)
 
 **Objetivo:** calculadora inversa de alto valor para SEO e negociação salarial.
@@ -119,6 +134,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **3** | **Páginas por faixa salarial** | **Concluído** |
 | **2** | **Salário bruto necessário** | **Concluído** |
 | **1** | **SEO técnico essencial** | **Concluído** |
 | **0** | **Auditoria, segurança, docs monetização** | **Concluído** |

@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-- Sprint 2: calculadora inversa `salario-bruto-necessario` (busca binária), aliases SEO, links internos e testes.
+- Sprint 3: páginas programáticas `/salario-liquido/{valor}` com conteúdo por faixa, hub, sitemap e testes.
 
-## Sprint 1
+## Sprint 2
 - Sprint 0: auditoria, `ROADMAP_MONETIZACAO`, `SEO_CHECKLIST`, `ADSENSE_COMPLIANCE`, mascaramento de e-mail em logs, slots de anúncio com margem/CLS.
 - PostgreSQL + EF Core com migrations e seed inicial.
 - Tabelas INSS/IRRF 2026, `CalculationEngine` e perfis de campos por calculadora.

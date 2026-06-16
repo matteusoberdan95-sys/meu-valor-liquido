@@ -40,6 +40,12 @@ public class DetailsModel : PageModel
         if (Definition is not null)
         {
             Input = CalculatorInputDefaults.ForSlug(slug);
+            if (slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase)
+                && decimal.TryParse(Request.Query["valor"], out var presetGross)
+                && presetGross > 0m)
+            {
+                Input = Input with { Amount = presetGross };
+            }
         }
 
         return Page();

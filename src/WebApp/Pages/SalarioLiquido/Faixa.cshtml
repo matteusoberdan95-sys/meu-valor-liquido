@@ -1,0 +1,97 @@
+@page "/salario-liquido/{valor:int}"
+@model MeuValorLiquido.WebApp.Pages.SalarioLiquido.FaixaModel
+@{
+    ViewData["Title"] = Model.PageContent.Title;
+    ViewData["Description"] = Model.PageContent.Description;
+    ViewData["CanonicalPath"] = SalaryBandCatalog.SlugPath(Model.PageContent.GrossAmount);
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdFaq" model="Model.FaqSchemaItems" />
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.SalaryBandBreadcrumbs(Model.PageContent.GrossAmount)" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li><a asp-page="/SalarioLiquido/Index">Salário líquido por valor</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">@SalaryBandCatalog.FormatCurrency(Model.PageContent.GrossAmount)</li>
+    </ol>
+</nav>
+
+<header class="valora-section">
+    <span class="valora-badge valora-badge-trabalhista">Trabalhista</span>
+    <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.PageContent.Title</h1>
+    <p class="valora-lead">Estimativa educativa com tabelas INSS/IRRF @MeuValorLiquido.Modules.Calculators.Tax.BrTaxTables2026.Year, sem dependentes nem outros descontos.</p>
+</header>
+
+@if (Model.TopAdSlot is not null)
+{
+    <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+}
+
+<div class="valora-page-layout">
+    <div class="valora-stack-md">
+        <section class="valora-card valora-prose">
+            @Html.Raw(Model.PageContent.IntroHtml)
+            @Html.Raw(Model.PageContent.ContextHtml)
+            @Html.Raw(Model.PageContent.TipsHtml)
+        </section>
+
+        <div class="valora-disclaimer">
+            <span class="material-symbols-outlined">warning</span>
+            <p style="margin: 0;">Resultado estimado para fins educativos. Não substitui holerite, RH ou orientação contábil.</p>
+        </div>
+    </div>
+
+    <aside class="valora-calc-sidebar valora-stack-md">
+        <section class="valora-result-panel" aria-live="polite">
+            <h2 class="valora-h3" style="color: inherit; margin-bottom: 1rem;">Extrato estimado</h2>
+            <div class="valora-result-line">
+                <span>Salário bruto</span>
+                <strong>@Money.From(Model.Breakdown.Gross)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>INSS</span>
+                <strong>- @Money.From(Model.Breakdown.Inss)</strong>
+            </div>
+            <div class="valora-result-line discount">
+                <span>IRRF</span>
+                <strong>- @Money.From(Model.Breakdown.Irrf)</strong>
+            </div>
+            <div class="valora-result-total">
+                <span class="valora-result-total-label">VALOR LÍQUIDO ESTIMADO</span>
+                <span class="valora-result-total-value">@Money.From(Model.Breakdown.Net)</span>
+            </div>
+        </section>
+
+        <section class="valora-card">
+            <h2 class="valora-h3">Simular seu caso</h2>
+            <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+                Adicione dependentes, vale-transporte ou descubra o bruto para um líquido desejado.
+            </p>
+            <div class="valora-gap-buttons">
+                <a class="valora-btn valora-btn-primary" href="/calculadoras/salario-liquido?valor=@Model.PageContent.GrossAmount">Calculadora completa</a>
+                <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="salario-bruto-necessario">Bruto necessário</a>
+            </div>
+        </section>
+
+        @if (Model.BottomAdSlot is not null)
+        {
+            <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+        }
+    </aside>
+</div>
+
+<section class="valora-faq valora-section">
+    <h2 class="valora-h2">Perguntas frequentes</h2>
+    @foreach (var faq in Model.PageContent.FaqItems)
+    {
+        <details>
+            <summary>@faq.Question</summary>
+            <p class="valora-text-muted valora-text-sm">@Html.Raw(faq.Answer)</p>
+        </details>
+    }
+</section>
