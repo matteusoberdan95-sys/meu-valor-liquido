@@ -53,10 +53,10 @@ Objetivo: WebApp **igual** aos mocks em `stitch_redesign_meu_valor_l_quido/`, se
 - Home desktop: hero em duas colunas, workspace visual, trust row, bento 4 col, artigos
 - `/calculadoras`: bento 12 col, card CLT featured, ad slot, 4 secundários, CTA sugerir, busca `?q=`
 
-### Sprint 23 — Calculadora detail (próxima)
-- Layout de `calculadora_sal_rio_l_quido_*` (PNG mobile + desktop)
+### Sprint 23 — Calculadora detail (concluída)
+- Layout de `calculadora_sal_rio_l_quido_*`: hero teal, progresso, form card, botão CALCULAR AGORA, painel ESTIMATIVA ATUAL
 
-### Sprint 24 — CLT×PJ + FAQ
+### Sprint 24 — CLT×PJ + FAQ (próxima)
 - `comparador_clt_x_pj_cores_atualizadas_mobile`
 - `faq_hub_mobile`
 

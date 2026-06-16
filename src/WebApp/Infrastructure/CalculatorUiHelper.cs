@@ -25,6 +25,14 @@ public static class CalculatorUiHelper
     public static string GetIcon(string slug) =>
         Icons.TryGetValue(slug, out var icon) ? icon : "calculate";
 
+    public static string GetSimulationBadge(string category) => category.ToLowerInvariant() switch
+    {
+        "trabalhista" => "Simulação CLT",
+        "fiscal" => "Simulação fiscal",
+        "financeiro" => "Simulação financeira",
+        _ => "Simulação"
+    };
+
     public static string GetBadgeClass(string category) => category.ToLowerInvariant() switch
     {
         "trabalhista" => "valora-badge-trabalhista",

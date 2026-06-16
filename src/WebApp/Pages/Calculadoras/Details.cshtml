@@ -4,6 +4,10 @@
     ViewData["Title"] = Model.Definition?.SeoTitle ?? "Calculadora";
     ViewData["Description"] = Model.Definition?.SeoDescription ?? "Calculadora do Meu Valor Líquido.";
     ViewData["CanonicalPath"] = Model.Definition is null ? "/calculadoras" : $"/calculadoras/{Model.Definition.Slug}";
+    if (!Model.IsEmbedMode)
+    {
+        ViewData["BottomNavTab"] = "calc";
+    }
     var profile = Model.FieldProfile;
     if (Model.IsEmbedMode)
     {
@@ -29,44 +33,56 @@ else
         }
     }
 
-    if (!Model.IsEmbedMode)
-    {
-        <nav aria-label="breadcrumb">
-            <ol class="valora-breadcrumb">
-                <li><a asp-page="/Index">Início</a></li>
-                <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-                <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
-                <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-                <li class="active" aria-current="page">@Model.Definition.Name</li>
-            </ol>
-        </nav>
-    }
+    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : "valora-stitch-calc-detail")">
+        @if (!Model.IsEmbedMode)
+        {
+            <header class="valora-stitch-calc-detail-hero">
+                <div class="valora-stitch-calc-detail-hero-row">
+                    <a class="valora-stitch-calc-back" asp-page="/Calculadoras/Index" aria-label="Voltar para calculadoras">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                    </a>
+                    <div class="valora-stitch-calc-detail-head">
+                        <h1 class="valora-stitch-calc-detail-title">@Model.Definition.Name</h1>
+                        <span class="valora-stitch-calc-detail-badge">@CalculatorUiHelper.GetSimulationBadge(Model.Definition.Category)</span>
+                    </div>
+                </div>
+                <div class="valora-stitch-calc-progress" aria-hidden="true">
+                    <span class="valora-stitch-calc-progress-bar"></span>
+                </div>
+            </header>
 
-    <header class="@(Model.IsEmbedMode ? "valora-embed-header" : "valora-section")">
-        @if (!Model.IsEmbedMode)
-        {
-            <partial name="Shared/_CalculatorCategoryBadge" model="Model.Definition.Category" />
-        }
-        <h1 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-h1")" style="@(Model.IsEmbedMode ? "margin: 0;" : "margin-top: 0.75rem;")">@Model.Definition.Name</h1>
-        @if (!Model.IsEmbedMode)
-        {
-            <p class="valora-lead">@Model.Definition.Summary</p>
+            <nav class="valora-breadcrumb valora-stitch-calc-detail-breadcrumb" aria-label="breadcrumb">
+                <ol class="valora-breadcrumb">
+                    <li><a asp-page="/Index">Início</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li class="active" aria-current="page">@Model.Definition.Name</li>
+                </ol>
+            </nav>
+
+            <p class="valora-stitch-calc-detail-lead">@Model.Definition.Summary</p>
+
+            @if (Model.TopAdSlot is not null)
+            {
+                <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+            }
         }
         else
         {
-            <p class="valora-text-muted valora-text-sm" style="margin: 0.35rem 0 0;">@Model.Definition.Summary</p>
+            <header class="valora-embed-header">
+                <h1 class="valora-h3" style="margin: 0;">@Model.Definition.Name</h1>
+                <p class="valora-text-muted valora-text-sm" style="margin: 0.35rem 0 0;">@Model.Definition.Summary</p>
+            </header>
         }
-    </header>
 
-    @if (!Model.IsEmbedMode && Model.TopAdSlot is not null)
-    {
-        <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
-    }
-
-    <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : "valora-calc-layout valora-section")">
-        <div class="valora-stack-md">
-            <form method="post" class="valora-form-card valora-stack-md" asp-route-slug="@Model.Definition.Slug" asp-route-embed="@(Model.IsEmbedMode ? "1" : null)">
-                <h2 class="valora-h3">Informe seus dados</h2>
+        <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : "valora-stitch-calc-detail-grid")">
+        <div class="valora-stack-md valora-stitch-calc-detail-main">
+            <form method="post"
+                  class="@(Model.IsEmbedMode ? "valora-form-card valora-stack-md" : "valora-form-card valora-stitch-calc-form valora-stack-md")"
+                  asp-route-slug="@Model.Definition.Slug"
+                  asp-route-embed="@(Model.IsEmbedMode ? "1" : null)">
+                <h2 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-stitch-calc-form-title")">Informe seus dados</h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="valora-form-row">
                     @if (profile.ShowTerminationReason)
@@ -391,31 +407,50 @@ else
                         </div>
                     }
                 </div>
-                <button class="valora-btn valora-btn-primary" type="submit">Calcular agora</button>
+                <button class="@(Model.IsEmbedMode ? "valora-btn valora-btn-primary" : "valora-stitch-btn valora-stitch-btn--primary valora-stitch-calc-submit")" type="submit">
+                    @(Model.IsEmbedMode ? "Calcular agora" : "CALCULAR AGORA")
+                </button>
             </form>
 
             @if (!Model.IsEmbedMode)
+            {
+            <p class="valora-stitch-calc-footer-hint">
+                Os resultados são estimativas educativas. Consulte seu RH ou contador para valores oficiais.
+            </p>
+
+            <section class="valora-card valora-stitch-calc-edu">
+                <h2 class="valora-h3">Como usar esta calculadora</h2>
+                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent is null ? "Preencha os campos indicados e use o resultado como estimativa educativa." : Html.Raw(Model.Definition.EducationalContent))</p>
+            </section>
+            }
+            else
             {
             <div class="valora-disclaimer">
                 <span class="material-symbols-outlined">warning</span>
                 <p style="margin: 0;">Os resultados são estimativas educativas baseados nas tabelas vigentes. Consulte seu RH ou contador para valores oficiais.</p>
             </div>
-
-            <section class="valora-card">
-                <h2 class="valora-h3">Como usar esta calculadora</h2>
-                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent is null ? "Preencha os campos indicados e use o resultado como estimativa educativa." : Html.Raw(Model.Definition.EducationalContent))</p>
-            </section>
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : "valora-calc-sidebar valora-stack-md")">
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : $"valora-stitch-calc-estimate valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
             @if (Model.ResultPanel is not null)
             {
+                @if (!Model.IsEmbedMode)
+                {
+                    <p class="valora-stitch-calc-estimate-kicker">ESTIMATIVA ATUAL</p>
+                }
                 <partial name="Shared/_CalculatorResultPanel" model="Model.ResultPanel" />
+                @if (Model.IsEmbedMode)
+                {
                 <div class="valora-disclaimer">
                     <span class="material-symbols-outlined">info</span>
                     <p style="margin: 0;">@Model.Result!.LegalDisclaimer</p>
                 </div>
+                }
+                else
+                {
+                <p class="valora-stitch-calc-estimate-disclaimer">@Model.Result!.LegalDisclaimer</p>
+                }
                 @if (Model.Share is not null)
                 {
                     <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
@@ -423,9 +458,13 @@ else
             }
             else
             {
-                <section class="valora-result-panel" style="opacity: 0.85;">
-                    <h2 class="valora-h3" style="color: inherit; margin-bottom: 0.5rem;">Seu resultado aparece aqui</h2>
-                    <p class="valora-text-sm" style="margin: 0; opacity: 0.9;">Preencha o formulário e clique em Calcular para ver o extrato estimado.</p>
+                <section class="valora-result-panel valora-stitch-calc-estimate-placeholder" aria-live="polite">
+                    @if (!Model.IsEmbedMode)
+                    {
+                        <p class="valora-stitch-calc-estimate-kicker">ESTIMATIVA ATUAL</p>
+                    }
+                    <h2 class="valora-h3" style="margin-bottom: 0.5rem;">Seu resultado aparece aqui</h2>
+                    <p class="valora-text-sm" style="margin: 0;">Preencha o formulário e clique em Calcular para ver o extrato estimado.</p>
                 </section>
             }
 
@@ -438,20 +477,21 @@ else
 
     @if (!Model.IsEmbedMode)
     {
-    <section class="valora-faq valora-section">
-        <h2 class="valora-h2">Perguntas frequentes</h2>
-        @foreach (var faq in Model.Definition.FaqItems)
-        {
-            <details>
-                <summary>
-                    @faq.Question
-                    <span class="material-symbols-outlined">expand_more</span>
-                </summary>
-                <p class="faq-body">@faq.Answer</p>
-            </details>
-        }
-    </section>
+        <section class="valora-faq valora-stitch-calc-faq">
+            <h2 class="valora-h2">Perguntas frequentes</h2>
+            @foreach (var faq in Model.Definition.FaqItems)
+            {
+                <details>
+                    <summary>
+                        @faq.Question
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </summary>
+                    <p class="faq-body">@faq.Answer</p>
+                </details>
+            }
+        </section>
     }
+    </div>
 }
 
 @section Scripts {

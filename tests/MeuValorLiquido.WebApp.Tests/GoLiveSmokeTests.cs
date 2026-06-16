@@ -80,6 +80,20 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Calculator_Detail_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/calculadoras/salario-liquido");
+
+        html.Should().Contain("valora-stitch-calc-detail");
+        html.Should().Contain("valora-stitch-calc-detail-hero");
+        html.Should().Contain("valora-stitch-calc-detail-badge");
+        (html.Contains("Simulação CLT") || html.Contains("Simula&#xE7;&#xE3;o CLT")).Should().BeTrue();
+        html.Should().Contain("CALCULAR AGORA");
+        html.Should().Contain("ESTIMATIVA ATUAL");
+        html.Should().Contain("valora-bottom-nav");
+    }
+
+    [Fact]
     public async Task Home_Should_Send_Security_Headers()
     {
         var response = await client.GetAsync("/");
