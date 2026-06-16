@@ -258,7 +258,7 @@ public static class BlogArticleSeedData
             "fgts-guia-completo",
             "FGTS: guia completo para trabalhadores CLT",
             "Saiba como funciona o depósito de 8%, multa rescisória, saque-aniversário e quando você pode retirar o saldo.",
-            "rescisao-clt",
+            "fgts",
             "Trabalhista",
             new DateOnly(2026, 6, 2),
             """
@@ -269,8 +269,8 @@ public static class BlogArticleSeedData
             <p>Quando o empregador dispensa sem justa causa, paga multa de 40% sobre saldo FGTS. Esse valor entra na estimativa de rescisão.</p>
             <h2>Modalidades de saque</h2>
             <p>Demissão sem justa causa, aposentadoria, compra da casa própria e saque-aniversário (com perda de multa em rescisão futura) são hipóteses comuns.</p>
-            <h2>Estime verbas rescisórias</h2>
-            <p>A <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> contextualiza FGTS e multa dentro do pacote de desligamento.</p>
+            <h2>Calcule depósitos e multa</h2>
+            <p>Use a <a href="/calculadoras/fgts">calculadora de FGTS</a> para estimar depósitos e multa rescisória. Para o pacote completo de desligamento, veja também a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
             """),
         Article(
             "planejamento-financeiro-com-salario",

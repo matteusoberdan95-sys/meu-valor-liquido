@@ -124,6 +124,16 @@ public static class DataSeeder
             "Informe salário, tempo de empresa, dias trabalhados no mês e tipo de desligamento. No pedido de demissão sem aviso prévio, desconta-se até 30 dias de salário. A multa FGTS de 40% entra apenas na demissão sem justa causa.",
         "inss" =>
             "O INSS é calculado de forma progressiva por faixas, respeitando o teto de contribuição vigente.",
+        "fgts" =>
+            "Informe salário e meses trabalhados para ver depósitos de 8%. Opcionalmente informe saldo atual e tipo de desligamento para estimar multa rescisória.",
+        "simulador-mei" =>
+            "O DAS MEI é fixo conforme a atividade (comércio, serviços ou ambos). O limite anual é R$ 81.000.",
+        "custo-funcionario" =>
+            "Estimativa do custo mensal total para a empresa: salário + FGTS, INSS patronal, provisões de 13º e férias.",
+        "multa-atraso" =>
+            "Padrão comum: 2% de multa + 1% de juros ao mês proporcional aos dias. Ajuste conforme seu contrato.",
+        "conversor-salario" =>
+            "Converta entre mensal, diário (÷30) e hora (divisor 220h para jornada 44h). Altere a jornada se necessário.",
         _ => "Use os campos indicados para obter uma estimativa educativa. Consulte um profissional para decisões formais."
     };
 }

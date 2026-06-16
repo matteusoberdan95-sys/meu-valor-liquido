@@ -7,13 +7,18 @@ public static class CalculatorSeedData
         Create("salario-liquido", "Salário líquido", "Trabalhista", "Estime quanto sobra do salário após INSS, IRRF e descontos comuns."),
         Create("ferias", "Férias", "Trabalhista", "Calcule uma estimativa de férias com adicional constitucional de um terço."),
         Create("decimo-terceiro", "Décimo terceiro", "Trabalhista", "Estime o décimo terceiro proporcional ou integral com descontos."),
-        Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule rescisão por demissão ou pedido de demissão com verbas proporcionais e multa FGTS quando aplicável."),
-        Create("hora-extra", "Hora extra", "Trabalhista", "Calcule o valor estimado de horas extras com percentual adicional."),
-        Create("inss", "INSS", "Fiscal", "Estime o desconto de INSS pela tabela progressiva de 2026."),
-        Create("irrf", "IRRF", "Fiscal", "Estime o imposto de renda retido na fonte a partir da base informada."),
+        Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule todos os tipos de desligamento: demissão, pedido de demissão, acordo 484-A e justa causa."),
+        Create("hora-extra", "Hora extra", "Trabalhista", "Calcule horas extras com adicional de CCT, jornada semanal, turno noturno e DSR."),
+        Create("inss", "INSS", "Fiscal", "Estime o desconto de INSS pela tabela progressiva oficial de 2026 (Portaria MPS/MF nº 13)."),
+        Create("irrf", "IRRF", "Fiscal", "Estime o IRRF com tabela progressiva e redução legal de 2026 (Lei 15.270/2025)."),
         Create("pj-vs-clt", "PJ vs CLT", "Financeiro", "Compare uma estimativa simples entre remuneração PJ e salário líquido CLT."),
         Create("juros-compostos", "Juros compostos", "Financeiro", "Projete o crescimento de um valor com taxa mensal e prazo."),
-        Create("financiamento", "Financiamento", "Financeiro", "Estime uma parcela fixa usando a fórmula Price.")
+        Create("financiamento", "Financiamento", "Financeiro", "Estime uma parcela fixa usando a fórmula Price."),
+        Create("fgts", "FGTS", "Trabalhista", "Calcule depósitos mensais de 8%, saldo acumulado e multa rescisória."),
+        Create("simulador-mei", "Simulador MEI", "Fiscal", "Estime o DAS MEI, limite de faturamento e alertas de desenquadramento."),
+        Create("custo-funcionario", "Custo de funcionário", "Trabalhista", "Estime o custo total da empresa com salário, encargos e provisões."),
+        Create("multa-atraso", "Multa de atraso", "Financeiro", "Calcule multa e juros por atraso de pagamento."),
+        Create("conversor-salario", "Conversor de salário", "Trabalhista", "Converta salário entre valor mensal, diário e por hora.")
     ];
 
     public static CalculatorDefinition Create(string slug, string name, string category, string summary)

@@ -6,7 +6,7 @@ Antes de solicitar:
 
 - Home publicada.
 - Página de calculadoras.
-- 10 calculadoras funcionais.
+- 15 calculadoras funcionais.
 - 15 artigos úteis no blog (seed editorial Sprint 15).
 - Sobre.
 - Contato.

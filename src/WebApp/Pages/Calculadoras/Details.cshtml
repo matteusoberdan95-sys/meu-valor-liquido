@@ -63,7 +63,65 @@ else
                                     </label>
                                 }
                             </div>
-                            <p class="valora-helper">Escolha se você foi demitido pela empresa ou pediu demissão.</p>
+                            <p class="valora-helper">Sem justa causa, pedido de demissão, acordo comum (484-A) ou justa causa — cada tipo tem verbas e direitos diferentes.</p>
+                        </div>
+                    }
+                    @if (profile.ShowFgtsTerminationReason)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.FgtsTerminationReasonLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.FgtsTerminationReasonLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
+                                {
+                                    var optionId = $"Input_TerminationReason_fgts_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.TerminationReason"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
+                            <p class="valora-helper">Multa de 40% na demissão sem justa causa, 20% no acordo 484-A. Pedido de demissão e justa causa não geram multa.</p>
+                        </div>
+                    }
+                    @if (profile.ShowSalaryBasis)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.SalaryBasisLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.SalaryBasisLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.SalaryConversionBasis>())
+                                {
+                                    var optionId = $"Input_SalaryBasis_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.SalaryBasis"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @if (profile.ShowMeiActivity)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.MeiActivityLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.MeiActivityLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.Tax.MeiActivityType>())
+                                {
+                                    var optionId = $"Input_MeiActivity_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.MeiActivity"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
                         </div>
                     }
                     @if (profile.ShowNoticePeriod)
@@ -83,6 +141,51 @@ else
                             <p class="valora-helper">No pedido de demissão sem aviso, a empresa pode descontar até 30 dias de salário.</p>
                         </div>
                     }
+                    @if (profile.ShowHasUnpaidVacation)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label class="valora-choice" for="Input_HasUnpaidVacation" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" asp-for="Input.HasUnpaidVacation" id="Input_HasUnpaidVacation" />
+                                <span>@profile.HasUnpaidVacationLabel</span>
+                            </label>
+                            <p class="valora-helper">Só marque se completou 12 meses ou mais sem gozar férias em algum período. Com menos de 12 meses, use apenas as férias proporcionais.</p>
+                        </div>
+                    }
+                    @if (profile.ShowVacationTakenInPeriod)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label class="valora-choice" for="Input_VacationTakenInCurrentPeriod" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" asp-for="Input.VacationTakenInCurrentPeriod" id="Input_VacationTakenInCurrentPeriod" />
+                                <span>@profile.VacationTakenInPeriodLabel</span>
+                            </label>
+                            <p class="valora-helper">Se já gozou férias completas no período, não há férias proporcionais. Use o campo abaixo se gozou parcialmente.</p>
+                        </div>
+                    }
+                    @if (profile.ShowMonthsSinceLastVacation)
+                    {
+                        <div>
+                            <label asp-for="Input.MonthsSinceLastVacation" class="valora-label">@profile.MonthsSinceLastVacationLabel</label>
+                            <input asp-for="Input.MonthsSinceLastVacation" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                        </div>
+                    }
+                    @if (profile.ShowCompleteYears)
+                    {
+                        <div>
+                            <label asp-for="Input.CompleteYears" class="valora-label">@profile.CompleteYearsLabel</label>
+                            <input asp-for="Input.CompleteYears" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                            <p class="valora-helper">Deixe 0 para calcular pelos meses informados. Usado no aviso prévio indenizado (+3 dias/ano).</p>
+                        </div>
+                    }
+                    @if (profile.ShowFgtsBalance)
+                    {
+                        <div>
+                            <label asp-for="Input.FgtsBalance" class="valora-label">@profile.FgtsBalanceLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.FgtsBalance" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                        </div>
+                    }
                     @if (profile.ShowAmount)
                     {
                         <div>
@@ -91,12 +194,12 @@ else
                             {
                                 <div class="valora-input-prefix">
                                     <span class="valora-prefix">R$</span>
-                                    <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" placeholder="0,00" />
+                                    <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
                                 </div>
                             }
                             else
                             {
-                                <input asp-for="Input.Amount" class="valora-input" inputmode="decimal" />
+                                <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" />
                             }
                             <span asp-validation-for="Input.Amount" class="text-danger"></span>
                         </div>
@@ -107,18 +210,18 @@ else
                             <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
                             @if (profile.SecondaryAmountIsDays)
                             {
-                                <input asp-for="Input.SecondaryAmount" class="valora-input" type="number" min="1" max="31" step="1" />
+                                <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="30" />
                             }
                             else if (profile.AmountIsCurrency)
                             {
                                 <div class="valora-input-prefix">
                                     <span class="valora-prefix">R$</span>
-                                    <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" placeholder="0,00" />
+                                    <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
                                 </div>
                             }
                             else
                             {
-                                <input asp-for="Input.SecondaryAmount" class="valora-input" inputmode="decimal" />
+                                <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" />
                             }
                         </div>
                     }
@@ -126,35 +229,132 @@ else
                     {
                         <div>
                             <label asp-for="Input.Months" class="valora-label">@profile.MonthsLabel</label>
-                            <input asp-for="Input.Months" class="valora-input" inputmode="numeric" />
+                            <input asp-for="Input.Months" class="valora-input" type="text" data-mask="integer" data-max-length="3" inputmode="numeric" placeholder="12" />
+                            <p class="valora-helper">Conte da data de admissão até a rescisão. Ex.: junho a agosto = 3 meses (não 10).</p>
+                        </div>
+                    }
+                    @if (profile.ShowAdmissionMonth)
+                    {
+                        <div>
+                            <label asp-for="Input.AdmissionMonth" class="valora-label">@profile.AdmissionMonthLabel</label>
+                            <select asp-for="Input.AdmissionMonth" class="valora-input">
+                                <option value="0">Não sei / estimar</option>
+                                <option value="1">Janeiro</option>
+                                <option value="2">Fevereiro</option>
+                                <option value="3">Março</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Maio</option>
+                                <option value="6">Junho</option>
+                                <option value="7">Julho</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                            <p class="valora-helper">Ajuda a validar o tempo na empresa e o 13º do ano da saída.</p>
+                        </div>
+                    }
+                    @if (profile.ShowAdmissionInPriorYear)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label class="valora-choice" for="Input_AdmissionInPriorYear" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" asp-for="Input.AdmissionInPriorYear" id="Input_AdmissionInPriorYear" />
+                                <span>@profile.AdmissionInPriorYearLabel</span>
+                            </label>
+                            <p class="valora-helper">Marque se entrou no ano passado. Ex.: admitido em novembro e saiu em fevereiro do ano seguinte.</p>
+                        </div>
+                    }
+                    @if (profile.ShowTerminationMonth)
+                    {
+                        <div>
+                            <label asp-for="Input.TerminationMonth" class="valora-label">@profile.TerminationMonthLabel</label>
+                            <select asp-for="Input.TerminationMonth" class="valora-input">
+                                <option value="0">Selecione o mês</option>
+                                <option value="1">Janeiro</option>
+                                <option value="2">Fevereiro</option>
+                                <option value="3">Março</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Maio</option>
+                                <option value="6">Junho</option>
+                                <option value="7">Julho</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                            <p class="valora-helper">Usado para o 13º proporcional quando você não informar os meses trabalhados no ano da saída.</p>
+                        </div>
+                    }
+                    @if (profile.ShowThirteenthMonths)
+                    {
+                        <div>
+                            <label asp-for="Input.MonthsWorkedInYear" class="valora-label">@profile.ThirteenthMonthsLabel</label>
+                            <input asp-for="Input.MonthsWorkedInYear" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                            <p class="valora-helper">Opcional. Deixe 0 para calcular pelo mês da rescisão e tempo na empresa.</p>
                         </div>
                     }
                     @if (profile.ShowRate)
                     {
                         <div>
                             <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
-                            <input asp-for="Input.Rate" class="valora-input" inputmode="decimal" />
+                            <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="0" />
                         </div>
                     }
                     @if (profile.ShowHours)
                     {
                         <div>
                             <label asp-for="Input.Hours" class="valora-label">@profile.HoursLabel</label>
-                            <input asp-for="Input.Hours" class="valora-input" inputmode="decimal" />
+                            <input asp-for="Input.Hours" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="0" />
+                        </div>
+                    }
+                    @if (profile.ShowWeeklyWorkHours)
+                    {
+                        <div>
+                            <label asp-for="Input.WeeklyWorkHours" class="valora-label">@profile.WeeklyWorkHoursLabel</label>
+                            <select asp-for="Input.WeeklyWorkHours" class="valora-input">
+                                <option value="0">44h (divisor 220 — padrão CLT)</option>
+                                <option value="40">40h (divisor 200)</option>
+                                <option value="36">36h (divisor 180)</option>
+                                <option value="30">30h (divisor 150)</option>
+                            </select>
+                        </div>
+                    }
+                    @if (profile.ShowOvertimeShiftType)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.OvertimeShiftTypeLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.OvertimeShiftTypeLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.OvertimeShiftType>())
+                                {
+                                    var optionId = $"Input_OvertimeShiftType_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.OvertimeShiftType"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
                         </div>
                     }
                     @if (profile.ShowDependents)
                     {
                         <div>
                             <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
-                            <input asp-for="Input.Dependents" class="valora-input" inputmode="numeric" />
+                            <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                         </div>
                     }
                     @if (profile.ShowTransportDiscount)
                     {
                         <div style="grid-column: 1 / -1;">
                             <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
-                            <input asp-for="Input.TransportDiscount" class="valora-input" inputmode="decimal" />
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
                         </div>
                     }
                 </div>
@@ -192,7 +392,14 @@ else
                     {
                         <div class="valora-result-line @(item.Type == CalculationLineType.Discount ? "discount" : "")">
                             <span>@item.Label</span>
-                            <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                            @if (!string.IsNullOrEmpty(item.DisplayText))
+                            {
+                                <strong>@item.DisplayText</strong>
+                            }
+                            else
+                            {
+                                <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                            }
                         </div>
                     }
                     <div class="valora-result-total">
@@ -238,4 +445,5 @@ else
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/calculator-input-masks.js" asp-append-version="true"></script>
 }

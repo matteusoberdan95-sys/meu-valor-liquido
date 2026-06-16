@@ -13,7 +13,12 @@ public static class CalculatorUiHelper
         ["irrf"] = "account_balance_wallet",
         ["pj-vs-clt"] = "compare_arrows",
         ["juros-compostos"] = "trending_up",
-        ["financiamento"] = "house"
+        ["financiamento"] = "house",
+        ["fgts"] = "savings",
+        ["simulador-mei"] = "storefront",
+        ["custo-funcionario"] = "groups",
+        ["multa-atraso"] = "gavel",
+        ["conversor-salario"] = "swap_horiz"
     };
 
     public static string GetIcon(string slug) =>

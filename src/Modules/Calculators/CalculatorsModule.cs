@@ -10,6 +10,7 @@ public static class CalculatorsModule
     {
         services.AddScoped<IInssCalculator, InssCalculator>();
         services.AddScoped<IIrrfCalculator, IrrfCalculator>();
+        services.AddScoped<ITerminationTaxCalculator, TerminationTaxCalculator>();
         services.AddScoped<CalculationEngine>();
         services.AddSingleton<ICalculatorFieldProfileProvider, CalculatorFieldProfileProvider>();
         services.AddScoped<ICalculatorApplicationService, CalculatorApplicationService>();
@@ -36,7 +37,13 @@ public enum TerminationReason
     DismissalWithoutCause,
 
     [Display(Name = "Pediu demissão")]
-    Resignation
+    Resignation,
+
+    [Display(Name = "Acordo comum (Art. 484-A)")]
+    MutualAgreement,
+
+    [Display(Name = "Demissão por justa causa")]
+    DismissalForCause
 }
 
 public sealed record CalculatorInput(
@@ -48,9 +55,22 @@ public sealed record CalculatorInput(
     int Dependents = 0,
     decimal TransportDiscount = 0m,
     TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause,
-    bool CompletedNoticePeriod = false);
+    bool CompletedNoticePeriod = false,
+    int CompleteYears = 0,
+    bool HasUnpaidVacation = false,
+    decimal FgtsBalance = 0m,
+    bool VacationTakenInCurrentPeriod = false,
+    int MonthsSinceLastVacation = 0,
+    int MonthsWorkedInYear = 0,
+    int TerminationMonth = 0,
+    int AdmissionMonth = 0,
+    bool AdmissionInPriorYear = false,
+    int WeeklyWorkHours = 0,
+    OvertimeShiftType OvertimeShiftType = OvertimeShiftType.Weekday,
+    SalaryConversionBasis SalaryBasis = SalaryConversionBasis.Monthly,
+    MeiActivityType MeiActivity = MeiActivityType.CommerceOrIndustry);
 
-public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type);
+public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 
 public enum CalculationLineType
 {
@@ -103,6 +123,22 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.TransportDiscount)
             .GreaterThanOrEqualTo(0)
             .WithMessage("O desconto de vale-transporte não pode ser negativo.");
+
+        RuleFor(input => input.MonthsSinceLastVacation)
+            .InclusiveBetween(0, 12)
+            .WithMessage("Informe meses válidos desde a última férias (0 a 12).");
+
+        RuleFor(input => input.WeeklyWorkHours)
+            .InclusiveBetween(0, 44)
+            .WithMessage("Informe uma jornada semanal válida (0 = 44h padrão).");
+
+        RuleFor(input => input.TerminationMonth)
+            .InclusiveBetween(0, 12)
+            .WithMessage("Informe o mês da saída (1 a 12) ou deixe 0.");
+
+        RuleFor(input => input.AdmissionMonth)
+            .InclusiveBetween(0, 12)
+            .WithMessage("Informe o mês de admissão (1 a 12) ou deixe 0.");
     }
 }
 

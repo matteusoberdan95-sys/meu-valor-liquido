@@ -22,6 +22,9 @@ public class RescisaoCalculatorPageTests : IClassFixture<WebApplicationFactory<P
         html.Should().Contain("valora-choice-group");
         html.Should().Contain("Demitido sem justa causa");
         html.Should().Contain("Pediu demiss");
-        html.Should().Contain("type=\"radio\"");
+        html.Should().Contain("Acordo comum");
+        html.Should().Contain("justa causa");
+        html.Should().Contain("data-mask=\"currency\"");
+        html.Should().Contain("calculator-input-masks");
     }
 }

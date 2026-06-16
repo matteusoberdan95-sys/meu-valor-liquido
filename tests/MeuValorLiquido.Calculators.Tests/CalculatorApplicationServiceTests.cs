@@ -7,17 +7,14 @@ namespace MeuValorLiquido.Calculators.Tests;
 
 public class CalculatorApplicationServiceTests
 {
-    private readonly CalculatorApplicationService service = new(
-        new InMemoryCalculatorCatalogService(),
-        new CalculatorInputValidator(),
-        new CalculationEngine(new InssCalculator(), new IrrfCalculator()));
+    private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();
 
     [Fact]
-    public void Catalog_Should_Contain_The_Ten_Mvp_Calculators()
+    public void Catalog_Should_Contain_The_Fifteen_Calculators()
     {
         var catalog = new InMemoryCalculatorCatalogService();
 
-        catalog.GetAll().Should().HaveCount(10);
+        catalog.GetAll().Should().HaveCount(15);
         catalog.GetBySlug("salario-liquido").Should().NotBeNull();
     }
 
