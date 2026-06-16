@@ -1,9 +1,53 @@
 @page "/aviso-legal"
-@{
-    ViewData["Title"] = "Aviso Legal";
-    ViewData["Description"] = "Aviso legal sobre as calculadoras do Meu Valor Líquido.";
+@model MeuValorLiquido.WebApp.Pages.AvisoLegalModel
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.LegalNoticeBreadcrumbs()" />
 }
 
-<h1>Aviso Legal</h1>
-<p>Os resultados das calculadoras são estimativas para fins educativos e informativos.</p>
-<p>O Meu Valor Líquido não presta consultoria jurídica, contábil ou financeira. Consulte fontes oficiais ou profissionais habilitados antes de tomar decisões.</p>
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Aviso Legal</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Aviso Legal</h1>
+<p class="valora-lead">Leia antes de usar os resultados em decisões trabalhistas, fiscais ou financeiras.</p>
+
+<article class="valora-section valora-card valora-article-body">
+    <h2 class="valora-h2">Estimativas, não laudos</h2>
+    <p>
+        Os valores exibidos são <strong>estimativas educativas</strong> produzidas por algoritmos com premissas simplificadas.
+        Não constituem holerite, guia de recolhimento, parecer jurídico ou recomendação de investimento.
+    </p>
+
+    <h2 class="valora-h2">Sem consultoria profissional</h2>
+    <p>
+        O Meu Valor Líquido não presta consultoria jurídica, contábil, trabalhista ou financeira.
+        Para casos concretos — rescisão disputada, planejamento PJ, auditoria fiscal — procure profissionais habilitados e fontes oficiais (Receita Federal, gov.br, eSocial etc.).
+    </p>
+
+    <h2 class="valora-h2">Tabelas e legislação</h2>
+    <p>
+        Alíquotas e tetos mudam com leis e portarias. Descrevemos a metodologia em <a asp-page="/ComoCalculamos">Como calculamos</a>.
+        Sempre confira a data de referência exibida no resultado.
+    </p>
+
+    <h2 class="valora-h2">Links externos</h2>
+    <p>
+        Artigos e dúvidas podem linkar para sites de terceiros. Não controlamos nem endossamos todo o conteúdo externo.
+    </p>
+
+    <h2 class="valora-h2">Publicidade</h2>
+    <p>
+        Anúncios exibidos pelo Google AdSense (quando ativos) são de responsabilidade dos anunciantes e da rede Google.
+        O posicionamento segue nossa política de não incentivar cliques. Detalhes em <a asp-page="/PoliticaDePrivacidade">Privacidade</a>.
+    </p>
+</article>
+
+<div class="valora-disclaimer valora-section">
+    <span class="material-symbols-outlined">shield</span>
+    <p style="margin: 0;">Ao continuar usando o site, você reconhece estas limitações e os <a asp-page="/TermosDeUso">termos de uso</a>.</p>
+</div>

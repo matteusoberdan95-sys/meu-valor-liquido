@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 14 - Institucional + AdSense readiness (concluída)
+
+**Objetivo:** confiança para aprovação AdSense — páginas institucionais completas e infraestrutura de anúncios configurável.
+
+**Entregas:**
+- Páginas expandidas: `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`, `/aviso-legal`
+- Nova página `/como-calculamos` com metodologia e tabelas @2026
+- `AdsOptions` + `ConfigurableAdSlotProvider` (placeholders até `Ads:Enabled=true`)
+- Partial `_AdSenseScript`, banner de cookies quando ads ativos, CSP para domínios Google
+- Sitemap, mapa do site e footer atualizados
+
+**Definition of Done:** conteúdo institucional indexável; privacidade menciona AdSense/cookies; `dotnet test` verde; sem publisher ID no código.
+
+---
+
 ## Sprint 13 - Métricas internas agregadas (concluída)
 
 **Objetivo:** decisões de produto com contadores diários sem PII.

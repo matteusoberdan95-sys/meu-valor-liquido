@@ -1,9 +1,56 @@
 @page "/termos-de-uso"
-@{
-    ViewData["Title"] = "Termos de Uso";
-    ViewData["Description"] = "Termos de uso do Meu Valor Líquido.";
+@model MeuValorLiquido.WebApp.Pages.TermosDeUsoModel
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.TermsBreadcrumbs()" />
 }
 
-<h1>Termos de Uso</h1>
-<p>As ferramentas do Meu Valor Líquido oferecem estimativas educativas. O uso dos resultados é de responsabilidade do usuário.</p>
-<p>Não garantimos que os cálculos cubram todos os cenários trabalhistas, fiscais ou financeiros.</p>
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Termos de Uso</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Termos de Uso</h1>
+<p class="valora-lead">Ao usar o Meu Valor Líquido, você concorda com os termos abaixo.</p>
+
+<article class="valora-section valora-card valora-article-body">
+    <h2 class="valora-h2">1. Natureza do serviço</h2>
+    <p>
+        As calculadoras, artigos e páginas de dúvidas têm caráter <strong>educativo e informativo</strong>.
+        Os resultados são estimativas e podem divergir de holerites, guias oficiais ou contratos reais.
+    </p>
+
+    <h2 class="valora-h2">2. Uso permitido</h2>
+    <ul>
+        <li>Simular cenários pessoais ou profissionais de boa-fé.</li>
+        <li>Compartilhar links e PDFs gerados pelo site, sem alterar o contexto de estimativa.</li>
+        <li>Incorporar widgets conforme as regras da página <a asp-page="/Widget/Index">Widget incorporável</a>.</li>
+    </ul>
+
+    <h2 class="valora-h2">3. Uso proibido</h2>
+    <ul>
+        <li>Automatizar acessos para gerar tráfego artificial ou impressões de anúncios.</li>
+        <li>Remover avisos legais, atribuição ou apresentar o site como cálculo oficial.</li>
+        <li>Explorar vulnerabilidades ou sobrecarregar a infraestrutura.</li>
+    </ul>
+
+    <h2 class="valora-h2">4. Propriedade intelectual</h2>
+    <p>
+        Textos, marca, layout e código são protegidos. É permitido citar com link; cópia integral ou republicação comercial exige autorização.
+    </p>
+
+    <h2 class="valora-h2">5. Limitação de responsabilidade</h2>
+    <p>
+        Não nos responsabilizamos por decisões tomadas com base nas estimativas.
+        Consulte profissionais habilitados e fontes oficiais quando necessário. Veja também o <a asp-page="/AvisoLegal">aviso legal</a>.
+    </p>
+
+    <h2 class="valora-h2">6. Privacidade</h2>
+    <p>O tratamento de dados pessoais está na <a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a>.</p>
+
+    <h2 class="valora-h2">7. Alterações</h2>
+    <p>Podemos atualizar estes termos. O uso continuado após mudanças implica aceitação da versão vigente.</p>
+</article>

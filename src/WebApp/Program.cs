@@ -32,6 +32,7 @@ builder.Services.AddHealthChecks()
 
 builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("Mail"));
 builder.Services.Configure<MetricsOptions>(builder.Configuration.GetSection(MetricsOptions.SectionName));
+builder.Services.Configure<AdsOptions>(builder.Configuration.GetSection(AdsOptions.SectionName));
 builder.Services.AddMemoryCache();
 builder.Services.AddResponseCompression(options =>
 {
@@ -90,7 +91,7 @@ builder.Services.AddScoped<IContentService>(sp =>
     new CachedContentService(
         sp.GetRequiredService<EfContentService>(),
         sp.GetRequiredService<IMemoryCache>()));
-builder.Services.AddSingleton<IAdSlotProvider, PlaceholderAdSlotProvider>();
+builder.Services.AddSingleton<IAdSlotProvider, ConfigurableAdSlotProvider>();
 builder.Services.AddScoped<INewsletterService, EfNewsletterService>();
 builder.Services.AddScoped<IContactService, EfContactService>();
 builder.Services.AddScoped<IProductMetricsService, EfProductMetricsService>();
@@ -155,7 +156,8 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
         CreateUrl(ns, $"{baseUrl}/widget"),
         CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
         CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
-        CreateUrl(ns, $"{baseUrl}/aviso-legal")
+        CreateUrl(ns, $"{baseUrl}/aviso-legal"),
+        CreateUrl(ns, $"{baseUrl}/como-calculamos")
     };
 
     var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
@@ -188,6 +190,9 @@ internal static class SecurityHeadersExtensions
     {
         return app.Use(async (context, next) =>
         {
+            var configuration = context.RequestServices.GetRequiredService<IConfiguration>();
+            var adsEnabled = configuration.GetSection(AdsOptions.SectionName).Get<AdsOptions>()?.IsActive == true;
+
             context.Response.OnStarting(() =>
             {
                 context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
@@ -203,7 +208,7 @@ internal static class SecurityHeadersExtensions
                     context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
                     context.Response.Headers.TryAdd(
                         "Content-Security-Policy",
-                        "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:");
+                        AdsContentSecurityPolicy.Build(adsEnabled));
                 }
 
                 return Task.CompletedTask;

@@ -1,0 +1,69 @@
+@page "/como-calculamos"
+@model MeuValorLiquido.WebApp.Pages.ComoCalculamosModel
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.HowWeCalculateBreadcrumbs()" />
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li class="active" aria-current="page">Como calculamos</li>
+    </ol>
+</nav>
+
+<h1 class="valora-h1">Como calculamos</h1>
+<p class="valora-lead">
+    Metodologia educativa das estimativas — tabelas vigentes, premissas e o que não entra no cálculo automático.
+</p>
+
+<article class="valora-section valora-card valora-article-body">
+    <h2 class="valora-h2">Princípio geral</h2>
+    <p>
+        Todas as calculadoras retornam <strong>estimativas</strong> com base em regras públicas e cenários simplificados.
+        O motor de cálculo fica no módulo <code>Calculators</code> do projeto, com testes automatizados para evitar regressões.
+        Valores digitados no formulário <strong>não são gravados no servidor</strong> para fins de histórico ou perfil.
+    </p>
+
+    <h2 class="valora-h2">Tabelas de @Model.TaxYear</h2>
+    <p>
+        Salário líquido, INSS e IRRF usam as tabelas centralizadas em <code>BrTaxTables@Model.TaxYear</code>,
+        alinhadas à Portaria Interministerial MPS/MF nº 13/@Model.TaxYear e à redução legal do IRRF (Lei 15.270/2025).
+    </p>
+    <ul>
+        <li><strong>INSS:</strong> alíquotas progressivas por faixa, com teto de contribuição.</li>
+        <li><strong>IRRF:</strong> tabela progressiva, dedução por dependente (R$ 189,59) e redução legal quando aplicável.</li>
+        <li><strong>Outras ferramentas</strong> (férias, 13º, rescisão, MEI etc.) aplicam fórmulas específicas documentadas no resultado.</li>
+    </ul>
+
+    <h2 class="valora-h2">O que normalmente não entra</h2>
+    <ul>
+        <li>Convenções coletivas, benefícios não informados ou regras internas da empresa.</li>
+        <li>Pensão alimentícia, empréstimos consignados e outros descontos personalizados (salvo quando o campo existe).</li>
+        <li>Planejamento tributário PJ completo — a comparação CLT x PJ usa premissas editáveis e cenário educativo.</li>
+    </ul>
+
+    <h2 class="valora-h2">Atualizações</h2>
+    <p>
+        Quando leis ou portarias mudam, atualizamos as tabelas e os testes. A data de referência aparece nos resultados e nesta página.
+        Se encontrar divergência com holerite ou guia oficial, use o <a asp-page="/Contato">contato</a> — sem enviar valores salariais reais se preferir privacidade.
+    </p>
+
+    <h2 class="valora-h2">Métricas internas</h2>
+    <p>
+        Registramos contadores agregados (por exemplo, calculadora mais usada) sem IP, e-mail ou valores salariais.
+        Isso ajuda a priorizar conteúdo; não substitui Google Analytics nem Search Console.
+    </p>
+</article>
+
+<div class="valora-disclaimer valora-section">
+    <span class="material-symbols-outlined">gavel</span>
+    <p style="margin: 0;">
+        Isso não é consultoria profissional. Leia também o <a asp-page="/AvisoLegal">aviso legal</a> e os <a asp-page="/TermosDeUso">termos de uso</a>.
+    </p>
+</div>
+
+<p class="valora-section">
+    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
+</p>

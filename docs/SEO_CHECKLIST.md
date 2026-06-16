@@ -74,11 +74,12 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 
 | Página | Rota | Indexável | Conteúdo |
 |--------|------|-----------|----------|
-| Sobre | `/sobre` | Sim | Enxuto — expandir Sprint 14 |
+| Sobre | `/sobre` | Sim | Expandido (Sprint 14) |
 | Contato | `/contato` | Sim | OK |
-| Privacidade | `/politica-de-privacidade` | Sim | **Revisar antes do AdSense** |
-| Termos | `/termos-de-uso` | Sim | Enxuto |
-| Aviso legal | `/aviso-legal` | Sim | OK |
+| Como calculamos | `/como-calculamos` | Sim | Metodologia (Sprint 14) |
+| Privacidade | `/politica-de-privacidade` | Sim | LGPD + AdSense/cookies (Sprint 14) |
+| Termos | `/termos-de-uso` | Sim | Expandido (Sprint 14) |
+| Aviso legal | `/aviso-legal` | Sim | Expandido (Sprint 14) |
 | Newsletter | `/newsletter` | Sim | OK no sitemap |
 
 ### Páginas que devem ser `noindex` (Sprint 1)

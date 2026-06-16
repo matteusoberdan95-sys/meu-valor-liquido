@@ -15,6 +15,16 @@ public class ContatoModel : PageModel
 
     public bool Sent { get; private set; }
 
+    public void OnGet()
+    {
+        SeoMetadataHelper.Apply(
+            ViewData,
+            new SeoMetadata(
+                "Contato",
+                "Envie mensagem ao Meu Valor Líquido — dúvidas, sugestões ou correções.",
+                "/contato"));
+    }
+
     public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid)

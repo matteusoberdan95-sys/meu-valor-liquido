@@ -1,0 +1,7 @@
+@inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
+@if (AdsOptions.Value.IsActive)
+{
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=@AdsOptions.Value.PublisherId"
+            crossorigin="anonymous"></script>
+    <script src="~/js/adsense-init.js" asp-append-version="true" defer></script>
+}

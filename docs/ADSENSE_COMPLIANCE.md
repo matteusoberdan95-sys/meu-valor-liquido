@@ -82,20 +82,21 @@ Antes de ativar AdSense:
 
 - Atualizar `PoliticaDePrivacidade.cshtml` com cookies de publicidade e parceiros Google.
 - Implementar banner de consentimento se exigido (LGPD / políticas Google).
-- Documentar em `/como-calculamos` (Sprint 14).
+- Documentar em `/como-calculamos` (Sprint 14). **Concluído.**
 
 ---
 
 ## Checklist de revisão pré-ativação
 
 - [ ] Conta AdSense aprovada
-- [ ] Política de privacidade completa (cookies/ads)
-- [ ] Páginas institucionais revisadas
+- [x] Política de privacidade completa (cookies/ads) — Sprint 14
+- [x] Páginas institucionais revisadas — Sprint 14
+- [x] Página `/como-calculamos` — Sprint 14
 - [ ] Nenhum texto incentivando clique
 - [ ] Slots com espaçamento validado em desktop e mobile
 - [x] Core Web Vitals — cache, defer, slots com altura fixa (Sprint 12)
-- [ ] Publisher ID via variável de ambiente (não hardcoded)
-- [ ] Rollback documentado (desabilitar slot por config)
+- [x] Publisher ID via variável de ambiente (não hardcoded) — `Ads:PublisherId` Sprint 14
+- [x] Rollback documentado (desabilitar slot por config) — `Ads:Enabled=false` Sprint 14
 
 ---
 

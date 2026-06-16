@@ -13,5 +13,6 @@ Antes de solicitar:
 - Política de Privacidade.
 - Termos de Uso.
 - Aviso Legal.
+- Como calculamos (`/como-calculamos`).
 - Sitemap e robots.
 - Layout limpo, mobile-first e sem placeholders agressivos.

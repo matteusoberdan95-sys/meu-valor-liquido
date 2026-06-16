@@ -1,4 +1,5 @@
 ﻿@inject IConfiguration Configuration
+@inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
 @{
     var currentPath = Context.Request.Path.Value ?? "/";
     bool IsActive(string path) =>
@@ -91,6 +92,7 @@
             </div>
             <div class="valora-footer-links">
                 <a asp-page="/Sobre">Sobre</a>
+                <a asp-page="/ComoCalculamos">Como calculamos</a>
                 <a asp-page="/MapaDoSite">Mapa do site</a>
                 <a asp-page="/PoliticaDePrivacidade">Privacidade</a>
                 <a asp-page="/TermosDeUso">Termos</a>
@@ -102,9 +104,16 @@
         </div>
     </footer>
 
+    <partial name="_CookieConsent" />
+
     <script src="~/js/product-metrics.js" asp-append-version="true" defer></script>
+    <partial name="_AdSenseScript" />
     <script src="~/js/site.js" asp-append-version="true" defer></script>
     <script src="~/js/local-panel.js" asp-append-version="true" defer></script>
+    @if (AdsOptions.Value.IsActive)
+    {
+        <script src="~/js/cookie-consent.js" asp-append-version="true" defer></script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

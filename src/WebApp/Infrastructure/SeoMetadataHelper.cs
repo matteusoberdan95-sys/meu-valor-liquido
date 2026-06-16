@@ -121,4 +121,34 @@ public static class SeoMetadataHelper
         new("Início", "/"),
         new("Métricas internas", "/metricas-internas")
     ];
+
+    public static IReadOnlyList<BreadcrumbItem> AboutBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Sobre", "/sobre")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> HowWeCalculateBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Como calculamos", "/como-calculamos")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> PrivacyPolicyBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Política de Privacidade", "/politica-de-privacidade")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> TermsBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Termos de Uso", "/termos-de-uso")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> LegalNoticeBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Aviso Legal", "/aviso-legal")
+    ];
 }

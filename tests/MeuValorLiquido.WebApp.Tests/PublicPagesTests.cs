@@ -21,6 +21,7 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/salario-liquido")]
     [InlineData("/salario-liquido/3000")]
     [InlineData("/sobre")]
+    [InlineData("/como-calculamos")]
     [InlineData("/contato")]
     [InlineData("/politica-de-privacidade")]
     [InlineData("/termos-de-uso")]

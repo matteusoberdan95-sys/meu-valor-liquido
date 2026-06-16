@@ -1,0 +1,13 @@
+@inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
+@if (AdsOptions.Value.IsActive)
+{
+    <div class="valora-cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Consentimento de cookies">
+        <p class="valora-text-sm" style="margin: 0;">
+            Usamos cookies essenciais e, com seu consentimento, cookies de publicidade do Google AdSense.
+            <a asp-page="/PoliticaDePrivacidade">Saiba mais</a>.
+        </p>
+        <button type="button" class="valora-btn valora-btn-primary valora-btn-sm" data-cookie-consent-accept>
+            Entendi
+        </button>
+    </div>
+}

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 14
+- Institucional + AdSense readiness: páginas expandidas, `/como-calculamos`, `AdsOptions` configurável e banner de cookies.
+
 ## Sprint 13
 - Métricas internas agregadas: contadores diários por evento/calculadora, API de coleta client-side e painel `/metricas-internas` sem PII.
 

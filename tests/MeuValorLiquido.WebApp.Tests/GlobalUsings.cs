@@ -6,6 +6,7 @@ global using FluentAssertions;
 global using MeuValorLiquido.Core.Money;
 global using MeuValorLiquido.Modules.Calculators;
 global using MeuValorLiquido.Modules.Calculators.Tax;
+global using MeuValorLiquido.Modules.Ads;
 global using MeuValorLiquido.WebApp.Data;
 global using MeuValorLiquido.WebApp.Infrastructure;
 global using Microsoft.EntityFrameworkCore;
