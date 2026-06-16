@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 6 - Modo explicação simples (concluída)
+
+**Objetivo:** aumentar tempo na página e páginas por sessão com linguagem acessível e links internos.
+
+**Entregas:**
+- Abas **Extrato** | **Explicação simples** no painel de resultado
+- `CalculatorSimpleExplanationBuilder` com passos por calculadora
+- `CalculatorRelatedLinksCatalog` e bloco **Continue explorando**
+- Partials `_CalculatorResultPanel` e `_SalaryBandResultPanel`
+- `calculator-result-views.js` para alternar visualização
+
+**Definition of Done:** passos legíveis; links cruzados entre calculadoras; testes verdes.
+
+---
+
 ## Sprint 5 - PDF do resultado (concluída)
 
 **Objetivo:** valor percebido e retorno ao site via extrato baixável, sem anúncios no PDF.
@@ -164,6 +179,7 @@ Monetizar rapidamente via **Google AdSense**, priorizando:
 
 | Sprint | Tema | Status |
 |--------|------|--------|
+| **6** | **Modo explicação simples** | **Concluído** |
 | **5** | **PDF do resultado** | **Concluído** |
 | **4** | **Resultado compartilhável** | **Concluído** |
 | **3** | **Páginas por faixa salarial** | **Concluído** |

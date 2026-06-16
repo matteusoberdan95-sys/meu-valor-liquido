@@ -1,0 +1,83 @@
+@model MeuValorLiquido.WebApp.Infrastructure.SalaryBandResultPanelViewModel
+
+<section class="valora-result-panel" aria-live="polite" data-result-view-root>
+    <div class="valora-result-view-toggle" role="tablist" aria-label="Formato do resultado">
+        <button type="button"
+                class="valora-result-view-btn"
+                role="tab"
+                aria-selected="true"
+                aria-controls="band-panel-extract"
+                data-result-view="extract">
+            <span class="material-symbols-outlined" style="font-size: 1.125rem;">receipt_long</span>
+            Extrato
+        </button>
+        <button type="button"
+                class="valora-result-view-btn"
+                role="tab"
+                aria-selected="false"
+                aria-controls="band-panel-simple"
+                data-result-view="simple">
+            <span class="material-symbols-outlined" style="font-size: 1.125rem;">school</span>
+            Explicação simples
+        </button>
+    </div>
+
+    <div id="band-panel-extract" class="valora-result-view-panel" data-result-panel="extract" role="tabpanel">
+        <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Extrato estimado</h2>
+        <div class="valora-result-line">
+            <span>Salário bruto</span>
+            <strong>@Money.From(Model.Gross)</strong>
+        </div>
+        <div class="valora-result-line discount">
+            <span>INSS</span>
+            <strong>- @Money.From(Model.Inss)</strong>
+        </div>
+        <div class="valora-result-line discount">
+            <span>IRRF</span>
+            <strong>- @Money.From(Model.Irrf)</strong>
+        </div>
+        <div class="valora-result-total">
+            <span class="valora-result-total-label">VALOR LÍQUIDO ESTIMADO</span>
+            <span class="valora-result-total-value">@Money.From(Model.Net)</span>
+        </div>
+    </div>
+
+    <div id="band-panel-simple" class="valora-result-view-panel" data-result-panel="simple" role="tabpanel" hidden>
+        <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Entenda em passos</h2>
+        <p class="valora-text-sm" style="margin: 0 0 1rem; opacity: 0.9;">@Model.Explanation.Simple.Summary</p>
+        <ol class="valora-simple-steps">
+            @foreach (var step in Model.Explanation.Simple.Steps)
+            {
+                <li class="valora-simple-step">
+                    <div class="valora-simple-step-header">
+                        <span class="valora-simple-step-order">@step.Order</span>
+                        <strong class="valora-simple-step-title">@step.Title</strong>
+                        @if (!string.IsNullOrEmpty(step.Highlight))
+                        {
+                            <span class="valora-simple-step-highlight">@step.Highlight</span>
+                        }
+                    </div>
+                    <p class="valora-simple-step-body">@step.Body</p>
+                </li>
+            }
+        </ol>
+    </div>
+</section>
+
+@if (Model.Explanation.RelatedLinks.Count > 0)
+{
+    <section class="valora-related-tools" aria-label="Ferramentas relacionadas">
+        <h3 class="valora-h3" style="font-size: 1rem; margin-bottom: 0.75rem;">Continue explorando</h3>
+        <ul class="valora-related-tools-list">
+            @foreach (var link in Model.Explanation.RelatedLinks)
+            {
+                <li>
+                    <a class="valora-related-tool-link" href="@link.Url">
+                        <span class="valora-related-tool-name">@link.Name</span>
+                        <span class="valora-related-tool-teaser">@link.Teaser</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </section>
+}

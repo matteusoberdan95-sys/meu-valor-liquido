@@ -4,15 +4,18 @@ public partial class FaixaModel : PageModel
     private readonly NetSalaryCalculator netSalaryCalculator;
     private readonly IAdSlotProvider adSlotProvider;
     private readonly CalculatorShareLinkBuilder shareLinkBuilder;
+    private readonly ICalculatorCatalogService catalogService;
 
     public FaixaModel(
         NetSalaryCalculator netSalaryCalculator,
         IAdSlotProvider adSlotProvider,
-        CalculatorShareLinkBuilder shareLinkBuilder)
+        CalculatorShareLinkBuilder shareLinkBuilder,
+        ICalculatorCatalogService catalogService)
     {
         this.netSalaryCalculator = netSalaryCalculator;
         this.adSlotProvider = adSlotProvider;
         this.shareLinkBuilder = shareLinkBuilder;
+        this.catalogService = catalogService;
     }
 
     public SalaryBandPageContent PageContent { get; private set; } = null!;
@@ -26,6 +29,8 @@ public partial class FaixaModel : PageModel
     public AdSlotDefinition? BottomAdSlot { get; private set; }
 
     public CalculatorShareViewModel? Share { get; private set; }
+
+    public SalaryBandResultPanelViewModel ResultPanel { get; private set; } = null!;
 
     public IActionResult OnGet(int valor)
     {
@@ -59,6 +64,14 @@ public partial class FaixaModel : PageModel
             shareText,
             CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
             CalculatorShareLinkBuilder.BuildSalaryBandPdfUrl(valor));
+
+        var explanation = CalculatorResultExplanationFactory.BuildForSalaryBand(valor, Breakdown, catalogService);
+        ResultPanel = new SalaryBandResultPanelViewModel(
+            valor,
+            Breakdown.Inss,
+            Breakdown.Irrf,
+            Breakdown.Net,
+            explanation);
 
         return Page();
     }

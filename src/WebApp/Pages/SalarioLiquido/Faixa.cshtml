@@ -47,25 +47,7 @@
     </div>
 
     <aside class="valora-calc-sidebar valora-stack-md">
-        <section class="valora-result-panel" aria-live="polite">
-            <h2 class="valora-h3" style="color: inherit; margin-bottom: 1rem;">Extrato estimado</h2>
-            <div class="valora-result-line">
-                <span>Salário bruto</span>
-                <strong>@Money.From(Model.Breakdown.Gross)</strong>
-            </div>
-            <div class="valora-result-line discount">
-                <span>INSS</span>
-                <strong>- @Money.From(Model.Breakdown.Inss)</strong>
-            </div>
-            <div class="valora-result-line discount">
-                <span>IRRF</span>
-                <strong>- @Money.From(Model.Breakdown.Irrf)</strong>
-            </div>
-            <div class="valora-result-total">
-                <span class="valora-result-total-label">VALOR LÍQUIDO ESTIMADO</span>
-                <span class="valora-result-total-value">@Money.From(Model.Breakdown.Net)</span>
-            </div>
-        </section>
+        <partial name="Shared/_SalaryBandResultPanel" model="Model.ResultPanel" />
 
         <section class="valora-card">
             <h2 class="valora-h3">Simular seu caso</h2>
@@ -102,5 +84,6 @@
 </section>
 
 @section Scripts {
+    <script src="~/js/calculator-result-views.js" asp-append-version="true"></script>
     <script src="~/js/calculator-share.js" asp-append-version="true"></script>
 }

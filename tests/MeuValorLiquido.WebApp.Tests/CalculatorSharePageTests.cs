@@ -17,14 +17,19 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         html.Should().Contain("VALOR LÍQUIDO ESTIMADO");
         html.Should().Contain("Compartilhar estimativa");
         html.Should().Contain("wa.me");
+        html.Should().Contain("Explicação simples");
+        html.Should().Contain("Continue explorando");
+        html.Should().Contain("/calculadoras/inss");
     }
 
     [Fact]
-    public async Task Salary_Band_Page_Should_Include_Share_Actions()
+    public async Task Salary_Band_Page_Should_Include_Simple_Explanation_And_Related_Links()
     {
         var html = await client.GetStringAsync("/salario-liquido/3000");
 
-        html.Should().Contain("Compartilhar estimativa");
+        html.Should().Contain("Explicação simples");
+        html.Should().Contain("Entenda em passos");
+        html.Should().Contain("Continue explorando");
         html.Should().Contain("data-share-copy");
         html.Should().Contain("Baixar PDF");
     }

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## Sprint 6
+- Modo explicação simples: abas Extrato/Explicação, passos em linguagem direta e links para calculadoras relacionadas.
+
 ## Sprint 5
 - PDF do resultado (QuestPDF): endpoints por calculadora e faixa salarial; botão "Baixar PDF"; sem anúncios no arquivo.
 

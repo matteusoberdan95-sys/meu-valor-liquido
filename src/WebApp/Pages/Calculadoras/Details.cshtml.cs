@@ -33,6 +33,8 @@ public class DetailsModel : PageModel
 
     public CalculatorShareViewModel? Share { get; private set; }
 
+    public CalculatorResultPanelViewModel? ResultPanel { get; private set; }
+
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
 
@@ -95,6 +97,11 @@ public class DetailsModel : PageModel
 
         Result = result.Value;
         BuildShare(slug);
+        ResultPanel = new CalculatorResultPanelViewModel(
+            Result,
+            Input,
+            slug,
+            CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService));
     }
 
     private void BuildShare(string slug)
