@@ -148,9 +148,25 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/meu-painel");
 
         html.Should().Contain("valora-stitch-panel");
+        html.Should().Contain("valora-stitch-panel-body");
         html.Should().Contain("Meu painel");
         html.Should().Contain("data-local-panel-page");
         html.Should().Contain("valora-bottom-nav");
+    }
+
+    [Fact]
+    public async Task Stitch_Desktop_Structure_Should_Be_Present_On_Key_Pages()
+    {
+        var blog = await client.GetStringAsync("/blog");
+        var article = await client.GetStringAsync("/blog/o-que-e-salario-liquido");
+        var metodologia = await client.GetStringAsync("/como-calculamos");
+        var faq = await client.GetStringAsync("/duvidas");
+
+        blog.Should().Contain("valora-stitch-blog-hub");
+        article.Should().Contain("valora-stitch-blog-article-layout");
+        article.Should().Contain("valora-stitch-blog-article-aside");
+        metodologia.Should().Contain("valora-stitch-metodologia-tables");
+        faq.Should().Contain("valora-stitch-faq-hub");
     }
 
     [Fact]

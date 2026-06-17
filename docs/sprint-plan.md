@@ -1,10 +1,10 @@
 # Sprint Plan
 
-## Sprint 21–25 — Fidelidade Stitch (Sprint 25 concluída)
+## Sprint 21–26 — Fidelidade Stitch (Sprint 26 concluída)
 
-**Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia e meu painel.
+**Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia, meu painel e polish desktop (≥992px).
 
-**Próximo:** Sprint 26 — Desktop polish + QA visual.
+**Próximo:** Sprint 20 — Monetização AdSense pós-aprovação (ou manutenção contínua).
 
 ---
 

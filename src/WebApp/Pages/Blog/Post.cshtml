@@ -53,6 +53,8 @@ else
             </p>
         </header>
 
+        <div class="valora-stitch-blog-article-layout">
+            <div class="valora-stitch-blog-article-main">
         <div class="valora-stitch-blog-article-hero @visualClass" aria-hidden="true">
             <span class="material-symbols-outlined">@visualIcon</span>
         </div>
@@ -87,6 +89,26 @@ else
         <div class="valora-disclaimer valora-stitch-blog-article-disclaimer">
             <span class="material-symbols-outlined" aria-hidden="true">info</span>
             <p style="margin: 0;">Este conteúdo tem finalidade educativa e não substitui orientação profissional.</p>
+        </div>
+            </div>
+
+            <aside class="valora-stitch-blog-article-aside" aria-label="Links úteis">
+                <div class="valora-stitch-blog-article-aside-card">
+                    <h2 class="valora-stitch-blog-article-aside-title">Continue explorando</h2>
+                    <a class="valora-stitch-blog-article-aside-link" asp-page="/Calculadoras/Index">
+                        <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                        Calculadoras
+                    </a>
+                    <a class="valora-stitch-blog-article-aside-link" asp-page="/Blog/Index">
+                        <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+                        Mais artigos
+                    </a>
+                    <a class="valora-stitch-blog-article-aside-link" asp-page="/Duvidas/Index">
+                        <span class="material-symbols-outlined" aria-hidden="true">help</span>
+                        Central de ajuda
+                    </a>
+                </div>
+            </aside>
         </div>
 
         @if (Model.RelatedPosts.Count > 0)

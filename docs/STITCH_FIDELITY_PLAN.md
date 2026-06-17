@@ -66,9 +66,23 @@ Objetivo: WebApp **igual** aos mocks em `stitch_redesign_meu_valor_l_quido/`, se
 - `metodologia_meu_valor_l_quido_mobile` → `/como-calculamos` (tabelas INSS/IRRF 2026)
 - `meu_painel_*` → `/meu-painel` (empty state + lista localStorage)
 
-### Sprint 26 — Desktop polish + QA visual (próxima)
-- Todas as telas desktop PNG
-- Checklist manual tela a tela
+### Sprint 26 — Desktop polish + QA visual (concluída)
+- Breakpoints ≥992px: blog hub (destaque horizontal, feed 2 col), artigo (layout + aside), metodologia (tabelas lado a lado), painel (grid + privacidade), FAQ (accordion + sidebar CTA/ad)
+- Checklist manual: comparar cada rota com `stitch_redesign_meu_valor_l_quido/*_desktop/screen.png` em 1280px
+
+## Checklist QA visual (manual)
+
+| Rota | Mock desktop | Viewports |
+|------|----------------|-----------|
+| `/` | `home_meu_valor_l_quido_desktop` | 390px + 1280px |
+| `/calculadoras` | `central_de_calculadoras_*` | 390px + 1280px |
+| `/calculadoras/salario-liquido` | `calculadora_sal_rio_l_quido_desktop` | 390px + 1280px |
+| `/calculadoras/pj-vs-clt` | `comparador_clt_x_pj_desktop` | 390px + 1280px |
+| `/duvidas` | `faq_hub_meu_valor_l_quido_desktop` | 390px + 1280px |
+| `/blog` | `blog_hub_meu_valor_l_quido_desktop` | 390px + 1280px |
+| `/blog/{slug}` | `artigo_clt_vs_pj_meu_valor_l_quido_desktop` | 390px + 1280px |
+| `/como-calculamos` | `como_calculamos_meu_valor_l_quido_desktop` | 390px + 1280px |
+| `/meu-painel` | `meu_painel_meu_valor_l_quido_desktop` | 390px + 1280px |
 
 ## Definition of Done (fidelidade)
 
