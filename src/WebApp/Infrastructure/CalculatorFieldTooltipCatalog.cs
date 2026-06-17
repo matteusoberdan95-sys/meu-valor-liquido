@@ -32,9 +32,17 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.Amount] =
                     "Salário bruto mensal antes de INSS, IRRF e descontos. Use o valor do contrato ou holerite.",
                 [CalculatorFieldKeys.TransportDiscount] =
-                    "Desconto de vale-transporte (até 6% do salário bruto, se a empresa oferecer). Não misture com VR, plano ou empréstimo.",
+                    "Desconto de vale-transporte (até 6% do salário bruto, se a empresa oferecer).",
+                [CalculatorFieldKeys.MealVoucherDiscount] =
+                    "Participação do trabalhador no vale-refeição ou vale-alimentação, quando houver coparticipação.",
+                [CalculatorFieldKeys.HealthPlanDiscount] =
+                    "Mensalidade do plano de saúde descontada no holerite, conforme acordo com a empresa.",
+                [CalculatorFieldKeys.AlimonyAmount] =
+                    "Valor fixo de pensão alimentícia descontado mensalmente. Deixe em branco se usar percentual.",
+                [CalculatorFieldKeys.AlimonyPercent] =
+                    "Percentual da pensão sobre o salário bruto. Deixe em branco se usar valor fixo.",
                 [CalculatorFieldKeys.OtherDiscounts] =
-                    "VR, VA, plano de saúde, pensão, empréstimo consignado e outros descontos que não são vale-transporte."
+                    "Empréstimo consignado, sindicato e demais descontos que não são VT, VR/VA, plano ou pensão."
             },
             ["salario-bruto-necessario"] = new(StringComparer.OrdinalIgnoreCase)
             {
@@ -42,10 +50,16 @@ public static class CalculatorFieldTooltipCatalog
                     "Quanto você quer receber no bolso após INSS, IRRF e os descontos informados.",
                 [CalculatorFieldKeys.TransportDiscount] =
                     "Desconto mensal de vale-transporte que você costuma ter no holerite.",
-                [CalculatorFieldKeys.SecondaryAmount] =
+                [CalculatorFieldKeys.MealVoucherDiscount] =
                     "Desconto de vale-refeição ou vale-alimentação, separado do vale-transporte.",
+                [CalculatorFieldKeys.HealthPlanDiscount] =
+                    "Desconto mensal do plano de saúde no holerite.",
+                [CalculatorFieldKeys.AlimonyAmount] =
+                    "Pensão alimentícia em valor fixo. Use percentual no campo ao lado, se preferir.",
+                [CalculatorFieldKeys.AlimonyPercent] =
+                    "Pensão alimentícia em percentual do bruto. O motor recalcula o bruto necessário com esse desconto.",
                 [CalculatorFieldKeys.OtherDiscounts] =
-                    "Plano de saúde, pensão, empréstimo e demais descontos fixos do holerite."
+                    "Empréstimo, sindicato e demais descontos fixos do holerite."
             },
             ["proposta-salarial"] = new(StringComparer.OrdinalIgnoreCase)
             {
@@ -53,8 +67,16 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.SecondaryAmount] = "Novo salário bruto oferecido na proposta ou negociação.",
                 [CalculatorFieldKeys.TransportDiscount] =
                     "Mantenha o mesmo desconto de VT nos dois cenários para comparar o ganho real no bolso.",
+                [CalculatorFieldKeys.MealVoucherDiscount] =
+                    "Desconto de VR/VA que tende a permanecer igual na proposta.",
+                [CalculatorFieldKeys.HealthPlanDiscount] =
+                    "Desconto do plano de saúde aplicado nos dois cenários.",
+                [CalculatorFieldKeys.AlimonyAmount] =
+                    "Pensão em valor fixo, se houver.",
+                [CalculatorFieldKeys.AlimonyPercent] =
+                    "Pensão em percentual do bruto, se houver.",
                 [CalculatorFieldKeys.OtherDiscounts] =
-                    "Descontos que tendem a permanecer iguais na proposta (plano, VR, empréstimo etc.)."
+                    "Demais descontos fixos (empréstimo, sindicato etc.) que permanecem na proposta."
             },
             ["ferias"] = new(StringComparer.OrdinalIgnoreCase)
             {

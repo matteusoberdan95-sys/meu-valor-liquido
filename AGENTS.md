@@ -1,30 +1,46 @@
 # AGENTS
 
-Este repositório é alternado entre Cursor e Codex. Ao continuar um trabalho aqui, siga esta ordem:
+Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferentes). Ao continuar um trabalho, siga esta ordem:
 
-1. Leia `README.md`.
-2. Leia `docs/agents.md`.
-3. Leia `docs/CODING_CONVENTIONS.md` antes de editar código.
-4. Consulte `docs/sprint-plan.md` para contexto de produto e próximos passos.
+1. `git pull origin main` — sempre antes de codar.
+2. `README.md`
+3. Este arquivo (`AGENTS.md`)
+4. `docs/CODING_CONVENTIONS.md` antes de editar código
+5. `docs/sprint-plan.md` — seção **Trilha ativa pós-Sprint 50 (Sprints 53-59)**
+
+## Sprint ativa
+
+| Campo | Valor |
+|-------|--------|
+| **Próxima sprint** | **Sprint 54** — Jornadas guiadas entre calculadoras |
+| **Prioridade alta** | 54, 55 |
+| **Prioridade média** | 56, 57, 58 |
+| **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
+| **Baixa prioridade** | 59, 52 |
+
+**Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
 
 ## Regras de continuidade
 
 - Não mova regra de negócio para `src/WebApp` quando ela pertencer a `src/Modules/Calculators`.
 - Não reverta mudanças do usuário sem pedido explícito.
-- Ao corrigir calculadoras compartilhadas, revise o template comum `src/WebApp/Pages/Calculadoras/Details.cshtml` antes de editar páginas isoladas.
-- Se alterar layout dark, revise `src/WebApp/wwwroot/css/site.css` e preserve o padrão visual Premium Liquid.
-- Ao concluir uma entrega relevante, atualize a documentação correspondente.
+- Ao corrigir calculadoras compartilhadas, revise `src/WebApp/Pages/Calculadoras/Details.cshtml` antes de páginas isoladas.
+- Se alterar layout dark, revise `src/WebApp/wwwroot/css/site.css` e preserve o padrão Premium Liquid.
+- Ao **iniciar** uma sprint: marque no `docs/sprint-plan.md` se necessário.
+- Ao **concluir** uma sprint: atualize `docs/sprint-plan.md`, `CHANGELOG.md` e esta tabela "Sprint ativa".
 
 ## Estado atual importante
 
-- Tema atual: dark Premium Liquid, trilha Stitch sprints 39 a 46 concluída.
-- Deploy de produção na VPS usa `/var/www/meu-valor-liquido`.
-- As calculadoras CLT usam formulário compartilhado em `src/WebApp/Pages/Calculadoras/Details.cshtml`.
-- Teste de regressão recente cobre campos principais dessas calculadoras em `tests/MeuValorLiquido.WebApp.Tests/CalculatorFormFieldsTests.cs`.
+- Trilha Stitch 39–46 e trilhas **47–50 e 53 concluídas**.
+- Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
+- Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
+- UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`.
+- AdSense: infra pronta, **desligado** (`ADS_ENABLED=false`) até aprovação.
 
 ## Comandos úteis
 
 ```powershell
+git pull origin main
 dotnet test .\MeuValorLiquido.slnx
 ```
 

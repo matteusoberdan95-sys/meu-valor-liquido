@@ -6,6 +6,10 @@ public static class CalculatorFieldKeys
     public const string SecondaryAmount = "SecondaryAmount";
     public const string Dependents = "Dependents";
     public const string TransportDiscount = "TransportDiscount";
+    public const string MealVoucherDiscount = "MealVoucherDiscount";
+    public const string HealthPlanDiscount = "HealthPlanDiscount";
+    public const string AlimonyAmount = "AlimonyAmount";
+    public const string AlimonyPercent = "AlimonyPercent";
     public const string OtherDiscounts = "OtherDiscounts";
     public const string AdmissionDate = "AdmissionDate";
     public const string TerminationDate = "TerminationDate";

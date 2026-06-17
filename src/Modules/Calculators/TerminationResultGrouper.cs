@@ -15,7 +15,16 @@ public static class TerminationResultGrouper
         "rescisao-clt",
         "decimo-terceiro",
         "ferias",
-        "salario-liquido"
+        "salario-liquido",
+        "salario-bruto-necessario",
+        "proposta-salarial"
+    };
+
+    private static readonly HashSet<string> HoleriteSlugs = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "salario-liquido",
+        "salario-bruto-necessario",
+        "proposta-salarial"
     };
 
     public static bool SupportsGroupedSummary(string slug) =>
@@ -57,6 +66,11 @@ public static class TerminationResultGrouper
         }
 
         var verbasTotal = verbas.Sum(item => item.Amount.Amount);
+        if (verbas.Count == 0 && HoleriteSlugs.Contains(result.Slug))
+        {
+            verbasTotal = result.GrossAmount.Amount;
+        }
+
         var descontosTotal = descontos.Sum(item => item.Amount.Amount);
         var fgtsTotal = fgts
             .Where(item => item.Type == CalculationLineType.Income)

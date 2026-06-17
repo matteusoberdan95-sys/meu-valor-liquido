@@ -23,7 +23,7 @@ public class CalculatorSimpleExplanationTests
     [Fact]
     public void Build_Should_Create_Steps_For_Salary_Band()
     {
-        var breakdown = new NetSalaryBreakdown(3000m, 250m, 100m, 0m, 0m, 0m, 2650m);
+        var breakdown = new NetSalaryBreakdown(3000m, 250m, 100m, 0m, 0m, 0m, 0m, 0m, 2650m);
         var explanation = CalculatorSimpleExplanationBuilder.BuildForSalaryBand(3000, breakdown);
 
         explanation.Steps.Should().HaveCount(4);

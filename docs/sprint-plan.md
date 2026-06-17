@@ -82,6 +82,8 @@
 
 ## Sprint 32 — Holerite completo (salário líquido, bruto necessário, proposta)
 
+> **Status:** escopo **absorvido pela Sprint 53** (trilha pos-Sprint 50). Nao implementar em duplicata — usar Sprint 53 como referencia ativa.
+
 **Objetivo:** paridade total entre as três calculadoras de holerite — mesmo conjunto de descontos, mesmo extrato.
 
 | Agent | Entregas |
@@ -95,6 +97,8 @@
 
 ## Sprint 33 — Rescisão: lacunas legais e confiança
 
+> **Status:** escopo **absorvido pela Sprint 55** (trilha pos-Sprint 50). Nao implementar em duplicata.
+
 **Objetivo:** fechar gaps que ainda separam o resultado de sites especializados em rescisão.
 
 | Agent | Entregas |
@@ -107,6 +111,8 @@
 ---
 
 ## Sprint 34 — PJ×CLT e MEI profundos
+
+> **Status:** escopo **absorvido pela Sprint 59** (trilha pos-Sprint 50). MEI desenquadramento ja corrigido; restante em Sprint 59.
 
 **Objetivo:** comparador que responde “vale a pena ser PJ?” com a mesma profundidade dos concorrentes.
 
@@ -438,7 +444,145 @@
 
 ---
 
-## Sprint 51 - Monetizacao AdSense sem dor de cabeca
+## Trilha ativa pos-Sprint 50 — valor do produto sem AdSense (Sprints 53-59)
+
+**Contexto:** conta Google AdSense ainda nao aprovada. Priorizar confianca, profundidade das calculadoras e crescimento organico antes de monetizacao por anuncios.
+
+**North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
+
+**Proxima sprint a implementar:** **Sprint 54**.
+
+| Prioridade | Sprints | Status |
+|------------|---------|--------|
+| **Alta** | 54, 55 | Sprint 54 e a proxima |
+| **Media** | 56, 57, 58 | Apos alta prioridade |
+| **Baixa / bloqueada** | 51 (AdSense), 59, 52 | 51 aguarda aprovacao Google; 52 apos metricas enxutas |
+
+**Mapeamento com trilha antiga (Sprints 31-38):** nao duplicar trabalho. Escopo da antiga Sprint 32 → **Sprint 53**; antiga Sprint 33 → **Sprint 55**; antiga Sprint 34 → **Sprint 59**.
+
+**Handoff Cursor ↔ Codex:** ao iniciar ou concluir uma sprint desta trilha, atualizar o status aqui, `CHANGELOG.md` e `AGENTS.md` (secao "Sprint ativa").
+
+---
+
+## Sprint 53 - Holerite completo (CONCLUIDA)
+
+**Objetivo:** paridade total entre `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial` — mesmo conjunto de descontos e extrato coerente.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | VT, VR/VA e plano de saude em campos separados; pensao alimenticia (% ou valor); isencao IRRF (faixa 2026); bruto necessario com faixa ("entre R$ X e Y") |
+| WebApp/Frontend | Camada essencial (bruto) + "Ajustar descontos"; resultado agrupado nas tres; proposta com destaque "ganho no bolso" vs "% no bruto" |
+| QA/Test | Paridade salario liquido ↔ bruto necessario (ida e volta); proposta com 4 cenarios; atualizar `CalculatorBenchmarkCatalog` |
+| SEO/Content | Atualizar artigos "salario liquido" e "proposta salarial" |
+
+**Criterios de aceite:**
+- As tres calculadoras aceitam os mesmos descontos opcionais relevantes.
+- Extrato separa VT, VR/VA, plano e pensao (nao tudo em "outros descontos").
+- `dotnet test .\MeuValorLiquido.slnx` verde.
+
+**Arquivos-chave:** `CalculationEngine.cs`, `NetSalaryCalculator`, `HoleriteExtratoBuilder.cs`, `GrossSalarySolver`, `CalculatorFieldProfile.cs`, `Details.cshtml`, `_HoleriteOptionalFields.cshtml`.
+
+---
+
+## Sprint 54 - Jornadas guiadas entre calculadoras (PRIORIDADE ALTA — proxima)
+
+**Objetivo:** conectar ferramentas no momento certo para o usuario nao "morrer" no resultado isolado.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Bloco "Proximo passo" contextual no resultado e em `_CalculatorResultPanel` / share |
+| Product Owner | 3 jornadas minimas: proposta recebida; saida da empresa; descobrir liquido desejado |
+| SEO/Content | Microcopy educativa curta por jornada (sem tom promocional) |
+| QA/Test | Testes WebApp por slug com links esperados no HTML pos-calculo |
+
+**Jornadas minimas:**
+
+1. **Proposta recebida** → `proposta-salarial` → `salario-liquido` → `pj-vs-clt`
+2. **Saida da empresa** → `rescisao-clt` → `fgts` → FAQ seguro-desemprego (quando Sprint 55 entregar)
+3. **Liquido desejado** → `salario-bruto-necessario` → `salario-liquido` → faixa `/salario-liquido/{valor}`
+
+**Criterios de aceite:**
+- Cada jornada tem pelo menos 2 links uteis visiveis apos calcular.
+- Links respeitam estado compartilhavel (`?r=`) quando fizer sentido.
+
+**Arquivos-chave:** `CalculatorRelatedLinksCatalog.cs`, `CalculatorResultExplanationFactory.cs`, `_CalculatorResultPanel.cshtml`.
+
+---
+
+## Sprint 55 - Rescisao: lacunas legais e confianca (PRIORIDADE ALTA)
+
+**Objetivo:** fechar gaps que ainda separam o resultado de sites especializados em rescisao.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | Seguro-desemprego (informativo, demissao sem justa causa); adiantamento de 13o ja pago; media salarial com HE/comissao (campo opcional); auditoria regra dos 15 dias em ferias na rescisao |
+| WebApp/Frontend | Avisos TRCT/holerite reforçados no painel; tooltips nos campos que mais mudam valor |
+| QA/Test | Expandir `CalculatorBenchmarkCatalog` com 15+ cenarios rescisao (experiencia, aposentadoria, acordo 484-A) |
+| SEO/Content | Secao em `/como-calculamos` so para rescisao |
+
+**Criterios de aceite:**
+- Seguro-desemprego aparece como linha informativa (nao como promessa de valor oficial).
+- Benchmarks de rescisao cobrem motivos raros ja suportados no motor.
+
+**Arquivos-chave:** `CalculationEngine.cs` (rescisao), `CalculatorBenchmarkCatalog.cs`, `ComoCalculamos.cshtml`.
+
+---
+
+## Sprint 56 - Metricas enxutas e decisao por dados (PRIORIDADE MEDIA)
+
+**Objetivo:** usar o que ja existe em `ProductMetricsService` para priorizar backlog sem dashboard complexo.
+
+| Agent | Entregas |
+|-------|----------|
+| Product Owner | Rotina semanal: top calculadoras, taxa de calculo, share/PDF/painel |
+| WebApp/Frontend | Melhorar `/metricas-internas` com ranking e periodo (7/30 dias) |
+| Infrastructure | Checklist pos-deploy documentado em `docs/DEPLOY.md` |
+| QA/Test | Smoke pos-deploy das 17 calculadoras (pode reutilizar `GoLiveSmokeTests`) |
+
+**Criterios de aceite:**
+- Decisoes de Sprint 57-58 baseadas em dados agregados sem PII.
+- Nenhum dado pessoal de simulacao persistido no servidor.
+
+**Nota:** versao completa de observabilidade permanece na **Sprint 52** (baixa prioridade, apos esta).
+
+---
+
+## Sprint 57 - Faixas salariais e widget incorporavel (PRIORIDADE MEDIA)
+
+**Objetivo:** crescimento organico via SEO programatico util e backlinks legitimos.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | Expandir faixas `/salario-liquido/{valor}` com conteudo unico por faixa |
+| WebApp/Frontend | CTA do widget em blog, contato e artigos relacionados |
+| QA/Test | Sitemap inclui novas faixas; embed continua sem anuncios |
+| Documentation | Atualizar `docs/SEO_CHECKLIST.md` com faixas adicionadas |
+
+**Criterios de aceite:**
+- Cada faixa nova tem texto editorial unico (nao thin content).
+- `/widget` e `/incorporar` linkados a partir de pelo menos 3 paginas publicas.
+
+---
+
+## Sprint 58 - Conteudo editorial direcionado (PRIORIDADE MEDIA)
+
+**Objetivo:** artigos que respondem intencao de busca e levam a calculadora certa.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | Artigos ou atualizacoes: conferir holerite; proposta salarial; rescisao vs TRCT |
+| WebApp/Frontend | Secao "Como validamos" e links para calculadora + metodologia em cada artigo novo |
+| QA/Test | `BlogContentTests` e schema Article para artigos novos |
+
+**Criterios de aceite:**
+- Cada artigo novo linka para calculadora, `/como-calculamos` e pelo menos uma FAQ.
+- Tom educativo; sem promessa de consultoria oficial.
+
+---
+
+## Sprint 51 - Monetizacao AdSense (PRIORIDADE BAIXA — aguardando aprovacao Google)
+
+**Status:** **NAO INICIAR** ate aprovacao da conta AdSense. Infraestrutura base ja existe (`AdsOptions`, `_AdSlot`, CSP, cookie consent).
 
 **Objetivo:** preparar e/ou ativar anuncios reais com baixo risco de politica, CLS e experiencia ruim.
 
@@ -457,9 +601,28 @@
 
 ---
 
-## Sprint 52 - Observabilidade, metricas e melhoria continua
+## Sprint 59 - PJ x CLT e MEI profundos (PRIORIDADE BAIXA)
 
-**Objetivo:** medir quais calculadoras geram valor e priorizar proximas melhorias com dados.
+**Objetivo:** comparador que responde "vale a pena ser PJ?" com profundidade de referencia.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | Anexo Simples (I-V) com aliquota sugerida; pro-labore editavel (%); beneficios CLT em valor (13o, ferias+1/3, FGTS) como custo oculto |
+| WebApp/Frontend | Wizard PJ x CLT passo opcional "beneficios"; links cruzados PJ ↔ MEI ↔ custo funcionario |
+| QA/Test | 6 cenarios PJ x CLT documentados no benchmark |
+| SEO/Content | FAQ "PJ ou CLT"; artigo MEI atualizado |
+
+**Criterios de aceite:**
+- Comparativo mostra custo oculto CLT de forma educativa.
+- MEI ja corrigido para desenquadramento (nao reimplementar).
+
+**Nota:** escopo parcial da antiga Sprint 34. Fazer apos Sprints 53-55.
+
+---
+
+## Sprint 52 - Observabilidade completa (PRIORIDADE BAIXA — apos Sprint 56)
+
+**Objetivo:** medir quais calculadoras geram valor e priorizar proximas melhorias com dados (versao completa; a versao enxuta e a Sprint 56).
 
 | Agent | Entregas |
 |-------|----------|
@@ -478,13 +641,18 @@
 
 ## Ordem recomendada pos-auditoria
 
+**Concluidas:** 47 → 48 → 49 → 50
+
+**Trilha ativa (sem AdSense):**
+
 ```
-47 (hotfix/deploy) -> 48 (paridade) -> 49 (UX confianca)
-                         -> 50 (metodologia/SEO) -> 51 (AdSense)
-                                                -> 52 (metricas continuas)
+53 (holerite) -> 54 (jornadas) -> 55 (rescisao)
+      -> 56 (metricas enxutas) -> 57 (faixas + widget) -> 58 (conteudo)
+      -> 51 (AdSense, quando Google aprovar)
+      -> 59 (PJ x CLT profundo) -> 52 (observabilidade completa)
 ```
 
-**Atalho pragmatico:** Sprint 47 deve ir antes de qualquer otimizacao de conteudo ou anuncios, porque confianca de calculo e fluxo funcionando sao pre-requisitos para monetizacao.
+**Atalho pragmatico:** nao iniciar Sprint 51 enquanto AdSense nao aprovar. Priorizar Sprints 53-55 porque reforcam o valor unico do produto (extrato confiavel e jornada clara).
 
 ---
 

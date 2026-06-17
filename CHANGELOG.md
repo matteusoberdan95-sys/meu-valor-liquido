@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+### Sprint 53 - Holerite completo
+- Paridade de descontos entre `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial`: VT, VR/VA, plano, pensão (% ou valor) e outros.
+- Extrato com linhas separadas e IRRF isento visível (Lei 15.270/2025).
+- Bruto necessário com faixa estimada (`GrossSalarySolver.SolveRange`).
+- Accordion **Ajustar descontos** nas três calculadoras; destaque de ganho no bolso na proposta.
+- Novo cenário de benchmark `salario-5000-holerite-separado` (51 cenários no catálogo).
+- Artigo `como-avaliar-proposta-salarial` e atualização do artigo de salário líquido.
+- Testes `Sprint53HoleriteTests`.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 375 testes.
+
+### Planejamento — trilha ativa pos-Sprint 50 (Sprints 53-59)
+- Nova trilha em `docs/sprint-plan.md`: prioridade alta (53 holerite, 54 jornadas, 55 rescisao), media (56-58), baixa/bloqueada (51 AdSense, 59, 52).
+- `AGENTS.md` e `docs/agents.md` atualizados com sprint ativa e handoff Cursor/Codex.
+- Mapeamento: antiga Sprint 32 → 53; 33 → 55; 34 → 59 (evitar duplicata).
+
 ### Sprint 50 - Metodologia, E-E-A-T e conteudo de apoio
 - `/como-calculamos` com metodologia por categoria, data de calibracao e links para calculadoras.
 - Badge `Validado com cenarios de referencia` nas 10 calculadoras prioritarias do benchmark.

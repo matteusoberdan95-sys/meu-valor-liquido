@@ -22,8 +22,8 @@ Para alternar o trabalho entre os dois agentes sem perder contexto:
 Estado operacional atual:
 
 - Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
-- As calculadoras `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial` compartilham o formulário em `src/WebApp/Pages/Calculadoras/Details.cshtml`.
-- O ícone de calendário no tema dark foi ajustado em `src/WebApp/wwwroot/css/site.css`.
+- **Próxima sprint:** 53 (holerite completo) — ver `docs/sprint-plan.md` e `AGENTS.md`.
+- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–50. AdSense (Sprint 51) aguarda aprovação Google.
 ## Clonar o projeto
 
 ```powershell
@@ -76,7 +76,7 @@ Suite validada recentemente:
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — motor: Sprint 31 concluída, próxima 32 (holerite); visual dark: Sprint 44 concluída, próxima 45 (painel e institucional)
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — **próxima: Sprint 54** (jornadas); trilhas 47–50 e 53 concluídas; AdSense (51) aguardando aprovação
 - **Redesign dark Stitch:** [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md) (Sprints 39–46)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
 

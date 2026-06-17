@@ -42,9 +42,37 @@
             var verbasLabel = Model.CalculatorSlug switch
             {
                 "salario-liquido" => "Salário bruto",
+                "salario-bruto-necessario" => "Salário bruto estimado",
+                "proposta-salarial" => "Salário bruto proposto",
                 "ferias" or "decimo-terceiro" => "Verbas",
                 _ => "Verbas rescisórias"
             };
+
+            @if (Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase))
+            {
+                var netGainLine = Model.Result.LineItems.FirstOrDefault(i =>
+                    i.Label is "Ganho líquido mensal" or "Redução líquida mensal");
+                var grossPctLine = Model.Result.LineItems.FirstOrDefault(i => i.Label == "Aumento no bruto");
+                var netPctLine = Model.Result.LineItems.FirstOrDefault(i => i.Label == "Aumento no líquido");
+                if (netGainLine is not null)
+                {
+                    <div class="valora-proposal-highlight">
+                        <div class="valora-proposal-highlight-main">
+                            <span class="valora-proposal-highlight-label">Ganho no bolso</span>
+                            <strong class="valora-proposal-highlight-value">
+                                @(netGainLine.Label == "Ganho líquido mensal" ? "+" : "-") @netGainLine.Amount/mês
+                            </strong>
+                        </div>
+                        @if (grossPctLine?.DisplayText is not null && netPctLine?.DisplayText is not null)
+                        {
+                            <p class="valora-proposal-highlight-sub">
+                                @grossPctLine.DisplayText no bruto · @netPctLine.DisplayText no líquido
+                            </p>
+                        }
+                    </div>
+                }
+            }
+
             <div class="valora-result-summary-grid">
                 <div class="valora-result-line">
                     <span>@verbasLabel</span>

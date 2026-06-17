@@ -52,85 +52,54 @@ public sealed class CalculationEngine
 
     private CalculationResult CalculateNetSalary(CalculatorDefinition definition, CalculatorInput input)
     {
-        var breakdown = netSalaryCalculator.Calculate(
-            input.Amount,
-            input.Dependents,
-            input.TransportDiscount,
-            otherDiscounts: input.OtherDiscounts);
+        var discounts = HoleriteDiscountMapper.FromInput(input, definition.Slug);
+        var breakdown = netSalaryCalculator.Calculate(input.Amount, input.Dependents, discounts);
+        var lines = HoleriteExtratoBuilder.Build(breakdown, input.Dependents, includeGross: true);
 
-        return Build(definition, breakdown.Gross, breakdown.Net,
-        [
-            Discount("INSS", breakdown.Inss),
-            Discount("IRRF", breakdown.Irrf),
-            Discount("Vale-transporte", breakdown.TransportDiscount),
-            Discount("Outros descontos", breakdown.OtherDiscounts)
-        ], "Salário líquido com INSS progressivo e IRRF com redução legal de " + BrTaxTables2026.Year + ".");
+        return Build(
+            definition,
+            breakdown.Gross,
+            breakdown.Net,
+            lines,
+            "Salário líquido com INSS progressivo e IRRF com redução legal de " + BrTaxTables2026.Year + ".");
     }
 
     private CalculationResult CalculateRequiredGrossSalary(CalculatorDefinition definition, CalculatorInput input)
     {
         var targetNet = input.Amount;
-        var transport = input.TransportDiscount;
-        var meal = input.SecondaryAmount;
-        var other = input.OtherDiscounts;
-
-        var gross = GrossSalarySolver.Solve(
-            netSalaryCalculator,
-            targetNet,
-            input.Dependents,
-            transport,
-            meal,
-            other);
-
-        var breakdown = netSalaryCalculator.Calculate(gross, input.Dependents, transport, meal, other);
+        var discounts = HoleriteDiscountMapper.FromInput(input, definition.Slug);
+        var range = GrossSalarySolver.SolveRange(netSalaryCalculator, targetNet, input.Dependents, discounts);
+        var breakdown = netSalaryCalculator.Calculate(range.MidGross, input.Dependents, discounts);
         var difference = breakdown.Net - targetNet;
 
         var lines = new List<CalculationLineItem>
         {
             Information("Salário líquido desejado", targetNet),
-            Discount("INSS", breakdown.Inss),
-            Discount("IRRF", breakdown.Irrf)
+            TextInformation(
+                "Faixa de bruto estimada",
+                range.MinGross == range.MaxGross
+                    ? Money.From(range.MidGross).ToString()
+                    : $"entre {Money.From(range.MinGross)} e {Money.From(range.MaxGross)}")
         };
-
-        if (breakdown.TransportDiscount > 0m)
-        {
-            lines.Add(Discount("Vale-transporte", breakdown.TransportDiscount));
-        }
-
-        if (breakdown.MealVoucherDiscount > 0m)
-        {
-            lines.Add(Discount("Vale-refeição/alimentação", breakdown.MealVoucherDiscount));
-        }
-
-        if (breakdown.OtherDiscounts > 0m)
-        {
-            lines.Add(Discount("Outros descontos", breakdown.OtherDiscounts));
-        }
-
+        lines.AddRange(HoleriteExtratoBuilder.BuildDiscountLines(breakdown, input.Dependents));
         lines.Add(Information("Diferença vs. líquido desejado", difference));
 
         var explanation =
-            $"Para receber cerca de {Money.From(targetNet)} líquido, estimamos salário bruto de {Money.From(gross)}. " +
+            $"Para receber cerca de {Money.From(targetNet)} líquido, estimamos salário bruto de {Money.From(range.MidGross)} " +
+            $"(faixa {Money.From(range.MinGross)} a {Money.From(range.MaxGross)}). " +
             "O cálculo usa busca binária sobre as mesmas regras de INSS progressivo e IRRF com redução legal de " +
             BrTaxTables2026.Year + ".";
 
-        return Build(definition, gross, breakdown.Net, lines, explanation);
+        return Build(definition, range.MidGross, breakdown.Net, lines, explanation);
     }
 
     private CalculationResult CalculateSalaryProposal(CalculatorDefinition definition, CalculatorInput input)
     {
         var currentGross = input.Amount;
         var proposedGross = input.SecondaryAmount;
-        var current = netSalaryCalculator.Calculate(
-            currentGross,
-            input.Dependents,
-            input.TransportDiscount,
-            otherDiscounts: input.OtherDiscounts);
-        var proposed = netSalaryCalculator.Calculate(
-            proposedGross,
-            input.Dependents,
-            input.TransportDiscount,
-            otherDiscounts: input.OtherDiscounts);
+        var discounts = HoleriteDiscountMapper.FromInput(input, definition.Slug);
+        var current = netSalaryCalculator.Calculate(currentGross, input.Dependents, discounts);
+        var proposed = netSalaryCalculator.Calculate(proposedGross, input.Dependents, discounts);
 
         var netDiff = proposed.Net - current.Net;
         var annualDiff = netDiff * 12m;
@@ -154,6 +123,7 @@ public sealed class CalculationEngine
             PercentInformation("Aumento no bruto", grossIncreasePercent),
             PercentInformation("Aumento no líquido", netIncreasePercent)
         };
+        lines.AddRange(HoleriteExtratoBuilder.BuildDiscountLines(proposed, input.Dependents));
 
         var explanation = netDiff >= 0m
             ? $"A proposta eleva o bruto em {grossIncreasePercent:0.#}% e o líquido em {netIncreasePercent:0.#}% " +

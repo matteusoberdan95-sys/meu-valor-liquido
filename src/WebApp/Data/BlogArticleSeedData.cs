@@ -26,17 +26,37 @@ public static class BlogArticleSeedData
             <h2>Principais descontos no holerite</h2>
             <ul>
             <li><strong>INSS:</strong> contribuição previdenciária calculada por faixas progressivas.</li>
-            <li><strong>IRRF:</strong> imposto retido na fonte sobre a base após INSS e dependentes.</li>
+            <li><strong>IRRF:</strong> imposto retido na fonte sobre a base após INSS e dependentes. Em 2026, bases até R$ 5.000 podem ficar isentas pela Lei 15.270/2025.</li>
             <li><strong>Vale-transporte:</strong> até 6% do salário bruto, quando optado.</li>
-            <li><strong>Benefícios e convênios:</strong> descontos autorizados pelo trabalhador.</li>
+            <li><strong>Vale-refeição/alimentação, plano de saúde e pensão:</strong> descontos opcionais informados separadamente na calculadora.</li>
+            <li><strong>Outros:</strong> empréstimo consignado, sindicato e demais descontos autorizados.</li>
             </ul>
             <h2>Como estimar seu líquido</h2>
-            <p>Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para simular seu caso com as tabelas de 2026. Informe salário bruto, dependentes e descontos extras para ver um extrato estimado.</p>
+            <p>Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para simular seu caso com as tabelas de 2026. Informe salário bruto, dependentes e abra <strong>Ajustar descontos</strong> para vale-transporte, VR/VA, plano, pensão e outros itens do holerite.</p>
             <h2>Limitações de uma estimativa</h2>
             <p>Convenções coletivas, adicionais noturnos, horas extras e benefícios específicos alteram o resultado final. Trate a simulação como referência educativa e confirme valores oficiais com o departamento pessoal.</p>
             <h2>Como validamos esta estimativa</h2>
             <p>A <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> é calibrada com cenários de referência documentados em <a href="/como-calculamos">Como calculamos</a>, incluindo tabelas INSS/IRRF de 2026 e tolerância de paridade.</p>
             <p><strong>Estimativa educativa:</strong> não substitui holerite oficial, TRCT ou consultoria contábil/trabalhista.</p>
+            """),
+        Article(
+            "como-avaliar-proposta-salarial",
+            "Como avaliar uma proposta salarial pelo líquido",
+            "Compare bruto atual e proposto pelo que entra no bolso — com os mesmos descontos de holerite nos dois cenários.",
+            "proposta-salarial",
+            "Trabalhista",
+            new DateOnly(2026, 6, 17),
+            """
+            <p>Uma proposta de emprego ou aumento costuma ser comunicada em salário bruto. O que muda seu orçamento, porém, é o <strong>líquido</strong> — e impostos progressivos fazem o percentual no bolso ser menor que o percentual no bruto.</p>
+            <h2>Compare cenários com os mesmos descontos</h2>
+            <p>Para uma comparação justa, mantenha vale-transporte, VR/VA, plano de saúde, pensão e outros descontos fixos iguais no cenário atual e no proposto. Só assim você vê o ganho real no bolso.</p>
+            <h2>Bruto maior nem sempre é bolso maior na mesma proporção</h2>
+            <p>INSS e IRRF são progressivos: parte do aumento pode ir para impostos. A <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> destaca o ganho líquido mensal e os percentuais no bruto e no líquido.</p>
+            <h2>Próximo passo</h2>
+            <p>Depois de comparar a proposta, simule o holerite completo na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> ou descubra o bruto necessário na <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a>.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>Cenários de holerite e proposta estão documentados em <a href="/como-calculamos">Como calculamos</a>, com paridade entre as três calculadoras de salário.</p>
+            <p><strong>Estimativa educativa:</strong> benefícios não monetários (PLR, bônus, stock options) não entram nesta simulação.</p>
             """),
         Article(
             "como-calcular-ferias",

@@ -1,0 +1,73 @@
+@model MeuValorLiquido.WebApp.Pages.Calculadoras.DetailsModel
+@{
+    var profile = Model.FieldProfile;
+}
+
+@if (profile.ShowDependents)
+{
+    <div>
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
+        <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+    </div>
+}
+@if (profile.ShowTransportDiscount)
+{
+    <div style="grid-column: 1 / -1;">
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
+        <div class="valora-input-prefix">
+            <span class="valora-prefix">R$</span>
+            <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+        </div>
+    </div>
+}
+@if (profile.ShowMealVoucherDiscount)
+{
+    <div style="grid-column: 1 / -1;">
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.MealVoucherDiscountLabel, "Input.MealVoucherDiscount", CalculatorFieldKeys.MealVoucherDiscount)' />
+        <div class="valora-input-prefix">
+            <span class="valora-prefix">R$</span>
+            <input asp-for="Input.MealVoucherDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+        </div>
+    </div>
+}
+@if (profile.ShowHealthPlanDiscount)
+{
+    <div style="grid-column: 1 / -1;">
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.HealthPlanDiscountLabel, "Input.HealthPlanDiscount", CalculatorFieldKeys.HealthPlanDiscount)' />
+        <div class="valora-input-prefix">
+            <span class="valora-prefix">R$</span>
+            <input asp-for="Input.HealthPlanDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+        </div>
+    </div>
+}
+@if (profile.ShowAlimonyAmount)
+{
+    <div style="grid-column: 1 / -1;">
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AlimonyAmountLabel, "Input.AlimonyAmount", CalculatorFieldKeys.AlimonyAmount)' />
+        <div class="valora-input-prefix">
+            <span class="valora-prefix">R$</span>
+            <input asp-for="Input.AlimonyAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+        </div>
+    </div>
+}
+@if (profile.ShowAlimonyPercent)
+{
+    <div>
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AlimonyPercentLabel, "Input.AlimonyPercent", CalculatorFieldKeys.AlimonyPercent)' />
+        <div class="valora-input-prefix">
+            <input asp-for="Input.AlimonyPercent" class="valora-input" type="text" data-mask="decimal" placeholder="0" />
+            <span class="valora-prefix" style="border-left: 1px solid var(--valora-border); border-right: 0;">%</span>
+        </div>
+        <p class="valora-text-muted valora-text-sm" style="margin: 0.35rem 0 0;">Use valor fixo ou percentual sobre o bruto — não some os dois.</p>
+    </div>
+}
+@if (profile.ShowOtherDiscounts)
+{
+    <div style="grid-column: 1 / -1;">
+        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
+        <div class="valora-input-prefix">
+            <span class="valora-prefix">R$</span>
+            <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+        </div>
+    </div>
+}

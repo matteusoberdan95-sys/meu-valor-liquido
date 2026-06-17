@@ -653,33 +653,7 @@ else
                                 @profile.LayeredOptionalSectionLabel
                             </summary>
                             <div class="valora-form-row" style="margin-top: 1rem;">
-                                @if (profile.ShowDependents)
-                                {
-                                    <div>
-                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
-                                        <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
-                                    </div>
-                                }
-                                @if (profile.ShowTransportDiscount)
-                                {
-                                    <div style="grid-column: 1 / -1;">
-                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
-                                        <div class="valora-input-prefix">
-                                            <span class="valora-prefix">R$</span>
-                                            <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
-                                        </div>
-                                    </div>
-                                }
-                                @if (profile.ShowOtherDiscounts)
-                                {
-                                    <div style="grid-column: 1 / -1;">
-                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
-                                        <div class="valora-input-prefix">
-                                            <span class="valora-prefix">R$</span>
-                                            <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
-                                        </div>
-                                    </div>
-                                }
+                                <partial name="Shared/_HoleriteOptionalFields" model="Model" />
                             </div>
                         </details>
                     }

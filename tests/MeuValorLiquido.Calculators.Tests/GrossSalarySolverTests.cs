@@ -31,7 +31,7 @@ public class GrossSalarySolverTests
             Amount: 3500m,
             Dependents: 0,
             TransportDiscount: 150m,
-            SecondaryAmount: 50m,
+            MealVoucherDiscount: 50m,
             OtherDiscounts: 100m));
 
         result.IsSuccess.Should().BeTrue();

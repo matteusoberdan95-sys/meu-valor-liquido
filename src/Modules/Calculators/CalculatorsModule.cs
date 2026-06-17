@@ -68,6 +68,10 @@ public sealed record CalculatorInput(
     decimal Hours = 0m,
     int Dependents = 0,
     decimal TransportDiscount = 0m,
+    decimal MealVoucherDiscount = 0m,
+    decimal HealthPlanDiscount = 0m,
+    decimal AlimonyAmount = 0m,
+    decimal AlimonyPercent = 0m,
     decimal OtherDiscounts = 0m,
     TerminationReason TerminationReason = TerminationReason.DismissalWithoutCause,
     bool CompletedNoticePeriod = false,
@@ -150,7 +154,23 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
 
         RuleFor(input => input.SecondaryAmount)
             .GreaterThanOrEqualTo(0)
-            .WithMessage("O desconto de vale-refeição não pode ser negativo.");
+            .WithMessage("O valor secundário não pode ser negativo.");
+
+        RuleFor(input => input.MealVoucherDiscount)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O desconto de vale-refeição/alimentação não pode ser negativo.");
+
+        RuleFor(input => input.HealthPlanDiscount)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O desconto do plano de saúde não pode ser negativo.");
+
+        RuleFor(input => input.AlimonyAmount)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O valor da pensão alimentícia não pode ser negativo.");
+
+        RuleFor(input => input.AlimonyPercent)
+            .InclusiveBetween(0, 100)
+            .WithMessage("Informe um percentual de pensão entre 0 e 100.");
 
         RuleFor(input => input.OtherDiscounts)
             .GreaterThanOrEqualTo(0)

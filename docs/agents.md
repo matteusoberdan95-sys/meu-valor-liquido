@@ -19,17 +19,29 @@ Resumo para agentes:
 
 Use esta sequência para continuar o trabalho sem perder contexto:
 
-1. `README.md`
-2. `AGENTS.md`
-3. `docs/CODING_CONVENTIONS.md`
-4. `docs/sprint-plan.md`
+1. `git pull origin main`
+2. `README.md`
+3. `AGENTS.md` (tabela **Sprint ativa**)
+4. `docs/CODING_CONVENTIONS.md`
+5. `docs/sprint-plan.md` → seção **Trilha ativa pós-Sprint 50**
 
-Pontos atuais de atenção:
+### Sprint ativa (2026-06)
 
-- tema dark Premium Liquid é a baseline atual;
-- sprints Stitch 39 a 46 já foram concluídas;
-- regressão recente corrigiu a renderização dos campos principais em `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial`;
-- o teste de proteção dessa regressão está em `tests/MeuValorLiquido.WebApp.Tests/CalculatorFormFieldsTests.cs`.
+| Prioridade | Sprints | O quê |
+|------------|---------|-------|
+| **Alta — próxima** | **54** | Jornadas guiadas entre calculadoras |
+| Alta | 55 | Rescisão (lacunas legais) |
+| Média | 56, 57, 58 | Métricas enxutas; faixas salariais + widget; conteúdo editorial |
+| Bloqueada | 51 | AdSense — aguardar aprovação Google |
+| Baixa | 59, 52 | PJ×CLT profundo; observabilidade completa |
+
+**Mapeamento legado:** Sprint 32 → 53; Sprint 33 → 55; Sprint 34 → 59 (não implementar em duplicata).
+
+Pontos já entregues (não reabrir sem motivo):
+
+- Sprints 47–50 e **53**: hotfix, benchmark, tooltips, metodologia E-E-A-T, holerite completo
+- Tema dark Premium Liquid (Stitch 39–46)
+- Formulário compartilhado CLT em `Details.cshtml`; testes em `CalculatorFormFieldsTests.cs`
 
 ## Product Owner Agent
 
