@@ -3,77 +3,147 @@
     var profile = Model.FieldProfile;
 }
 
-<form method="post" class="valora-stitch-cltpj-form valora-stack-md" asp-route-slug="@Model.Definition!.Slug">
+<form method="post" class="valora-stitch-cltpj-form" asp-route-slug="@Model.Definition!.Slug" data-pj-wizard>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+    <div class="valora-pj-wizard-stepper" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Passos do comparador">
+        <span class="valora-pj-wizard-stepper-bar valora-pj-wizard-stepper-bar--active" data-pj-stepper="1"></span>
+        <span class="valora-pj-wizard-stepper-bar" data-pj-stepper="2"></span>
+        <span class="valora-pj-wizard-stepper-bar" data-pj-stepper="3"></span>
+    </div>
+
     <nav class="valora-pj-wizard-steps" aria-label="Passos do comparador">
-        <span class="valora-pj-wizard-step valora-pj-wizard-step--active">1. Dados CLT</span>
-        <span class="valora-pj-wizard-step">2. Dados PJ</span>
-        <span class="valora-pj-wizard-step">3. Calcular</span>
+        <span class="valora-pj-wizard-step valora-pj-wizard-step--active" data-pj-step-label="1">1. Dados CLT</span>
+        <span class="valora-pj-wizard-step" data-pj-step-label="2">2. Dados PJ</span>
+        <span class="valora-pj-wizard-step" data-pj-step-label="3">3. Calcular</span>
     </nav>
 
-    <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--clt">
-        <div class="valora-stitch-cltpj-input-head">
-            <span class="valora-pj-wizard-badge">1</span>
-            <span class="material-symbols-outlined" aria-hidden="true">work</span>
-            <h2>Entradas CLT</h2>
-        </div>
-        <p class="valora-helper" style="margin: 0 0 1rem;">Informe o salário bruto e descontos mensais do regime CLT.</p>
-        <div class="valora-form-row">
-            <div>
-                <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
-                <div class="valora-input-prefix">
-                    <span class="valora-prefix">R$</span>
-                    <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+    <div class="valora-pj-wizard-layout">
+        <div class="valora-pj-wizard-main valora-stack-md">
+            <div class="valora-pj-wizard-panel" data-pj-step="1">
+                <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--clt">
+                    <div class="valora-stitch-cltpj-input-head">
+                        <span class="valora-pj-wizard-icon-box valora-pj-wizard-icon-box--clt">
+                            <span class="material-symbols-outlined" aria-hidden="true">work</span>
+                        </span>
+                        <h2>Entradas CLT</h2>
+                    </div>
+                    <p class="valora-helper valora-stitch-cltpj-helper">Informe o salário bruto e descontos mensais do regime CLT.</p>
+                    <div class="valora-form-row">
+                        <div>
+                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                        </div>
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="valora-pj-wizard-nav">
+                    <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-pj-wizard-next" data-pj-goto="2">
+                        Próximo passo
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
-                <span asp-validation-for="Input.Amount" class="text-danger"></span>
             </div>
-            <div>
-                <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
-                <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
-            </div>
-            <div style="grid-column: 1 / -1;">
-                <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
-                <div class="valora-input-prefix">
-                    <span class="valora-prefix">R$</span>
-                    <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--pj">
-        <div class="valora-stitch-cltpj-input-head">
-            <span class="valora-pj-wizard-badge">2</span>
-            <span class="material-symbols-outlined" aria-hidden="true">business_center</span>
-            <h2>Entradas PJ</h2>
-        </div>
-        <p class="valora-helper" style="margin: 0 0 1rem;">Informe faturamento PJ, alíquota do Simples e despesas fixas.</p>
-        <div class="valora-form-row">
-            <div style="grid-column: 1 / -1;">
-                <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
-                <div class="valora-input-prefix">
-                    <span class="valora-prefix">R$</span>
-                    <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+            <div class="valora-pj-wizard-panel" data-pj-step="2" hidden>
+                <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--pj">
+                    <div class="valora-stitch-cltpj-input-head">
+                        <span class="valora-pj-wizard-icon-box valora-pj-wizard-icon-box--pj">
+                            <span class="material-symbols-outlined" aria-hidden="true">business_center</span>
+                        </span>
+                        <h2>Entradas PJ</h2>
+                    </div>
+                    <p class="valora-helper valora-stitch-cltpj-helper">Informe faturamento PJ, alíquota do Simples e despesas fixas.</p>
+                    <div class="valora-form-row">
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <p class="valora-helper">Deixe em branco para estimar o faturamento equivalente ao líquido CLT.</p>
+                        </div>
+                        <div>
+                            <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
+                            <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="6" />
+                        </div>
+                        <div>
+                            <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="valora-pj-wizard-nav valora-pj-wizard-nav--split">
+                    <button type="button" class="valora-pj-wizard-back" data-pj-goto="1">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                        Voltar
+                    </button>
+                    <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-pj-wizard-next" data-pj-goto="3">
+                        Ver resumo
+                        <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
+                    </button>
                 </div>
-                <p class="valora-helper">Deixe em branco para estimar o faturamento equivalente ao líquido CLT.</p>
             </div>
-            <div>
-                <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
-                <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="6" />
-            </div>
-            <div>
-                <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
-                <div class="valora-input-prefix">
-                    <span class="valora-prefix">R$</span>
-                    <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <div class="valora-pj-wizard-submit">
-        <span class="valora-pj-wizard-badge">3</span>
-        <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-cltpj-submit" type="submit">CALCULAR AGORA</button>
+            <div class="valora-pj-wizard-panel" data-pj-step="3" hidden>
+                <section class="valora-stitch-cltpj-review-card">
+                    <h2 class="valora-stitch-cltpj-review-title">Pronto para comparar</h2>
+                    <p class="valora-helper">Revise os dados informados e clique em calcular para ver o veredito CLT × PJ no painel ao lado.</p>
+                    <ul class="valora-stitch-cltpj-review-list">
+                        <li><span>Salário bruto CLT</span><strong data-pj-review="amount">—</strong></li>
+                        <li><span>Faturamento PJ</span><strong data-pj-review="secondary">—</strong></li>
+                        <li><span>Alíquota PJ</span><strong data-pj-review="rate">—</strong></li>
+                    </ul>
+                </section>
+                <div class="valora-pj-wizard-nav valora-pj-wizard-nav--split">
+                    <button type="button" class="valora-pj-wizard-back" data-pj-goto="2">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                        Voltar
+                    </button>
+                    <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-cltpj-submit" type="submit">CALCULAR AGORA</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="valora-pj-wizard-aside" aria-label="Dicas do comparador">
+            <div class="valora-pj-wizard-tip" data-pj-tip="1">
+                <h3 class="valora-pj-wizard-tip-title">
+                    <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                    Dica fiscal
+                </h3>
+                <p>O regime CLT inclui 13º, férias (+1/3) e depósitos de FGTS. Considere estes benefícios no comparativo anual.</p>
+            </div>
+            <div class="valora-pj-wizard-tip" data-pj-tip="2" hidden>
+                <h3 class="valora-pj-wizard-tip-title">
+                    <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+                    Planejamento PJ
+                </h3>
+                <p>Ajuste a alíquota do Simples e despesas fixas (contador, taxas) para aproximar o cenário real da sua empresa.</p>
+            </div>
+            <div class="valora-pj-wizard-tip" data-pj-tip="3" hidden>
+                <h3 class="valora-pj-wizard-tip-title">
+                    <span class="material-symbols-outlined" aria-hidden="true">compare_arrows</span>
+                    Veredito
+                </h3>
+                <p>Após calcular, o painel mostra qual regime entrega maior líquido e a diferença mensal estimada.</p>
+            </div>
+        </aside>
     </div>
 </form>

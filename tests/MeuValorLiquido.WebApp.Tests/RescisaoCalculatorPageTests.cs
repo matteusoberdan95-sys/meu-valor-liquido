@@ -22,5 +22,8 @@ public class RescisaoCalculatorPageTests : IClassFixture<WebApplicationFactory<P
         html.Should().Contain("Ajustar detalhes");
         html.Should().Contain("data-mask=\"currency\"");
         html.Should().Contain("calculator-input-masks");
+        html.Should().Contain("valora-stitch-rescisao");
+        html.Should().Contain("Dados do Contrato");
+        (html.Contains("RESUMO DA RESCIS") || html.Contains("RESUMO DA RESCIS&#xC3;O")).Should().BeTrue();
     }
 }

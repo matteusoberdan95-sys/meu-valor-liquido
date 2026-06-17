@@ -253,16 +253,16 @@
 
 ---
 
-## Sprint 43 — Calculadoras prioritárias dark
+## Sprint 43 — Calculadoras prioritárias dark (concluída)
 
 **Objetivo:** telas complexas com layout próprio no Stitch.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | Rescisão CLT desktop (wizard/seções, warnings no painel) |
-| Frontend | Comparador PJ×CLT desktop (wizard 3–4 passos dark) |
-| Frontend | Refino mobile: férias, 13º, INSS, IRRF |
-| QA | Smoke rescisão + PJ×CLT; regressão visual |
+| Frontend | Rescisão CLT: header trabalhista, seção &quot;Dados do Contrato&quot;, callout FGTS no painel |
+| Frontend | PJ×CLT: wizard 3 passos dark com stepper, dicas laterais e resumo antes do submit |
+| Frontend | Mobile: hint fiscal INSS/IRRF; badge roxo; accordion destacado em férias/13º |
+| QA | Smoke rescisão + PJ×CLT verde (121 testes WebApp) |
 
 **Referência Stitch:** `calculadora_de_rescis_o_desktop`, `comparador_clt_vs_pj_desktop`
 

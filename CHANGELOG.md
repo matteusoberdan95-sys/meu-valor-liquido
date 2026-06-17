@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 43 — Calculadoras prioritárias dark
+- Rescisão CLT com layout `valora-stitch-rescisao`, seção de contrato e callout FGTS
+- Comparador PJ×CLT com wizard 3 passos, stepper e painel de dicas (`pj-vs-clt-wizard.js`)
+- Refino mobile em INSS, IRRF, férias e 13º (badges fiscais e hint de tabelas)
+
 ### Sprint 42 — Template calculadora detail dark
 - Header sem gradiente teal; breadcrumb desktop e resumo visível no mobile
 - Formulário glass (`#121214`), inputs `#0e0e0f`, accordion dark e botão com glow

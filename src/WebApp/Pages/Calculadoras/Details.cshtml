@@ -37,7 +37,7 @@ else
         }
     }
 
-    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : "valora-stitch-calc-detail")">
+    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : Model.IsRescisaoStitch ? "valora-stitch-rescisao" : $"valora-stitch-calc-detail{Model.CalcDetailModifierClass}")">
         @if (!Model.IsEmbedMode && Model.IsPjVsCltStitch)
         {
             <nav class="valora-breadcrumb valora-stitch-cltpj-breadcrumb" aria-label="breadcrumb">
@@ -56,6 +56,31 @@ else
                 <span class="material-symbols-outlined" aria-hidden="true">info</span>
                 <p>Esta é uma ferramenta educativa. Os valores são estimativas baseadas nas tabelas vigentes e não substituem consulta contábil profissional.</p>
             </div>
+
+            @if (Model.TopAdSlot is not null)
+            {
+                <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+            }
+        }
+        else if (!Model.IsEmbedMode && Model.IsRescisaoStitch)
+        {
+            <nav class="valora-breadcrumb valora-stitch-rescisao-breadcrumb" aria-label="breadcrumb">
+                <ol class="valora-breadcrumb">
+                    <li><a asp-page="/Index">Início</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li class="active" aria-current="page">@Model.Definition.Name</li>
+                </ol>
+            </nav>
+
+            <header class="valora-stitch-rescisao-header">
+                <div class="valora-stitch-rescisao-meta">
+                    <span class="valora-stitch-rescisao-category">TRABALHISTA</span>
+                </div>
+                <h1 class="valora-stitch-rescisao-title">@Model.Definition.Name</h1>
+                <p class="valora-stitch-rescisao-lead">@Model.Definition.Summary</p>
+            </header>
 
             @if (Model.TopAdSlot is not null)
             {
@@ -91,6 +116,14 @@ else
 
             <p class="valora-stitch-calc-detail-lead">@Model.Definition.Summary</p>
 
+            @if (Model.IsLayeredFiscalDetail)
+            {
+                <div class="valora-stitch-calc-fiscal-hint">
+                    <span class="material-symbols-outlined" aria-hidden="true">table_chart</span>
+                    <p>Simulação com tabelas vigentes de INSS e IRRF. Use &quot;Ajustar detalhes&quot; para dependentes e opções avançadas.</p>
+                </div>
+            }
+
             @if (Model.TopAdSlot is not null)
             {
                 <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
@@ -113,7 +146,7 @@ else
             else
             {
             <form method="post"
-                  class="@(Model.IsEmbedMode ? "valora-form-card valora-stack-md" : "valora-form-card valora-stitch-calc-form valora-stack-md")"
+                  class="@(Model.IsEmbedMode ? "valora-form-card valora-stack-md" : $"valora-form-card valora-stitch-calc-form valora-stack-md{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-form" : "")}")"
                   asp-route-slug="@Model.Definition.Slug"
                   asp-route-embed="@(Model.IsEmbedMode ? "1" : null)">
                 <h2 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-stitch-calc-form-title")">
@@ -121,8 +154,15 @@ else
                     {
                         <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
                     }
-                    Informe seus dados
+                    @(Model.IsRescisaoStitch ? "Dados do Contrato" : "Informe seus dados")
                 </h2>
+                @if (Model.IsRescisaoStitch)
+                {
+                    <div class="valora-stitch-rescisao-form-note">
+                        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                        <p>Informe salário, datas e motivo do desligamento. O cálculo considera saldo de salário, aviso prévio, férias, 13º e descontos legais.</p>
+                    </div>
+                }
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="valora-form-row">
                     @if (profile.ShowTerminationReason)
@@ -664,7 +704,7 @@ else
             </form>
             }
 
-            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch)
+            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch && !Model.IsRescisaoStitch)
             {
             <p class="valora-stitch-calc-footer-hint">
                 Os resultados são estimativas educativas. Consulte seu RH ou contador para valores oficiais.
@@ -684,7 +724,7 @@ else
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")} valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
             @if (Model.IsPjVsCltStitch)
             {
                 @if (Model.CltPjBreakdown is not null)
@@ -705,7 +745,7 @@ else
             {
                 @if (!Model.IsEmbedMode)
                 {
-                    <p class="valora-stitch-calc-estimate-kicker">ESTIMATIVA ATUAL</p>
+                    <p class="valora-stitch-calc-estimate-kicker">@(Model.IsRescisaoStitch ? "RESUMO DA RESCISÃO" : "ESTIMATIVA ATUAL")</p>
                 }
                 <partial name="Shared/_CalculatorResultPanel" model="Model.ResultPanel" />
                 @if (Model.IsEmbedMode)
@@ -729,7 +769,7 @@ else
                 <section class="valora-result-panel valora-stitch-calc-estimate-placeholder" aria-live="polite">
                     @if (!Model.IsEmbedMode)
                     {
-                        <p class="valora-stitch-calc-estimate-kicker">ESTIMATIVA ATUAL</p>
+                        <p class="valora-stitch-calc-estimate-kicker">@(Model.IsRescisaoStitch ? "RESUMO DA RESCISÃO" : "ESTIMATIVA ATUAL")</p>
                     }
                     <h2 class="valora-h3" style="margin-bottom: 0.5rem;">Seu resultado aparece aqui</h2>
                     <p class="valora-text-sm" style="margin: 0;">Preencha o formulário e clique em Calcular para ver o extrato estimado.</p>
@@ -772,5 +812,9 @@ else
     @if (Model.Share is not null)
     {
         <script src="~/js/calculator-share.js" asp-append-version="true"></script>
+    }
+    @if (Model.IsPjVsCltStitch)
+    {
+        <script src="~/js/pj-vs-clt-wizard.js" asp-append-version="true"></script>
     }
 }

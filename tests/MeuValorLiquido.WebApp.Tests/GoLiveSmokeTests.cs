@@ -111,6 +111,8 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("Entradas CLT");
         html.Should().Contain("Entradas PJ");
         html.Should().Contain("CALCULAR AGORA");
+        html.Should().Contain("data-pj-wizard");
+        html.Should().Contain("valora-pj-wizard-stepper");
         html.Should().Contain("valora-bottom-nav");
     }
 

@@ -13,7 +13,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **40** | Shell compartilhado + home polish (footer, forms, blog cards) | Concluída |
 | **41** | Central de calculadoras (hub mobile + desktop) | Concluída |
 | **42** | Template calculadora detail (17 slugs) | Concluída |
-| **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Pendente |
+| **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Concluída |
 | **44** | FAQ, blog, artigo, metodologia | Pendente |
 | **45** | Meu painel, sobre, contato, newsletter, privacidade | Pendente |
 | **46** | Erro, polish final, checklist visual | Pendente |
@@ -28,8 +28,8 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 41 | Concluída |
 | `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 42 | Concluída |
 | `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Concluída |
-| `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Pendente |
-| `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 43 | Pendente |
+| `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Concluída |
+| `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 43 | Concluída |
 | `faq_mobile` | mobile | `/duvidas` | 44 | Pendente |
 | `faq_desktop` | desktop | `/duvidas` | 44 | Pendente |
 | `blog_desktop` | desktop | `/blog` | 44 | Pendente |

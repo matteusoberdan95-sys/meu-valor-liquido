@@ -48,6 +48,44 @@ public class DetailsModel : PageModel
     public bool IsPjVsCltStitch =>
         Definition?.Slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
 
+    public bool IsRescisaoStitch =>
+        Definition?.Slug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
+
+    public bool IsLayeredFiscalDetail =>
+        Definition is not null
+        && !IsEmbedMode
+        && !IsPjVsCltStitch
+        && !IsRescisaoStitch
+        && (Definition.Slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
+            || Definition.Slug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase)
+            || Definition.Slug.Equals("inss", StringComparison.OrdinalIgnoreCase)
+            || Definition.Slug.Equals("irrf", StringComparison.OrdinalIgnoreCase));
+
+    public string CalcDetailModifierClass
+    {
+        get
+        {
+            if (IsEmbedMode || IsPjVsCltStitch || IsRescisaoStitch || Definition is null)
+            {
+                return string.Empty;
+            }
+
+            if (Definition.Slug.Equals("inss", StringComparison.OrdinalIgnoreCase)
+                || Definition.Slug.Equals("irrf", StringComparison.OrdinalIgnoreCase))
+            {
+                return " valora-stitch-calc-detail--fiscal";
+            }
+
+            if (Definition.Slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
+                || Definition.Slug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase))
+            {
+                return " valora-stitch-calc-detail--layered";
+            }
+
+            return string.Empty;
+        }
+    }
+
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
 
