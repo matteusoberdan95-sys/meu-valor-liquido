@@ -18,6 +18,14 @@ public static class FaqHubHelper
         new(null, "Sobre Nós", "Nossa missão e valores.", "info", "valora-stitch-faq-cat--about", "/sobre")
     ];
 
+    public static string GetCategoryBadgeClass(string category) => category.ToLowerInvariant() switch
+    {
+        "trabalhista" => "valora-stitch-faq-q-badge--trabalhista",
+        "fiscal" => "valora-stitch-faq-q-badge--fiscal",
+        "financeiro" => "valora-stitch-faq-q-badge--financeiro",
+        _ => "valora-stitch-faq-q-badge--neutral"
+    };
+
     public static IReadOnlyList<PopularQuestionDefinition> FilterQuestions(
         IReadOnlyList<PopularQuestionDefinition> all,
         string? query,

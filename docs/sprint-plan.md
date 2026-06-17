@@ -268,16 +268,16 @@
 
 ---
 
-## Sprint 44 — Conteúdo e ajuda
+## Sprint 44 — Conteúdo e ajuda (concluída)
 
 **Objetivo:** FAQ, blog e metodologia no tema dark.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | FAQ mobile (accordion) + desktop (sidebar + categorias) |
-| Frontend | Blog hub (cards com imagem) e artigo (hero, TOC, newsletter inline) |
-| Frontend | Metodologia `/como-calculamos` com badges e tabelas dark |
-| SEO | Revisar contraste WCAG AA em textos longos |
+| Frontend | FAQ dark: sidebar desktop, chips mobile, accordion com badges de categoria |
+| Frontend | Blog hub/artigo: cards `#1C1C1F`, TOC no aside, newsletter dark |
+| Frontend | Metodologia wide dark com tabelas INSS/IRRF |
+| QA | Smoke FAQ, blog, artigo e metodologia verde (121 testes WebApp) |
 
 **Referência Stitch:** `faq_mobile`, `faq_desktop`, `blog_desktop`, `artigo_do_blog_desktop`, `metodologia_desktop`
 

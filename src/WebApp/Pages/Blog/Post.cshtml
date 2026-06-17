@@ -61,7 +61,7 @@ else
             <div class="valora-stitch-blog-article-main">
         <partial name="Shared/_BlogStitchHeroVisual" model="articleHeroModel" />
 
-        <p class="valora-stitch-blog-article-lead">@Model.Post.Summary</p>
+        <p class="valora-stitch-blog-article-lead" id="article-summary">@Model.Post.Summary</p>
 
         <article class="valora-stitch-blog-article-body valora-article-body">
             @Html.Raw(Model.Post.Content)
@@ -69,7 +69,7 @@ else
 
         @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
         {
-            <div class="valora-stitch-blog-article-cta">
+            <div class="valora-stitch-blog-article-cta" id="article-calculator">
                 <div class="valora-stitch-blog-article-cta-head">
                     <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
                     <div>
@@ -96,6 +96,20 @@ else
 
             <aside class="valora-stitch-blog-article-aside" aria-label="Links úteis">
                 <div class="valora-stitch-blog-article-aside-card">
+                    <h2 class="valora-stitch-blog-article-aside-title">Neste artigo</h2>
+                    <a class="valora-stitch-blog-article-aside-link" href="#article-summary">
+                        <span class="material-symbols-outlined" aria-hidden="true">subject</span>
+                        Resumo
+                    </a>
+                    @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
+                    {
+                        <a class="valora-stitch-blog-article-aside-link" href="#article-calculator">
+                            <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                            Calculadora relacionada
+                        </a>
+                    }
+                </div>
+                <div class="valora-stitch-blog-article-aside-card">
                     <h2 class="valora-stitch-blog-article-aside-title">Continue explorando</h2>
                     <a class="valora-stitch-blog-article-aside-link" asp-page="/Calculadoras/Index">
                         <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
@@ -109,6 +123,12 @@ else
                         <span class="material-symbols-outlined" aria-hidden="true">help</span>
                         Central de ajuda
                     </a>
+                </div>
+                <div class="valora-stitch-blog-article-aside-card valora-stitch-blog-article-aside-newsletter">
+                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                    <h2 class="valora-stitch-blog-article-aside-title">Newsletter</h2>
+                    <p class="valora-stitch-blog-article-aside-newsletter-text">Atualizações sobre leis trabalhistas e fiscais.</p>
+                    <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-blog-article-aside-newsletter-btn" asp-page="/Newsletter">Assinar</a>
                 </div>
             </aside>
         </div>

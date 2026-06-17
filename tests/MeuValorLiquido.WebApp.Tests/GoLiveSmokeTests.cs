@@ -122,6 +122,8 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/duvidas");
 
         html.Should().Contain("valora-stitch-faq-hub");
+        html.Should().Contain("valora-stitch-faq-layout");
+        html.Should().Contain("valora-stitch-faq-sidebar");
         html.Should().Contain("Como podemos ajudar hoje?");
         html.Should().Contain("Perguntas Populares");
         html.Should().Contain("Regime CLT");

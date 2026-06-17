@@ -14,7 +14,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **41** | Central de calculadoras (hub mobile + desktop) | Concluída |
 | **42** | Template calculadora detail (17 slugs) | Concluída |
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Concluída |
-| **44** | FAQ, blog, artigo, metodologia | Pendente |
+| **44** | FAQ, blog, artigo, metodologia | Concluída |
 | **45** | Meu painel, sobre, contato, newsletter, privacidade | Pendente |
 | **46** | Erro, polish final, checklist visual | Pendente |
 
@@ -30,11 +30,11 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Concluída |
 | `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Concluída |
 | `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 43 | Concluída |
-| `faq_mobile` | mobile | `/duvidas` | 44 | Pendente |
-| `faq_desktop` | desktop | `/duvidas` | 44 | Pendente |
-| `blog_desktop` | desktop | `/blog` | 44 | Pendente |
-| `artigo_do_blog_desktop` | desktop | `/blog/{slug}` | 44 | Pendente |
-| `metodologia_desktop` | desktop | `/como-calculamos` | 44 | Pendente |
+| `faq_mobile` | mobile | `/duvidas` | 44 | Concluída |
+| `faq_desktop` | desktop | `/duvidas` | 44 | Concluída |
+| `blog_desktop` | desktop | `/blog` | 44 | Concluída |
+| `artigo_do_blog_desktop` | desktop | `/blog/{slug}` | 44 | Concluída |
+| `metodologia_desktop` | desktop | `/como-calculamos` | 44 | Concluída |
 | `meu_painel_mobile` | mobile | `/meu-painel` | 45 | Pendente |
 | `meu_painel_desktop` | desktop | `/meu-painel` | 45 | Pendente |
 | `contato_desktop` | desktop | `/contato` | 45 | Pendente |

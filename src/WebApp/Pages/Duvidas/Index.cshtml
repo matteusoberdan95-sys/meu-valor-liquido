@@ -12,7 +12,9 @@
 
 <div class="valora-stitch-faq-hub">
     <section class="valora-stitch-faq-hero">
+        <p class="valora-stitch-faq-hero-kicker">Central de Ajuda</p>
         <h1 class="valora-stitch-faq-hero-title">Como podemos ajudar hoje?</h1>
+        <p class="valora-stitch-faq-hero-lead">Dúvidas sobre salário, CLT, PJ, impostos e benefícios.</p>
         <form class="valora-stitch-faq-search" method="get" asp-page="/Duvidas/Index" role="search">
             @if (!string.IsNullOrWhiteSpace(Model.Category))
             {
@@ -28,96 +30,148 @@
         </form>
     </section>
 
-    <section class="valora-stitch-faq-categories" aria-label="Categorias">
-        <div class="valora-stitch-faq-cat-grid">
-            @foreach (var card in FaqHubHelper.CategoryCards)
-            {
-                if (card.Href is not null)
+    <div class="valora-stitch-faq-layout">
+        <aside class="valora-stitch-faq-sidebar" aria-label="Categorias">
+            <h2 class="valora-stitch-faq-sidebar-title">Categorias</h2>
+            <nav class="valora-stitch-faq-sidebar-nav">
+                <a class="valora-stitch-faq-sidebar-link @(string.IsNullOrWhiteSpace(Model.Category) && string.IsNullOrWhiteSpace(Model.Query) ? "valora-stitch-faq-sidebar-link--active" : "")"
+                   asp-page="/Duvidas/Index">
+                    <span class="material-symbols-outlined" aria-hidden="true">grid_view</span>
+                    Todas
+                </a>
+                @foreach (var card in FaqHubHelper.CategoryCards)
                 {
-                    <a class="valora-stitch-faq-cat @card.AccentClass" href="@card.Href">
-                        <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
-                        <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
-                        <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
-                    </a>
+                    if (card.Href is not null)
+                    {
+                        <a class="valora-stitch-faq-sidebar-link @card.AccentClass" href="@card.Href">
+                            <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                            @card.Title
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="valora-stitch-faq-sidebar-link @card.AccentClass @(Model.Category == card.FilterCategory ? "valora-stitch-faq-sidebar-link--active" : "")"
+                           asp-page="/Duvidas/Index"
+                           asp-route-cat="@card.FilterCategory"
+                           asp-route-q="@Model.Query">
+                            <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                            @card.Title
+                        </a>
+                    }
+                }
+            </nav>
+        </aside>
+
+        <div class="valora-stitch-faq-main">
+            <section class="valora-stitch-faq-categories valora-stitch-faq-categories--chips" aria-label="Categorias">
+                <div class="valora-stitch-faq-chips-track">
+                    <a class="valora-stitch-faq-chip @(string.IsNullOrWhiteSpace(Model.Category) ? "valora-stitch-faq-chip--active" : "")"
+                       asp-page="/Duvidas/Index"
+                       asp-route-q="@Model.Query">Tudo</a>
+                    @foreach (var card in FaqHubHelper.CategoryCards)
+                    {
+                        if (card.FilterCategory is null) { continue; }
+                        <a class="valora-stitch-faq-chip @card.AccentClass @(Model.Category == card.FilterCategory ? "valora-stitch-faq-chip--active" : "")"
+                           asp-page="/Duvidas/Index"
+                           asp-route-cat="@card.FilterCategory"
+                           asp-route-q="@Model.Query">@card.Title</a>
+                    }
+                </div>
+            </section>
+
+            <section class="valora-stitch-faq-categories valora-stitch-faq-categories--grid" aria-label="Categorias em destaque">
+                <div class="valora-stitch-faq-cat-grid">
+                    @foreach (var card in FaqHubHelper.CategoryCards)
+                    {
+                        if (card.Href is not null)
+                        {
+                            <a class="valora-stitch-faq-cat @card.AccentClass" href="@card.Href">
+                                <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                                <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
+                                <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="valora-stitch-faq-cat @card.AccentClass @(Model.Category == card.FilterCategory ? "valora-stitch-faq-cat--active" : "")"
+                               asp-page="/Duvidas/Index"
+                               asp-route-cat="@card.FilterCategory">
+                                <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                                <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
+                                <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
+                            </a>
+                        }
+                    }
+                </div>
+            </section>
+
+            <section class="valora-stitch-faq-popular">
+                <div class="valora-stitch-faq-popular-head">
+                    <h2 class="valora-stitch-faq-section-title">@(Model.HasActiveFilter ? "Resultados" : "Perguntas Populares")</h2>
+                    @if (Model.HasActiveFilter)
+                    {
+                        <a class="valora-stitch-faq-clear" asp-page="/Duvidas/Index">Limpar filtros</a>
+                    }
+                </div>
+
+                @if (Model.Questions.Count == 0)
+                {
+                    <p class="valora-text-muted">Nenhuma dúvida encontrada. Tente outro termo ou <a asp-page="/Contato">fale conosco</a>.</p>
                 }
                 else
                 {
-                    <a class="valora-stitch-faq-cat @card.AccentClass @(Model.Category == card.FilterCategory ? "valora-stitch-faq-cat--active" : "")"
-                       asp-page="/Duvidas/Index"
-                       asp-route-cat="@card.FilterCategory">
-                        <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
-                        <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
-                        <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
-                    </a>
-                }
-            }
-        </div>
-    </section>
-
-    <section class="valora-stitch-faq-popular">
-        <div class="valora-stitch-faq-popular-head">
-            <h2 class="valora-stitch-faq-section-title">@(Model.HasActiveFilter ? "Resultados" : "Perguntas Populares")</h2>
-            @if (Model.HasActiveFilter)
-            {
-                <a class="valora-stitch-faq-clear" asp-page="/Duvidas/Index">Limpar filtros</a>
-            }
-        </div>
-
-        @if (Model.Questions.Count == 0)
-        {
-            <p class="valora-text-muted">Nenhuma dúvida encontrada. Tente outro termo ou <a asp-page="/Contato">fale conosco</a>.</p>
-        }
-        else
-        {
-            <div class="valora-stitch-faq-accordion-list">
-                @foreach (var question in (Model.HasActiveFilter ? Model.Questions : Model.PopularQuestions))
-                {
-                    <details class="valora-stitch-faq-accordion-item">
-                        <summary>
-                            <span>@question.Title</span>
-                            <span class="material-symbols-outlined">expand_more</span>
-                        </summary>
-                        <div class="valora-stitch-faq-accordion-body">
-                            <p class="valora-text-muted valora-text-sm">@question.SeoDescription</p>
-                            <a class="valora-stitch-faq-read-more" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">Ler resposta completa</a>
-                        </div>
-                    </details>
-                }
-            </div>
-
-            @if (Model.HasActiveFilter && Model.Questions.Count > 8)
-            {
-                <section class="valora-stitch-faq-more">
-                    <h3 class="valora-h3">Mais resultados</h3>
-                    <ul class="valora-stitch-faq-more-list">
-                        @foreach (var question in Model.Questions.Skip(8))
+                    <div class="valora-stitch-faq-accordion-list">
+                        @foreach (var question in (Model.HasActiveFilter ? Model.Questions : Model.PopularQuestions))
                         {
-                            <li>
-                                <a asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">@question.Title</a>
-                                <span class="valora-stitch-faq-more-cat">@question.Category</span>
-                            </li>
+                            <details class="valora-stitch-faq-accordion-item">
+                                <summary>
+                                    <span>@question.Title</span>
+                                    <span class="material-symbols-outlined">expand_more</span>
+                                </summary>
+                                <div class="valora-stitch-faq-accordion-body">
+                                    <p class="valora-text-muted valora-text-sm">@question.SeoDescription</p>
+                                    <span class="valora-stitch-faq-q-badge @FaqHubHelper.GetCategoryBadgeClass(question.Category)">@question.Category</span>
+                                    <a class="valora-stitch-faq-read-more" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">Ler resposta completa</a>
+                                </div>
+                            </details>
                         }
-                    </ul>
-                </section>
-            }
-        }
-    </section>
+                    </div>
 
-    <section class="valora-stitch-faq-ad" aria-label="Espaço publicitário">
-        <div class="valora-stitch-faq-ad-inner">
-            <span class="valora-stitch-faq-ad-label">Espaço Publicitário</span>
-            <span class="material-symbols-outlined" aria-hidden="true">ad_units</span>
-            <span>Banner Institucional</span>
+                    @if (Model.HasActiveFilter && Model.Questions.Count > 8)
+                    {
+                        <section class="valora-stitch-faq-more">
+                            <h3 class="valora-h3">Mais resultados</h3>
+                            <ul class="valora-stitch-faq-more-list">
+                                @foreach (var question in Model.Questions.Skip(8))
+                                {
+                                    <li>
+                                        <a asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">@question.Title</a>
+                                        <span class="valora-stitch-faq-more-cat">@question.Category</span>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+                    }
+                }
+            </section>
+
+            <section class="valora-stitch-faq-ad" aria-label="Espaço publicitário">
+                <div class="valora-stitch-faq-ad-inner">
+                    <span class="valora-stitch-faq-ad-label">Espaço Publicitário</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">ad_units</span>
+                    <span>Banner Institucional</span>
+                </div>
+            </section>
+
+            <section class="valora-stitch-faq-cta">
+                <span class="material-symbols-outlined valora-stitch-faq-cta-icon" aria-hidden="true">support_agent</span>
+                <h2 class="valora-stitch-faq-cta-title">Não encontrou sua resposta?</h2>
+                <p class="valora-stitch-faq-cta-text">Nossa equipe está pronta para ajudar com dúvidas de CLT, PJ ou impostos.</p>
+                <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-faq-cta-btn" asp-page="/Contato">
+                    <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+                    Entre em contato conosco
+                </a>
+            </section>
         </div>
-    </section>
-
-    <section class="valora-stitch-faq-cta">
-        <span class="material-symbols-outlined valora-stitch-faq-cta-icon" aria-hidden="true">support_agent</span>
-        <h2 class="valora-stitch-faq-cta-title">Não encontrou sua resposta?</h2>
-        <p class="valora-stitch-faq-cta-text">Nossa equipe está pronta para ajudar com dúvidas de CLT, PJ ou impostos.</p>
-        <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-faq-cta-btn" asp-page="/Contato">
-            <span class="material-symbols-outlined" aria-hidden="true">chat</span>
-            Entre em contato conosco
-        </a>
-    </section>
+    </div>
 </div>

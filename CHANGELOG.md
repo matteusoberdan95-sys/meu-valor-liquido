@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 44 — Conteúdo e ajuda dark
+- FAQ com layout sidebar desktop, chips mobile e badges de categoria no accordion
+- Blog hub e artigo com cards dark, TOC no aside e newsletter no tema Premium Liquid
+- Metodologia `/como-calculamos` com hero, regimes e tabelas INSS/IRRF dark
+
 ### Sprint 43 — Calculadoras prioritárias dark
 - Rescisão CLT com layout `valora-stitch-rescisao`, seção de contrato e callout FGTS
 - Comparador PJ×CLT com wizard 3 passos, stepper e painel de dicas (`pj-vs-clt-wizard.js`)

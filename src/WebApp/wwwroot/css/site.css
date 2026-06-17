@@ -3795,37 +3795,45 @@ h1, h2, h3, h4,
 
 .valora-stitch-cltpj-faq { margin-top: 2rem; }
 
-/* FAQ hub (Stitch faq_hub — Sprint 24) */
+/* FAQ hub — Premium Liquid dark (Sprint 44) */
 .valora-stitch-faq-hub {
   max-width: var(--valora-container-max);
   margin: 0 auto;
 }
 
 .valora-stitch-faq-hero {
-  margin: 0 -1rem 0;
-  padding: 2rem 1rem 3rem;
-  background: var(--valora-primary);
-  color: var(--valora-on-primary);
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .valora-stitch-faq-hero {
-    margin: 0 0 0;
-    border-radius: var(--valora-radius-xl);
-  }
+.valora-stitch-faq-hero-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--valora-primary);
 }
 
 .valora-stitch-faq-hero-title {
-  margin: 0 0 1.25rem;
-  font-size: clamp(1.35rem, 5vw, 1.75rem);
-  font-weight: 800;
-  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-faq-hero-lead {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--valora-text-muted);
+  line-height: 1.5;
 }
 
 .valora-stitch-faq-search {
   position: relative;
-  max-width: 32rem;
+  max-width: 36rem;
   margin: 0 auto;
 }
 
@@ -3834,28 +3842,85 @@ h1, h2, h3, h4,
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--valora-outline);
+  color: var(--valora-primary);
   pointer-events: none;
 }
 
 .valora-stitch-faq-search-input {
   width: 100%;
-  height: 3rem;
+  height: 3.25rem;
   padding: 0 1rem 0 3rem;
-  border: none;
-  border-radius: var(--valora-radius-xl);
-  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 9999px;
+  background: var(--valora-card-low);
   font-size: 1rem;
+  color: var(--valora-on-surface);
   box-shadow: var(--valora-shadow);
 }
 
 .valora-stitch-faq-search-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--valora-primary-container);
+  border-color: var(--valora-primary);
+  box-shadow: 0 0 0 2px rgb(89 219 199 / 15%);
+}
+
+.valora-stitch-faq-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.valora-stitch-faq-sidebar {
+  display: none;
+}
+
+.valora-stitch-faq-main {
+  min-width: 0;
+}
+
+.valora-stitch-faq-categories--chips {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.valora-stitch-faq-categories--grid {
+  display: none;
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-faq-chips-track {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+}
+
+.valora-stitch-faq-chips-track::-webkit-scrollbar { display: none; }
+
+.valora-stitch-faq-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  color: var(--valora-on-surface-variant);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-stitch-faq-chip--active {
+  background: var(--valora-primary);
+  border-color: var(--valora-primary);
+  color: var(--valora-on-primary);
 }
 
 .valora-stitch-faq-categories {
-  margin-top: -1.5rem;
   padding: 0 0 1.5rem;
 }
 
@@ -3865,21 +3930,16 @@ h1, h2, h3, h4,
   gap: 0.75rem;
 }
 
-@media (min-width: 768px) {
-  .valora-stitch-faq-cat-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
 .valora-stitch-faq-cat {
   display: block;
   padding: 1rem;
-  background: var(--valora-surface);
+  background: var(--valora-card-low);
   border: 1px solid var(--valora-border-subtle);
   border-radius: var(--valora-radius-xl);
-  box-shadow: var(--valora-shadow);
   text-decoration: none;
   color: inherit;
   border-left-width: 4px;
-  transition: transform 0.15s, border-color 0.15s;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
 }
 
 .valora-stitch-faq-cat:active { transform: scale(0.98); }
@@ -3892,8 +3952,8 @@ h1, h2, h3, h4,
 .valora-stitch-faq-cat--trabalhista { border-left-color: var(--valora-trabalhista-blue); }
 .valora-stitch-faq-cat--trabalhista .material-symbols-outlined { color: var(--valora-trabalhista-blue); }
 
-.valora-stitch-faq-cat--pj { border-left-color: var(--valora-primary-container); }
-.valora-stitch-faq-cat--pj .material-symbols-outlined { color: var(--valora-primary-container); }
+.valora-stitch-faq-cat--pj { border-left-color: var(--valora-primary); }
+.valora-stitch-faq-cat--pj .material-symbols-outlined { color: var(--valora-primary); }
 
 .valora-stitch-faq-cat--fiscal { border-left-color: var(--valora-fiscal-purple); }
 .valora-stitch-faq-cat--fiscal .material-symbols-outlined { color: var(--valora-fiscal-purple); }
@@ -3905,6 +3965,7 @@ h1, h2, h3, h4,
   margin: 0.5rem 0 0.25rem;
   font-size: 0.875rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-faq-cat-summary {
@@ -3930,19 +3991,20 @@ h1, h2, h3, h4,
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-faq-clear {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--valora-primary-container);
+  color: var(--valora-primary);
   text-decoration: none;
 }
 
 .valora-stitch-faq-accordion-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .valora-stitch-faq-accordion-item {
@@ -3957,11 +4019,18 @@ h1, h2, h3, h4,
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
+  min-height: 3.5rem;
   padding: 1rem;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.875rem;
+  color: var(--valora-on-surface);
   list-style: none;
+}
+
+.valora-stitch-faq-accordion-item summary .material-symbols-outlined {
+  color: var(--valora-primary);
+  transition: transform 0.2s;
 }
 
 .valora-stitch-faq-accordion-item summary::-webkit-details-marker { display: none; }
@@ -3977,11 +4046,42 @@ h1, h2, h3, h4,
 
 .valora-stitch-faq-read-more {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--valora-primary-container);
+  color: var(--valora-primary);
   text-decoration: none;
+}
+
+.valora-stitch-faq-q-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--valora-radius-sm);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.valora-stitch-faq-q-badge--trabalhista {
+  background: var(--valora-badge-trabalhista-bg);
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-faq-q-badge--fiscal {
+  background: var(--valora-badge-fiscal-bg);
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-faq-q-badge--financeiro {
+  background: var(--valora-badge-financeiro-bg);
+  color: var(--valora-financeiro-teal);
+}
+
+.valora-stitch-faq-q-badge--neutral {
+  background: var(--valora-surface-container-high);
+  color: var(--valora-text-muted);
 }
 
 .valora-stitch-faq-more-list {
@@ -4024,7 +4124,7 @@ h1, h2, h3, h4,
   min-height: 5.625rem;
   border: 1px dashed var(--valora-border-subtle);
   border-radius: var(--valora-radius-xl);
-  background: var(--valora-surface);
+  background: var(--valora-card-low);
   color: var(--valora-text-muted);
   font-size: 0.75rem;
   position: relative;
@@ -4039,36 +4139,120 @@ h1, h2, h3, h4,
 }
 
 .valora-stitch-faq-cta {
+  position: relative;
+  overflow: hidden;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  border-radius: 1rem;
-  background: var(--valora-secondary-fixed);
-  color: var(--valora-on-secondary-fixed);
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 20%);
+  background: linear-gradient(160deg, rgb(0 168 150 / 12%) 0%, transparent 100%);
   text-align: center;
 }
 
+.valora-stitch-faq-cta::after {
+  content: "";
+  position: absolute;
+  right: -2.5rem;
+  bottom: -2.5rem;
+  width: 10rem;
+  height: 10rem;
+  background: rgb(89 219 199 / 12%);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
 .valora-stitch-faq-cta-icon {
-  font-size: 3rem;
+  position: relative;
+  z-index: 1;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: var(--valora-primary);
 }
 
 .valora-stitch-faq-cta-title {
+  position: relative;
+  z-index: 1;
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-faq-cta-text {
+  position: relative;
+  z-index: 1;
   margin: 0 0 1rem;
   font-size: 0.9375rem;
-  opacity: 0.9;
+  color: var(--valora-text-muted);
   line-height: 1.5;
 }
 
 .valora-stitch-faq-cta-btn {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 20rem;
   margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-faq-layout {
+    grid-template-columns: minmax(14rem, 16rem) minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .valora-stitch-faq-sidebar {
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .valora-stitch-faq-sidebar-title {
+    margin: 0 0 0.75rem;
+    padding: 0 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--valora-text-muted);
+  }
+
+  .valora-stitch-faq-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .valora-stitch-faq-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: var(--valora-radius-xl);
+    border: 1px solid transparent;
+    color: var(--valora-on-surface-variant);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+
+  .valora-stitch-faq-sidebar-link:hover {
+    background: rgb(255 255 255 / 4%);
+  }
+
+  .valora-stitch-faq-sidebar-link--active {
+    background: rgb(89 219 199 / 10%);
+    border-color: rgb(89 219 199 / 20%);
+    color: var(--valora-primary);
+  }
+
+  .valora-stitch-faq-categories--chips { display: none; }
+
+  .valora-stitch-faq-categories--grid { display: block; }
+
+  .valora-stitch-faq-cat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Sprint 25 — Blog hub, artigo, metodologia, painel */
@@ -4085,9 +4269,9 @@ h1, h2, h3, h4,
 
 .valora-stitch-blog-hub-title {
   margin: 0 0 0.5rem;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: var(--valora-on-surface);
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-blog-hub-lead {
@@ -4109,14 +4293,13 @@ h1, h2, h3, h4,
   border-radius: var(--valora-radius-xl);
   overflow: hidden;
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+  background: var(--valora-card-low);
   text-decoration: none;
   color: inherit;
 }
 
 .valora-stitch-blog-featured:hover {
-  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  border-color: rgb(89 219 199 / 25%);
 }
 
 .valora-stitch-blog-featured-visual {
@@ -4275,12 +4458,14 @@ h1, h2, h3, h4,
   padding: 1rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
   text-decoration: none;
   color: inherit;
+  transition: border-color 0.15s;
 }
 
 .valora-stitch-blog-feed-card:hover {
+  border-color: rgb(89 219 199 / 25%);
   background: var(--valora-surface-container-low);
 }
 
@@ -4443,9 +4628,8 @@ h1, h2, h3, h4,
   padding: 1rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  border-left: 4px solid var(--valora-primary-container);
-  background: var(--valora-surface-white);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+  border-left: 4px solid var(--valora-primary);
+  background: var(--valora-card-low);
 }
 
 .valora-stitch-blog-article-cta-head {
@@ -4522,7 +4706,7 @@ h1, h2, h3, h4,
   border-radius: var(--valora-radius-xl);
   overflow: hidden;
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
   text-decoration: none;
   color: inherit;
 }
@@ -4581,57 +4765,61 @@ h1, h2, h3, h4,
 .valora-stitch-blog-article-newsletter {
   padding: 1.5rem;
   margin-bottom: 1rem;
-  border-radius: 1rem;
-  background: var(--valora-primary-container);
-  color: var(--valora-on-primary);
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 20%);
+  background: linear-gradient(160deg, var(--valora-surface) 0%, var(--valora-surface-container-low) 100%);
+  color: var(--valora-on-surface);
   text-align: center;
 }
 
 .valora-stitch-blog-article-newsletter-icon {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: var(--valora-primary);
 }
 
 .valora-stitch-blog-article-newsletter-title {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-blog-article-newsletter-text {
   margin: 0 0 1rem;
-  opacity: 0.9;
+  color: var(--valora-text-muted);
   line-height: 1.5;
 }
 
 .valora-stitch-blog-article-newsletter-btn {
-  background: var(--valora-primary);
-  color: var(--valora-on-primary);
+  background: var(--valora-primary-container);
+  color: var(--valora-on-primary-container);
   border: none;
 }
 
 /* Metodologia */
 
 .valora-stitch-metodologia {
-  max-width: 42rem;
+  max-width: var(--valora-container-max);
   margin: 0 auto;
   padding-bottom: 1rem;
 }
 
 .valora-stitch-metodologia-hero {
-  margin: -0.5rem -1rem 1.5rem;
-  padding: 1.5rem 1rem;
-  background: var(--valora-surface-white);
+  margin-bottom: 2rem;
+  padding: 0;
+  background: none;
+  text-align: left;
 }
 
 .valora-stitch-metodologia-hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   margin-bottom: 0.75rem;
-  border-radius: var(--valora-radius-lg);
-  background: rgb(89 219 199 / 10%);
+  border-radius: 9999px;
+  background: var(--valora-badge-financeiro-bg);
   color: var(--valora-financeiro-teal);
   font-size: 0.75rem;
   font-weight: 600;
@@ -4639,15 +4827,19 @@ h1, h2, h3, h4,
 
 .valora-stitch-metodologia-hero-title {
   margin: 0 0 0.75rem;
-  font-size: 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 700;
-  color: var(--valora-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-metodologia-hero-lead {
   margin: 0;
-  color: var(--valora-on-surface-variant);
+  max-width: 42rem;
+  color: var(--valora-text-muted);
   line-height: 1.55;
+  font-size: 1.0625rem;
 }
 
 .valora-stitch-metodologia-section {
@@ -4658,6 +4850,7 @@ h1, h2, h3, h4,
   margin: 0 0 1rem;
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-metodologia-regimes {
@@ -4667,10 +4860,10 @@ h1, h2, h3, h4,
 }
 
 .valora-stitch-metodologia-regime {
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
   border-left-width: 4px;
 }
 
@@ -4733,7 +4926,7 @@ h1, h2, h3, h4,
   border-radius: var(--valora-radius-xl);
   overflow: hidden;
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
 }
 
 .valora-stitch-metodologia-table-head {
@@ -4769,7 +4962,7 @@ h1, h2, h3, h4,
 .valora-stitch-metodologia-table-scroll th {
   color: var(--valora-on-surface-variant);
   font-weight: 600;
-  background: var(--valora-surface-white);
+  background: var(--valora-surface-container-lowest);
 }
 
 .valora-stitch-metodologia-sources {
@@ -5012,7 +5205,25 @@ h1, h2, h3, h4,
     padding: 1rem;
     border: 1px solid var(--valora-border-subtle);
     border-radius: var(--valora-radius-xl);
-    background: var(--valora-surface-white);
+    background: var(--valora-card-low);
+    margin-bottom: 1rem;
+  }
+
+  .valora-stitch-blog-article-aside-newsletter .material-symbols-outlined {
+    color: var(--valora-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .valora-stitch-blog-article-aside-newsletter-text {
+    margin: 0 0 1rem;
+    font-size: 0.8125rem;
+    color: var(--valora-text-muted);
+    line-height: 1.45;
+  }
+
+  .valora-stitch-blog-article-aside-newsletter-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .valora-stitch-blog-article-aside-title {
@@ -5071,11 +5282,12 @@ h1, h2, h3, h4,
 
   .valora-stitch-metodologia-hero {
     margin: 0 0 2rem;
-    padding: 2rem;
+    padding: 0;
+    background: none;
   }
 
   .valora-stitch-metodologia-hero-title {
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 3rem);
   }
 
   .valora-stitch-metodologia-table-hint {
