@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 42 — Template calculadora detail dark
+- Header sem gradiente teal; breadcrumb desktop e resumo visível no mobile
+- Formulário glass (`#121214`), inputs `#0e0e0f`, accordion dark e botão com glow
+- Painel ESTIMATIVA ATUAL dark com borda teal e valor líquido emerald
+- Template compartilhado em `Details.cshtml` para as 17 calculadoras
+
 ### Sprint 41 — Central de calculadoras dark
 - Hub mobile com busca, chips, lista horizontal e CTA de sugestão
 - Hub desktop com sidebar de categorias, grid 3 colunas e card featured

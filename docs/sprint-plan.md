@@ -238,16 +238,16 @@
 
 ---
 
-## Sprint 42 — Template calculadora (detail)
+## Sprint 42 — Template calculadora (detail) (concluída)
 
 **Objetivo:** layout padrão dark para **todas** as 17 calculadoras via partials compartilhados.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | Split desktop: formulário (8 col) + resultado sticky (4 col); mobile: stack com total em destaque |
-| Frontend | Inputs `#121214`, foco teal, accordion “Ajustar detalhes” dark; valor líquido com glow emerald |
-| Frontend | Salário líquido como referência; demais slugs herdam o template |
-| QA | Snapshot HTML das 17 slugs; smoke cálculo + resultado |
+| Frontend | Split desktop 7/5: formulário glass + resultado sticky dark |
+| Frontend | Header sem gradiente; breadcrumb desktop; lead visível no mobile |
+| Frontend | Inputs `#0e0e0f`, foco teal, accordion dark; valor líquido com glow emerald |
+| QA | Smoke `GoLiveSmokeTests` detail verde (121 testes WebApp) |
 
 **Referência Stitch:** `calculadora_de_sal_rio_l_quido_mobile`, `calculadora_de_sal_rio_l_quido_desktop`
 

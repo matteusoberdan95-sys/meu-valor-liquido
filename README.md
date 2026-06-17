@@ -56,7 +56,7 @@ dotnet test .\MeuValorLiquido.slnx
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — motor: Sprint 31 concluída, próxima 32 (holerite); visual dark: Sprint 41 concluída, próxima 42 (template calculadora)
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — motor: Sprint 31 concluída, próxima 32 (holerite); visual dark: Sprint 42 concluída, próxima 43 (rescisão e PJ×CLT)
 - **Redesign dark Stitch:** [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md) (Sprints 39–46)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
 

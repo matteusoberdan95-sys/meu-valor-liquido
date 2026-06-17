@@ -64,21 +64,6 @@ else
         }
         else if (!Model.IsEmbedMode)
         {
-            <header class="valora-stitch-calc-detail-hero">
-                <div class="valora-stitch-calc-detail-hero-row">
-                    <a class="valora-stitch-calc-back" asp-page="/Calculadoras/Index" aria-label="Voltar para calculadoras">
-                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-                    </a>
-                    <div class="valora-stitch-calc-detail-head">
-                        <h1 class="valora-stitch-calc-detail-title">@Model.Definition.Name</h1>
-                        <span class="valora-stitch-calc-detail-badge">@CalculatorUiHelper.GetSimulationBadge(Model.Definition.Category)</span>
-                    </div>
-                </div>
-                <div class="valora-stitch-calc-progress" aria-hidden="true">
-                    <span class="valora-stitch-calc-progress-bar"></span>
-                </div>
-            </header>
-
             <nav class="valora-breadcrumb valora-stitch-calc-detail-breadcrumb" aria-label="breadcrumb">
                 <ol class="valora-breadcrumb">
                     <li><a asp-page="/Index">Início</a></li>
@@ -88,6 +73,21 @@ else
                     <li class="active" aria-current="page">@Model.Definition.Name</li>
                 </ol>
             </nav>
+
+            <header class="valora-stitch-calc-detail-hero">
+                <div class="valora-stitch-calc-detail-hero-row">
+                    <a class="valora-stitch-calc-back" asp-page="/Calculadoras/Index" aria-label="Voltar para calculadoras">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                    </a>
+                    <div class="valora-stitch-calc-detail-head">
+                        <span class="valora-stitch-calc-detail-badge">@CalculatorUiHelper.GetSimulationBadge(Model.Definition.Category)</span>
+                        <h1 class="valora-stitch-calc-detail-title">@Model.Definition.Name</h1>
+                    </div>
+                </div>
+                <div class="valora-stitch-calc-progress" aria-hidden="true">
+                    <span class="valora-stitch-calc-progress-bar"></span>
+                </div>
+            </header>
 
             <p class="valora-stitch-calc-detail-lead">@Model.Definition.Summary</p>
 
@@ -116,7 +116,13 @@ else
                   class="@(Model.IsEmbedMode ? "valora-form-card valora-stack-md" : "valora-form-card valora-stitch-calc-form valora-stack-md")"
                   asp-route-slug="@Model.Definition.Slug"
                   asp-route-embed="@(Model.IsEmbedMode ? "1" : null)">
-                <h2 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-stitch-calc-form-title")">Informe seus dados</h2>
+                <h2 class="@(Model.IsEmbedMode ? "valora-h3" : "valora-stitch-calc-form-title")">
+                    @if (!Model.IsEmbedMode)
+                    {
+                        <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
+                    }
+                    Informe seus dados
+                </h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="valora-form-row">
                     @if (profile.ShowTerminationReason)

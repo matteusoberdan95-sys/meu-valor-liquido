@@ -12,7 +12,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **39** | Fundação dark: tokens, shell, brand, home base | Concluída |
 | **40** | Shell compartilhado + home polish (footer, forms, blog cards) | Concluída |
 | **41** | Central de calculadoras (hub mobile + desktop) | Concluída |
-| **42** | Template calculadora detail (17 slugs) | Pendente |
+| **42** | Template calculadora detail (17 slugs) | Concluída |
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Pendente |
 | **44** | FAQ, blog, artigo, metodologia | Pendente |
 | **45** | Meu painel, sobre, contato, newsletter, privacidade | Pendente |
@@ -26,8 +26,8 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | `home_desktop_dark_premium` | desktop | `/` | 39–40 | Concluída |
 | `central_de_calculadoras_mobile` | mobile | `/calculadoras` | 41 | Concluída |
 | `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 41 | Concluída |
-| `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 42 | Pendente |
-| `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Pendente |
+| `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 42 | Concluída |
+| `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Concluída |
 | `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Pendente |
 | `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 43 | Pendente |
 | `faq_mobile` | mobile | `/duvidas` | 44 | Pendente |
