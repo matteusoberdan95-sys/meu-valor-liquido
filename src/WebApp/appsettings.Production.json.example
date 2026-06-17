@@ -6,7 +6,7 @@
     "UseInMemory": false
   },
   "Site": {
-    "BaseUrl": "https://meuvalorliquido.com.br"
+    "BaseUrl": "https://meuvalorliquido.com"
   },
   "Ads": {
     "Enabled": false,
@@ -20,7 +20,7 @@
     "UseSsl": true,
     "UserName": "CHANGE_ME",
     "Password": "CHANGE_ME",
-    "FromAddress": "noreply@meuvalorliquido.com.br",
+    "FromAddress": "noreply@meuvalorliquido.com",
     "FromName": "Meu Valor Líquido"
   },
   "Serilog": {
@@ -31,5 +31,5 @@
       }
     }
   },
-  "AllowedHosts": "meuvalorliquido.com.br;www.meuvalorliquido.com.br"
+  "AllowedHosts": "meuvalorliquido.com;www.meuvalorliquido.com"
 }

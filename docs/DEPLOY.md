@@ -2,6 +2,8 @@
 
 Checklist Sprint 19 — publicar com a identidade Valores Públicos e solicitar AdSense.
 
+**VPS Hostinger (substituir Turnizio):** ver [`docs/VPS_HOSTINGER.md`](VPS_HOSTINGER.md) e scripts em `scripts/vps/`.
+
 ## 1. Pré-requisitos (código)
 
 - [x] `dotnet test MeuValorLiquido.slnx` verde localmente e no CI
@@ -27,7 +29,7 @@ docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
 
 | Variável | Exemplo |
 |----------|---------|
-| `Site__BaseUrl` | `https://meuvalorliquido.com.br` |
+| `Site__BaseUrl` | `https://meuvalorliquido.com` |
 | `ConnectionStrings__DefaultConnection` | PostgreSQL produção |
 | `ASPNETCORE_ENVIRONMENT` | `Production` |
 | `Ads__Enabled` | `false` até aprovação AdSense |

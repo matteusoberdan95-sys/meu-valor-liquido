@@ -8,16 +8,16 @@ upstream meu_valor_liquido {
 
 server {
     listen 80;
-    server_name meuvalorliquido.com.br www.meuvalorliquido.com.br;
+    server_name meuvalorliquido.com www.meuvalorliquido.com;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name meuvalorliquido.com.br www.meuvalorliquido.com.br;
+    server_name meuvalorliquido.com www.meuvalorliquido.com;
 
-    ssl_certificate     /etc/letsencrypt/live/meuvalorliquido.com.br/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/meuvalorliquido.com.br/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/meuvalorliquido.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/meuvalorliquido.com/privkey.pem;
 
     client_max_body_size 2m;
 
