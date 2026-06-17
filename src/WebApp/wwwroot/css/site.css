@@ -2975,6 +2975,18 @@ h1, h2, h3, h4,
   box-shadow: 0 0 0 1px rgb(89 219 199 / 20%);
 }
 
+.valora-stitch-calc-form input[type="date"].valora-input,
+.valora-stitch-rescisao-form input[type="date"].valora-input {
+  color-scheme: dark;
+}
+
+.valora-stitch-calc-form input[type="date"].valora-input::-webkit-calendar-picker-indicator,
+.valora-stitch-rescisao-form input[type="date"].valora-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+  opacity: 0.85;
+}
+
 .valora-stitch-calc-form .valora-form-advanced {
   border: 1px solid var(--valora-border-subtle);
   border-radius: var(--valora-radius-lg);
