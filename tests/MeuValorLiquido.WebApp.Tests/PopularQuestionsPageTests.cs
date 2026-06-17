@@ -38,7 +38,8 @@ public class PopularQuestionsPageTests
 
         response.IsSuccessStatusCode.Should().BeTrue();
         var html = await response.Content.ReadAsStringAsync();
-        html.Should().Contain("Dúvidas populares");
+        html.Should().Contain("valora-stitch-faq-hub");
+        html.Should().Contain("Como podemos ajudar hoje?");
         html.Should().Contain("/duvidas/como-calcular-salario-liquido");
         html.Should().Contain("BreadcrumbList");
     }

@@ -94,6 +94,31 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task PjVsClt_Should_Match_Stitch_Comparator_Layout()
+    {
+        var html = await client.GetStringAsync("/calculadoras/pj-vs-clt");
+
+        html.Should().Contain("valora-stitch-cltpj");
+        html.Should().Contain("Entradas CLT");
+        html.Should().Contain("Entradas PJ");
+        html.Should().Contain("CALCULAR AGORA");
+        html.Should().Contain("valora-bottom-nav");
+    }
+
+    [Fact]
+    public async Task Faq_Hub_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/duvidas");
+
+        html.Should().Contain("valora-stitch-faq-hub");
+        html.Should().Contain("Como podemos ajudar hoje?");
+        html.Should().Contain("Perguntas Populares");
+        html.Should().Contain("Regime CLT");
+        html.Should().Contain("Entre em contato conosco");
+        html.Should().Contain("valora-bottom-nav");
+    }
+
+    [Fact]
     public async Task Home_Should_Send_Security_Headers()
     {
         var response = await client.GetAsync("/");

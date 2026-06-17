@@ -1,56 +1,123 @@
 @page "/duvidas"
 @model MeuValorLiquido.WebApp.Pages.Duvidas.IndexModel
 @{
-    ViewData["Title"] = "Dúvidas populares sobre salário, CLT e impostos";
+    ViewData["Title"] = "Central de Ajuda";
+    ViewData["Description"] = "Respostas sobre salário, CLT, PJ, impostos e benefícios — com links para calculadoras.";
+    ViewData["CanonicalPath"] = "/duvidas";
 }
 
 @section Head {
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.PopularQuestionsHubBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Dúvidas populares</li>
-    </ol>
-</nav>
-
-<h1 class="valora-h1">Dúvidas populares</h1>
-<p class="valora-lead">
-    Respostas diretas sobre salário, impostos e trabalho — sempre com link para simular na calculadora certa.
-</p>
-
-@foreach (var category in Model.Categories)
-{
-    <section class="valora-section">
-        <h2 class="valora-h2">@category</h2>
-        <div class="valora-card-grid">
-            @foreach (var question in Model.Questions.Where(q => q.Category == category))
+<div class="valora-stitch-faq-hub">
+    <section class="valora-stitch-faq-hero">
+        <h1 class="valora-stitch-faq-hero-title">Como podemos ajudar hoje?</h1>
+        <form class="valora-stitch-faq-search" method="get" asp-page="/Duvidas/Index" role="search">
+            @if (!string.IsNullOrWhiteSpace(Model.Category))
             {
-                <article class="valora-card valora-card--accent-trabalhista">
-                    <a class="valora-calc-card" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">
-                        <div class="valora-calc-card-icon">
-                            <span class="material-symbols-outlined">help</span>
-                        </div>
-                        <partial name="Shared/_CalculatorCategoryBadge" model="question.Category" />
-                        <h3 class="valora-h3" style="margin-top: 0.75rem;">@question.Title</h3>
-                        <p class="valora-text-muted valora-text-sm" style="flex: 1;">@question.SeoDescription</p>
-                        <div class="valora-calc-card-footer">
-                            Ler resposta
-                            <span class="material-symbols-outlined" style="font-size: 1.125rem;">arrow_forward</span>
-                        </div>
+                <input type="hidden" name="cat" value="@Model.Category" />
+            }
+            <span class="material-symbols-outlined valora-stitch-faq-search-icon" aria-hidden="true">search</span>
+            <input class="valora-stitch-faq-search-input"
+                   type="search"
+                   name="q"
+                   value="@Model.Query"
+                   placeholder="Pesquise suas dúvidas..."
+                   aria-label="Pesquisar dúvidas" />
+        </form>
+    </section>
+
+    <section class="valora-stitch-faq-categories" aria-label="Categorias">
+        <div class="valora-stitch-faq-cat-grid">
+            @foreach (var card in FaqHubHelper.CategoryCards)
+            {
+                if (card.Href is not null)
+                {
+                    <a class="valora-stitch-faq-cat @card.AccentClass" href="@card.Href">
+                        <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                        <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
+                        <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
                     </a>
-                </article>
+                }
+                else
+                {
+                    <a class="valora-stitch-faq-cat @card.AccentClass @(Model.Category == card.FilterCategory ? "valora-stitch-faq-cat--active" : "")"
+                       asp-page="/Duvidas/Index"
+                       asp-route-cat="@card.FilterCategory">
+                        <span class="material-symbols-outlined" aria-hidden="true">@card.Icon</span>
+                        <h2 class="valora-stitch-faq-cat-title">@card.Title</h2>
+                        <p class="valora-stitch-faq-cat-summary">@card.Summary</p>
+                    </a>
+                }
             }
         </div>
     </section>
-}
 
-<section class="valora-section valora-card">
-    <h2 class="valora-h3">Prefere calcular?</h2>
-    <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
-        Todas as respostas são educativas. Para números do seu caso, use as calculadoras.
-    </p>
-    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
-</section>
+    <section class="valora-stitch-faq-popular">
+        <div class="valora-stitch-faq-popular-head">
+            <h2 class="valora-stitch-faq-section-title">@(Model.HasActiveFilter ? "Resultados" : "Perguntas Populares")</h2>
+            @if (Model.HasActiveFilter)
+            {
+                <a class="valora-stitch-faq-clear" asp-page="/Duvidas/Index">Limpar filtros</a>
+            }
+        </div>
+
+        @if (Model.Questions.Count == 0)
+        {
+            <p class="valora-text-muted">Nenhuma dúvida encontrada. Tente outro termo ou <a asp-page="/Contato">fale conosco</a>.</p>
+        }
+        else
+        {
+            <div class="valora-stitch-faq-accordion-list">
+                @foreach (var question in (Model.HasActiveFilter ? Model.Questions : Model.PopularQuestions))
+                {
+                    <details class="valora-stitch-faq-accordion-item">
+                        <summary>
+                            <span>@question.Title</span>
+                            <span class="material-symbols-outlined">expand_more</span>
+                        </summary>
+                        <div class="valora-stitch-faq-accordion-body">
+                            <p class="valora-text-muted valora-text-sm">@question.SeoDescription</p>
+                            <a class="valora-stitch-faq-read-more" asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">Ler resposta completa</a>
+                        </div>
+                    </details>
+                }
+            </div>
+
+            @if (Model.HasActiveFilter && Model.Questions.Count > 8)
+            {
+                <section class="valora-stitch-faq-more">
+                    <h3 class="valora-h3">Mais resultados</h3>
+                    <ul class="valora-stitch-faq-more-list">
+                        @foreach (var question in Model.Questions.Skip(8))
+                        {
+                            <li>
+                                <a asp-page="/Duvidas/Detalhe" asp-route-slug="@question.Slug">@question.Title</a>
+                                <span class="valora-stitch-faq-more-cat">@question.Category</span>
+                            </li>
+                        }
+                    </ul>
+                </section>
+            }
+        }
+    </section>
+
+    <section class="valora-stitch-faq-ad" aria-label="Espaço publicitário">
+        <div class="valora-stitch-faq-ad-inner">
+            <span class="valora-stitch-faq-ad-label">Espaço Publicitário</span>
+            <span class="material-symbols-outlined" aria-hidden="true">ad_units</span>
+            <span>Banner Institucional</span>
+        </div>
+    </section>
+
+    <section class="valora-stitch-faq-cta">
+        <span class="material-symbols-outlined valora-stitch-faq-cta-icon" aria-hidden="true">support_agent</span>
+        <h2 class="valora-stitch-faq-cta-title">Não encontrou sua resposta?</h2>
+        <p class="valora-stitch-faq-cta-text">Nossa equipe está pronta para ajudar com dúvidas de CLT, PJ ou impostos.</p>
+        <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-faq-cta-btn" asp-page="/Contato">
+            <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+            Entre em contato conosco
+        </a>
+    </section>
+</div>

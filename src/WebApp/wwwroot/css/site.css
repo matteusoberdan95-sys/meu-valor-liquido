@@ -19,6 +19,8 @@
   --valora-border-subtle: #e2e8f0;
   --valora-secondary: #225abd;
   --valora-secondary-container: #6a98ff;
+  --valora-secondary-fixed: #d9e2ff;
+  --valora-on-secondary-fixed: #001945;
   --valora-trabalhista-blue: #1351b4;
   --valora-financeiro-teal: #00685f;
   --valora-fiscal-purple: #6b21a8;
@@ -2487,4 +2489,606 @@ body {
 .valora-stitch-calc-faq {
   margin-top: 2rem;
   padding-top: 1rem;
+}
+
+/* Comparador CLT x PJ (Stitch comparador_clt_x_pj — Sprint 24) */
+.valora-stitch-cltpj {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
+}
+
+.valora-stitch-cltpj-breadcrumb {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-cltpj-breadcrumb { display: block; }
+}
+
+.valora-stitch-cltpj-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 5vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-cltpj-disclaimer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  background: var(--valora-warning-bg);
+  border: 1px dashed var(--valora-warning-border);
+  border-radius: var(--valora-radius-lg);
+}
+
+.valora-stitch-cltpj-disclaimer .material-symbols-outlined {
+  color: var(--valora-warning-border);
+  flex-shrink: 0;
+}
+
+.valora-stitch-cltpj-disclaimer p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-cltpj-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-cltpj-layout {
+    grid-template-columns: 7fr 5fr;
+    gap: 1.5rem;
+  }
+
+  .valora-stitch-cltpj-aside {
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+.valora-stitch-cltpj-input-card {
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-cltpj-input-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-cltpj-input-head h2 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.valora-stitch-cltpj-input-card--clt .valora-stitch-cltpj-input-head {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-input-card--clt .valora-stitch-cltpj-input-head .material-symbols-outlined {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-input-card--pj .valora-stitch-cltpj-input-head {
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-input-card--pj .valora-stitch-cltpj-input-head .material-symbols-outlined {
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-submit {
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.9375rem;
+}
+
+.valora-stitch-cltpj-verdict {
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+  box-shadow: var(--valora-shadow-result);
+}
+
+.valora-stitch-cltpj-verdict::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.25rem;
+  background: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-verdict--clt::before { background: var(--valora-trabalhista-blue); }
+.valora-stitch-cltpj-verdict--tie::before { background: var(--valora-primary-container); }
+
+.valora-stitch-cltpj-verdict-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.valora-stitch-cltpj-verdict-badge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--valora-radius-sm);
+  background: var(--valora-fiscal-purple);
+  color: var(--valora-on-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.valora-stitch-cltpj-verdict--clt .valora-stitch-cltpj-verdict-badge {
+  background: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-verdict-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-cltpj-verdict-icon {
+  font-size: 2.25rem;
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-verdict--clt .valora-stitch-cltpj-verdict-icon {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-verdict-diff {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--valora-outline-variant);
+}
+
+.valora-stitch-cltpj-verdict-diff-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-verdict-diff-value {
+  margin: 0;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--valora-primary-container);
+}
+
+.valora-stitch-cltpj-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.valora-stitch-cltpj-compare-card {
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-cltpj-compare-card--clt {
+  border-left: 4px solid var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-compare-card--pj {
+  border-left: 4px solid var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-compare-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-compare-value {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-cltpj-compare-card--clt .valora-stitch-cltpj-compare-value {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-cltpj-compare-card--pj .valora-stitch-cltpj-compare-value {
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-cltpj-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.valora-stitch-cltpj-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--valora-primary);
+  border-radius: var(--valora-radius-lg);
+  background: transparent;
+  color: var(--valora-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.valora-stitch-cltpj-action-btn .material-symbols-outlined { font-size: 1.125rem; }
+
+.valora-stitch-cltpj-accordion {
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  overflow: hidden;
+}
+
+.valora-stitch-cltpj-accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.valora-stitch-cltpj-accordion summary::-webkit-details-marker { display: none; }
+
+.valora-stitch-cltpj-accordion[open] summary .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+.valora-stitch-cltpj-accordion-body {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-cltpj-accordion-body--prose p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-cltpj-tax-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.375rem 0;
+  font-size: 0.8125rem;
+}
+
+.valora-stitch-cltpj-tax-line--total {
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--valora-border-subtle);
+  font-weight: 700;
+}
+
+.valora-stitch-cltpj-results-placeholder,
+.valora-stitch-cltpj-legal {
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-results-placeholder {
+  padding: 1.25rem;
+  background: var(--valora-surface-container-low);
+  border: 1px dashed var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+}
+
+.valora-stitch-cltpj-faq { margin-top: 2rem; }
+
+/* FAQ hub (Stitch faq_hub — Sprint 24) */
+.valora-stitch-faq-hub {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
+}
+
+.valora-stitch-faq-hero {
+  margin: 0 -1rem 0;
+  padding: 2rem 1rem 3rem;
+  background: var(--valora-primary);
+  color: var(--valora-on-primary);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-faq-hero {
+    margin: 0 0 0;
+    border-radius: var(--valora-radius-xl);
+  }
+}
+
+.valora-stitch-faq-hero-title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.35rem, 5vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.valora-stitch-faq-search {
+  position: relative;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.valora-stitch-faq-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--valora-outline);
+  pointer-events: none;
+}
+
+.valora-stitch-faq-search-input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem 0 3rem;
+  border: none;
+  border-radius: var(--valora-radius-xl);
+  background: var(--valora-surface);
+  font-size: 1rem;
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-faq-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--valora-primary-container);
+}
+
+.valora-stitch-faq-categories {
+  margin-top: -1.5rem;
+  padding: 0 0 1.5rem;
+}
+
+.valora-stitch-faq-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-faq-cat-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.valora-stitch-faq-cat {
+  display: block;
+  padding: 1rem;
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  box-shadow: var(--valora-shadow);
+  text-decoration: none;
+  color: inherit;
+  border-left-width: 4px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.valora-stitch-faq-cat:active { transform: scale(0.98); }
+
+.valora-stitch-faq-cat--active {
+  border-color: var(--valora-primary-container);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-faq-cat--trabalhista { border-left-color: var(--valora-trabalhista-blue); }
+.valora-stitch-faq-cat--trabalhista .material-symbols-outlined { color: var(--valora-trabalhista-blue); }
+
+.valora-stitch-faq-cat--pj { border-left-color: var(--valora-primary-container); }
+.valora-stitch-faq-cat--pj .material-symbols-outlined { color: var(--valora-primary-container); }
+
+.valora-stitch-faq-cat--fiscal { border-left-color: var(--valora-fiscal-purple); }
+.valora-stitch-faq-cat--fiscal .material-symbols-outlined { color: var(--valora-fiscal-purple); }
+
+.valora-stitch-faq-cat--about { border-left-color: var(--valora-financeiro-teal); }
+.valora-stitch-faq-cat--about .material-symbols-outlined { color: var(--valora-financeiro-teal); }
+
+.valora-stitch-faq-cat-title {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.valora-stitch-faq-cat-summary {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  line-height: 1.4;
+}
+
+.valora-stitch-faq-popular {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-faq-popular-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-faq-section-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-faq-clear {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--valora-primary-container);
+  text-decoration: none;
+}
+
+.valora-stitch-faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valora-stitch-faq-accordion-item {
+  background: var(--valora-surface);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  overflow: hidden;
+}
+
+.valora-stitch-faq-accordion-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  list-style: none;
+}
+
+.valora-stitch-faq-accordion-item summary::-webkit-details-marker { display: none; }
+
+.valora-stitch-faq-accordion-item[open] summary .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+.valora-stitch-faq-accordion-body {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-faq-read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary-container);
+  text-decoration: none;
+}
+
+.valora-stitch-faq-more-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.valora-stitch-faq-more-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-faq-more-list a {
+  color: var(--valora-on-surface);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.valora-stitch-faq-more-cat {
+  font-size: 0.6875rem;
+  color: var(--valora-text-muted);
+  white-space: nowrap;
+}
+
+.valora-stitch-faq-ad {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-faq-ad-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-height: 5.625rem;
+  border: 1px dashed var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  background: var(--valora-surface);
+  color: var(--valora-text-muted);
+  font-size: 0.75rem;
+  position: relative;
+}
+
+.valora-stitch-faq-ad-label {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.6875rem;
+  opacity: 0.6;
+}
+
+.valora-stitch-faq-cta {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background: var(--valora-secondary-fixed);
+  color: var(--valora-on-secondary-fixed);
+  text-align: center;
+}
+
+.valora-stitch-faq-cta-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-faq-cta-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-faq-cta-text {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.valora-stitch-faq-cta-btn {
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
 }

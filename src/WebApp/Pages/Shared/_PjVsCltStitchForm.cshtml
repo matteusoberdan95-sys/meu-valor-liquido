@@ -1,0 +1,66 @@
+@model MeuValorLiquido.WebApp.Pages.Calculadoras.DetailsModel
+@{
+    var profile = Model.FieldProfile;
+}
+
+<form method="post" class="valora-stitch-cltpj-form valora-stack-md" asp-route-slug="@Model.Definition!.Slug">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--clt">
+        <div class="valora-stitch-cltpj-input-head">
+            <span class="material-symbols-outlined" aria-hidden="true">work</span>
+            <h2>Entradas CLT</h2>
+        </div>
+        <div class="valora-form-row">
+            <div>
+                <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                <div class="valora-input-prefix">
+                    <span class="valora-prefix">R$</span>
+                    <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                </div>
+                <span asp-validation-for="Input.Amount" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+            </div>
+            <div style="grid-column: 1 / -1;">
+                <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                <div class="valora-input-prefix">
+                    <span class="valora-prefix">R$</span>
+                    <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--pj">
+        <div class="valora-stitch-cltpj-input-head">
+            <span class="material-symbols-outlined" aria-hidden="true">business_center</span>
+            <h2>Entradas PJ</h2>
+        </div>
+        <div class="valora-form-row">
+            <div style="grid-column: 1 / -1;">
+                <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                <div class="valora-input-prefix">
+                    <span class="valora-prefix">R$</span>
+                    <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                </div>
+                <p class="valora-helper">Deixe em branco para estimar o faturamento equivalente ao líquido CLT.</p>
+            </div>
+            <div>
+                <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
+                <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="6" />
+            </div>
+            <div>
+                <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                <div class="valora-input-prefix">
+                    <span class="valora-prefix">R$</span>
+                    <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-cltpj-submit" type="submit">CALCULAR AGORA</button>
+</form>

@@ -1,10 +1,10 @@
 # Sprint Plan
 
-## Sprint 21–23 — Fidelidade Stitch (Sprint 23 concluída)
+## Sprint 21–24 — Fidelidade Stitch (Sprint 24 concluída)
 
-**Entregas:** plano, remoção Gemini, shell, home mobile+desktop, central calculadoras bento, calculadora detail Stitch.
+**Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ e FAQ hub.
 
-**Próximo:** Sprint 24 — comparador CLT×PJ e FAQ hub.
+**Próximo:** Sprint 25 — Blog + Metodologia + Painel.
 
 ---
 

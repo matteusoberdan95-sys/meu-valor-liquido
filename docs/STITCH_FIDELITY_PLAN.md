@@ -56,11 +56,11 @@ Objetivo: WebApp **igual** aos mocks em `stitch_redesign_meu_valor_l_quido/`, se
 ### Sprint 23 — Calculadora detail (concluída)
 - Layout de `calculadora_sal_rio_l_quido_*`: hero teal, progresso, form card, botão CALCULAR AGORA, painel ESTIMATIVA ATUAL
 
-### Sprint 24 — CLT×PJ + FAQ (próxima)
-- `comparador_clt_x_pj_cores_atualizadas_mobile`
-- `faq_hub_mobile`
+### Sprint 24 — CLT×PJ + FAQ (concluída)
+- `comparador_clt_x_pj_cores_atualizadas_mobile` → `/calculadoras/pj-vs-clt`
+- `faq_hub_meu_valor_l_quido_mobile` → `/duvidas`
 
-### Sprint 25 — Blog + Metodologia + Painel
+### Sprint 25 — Blog + Metodologia + Painel (próxima)
 - Blog hub + artigo mobile
 - Metodologia + meu painel (PNG)
 

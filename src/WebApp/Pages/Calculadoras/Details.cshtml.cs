@@ -7,6 +7,7 @@ public class DetailsModel : PageModel
     private readonly IAdSlotProvider adSlotProvider;
     private readonly CalculatorShareLinkBuilder shareLinkBuilder;
     private readonly IProductMetricsService productMetricsService;
+    private readonly CltPjComparisonCalculator cltPjComparisonCalculator;
 
     public DetailsModel(
         ICalculatorApplicationService calculatorService,
@@ -14,7 +15,8 @@ public class DetailsModel : PageModel
         ICalculatorFieldProfileProvider fieldProfileProvider,
         IAdSlotProvider adSlotProvider,
         CalculatorShareLinkBuilder shareLinkBuilder,
-        IProductMetricsService productMetricsService)
+        IProductMetricsService productMetricsService,
+        CltPjComparisonCalculator cltPjComparisonCalculator)
     {
         this.calculatorService = calculatorService;
         this.catalogService = catalogService;
@@ -22,6 +24,7 @@ public class DetailsModel : PageModel
         this.adSlotProvider = adSlotProvider;
         this.shareLinkBuilder = shareLinkBuilder;
         this.productMetricsService = productMetricsService;
+        this.cltPjComparisonCalculator = cltPjComparisonCalculator;
     }
 
     public CalculatorDefinition? Definition { get; private set; }
@@ -38,7 +41,12 @@ public class DetailsModel : PageModel
 
     public CalculatorResultPanelViewModel? ResultPanel { get; private set; }
 
+    public CltPjComparisonBreakdown? CltPjBreakdown { get; private set; }
+
     public bool IsEmbedMode { get; private set; }
+
+    public bool IsPjVsCltStitch =>
+        Definition?.Slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
 
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
@@ -144,12 +152,19 @@ public class DetailsModel : PageModel
 
         Result = result.Value;
         BuildShare(slug);
-        ResultPanel = new CalculatorResultPanelViewModel(
-            Result,
-            Input,
-            slug,
-            CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
-            ShowSimpleExplanation: !IsEmbedMode);
+        if (slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase))
+        {
+            CltPjBreakdown = cltPjComparisonCalculator.Compare(Input);
+        }
+        else
+        {
+            ResultPanel = new CalculatorResultPanelViewModel(
+                Result,
+                Input,
+                slug,
+                CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
+                ShowSimpleExplanation: !IsEmbedMode);
+        }
     }
 
     private void BuildShare(string slug)

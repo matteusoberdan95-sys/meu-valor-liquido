@@ -33,8 +33,32 @@ else
         }
     }
 
-    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : "valora-stitch-calc-detail")">
-        @if (!Model.IsEmbedMode)
+    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : "valora-stitch-calc-detail")">
+        @if (!Model.IsEmbedMode && Model.IsPjVsCltStitch)
+        {
+            <nav class="valora-breadcrumb valora-stitch-cltpj-breadcrumb" aria-label="breadcrumb">
+                <ol class="valora-breadcrumb">
+                    <li><a asp-page="/Index">Início</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+                    <li class="active" aria-current="page">PJ vs CLT</li>
+                </ol>
+            </nav>
+
+            <h1 class="valora-stitch-cltpj-title">Comparador Salário CLT vs Prestação de Serviços PJ</h1>
+
+            <div class="valora-stitch-cltpj-disclaimer">
+                <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                <p>Esta é uma ferramenta educativa. Os valores são estimativas baseadas nas tabelas vigentes e não substituem consulta contábil profissional.</p>
+            </div>
+
+            @if (Model.TopAdSlot is not null)
+            {
+                <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+            }
+        }
+        else if (!Model.IsEmbedMode)
         {
             <header class="valora-stitch-calc-detail-hero">
                 <div class="valora-stitch-calc-detail-hero-row">
@@ -76,8 +100,14 @@ else
             </header>
         }
 
-        <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : "valora-stitch-calc-detail-grid")">
-        <div class="valora-stack-md valora-stitch-calc-detail-main">
+        <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-layout" : "valora-stitch-calc-detail-grid")">
+        <div class="valora-stack-md @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-main" : "valora-stitch-calc-detail-main")">
+            @if (Model.IsPjVsCltStitch)
+            {
+                <partial name="Shared/_PjVsCltStitchForm" model="Model" />
+            }
+            else
+            {
             <form method="post"
                   class="@(Model.IsEmbedMode ? "valora-form-card valora-stack-md" : "valora-form-card valora-stitch-calc-form valora-stack-md")"
                   asp-route-slug="@Model.Definition.Slug"
@@ -411,8 +441,9 @@ else
                     @(Model.IsEmbedMode ? "Calcular agora" : "CALCULAR AGORA")
                 </button>
             </form>
+            }
 
-            @if (!Model.IsEmbedMode)
+            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch)
             {
             <p class="valora-stitch-calc-footer-hint">
                 Os resultados são estimativas educativas. Consulte seu RH ou contador para valores oficiais.
@@ -432,8 +463,24 @@ else
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : $"valora-stitch-calc-estimate valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
-            @if (Model.ResultPanel is not null)
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
+            @if (Model.IsPjVsCltStitch)
+            {
+                @if (Model.CltPjBreakdown is not null)
+                {
+                    <partial name="Shared/_PjVsCltStitchResults" model="new PjVsCltStitchResultsViewModel(Model.CltPjBreakdown, Model.Share)" />
+                    <p class="valora-stitch-cltpj-legal">@Model.Result!.LegalDisclaimer</p>
+                }
+                else
+                {
+                    <section class="valora-stitch-cltpj-results-placeholder" aria-live="polite">
+                        <p class="valora-stitch-cltpj-verdict-badge">Veredito</p>
+                        <h2 class="valora-h3">Seu comparativo aparece aqui</h2>
+                        <p class="valora-text-sm">Preencha os dados CLT e PJ e clique em Calcular.</p>
+                    </section>
+                }
+            }
+            else if (Model.ResultPanel is not null)
             {
                 @if (!Model.IsEmbedMode)
                 {
@@ -477,8 +524,8 @@ else
 
     @if (!Model.IsEmbedMode)
     {
-        <section class="valora-faq valora-stitch-calc-faq">
-            <h2 class="valora-h2">Perguntas frequentes</h2>
+        <section class="valora-faq @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-faq" : "valora-stitch-calc-faq")">
+            <h2 class="valora-h2">@(Model.IsPjVsCltStitch ? "Perguntas Frequentes" : "Perguntas frequentes")</h2>
             @foreach (var faq in Model.Definition.FaqItems)
             {
                 <details>

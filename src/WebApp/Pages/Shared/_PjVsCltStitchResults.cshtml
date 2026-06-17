@@ -1,0 +1,89 @@
+@model MeuValorLiquido.WebApp.Infrastructure.PjVsCltStitchResultsViewModel
+@{
+    var b = Model.Breakdown;
+    var pjWins = b.NetDifference > 0;
+    var cltWins = b.NetDifference < 0;
+    var verdictClass = pjWins ? "valora-stitch-cltpj-verdict--pj" : cltWins ? "valora-stitch-cltpj-verdict--clt" : "valora-stitch-cltpj-verdict--tie";
+    var verdictTitle = pjWins ? "PJ é mais vantajoso" : cltWins ? "CLT é mais vantajoso" : "Cenários equivalentes";
+    var verdictIcon = pjWins ? "trending_up" : cltWins ? "work" : "balance";
+    var diffAbs = Math.Abs(b.NetDifference);
+}
+
+<div class="valora-stitch-cltpj-results valora-stack-md" aria-live="polite">
+    <div class="valora-stitch-cltpj-verdict @verdictClass">
+        <div class="valora-stitch-cltpj-verdict-top">
+            <div>
+                <span class="valora-stitch-cltpj-verdict-badge">Veredito</span>
+                <h2 class="valora-stitch-cltpj-verdict-title">@verdictTitle</h2>
+            </div>
+            <span class="material-symbols-outlined valora-stitch-cltpj-verdict-icon" aria-hidden="true">@verdictIcon</span>
+        </div>
+        <div class="valora-stitch-cltpj-verdict-diff">
+            <p class="valora-stitch-cltpj-verdict-diff-label">Diferença real mensal</p>
+            <p class="valora-stitch-cltpj-verdict-diff-value">@Money.From(diffAbs)</p>
+        </div>
+    </div>
+
+    <div class="valora-stitch-cltpj-compare-grid">
+        <div class="valora-stitch-cltpj-compare-card valora-stitch-cltpj-compare-card--clt">
+            <p class="valora-stitch-cltpj-compare-label">Líquido CLT</p>
+            <p class="valora-stitch-cltpj-compare-value">@Money.From(b.Clt.Net)</p>
+        </div>
+        <div class="valora-stitch-cltpj-compare-card valora-stitch-cltpj-compare-card--pj">
+            <p class="valora-stitch-cltpj-compare-label">Líquido PJ</p>
+            <p class="valora-stitch-cltpj-compare-value">@Money.From(b.Pj.Net)</p>
+        </div>
+    </div>
+
+    @if (Model.Share is not null)
+    {
+        <div class="valora-stitch-cltpj-actions">
+            @if (!string.IsNullOrEmpty(Model.Share.PdfUrl))
+            {
+                <a class="valora-stitch-cltpj-action-btn" href="@Model.Share.PdfUrl" download>
+                    <span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
+                    Exportar PDF
+                </a>
+            }
+            <button type="button" class="valora-stitch-cltpj-action-btn" data-share-copy="link">
+                <span class="material-symbols-outlined" aria-hidden="true">share</span>
+                Compartilhar
+            </button>
+        </div>
+        <textarea id="calculator-share-url" hidden readonly>@Model.Share.ShareUrl</textarea>
+        <textarea id="calculator-share-text" hidden readonly>@Model.Share.ShareText</textarea>
+        <p class="valora-text-muted valora-text-sm valora-share-feedback" data-share-feedback hidden aria-live="polite"></p>
+    }
+
+    <details class="valora-stitch-cltpj-accordion">
+        <summary>
+            <span>Resumo de tributos</span>
+            <span class="material-symbols-outlined">expand_more</span>
+        </summary>
+        <div class="valora-stitch-cltpj-accordion-body">
+            <div class="valora-stitch-cltpj-tax-line">
+                <span>INSS (CLT)</span>
+                <strong>@Money.From(b.Clt.Inss)</strong>
+            </div>
+            <div class="valora-stitch-cltpj-tax-line">
+                <span>IRRF (CLT)</span>
+                <strong>@Money.From(b.Clt.Irrf)</strong>
+            </div>
+            <div class="valora-stitch-cltpj-tax-line valora-stitch-cltpj-tax-line--total">
+                <span>Simples (@b.SimplesRatePercent.ToString("0.#")%) + encargos PJ</span>
+                <strong>@Money.From(b.Pj.SimplesTax + b.Pj.Inss + b.Pj.Irrf)</strong>
+            </div>
+        </div>
+    </details>
+
+    <details class="valora-stitch-cltpj-accordion">
+        <summary>
+            <span>Entendendo o CLT / PJ</span>
+            <span class="material-symbols-outlined">expand_more</span>
+        </summary>
+        <div class="valora-stitch-cltpj-accordion-body valora-stitch-cltpj-accordion-body--prose">
+            <p>A principal diferença está nos encargos. No CLT há benefícios garantidos (férias, 13º, FGTS). No PJ você assume tributos com alíquotas geralmente menores no Simples, mas precisa compensar a ausência desses direitos no faturamento.</p>
+            <p>Faturamento PJ equivalente estimado: <strong>@Money.From(b.EquivalentPjRevenue)</strong> (pró-labore @b.ProLaboreSharePercent.ToString("0.#")%).</p>
+        </div>
+    </details>
+</div>
