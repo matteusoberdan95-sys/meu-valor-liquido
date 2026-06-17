@@ -2,6 +2,7 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.Globalization;
 global using System.IO.Compression;
+global using System.Text;
 global using System.Text.RegularExpressions;
 global using System.Threading.RateLimiting;
 global using System.Xml.Linq;
