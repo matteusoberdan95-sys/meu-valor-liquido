@@ -144,16 +144,19 @@ app.MapGet("/widget/{slug}", (string slug) =>
     EmbedWidgetCatalog.IsEmbeddable(slug)
         ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
         : Results.NotFound());
-app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], async (AppDbContext db, HttpRequest request) =>
+app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], async (AppDbContext db, HttpRequest request, HttpResponse response) =>
 {
     var xml = await BuildSitemapXmlAsync(db, builder.Configuration);
     if (HttpMethods.IsHead(request.Method))
     {
-        return Results.Content(string.Empty, "application/xml");
+        response.ContentType = "application/xml";
+        response.ContentLength = Encoding.UTF8.GetByteCount(xml);
+        return Results.Empty;
     }
 
+    response.Headers.CacheControl = $"public, max-age={(int)PerformanceCacheDurations.Sitemap.TotalSeconds}";
     return Results.Content(xml, "application/xml");
-}).CacheOutput("sitemap");
+});
 
 app.MapStaticAssets();
 app.MapRazorPages()
