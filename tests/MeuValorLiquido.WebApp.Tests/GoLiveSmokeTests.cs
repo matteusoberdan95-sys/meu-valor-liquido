@@ -35,11 +35,21 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Sitemap_Should_Accept_Head_For_Search_Console()
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Head, "/sitemap.xml");
+        using var response = await client.SendAsync(request);
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        response.Content.Headers.ContentType?.MediaType.Should().Be("application/xml");
+    }
+
+    [Fact]
     public async Task Sitemap_Should_Include_Core_Pages_And_Calculators()
     {
         var xml = await client.GetStringAsync("/sitemap.xml");
 
-        xml.Should().Contain("<loc>https://meuvalorliquido.com.br/</loc>");
+        xml.Should().Contain("<loc>https://meuvalorliquido.com/</loc>");
         xml.Should().Contain("/calculadoras/salario-liquido");
         xml.Should().Contain("/como-calculamos");
         xml.Should().Contain("/politica-de-privacidade");

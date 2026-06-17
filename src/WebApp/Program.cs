@@ -144,10 +144,30 @@ app.MapGet("/widget/{slug}", (string slug) =>
     EmbedWidgetCatalog.IsEmbeddable(slug)
         ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
         : Results.NotFound());
-app.MapGet("/sitemap.xml", async (AppDbContext db) =>
+app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], async (AppDbContext db, HttpRequest request) =>
+{
+    var xml = await BuildSitemapXmlAsync(db, builder.Configuration);
+    if (HttpMethods.IsHead(request.Method))
+    {
+        return Results.Content(string.Empty, "application/xml");
+    }
+
+    return Results.Content(xml, "application/xml");
+}).CacheOutput("sitemap");
+
+app.MapStaticAssets();
+app.MapRazorPages()
+   .WithStaticAssets();
+
+app.Run();
+
+static XElement CreateUrl(XNamespace ns, string location) =>
+    new(ns + "url", new XElement(ns + "loc", location));
+
+static async Task<string> BuildSitemapXmlAsync(AppDbContext db, IConfiguration configuration)
 {
     XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
-    var baseUrl = builder.Configuration["Site:BaseUrl"] ?? "https://meuvalorliquido.com.br";
+    var baseUrl = configuration["Site:BaseUrl"] ?? "https://meuvalorliquido.com";
 
     var urls = new List<XElement>
     {
@@ -179,17 +199,8 @@ app.MapGet("/sitemap.xml", async (AppDbContext db) =>
     urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}")));
 
     var document = new XDocument(new XElement(ns + "urlset", urls));
-    return Results.Content(document.ToString(), "application/xml");
-}).CacheOutput("sitemap");
-
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
-
-app.Run();
-
-static XElement CreateUrl(XNamespace ns, string location) =>
-    new(ns + "url", new XElement(ns + "loc", location));
+    return document.ToString();
+}
 
 public partial class Program;
 
