@@ -9,6 +9,21 @@ Repositório: https://github.com/matteusoberdan95-sys/meu-valor-liquido
 Design UI/UX baseado nos protótipos Stitch — ver [docs/ui-ux-stitch.md](docs/ui-ux-stitch.md).
 
 **Tema atual:** dark **Premium Liquid** — trilha Stitch **Sprints 39–46 concluída**. Mocks de referência ficam em `stitch_redesing/` na máquina local (não versionados). Plano de fidelidade: [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md).
+
+## Continuidade entre Cursor e Codex
+
+Para alternar o trabalho entre os dois agentes sem perder contexto:
+
+- Leia primeiro `AGENTS.md` na raiz.
+- Consulte `docs/agents.md` para papéis e limites por área.
+- Antes de editar código, leia `docs/CODING_CONVENTIONS.md`.
+- Para mudanças de produto e status, atualize `docs/sprint-plan.md` quando uma entrega relevante for concluída.
+
+Estado operacional atual:
+
+- Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
+- As calculadoras `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial` compartilham o formulário em `src/WebApp/Pages/Calculadoras/Details.cshtml`.
+- O ícone de calendário no tema dark foi ajustado em `src/WebApp/wwwroot/css/site.css`.
 ## Clonar o projeto
 
 ```powershell
@@ -45,6 +60,11 @@ Detalhes e opções alternativas em [docs/setup-local.md](docs/setup-local.md).
 dotnet test .\MeuValorLiquido.slnx
 ```
 
+Suite validada recentemente:
+
+- `tests/MeuValorLiquido.WebApp.Tests`: 135 testes
+- `tests/MeuValorLiquido.Calculators.Tests`: 117 testes
+
 ## Calculadoras
 
 17 ferramentas em `/calculadoras` (trabalhistas, fiscais e financeiras). Cada uma usa o motor em `src/Modules/Calculators` com extrato, explicação simples, compartilhamento e PDF.
@@ -70,3 +90,15 @@ O projeto usa Modular Monolith com:
 - `src/WebApp`: experiência pública e orquestração.
 - `tests`: testes por camada/módulo.
 - `docs`: documentação técnica e produto.
+
+## Deploy de produção
+
+Atualização típica na VPS:
+
+```bash
+cd /var/www/meu-valor-liquido
+git pull origin main
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+```
+
+Mais detalhes em [docs/VPS_HOSTINGER.md](docs/VPS_HOSTINGER.md) e [docs/DEPLOY.md](docs/DEPLOY.md).

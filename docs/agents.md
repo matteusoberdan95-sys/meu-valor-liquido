@@ -4,12 +4,32 @@
 
 Leia **`docs/CODING_CONVENTIONS.md`** antes de editar código.
 
+Se o agente tiver começado fora do Cursor, leia também **`AGENTS.md`** na raiz para o handoff operacional entre ferramentas.
+
 Resumo para agentes:
 
 - **GlobalUsings por projeto** — não adicione `using` nas classes; exceção: migrations EF.
 - **Calculators** — toda lógica fiscal/cálculo no módulo; WebApp só orquestra UI, SEO, PDF e share.
 - **Sprints** — atualize `docs/sprint-plan.md` e `CHANGELOG.md` ao concluir entregas.
 - **AdSense** — sem anúncios em PDF, e-mail ou widget; ver `docs/ADSENSE_COMPLIANCE.md`.
+- **Deploy VPS** — o diretório padrão de produção é `/var/www/meu-valor-liquido`.
+- **UI compartilhada das calculadoras CLT** — priorize `src/WebApp/Pages/Calculadoras/Details.cshtml` antes de editar slugs individuais.
+
+## Handoff rápido
+
+Use esta sequência para continuar o trabalho sem perder contexto:
+
+1. `README.md`
+2. `AGENTS.md`
+3. `docs/CODING_CONVENTIONS.md`
+4. `docs/sprint-plan.md`
+
+Pontos atuais de atenção:
+
+- tema dark Premium Liquid é a baseline atual;
+- sprints Stitch 39 a 46 já foram concluídas;
+- regressão recente corrigiu a renderização dos campos principais em `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial`;
+- o teste de proteção dessa regressão está em `tests/MeuValorLiquido.WebApp.Tests/CalculatorFormFieldsTests.cs`.
 
 ## Product Owner Agent
 
