@@ -15,56 +15,108 @@
 }
 else
 {
+    var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Post.Category);
+    var visualClass = BlogHubHelper.GetVisualClass(Model.Post.Category);
+    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Post.Category, Model.Post.Slug);
+
     @section Head {
         <partial name="Shared/_JsonLdArticle" model="Model.Post" />
         <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.BlogPostBreadcrumbs(Model.Post.Title, Model.Post.Slug)" />
     }
 
-    <nav aria-label="breadcrumb">
-        <ol class="valora-breadcrumb">
-            <li><a asp-page="/Index">Início</a></li>
-            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-            <li><a asp-page="/Blog/Index">Blog</a></li>
-            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-            <li class="active" aria-current="page">@Model.Post.Title</li>
-        </ol>
-    </nav>
+    @section Scripts {
+        <script src="~/js/blog-article-progress.js" asp-append-version="true" defer></script>
+    }
 
-    <article class="valora-form-card valora-stack-md">
-        @if (!string.IsNullOrEmpty(Model.Post.Category))
-        {
-            <partial name="Shared/_CalculatorCategoryBadge" model="Model.Post.Category" />
-        }
-        <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.Post.Title</h1>
-        <p class="valora-text-muted valora-text-sm">
-            Publicado em @Model.Post.PublishedAt.ToString("dd/MM/yyyy") · @Model.ReadingMinutes min de leitura
-        </p>
-        <p class="valora-lead">@Model.Post.Summary</p>
+    <div class="valora-stitch-blog-article" data-blog-article>
+        <div class="valora-stitch-blog-article-progress" aria-hidden="true">
+            <div class="valora-stitch-blog-article-progress-bar" data-blog-article-progress></div>
+        </div>
+
+        <nav class="valora-stitch-blog-article-breadcrumb" aria-label="breadcrumb">
+            <a asp-page="/Index"><span class="material-symbols-outlined" aria-hidden="true">home</span> Início</a>
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+            <a asp-page="/Blog/Index">Blog</a>
+            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+            <span aria-current="page">@Model.Post.Title</span>
+        </nav>
+
+        <header class="valora-stitch-blog-article-header">
+            <span class="valora-stitch-blog-article-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Post.Category)</span>
+            <h1 class="valora-stitch-blog-article-title">@Model.Post.Title</h1>
+            <p class="valora-stitch-blog-article-meta">
+                <span>Meu Valor Líquido</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="@Model.Post.PublishedAt.ToString("yyyy-MM-dd")">@Model.Post.PublishedAt.ToString("dd/MM/yyyy")</time>
+                <span aria-hidden="true">·</span>
+                <span>@Model.ReadingMinutes min de leitura</span>
+            </p>
+        </header>
+
+        <div class="valora-stitch-blog-article-hero @visualClass" aria-hidden="true">
+            <span class="material-symbols-outlined">@visualIcon</span>
+        </div>
+
+        <p class="valora-stitch-blog-article-lead">@Model.Post.Summary</p>
+
+        <article class="valora-stitch-blog-article-body valora-article-body">
+            @Html.Raw(Model.Post.Content)
+        </article>
 
         @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
         {
-            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="@Model.Post.RelatedCalculatorSlug">
-                <span class="material-symbols-outlined">calculate</span>
-                Calcular agora
-            </a>
+            <div class="valora-stitch-blog-article-cta">
+                <div class="valora-stitch-blog-article-cta-head">
+                    <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                    <div>
+                        <h2 class="valora-stitch-blog-article-cta-title">Quer saber seu valor real?</h2>
+                        <p class="valora-stitch-blog-article-cta-text">
+                            Use nossa calculadora gratuita e tenha o resultado em segundos com as deduções atualizadas.
+                        </p>
+                    </div>
+                </div>
+                <a class="valora-btn valora-btn-primary valora-stitch-blog-article-cta-btn"
+                   asp-page="/Calculadoras/Details"
+                   asp-route-slug="@Model.Post.RelatedCalculatorSlug">
+                    Calcular agora
+                    <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                </a>
+            </div>
         }
 
-        <div class="valora-article-body">@Html.Raw(Model.Post.Content)</div>
-
-        <div class="valora-disclaimer">
-            <span class="material-symbols-outlined">info</span>
+        <div class="valora-disclaimer valora-stitch-blog-article-disclaimer">
+            <span class="material-symbols-outlined" aria-hidden="true">info</span>
             <p style="margin: 0;">Este conteúdo tem finalidade educativa e não substitui orientação profissional.</p>
         </div>
-    </article>
 
-    @if (Model.RelatedPosts.Count > 0)
-    {
-        <section class="valora-section">
-            <h2 class="valora-h2">Artigos relacionados</h2>
-            @foreach (var related in Model.RelatedPosts)
-            {
-                <partial name="Shared/_BlogPostCard" model="related" />
-            }
+        @if (Model.RelatedPosts.Count > 0)
+        {
+            <section class="valora-stitch-blog-article-related">
+                <div class="valora-stitch-blog-article-related-head">
+                    <h2 class="valora-stitch-blog-section-title">Artigos relacionados</h2>
+                    <a class="valora-stitch-blog-article-related-all" asp-page="/Blog/Index">
+                        Ver todos
+                        <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                    </a>
+                </div>
+                <div class="valora-stitch-blog-article-related-grid">
+                    @foreach (var related in Model.RelatedPosts)
+                    {
+                        <partial name="Shared/_BlogStitchRelatedCard" model="related" />
+                    }
+                </div>
+            </section>
+        }
+
+        <section class="valora-stitch-blog-article-newsletter">
+            <span class="material-symbols-outlined valora-stitch-blog-article-newsletter-icon" aria-hidden="true">mail</span>
+            <h2 class="valora-stitch-blog-article-newsletter-title">Fique por dentro das leis</h2>
+            <p class="valora-stitch-blog-article-newsletter-text">
+                Receba atualizações sobre cálculos trabalhistas e fiscais direto no seu e-mail.
+            </p>
+            <a class="valora-btn valora-btn-primary valora-stitch-blog-article-newsletter-btn" asp-page="/Newsletter">
+                Assinar newsletter
+            </a>
         </section>
-    }
+    </div>
 }

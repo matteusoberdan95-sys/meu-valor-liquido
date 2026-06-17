@@ -1,0 +1,23 @@
+@model MeuValorLiquido.Modules.Content.BlogPost
+@{
+    var readingMinutes = BlogContentHelper.EstimateReadingMinutes(Model.Content);
+    var visualClass = BlogHubHelper.GetVisualClass(Model.Category);
+    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Category, Model.Slug);
+    var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Category);
+}
+
+<a class="valora-stitch-blog-feed-card"
+   asp-page="/Blog/Post"
+   asp-route-slug="@Model.Slug">
+    <div class="valora-stitch-blog-feed-main">
+        <div class="valora-stitch-blog-feed-meta">
+            <span class="valora-stitch-blog-cat-text @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
+            <span class="valora-stitch-blog-meta-dot">@readingMinutes min</span>
+        </div>
+        <h3 class="valora-stitch-blog-feed-title">@Model.Title</h3>
+        <p class="valora-stitch-blog-feed-summary">@Model.Summary</p>
+    </div>
+    <div class="valora-stitch-blog-feed-thumb @visualClass" aria-hidden="true">
+        <span class="material-symbols-outlined">@visualIcon</span>
+    </div>
+</a>

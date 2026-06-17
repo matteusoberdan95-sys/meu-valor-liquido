@@ -60,11 +60,13 @@ Objetivo: WebApp **igual** aos mocks em `stitch_redesign_meu_valor_l_quido/`, se
 - `comparador_clt_x_pj_cores_atualizadas_mobile` → `/calculadoras/pj-vs-clt`
 - `faq_hub_meu_valor_l_quido_mobile` → `/duvidas`
 
-### Sprint 25 — Blog + Metodologia + Painel (próxima)
-- Blog hub + artigo mobile
-- Metodologia + meu painel (PNG)
+### Sprint 25 — Blog + Metodologia + Painel (concluída)
+- `blog_hub_meu_valor_l_quido_mobile` → `/blog` (destaque, chips `?cat=`, feed)
+- `artigo_clt_vs_pj_meu_valor_l_quido_mobile` → `/blog/{slug}` (progresso, CTA, relacionados)
+- `metodologia_meu_valor_l_quido_mobile` → `/como-calculamos` (tabelas INSS/IRRF 2026)
+- `meu_painel_*` → `/meu-painel` (empty state + lista localStorage)
 
-### Sprint 26 — Desktop polish + QA visual
+### Sprint 26 — Desktop polish + QA visual (próxima)
 - Todas as telas desktop PNG
 - Checklist manual tela a tela
 

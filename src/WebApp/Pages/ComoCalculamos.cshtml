@@ -5,65 +5,146 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.HowWeCalculateBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Como calculamos</li>
-    </ol>
-</nav>
+<div class="valora-stitch-metodologia">
+    <section class="valora-stitch-metodologia-hero">
+        <div class="valora-stitch-metodologia-hero-badge">
+            <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+            Como calculamos
+        </div>
+        <h1 class="valora-stitch-metodologia-hero-title">Transparência e Metodologia</h1>
+        <p class="valora-stitch-metodologia-hero-lead">
+            Nossos cálculos baseiam-se na legislação brasileira vigente para @Model.TaxYear,
+            com tabelas centralizadas em <code>BrTaxTables@(Model.TaxYear)</code> e testes automatizados.
+        </p>
+    </section>
 
-<h1 class="valora-h1">Como calculamos</h1>
-<p class="valora-lead">
-    Metodologia educativa das estimativas — tabelas vigentes, premissas e o que não entra no cálculo automático.
-</p>
+    <section class="valora-stitch-metodologia-section">
+        <h2 class="valora-stitch-metodologia-section-title">Lógica de cálculo</h2>
+        <div class="valora-stitch-metodologia-regimes">
+            <article class="valora-stitch-metodologia-regime valora-stitch-metodologia-regime--clt">
+                <div class="valora-stitch-metodologia-regime-head">
+                    <span class="material-symbols-outlined" aria-hidden="true">work</span>
+                    <h3>Regime CLT</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">account_balance</span>
+                        <span><strong>INSS:</strong> cálculo progressivo com base na tabela de @Model.TaxYear.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
+                        <span><strong>IRRF:</strong> alíquotas progressivas após dedução de dependentes (R$ @MetodologiaTableHelper.FormatCurrency(Model.DependentDeduction)).</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">savings</span>
+                        <span><strong>FGTS:</strong> 8% provisionado (não deduzido do líquido nas simulações CLT).</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="valora-stitch-metodologia-regime valora-stitch-metodologia-regime--pj">
+                <div class="valora-stitch-metodologia-regime-head">
+                    <span class="material-symbols-outlined" aria-hidden="true">business</span>
+                    <h3>Regime PJ / MEI</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">summarize</span>
+                        <span><strong>Simples Nacional:</strong> fator R considerado nos anexos aplicáveis.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">confirmation_number</span>
+                        <span><strong>DAS-MEI:</strong> valor fixo mensal atualizado conforme regras vigentes.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">account_balance_wallet</span>
+                        <span><strong>Pró-labore:</strong> incidência de INSS sobre a base definida na simulação.</span>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
 
-<article class="valora-section valora-card valora-article-body">
-    <h2 class="valora-h2">Princípio geral</h2>
-    <p>
-        Todas as calculadoras retornam <strong>estimativas</strong> com base em regras públicas e cenários simplificados.
-        O motor de cálculo fica no módulo <code>Calculators</code> do projeto, com testes automatizados para evitar regressões.
-        Valores digitados no formulário <strong>não são gravados no servidor</strong> para fins de histórico ou perfil.
-    </p>
+    <section class="valora-stitch-metodologia-section">
+        <h2 class="valora-stitch-metodologia-section-title">Tabelas de @Model.TaxYear</h2>
+        <p class="valora-stitch-metodologia-table-hint">Deslize lateralmente para ver todos os dados.</p>
 
-    <h2 class="valora-h2">Tabelas de @Model.TaxYear</h2>
-    <p>
-        Salário líquido, INSS e IRRF usam as tabelas centralizadas em <code>BrTaxTables@Model.TaxYear</code>,
-        alinhadas à Portaria Interministerial MPS/MF nº 13/@Model.TaxYear e à redução legal do IRRF (Lei 15.270/2025).
-    </p>
-    <ul>
-        <li><strong>INSS:</strong> alíquotas progressivas por faixa, com teto de contribuição.</li>
-        <li><strong>IRRF:</strong> tabela progressiva, dedução por dependente (R$ 189,59) e redução legal quando aplicável.</li>
-        <li><strong>Outras ferramentas</strong> (férias, 13º, rescisão, MEI etc.) aplicam fórmulas específicas documentadas no resultado.</li>
-    </ul>
+        <div class="valora-stitch-metodologia-table-card">
+            <div class="valora-stitch-metodologia-table-head">IRRF mensal</div>
+            <div class="valora-stitch-metodologia-table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Base de cálculo (R$)</th>
+                            <th>Alíquota</th>
+                            <th>Dedução (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bracket in Model.IrrfBrackets)
+                        {
+                            <tr>
+                                <td>@MetodologiaTableHelper.FormatIrrfBaseRange(bracket)</td>
+                                <td>@MetodologiaTableHelper.FormatRate(bracket.Rate)</td>
+                                <td>@MetodologiaTableHelper.FormatCurrency(bracket.Deduction)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <h2 class="valora-h2">O que normalmente não entra</h2>
-    <ul>
-        <li>Convenções coletivas, benefícios não informados ou regras internas da empresa.</li>
-        <li>Pensão alimentícia, empréstimos consignados e outros descontos personalizados (salvo quando o campo existe).</li>
-        <li>Planejamento tributário PJ completo — a comparação CLT x PJ usa premissas editáveis e cenário educativo.</li>
-    </ul>
+        <div class="valora-stitch-metodologia-table-card">
+            <div class="valora-stitch-metodologia-table-head">INSS progressivo</div>
+            <div class="valora-stitch-metodologia-table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Salário de contribuição (R$)</th>
+                            <th>Alíquota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.InssBrackets.Length; i++)
+                        {
+                            var bracket = Model.InssBrackets[i];
+                            <tr>
+                                <td>@MetodologiaTableHelper.FormatInssSalaryRange(bracket, i)</td>
+                                <td>@MetodologiaTableHelper.FormatRate(bracket.Rate)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <h2 class="valora-h2">Atualizações</h2>
-    <p>
-        Quando leis ou portarias mudam, atualizamos as tabelas e os testes. A data de referência aparece nos resultados e nesta página.
-        Se encontrar divergência com holerite ou guia oficial, use o <a asp-page="/Contato">contato</a> — sem enviar valores salariais reais se preferir privacidade.
-    </p>
+        <p class="valora-stitch-metodologia-sources">
+            <strong>Fontes:</strong> Portaria Interministerial MPS/MF nº 13/@Model.TaxYear (INSS);
+            redução legal do IRRF conforme Lei nº 15.270/2025.
+            Salário mínimo @Model.TaxYear: R$ @MetodologiaTableHelper.FormatCurrency(Model.MinimumWage).
+        </p>
+    </section>
 
-    <h2 class="valora-h2">Métricas internas</h2>
-    <p>
-        Registramos contadores agregados (por exemplo, calculadora mais usada) sem IP, e-mail ou valores salariais.
-        Isso ajuda a priorizar conteúdo; não substitui Google Analytics nem Search Console.
-    </p>
-</article>
+    <section class="valora-stitch-metodologia-section valora-stitch-metodologia-principles">
+        <h2 class="valora-stitch-metodologia-section-title">Princípios e limitações</h2>
+        <ul class="valora-stitch-metodologia-list">
+            <li>Todas as calculadoras retornam <strong>estimativas</strong> com cenários simplificados.</li>
+            <li>Valores digitados no formulário <strong>não são gravados no servidor</strong>.</li>
+            <li>Não entram: convenções coletivas, benefícios não informados ou planejamento tributário PJ completo.</li>
+            <li>Métricas internas são agregadas, sem IP, e-mail ou valores salariais.</li>
+        </ul>
+        <p class="valora-stitch-metodologia-update">
+            Encontrou divergência? Use o <a asp-page="/Contato">contato</a> — sem enviar valores reais, se preferir privacidade.
+        </p>
+    </section>
 
-<div class="valora-disclaimer valora-section">
-    <span class="material-symbols-outlined">gavel</span>
-    <p style="margin: 0;">
-        Isso não é consultoria profissional. Leia também o <a asp-page="/AvisoLegal">aviso legal</a> e os <a asp-page="/TermosDeUso">termos de uso</a>.
+    <div class="valora-disclaimer valora-stitch-metodologia-disclaimer">
+        <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
+        <p style="margin: 0;">
+            Isso não é consultoria profissional. Leia o <a asp-page="/AvisoLegal">aviso legal</a> e os <a asp-page="/TermosDeUso">termos de uso</a>.
+        </p>
+    </div>
+
+    <p class="valora-stitch-metodologia-actions">
+        <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
     </p>
 </div>
-
-<p class="valora-section">
-    <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ver calculadoras</a>
-</p>

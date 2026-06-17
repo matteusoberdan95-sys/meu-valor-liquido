@@ -3092,3 +3092,831 @@ body {
   max-width: 20rem;
   margin: 0 auto;
 }
+
+/* Sprint 25 — Blog hub, artigo, metodologia, painel */
+
+.valora-stitch-blog-hub {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.valora-stitch-blog-hub-header {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-blog-hub-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-blog-hub-lead {
+  margin: 0;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+}
+
+.valora-stitch-blog-hub-count {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-blog-featured {
+  display: block;
+  margin-bottom: 2rem;
+  border-radius: var(--valora-radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+  text-decoration: none;
+  color: inherit;
+}
+
+.valora-stitch-blog-featured:hover {
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+}
+
+.valora-stitch-blog-featured-visual {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--valora-surface-container) 0%, var(--valora-surface-container-low) 100%);
+}
+
+.valora-stitch-blog-featured-visual .material-symbols-outlined {
+  font-size: 3rem;
+  opacity: 0.55;
+}
+
+.valora-stitch-blog-visual--trabalhista { color: var(--valora-trabalhista-blue); }
+.valora-stitch-blog-visual--fiscal { color: var(--valora-fiscal-purple); }
+.valora-stitch-blog-visual--financeiro { color: var(--valora-financeiro-teal); }
+
+.valora-stitch-blog-featured-body {
+  padding: 1rem;
+  border-left: 4px solid var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-blog-featured--fiscal .valora-stitch-blog-featured-body { border-left-color: var(--valora-fiscal-purple); }
+.valora-stitch-blog-featured--financeiro .valora-stitch-blog-featured-body { border-left-color: var(--valora-financeiro-teal); }
+
+.valora-stitch-blog-featured-meta,
+.valora-stitch-blog-feed-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.valora-stitch-blog-cat-text { font-weight: 600; }
+.valora-stitch-blog-cat-text--trabalhista { color: var(--valora-trabalhista-blue); }
+.valora-stitch-blog-cat-text--fiscal { color: var(--valora-fiscal-purple); }
+.valora-stitch-blog-cat-text--financeiro { color: var(--valora-financeiro-teal); }
+
+.valora-stitch-blog-meta-dot {
+  color: var(--valora-outline-variant);
+}
+
+.valora-stitch-blog-featured-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-blog-featured-summary {
+  margin: 0 0 1rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.valora-stitch-blog-featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--valora-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.valora-stitch-blog-chips {
+  margin: 0 -1rem 1.5rem;
+  overflow: hidden;
+}
+
+.valora-stitch-blog-chips-track {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0 1rem 0.25rem;
+  scrollbar-width: none;
+}
+
+.valora-stitch-blog-chips-track::-webkit-scrollbar { display: none; }
+
+.valora-stitch-blog-chip {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+  color: var(--valora-on-surface-variant);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-stitch-blog-chip--active {
+  background: var(--valora-primary-container);
+  border-color: var(--valora-primary-container);
+  color: var(--valora-on-primary);
+}
+
+.valora-stitch-blog-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-blog-feed-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.valora-stitch-blog-feed-card:hover {
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-blog-feed-main { flex: 1; min-width: 0; }
+
+.valora-stitch-blog-feed-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-blog-feed-summary {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-on-surface-variant);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.valora-stitch-blog-feed-thumb {
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  border-radius: var(--valora-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--valora-surface-container);
+}
+
+.valora-stitch-blog-feed-thumb .material-symbols-outlined {
+  font-size: 1.75rem;
+  opacity: 0.6;
+}
+
+/* Blog article */
+
+.valora-stitch-blog-article {
+  max-width: 42rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.valora-stitch-blog-article-progress {
+  position: fixed;
+  top: var(--valora-header-height, 4rem);
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--valora-surface-container);
+  z-index: 40;
+}
+
+.valora-stitch-blog-article-progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--valora-primary-container);
+  transition: width 0.1s linear;
+}
+
+.valora-stitch-blog-article-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--valora-on-surface-variant);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.valora-stitch-blog-article-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.valora-stitch-blog-article-breadcrumb .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.valora-stitch-blog-article-header {
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-blog-article-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--valora-radius-lg);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.valora-stitch-blog-article-badge.valora-stitch-blog-cat-text--trabalhista {
+  background: rgb(19 81 180 / 10%);
+}
+
+.valora-stitch-blog-article-badge.valora-stitch-blog-cat-text--fiscal {
+  background: rgb(107 33 168 / 10%);
+}
+
+.valora-stitch-blog-article-badge.valora-stitch-blog-cat-text--financeiro {
+  background: rgb(0 104 95 / 10%);
+}
+
+.valora-stitch-blog-article-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-blog-article-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.valora-stitch-blog-article-hero {
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--valora-surface-container) 0%, var(--valora-surface-container-low) 100%);
+}
+
+.valora-stitch-blog-article-hero .material-symbols-outlined {
+  font-size: 3.5rem;
+  opacity: 0.5;
+}
+
+.valora-stitch-blog-article-lead {
+  margin: 0 0 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-blog-article-body {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-blog-article-cta {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  border-left: 4px solid var(--valora-primary-container);
+  background: var(--valora-surface-white);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.valora-stitch-blog-article-cta-head {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-blog-article-cta-head .material-symbols-outlined {
+  padding: 0.75rem;
+  border-radius: 999px;
+  background: rgb(0 104 95 / 10%);
+  color: var(--valora-primary-container);
+}
+
+.valora-stitch-blog-article-cta-title {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-blog-article-cta-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.45;
+}
+
+.valora-stitch-blog-article-cta-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.valora-stitch-blog-article-disclaimer {
+  margin-bottom: 2rem;
+}
+
+.valora-stitch-blog-section-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-blog-article-related {
+  margin-bottom: 2rem;
+}
+
+.valora-stitch-blog-article-related-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-blog-article-related-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  color: var(--valora-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-stitch-blog-article-related-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-blog-related-card {
+  display: block;
+  border-radius: var(--valora-radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.valora-stitch-blog-related-visual {
+  position: relative;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--valora-surface-container);
+}
+
+.valora-stitch-blog-related-visual .material-symbols-outlined {
+  font-size: 2.5rem;
+  opacity: 0.45;
+}
+
+.valora-stitch-blog-related-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--valora-radius-lg);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.valora-stitch-blog-related-badge.valora-stitch-blog-cat-text--trabalhista { background: rgb(19 81 180 / 90%); }
+.valora-stitch-blog-related-badge.valora-stitch-blog-cat-text--fiscal { background: rgb(107 33 168 / 90%); }
+.valora-stitch-blog-related-badge.valora-stitch-blog-cat-text--financeiro { background: rgb(0 104 95 / 90%); }
+
+.valora-stitch-blog-related-body {
+  padding: 1rem;
+}
+
+.valora-stitch-blog-related-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.valora-stitch-blog-related-summary {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.valora-stitch-blog-article-newsletter {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background: var(--valora-primary-container);
+  color: var(--valora-on-primary);
+  text-align: center;
+}
+
+.valora-stitch-blog-article-newsletter-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-blog-article-newsletter-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-blog-article-newsletter-text {
+  margin: 0 0 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.valora-stitch-blog-article-newsletter-btn {
+  background: #fff;
+  color: var(--valora-primary-container);
+  border: none;
+}
+
+/* Metodologia */
+
+.valora-stitch-metodologia {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.valora-stitch-metodologia-hero {
+  margin: -0.5rem -1rem 1.5rem;
+  padding: 1.5rem 1rem;
+  background: var(--valora-surface-white);
+}
+
+.valora-stitch-metodologia-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--valora-radius-lg);
+  background: rgb(0 104 95 / 10%);
+  color: var(--valora-financeiro-teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.valora-stitch-metodologia-hero-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-metodologia-hero-lead {
+  margin: 0;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.55;
+}
+
+.valora-stitch-metodologia-section {
+  margin-bottom: 2rem;
+}
+
+.valora-stitch-metodologia-section-title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-metodologia-regimes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-metodologia-regime {
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+  border-left-width: 4px;
+}
+
+.valora-stitch-metodologia-regime--clt { border-left-color: var(--valora-trabalhista-blue); }
+.valora-stitch-metodologia-regime--pj { border-left-color: var(--valora-fiscal-purple); }
+
+.valora-stitch-metodologia-regime-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.valora-stitch-metodologia-regime--clt .valora-stitch-metodologia-regime-head {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-metodologia-regime--pj .valora-stitch-metodologia-regime-head {
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-metodologia-regime-head h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.valora-stitch-metodologia-regime ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valora-stitch-metodologia-regime li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.8125rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.45;
+}
+
+.valora-stitch-metodologia-regime li .material-symbols-outlined {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  color: var(--valora-outline);
+}
+
+.valora-stitch-metodologia-table-hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-metodologia-table-card {
+  margin-bottom: 1rem;
+  border-radius: var(--valora-radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+}
+
+.valora-stitch-metodologia-table-head {
+  padding: 0.75rem 1rem;
+  background: var(--valora-surface-container-low);
+  border-bottom: 1px solid var(--valora-border-subtle);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-metodologia-table-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.valora-stitch-metodologia-table-scroll::-webkit-scrollbar { display: none; }
+
+.valora-stitch-metodologia-table-scroll table {
+  width: 100%;
+  min-width: 24rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.valora-stitch-metodologia-table-scroll th,
+.valora-stitch-metodologia-table-scroll td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-metodologia-table-scroll th {
+  color: var(--valora-on-surface-variant);
+  font-weight: 600;
+  background: var(--valora-surface-white);
+}
+
+.valora-stitch-metodologia-sources {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+}
+
+.valora-stitch-metodologia-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.55;
+}
+
+.valora-stitch-metodologia-update {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-metodologia-disclaimer {
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-metodologia-actions {
+  margin: 0;
+}
+
+/* Meu painel */
+
+.valora-stitch-panel {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.valora-stitch-panel-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-panel-hero-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 0.75rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 104 95 / 10%);
+  color: var(--valora-primary-container);
+}
+
+.valora-stitch-panel-hero-icon .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.valora-stitch-panel-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.valora-stitch-panel-lead {
+  margin: 0;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}
+
+.valora-stitch-panel-card {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+}
+
+.valora-stitch-panel-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-panel-count {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-panel-empty {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+}
+
+.valora-stitch-panel-empty-icon {
+  font-size: 2.5rem;
+  color: var(--valora-outline);
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-panel-empty-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.valora-stitch-panel-empty-text {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-panel-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valora-stitch-panel .valora-local-panel-item {
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-panel-privacy {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-white);
+}
+
+.valora-stitch-panel-privacy-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-panel-privacy p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+  line-height: 1.5;
+}
+
+.valora-stitch-panel-disclaimer {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-metodologia-hero {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: var(--valora-radius-xl);
+  }
+
+  .valora-stitch-metodologia-regimes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

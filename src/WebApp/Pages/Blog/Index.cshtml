@@ -1,8 +1,8 @@
 @page "/blog"
 @model MeuValorLiquido.WebApp.Pages.Blog.IndexModel
 @{
-    ViewData["Title"] = "Blog";
-    ViewData["Description"] = "Conteúdos educativos sobre salário, descontos, cálculos trabalhistas e finanças pessoais.";
+    ViewData["Title"] = "Conteúdo Educativo";
+    ViewData["Description"] = "Guia completo sobre direitos, impostos e planejamento financeiro no Brasil.";
     ViewData["CanonicalPath"] = "/blog";
 }
 
@@ -10,18 +10,48 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.BlogBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Blog</li>
-    </ol>
-</nav>
+<div class="valora-stitch-blog-hub">
+    <header class="valora-stitch-blog-hub-header">
+        <h1 class="valora-stitch-blog-hub-title">Conteúdo Educativo</h1>
+        <p class="valora-stitch-blog-hub-lead">
+            Guia completo sobre seus direitos, impostos e planejamento financeiro no Brasil.
+            <span class="valora-stitch-blog-hub-count">@Model.TotalCount artigos educativos</span>
+        </p>
+    </header>
 
-<h1 class="valora-h1">Blog</h1>
-<p class="valora-lead valora-section">@Model.Posts.Count artigos educativos para entender melhor seus descontos e seu dinheiro.</p>
+    @if (Model.FeaturedPost is not null)
+    {
+        <partial name="Shared/_BlogStitchFeaturedCard" model="Model.FeaturedPost" />
+    }
 
-@foreach (var post in Model.Posts)
-{
-    <partial name="Shared/_BlogPostCard" model="post" />
-}
+    <section class="valora-stitch-blog-chips" aria-label="Filtrar por categoria">
+        <div class="valora-stitch-blog-chips-track">
+            @foreach (var chip in BlogHubHelper.CategoryChips)
+            {
+                var isActive = string.IsNullOrWhiteSpace(chip.FilterKey)
+                    ? !Model.HasActiveFilter
+                    : string.Equals(Model.Cat, chip.FilterKey, StringComparison.OrdinalIgnoreCase);
+                <a class="valora-stitch-blog-chip @(isActive ? "valora-stitch-blog-chip--active" : "")"
+                   asp-page="/Blog/Index"
+                   asp-route-cat="@chip.FilterKey">@chip.Label</a>
+            }
+        </div>
+    </section>
+
+    <section class="valora-stitch-blog-feed" aria-label="Artigos">
+        @if (Model.TotalCount == 0)
+        {
+            <p class="valora-text-muted">
+                Nenhum artigo nesta categoria.
+                <a asp-page="/Blog/Index">Ver todos</a>
+            </p>
+        }
+        else
+        {
+            @foreach (var post in Model.FeedPosts)
+            {
+                <partial name="Shared/_BlogStitchFeedCard" model="post" />
+            }
+        }
+    </section>
+</div>

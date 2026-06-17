@@ -1,10 +1,10 @@
 # Sprint Plan
 
-## Sprint 21–24 — Fidelidade Stitch (Sprint 24 concluída)
+## Sprint 21–25 — Fidelidade Stitch (Sprint 25 concluída)
 
-**Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ e FAQ hub.
+**Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia e meu painel.
 
-**Próximo:** Sprint 25 — Blog + Metodologia + Painel.
+**Próximo:** Sprint 26 — Desktop polish + QA visual.
 
 ---
 

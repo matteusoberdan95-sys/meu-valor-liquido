@@ -46,6 +46,7 @@ public class LocalPanelPageTests
         html.Should().Contain("Meu painel");
         html.Should().Contain("data-local-panel-page");
         html.Should().Contain("localStorage");
+        html.Should().Contain("valora-stitch-panel");
         html.Should().Contain("BreadcrumbList");
     }
 

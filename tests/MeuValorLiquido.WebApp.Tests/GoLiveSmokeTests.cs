@@ -119,6 +119,41 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Blog_Hub_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/blog");
+
+        html.Should().Contain("valora-stitch-blog-hub");
+        html.Should().Contain("Conteúdo Educativo");
+        html.Should().Contain("valora-stitch-blog-chips");
+        html.Should().Contain("valora-stitch-blog-featured");
+        html.Should().Contain("CLT &amp; Direitos");
+    }
+
+    [Fact]
+    public async Task Metodologia_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/como-calculamos");
+
+        html.Should().Contain("valora-stitch-metodologia");
+        html.Should().Contain("Transparência e Metodologia");
+        html.Should().Contain("Tabelas de 2026");
+        html.Should().Contain("INSS progressivo");
+        html.Should().Contain("IRRF mensal");
+    }
+
+    [Fact]
+    public async Task Local_Panel_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/meu-painel");
+
+        html.Should().Contain("valora-stitch-panel");
+        html.Should().Contain("Meu painel");
+        html.Should().Contain("data-local-panel-page");
+        html.Should().Contain("valora-bottom-nav");
+    }
+
+    [Fact]
     public async Task Home_Should_Send_Security_Headers()
     {
         var response = await client.GetAsync("/");

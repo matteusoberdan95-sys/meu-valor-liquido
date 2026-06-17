@@ -11,7 +11,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
 
     [Theory]
     [InlineData("/sobre", "Nossa missão", "Como calculamos")]
-    [InlineData("/como-calculamos", "Tabelas de 2026", "BrTaxTables")]
+    [InlineData("/como-calculamos", "Tabelas de 2026", "BrTaxTables2026")]
     [InlineData("/politica-de-privacidade", "Google AdSense", "localStorage")]
     [InlineData("/termos-de-uso", "Natureza do serviço", "educativo")]
     [InlineData("/aviso-legal", "Estimativas, não laudos", "consultoria")]

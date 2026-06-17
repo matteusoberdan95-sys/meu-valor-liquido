@@ -2,58 +2,55 @@
 @model MeuValorLiquido.WebApp.Pages.MeuPainel.IndexModel
 @{
     ViewData["Title"] = "Meu painel — simulações salvas";
+    ViewData["BottomNavTab"] = "profile";
 }
 
 @section Head {
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.LocalPanelBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Meu painel</li>
-    </ol>
-</nav>
-
-<header class="valora-section">
-    <h1 class="valora-h1">Meu painel</h1>
-    <p class="valora-lead">
-        Simulações que você salvou para revisar depois. Tudo fica no seu navegador — não pedimos login e não enviamos esses números ao servidor.
-    </p>
-</header>
-
-<section class="valora-section valora-card valora-local-panel" data-local-panel-page>
-    <div class="valora-local-panel-toolbar">
-        <p class="valora-text-muted valora-text-sm" style="margin: 0;" data-local-panel-count-label>
-            Carregando simulações…
+<div class="valora-stitch-panel">
+    <header class="valora-stitch-panel-hero">
+        <div class="valora-stitch-panel-hero-icon" aria-hidden="true">
+            <span class="material-symbols-outlined">person</span>
+        </div>
+        <h1 class="valora-stitch-panel-title">Meu painel</h1>
+        <p class="valora-stitch-panel-lead">
+            Simulações que você salvou para revisar depois. Tudo fica no seu navegador —
+            sem login e sem enviar números ao servidor.
         </p>
-        <button type="button" class="valora-btn valora-btn-outline valora-btn-sm" data-local-panel-clear hidden>
-            Limpar tudo
-        </button>
-    </div>
+    </header>
 
-    <div class="valora-local-panel-empty" data-local-panel-empty hidden>
-        <span class="material-symbols-outlined" style="font-size: 2.5rem; color: var(--valora-muted);">bookmark_add</span>
-        <h2 class="valora-h3">Nenhuma simulação salva ainda</h2>
-        <p class="valora-text-muted valora-text-sm">
-            Depois de calcular, use <strong>Salvar no painel</strong> no bloco de compartilhamento.
+    <section class="valora-stitch-panel-card" data-local-panel-page>
+        <div class="valora-stitch-panel-toolbar">
+            <p class="valora-stitch-panel-count" data-local-panel-count-label>Carregando simulações…</p>
+            <button type="button" class="valora-btn valora-btn-outline valora-btn-sm" data-local-panel-clear hidden>
+                Limpar tudo
+            </button>
+        </div>
+
+        <div class="valora-stitch-panel-empty" data-local-panel-empty hidden>
+            <span class="material-symbols-outlined valora-stitch-panel-empty-icon" aria-hidden="true">bookmark_add</span>
+            <h2 class="valora-stitch-panel-empty-title">Nenhuma simulação salva ainda</h2>
+            <p class="valora-stitch-panel-empty-text">
+                Depois de calcular, use <strong>Salvar no painel</strong> no bloco de compartilhamento.
+            </p>
+            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ir para calculadoras</a>
+        </div>
+
+        <ul class="valora-stitch-panel-list valora-local-panel-list" data-local-panel-list hidden></ul>
+    </section>
+
+    <section class="valora-stitch-panel-privacy">
+        <h2 class="valora-stitch-panel-privacy-title">Privacidade</h2>
+        <p>
+            Os dados ficam em <code>localStorage</code> deste navegador. Limpar cache, usar outro aparelho
+            ou navegador anônimo remove o histórico. Não usamos essas simulações para anúncios nem analytics individualizados.
         </p>
-        <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ir para calculadoras</a>
+    </section>
+
+    <div class="valora-disclaimer valora-stitch-panel-disclaimer">
+        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+        <p style="margin: 0;">Estimativas educativas. Confirme valores com holerite, contrato ou profissional habilitado.</p>
     </div>
-
-    <ul class="valora-local-panel-list" data-local-panel-list hidden></ul>
-</section>
-
-<section class="valora-section valora-card">
-    <h2 class="valora-h3">Privacidade</h2>
-    <p class="valora-text-muted valora-text-sm" style="margin: 0;">
-        Os dados ficam em <code>localStorage</code> deste navegador. Limpar cache, usar outro aparelho ou navegador anônimo remove o histórico.
-        Não usamos essas simulações para anúncios nem analytics individualizados.
-    </p>
-</section>
-
-<div class="valora-disclaimer valora-section">
-    <span class="material-symbols-outlined">info</span>
-    <p style="margin: 0;">Estimativas educativas. Confirme valores com holerite, contrato ou profissional habilitado.</p>
 </div>

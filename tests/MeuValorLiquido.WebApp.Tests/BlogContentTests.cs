@@ -16,6 +16,9 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
 
         match.Success.Should().BeTrue();
         int.Parse(match.Groups[1].Value).Should().BeGreaterThanOrEqualTo(15);
+        html.Should().Contain("valora-stitch-blog-hub");
+        html.Should().Contain("Conteúdo Educativo");
+        html.Should().Contain("valora-stitch-blog-featured");
     }
 
     [Fact]
@@ -25,6 +28,7 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
 
         html.Should().Contain("/calculadoras/salario-liquido");
         html.Should().Contain("Calcular agora");
+        html.Should().Contain("valora-stitch-blog-article");
     }
 
     [Fact]

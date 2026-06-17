@@ -23,10 +23,17 @@ public class PostModel : PageModel
         }
 
         ReadingMinutes = BlogContentHelper.EstimateReadingMinutes(Post.Content);
-        RelatedPosts = contentService.GetPublishedPosts()
+        var sameCategory = contentService.GetPublishedPosts()
             .Where(p => p.Slug != Post.Slug && p.Category == Post.Category)
             .Take(3)
             .ToList();
+
+        RelatedPosts = sameCategory.Count >= 2
+            ? sameCategory
+            : contentService.GetPublishedPosts()
+                .Where(p => p.Slug != Post.Slug)
+                .Take(3)
+                .ToList();
 
         return Page();
     }
