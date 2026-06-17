@@ -144,66 +144,12 @@ app.MapGet("/widget/{slug}", (string slug) =>
     EmbedWidgetCatalog.IsEmbeddable(slug)
         ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
         : Results.NotFound());
-app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], async (AppDbContext db, HttpRequest request, HttpResponse response) =>
-{
-    var xml = await BuildSitemapXmlAsync(db, builder.Configuration);
-    if (HttpMethods.IsHead(request.Method))
-    {
-        response.ContentType = "application/xml";
-        response.ContentLength = Encoding.UTF8.GetByteCount(xml);
-        return Results.Empty;
-    }
-
-    response.Headers.CacheControl = $"public, max-age={(int)PerformanceCacheDurations.Sitemap.TotalSeconds}";
-    return Results.Content(xml, "application/xml");
-});
 
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
 app.Run();
-
-static XElement CreateUrl(XNamespace ns, string location) =>
-    new(ns + "url", new XElement(ns + "loc", location));
-
-static async Task<string> BuildSitemapXmlAsync(AppDbContext db, IConfiguration configuration)
-{
-    XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
-    var baseUrl = configuration["Site:BaseUrl"] ?? "https://meuvalorliquido.com";
-
-    var urls = new List<XElement>
-    {
-        CreateUrl(ns, $"{baseUrl}/"),
-        CreateUrl(ns, $"{baseUrl}/calculadoras"),
-        CreateUrl(ns, $"{baseUrl}/sobre"),
-        CreateUrl(ns, $"{baseUrl}/contato"),
-        CreateUrl(ns, $"{baseUrl}/blog"),
-        CreateUrl(ns, $"{baseUrl}/newsletter"),
-        CreateUrl(ns, $"{baseUrl}/mapa-do-site"),
-        CreateUrl(ns, $"{baseUrl}/salario-liquido"),
-        CreateUrl(ns, $"{baseUrl}/clt-pj"),
-        CreateUrl(ns, $"{baseUrl}/duvidas"),
-        CreateUrl(ns, $"{baseUrl}/meu-painel"),
-        CreateUrl(ns, $"{baseUrl}/widget"),
-        CreateUrl(ns, $"{baseUrl}/politica-de-privacidade"),
-        CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
-        CreateUrl(ns, $"{baseUrl}/aviso-legal"),
-        CreateUrl(ns, $"{baseUrl}/como-calculamos")
-    };
-
-    var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
-    urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}")));
-    urls.AddRange(SalaryBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{SalaryBandCatalog.SlugPath(b)}")));
-    urls.AddRange(CltPjBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{CltPjBandCatalog.SlugPath(b)}")));
-    urls.AddRange(PopularQuestionsCatalog.GetAll().Select(q => CreateUrl(ns, $"{baseUrl}{PopularQuestionsCatalog.SlugPath(q.Slug)}")));
-
-    var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();
-    urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}")));
-
-    var document = new XDocument(new XElement(ns + "urlset", urls));
-    return document.ToString();
-}
 
 public partial class Program;
 
