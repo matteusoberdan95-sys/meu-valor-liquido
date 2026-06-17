@@ -4,12 +4,14 @@
     var isCompact = brandMarkClass.Contains("compact", StringComparison.OrdinalIgnoreCase);
     var logoVariant = isCompact ? "icon" : isFooter ? "stacked" : "horizontal";
     var logoClass = $"valora-brand-logo valora-brand-logo--{logoVariant}";
+    if (isFooter)
+    {
+        logoClass += " valora-brand-logo--footer";
+    }
 }
 <a class="valora-brand-mark @brandMarkClass" asp-page="/Index">
     <img class="@logoClass"
          src="~/images/brand/logo-@(logoVariant).png" asp-append-version="true"
          alt="Meu Valor Líquido"
-         width="@(isCompact ? 32 : isFooter ? 140 : 240)"
-         height="@(isCompact ? 32 : isFooter ? 140 : 48)"
          decoding="async" />
 </a>

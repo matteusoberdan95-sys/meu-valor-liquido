@@ -29,6 +29,7 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
 
         html.Should().Contain("/images/brand/logo-stacked");
         html.Should().Contain("valora-brand-mark--footer");
+        html.Should().Contain("valora-brand-logo--footer");
     }
 
     [Fact]
