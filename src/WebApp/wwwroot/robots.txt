@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://meuvalorliquido.com.br/sitemap.xml
+Sitemap: https://meuvalorliquido.com/sitemap.xml
