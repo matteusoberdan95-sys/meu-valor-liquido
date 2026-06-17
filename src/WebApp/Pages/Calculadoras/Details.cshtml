@@ -234,6 +234,26 @@ else
                             </div>
                         </div>
                     }
+                    @if (profile.ShowFinancingAmortization)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <span class="valora-label">@profile.FinancingAmortizationLabel</span>
+                            <div class="valora-choice-group" role="radiogroup" aria-label="@profile.FinancingAmortizationLabel">
+                                @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.FinancingAmortizationSystem>())
+                                {
+                                    var optionId = $"Input_FinancingAmortization_{option.Value}";
+                                    <label class="valora-choice" for="@optionId">
+                                        <input type="radio"
+                                               asp-for="Input.FinancingAmortization"
+                                               id="@optionId"
+                                               value="@option.Value" />
+                                        <span class="valora-choice-text">@option.Text</span>
+                                    </label>
+                                }
+                            </div>
+                            <p class="valora-helper">No SAC as parcelas começam maiores e os juros totais costumam ser menores que no Price.</p>
+                        </div>
+                    }
                     @if (profile.ShowMeiActivity)
                     {
                         <div style="grid-column: 1 / -1;">

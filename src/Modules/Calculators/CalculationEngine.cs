@@ -490,17 +490,39 @@ public sealed class CalculationEngine
     {
         var months = Math.Clamp(input.Months, 1, 600);
         var monthlyRate = input.Rate / 100m;
-        var payment = monthlyRate == 0
-            ? input.Amount / months
-            : input.Amount * monthlyRate / (1m - (decimal)Math.Pow((double)(1m + monthlyRate), -months));
-        var total = payment * months;
+        var principal = input.Amount;
+        var price = FinancingCalculator.CalculatePrice(principal, months, monthlyRate);
+        var sac = FinancingCalculator.CalculateSac(principal, months, monthlyRate);
 
-        return Build(definition, input.Amount, payment,
-        [
-            Information("Parcela (Price)", payment),
-            Information("Total pago", total),
-            Information("Juros totais", total - input.Amount)
-        ], "Sistema Price (parcelas fixas): PMT = PV × i / (1 - (1 + i)^-n).");
+        return input.FinancingAmortization switch
+        {
+            FinancingAmortizationSystem.Sac => Build(definition, principal, sac.FirstPayment,
+            [
+                Information("Primeira parcela (SAC)", sac.FirstPayment),
+                Information("Última parcela (SAC)", sac.LastPayment),
+                Information("Total pago", sac.TotalPaid),
+                Information("Juros totais", sac.TotalInterest)
+            ], "Sistema SAC: amortização constante; parcelas decrescem ao longo do prazo."),
+
+            FinancingAmortizationSystem.Compare => Build(definition, principal, price.Payment,
+            [
+                Information("Parcela Price (fixa)", price.Payment),
+                Information("Total pago (Price)", price.TotalPaid),
+                Information("Juros totais (Price)", price.TotalInterest),
+                Information("Primeira parcela SAC", sac.FirstPayment),
+                Information("Última parcela SAC", sac.LastPayment),
+                Information("Total pago (SAC)", sac.TotalPaid),
+                Information("Juros totais (SAC)", sac.TotalInterest),
+                Income("Economia de juros (SAC vs Price)", price.TotalInterest - sac.TotalInterest)
+            ], "Comparativo Price x SAC: no SAC os juros totais costumam ser menores, mas a primeira parcela é maior."),
+
+            _ => Build(definition, principal, price.Payment,
+            [
+                Information("Parcela (Price)", price.Payment),
+                Information("Total pago", price.TotalPaid),
+                Information("Juros totais", price.TotalInterest)
+            ], "Sistema Price (parcelas fixas): PMT = PV × i / (1 - (1 + i)^-n).")
+        };
     }
 
     private CalculationResult CalculateFgts(CalculatorDefinition definition, CalculatorInput input)

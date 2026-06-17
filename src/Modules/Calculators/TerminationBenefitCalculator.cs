@@ -221,7 +221,8 @@ public static class TerminationBenefitCalculator
         var fullNotice = Math.Min(30 + 3 * completeYears, 90);
         return reason switch
         {
-            TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => fullNotice,
+            TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd
+                or TerminationReason.EmployerDeath => fullNotice,
             TerminationReason.MutualAgreement => fullNotice / 2,
             _ => 0
         };
@@ -231,14 +232,16 @@ public static class TerminationBenefitCalculator
 
     public static decimal ResolveFgtsFineRateForReason(TerminationReason reason) => reason switch
     {
-        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => 0.40m,
+        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd
+            or TerminationReason.EmployerDeath => 0.40m,
         TerminationReason.MutualAgreement => 0.20m,
         _ => 0m
     };
 
     private static decimal ResolveFgtsWithdrawalRate(TerminationReason reason) => reason switch
     {
-        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => 1.00m,
+        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd
+            or TerminationReason.EmployerDeath => 1.00m,
         TerminationReason.MutualAgreement => 0.80m,
         TerminationReason.Retirement => 1.00m,
         _ => 0m
@@ -264,6 +267,10 @@ public static class TerminationBenefitCalculator
                 "Rescisão antecipada do contrato de experiência pelo empregador: regras próximas à demissão sem justa causa (multa FGTS 40%).",
             TerminationReason.Retirement =>
                 "Aposentadoria: verbas proporcionais e saque do FGTS (sem multa de 40%). Confirme regras no RH ou Caixa.",
+            TerminationReason.EmployerDeath =>
+                "Falecimento do empregador (pessoa física): verbas e multa FGTS 40% para dependentes, semelhante à demissão sem justa causa.",
+            TerminationReason.FixedTermContractEnd =>
+                "Término de contrato por prazo determinado: verbas proporcionais sem multa FGTS, como pedido de demissão.",
             _ => "Estimativa de verbas rescisórias conforme tipo de desligamento informado."
         };
 

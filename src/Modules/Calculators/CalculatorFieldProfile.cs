@@ -52,9 +52,11 @@ public sealed record CalculatorFieldProfile(
     string OvertimeShiftTypeLabel = "Tipo de hora extra",
     bool ShowSalaryBasis = false,
     bool ShowMeiActivity = false,
+    bool ShowFinancingAmortization = false,
     bool ShowFgtsTerminationReason = false,
     string SalaryBasisLabel = "Tipo de valor informado",
     string MeiActivityLabel = "Atividade MEI",
+    string FinancingAmortizationLabel = "Sistema de amortização",
     string FgtsTerminationReasonLabel = "Tipo de desligamento (para multa)");
 
 public interface ICalculatorFieldProfileProvider
@@ -158,7 +160,13 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowMonths: true,
             ShowRate: true,
             RateLabel: "Taxa mensal (%)"),
-        ["financiamento"] = new(AmountLabel: "Valor financiado", ShowMonths: true, MonthsLabel: "Prazo (meses)", ShowRate: true, RateLabel: "Taxa mensal (%)"),
+        ["financiamento"] = new(
+            AmountLabel: "Valor financiado",
+            ShowMonths: true,
+            MonthsLabel: "Prazo (meses)",
+            ShowRate: true,
+            RateLabel: "Taxa mensal (%)",
+            ShowFinancingAmortization: true),
         ["fgts"] = new(
             AmountLabel: "Salário bruto",
             ShowMonths: true,

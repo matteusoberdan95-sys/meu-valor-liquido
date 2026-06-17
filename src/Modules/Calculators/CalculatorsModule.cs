@@ -51,7 +51,13 @@ public enum TerminationReason
     ProbationContractEarlyEnd,
 
     [Display(Name = "Aposentadoria")]
-    Retirement
+    Retirement,
+
+    [Display(Name = "Falecimento do empregador")]
+    EmployerDeath,
+
+    [Display(Name = "Término de contrato por prazo determinado")]
+    FixedTermContractEnd
 }
 
 public sealed record CalculatorInput(
@@ -80,7 +86,8 @@ public sealed record CalculatorInput(
     int WeeklyWorkHours = 0,
     OvertimeShiftType OvertimeShiftType = OvertimeShiftType.Weekday,
     SalaryConversionBasis SalaryBasis = SalaryConversionBasis.Monthly,
-    MeiActivityType MeiActivity = MeiActivityType.CommerceOrIndustry);
+    MeiActivityType MeiActivity = MeiActivityType.CommerceOrIndustry,
+    FinancingAmortizationSystem FinancingAmortization = FinancingAmortizationSystem.Price);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 

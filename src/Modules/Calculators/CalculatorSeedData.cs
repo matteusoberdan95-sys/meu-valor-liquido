@@ -14,7 +14,7 @@ public static class CalculatorSeedData
         Create("irrf", "IRRF", "Fiscal", "Estime o IRRF com tabela progressiva e redução legal de 2026 (Lei 15.270/2025)."),
         CreateCltPj(),
         Create("juros-compostos", "Juros compostos", "Financeiro", "Projete o crescimento de um valor com taxa mensal e prazo."),
-        Create("financiamento", "Financiamento", "Financeiro", "Estime uma parcela fixa usando a fórmula Price."),
+        Create("financiamento", "Financiamento", "Financeiro", "Estime parcelas no sistema Price ou SAC e compare o custo total de juros."),
         Create("fgts", "FGTS", "Trabalhista", "Calcule depósitos mensais de 8%, saldo acumulado e multa rescisória."),
         Create("simulador-mei", "Simulador MEI", "Fiscal", "Estime o DAS MEI, limite de faturamento e alertas de desenquadramento."),
         Create("custo-funcionario", "Custo de funcionário", "Trabalhista", "Estime o custo total da empresa com salário, encargos e provisões."),

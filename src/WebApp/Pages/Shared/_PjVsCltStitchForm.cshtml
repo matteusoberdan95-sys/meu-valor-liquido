@@ -6,11 +6,19 @@
 <form method="post" class="valora-stitch-cltpj-form valora-stack-md" asp-route-slug="@Model.Definition!.Slug">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+    <nav class="valora-pj-wizard-steps" aria-label="Passos do comparador">
+        <span class="valora-pj-wizard-step valora-pj-wizard-step--active">1. Dados CLT</span>
+        <span class="valora-pj-wizard-step">2. Dados PJ</span>
+        <span class="valora-pj-wizard-step">3. Calcular</span>
+    </nav>
+
     <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--clt">
         <div class="valora-stitch-cltpj-input-head">
+            <span class="valora-pj-wizard-badge">1</span>
             <span class="material-symbols-outlined" aria-hidden="true">work</span>
             <h2>Entradas CLT</h2>
         </div>
+        <p class="valora-helper" style="margin: 0 0 1rem;">Informe o salário bruto e descontos mensais do regime CLT.</p>
         <div class="valora-form-row">
             <div>
                 <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
@@ -36,9 +44,11 @@
 
     <section class="valora-stitch-cltpj-input-card valora-stitch-cltpj-input-card--pj">
         <div class="valora-stitch-cltpj-input-head">
+            <span class="valora-pj-wizard-badge">2</span>
             <span class="material-symbols-outlined" aria-hidden="true">business_center</span>
             <h2>Entradas PJ</h2>
         </div>
+        <p class="valora-helper" style="margin: 0 0 1rem;">Informe faturamento PJ, alíquota do Simples e despesas fixas.</p>
         <div class="valora-form-row">
             <div style="grid-column: 1 / -1;">
                 <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
@@ -62,5 +72,8 @@
         </div>
     </section>
 
-    <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-cltpj-submit" type="submit">CALCULAR AGORA</button>
+    <div class="valora-pj-wizard-submit">
+        <span class="valora-pj-wizard-badge">3</span>
+        <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-cltpj-submit" type="submit">CALCULAR AGORA</button>
+    </div>
 </form>

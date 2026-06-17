@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 29 — Financiamento SAC e wizard PJ
+- Financiamento com SAC e comparativo Price x SAC
+- Motivos de rescisão: falecimento do empregador e contrato determinado
+- Benchmark de regressão para cenários de referência
+- Wizard em 3 passos no comparador PJ×CLT
+
 ### Sprint 28 — Calibração e expansão
 - 13º na rescisão com regra dos 15 dias (paridade com calculadoras de referência)
 - Novos motivos de desligamento: experiência e aposentadoria

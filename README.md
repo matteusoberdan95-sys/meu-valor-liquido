@@ -54,7 +54,7 @@ dotnet test .\MeuValorLiquido.slnx
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) (Sprint 28 — calibração e expansão concluída)
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) (Sprint 29 concluída; deploy após sprints)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
 
 ## Arquitetura

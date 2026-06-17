@@ -8,8 +8,6 @@
 
 ## Sprint 28 — Calibração e expansão das calculadoras (concluída)
 
-**Objetivo:** calibrar rescisão com sites de referência, novos motivos de desligamento e replicar padrão UX nas demais ferramentas prioritárias.
-
 **Entregas:**
 - [x] 13º proporcional com regra dos 15 dias (calibrado: jan–out/2026 ≈ R$ 1.853,86)
 - [x] Motivos extras: experiência (no prazo / antecipado), aposentadoria
@@ -18,7 +16,20 @@
 - [x] Juros compostos com aporte mensal opcional
 - [x] Testes Sprint28 + documentação
 
-**Definition of Done:** `dotnet test` verde.
+---
+
+## Sprint 29 — Financiamento SAC, motivos raros e wizard PJ (concluída)
+
+**Objetivo:** completar lacunas de produto antes do deploy: SAC, benchmark de regressão, motivos raros de rescisão e UX guiada no comparador PJ×CLT.
+
+**Entregas:**
+- [x] Financiamento: SAC, comparativo Price x SAC
+- [x] Rescisão: falecimento do empregador, término de contrato determinado
+- [x] `CalculatorBenchmarkTests` com cenários de referência documentados
+- [x] Wizard em 3 passos no comparador PJ×CLT
+- [x] Testes e documentação
+
+**Definition of Done:** `dotnet test` verde. Deploy aguarda fim das sprints.
 
 ---
 

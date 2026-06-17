@@ -2516,6 +2516,56 @@ body {
   margin: 0 auto;
 }
 
+.valora-pj-wizard-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.valora-pj-wizard-step {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--valora-text-muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-pj-wizard-step--active {
+  color: var(--valora-primary);
+  border-color: var(--valora-primary);
+  background: color-mix(in srgb, var(--valora-primary) 8%, transparent);
+}
+
+.valora-pj-wizard-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--valora-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.valora-stitch-cltpj-input-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.valora-pj-wizard-submit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
 .valora-stitch-cltpj-breadcrumb {
   display: none;
   margin-bottom: 1rem;
