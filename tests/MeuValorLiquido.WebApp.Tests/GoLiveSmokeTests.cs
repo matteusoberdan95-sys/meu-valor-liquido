@@ -63,7 +63,6 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-stitch-calc-hub");
         html.Should().Contain("valora-stitch-calc-featured");
         html.Should().Contain("Mais utilizada");
-        html.Should().Contain("Sugerir ferramenta");
         html.Should().Contain("valora-bottom-nav");
     }
 

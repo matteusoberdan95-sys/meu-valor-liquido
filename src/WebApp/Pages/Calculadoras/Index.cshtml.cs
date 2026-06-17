@@ -46,20 +46,8 @@ public class IndexModel : PageModel
         FeaturedCalculator = all.FirstOrDefault(c => c.Slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase))
             ?? Calculators.FirstOrDefault();
 
-        var hubSlugs = new[] { "pj-vs-clt", "ferias", "custo-funcionario", "decimo-terceiro" };
-        HubSecondaryCalculators = hubSlugs
-            .Select(slug => all.FirstOrDefault(c => c.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase)))
-            .Where(c => c is not null)
-            .Cast<CalculatorDefinition>()
-            .Where(c => Calculators.Any(x => x.Slug == c.Slug))
+        HubSecondaryCalculators = Calculators
+            .Where(c => FeaturedCalculator is null || !c.Slug.Equals(FeaturedCalculator.Slug, StringComparison.OrdinalIgnoreCase))
             .ToList();
-
-        if (HubSecondaryCalculators.Count == 0)
-        {
-            HubSecondaryCalculators = Calculators
-                .Where(c => FeaturedCalculator is null || c.Slug != FeaturedCalculator.Slug)
-                .Take(4)
-                .ToList();
-        }
     }
 }
