@@ -26,7 +26,7 @@ public static class TerminationBenefitCalculator
     {
         input = TerminationDateHelper.ApplyDates(input);
         var warnings = new List<string>();
-        var salary = input.Amount;
+        var salary = input.Amount + Math.Max(0m, input.SalaryAverageSupplement);
         var (months, _) = TerminationTenureHelper.ResolveTenureMonths(input, warnings);
         months = Math.Clamp(months, 1, 240);
         var workedDays = input.SecondaryAmount <= 0 ? 15m : Math.Clamp(input.SecondaryAmount, 1m, 31m);
@@ -168,11 +168,18 @@ public static class TerminationBenefitCalculator
             return 0;
         }
 
-        if (input.AdmissionDate is not null && input.TerminationDate is not null && months < 12)
+        if (input.AdmissionDate is not null && input.TerminationDate is not null)
         {
-            return TerminationDateHelper.CalculateTenureMonths(
+            var avos = TerminationDateHelper.CountVacationProportionalAvos(
                 input.AdmissionDate.Value,
                 input.TerminationDate.Value);
+
+            if (input.MonthsSinceLastVacation > 0)
+            {
+                avos = Math.Clamp(input.MonthsSinceLastVacation, 0, avos);
+            }
+
+            return avos;
         }
 
         var completePeriods = months / 12;

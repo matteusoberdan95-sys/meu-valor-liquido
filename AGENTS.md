@@ -12,8 +12,8 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 55** — Rescisão: lacunas legais e confiança |
-| **Prioridade alta** | 55 |
+| **Próxima sprint** | **Sprint 56** — Métricas enxutas e decisão por dados |
+| **Prioridade alta** | — |
 | **Prioridade média** | 56, 57, 58 |
 | **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 | **Baixa prioridade** | 59, 52 |

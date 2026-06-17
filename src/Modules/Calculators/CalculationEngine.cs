@@ -160,7 +160,8 @@ public sealed class CalculationEngine
             benefits.Thirteenth,
             input.Dependents);
         var otherDiscounts = Math.Max(0m, input.TransportDiscount);
-        var net = totalVerbas - taxes.Total - benefits.NoticeDeduction - otherDiscounts;
+        var thirteenthAdvance = Math.Min(Math.Max(0m, input.ThirteenthAdvancePaid), benefits.Thirteenth);
+        var net = totalVerbas - taxes.Total - benefits.NoticeDeduction - otherDiscounts - thirteenthAdvance;
 
         var lines = new List<CalculationLineItem>
         {
@@ -170,6 +171,10 @@ public sealed class CalculationEngine
         if (benefits.IncludeThirteenth)
         {
             lines.Add(Income("13º proporcional", benefits.Thirteenth));
+            if (thirteenthAdvance > 0m)
+            {
+                lines.Add(Discount("Adiantamento do 13º já pago", thirteenthAdvance));
+            }
         }
         else
         {
@@ -269,9 +274,16 @@ public sealed class CalculationEngine
             lines.Add(Discount("Outros descontos", otherDiscounts));
         }
 
+        if (input.SalaryAverageSupplement > 0m)
+        {
+            lines.Add(TextInformation(
+                "Média salarial complementar (HE/comissão)",
+                $"{Money.From(input.SalaryAverageSupplement)} somados ao salário base nas verbas proporcionais."));
+        }
+
         if (reason == TerminationReason.DismissalWithoutCause)
         {
-            lines.Add(Information("Seguro-desemprego", 0m));
+            lines.Add(TextInformation("Seguro-desemprego", UnemploymentInsuranceInfo.RescisaoDisplayText));
         }
 
         var explanation = TerminationBenefitCalculator.BuildExplanation(reason, benefits);

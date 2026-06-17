@@ -21,7 +21,7 @@ public static class MetodologiaCategoryCatalog
             "Simulam verbas CLT com regras documentadas, extrato legível e avisos quando o holerite ou TRCT podem divergir.",
             [
                 "Salário líquido usa INSS progressivo e IRRF 2026 sobre a base após dependentes e descontos informados.",
-                "Rescisão estima verbas por tipo de desligamento, sem médias salariais não informadas.",
+                "Rescisão estima verbas por tipo de desligamento, com regra dos 15 dias, adiantamento de 13º e média salarial opcional.",
                 "Férias e 13º consideram proporcionalidade, abono e adiantamentos quando você preenche os campos."
             ],
             [

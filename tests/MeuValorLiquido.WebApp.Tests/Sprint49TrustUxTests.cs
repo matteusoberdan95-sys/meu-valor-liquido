@@ -67,7 +67,7 @@ public class Sprint49TrustUxTests : IClassFixture<WebApplicationFactory<Program>
         var html = await GetSharedResultHtml("rescisao-clt", input);
 
         html.Should().Contain("valora-result-warnings");
-        html.Should().Contain("TRCT e holerite oficial");
+        html.Should().Contain("O TRCT e o holerite oficial");
         html.Should().Contain("seguro-desemprego");
     }
 

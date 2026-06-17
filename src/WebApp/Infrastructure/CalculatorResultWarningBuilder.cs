@@ -54,19 +54,35 @@ public static class CalculatorResultWarningBuilder
         var warnings = new List<CalculatorResultWarning>
         {
             new(
-                "Estimativa educativa. TRCT e holerite oficial podem incluir médias de HE, comissões, adiantamentos ou descontos que você não informou aqui.",
+                "Estimativa educativa. O TRCT e o holerite oficial podem incluir médias de HE, comissões, adiantamentos de 13º ou descontos que você não informou aqui.",
                 "warning",
                 "warning"),
             new(
-                "Valores podem divergir do que a empresa pagar se houver convenção coletiva, acordo individual ou parcelas já quitadas.",
+                "Confira cada verba no documento da empresa antes de planejar gastos ou prazos de saque do FGTS.",
                 "info",
-                "info")
+                "description")
         };
+
+        if (input.ThirteenthAdvancePaid > 0m)
+        {
+            warnings.Add(new(
+                "Adiantamento do 13º informado: o valor é descontado do 13º proporcional nesta simulação, como costuma ocorrer no TRCT.",
+                "info",
+                "receipt_long"));
+        }
+
+        if (input.SalaryAverageSupplement > 0m)
+        {
+            warnings.Add(new(
+                "Média salarial complementar somada ao salário base. O RH pode usar critérios diferentes para médias de HE e comissão.",
+                "info",
+                "info"));
+        }
 
         if (input.TerminationReason == TerminationReason.DismissalWithoutCause)
         {
             warnings.Add(new(
-                "Demissão sem justa causa: pode haver direito ao seguro-desemprego e saque do FGTS com multa de 40%. Confirme prazos e valores na Caixa e no RH.",
+                "Demissão sem justa causa: pode haver direito ao seguro-desemprego (linha informativa no extrato) e saque do FGTS com multa de 40%. Confirme prazos na Caixa e no RH.",
                 "info",
                 "savings"));
         }

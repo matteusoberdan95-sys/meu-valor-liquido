@@ -21,6 +21,8 @@ public static class CalculatorBenchmarkCatalog
 {
     public const int MinimumScenariosPerPrioritySlug = 5;
 
+    public const int MinimumTerminationBenchmarkScenarios = 15;
+
     private const string OfficialTaxSourceName =
         "Portaria Interministerial MPS/MF n. 13/2026 e Lei n. 15.270/2025";
     private const string OfficialTaxSourceUrl =
@@ -81,6 +83,16 @@ public static class CalculatorBenchmarkCatalog
         Scenario("rescisao-clt", "acordo-484a-24-meses", new CalculatorInput(4000m, SecondaryAmount: 20m, Months: 24, CompleteYears: 2, FgtsBalance: 10000m, TerminationReason: TerminationReason.MutualAgreement), 16400.00m, 15815.72m, CltSourceName, CltSourceUrl),
         Scenario("rescisao-clt", "justa-causa-com-ferias-vencidas", new CalculatorInput(3000m, SecondaryAmount: 10m, Months: 18, HasUnpaidVacation: true, TerminationReason: TerminationReason.DismissalForCause), 5000.00m, 4925.00m, CltSourceName, CltSourceUrl),
         Scenario("rescisao-clt", "experiencia-antecipada", new CalculatorInput(2200m, SecondaryAmount: 15m, Months: 3, TerminationReason: TerminationReason.ProbationContractEarlyEnd), 4794.53m, 4670.78m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "aposentadoria-36-meses", new CalculatorInput(3500m, SecondaryAmount: 20m, Months: 36, CompleteYears: 3, TerminationReason: TerminationReason.Retirement), 10500.00m, 6505.72m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "falecimento-empregador", new CalculatorInput(2800m, SecondaryAmount: 12m, Months: 18, TerminationReason: TerminationReason.EmployerDeath), 10479.47m, 10167.79m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "contrato-prazo-determinado", new CalculatorInput(2500m, SecondaryAmount: 8m, Months: 8, TerminationReason: TerminationReason.FixedTermContractEnd), 4555.56m, 1879.88m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "experiencia-no-prazo", new CalculatorInput(2000m, SecondaryAmount: 10m, Months: 2, TerminationReason: TerminationReason.ProbationContractCompleted), 1444.44m, -75.00m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "pedido-demissao-com-aviso", new CalculatorInput(3200m, SecondaryAmount: 15m, Months: 14, TerminationReason: TerminationReason.Resignation, NoticePeriod: NoticePeriodOption.Worked), 5511.11m, 5118.51m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "demissao-24-meses-5000", new CalculatorInput(5000m, SecondaryAmount: 18m, Months: 24, CompleteYears: 2, TerminationReason: TerminationReason.DismissalWithoutCause), 24506.67m, 23756.56m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "demissao-com-adiantamento-13", new CalculatorInput(4000m, SecondaryAmount: 15m, Months: 10, TerminationMonth: 10, ThirteenthAdvancePaid: 2000m, TerminationReason: TerminationReason.DismissalWithoutCause), 15057.78m, 12613.50m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "demissao-com-media-he", new CalculatorInput(3000m, SalaryAverageSupplement: 600m, SecondaryAmount: 15m, Months: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 15542.40m, 15084.12m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "rescisao-datas-regra-15-dias", new CalculatorInput(4000m, AdmissionDate: new DateOnly(2024, 3, 20), TerminationDate: new DateOnly(2026, 6, 5), TerminationReason: TerminationReason.Resignation), 3222.22m, -175.68m, CltSourceName, CltSourceUrl),
+        Scenario("rescisao-clt", "acordo-484a-12-meses-saldo", new CalculatorInput(3000m, SecondaryAmount: 12m, Months: 12, FgtsBalance: 3500m, TerminationReason: TerminationReason.MutualAgreement), 10500.00m, 10161.40m, CltSourceName, CltSourceUrl),
 
         Scenario("inss", "salario-minimo", new CalculatorInput(1621m), 1621.00m, 1499.42m, OfficialTaxSourceName, OfficialTaxSourceUrl, Line("INSS", 121.58m)),
         Scenario("inss", "faixa-3000", new CalculatorInput(3000m), 3000.00m, 2751.40m, OfficialTaxSourceName, OfficialTaxSourceUrl, Line("INSS", 248.60m)),

@@ -19,4 +19,6 @@ public static class CalculatorFieldKeys
     public const string Months = "Months";
     public const string Rate = "Rate";
     public const string MeiActivity = "MeiActivity";
+    public const string ThirteenthAdvancePaid = "ThirteenthAdvancePaid";
+    public const string SalaryAverageSupplement = "SalaryAverageSupplement";
 }

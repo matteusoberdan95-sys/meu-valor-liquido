@@ -95,7 +95,11 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.Amount] =
                     "Último salário bruto, base para saldo de salário, aviso, férias e 13º na rescisão.",
                 [CalculatorFieldKeys.TransportDiscount] =
-                    "Descontos fixos do último mês (VT, empréstimo consignado etc.), não confundir com verbas rescisórias."
+                    "Descontos fixos do último mês (VT, empréstimo consignado etc.), não confundir com verbas rescisórias.",
+                [CalculatorFieldKeys.ThirteenthAdvancePaid] =
+                    "Valor já recebido como adiantamento do 13º no ano da saída. Descontamos do 13º proporcional na rescisão.",
+                [CalculatorFieldKeys.SalaryAverageSupplement] =
+                    "Média mensal de horas extras, comissões ou outras parcelas variáveis incorporadas ao salário na rescisão."
             },
             ["hora-extra"] = new(StringComparer.OrdinalIgnoreCase)
             {

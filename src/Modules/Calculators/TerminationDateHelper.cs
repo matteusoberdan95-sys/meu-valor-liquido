@@ -86,4 +86,33 @@ public static class TerminationDateHelper
 
         return CountThirteenthAvos(admission.Value, termination);
     }
+
+    /// <summary>
+    /// Meses do período aquisitivo incompleto com a regra dos 15 dias (fração ≥ 15 dias no mês conta como avo).
+    /// </summary>
+    public static int CountVacationProportionalAvos(DateOnly admission, DateOnly termination)
+    {
+        if (termination < admission)
+        {
+            return 0;
+        }
+
+        var totalTenure = CalculateTenureMonths(admission, termination);
+        var completePeriods = totalTenure / 12;
+        var periodStart = admission.AddMonths(completePeriods * 12);
+
+        if (periodStart > termination)
+        {
+            periodStart = admission;
+        }
+
+        var monthsInCurrentPeriod = CalculateTenureMonths(periodStart, termination);
+
+        if (monthsInCurrentPeriod == 0 && totalTenure >= 12 && totalTenure % 12 == 0)
+        {
+            return 0;
+        }
+
+        return Math.Clamp(monthsInCurrentPeriod, 0, 12);
+    }
 }

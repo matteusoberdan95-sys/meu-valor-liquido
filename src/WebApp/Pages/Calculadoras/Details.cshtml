@@ -461,7 +461,7 @@ else
                             <p class="valora-helper">No pedido de demissão sem aviso, a empresa pode descontar até 30 dias de salário.</p>
                         </div>
                     }
-                    @if (profile.ShowHasUnpaidVacation || profile.ShowVacationTakenInPeriod || profile.ShowMonthsSinceLastVacation || profile.ShowCompleteYears || profile.ShowFgtsBalance || profile.ShowAdmissionMonth || profile.ShowAdmissionInPriorYear || profile.ShowTerminationMonth || profile.ShowThirteenthMonths || (profile.ShowMonths && isRescisaoCalculator))
+                    @if (profile.ShowHasUnpaidVacation || profile.ShowVacationTakenInPeriod || profile.ShowMonthsSinceLastVacation || profile.ShowCompleteYears || profile.ShowFgtsBalance || profile.ShowThirteenthAdvance || profile.ShowSalaryAverageSupplement || profile.ShowAdmissionMonth || profile.ShowAdmissionInPriorYear || profile.ShowTerminationMonth || profile.ShowThirteenthMonths || (profile.ShowMonths && isRescisaoCalculator))
                     {
                     <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
                         <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
@@ -512,6 +512,28 @@ else
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.FgtsBalance" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
                             </div>
+                        </div>
+                    }
+                    @if (profile.ShowThirteenthAdvance)
+                    {
+                        <div>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.ThirteenthAdvancePaidLabel, "Input.ThirteenthAdvancePaid", CalculatorFieldKeys.ThirteenthAdvancePaid)' />
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.ThirteenthAdvancePaid" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <p class="valora-helper">Se já recebeu a 1ª parcela do 13º no ano da saída, informe o valor para descontar do proporcional.</p>
+                        </div>
+                    }
+                    @if (profile.ShowSalaryAverageSupplement)
+                    {
+                        <div>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SalaryAverageSupplementLabel, "Input.SalaryAverageSupplement", CalculatorFieldKeys.SalaryAverageSupplement)' />
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.SalaryAverageSupplement" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <p class="valora-helper">Média mensal de horas extras, comissões ou outras parcelas que entram na base das verbas rescisórias.</p>
                         </div>
                     }
                     @if (profile.ShowMonths && isRescisaoCalculator)

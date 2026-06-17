@@ -98,6 +98,44 @@
         </div>
     </section>
 
+    <section class="valora-stitch-metodologia-section valora-stitch-metodologia-section--rescisao">
+        <h2 class="valora-stitch-metodologia-section-title">Rescisão CLT — premissas específicas</h2>
+        <p class="valora-stitch-metodologia-table-hint">
+            A <a asp-page="/Calculadoras/Details" asp-route-slug="rescisao-clt">calculadora de rescisão</a> estima verbas por tipo de desligamento.
+            Resultados são educativos; o TRCT oficial pode divergir.
+        </p>
+        <div class="valora-stitch-metodologia-regimes">
+            <article class="valora-stitch-metodologia-regime valora-stitch-metodologia-regime--clt">
+                <div class="valora-stitch-metodologia-regime-head">
+                    <span class="material-symbols-outlined" aria-hidden="true">contract_delete</span>
+                    <h3>Verbas e regras modeladas</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+                        <span><strong>Regra dos 15 dias:</strong> fração de mês com 15 dias ou mais conta como mês inteiro no tempo de vínculo, 13º e férias proporcionais quando você informa datas completas.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">payments</span>
+                        <span><strong>INSS/IRRF:</strong> incidem sobre saldo de salário e 13º proporcional; férias rescisórias seguem isenção usual na rescisão.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">savings</span>
+                        <span><strong>FGTS:</strong> multa de 40% (demissão sem justa causa), 20% (acordo 484-A) ou zero conforme o motivo; saldo informado ou estimado em 8% × meses.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                        <span><strong>Seguro-desemprego:</strong> linha informativa na demissão sem justa causa — não simulamos valor nem parcelas oficiais.</span>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined" aria-hidden="true">tune</span>
+                        <span><strong>Campos opcionais:</strong> adiantamento do 13º já pago, média de HE/comissão, férias vencidas, aviso prévio e descontos do último mês.</span>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
     <section class="valora-stitch-metodologia-section">
         <h2 class="valora-stitch-metodologia-section-title">Tabelas de @Model.TaxYear</h2>
         <p class="valora-stitch-metodologia-table-hint">Deslize lateralmente para ver todos os dados.</p>

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Sprint 55 - Rescisão: lacunas legais e confiança
+- Seguro-desemprego como linha informativa (sem promessa de valor) na demissão sem justa causa.
+- Adiantamento do 13º já pago descontado na rescisão; campo opcional de média salarial (HE/comissão).
+- Regra dos 15 dias aplicada às férias proporcionais quando há datas completas (`CountVacationProportionalAvos`).
+- Avisos TRCT/holerite reforçados no painel; tooltips nos campos que mais mudam o valor.
+- 15 cenários de benchmark em `rescisao-clt` (aposentadoria, acordo 484-A, experiência, média HE etc.).
+- Seção **Rescisão CLT** em `/como-calculamos`; FAQ `seguro-desemprego-quando-tem-direito`; jornada saída da empresa atualizada.
+- Testes `Sprint55TerminationTests`.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 402 testes (1 ignorado).
+
 ### Sprint 54 - Jornadas guiadas entre calculadoras
 - Bloco **Próximo passo** no painel de resultado com 3 jornadas: proposta recebida, saída da empresa e líquido desejado.
 - Links entre calculadoras com estado compartilhável (`?r=`) e parâmetro `jornada` para continuidade.

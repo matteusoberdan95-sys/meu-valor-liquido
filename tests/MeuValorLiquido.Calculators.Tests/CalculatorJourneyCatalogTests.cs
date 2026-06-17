@@ -21,9 +21,11 @@ public sealed class CalculatorJourneyCatalogTests
         journey.Should().NotBeNull();
 
         var steps = CalculatorJourneyCatalog.GetRemainingSteps(journey!, "rescisao-clt");
-        steps.Should().HaveCount(2);
+        steps.Should().HaveCount(3);
         steps[0].Target.Should().Be("fgts");
         steps[1].Kind.Should().Be(CalculatorJourneyStepKind.Faq);
+        steps[1].Target.Should().Be("multa-fgts-40-porcento");
+        steps[2].Target.Should().Be("seguro-desemprego-quando-tem-direito");
     }
 
     [Fact]

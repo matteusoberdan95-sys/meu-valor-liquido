@@ -96,7 +96,8 @@ public sealed record CalculatorInput(
     VacationDayOption VacationDayOption = VacationDayOption.Automatic,
     bool SellVacationAllowance = false,
     bool DoubleVacationPayment = false,
-    decimal ThirteenthAdvancePaid = 0m);
+    decimal ThirteenthAdvancePaid = 0m,
+    decimal SalaryAverageSupplement = 0m);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 
@@ -179,6 +180,10 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.ThirteenthAdvancePaid)
             .GreaterThanOrEqualTo(0)
             .WithMessage("O adiantamento do 13º não pode ser negativo.");
+
+        RuleFor(input => input.SalaryAverageSupplement)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("A média salarial complementar não pode ser negativa.");
 
         RuleFor(input => input.MonthsSinceLastVacation)
             .InclusiveBetween(0, 12)

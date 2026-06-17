@@ -150,7 +150,25 @@ public static class PopularQuestionsCatalog
                 new("Posso sacar FGTS ao pedir demissão?", "Em regra, não há saque do FGTS nem multa de 40% no pedido de demissão sem acordo."),
                 new("Acordo 484-A é pedido de demissão?", "Não. É acordo entre partes, com regras e verbas diferentes (multa de 20% sobre FGTS, por exemplo).")
             ],
-            ["multa-fgts-40-porcento", "ferias-proporcionais-como-funciona", "decimo-terceiro-quem-tem-direito"]),
+            ["multa-fgts-40-porcento", "ferias-proporcionais-como-funciona", "seguro-desemprego-quando-tem-direito"]),
+
+        Create(
+            "seguro-desemprego-quando-tem-direito",
+            "Seguro-desemprego: quando tenho direito?",
+            "Trabalhista",
+            "Regras gerais do seguro-desemprego após demissão sem justa causa e o que a calculadora não simula.",
+            """
+            <p>O <strong>seguro-desemprego</strong> é um benefício pago pelo governo ao trabalhador demitido <strong>sem justa causa</strong>, desde que cumpra requisitos como tempo mínimo de vínculo, não ter recebido o benefício nos últimos meses e não ter renda própria suficiente.</p>
+            <p>O valor e o número de parcelas dependem do salário médio e do tempo de contribuição. Não há valor fixo universal — consulte a Caixa, o portal gov.br ou o RH após a homologação.</p>
+            <p>Na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, o seguro-desemprego aparece como <strong>linha informativa</strong> (sem promessa de valor). Para verbas rescisórias, use o extrato da simulação; para FGTS e multa, veja também a <a href="/calculadoras/fgts">calculadora de FGTS</a>.</p>
+            """,
+            "rescisao-clt",
+            [
+                new("Pedido de demissão tem seguro-desemprego?", "Em regra, não. O benefício é típico da demissão sem justa causa pelo empregador."),
+                new("Acordo 484-A dá direito ao seguro?", "Não. No acordo comum, em geral não há seguro-desemprego."),
+                new("A calculadora mostra o valor das parcelas?", "Não. Mostramos apenas um aviso informativo; o cálculo oficial é feito pelo governo na solicitação.")
+            ],
+            ["rescisao-pedido-demissao-o-que-recebo", "multa-fgts-40-porcento", "decimo-terceiro-quem-tem-direito"]),
 
         Create(
             "multa-fgts-40-porcento",
@@ -166,7 +184,7 @@ public static class PopularQuestionsCatalog
                 new("Justa causa tem multa FGTS?", "Não há multa de 40% para o empregado demitido por justa causa."),
                 new("Como saber meu saldo de FGTS?", "Consulte o app FGTS da Caixa. Na calculadora, você pode estimar pelo tempo de empresa.")
             ],
-            ["rescisao-pedido-demissao-o-que-recebo", "custo-empresa-contratar-funcionario", "ferias-proporcionais-como-funciona"]),
+            ["rescisao-pedido-demissao-o-que-recebo", "custo-empresa-contratar-funcionario", "seguro-desemprego-quando-tem-direito"]),
 
         Create(
             "hora-extra-valor-minimo",
