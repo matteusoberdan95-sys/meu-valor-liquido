@@ -9,6 +9,10 @@
         ViewData["BottomNavTab"] = "calc";
     }
     var profile = Model.FieldProfile;
+    var calculatorSlug = Model.Definition?.Slug ?? string.Empty;
+    var isRescisaoCalculator = calculatorSlug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase);
+    var hideDatesInMainForm = profile.ShowLayeredOptionalFields
+        && calculatorSlug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase);
     if (Model.IsEmbedMode)
     {
         Layout = "Shared/_EmbedLayout";
@@ -135,7 +139,7 @@ else
                             <p class="valora-helper">Sem justa causa, pedido de demissão, acordo comum (484-A) ou justa causa — cada tipo tem verbas e direitos diferentes.</p>
                         </div>
                     }
-                    @if (profile.ShowAdmissionDate)
+                    @if (profile.ShowAdmissionDate && !hideDatesInMainForm)
                     {
                         <div>
                             <label asp-for="Input.AdmissionDate" class="valora-label">@profile.AdmissionDateLabel</label>
@@ -143,7 +147,7 @@ else
                             <p class="valora-helper">Usada para calcular tempo na empresa, 13º e férias proporcionais automaticamente.</p>
                         </div>
                     }
-                    @if (profile.ShowTerminationDate)
+                    @if (profile.ShowTerminationDate && !hideDatesInMainForm)
                     {
                         <div>
                             <label asp-for="Input.TerminationDate" class="valora-label">@profile.TerminationDateLabel</label>
@@ -178,7 +182,48 @@ else
                             <p class="valora-helper">Preenchido automaticamente pelo dia da data de afastamento, se você informar a data.</p>
                         </div>
                     }
-                    @if (profile.ShowDependents && profile.ShowAdmissionDate)
+                    @if (hideDatesInMainForm)
+                    {
+                        <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                            <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.125rem;" aria-hidden="true">tune</span>
+                                @profile.LayeredOptionalSectionLabel
+                            </summary>
+                            <div class="valora-form-row" style="margin-top: 1rem;">
+                                <div>
+                                    <label asp-for="Input.AdmissionDate" class="valora-label">@profile.AdmissionDateLabel</label>
+                                    <input asp-for="Input.AdmissionDate" class="valora-input" type="date" />
+                                </div>
+                                <div>
+                                    <label asp-for="Input.TerminationDate" class="valora-label">@profile.TerminationDateLabel</label>
+                                    <input asp-for="Input.TerminationDate" class="valora-input" type="date" />
+                                </div>
+                                @if (profile.ShowDependents)
+                                {
+                                    <div>
+                                        <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                        <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                                    </div>
+                                }
+                            </div>
+                        </details>
+                    }
+                    @if (profile.ShowDependents && profile.ShowAdmissionDate && profile.ShowLayeredOptionalFields && !hideDatesInMainForm)
+                    {
+                        <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                            <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.125rem;" aria-hidden="true">tune</span>
+                                @profile.LayeredOptionalSectionLabel
+                            </summary>
+                            <div class="valora-form-row" style="margin-top: 1rem;">
+                                <div>
+                                    <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                    <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                                </div>
+                            </div>
+                        </details>
+                    }
+                    else if (profile.ShowDependents && profile.ShowAdmissionDate)
                     {
                         <div>
                             <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
@@ -290,7 +335,7 @@ else
                             <p class="valora-helper">No pedido de demissão sem aviso, a empresa pode descontar até 30 dias de salário.</p>
                         </div>
                     }
-                    @if (profile.ShowHasUnpaidVacation || profile.ShowVacationTakenInPeriod || profile.ShowMonthsSinceLastVacation || profile.ShowCompleteYears || profile.ShowFgtsBalance || profile.ShowAdmissionMonth || profile.ShowAdmissionInPriorYear || profile.ShowTerminationMonth || profile.ShowThirteenthMonths || profile.ShowMonths)
+                    @if (profile.ShowHasUnpaidVacation || profile.ShowVacationTakenInPeriod || profile.ShowMonthsSinceLastVacation || profile.ShowCompleteYears || profile.ShowFgtsBalance || profile.ShowAdmissionMonth || profile.ShowAdmissionInPriorYear || profile.ShowTerminationMonth || profile.ShowThirteenthMonths || (profile.ShowMonths && isRescisaoCalculator))
                     {
                     <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
                         <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
@@ -360,6 +405,16 @@ else
                                 <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" />
                             }
                             <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                        </div>
+                    }
+                    @if (profile.ShowIrrfGrossSalaryToggle)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label class="valora-choice" for="Input_IrrfFromGrossSalary" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" asp-for="Input.IrrfFromGrossSalary" id="Input_IrrfFromGrossSalary" />
+                                <span>@profile.IrrfGrossSalaryToggleLabel</span>
+                            </label>
+                            <p class="valora-helper">Desmarcado: informe a base já sem INSS. Marcado: informe o salário bruto e o INSS será estimado automaticamente.</p>
                         </div>
                     }
                     @if (profile.ShowSecondaryAmount && !profile.ShowAdmissionDate)
@@ -501,6 +556,46 @@ else
                             </div>
                         </div>
                     }
+                    @if (profile.ShowLayeredOptionalFields && !profile.ShowAdmissionDate)
+                    {
+                        <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                            <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.125rem;" aria-hidden="true">tune</span>
+                                @profile.LayeredOptionalSectionLabel
+                            </summary>
+                            <div class="valora-form-row" style="margin-top: 1rem;">
+                                @if (profile.ShowDependents)
+                                {
+                                    <div>
+                                        <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                        <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                                    </div>
+                                }
+                                @if (profile.ShowTransportDiscount)
+                                {
+                                    <div style="grid-column: 1 / -1;">
+                                        <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                                        <div class="valora-input-prefix">
+                                            <span class="valora-prefix">R$</span>
+                                            <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                                        </div>
+                                    </div>
+                                }
+                                @if (profile.ShowOtherDiscounts)
+                                {
+                                    <div style="grid-column: 1 / -1;">
+                                        <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                                        <div class="valora-input-prefix">
+                                            <span class="valora-prefix">R$</span>
+                                            <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </details>
+                    }
+                    else
+                    {
                     @if (profile.ShowDependents && !profile.ShowAdmissionDate)
                     {
                         <div>
@@ -527,6 +622,7 @@ else
                                 <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
                             </div>
                         </div>
+                    }
                     }
                 </div>
                 <button class="@(Model.IsEmbedMode ? "valora-btn valora-btn-primary" : "valora-stitch-btn valora-stitch-btn--primary valora-stitch-calc-submit")" type="submit">

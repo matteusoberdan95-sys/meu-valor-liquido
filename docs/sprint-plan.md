@@ -33,6 +33,18 @@
 
 ---
 
+## Sprint 30 — Formulário em camadas e INSS/IRRF (concluída)
+
+**Objetivo:** reduzir campos visíveis de uma vez e melhorar clareza fiscal nas calculadoras INSS e IRRF.
+
+**Entregas:**
+- [x] Formulário em camadas: salário líquido, férias e 13º
+- [x] IRRF com opção de salário bruto (desconta INSS automaticamente)
+- [x] Faixa de tabela exibida no resultado de INSS e IRRF
+- [x] Correção: meses do 13º fora do accordion de rescisão
+
+---
+
 ## Sprint 21–26 — Fidelidade Stitch (Sprint 26 concluída)
 
 **Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia, meu painel e polish desktop (≥992px).

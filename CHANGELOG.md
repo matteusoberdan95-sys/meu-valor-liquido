@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 30 — Camadas e faixas INSS/IRRF
+- Formulário em camadas em salário líquido, férias e 13º
+- IRRF com toggle de salário bruto e faixa de tabela no resultado
+- Faixa INSS exibida no extrato
+
 ### Sprint 29 — Financiamento SAC e wizard PJ
 - Financiamento com SAC e comparativo Price x SAC
 - Motivos de rescisão: falecimento do empregador e contrato determinado

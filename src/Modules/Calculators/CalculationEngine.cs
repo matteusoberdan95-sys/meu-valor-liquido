@@ -390,17 +390,45 @@ public sealed class CalculationEngine
     private CalculationResult CalculateInssOnly(CalculatorDefinition definition, CalculatorInput input)
     {
         var inss = inssCalculator.Calculate(input.Amount);
-        return Build(definition, input.Amount, input.Amount - inss,
-        [Discount("INSS", inss)],
-        "INSS progressivo (Portaria MPS/MF nº 13/2026). Teto: " + BrTaxTables2026.InssCeiling.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-BR")) + ".");
+        var lines = new List<CalculationLineItem>
+        {
+            Discount("INSS", inss),
+            TextInformation("Faixa INSS aplicada", TaxBracketDescriber.DescribeInss(input.Amount))
+        };
+
+        return Build(definition, input.Amount, input.Amount - inss, lines,
+            "INSS progressivo (Portaria MPS/MF nº 13/2026). Teto: " + BrTaxTables2026.InssCeiling.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-BR")) + ".");
     }
 
     private CalculationResult CalculateIrrfOnly(CalculatorDefinition definition, CalculatorInput input)
     {
-        var irrf = irrfCalculator.Calculate(input.Amount, input.Dependents);
-        return Build(definition, input.Amount, input.Amount - irrf,
-        [Discount("IRRF", irrf)],
-        "IRRF com tabela progressiva e redução legal de " + BrTaxTables2026.Year + " (Lei 15.270/2025). Dedução por dependente: R$ 189,59.");
+        var lines = new List<CalculationLineItem>();
+        decimal principal;
+        decimal net;
+
+        if (input.IrrfFromGrossSalary)
+        {
+            var inss = inssCalculator.Calculate(input.Amount);
+            var taxableBase = Math.Max(0m, input.Amount - inss);
+            var irrf = irrfCalculator.Calculate(taxableBase, input.Dependents);
+            principal = input.Amount;
+            net = input.Amount - inss - irrf;
+            lines.Add(Discount("INSS (estimado)", inss));
+            lines.Add(Information("Base tributável IRRF", taxableBase));
+            lines.Add(Discount("IRRF", irrf));
+            lines.Add(TextInformation("Faixa IRRF aplicada", TaxBracketDescriber.DescribeIrrf(taxableBase, input.Dependents)));
+        }
+        else
+        {
+            var irrf = irrfCalculator.Calculate(input.Amount, input.Dependents);
+            principal = input.Amount;
+            net = input.Amount - irrf;
+            lines.Add(Discount("IRRF", irrf));
+            lines.Add(TextInformation("Faixa IRRF aplicada", TaxBracketDescriber.DescribeIrrf(input.Amount, input.Dependents)));
+        }
+
+        return Build(definition, principal, net, lines,
+            "IRRF com tabela progressiva e redução legal de " + BrTaxTables2026.Year + " (Lei 15.270/2025). Dedução por dependente: R$ 189,59.");
     }
 
     private CalculationResult CalculatePjVsClt(CalculatorDefinition definition, CalculatorInput input)

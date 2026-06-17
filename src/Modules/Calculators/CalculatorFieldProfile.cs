@@ -54,6 +54,10 @@ public sealed record CalculatorFieldProfile(
     bool ShowMeiActivity = false,
     bool ShowFinancingAmortization = false,
     bool ShowFgtsTerminationReason = false,
+    bool ShowLayeredOptionalFields = false,
+    bool ShowIrrfGrossSalaryToggle = false,
+    string LayeredOptionalSectionLabel = "Ajustar descontos e dependentes",
+    string IrrfGrossSalaryToggleLabel = "Informar salário bruto (descontar INSS automaticamente)",
     string SalaryBasisLabel = "Tipo de valor informado",
     string MeiActivityLabel = "Atividade MEI",
     string FinancingAmortizationLabel = "Sistema de amortização",
@@ -68,7 +72,7 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
 {
     private static readonly Dictionary<string, CalculatorFieldProfile> Profiles = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["salario-liquido"] = new(AmountLabel: "Salário bruto", ShowDependents: true, ShowTransportDiscount: true, TransportDiscountLabel: "Vale-transporte", ShowOtherDiscounts: true, OtherDiscountsLabel: "Outros descontos (VR, plano, empréstimo etc.)"),
+        ["salario-liquido"] = new(AmountLabel: "Salário bruto", ShowDependents: true, ShowTransportDiscount: true, TransportDiscountLabel: "Vale-transporte", ShowOtherDiscounts: true, OtherDiscountsLabel: "Outros descontos (VR, plano, empréstimo etc.)", ShowLayeredOptionalFields: true),
         ["salario-bruto-necessario"] = new(
             AmountLabel: "Salário líquido desejado",
             ShowDependents: true,
@@ -95,7 +99,9 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowAdmissionDate: true,
             ShowTerminationDate: true,
             AdmissionDateLabel: "Data de admissão (opcional)",
-            TerminationDateLabel: "Data de afastamento (opcional)"),
+            TerminationDateLabel: "Data de afastamento (opcional)",
+            ShowLayeredOptionalFields: true,
+            LayeredOptionalSectionLabel: "Ajustar dependentes"),
         ["decimo-terceiro"] = new(
             AmountLabel: "Salário base",
             ShowMonths: true,
@@ -104,7 +110,9 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowTerminationDate: true,
             AdmissionDateLabel: "Data de admissão (opcional)",
             TerminationDateLabel: "Data de referência / saída",
-            ShowDependents: true),
+            ShowDependents: true,
+            ShowLayeredOptionalFields: true,
+            LayeredOptionalSectionLabel: "Ajustar datas e dependentes"),
         ["rescisao-clt"] = new(
             AmountLabel: "Último salário (bruto)",
             ShowAdmissionDate: true,
@@ -141,7 +149,7 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowWeeklyWorkHours: true,
             ShowOvertimeShiftType: true),
         ["inss"] = new(AmountLabel: "Salário de contribuição"),
-        ["irrf"] = new(AmountLabel: "Base de cálculo (após INSS)", ShowDependents: true),
+        ["irrf"] = new(AmountLabel: "Base de cálculo (após INSS)", ShowDependents: true, ShowIrrfGrossSalaryToggle: true),
         ["pj-vs-clt"] = new(
             AmountLabel: "Salário bruto CLT",
             ShowSecondaryAmount: true,

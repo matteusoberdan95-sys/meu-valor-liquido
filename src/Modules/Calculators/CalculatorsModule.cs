@@ -87,7 +87,8 @@ public sealed record CalculatorInput(
     OvertimeShiftType OvertimeShiftType = OvertimeShiftType.Weekday,
     SalaryConversionBasis SalaryBasis = SalaryConversionBasis.Monthly,
     MeiActivityType MeiActivity = MeiActivityType.CommerceOrIndustry,
-    FinancingAmortizationSystem FinancingAmortization = FinancingAmortizationSystem.Price);
+    FinancingAmortizationSystem FinancingAmortization = FinancingAmortizationSystem.Price,
+    bool IrrfFromGrossSalary = false);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 
