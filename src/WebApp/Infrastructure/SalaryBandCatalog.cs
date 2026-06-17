@@ -15,6 +15,19 @@ public static class SalaryBandCatalog
 
     public static bool IsValid(int gross) => Bands.Contains(gross);
 
+    public static int ResolveNearestBand(decimal gross)
+    {
+        var rounded = (int)decimal.Round(gross, 0, MidpointRounding.AwayFromZero);
+        if (IsValid(rounded))
+        {
+            return rounded;
+        }
+
+        return Bands
+            .OrderBy(band => Math.Abs(band - rounded))
+            .First();
+    }
+
     public static string FormatCurrency(int amount) =>
         amount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
 

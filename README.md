@@ -76,7 +76,7 @@ Suite validada recentemente:
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — **próxima: Sprint 54** (jornadas); trilhas 47–50 e 53 concluídas; AdSense (51) aguardando aprovação
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — **próxima: Sprint 55** (rescisão); trilhas 47–50, 53 e 54 concluídas; AdSense (51) aguardando aprovação
 - **Redesign dark Stitch:** [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md) (Sprints 39–46)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
 

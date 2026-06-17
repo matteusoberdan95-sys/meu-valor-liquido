@@ -1,0 +1,23 @@
+@model MeuValorLiquido.WebApp.Infrastructure.CalculatorJourneyPanelViewModel
+
+<section class="valora-journey-next" aria-label="Próximo passo na jornada">
+    <div class="valora-journey-next-header">
+        <span class="material-symbols-outlined" aria-hidden="true">route</span>
+        <div>
+            <p class="valora-journey-next-kicker">Próximo passo</p>
+            <h3 class="valora-journey-next-title">@Model.Title</h3>
+        </div>
+    </div>
+    <p class="valora-journey-next-intro">@Model.Introduction</p>
+    <ul class="valora-journey-next-list">
+        @foreach (var step in Model.Steps)
+        {
+            <li>
+                <a class="valora-journey-next-link" href="@step.Url">
+                    <span class="valora-journey-next-link-label">@step.Label</span>
+                    <span class="valora-journey-next-link-teaser">@step.Teaser</span>
+                </a>
+            </li>
+        }
+    </ul>
+</section>

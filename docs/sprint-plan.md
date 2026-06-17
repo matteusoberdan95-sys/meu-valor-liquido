@@ -450,11 +450,11 @@
 
 **North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
 
-**Proxima sprint a implementar:** **Sprint 54**.
+**Proxima sprint a implementar:** **Sprint 55**.
 
 | Prioridade | Sprints | Status |
 |------------|---------|--------|
-| **Alta** | 54, 55 | Sprint 54 e a proxima |
+| **Alta** | 55 | Sprint 55 e a proxima |
 | **Media** | 56, 57, 58 | Apos alta prioridade |
 | **Baixa / bloqueada** | 51 (AdSense), 59, 52 | 51 aguarda aprovacao Google; 52 apos metricas enxutas |
 
@@ -484,7 +484,7 @@
 
 ---
 
-## Sprint 54 - Jornadas guiadas entre calculadoras (PRIORIDADE ALTA — proxima)
+## Sprint 54 - Jornadas guiadas entre calculadoras (CONCLUIDA)
 
 **Objetivo:** conectar ferramentas no momento certo para o usuario nao "morrer" no resultado isolado.
 
@@ -498,18 +498,18 @@
 **Jornadas minimas:**
 
 1. **Proposta recebida** → `proposta-salarial` → `salario-liquido` → `pj-vs-clt`
-2. **Saida da empresa** → `rescisao-clt` → `fgts` → FAQ seguro-desemprego (quando Sprint 55 entregar)
+2. **Saida da empresa** → `rescisao-clt` → `fgts` → FAQ multa FGTS (seguro-desemprego na Sprint 55)
 3. **Liquido desejado** → `salario-bruto-necessario` → `salario-liquido` → faixa `/salario-liquido/{valor}`
 
 **Criterios de aceite:**
 - Cada jornada tem pelo menos 2 links uteis visiveis apos calcular.
 - Links respeitam estado compartilhavel (`?r=`) quando fizer sentido.
 
-**Arquivos-chave:** `CalculatorRelatedLinksCatalog.cs`, `CalculatorResultExplanationFactory.cs`, `_CalculatorResultPanel.cshtml`.
+**Arquivos-chave:** `CalculatorJourneyCatalog.cs`, `CalculatorJourneyLinkBuilder.cs`, `_CalculatorJourneyNextSteps.cshtml`, `_CalculatorResultPanel.cshtml`.
 
 ---
 
-## Sprint 55 - Rescisao: lacunas legais e confianca (PRIORIDADE ALTA)
+## Sprint 55 - Rescisao: lacunas legais e confianca (PRIORIDADE ALTA — proxima)
 
 **Objetivo:** fechar gaps que ainda separam o resultado de sites especializados em rescisao.
 

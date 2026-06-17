@@ -6,6 +6,7 @@ public class DetailsModel : PageModel
     private readonly ICalculatorFieldProfileProvider fieldProfileProvider;
     private readonly IAdSlotProvider adSlotProvider;
     private readonly CalculatorShareLinkBuilder shareLinkBuilder;
+    private readonly CalculatorJourneyLinkBuilder journeyLinkBuilder;
     private readonly IProductMetricsService productMetricsService;
     private readonly CltPjComparisonCalculator cltPjComparisonCalculator;
 
@@ -15,6 +16,7 @@ public class DetailsModel : PageModel
         ICalculatorFieldProfileProvider fieldProfileProvider,
         IAdSlotProvider adSlotProvider,
         CalculatorShareLinkBuilder shareLinkBuilder,
+        CalculatorJourneyLinkBuilder journeyLinkBuilder,
         IProductMetricsService productMetricsService,
         CltPjComparisonCalculator cltPjComparisonCalculator)
     {
@@ -23,6 +25,7 @@ public class DetailsModel : PageModel
         this.fieldProfileProvider = fieldProfileProvider;
         this.adSlotProvider = adSlotProvider;
         this.shareLinkBuilder = shareLinkBuilder;
+        this.journeyLinkBuilder = journeyLinkBuilder;
         this.productMetricsService = productMetricsService;
         this.cltPjComparisonCalculator = cltPjComparisonCalculator;
     }
@@ -88,6 +91,9 @@ public class DetailsModel : PageModel
             return string.Empty;
         }
     }
+
+    [BindProperty(SupportsGet = true)]
+    public string? Jornada { get; set; }
 
     [BindProperty]
     public CalculatorInput Input { get; set; } = CalculatorInputDefaults.ForSlug("salario-liquido");
@@ -155,7 +161,10 @@ public class DetailsModel : PageModel
 
         var token = CalculatorInputShareCodec.Encode(Input);
         var embedQuery = IsEmbedMode ? "&embed=1" : string.Empty;
-        return Redirect($"/calculadoras/{slug}?r={Uri.EscapeDataString(token)}{embedQuery}");
+        var jornadaQuery = string.IsNullOrWhiteSpace(Jornada)
+            ? string.Empty
+            : $"&jornada={Uri.EscapeDataString(Jornada)}";
+        return Redirect($"/calculadoras/{slug}?r={Uri.EscapeDataString(token)}{embedQuery}{jornadaQuery}");
     }
 
     private bool TryBeginRequest(string slug, out IActionResult? reject)
@@ -192,13 +201,14 @@ public class DetailsModel : PageModel
         }
 
         Result = result.Value;
-        BuildShare(slug);
+        BuildShare(slug, ResolveJourneyId(slug));
         if (slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase))
         {
             CltPjBreakdown = cltPjComparisonCalculator.Compare(Input);
         }
         else
         {
+            var journey = BuildJourneyPanel(slug, ResolveJourneyId(slug));
             var terminationSummary = TerminationResultGrouper.TryGroup(slug, Result);
             ResultPanel = new CalculatorResultPanelViewModel(
                 Result,
@@ -207,25 +217,50 @@ public class DetailsModel : PageModel
                 CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
                 ShowSimpleExplanation: !IsEmbedMode,
                 TerminationSummary: terminationSummary,
-                Warnings: CalculatorResultWarningBuilder.Build(slug, Input, Result));
+                Warnings: CalculatorResultWarningBuilder.Build(slug, Input, Result),
+                Journey: journey);
         }
     }
 
-    private void BuildShare(string slug)
+    private string? ResolveJourneyId(string slug) =>
+        string.IsNullOrWhiteSpace(Jornada)
+            ? CalculatorJourneyCatalog.TryGetByEntrySlug(slug)?.Id
+            : Jornada;
+
+    private CalculatorJourneyPanelViewModel? BuildJourneyPanel(string slug, string? journeyId) =>
+        Result is null
+            ? null
+            : journeyLinkBuilder.Build(journeyId, slug, Input, Result, Request);
+
+    private void BuildShare(string slug, string? journeyId)
     {
         if (Result is null || IsEmbedMode)
         {
             return;
         }
 
+        var journey = BuildJourneyPanel(slug, journeyId);
         var shareUrl = shareLinkBuilder.BuildShareUrl(slug, Input, Request);
-        var shareText = CalculatorShareTextBuilder.Build(Result, shareUrl);
+        if (!string.IsNullOrWhiteSpace(journey?.JourneyId))
+        {
+            shareUrl = CalculatorJourneyLinkBuilder.AppendJourneyQuery(shareUrl, journey.JourneyId);
+        }
+
+        var shareText = CalculatorJourneyShareTextBuilder.AppendNextSteps(
+            CalculatorShareTextBuilder.Build(Result, shareUrl),
+            journey);
         Share = new CalculatorShareViewModel(
             shareUrl,
             shareText,
             CalculatorShareLinkBuilder.BuildWhatsAppUrl(shareText),
             shareLinkBuilder.BuildPdfUrl(slug, Input),
-            LocalPanelSaveContextBuilder.FromCalculation(Definition!, Result, Input));
+            LocalPanelSaveContextBuilder.FromCalculation(Definition!, Result, Input),
+            journey);
+    }
+
+    private void BuildShare(string slug)
+    {
+        BuildShare(slug, ResolveJourneyId(slug));
     }
 
     private void LoadPage(string slug)

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 54 - Jornadas guiadas entre calculadoras
+- Bloco **Próximo passo** no painel de resultado com 3 jornadas: proposta recebida, saída da empresa e líquido desejado.
+- Links entre calculadoras com estado compartilhável (`?r=`) e parâmetro `jornada` para continuidade.
+- Texto de compartilhamento inclui próximos passos sugeridos.
+- Testes `Sprint54JourneyTests` e `CalculatorJourneyCatalogTests`.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 383 testes.
+
 ### Sprint 53 - Holerite completo
 - Paridade de descontos entre `salario-liquido`, `salario-bruto-necessario` e `proposta-salarial`: VT, VR/VA, plano, pensão (% ou valor) e outros.
 - Extrato com linhas separadas e IRRF isento visível (Lei 15.270/2025).

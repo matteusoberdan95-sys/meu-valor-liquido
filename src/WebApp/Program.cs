@@ -95,6 +95,7 @@ builder.Services.AddRateLimiter(options =>
 });
 
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
+builder.Services.AddSingleton<CalculatorJourneyLinkBuilder>();
 builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
 builder.Services.AddScoped<IBlogHeroImageService, BlogHeroImageService>();

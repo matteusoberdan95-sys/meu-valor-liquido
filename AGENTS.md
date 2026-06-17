@@ -12,8 +12,8 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 54** — Jornadas guiadas entre calculadoras |
-| **Prioridade alta** | 54, 55 |
+| **Próxima sprint** | **Sprint 55** — Rescisão: lacunas legais e confiança |
+| **Prioridade alta** | 55 |
 | **Prioridade média** | 56, 57, 58 |
 | **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 | **Baixa prioridade** | 59, 52 |
@@ -31,7 +31,7 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 ## Estado atual importante
 
-- Trilha Stitch 39–46 e trilhas **47–50 e 53 concluídas**.
+- Trilha Stitch 39–46 e trilhas **47–50, 53 e 54 concluídas**.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`.

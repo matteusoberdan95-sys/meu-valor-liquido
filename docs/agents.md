@@ -29,8 +29,7 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
-| **Alta — próxima** | **54** | Jornadas guiadas entre calculadoras |
-| Alta | 55 | Rescisão (lacunas legais) |
+| **Alta — próxima** | **55** | Rescisão (lacunas legais) |
 | Média | 56, 57, 58 | Métricas enxutas; faixas salariais + widget; conteúdo editorial |
 | Bloqueada | 51 | AdSense — aguardar aprovação Google |
 | Baixa | 59, 52 | PJ×CLT profundo; observabilidade completa |
@@ -39,7 +38,7 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 
 Pontos já entregues (não reabrir sem motivo):
 
-- Sprints 47–50 e **53**: hotfix, benchmark, tooltips, metodologia E-E-A-T, holerite completo
+- Sprints 47–50, **53 e 54**: hotfix, benchmark, tooltips, metodologia E-E-A-T, holerite completo, jornadas guiadas
 - Tema dark Premium Liquid (Stitch 39–46)
 - Formulário compartilhado CLT em `Details.cshtml`; testes em `CalculatorFormFieldsTests.cs`
 

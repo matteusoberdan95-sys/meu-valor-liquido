@@ -17,7 +17,8 @@ public sealed record CalculatorResultPanelViewModel(
     CalculatorResultExplanationViewModel Explanation,
     bool ShowSimpleExplanation = true,
     TerminationResultSummary? TerminationSummary = null,
-    IReadOnlyList<CalculatorResultWarning> Warnings = null!)
+    IReadOnlyList<CalculatorResultWarning> Warnings = null!,
+    CalculatorJourneyPanelViewModel? Journey = null)
 {
     public IReadOnlyList<CalculatorResultWarning> Warnings { get; init; } = Warnings ?? [];
 }

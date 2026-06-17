@@ -182,6 +182,11 @@
     }
 </section>
 
+@if (Model.Journey is not null && Model.Journey.Steps.Count > 0)
+{
+    <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.Journey" />
+}
+
 @if (Model.ShowSimpleExplanation && Model.Explanation.RelatedLinks.Count > 0)
 {
     <section class="valora-related-tools" aria-label="Ferramentas relacionadas">
