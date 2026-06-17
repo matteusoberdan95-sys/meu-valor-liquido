@@ -15,11 +15,20 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/");
 
         html.Should().Contain("valora-brand-mark");
-        html.Should().Contain("valora-brand-mark--stitch");
-        html.Should().Contain("valora-brand-wordmark");
+        html.Should().Contain("/images/brand/logo-horizontal");
         html.Should().Contain("Meu Valor Líquido");
         html.Should().Contain("favicon");
         html.Should().Contain("apple-touch-icon");
+        html.Should().Contain("/images/brand/logo-icon");
+    }
+
+    [Fact]
+    public async Task Footer_Should_Use_Stacked_Logo()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain("/images/brand/logo-stacked");
+        html.Should().Contain("valora-brand-mark--footer");
     }
 
     [Fact]
@@ -34,7 +43,9 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/favicon.ico")]
     [InlineData("/apple-touch-icon.png")]
     [InlineData("/images/og-default.webp")]
-    [InlineData("/images/brand/logo-horizontal.webp")]
+    [InlineData("/images/brand/logo-horizontal.png")]
+    [InlineData("/images/brand/logo-stacked.png")]
+    [InlineData("/images/brand/logo-icon.png")]
     [InlineData("/images/hero/home-hero.webp")]
     [InlineData("/images/blog/o-que-e-salario-liquido.webp")]
     public async Task Brand_Asset_Should_Be_Served(string path)

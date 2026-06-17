@@ -130,18 +130,19 @@ h1, h2, h3, h4,
 }
 
 .valora-brand-logo--horizontal {
-  height: 2.25rem;
-  max-width: min(240px, 52vw);
+  height: 2.5rem;
+  max-width: min(280px, 58vw);
 }
 
 .valora-brand-logo--stacked {
-  height: 5.5rem;
-  max-width: 200px;
+  height: 4.5rem;
+  max-width: 140px;
 }
 
 .valora-brand-logo--icon {
   height: 2rem;
   width: 2rem;
+  border-radius: var(--valora-radius-lg);
 }
 
 .valora-brand-logo--footer {
@@ -1474,35 +1475,12 @@ h1, h2, h3, h4,
   line-height: 1;
 }
 
-.valora-brand-mark--stitch .valora-brand-icon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--valora-radius-lg);
-  background: var(--valora-primary);
-  color: var(--valora-on-primary);
-  flex-shrink: 0;
+.valora-brand-mark--footer {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
 }
 
-.valora-brand-mark--stitch .valora-brand-icon-wrap .material-symbols-outlined {
-  font-size: 1.25rem;
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
-.valora-brand-mark--stitch .valora-brand-wordmark {
-  font-family: var(--valora-font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--valora-primary);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.valora-brand-mark--footer { justify-content: center; margin-bottom: 0.5rem; }
-
-.valora-brand-mark--compact .valora-brand-logo--icon { height: 1.5rem; width: 1.5rem; }
+.valora-brand-mark--compact .valora-brand-logo--icon { height: 1.75rem; width: 1.75rem; }
 
 .valora-bottom-nav {
   position: fixed;

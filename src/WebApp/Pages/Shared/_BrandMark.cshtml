@@ -2,26 +2,14 @@
     var brandMarkClass = ViewData["BrandMarkClass"]?.ToString() ?? "";
     var isFooter = brandMarkClass.Contains("footer", StringComparison.OrdinalIgnoreCase);
     var isCompact = brandMarkClass.Contains("compact", StringComparison.OrdinalIgnoreCase);
-    var useStitchMark = !isFooter;
+    var logoVariant = isCompact ? "icon" : isFooter ? "stacked" : "horizontal";
+    var logoClass = $"valora-brand-logo valora-brand-logo--{logoVariant}";
 }
-<a class="valora-brand-mark @(useStitchMark ? "valora-brand-mark--stitch" : "") @brandMarkClass" asp-page="/Index">
-    @if (useStitchMark)
-    {
-        <span class="valora-brand-icon-wrap" aria-hidden="true">
-            <span class="material-symbols-outlined">account_balance_wallet</span>
-        </span>
-        <span class="valora-brand-wordmark">Meu Valor Líquido</span>
-    }
-    else
-    {
-        var logoVariant = isCompact ? "icon" : "stacked";
-        var logoFile = $"logo-{logoVariant}.webp";
-        var logoClass = $"valora-brand-logo valora-brand-logo--{logoVariant}";
-        <img class="@logoClass"
-             src="~/images/brand/@logoFile" asp-append-version="true"
-             alt="Meu Valor Líquido"
-             width="@(isCompact ? 32 : 200)"
-             height="@(isCompact ? 32 : 120)"
-             decoding="async" />
-    }
+<a class="valora-brand-mark @brandMarkClass" asp-page="/Index">
+    <img class="@logoClass"
+         src="~/images/brand/logo-@(logoVariant).png" asp-append-version="true"
+         alt="Meu Valor Líquido"
+         width="@(isCompact ? 32 : isFooter ? 140 : 240)"
+         height="@(isCompact ? 32 : isFooter ? 140 : 48)"
+         decoding="async" />
 </a>
