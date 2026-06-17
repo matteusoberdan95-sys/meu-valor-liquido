@@ -158,12 +158,14 @@ public class DetailsModel : PageModel
         }
         else
         {
+            var terminationSummary = TerminationResultGrouper.TryGroup(slug, Result);
             ResultPanel = new CalculatorResultPanelViewModel(
                 Result,
                 Input,
                 slug,
                 CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
-                ShowSimpleExplanation: !IsEmbedMode);
+                ShowSimpleExplanation: !IsEmbedMode,
+                TerminationSummary: terminationSummary);
         }
     }
 

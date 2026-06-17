@@ -165,19 +165,32 @@ public sealed class CalculationEngine
 
     private CalculationResult CalculateVacation(CalculatorDefinition definition, CalculatorInput input)
     {
-        var salary = input.Amount;
-        var vacationBonus = salary / 3m;
-        var gross = salary + vacationBonus;
+        var months = Math.Clamp(input.Months, 1, 12);
+        var salaryBase = input.Amount * months / 12m;
+        var vacationBonus = salaryBase / 3m;
+        var gross = salaryBase + vacationBonus;
         var inss = inssCalculator.Calculate(gross);
         var irrf = irrfCalculator.Calculate(gross - inss, input.Dependents);
         var net = gross - inss - irrf;
 
-        return Build(definition, gross, net,
-        [
+        var lines = new List<CalculationLineItem>
+        {
             Income("Adicional de 1/3", vacationBonus),
             Discount("INSS", inss),
             Discount("IRRF", irrf)
-        ], "Férias gozadas: salário + 1/3 constitucional com descontos de INSS e IRRF (" + BrTaxTables2026.Year + ").");
+        };
+
+        if (months < 12)
+        {
+            lines.Insert(0, CountInformation("Meses de férias proporcionais", months));
+            lines.Insert(0, Income("Férias proporcionais", salaryBase));
+        }
+
+        var explanation = months < 12
+            ? $"Férias proporcionais ({months}/12) com 1/3 constitucional e descontos de INSS e IRRF ({BrTaxTables2026.Year})."
+            : $"Férias gozadas: salário + 1/3 constitucional com descontos de INSS e IRRF ({BrTaxTables2026.Year}).";
+
+        return Build(definition, gross, net, lines, explanation);
     }
 
     private CalculationResult CalculateThirteenthSalary(CalculatorDefinition definition, CalculatorInput input)
@@ -190,7 +203,7 @@ public sealed class CalculationEngine
 
         return Build(definition, gross, net,
         [
-            Information("Meses considerados", months),
+            CountInformation("Meses considerados", months),
             Discount("INSS", inss),
             Discount("IRRF", irrf)
         ], "Décimo terceiro proporcional. INSS e IRRF calculados separadamente sobre a verba, conforme regra previdenciária.");
@@ -354,7 +367,7 @@ public sealed class CalculationEngine
 
         var lines = new List<CalculationLineItem>
         {
-            Information("Divisor mensal de horas", divisor),
+            TextInformation("Divisor mensal de horas", $"{divisor:0} h"),
             Information("Valor da hora normal", hourlyRate),
             Income($"Horas extras {shiftLabel} ({additionalRate:0.#}%)", total),
             Income("Reflexo DSR estimado", dsr)
@@ -367,7 +380,7 @@ public sealed class CalculationEngine
 
         if (input.Rate > 0m && input.Rate != additionalRate && input.OvertimeShiftType == OvertimeShiftType.Weekday)
         {
-            lines.Add(Information("Adicional CCT informado (%)", input.Rate));
+            lines.Add(PercentInformation("Adicional CCT informado (%)", input.Rate));
         }
 
         return Build(definition, grandTotal, grandTotal, lines,
@@ -442,14 +455,35 @@ public sealed class CalculationEngine
     {
         var months = Math.Clamp(input.Months, 1, 600);
         var rate = (double)(input.Rate / 100m);
-        var finalAmount = input.Amount * (decimal)Math.Pow(1d + rate, months);
+        var contribution = Math.Max(0m, input.SecondaryAmount);
+        var balance = input.Amount;
 
-        return Build(definition, input.Amount, finalAmount,
-        [
-            Income("Juros acumulados", finalAmount - input.Amount),
-            Information("Meses", months),
-            Information("Taxa mensal (%)", input.Rate)
-        ], "Capitalização composta mensal (M = P × (1 + i)^n).");
+        for (var month = 0; month < months; month++)
+        {
+            balance = balance * (decimal)Math.Pow(1d + rate, 1) + contribution;
+        }
+
+        var totalContributed = input.Amount + contribution * months;
+        var interestEarned = balance - totalContributed;
+
+        var lines = new List<CalculationLineItem>
+        {
+            Income("Juros acumulados", interestEarned),
+            CountInformation("Meses", months),
+            PercentInformation("Taxa mensal (%)", input.Rate)
+        };
+
+        if (contribution > 0m)
+        {
+            lines.Insert(1, Income("Total investido (inicial + aportes)", totalContributed));
+            lines.Insert(2, Income("Aporte mensal", contribution));
+        }
+
+        var explanation = contribution > 0m
+            ? "Capitalização composta mensal com aportes no fim de cada período: saldo = (saldo × (1 + i)) + aporte."
+            : "Capitalização composta mensal (M = P × (1 + i)^n).";
+
+        return Build(definition, totalContributed, balance, lines, explanation);
     }
 
     private CalculationResult CalculateFinancing(CalculatorDefinition definition, CalculatorInput input)
@@ -481,7 +515,7 @@ public sealed class CalculationEngine
         var lines = new List<CalculationLineItem>
         {
             Income("Depósitos mensais estimados (8%)", salary * 0.08m),
-            Information("Meses considerados", months),
+            CountInformation("Meses considerados", months),
             Income("Total depositado no período", deposits),
             Information("Saldo FGTS estimado", balance)
         };
@@ -555,7 +589,7 @@ public sealed class CalculationEngine
             Income("Provisão férias + 1/3", vacationProvision),
             Income("RAT/SAT estimado (2%)", satEstimate),
             Information("Custo mensal total empresa", total),
-            Information("Multiplicador sobre salário", salary > 0m ? total / salary : 0m)
+            TextInformation("Multiplicador sobre salário", salary > 0m ? $"{total / salary:0.##}×" : "—")
         ], "Custo total estimado da empresa: salário + encargos trabalhistas e provisões. Valores aproximados; consulte contador para folha real.");
     }
 
@@ -573,7 +607,7 @@ public sealed class CalculationEngine
         [
             Income($"Multa ({finePercent:0.#}%)", fine),
             Income($"Juros ({monthlyRate:0.#}% a.m. × {days:0} dias)", interest),
-            Information("Dias em atraso", days),
+            TextInformation("Dias em atraso", $"{days:0} dias"),
             Information("Total com acréscimos", total)
         ], "Multa e juros simples proporcionais (referência contratual comum: 2% de multa + 1% ao mês). Ajuste conforme contrato ou legislação aplicável.");
     }
@@ -588,7 +622,7 @@ public sealed class CalculationEngine
             Information("Salário mensal", monthly),
             Information("Salário diário (÷ 30)", daily),
             Information("Salário por hora", hourly),
-            Information("Divisor de horas mensais", divisor)
+            TextInformation("Divisor de horas mensais", $"{divisor:0} h")
         ], $"Conversão CLT com divisor mensal de {divisor:0} horas (jornada {input.WeeklyWorkHours switch { 40 => "40h", 36 => "36h", 30 => "30h", _ => "44h" }}). Dia calculado por 30 dias corridos.");
     }
 
@@ -623,4 +657,7 @@ public sealed class CalculationEngine
 
     private static CalculationLineItem PercentInformation(string label, decimal percent) =>
         new(label, Money.From(0m), CalculationLineType.Information, $"{percent:0.##}%");
+
+    private static CalculationLineItem TextInformation(string label, string displayText) =>
+        new(label, Money.From(0m), CalculationLineType.Information, displayText);
 }

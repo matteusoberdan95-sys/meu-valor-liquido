@@ -24,6 +24,7 @@ public static class TerminationBenefitCalculator
 {
     public static TerminationBenefits Calculate(CalculatorInput input)
     {
+        input = TerminationDateHelper.ApplyDates(input);
         var warnings = new List<string>();
         var salary = input.Amount;
         var (months, _) = TerminationTenureHelper.ResolveTenureMonths(input, warnings);
@@ -31,7 +32,7 @@ public static class TerminationBenefitCalculator
         var workedDays = input.SecondaryAmount <= 0 ? 15m : Math.Clamp(input.SecondaryAmount, 1m, 31m);
         var completeYears = input.CompleteYears > 0 ? input.CompleteYears : months / 12;
         var reason = input.TerminationReason;
-        var isJustCause = reason == TerminationReason.DismissalForCause;
+        var isJustCause = TerminationReasonRules.IsJustCause(reason);
 
         var salaryBalance = salary / 30m * workedDays;
         var includeThirteenth = !isJustCause;
@@ -66,12 +67,15 @@ public static class TerminationBenefitCalculator
             : 0m;
 
         var noticeDays = ResolveNoticeDays(reason, completeYears);
-        var noticeIndemnity = noticeDays > 0 ? salary / 30m * noticeDays : 0m;
+        var payNoticeIndemnity = NoticePeriodResolver.ShouldPayIndemnifiedNotice(reason, input);
+        var noticeIndemnity = payNoticeIndemnity && noticeDays > 0
+            ? salary / 30m * noticeDays
+            : 0m;
 
         var verbasBeforeNotice = salaryBalance + thirteenth + vacationProportional + unpaidVacation;
         var (noticeDeduction, noticeDeductionWasCapped) = ResolveNoticeDeduction(
             reason,
-            input.CompletedNoticePeriod,
+            input,
             salary,
             verbasBeforeNotice);
 
@@ -116,6 +120,18 @@ public static class TerminationBenefitCalculator
             return Math.Clamp(input.MonthsWorkedInYear, 1, 12);
         }
 
+        if (input.AdmissionDate is not null && input.TerminationDate is not null)
+        {
+            return TerminationDateHelper.CountThirteenthAvos(
+                input.AdmissionDate.Value,
+                input.TerminationDate.Value);
+        }
+
+        if (input.TerminationDate is not null)
+        {
+            return TerminationDateHelper.CountMonthsWorkedInYear(input.AdmissionDate, input.TerminationDate.Value);
+        }
+
         var terminationMonth = Math.Clamp(input.TerminationMonth, 0, 12);
         var admissionMonth = Math.Clamp(input.AdmissionMonth, 0, 12);
 
@@ -152,6 +168,13 @@ public static class TerminationBenefitCalculator
             return 0;
         }
 
+        if (input.AdmissionDate is not null && input.TerminationDate is not null && months < 12)
+        {
+            return TerminationDateHelper.CalculateTenureMonths(
+                input.AdmissionDate.Value,
+                input.TerminationDate.Value);
+        }
+
         var completePeriods = months / 12;
         var monthsInCurrentPeriod = months < 12 ? months : months % 12;
 
@@ -170,11 +193,11 @@ public static class TerminationBenefitCalculator
 
     private static (decimal Deduction, bool WasCapped) ResolveNoticeDeduction(
         TerminationReason reason,
-        bool completedNoticePeriod,
+        CalculatorInput input,
         decimal salary,
         decimal verbasBeforeNotice)
     {
-        if (reason != TerminationReason.Resignation || completedNoticePeriod)
+        if (!TerminationReasonRules.AllowsNoticeDeduction(reason) || !NoticePeriodResolver.ShouldDeductOnResignation(input))
         {
             return (0m, false);
         }
@@ -198,7 +221,7 @@ public static class TerminationBenefitCalculator
         var fullNotice = Math.Min(30 + 3 * completeYears, 90);
         return reason switch
         {
-            TerminationReason.DismissalWithoutCause => fullNotice,
+            TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => fullNotice,
             TerminationReason.MutualAgreement => fullNotice / 2,
             _ => 0
         };
@@ -208,15 +231,16 @@ public static class TerminationBenefitCalculator
 
     public static decimal ResolveFgtsFineRateForReason(TerminationReason reason) => reason switch
     {
-        TerminationReason.DismissalWithoutCause => 0.40m,
+        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => 0.40m,
         TerminationReason.MutualAgreement => 0.20m,
         _ => 0m
     };
 
     private static decimal ResolveFgtsWithdrawalRate(TerminationReason reason) => reason switch
     {
-        TerminationReason.DismissalWithoutCause => 1.00m,
+        TerminationReason.DismissalWithoutCause or TerminationReason.ProbationContractEarlyEnd => 1.00m,
         TerminationReason.MutualAgreement => 0.80m,
+        TerminationReason.Retirement => 1.00m,
         _ => 0m
     };
 
@@ -234,6 +258,12 @@ public static class TerminationBenefitCalculator
                 "Pedido de demissão sem aviso: desconto de até 30 dias, limitado ao total das verbas. Sem multa FGTS. Férias e 13º proporcionais conforme tempo na empresa.",
             TerminationReason.Resignation =>
                 "Pedido de demissão com aviso cumprido: verbas proporcionais sem multa FGTS. Férias isentas de INSS/IRRF na rescisão.",
+            TerminationReason.ProbationContractCompleted =>
+                "Término de contrato de experiência no prazo: verbas proporcionais como pedido de demissão, sem multa FGTS.",
+            TerminationReason.ProbationContractEarlyEnd =>
+                "Rescisão antecipada do contrato de experiência pelo empregador: regras próximas à demissão sem justa causa (multa FGTS 40%).",
+            TerminationReason.Retirement =>
+                "Aposentadoria: verbas proporcionais e saque do FGTS (sem multa de 40%). Confirme regras no RH ou Caixa.",
             _ => "Estimativa de verbas rescisórias conforme tipo de desligamento informado."
         };
 

@@ -709,6 +709,18 @@ body {
 
 .valora-result-line.discount { color: var(--valora-text-muted); }
 
+.valora-result-summary-grid {
+  margin: 0.75rem 0 0.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--valora-surface-container-low);
+  border-radius: var(--valora-radius-md);
+  border: 1px solid var(--valora-border-subtle);
+}
+
+.valora-form-advanced summary::-webkit-details-marker {
+  display: none;
+}
+
 .valora-result-total {
   margin-top: 1rem;
   padding: 1.25rem;

@@ -9,16 +9,17 @@ public class RescisaoCalculatorPageTests : IClassFixture<WebApplicationFactory<P
     }
 
     [Fact]
-    public async Task Rescisao_Page_Should_Show_Termination_Reason_Field()
+    public async Task Rescisao_Page_Should_Show_Essential_Fields()
     {
         var html = await client.GetStringAsync("/calculadoras/rescisao-clt");
 
-        html.Should().Contain("Tipo de desligamento");
-        html.Should().Contain("valora-choice-group");
-        html.Should().Contain("Demitido sem justa causa");
+        html.Should().Contain("Motivo do desligamento");
+        html.Should().Contain("Input_AdmissionDate");
+        html.Should().Contain("Input_TerminationDate");
+        html.Should().Contain("Input_NoticePeriod");
+        html.Should().Contain("type=\"date\"");
         html.Should().Contain("Pediu demiss");
-        html.Should().Contain("Acordo comum");
-        html.Should().Contain("justa causa");
+        html.Should().Contain("Ajustar detalhes");
         html.Should().Contain("data-mask=\"currency\"");
         html.Should().Contain("calculator-input-masks");
     }

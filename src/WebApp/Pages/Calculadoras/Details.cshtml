@@ -135,6 +135,66 @@ else
                             <p class="valora-helper">Sem justa causa, pedido de demissão, acordo comum (484-A) ou justa causa — cada tipo tem verbas e direitos diferentes.</p>
                         </div>
                     }
+                    @if (profile.ShowAdmissionDate)
+                    {
+                        <div>
+                            <label asp-for="Input.AdmissionDate" class="valora-label">@profile.AdmissionDateLabel</label>
+                            <input asp-for="Input.AdmissionDate" class="valora-input" type="date" />
+                            <p class="valora-helper">Usada para calcular tempo na empresa, 13º e férias proporcionais automaticamente.</p>
+                        </div>
+                    }
+                    @if (profile.ShowTerminationDate)
+                    {
+                        <div>
+                            <label asp-for="Input.TerminationDate" class="valora-label">@profile.TerminationDateLabel</label>
+                            <input asp-for="Input.TerminationDate" class="valora-input" type="date" />
+                            <p class="valora-helper">O dia da saída define os dias trabalhados no último mês, se você não informar manualmente.</p>
+                        </div>
+                    }
+                    @if (profile.ShowNoticePeriodOptions)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.NoticePeriod" class="valora-label">@profile.NoticePeriodOptionLabel</label>
+                            <select asp-for="Input.NoticePeriod" class="valora-input" asp-items="Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.NoticePeriodOption>()"></select>
+                            <p class="valora-helper">No pedido de demissão, &quot;Não cumprido&quot; gera desconto de até 30 dias. Na demissão sem justa causa, &quot;Indenizado&quot; inclui aviso na rescisão.</p>
+                        </div>
+                    }
+                    @if (profile.ShowAmount && profile.ShowAdmissionDate)
+                    {
+                        <div>
+                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <span asp-validation-for="Input.Amount" class="text-danger"></span>
+                        </div>
+                    }
+                    @if (profile.ShowSecondaryAmount && profile.ShowAdmissionDate)
+                    {
+                        <div>
+                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="30" />
+                            <p class="valora-helper">Preenchido automaticamente pelo dia da data de afastamento, se você informar a data.</p>
+                        </div>
+                    }
+                    @if (profile.ShowDependents && profile.ShowAdmissionDate)
+                    {
+                        <div>
+                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                        </div>
+                    }
+                    @if (profile.ShowTransportDiscount && profile.ShowAdmissionDate)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                        </div>
+                    }
                     @if (profile.ShowFgtsTerminationReason)
                     {
                         <div style="grid-column: 1 / -1;">
@@ -193,7 +253,7 @@ else
                             </div>
                         </div>
                     }
-                    @if (profile.ShowNoticePeriod)
+                    @if (profile.ShowNoticePeriod && !profile.ShowNoticePeriodOptions)
                     {
                         <div style="grid-column: 1 / -1;">
                             <span class="valora-label">@profile.NoticePeriodLabel</span>
@@ -209,6 +269,15 @@ else
                             </div>
                             <p class="valora-helper">No pedido de demissão sem aviso, a empresa pode descontar até 30 dias de salário.</p>
                         </div>
+                    }
+                    @if (profile.ShowHasUnpaidVacation || profile.ShowVacationTakenInPeriod || profile.ShowMonthsSinceLastVacation || profile.ShowCompleteYears || profile.ShowFgtsBalance || profile.ShowAdmissionMonth || profile.ShowAdmissionInPriorYear || profile.ShowTerminationMonth || profile.ShowThirteenthMonths || profile.ShowMonths)
+                    {
+                    <details class="valora-form-advanced" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                        <summary class="valora-label" style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.35rem;">
+                            <span class="material-symbols-outlined" style="font-size: 1.125rem;" aria-hidden="true">tune</span>
+                            Ajustar detalhes (férias, FGTS, meses)
+                        </summary>
+                        <div class="valora-form-row" style="margin-top: 1rem;">
                     }
                     @if (profile.ShowHasUnpaidVacation)
                     {
@@ -255,7 +324,7 @@ else
                             </div>
                         </div>
                     }
-                    @if (profile.ShowAmount)
+                    @if (profile.ShowAmount && !profile.ShowAdmissionDate)
                     {
                         <div>
                             <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
@@ -273,7 +342,7 @@ else
                             <span asp-validation-for="Input.Amount" class="text-danger"></span>
                         </div>
                     }
-                    @if (profile.ShowSecondaryAmount)
+                    @if (profile.ShowSecondaryAmount && !profile.ShowAdmissionDate)
                     {
                         <div>
                             <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
@@ -364,6 +433,9 @@ else
                             <p class="valora-helper">Opcional. Deixe 0 para calcular pelo mês da rescisão e tempo na empresa.</p>
                         </div>
                     }
+                        </div>
+                    </details>
+                    }
                     @if (profile.ShowRate)
                     {
                         <div>
@@ -409,14 +481,14 @@ else
                             </div>
                         </div>
                     }
-                    @if (profile.ShowDependents)
+                    @if (profile.ShowDependents && !profile.ShowAdmissionDate)
                     {
                         <div>
                             <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
                             <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                         </div>
                     }
-                    @if (profile.ShowTransportDiscount)
+                    @if (profile.ShowTransportDiscount && !profile.ShowAdmissionDate)
                     {
                         <div style="grid-column: 1 / -1;">
                             <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>

@@ -15,7 +15,8 @@ public sealed record CalculatorResultPanelViewModel(
     CalculatorInput Input,
     string CalculatorSlug,
     CalculatorResultExplanationViewModel Explanation,
-    bool ShowSimpleExplanation = true);
+    bool ShowSimpleExplanation = true,
+    TerminationResultSummary? TerminationSummary = null);
 
 public sealed record SalaryBandResultPanelViewModel(
     int Gross,

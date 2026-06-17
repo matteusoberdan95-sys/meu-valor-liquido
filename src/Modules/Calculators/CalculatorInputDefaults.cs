@@ -5,10 +5,14 @@ public static class CalculatorInputDefaults
     {
         "rescisao-clt" => new(
             Amount: 1850m,
-            SecondaryAmount: 12m,
-            Months: 10,
-            TerminationMonth: 2,
+            SecondaryAmount: 10m,
+            Months: 9,
+            AdmissionDate: new DateOnly(2026, 1, 10),
+            TerminationDate: new DateOnly(2026, 10, 10),
+            TerminationMonth: 10,
+            AdmissionMonth: 1,
             TerminationReason: TerminationReason.Resignation,
+            NoticePeriod: NoticePeriodOption.NotFulfilledByEmployee,
             CompletedNoticePeriod: false),
         "salario-liquido" => new(3000m, Dependents: 0),
         "salario-bruto-necessario" => new(3500m, Dependents: 0, TransportDiscount: 150m, SecondaryAmount: 50m, OtherDiscounts: 100m),

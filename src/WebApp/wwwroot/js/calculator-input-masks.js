@@ -168,7 +168,20 @@
 
     document.querySelectorAll("[data-mask]").forEach(bindMask);
 
-    document.querySelectorAll("form.valora-form-card").forEach((form) => {
+    const maskedForms = new Set();
+    document.querySelectorAll("[data-mask]").forEach((input) => {
+      const form = input.closest("form");
+      if (form) {
+        maskedForms.add(form);
+      }
+    });
+
+    maskedForms.forEach((form) => {
+      if (form.dataset.maskSubmitBound === "true") {
+        return;
+      }
+
+      form.dataset.maskSubmitBound = "true";
       form.addEventListener(
         "submit",
         () => {

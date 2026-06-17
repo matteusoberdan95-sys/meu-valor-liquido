@@ -26,7 +26,7 @@
     }
 
     <div id="result-panel-extract" class="valora-result-view-panel" data-result-panel="extract" role="tabpanel">
-        <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">Extrato estimado</h2>
+        <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">@(Model.TerminationSummary is not null ? "Resultado do cálculo" : "Extrato estimado")</h2>
         @if (Model.CalculatorSlug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase))
         {
             <div class="valora-result-line">
@@ -34,24 +34,75 @@
                 <strong>@Model.Input.TerminationReason.GetDisplayName()</strong>
             </div>
         }
-        <div class="valora-result-line">
-            <span>@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "Salário bruto proposto" : Model.CalculatorSlug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) ? "Referência (maior valor)" : "Total bruto das verbas")</span>
-            <strong>@Model.Result.GrossAmount</strong>
-        </div>
-        @foreach (var item in Model.Result.LineItems)
+
+        @if (Model.TerminationSummary is not null)
         {
-            <div class="valora-result-line @(item.Type == CalculationLineType.Discount ? "discount" : "")">
-                <span>@item.Label</span>
-                @if (!string.IsNullOrEmpty(item.DisplayText))
+            var summary = Model.TerminationSummary;
+            var verbasLabel = Model.CalculatorSlug switch
+            {
+                "salario-liquido" => "Salário bruto",
+                "ferias" or "decimo-terceiro" => "Verbas",
+                _ => "Verbas rescisórias"
+            };
+            <div class="valora-result-summary-grid">
+                <div class="valora-result-line">
+                    <span>@verbasLabel</span>
+                    <strong>@Money.From(summary.VerbasTotal)</strong>
+                </div>
+                <div class="valora-result-line discount">
+                    <span>Descontos</span>
+                    <strong>- @Money.From(summary.DescontosTotal)</strong>
+                </div>
+                @if (Model.CalculatorSlug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase))
                 {
-                    <strong>@item.DisplayText</strong>
-                }
-                else
-                {
-                    <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                <div class="valora-result-line">
+                    <span>Total FGTS (informativo)</span>
+                    <strong>@Money.From(summary.FgtsTotal)</strong>
+                </div>
                 }
             </div>
+            <details class="valora-result-details" style="margin: 1rem 0;">
+                <summary class="valora-text-sm" style="cursor: pointer; font-weight: 600;">Detalhes do cálculo</summary>
+                <div style="margin-top: 0.75rem;">
+                    @foreach (var item in Model.Result.LineItems)
+                    {
+                        <div class="valora-result-line @(item.Type == CalculationLineType.Discount ? "discount" : "")">
+                            <span>@item.Label</span>
+                            @if (!string.IsNullOrEmpty(item.DisplayText))
+                            {
+                                <strong>@item.DisplayText</strong>
+                            }
+                            else
+                            {
+                                <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                            }
+                        </div>
+                    }
+                </div>
+            </details>
         }
+        else
+        {
+            <div class="valora-result-line">
+                <span>@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "Salário bruto proposto" : Model.CalculatorSlug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) ? "Referência (maior valor)" : "Total bruto das verbas")</span>
+                <strong>@Model.Result.GrossAmount</strong>
+            </div>
+            @foreach (var item in Model.Result.LineItems)
+            {
+                <div class="valora-result-line @(item.Type == CalculationLineType.Discount ? "discount" : "")">
+                    <span>@item.Label</span>
+                    @if (!string.IsNullOrEmpty(item.DisplayText))
+                    {
+                        <strong>@item.DisplayText</strong>
+                    }
+                    else
+                    {
+                        <strong>@(item.Type == CalculationLineType.Discount ? "-" : "") @item.Amount</strong>
+                    }
+                </div>
+            }
+        }
+
         <div class="valora-result-total">
             <span class="valora-result-total-label">@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "LÍQUIDO PROPOSTO ESTIMADO" : Model.CalculatorSlug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) ? "MELHOR LÍQUIDO NO CENÁRIO" : "VALOR LÍQUIDO ESTIMADO")</span>
             <span class="valora-result-total-value valora-monetary-display">@Model.Result.EstimatedNetAmount</span>

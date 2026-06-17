@@ -42,7 +42,16 @@ public enum TerminationReason
     MutualAgreement,
 
     [Display(Name = "Demissão por justa causa")]
-    DismissalForCause
+    DismissalForCause,
+
+    [Display(Name = "Término de contrato de experiência (no prazo)")]
+    ProbationContractCompleted,
+
+    [Display(Name = "Término de contrato de experiência (antes do prazo)")]
+    ProbationContractEarlyEnd,
+
+    [Display(Name = "Aposentadoria")]
+    Retirement
 }
 
 public sealed record CalculatorInput(
@@ -65,6 +74,9 @@ public sealed record CalculatorInput(
     int TerminationMonth = 0,
     int AdmissionMonth = 0,
     bool AdmissionInPriorYear = false,
+    DateOnly? AdmissionDate = null,
+    DateOnly? TerminationDate = null,
+    NoticePeriodOption NoticePeriod = NoticePeriodOption.Automatic,
     int WeeklyWorkHours = 0,
     OvertimeShiftType OvertimeShiftType = OvertimeShiftType.Weekday,
     SalaryConversionBasis SalaryBasis = SalaryConversionBasis.Monthly,
@@ -147,6 +159,12 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.AdmissionMonth)
             .InclusiveBetween(0, 12)
             .WithMessage("Informe o mês de admissão (1 a 12) ou deixe 0.");
+
+        RuleFor(input => input)
+            .Must(input => input.AdmissionDate is null
+                || input.TerminationDate is null
+                || input.TerminationDate >= input.AdmissionDate)
+            .WithMessage("A data de afastamento deve ser igual ou posterior à data de admissão.");
     }
 }
 
@@ -173,6 +191,8 @@ public sealed class CalculatorApplicationService : ICalculatorApplicationService
         {
             return Result<CalculationResult>.Failure(new Error("Calculators.NotFound", "Calculadora não encontrada."));
         }
+
+        input = CalculatorInputNormalizer.Normalize(slug, input);
 
         var validation = validator.Validate(input);
         if (!validation.IsValid)

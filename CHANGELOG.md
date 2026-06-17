@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Sprint 28 — Calibração e expansão
+- 13º na rescisão com regra dos 15 dias (paridade com calculadoras de referência)
+- Novos motivos de desligamento: experiência e aposentadoria
+- Datas e resultado agrupado em 13º, férias e salário líquido
+- Juros compostos com aporte mensal
+- Campo de outros descontos no salário líquido
+
+### Sprint 27 — Rescisão CLT UX
+- Datas completas de admissão e afastamento no formulário e no motor de cálculo
+- Aviso prévio com quatro modalidades (trabalhado, indenizado, não cumprido, dispensado)
+- Resultado da rescisão agrupado em Verbas / Descontos / FGTS / Total líquido
+- Formulário reorganizado em seções essenciais e detalhes opcionais
+- Documentação: README (seção Calculadoras), `docs/sprint-plan.md`
+
 ## Sprint 21 (em andamento)
 - Plano Stitch; remoção Gemini; shell; home mobile+desktop; central calculadoras bento (Sprint 22).
 

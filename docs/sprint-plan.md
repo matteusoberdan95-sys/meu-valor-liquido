@@ -1,5 +1,27 @@
 # Sprint Plan
 
+## Sprint 27 — Rescisão CLT: UX e precisão (concluída)
+
+**Objetivo:** aproximar a experiência de calculadoras de referência (datas completas, aviso prévio claro, resultado agrupado) sem quebrar os testes de cálculo existentes.
+
+---
+
+## Sprint 28 — Calibração e expansão das calculadoras (concluída)
+
+**Objetivo:** calibrar rescisão com sites de referência, novos motivos de desligamento e replicar padrão UX nas demais ferramentas prioritárias.
+
+**Entregas:**
+- [x] 13º proporcional com regra dos 15 dias (calibrado: jan–out/2026 ≈ R$ 1.853,86)
+- [x] Motivos extras: experiência (no prazo / antecipado), aposentadoria
+- [x] Datas em 13º e férias proporcionais; resultado agrupado em 13º, férias e salário líquido
+- [x] Salário líquido com campo separado para outros descontos
+- [x] Juros compostos com aporte mensal opcional
+- [x] Testes Sprint28 + documentação
+
+**Definition of Done:** `dotnet test` verde.
+
+---
+
 ## Sprint 21–26 — Fidelidade Stitch (Sprint 26 concluída)
 
 **Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia, meu painel e polish desktop (≥992px).
