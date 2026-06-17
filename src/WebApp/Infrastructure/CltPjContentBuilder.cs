@@ -35,7 +35,7 @@ public static class CltPjContentBuilder
         var context =
             $"<p>O CLT desconta INSS ({Money.From(clt.Inss)}) e IRRF ({Money.From(clt.Irrf)}) sobre o salário. " +
             $"Na PJ, o Simples ({Money.From(pj.SimplesTax)}) incide sobre o faturamento; o que entra no bolso vem do pró-labore " +
-            $"({Money.From(pj.ProLabore)}) após INSS ({Money.From(pj.Inss)}) e IRRF ({Money.From(pj.Irrf)}). " +
+            $"({Money.From(pj.ProLabore)}) após INSS de 11% ({Money.From(pj.Inss)}) e IRRF ({Money.From(pj.Irrf)}). " +
             $"A diferença de líquido neste cenário é {Money.From(diff)} (PJ − CLT).</p>";
 
         var tips =

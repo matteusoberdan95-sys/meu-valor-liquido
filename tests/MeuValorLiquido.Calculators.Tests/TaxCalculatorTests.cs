@@ -50,4 +50,36 @@ public class TaxCalculatorTests
         breakdown.TotalInss.Should().Be(246.24m);
         breakdown.TotalIrrf.Should().Be(0m);
     }
+
+    [Theory]
+    [InlineData(1621, 178.31)]
+    [InlineData(3000, 330)]
+    [InlineData(5000, 550)]
+    [InlineData(8475.55, 932.31)]
+    [InlineData(15000, 932.31)]
+    public void ProLabore_Inss_Should_Be_11_Percent_Capped(decimal proLabore, decimal expected)
+    {
+        var calculator = new ProLaboreInssCalculator();
+        calculator.Calculate(proLabore).Should().Be(expected);
+    }
+
+    [Fact]
+    public void Net_Salary_5000_Should_Match_Receita_2026_Isenção()
+    {
+        var inssValue = inss.Calculate(5000m);
+        inssValue.Should().Be(501.51m);
+
+        var irrfValue = irrf.Calculate(5000m - inssValue, 0);
+        irrfValue.Should().Be(0m);
+    }
+
+    [Fact]
+    public void ProLabore_5000_Should_Have_Zero_Irrf_After_11_Percent_Inss()
+    {
+        var proLaboreInss = new ProLaboreInssCalculator();
+        var inssValue = proLaboreInss.Calculate(5000m);
+        inssValue.Should().Be(550m);
+
+        irrf.Calculate(5000m - inssValue, 0).Should().Be(0m);
+    }
 }

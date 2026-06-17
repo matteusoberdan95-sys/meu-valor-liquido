@@ -6,7 +6,7 @@ internal static class CalculatorTestFactory
         var inss = new InssCalculator();
         var irrf = new IrrfCalculator();
         var netSalary = new NetSalaryCalculator(inss, irrf);
-        var cltPj = new CltPjComparisonCalculator(netSalary, inss, irrf);
+        var cltPj = new CltPjComparisonCalculator(netSalary, new ProLaboreInssCalculator(), irrf);
         return new CalculationEngine(inss, irrf, new TerminationTaxCalculator(inss, irrf), netSalary, cltPj);
     }
 

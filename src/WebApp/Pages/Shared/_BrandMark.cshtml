@@ -1,8 +1,16 @@
-@* Marca Stitch: ícone + texto — sem imagens Gemini *@
 @{
-    var brandMarkClass = ViewData["BrandMarkClass"]?.ToString();
+    var brandMarkClass = ViewData["BrandMarkClass"]?.ToString() ?? "";
+    var isFooter = brandMarkClass.Contains("footer", StringComparison.OrdinalIgnoreCase);
+    var isCompact = brandMarkClass.Contains("compact", StringComparison.OrdinalIgnoreCase);
+    var logoVariant = isFooter ? "stacked" : isCompact ? "icon" : "horizontal";
+    var logoFile = $"logo-{logoVariant}.webp";
+    var logoClass = $"valora-brand-logo valora-brand-logo--{logoVariant}";
 }
 <a class="valora-brand-mark @brandMarkClass" asp-page="/Index">
-    <span class="material-symbols-outlined valora-brand-mark-icon" aria-hidden="true">water_drop</span>
-    <span class="valora-brand-mark-text">Meu Valor Líquido</span>
+    <img class="@logoClass"
+         src="~/images/brand/@logoFile" asp-append-version="true"
+         alt="Meu Valor Líquido"
+         width="@(isCompact ? 32 : isFooter ? 200 : 240)"
+         height="@(isCompact ? 32 : isFooter ? 120 : 48)"
+         decoding="async" />
 </a>

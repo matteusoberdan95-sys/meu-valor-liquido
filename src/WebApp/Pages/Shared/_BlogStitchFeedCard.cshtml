@@ -1,9 +1,12 @@
 @model MeuValorLiquido.Modules.Content.BlogPost
 @{
     var readingMinutes = BlogContentHelper.EstimateReadingMinutes(Model.Content);
-    var visualClass = BlogHubHelper.GetVisualClass(Model.Category);
-    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Category, Model.Slug);
     var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Category);
+    var heroModel = new BlogHeroVisualModel(
+        Model.Slug,
+        Model.Title,
+        Model.Category,
+        "valora-stitch-blog-feed-thumb");
 }
 
 <a class="valora-stitch-blog-feed-card"
@@ -17,7 +20,5 @@
         <h3 class="valora-stitch-blog-feed-title">@Model.Title</h3>
         <p class="valora-stitch-blog-feed-summary">@Model.Summary</p>
     </div>
-    <div class="valora-stitch-blog-feed-thumb @visualClass" aria-hidden="true">
-        <span class="material-symbols-outlined">@visualIcon</span>
-    </div>
+    <partial name="Shared/_BlogStitchHeroVisual" model="heroModel" />
 </a>

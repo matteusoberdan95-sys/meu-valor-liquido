@@ -1,0 +1,31 @@
+@model MeuValorLiquido.WebApp.Infrastructure.BlogHeroVisualModel
+@inject MeuValorLiquido.WebApp.Infrastructure.IBlogHeroImageService BlogHeroImages
+@{
+    var visualClass = BlogHubHelper.GetVisualClass(Model.Category);
+    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Category, Model.Slug);
+    var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Category);
+    var hasImage = BlogHeroImages.Exists(Model.Slug);
+    var wrapperClass = $"{Model.WrapperClass} {(hasImage ? "valora-stitch-blog-hero--has-image" : visualClass)}";
+}
+
+<div class="@wrapperClass" @(Model.Decorative ? "aria-hidden=\"true\"" : "")>
+    @if (Model.ShowCategoryBadge)
+    {
+        <span class="valora-stitch-blog-related-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
+    }
+    @if (hasImage)
+    {
+        <img class="valora-stitch-blog-hero-img"
+             src="@BlogHeroImages.GetPublicPath(Model.Slug)"
+             alt="@BlogHeroImages.GetAltText(Model.Title, Model.Category)"
+             loading="lazy"
+             decoding="async"
+             width="1200"
+             height="675" />
+        <span class="valora-stitch-blog-hero-brand" aria-hidden="true">Meu Valor Líquido</span>
+    }
+    else
+    {
+        <span class="material-symbols-outlined">@visualIcon</span>
+    }
+</div>

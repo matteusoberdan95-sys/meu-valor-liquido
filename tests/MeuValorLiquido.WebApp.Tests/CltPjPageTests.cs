@@ -7,7 +7,7 @@ public class CltPjPageTests
     {
         var calculator = new CltPjComparisonCalculator(
             new NetSalaryCalculator(new InssCalculator(), new IrrfCalculator()),
-            new InssCalculator(),
+            new ProLaboreInssCalculator(),
             new IrrfCalculator());
         var comparison = calculator.Compare(new CalculatorInput(5000m, Rate: 6m));
         var content = CltPjContentBuilder.Build(5000, comparison);

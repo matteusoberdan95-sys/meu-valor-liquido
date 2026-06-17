@@ -101,10 +101,23 @@ body {
 
 .valora-brand-logo {
   display: block;
-  height: 2rem;
   width: auto;
-  max-width: min(200px, 55vw);
   object-fit: contain;
+}
+
+.valora-brand-logo--horizontal {
+  height: 2.25rem;
+  max-width: min(240px, 52vw);
+}
+
+.valora-brand-logo--stacked {
+  height: 5.5rem;
+  max-width: 200px;
+}
+
+.valora-brand-logo--icon {
+  height: 2rem;
+  width: 2rem;
 }
 
 .valora-brand-logo--footer {
@@ -1366,27 +1379,14 @@ body {
 .valora-brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
-  color: var(--valora-primary);
+  color: inherit;
+  line-height: 0;
 }
 
-.valora-brand-mark-icon {
-  font-size: 1.75rem;
-  color: var(--valora-primary-container);
-}
-
-.valora-brand-mark-text {
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--valora-primary);
-}
-
-.valora-brand-mark--footer .valora-brand-mark-text { font-size: 1rem; }
 .valora-brand-mark--footer { justify-content: center; margin-bottom: 0.5rem; }
-.valora-brand-mark--compact .valora-brand-mark-text { font-size: 0.875rem; }
-.valora-brand-mark--compact .valora-brand-mark-icon { font-size: 1.25rem; }
+
+.valora-brand-mark--compact .valora-brand-logo--icon { height: 1.5rem; width: 1.5rem; }
 
 .valora-bottom-nav {
   position: fixed;
@@ -1730,7 +1730,7 @@ body {
 
   .valora-stitch-hero--split {
     display: grid;
-    grid-template-columns: 1fr 18rem;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     gap: 2rem;
     align-items: center;
     text-align: left;
@@ -1769,41 +1769,26 @@ body {
 
   .valora-stitch-trust-row .material-symbols-outlined { font-size: 1.125rem; color: var(--valora-primary-container); }
 
-  .valora-stitch-hero-workspace {
+  .valora-stitch-hero-visual-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 18rem;
-    height: 12rem;
-    border: 1px solid var(--valora-border-subtle);
-    border-radius: var(--valora-radius-xl);
-    background: linear-gradient(135deg, var(--valora-surface-container-low) 0%, var(--valora-surface) 100%);
-    box-shadow: var(--valora-shadow);
-  }
-
-  .valora-stitch-hero-workspace-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
     width: 100%;
+    max-height: 22rem;
+    border-radius: var(--valora-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--valora-shadow);
+    background: var(--valora-surface-container-low);
   }
 
-  .valora-stitch-hero-workspace-inner > .material-symbols-outlined {
-    font-size: 3rem;
-    color: var(--valora-primary-container);
-    opacity: 0.85;
+  .valora-stitch-hero-visual {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 22rem;
+    object-fit: cover;
+    object-position: center;
   }
-
-  .valora-stitch-hero-workspace-bar {
-    height: 0.5rem;
-    width: 80%;
-    background: var(--valora-border-subtle);
-    border-radius: 9999px;
-  }
-
-  .valora-stitch-hero-workspace-bar--short { width: 55%; }
 
   .valora-stitch-bento {
     grid-template-columns: repeat(4, 1fr);
@@ -1816,10 +1801,10 @@ body {
   }
 }
 
-.valora-stitch-hero-workspace { display: none; }
+.valora-stitch-hero-visual-wrap { display: none; }
 
 @media (min-width: 992px) {
-  .valora-stitch-hero-workspace { display: flex; }
+  .valora-stitch-hero-visual-wrap { display: flex; }
 }
 
 .valora-stitch-trust-row { display: none; }
@@ -3174,6 +3159,47 @@ body {
 .valora-stitch-blog-featured-visual .material-symbols-outlined {
   font-size: 3rem;
   opacity: 0.55;
+}
+
+.valora-stitch-blog-hero--has-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--valora-surface-container);
+}
+
+.valora-stitch-blog-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.valora-stitch-blog-hero-brand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.75rem 0.75rem 0.5rem;
+  background: linear-gradient(180deg, transparent 0%, rgb(0 78 71 / 80%) 100%);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: right;
+  pointer-events: none;
+}
+
+.valora-stitch-blog-hero--has-image .material-symbols-outlined {
+  display: none;
+}
+
+.valora-stitch-blog-feed-thumb.valora-stitch-blog-hero--has-image .valora-stitch-blog-hero-brand {
+  font-size: 0.5625rem;
+  padding-top: 1rem;
+}
+
+.valora-stitch-blog-related-visual.valora-stitch-blog-hero--has-image .valora-stitch-blog-related-badge {
+  z-index: 1;
 }
 
 .valora-stitch-blog-visual--trabalhista { color: var(--valora-trabalhista-blue); }

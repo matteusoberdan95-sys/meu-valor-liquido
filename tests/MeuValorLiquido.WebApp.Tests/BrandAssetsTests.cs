@@ -10,27 +10,33 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
-    public async Task Home_Should_Use_Text_Brand_Mark_And_Favicon()
+    public async Task Home_Should_Use_Brand_Logo_And_Favicon()
     {
         var html = await client.GetStringAsync("/");
 
         html.Should().Contain("valora-brand-mark");
+        html.Should().Contain("valora-brand-logo--horizontal");
+        html.Should().Contain("/images/brand/logo-horizontal");
         html.Should().Contain("Meu Valor Líquido");
         html.Should().Contain("favicon");
-        html.Should().NotContain("logo-horizontal");
+        html.Should().Contain("apple-touch-icon");
     }
 
     [Fact]
-    public async Task Home_Should_Use_Svg_Og_Image()
+    public async Task Home_Should_Use_Webp_Og_Image()
     {
         var html = await client.GetStringAsync("/");
 
-        html.Should().Contain("og-default.svg");
+        html.Should().Contain("og-default.webp");
     }
 
     [Theory]
     [InlineData("/favicon.ico")]
-    [InlineData("/images/og-default.svg")]
+    [InlineData("/apple-touch-icon.png")]
+    [InlineData("/images/og-default.webp")]
+    [InlineData("/images/brand/logo-horizontal.webp")]
+    [InlineData("/images/hero/home-hero.webp")]
+    [InlineData("/images/blog/o-que-e-salario-liquido.webp")]
     public async Task Brand_Asset_Should_Be_Served(string path)
     {
         var response = await client.GetAsync(path);

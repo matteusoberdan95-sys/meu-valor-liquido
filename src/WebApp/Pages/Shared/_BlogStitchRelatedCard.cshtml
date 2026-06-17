@@ -1,15 +1,15 @@
 @model MeuValorLiquido.Modules.Content.BlogPost
 @{
-    var visualClass = BlogHubHelper.GetVisualClass(Model.Category);
-    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Category, Model.Slug);
-    var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Category);
+    var heroModel = new BlogHeroVisualModel(
+        Model.Slug,
+        Model.Title,
+        Model.Category,
+        "valora-stitch-blog-related-visual",
+        ShowCategoryBadge: true);
 }
 
 <a class="valora-stitch-blog-related-card" asp-page="/Blog/Post" asp-route-slug="@Model.Slug">
-    <div class="valora-stitch-blog-related-visual @visualClass" aria-hidden="true">
-        <span class="valora-stitch-blog-related-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
-        <span class="material-symbols-outlined">@visualIcon</span>
-    </div>
+    <partial name="Shared/_BlogStitchHeroVisual" model="heroModel" />
     <div class="valora-stitch-blog-related-body">
         <h3 class="valora-stitch-blog-related-title">@Model.Title</h3>
         <p class="valora-stitch-blog-related-summary">@Model.Summary</p>

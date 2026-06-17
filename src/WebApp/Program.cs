@@ -88,6 +88,7 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
 builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
+builder.Services.AddScoped<IBlogHeroImageService, BlogHeroImageService>();
 builder.Services.AddScoped<EfCalculatorCatalogService>();
 builder.Services.AddScoped<ICalculatorCatalogService>(sp =>
     new CachedCalculatorCatalogService(

@@ -10,11 +10,15 @@ public sealed record CltSideBreakdown(
 public sealed record PjSideBreakdown(
     decimal Revenue,
     decimal SimplesTax,
+    decimal RevenueAfterSimples,
     decimal ProLabore,
     decimal Inss,
     decimal Irrf,
     decimal Expenses,
-    decimal Net);
+    /// <summary>Líquido pessoal: pró-labore após INSS 11% e IRRF.</summary>
+    decimal Net,
+    /// <summary>Faturamento menos Simples e pró-labore (estimativa retida na empresa).</summary>
+    decimal CompanyRetained);
 
 public sealed record CltPjComparisonBreakdown(
     CltSideBreakdown Clt,
@@ -30,16 +34,16 @@ public sealed class CltPjComparisonCalculator
     public const decimal DefaultSimplesRatePercent = 6m;
 
     private readonly NetSalaryCalculator netSalaryCalculator;
-    private readonly IInssCalculator inssCalculator;
+    private readonly IProLaboreInssCalculator proLaboreInssCalculator;
     private readonly IIrrfCalculator irrfCalculator;
 
     public CltPjComparisonCalculator(
         NetSalaryCalculator netSalaryCalculator,
-        IInssCalculator inssCalculator,
+        IProLaboreInssCalculator proLaboreInssCalculator,
         IIrrfCalculator irrfCalculator)
     {
         this.netSalaryCalculator = netSalaryCalculator;
-        this.inssCalculator = inssCalculator;
+        this.proLaboreInssCalculator = proLaboreInssCalculator;
         this.irrfCalculator = irrfCalculator;
     }
 
@@ -76,17 +80,28 @@ public sealed class CltPjComparisonCalculator
     {
         if (revenue <= 0m)
         {
-            return new PjSideBreakdown(0m, 0m, 0m, 0m, 0m, 0m, 0m);
+            return new PjSideBreakdown(0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m);
         }
 
         var simples = revenue * simplesRatePercent / 100m;
+        var revenueAfterSimples = revenue - simples;
         var proLabore = revenue * ProLaboreShare;
-        var inss = inssCalculator.Calculate(proLabore);
+        var inss = proLaboreInssCalculator.Calculate(proLabore);
         var irrf = irrfCalculator.Calculate(Math.Max(0m, proLabore - inss), dependents: 0);
         var allocatedExpenses = Math.Min(expenses, proLabore);
         var net = proLabore - inss - irrf - allocatedExpenses;
+        var companyRetained = revenueAfterSimples - proLabore;
 
-        return new PjSideBreakdown(revenue, simples, proLabore, inss, irrf, allocatedExpenses, net);
+        return new PjSideBreakdown(
+            revenue,
+            simples,
+            revenueAfterSimples,
+            proLabore,
+            inss,
+            irrf,
+            allocatedExpenses,
+            net,
+            companyRetained);
     }
 
     public decimal SolveEquivalentPjRevenue(decimal targetCltNet, decimal simplesRatePercent, decimal expenses)

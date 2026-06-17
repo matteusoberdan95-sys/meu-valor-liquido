@@ -13,4 +13,5 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.Extensions.Caching.Memory;
+global using Microsoft.Extensions.FileProviders;
 global using Microsoft.Extensions.Options;

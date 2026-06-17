@@ -93,7 +93,7 @@ public static class CalculatorShareTextBuilder
         }
 
         var cltNet = ReadAmount("CLT — líquido estimado");
-        var pjNet = ReadAmount("PJ — líquido pessoal estimado");
+        var pjNet = ReadAmount("PJ — líquido pessoal (pró-labore)");
         var equivalent = ReadAmount("Faturamento PJ equivalente ao líquido CLT");
         var diff = pjNet - cltNet;
 

@@ -35,17 +35,35 @@
                 <strong>- @Money.From(Model.Pj.SimplesTax)</strong>
             </div>
             <div class="valora-result-line">
+                <span>Após Simples</span>
+                <strong>@Money.From(Model.Pj.RevenueAfterSimples)</strong>
+            </div>
+            <div class="valora-result-line">
                 <span>Pró-labore (@Model.ProLaboreSharePercent.ToString("0.#")%)</span>
                 <strong>@Money.From(Model.Pj.ProLabore)</strong>
             </div>
             <div class="valora-result-line discount">
-                <span>INSS + IRRF</span>
-                <strong>- @Money.From(Model.Pj.Inss + Model.Pj.Irrf)</strong>
+                <span>INSS 11%</span>
+                <strong>- @Money.From(Model.Pj.Inss)</strong>
             </div>
+            <div class="valora-result-line discount">
+                <span>IRRF</span>
+                <strong>- @Money.From(Model.Pj.Irrf)</strong>
+            </div>
+            @if (Model.Pj.Expenses > 0m)
+            {
+                <div class="valora-result-line discount">
+                    <span>Despesas</span>
+                    <strong>- @Money.From(Model.Pj.Expenses)</strong>
+                </div>
+            }
             <div class="valora-result-total valora-clt-pj-total">
-                <span class="valora-result-total-label">L&#xCD;QUIDO PJ</span>
+                <span class="valora-result-total-label">L&#xCD;QUIDO PJ (PR&#xD3;-LABORE)</span>
                 <span class="valora-result-total-value">@Money.From(Model.Pj.Net)</span>
             </div>
+            <p class="valora-text-muted valora-text-sm" style="margin: 0.5rem 0 0;">
+                Sobra estimada na empresa: @Money.From(Model.Pj.CompanyRetained)
+            </p>
         </div>
     </div>
 

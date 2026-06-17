@@ -30,7 +30,7 @@
             <p class="valora-stitch-cltpj-compare-value">@Money.From(b.Clt.Net)</p>
         </div>
         <div class="valora-stitch-cltpj-compare-card valora-stitch-cltpj-compare-card--pj">
-            <p class="valora-stitch-cltpj-compare-label">Líquido PJ</p>
+            <p class="valora-stitch-cltpj-compare-label">Líquido PJ (pró-labore)</p>
             <p class="valora-stitch-cltpj-compare-value">@Money.From(b.Pj.Net)</p>
         </div>
     </div>
@@ -82,7 +82,7 @@
             <span class="material-symbols-outlined">expand_more</span>
         </summary>
         <div class="valora-stitch-cltpj-accordion-body valora-stitch-cltpj-accordion-body--prose">
-            <p>A principal diferença está nos encargos. No CLT há benefícios garantidos (férias, 13º, FGTS). No PJ você assume tributos com alíquotas geralmente menores no Simples, mas precisa compensar a ausência desses direitos no faturamento.</p>
+            <p>A principal diferença está nos encargos. No CLT há benefícios garantidos (férias, 13º, FGTS). No PJ o Simples incide sobre o faturamento; o líquido pessoal vem do pró-labore com INSS de 11% e IRRF conforme tabela vigente.</p>
             <p>Faturamento PJ equivalente estimado: <strong>@Money.From(b.EquivalentPjRevenue)</strong> (pró-labore @b.ProLaboreSharePercent.ToString("0.#")%).</p>
         </div>
     </details>

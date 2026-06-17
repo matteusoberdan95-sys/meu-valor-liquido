@@ -5,6 +5,7 @@ public static class CalculatorsModule
     public static IServiceCollection AddCalculatorsModule(this IServiceCollection services)
     {
         services.AddScoped<IInssCalculator, InssCalculator>();
+        services.AddScoped<IProLaboreInssCalculator, ProLaboreInssCalculator>();
         services.AddScoped<IIrrfCalculator, IrrfCalculator>();
         services.AddScoped<ITerminationTaxCalculator, TerminationTaxCalculator>();
         services.AddScoped<NetSalaryCalculator>();

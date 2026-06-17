@@ -1,5 +1,6 @@
 @model MeuValorLiquido.Modules.Content.BlogPost
 @inject IConfiguration Configuration
+@inject MeuValorLiquido.WebApp.Infrastructure.IBlogHeroImageService BlogHeroImages
 @using System.Text.Json
 
 @{
@@ -23,5 +24,10 @@
         },
         ["mainEntityOfPage"] = $"{baseUrl}/blog/{Model.Slug}"
     };
+
+    if (BlogHeroImages.Exists(Model.Slug))
+    {
+        schema["image"] = SeoMetadataHelper.BuildOgImageUrl(baseUrl, BlogHeroImages.GetPublicPath(Model.Slug));
+    }
 }
 <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(schema))</script>

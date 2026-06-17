@@ -1,11 +1,14 @@
 namespace MeuValorLiquido.WebApp.Pages.Blog;
+
 public class PostModel : PageModel
 {
     private readonly IContentService contentService;
+    private readonly IBlogHeroImageService blogHeroImages;
 
-    public PostModel(IContentService contentService)
+    public PostModel(IContentService contentService, IBlogHeroImageService blogHeroImages)
     {
         this.contentService = contentService;
+        this.blogHeroImages = blogHeroImages;
     }
 
     public BlogPost? Post { get; private set; }
@@ -34,6 +37,11 @@ public class PostModel : PageModel
                 .Where(p => p.Slug != Post.Slug)
                 .Take(3)
                 .ToList();
+
+        if (blogHeroImages.Exists(Post.Slug))
+        {
+            ViewData["OgImagePath"] = blogHeroImages.GetPublicPath(Post.Slug);
+        }
 
         return Page();
     }

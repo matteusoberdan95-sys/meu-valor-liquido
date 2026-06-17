@@ -412,24 +412,27 @@ public sealed class CalculationEngine
         lines.Add(Information("CLT — líquido estimado", clt.Net));
         lines.Add(Information("PJ — faturamento mensal", pj.Revenue));
         lines.Add(Discount($"PJ — Simples Nacional ({simplesLabel})", pj.SimplesTax));
+        lines.Add(Information("PJ — faturamento após Simples", pj.RevenueAfterSimples));
         lines.Add(Information($"PJ — pró-labore ({comparison.ProLaboreSharePercent:0.#}%)", pj.ProLabore));
-        lines.Add(Discount("PJ — INSS sobre pró-labore", pj.Inss));
-        lines.Add(Discount("PJ — IRRF sobre pró-labore", pj.Irrf));
+        lines.Add(Discount("PJ — INSS 11% (pró-labore)", pj.Inss));
+        lines.Add(Discount("PJ — IRRF (pró-labore)", pj.Irrf));
 
         if (pj.Expenses > 0m)
         {
             lines.Add(Discount("PJ — despesas fixas", pj.Expenses));
         }
 
-        lines.Add(Information("PJ — líquido pessoal estimado", pj.Net));
+        lines.Add(Information("PJ — líquido pessoal (pró-labore)", pj.Net));
+        lines.Add(Information("PJ — sobra estimada na empresa", pj.CompanyRetained));
         lines.Add(Information("Faturamento PJ equivalente ao líquido CLT", comparison.EquivalentPjRevenue));
         lines.Add(Information("Diferença de líquido (PJ − CLT)", comparison.NetDifference));
 
         var explanation =
             $"Para um CLT de {Money.From(clt.Gross)} (líquido {Money.From(clt.Net)}), faturar cerca de " +
             $"{Money.From(comparison.EquivalentPjRevenue)} como PJ tende a equivaler ao bolso, " +
-            $"com Simples de {simplesLabel} e pró-labore de {comparison.ProLaboreSharePercent:0.#}%. " +
-            "Regime real, anexo do Simples, pró-labore mínimo e custos variam — use como referência educativa.";
+            $"com Simples de {simplesLabel} sobre o faturamento, pró-labore de {comparison.ProLaboreSharePercent:0.#}% e INSS de 11% sobre o pró-labore. " +
+            "O líquido PJ é o pró-labore após impostos; o Simples é pago pelo CNPJ e reduz a sobra na empresa. " +
+            "Anexo do Simples, fator R e custos variam — use como referência educativa.";
 
         var winnerNet = Math.Max(clt.Net, pj.Net);
         return Build(definition, Math.Max(clt.Gross, pj.Revenue), winnerNet, lines, explanation);

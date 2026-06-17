@@ -10,7 +10,7 @@ public class CltPjComparisonTests
         var inss = new InssCalculator();
         var irrf = new IrrfCalculator();
         var netSalary = new NetSalaryCalculator(inss, irrf);
-        return new CltPjComparisonCalculator(netSalary, inss, irrf);
+        return new CltPjComparisonCalculator(netSalary, new ProLaboreInssCalculator(), irrf);
     }
 
     [Fact]
@@ -35,13 +35,36 @@ public class CltPjComparisonTests
     }
 
     [Fact]
+    public void PjSide_Should_Use_11_Percent_Inss_On_ProLabore()
+    {
+        var side = calculator.CalculatePjSide(10_000m, 6m, 0m);
+
+        side.ProLabore.Should().Be(2800m);
+        side.Inss.Should().Be(308m);
+        side.SimplesTax.Should().Be(600m);
+        side.RevenueAfterSimples.Should().Be(9400m);
+        side.CompanyRetained.Should().Be(6600m);
+        side.Net.Should().Be(2492m);
+    }
+
+    [Fact]
+    public void PjSide_Should_Cap_ProLabore_Inss_At_Ceiling()
+    {
+        var proLabore = 10_000m;
+        var side = calculator.CalculatePjSide(proLabore / CltPjComparisonCalculator.ProLaboreShare, 6m, 0m);
+
+        side.Inss.Should().Be(BrTaxTables2026.ProLaboreInssMaximumContribution);
+    }
+
+    [Fact]
     public void Pj_Vs_Clt_Calculator_Should_Return_Detailed_Lines()
     {
         var result = service.Calculate("pj-vs-clt", new CalculatorInput(5000m, SecondaryAmount: 9000m, Rate: 6m));
 
         result.IsSuccess.Should().BeTrue();
-        result.Value.LineItems.Should().Contain(item => item.Label == "CLT — líquido estimado");
-        result.Value.LineItems.Should().Contain(item => item.Label == "PJ — líquido pessoal estimado");
+        result.Value!.LineItems.Should().Contain(item => item.Label == "CLT — líquido estimado");
+        result.Value.LineItems.Should().Contain(item => item.Label == "PJ — líquido pessoal (pró-labore)");
+        result.Value.LineItems.Should().Contain(item => item.Label == "PJ — INSS 11% (pró-labore)");
         result.Value.LineItems.Should().Contain(item => item.Label == "Faturamento PJ equivalente ao líquido CLT");
     }
 

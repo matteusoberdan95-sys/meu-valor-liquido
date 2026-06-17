@@ -10,6 +10,8 @@ public static class BrTaxTables2026
     public const decimal DependentDeduction = 189.59m;
     public const decimal InssCeiling = 8475.55m;
     public const decimal InssMaximumContribution = 988.09m;
+    public const decimal ProLaboreInssRate = 0.11m;
+    public const decimal ProLaboreInssMaximumContribution = 932.31m;
 
     public static readonly InssBracket[] InssBrackets =
     [
@@ -113,5 +115,29 @@ public sealed class IrrfCalculator : IIrrfCalculator
 
         var reduction = BrTaxTables2026.CalculateIrrfReduction(basis, grossIrrf);
         return decimal.Round(Math.Max(0m, grossIrrf - reduction), 2, MidpointRounding.AwayFromZero);
+    }
+}
+
+/// <summary>INSS sobre pró-labore de sócio: 11% fixo até o teto previdenciário (não usa tabela progressiva CLT).</summary>
+public interface IProLaboreInssCalculator
+{
+    decimal Calculate(decimal proLaboreGross);
+}
+
+public sealed class ProLaboreInssCalculator : IProLaboreInssCalculator
+{
+    public decimal Calculate(decimal proLaboreGross)
+    {
+        if (proLaboreGross <= 0m)
+        {
+            return 0m;
+        }
+
+        var capped = Math.Min(proLaboreGross, BrTaxTables2026.InssCeiling);
+        var contribution = capped * BrTaxTables2026.ProLaboreInssRate;
+        return decimal.Round(
+            Math.Min(contribution, BrTaxTables2026.ProLaboreInssMaximumContribution),
+            2,
+            MidpointRounding.AwayFromZero);
     }
 }

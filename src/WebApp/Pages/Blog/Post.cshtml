@@ -16,8 +16,12 @@
 else
 {
     var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Post.Category);
-    var visualClass = BlogHubHelper.GetVisualClass(Model.Post.Category);
-    var visualIcon = BlogHubHelper.GetVisualIcon(Model.Post.Category, Model.Post.Slug);
+    var articleHeroModel = new BlogHeroVisualModel(
+        Model.Post.Slug,
+        Model.Post.Title,
+        Model.Post.Category,
+        "valora-stitch-blog-article-hero",
+        Decorative: false);
 
     @section Head {
         <partial name="Shared/_JsonLdArticle" model="Model.Post" />
@@ -55,9 +59,7 @@ else
 
         <div class="valora-stitch-blog-article-layout">
             <div class="valora-stitch-blog-article-main">
-        <div class="valora-stitch-blog-article-hero @visualClass" aria-hidden="true">
-            <span class="material-symbols-outlined">@visualIcon</span>
-        </div>
+        <partial name="Shared/_BlogStitchHeroVisual" model="articleHeroModel" />
 
         <p class="valora-stitch-blog-article-lead">@Model.Post.Summary</p>
 
