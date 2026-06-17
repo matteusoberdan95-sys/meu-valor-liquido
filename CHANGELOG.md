@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+### Sprint 50 - Metodologia, E-E-A-T e conteudo de apoio
+- `/como-calculamos` com metodologia por categoria, data de calibracao e links para calculadoras.
+- Badge `Validado com cenarios de referencia` nas 10 calculadoras prioritarias do benchmark.
+- Artigos editoriais atualizados com secao de validacao e links para metodologia; novo artigo MEI.
+- Seed de blog sincroniza conteudo a cada deploy.
+- Testes `Sprint50EeatTests` para E-E-A-T, badge e schema Article.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 365 testes.
+
+### Sprint 49 - UX de confianca nas calculadoras
+- Tooltips educativos `(i)` nos campos de maior impacto via `CalculatorFieldTooltipCatalog` e partial `_FieldLabel`.
+- Avisos contextuais no painel de resultado para rescisao, ferias/13o, holerite, PJ x CLT e MEI acima do limite.
+- Labels da rescisao clarificam descontos do ultimo mes vs verbas rescisorias.
+- Testes `Sprint49TrustUxTests` cobrindo tooltips e avisos nas 17 calculadoras.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 350 testes.
+
 ### Planejamento pos-auditoria
 - Adicionada em `docs/sprint-plan.md` a trilha Sprints 47-52 para hotfix/deploy, paridade fiscal, UX de confianca, metodologia E-E-A-T, AdSense e observabilidade.
 

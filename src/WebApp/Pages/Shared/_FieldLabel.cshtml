@@ -1,0 +1,42 @@
+@model MeuValorLiquido.WebApp.Infrastructure.FieldLabelViewModel
+@{
+    var hasTooltip = !string.IsNullOrWhiteSpace(Model.Tooltip);
+    var labelClass = hasTooltip ? "valora-label valora-label--with-tip" : "valora-label";
+}
+@if (!string.IsNullOrEmpty(Model.ForId))
+{
+    <label class="@labelClass" for="@Model.ForId">
+        <span class="valora-label-text">@Model.Text</span>
+        @if (hasTooltip)
+        {
+            <span class="valora-field-tip">
+                <button type="button"
+                        class="valora-field-tip-btn"
+                        aria-label="Ajuda: @Model.Text"
+                        aria-describedby="@($"{Model.ForId}_tip")">
+                    <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <span class="valora-field-tip-bubble" id="@($"{Model.ForId}_tip")" role="tooltip">@Model.Tooltip</span>
+            </span>
+        }
+    </label>
+}
+else
+{
+    <span class="@labelClass">
+        <span class="valora-label-text">@Model.Text</span>
+        @if (hasTooltip)
+        {
+            var tipId = $"tip_{Guid.NewGuid():N}";
+            <span class="valora-field-tip">
+                <button type="button"
+                        class="valora-field-tip-btn"
+                        aria-label="Ajuda: @Model.Text"
+                        aria-describedby="@tipId">
+                    <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                </button>
+                <span class="valora-field-tip-bubble" id="@tipId" role="tooltip">@Model.Tooltip</span>
+            </span>
+        }
+    </span>
+}

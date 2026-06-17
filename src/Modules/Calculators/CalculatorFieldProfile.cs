@@ -146,7 +146,7 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ShowCompleteYears: true,
             ShowFgtsBalance: true,
             ShowTransportDiscount: true,
-            TransportDiscountLabel: "Outros descontos (empréstimo, VT etc.)"),
+            TransportDiscountLabel: "Descontos do último mês (VT, empréstimo etc.)"),
         ["hora-extra"] = new(
             AmountLabel: "Valor da hora",
             ShowSecondaryAmount: true,

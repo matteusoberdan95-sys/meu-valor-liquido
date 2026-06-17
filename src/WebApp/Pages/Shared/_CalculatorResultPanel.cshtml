@@ -26,6 +26,7 @@
     }
 
     <div id="result-panel-extract" class="valora-result-view-panel" data-result-panel="extract" role="tabpanel">
+        <partial name="Shared/_CalculatorResultWarnings" model="Model.Warnings" />
         <h2 class="valora-h3" style="color: inherit; margin: 1rem 0;">@(Model.TerminationSummary is not null ? "Resultado do cálculo" : "Extrato estimado")</h2>
         @if (Model.CalculatorSlug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase))
         {

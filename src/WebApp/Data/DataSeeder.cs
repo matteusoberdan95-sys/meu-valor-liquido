@@ -148,15 +148,12 @@ public static class DataSeeder
             }
 
             var existing = await db.BlogPosts.FirstAsync(x => x.Slug == article.Slug, cancellationToken);
-            if (existing.Content.Length < 500)
-            {
-                existing.Title = article.Title;
-                existing.Summary = article.Summary;
-                existing.Content = article.Content;
-                existing.Category = article.Category;
-                existing.RelatedCalculatorSlug = article.RelatedCalculatorSlug;
-                existing.PublishedAt = article.PublishedAt;
-            }
+            existing.Title = article.Title;
+            existing.Summary = article.Summary;
+            existing.Content = article.Content;
+            existing.Category = article.Category;
+            existing.RelatedCalculatorSlug = article.RelatedCalculatorSlug;
+            existing.PublishedAt = article.PublishedAt;
         }
 
         await db.SaveChangesAsync(cancellationToken);

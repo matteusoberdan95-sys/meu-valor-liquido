@@ -16,7 +16,11 @@ public sealed record CalculatorResultPanelViewModel(
     string CalculatorSlug,
     CalculatorResultExplanationViewModel Explanation,
     bool ShowSimpleExplanation = true,
-    TerminationResultSummary? TerminationSummary = null);
+    TerminationResultSummary? TerminationSummary = null,
+    IReadOnlyList<CalculatorResultWarning> Warnings = null!)
+{
+    public IReadOnlyList<CalculatorResultWarning> Warnings { get; init; } = Warnings ?? [];
+}
 
 public sealed record SalaryBandResultPanelViewModel(
     int Gross,

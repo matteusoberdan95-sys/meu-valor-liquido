@@ -61,6 +61,9 @@ public class DetailsModel : PageModel
             || Definition.Slug.Equals("inss", StringComparison.OrdinalIgnoreCase)
             || Definition.Slug.Equals("irrf", StringComparison.OrdinalIgnoreCase));
 
+    public FieldLabelViewModel FieldLabel(string text, string? forId, string fieldKey) =>
+        new(text, forId, CalculatorFieldTooltipCatalog.GetTooltip(Definition?.Slug ?? string.Empty, fieldKey));
+
     public string CalcDetailModifierClass
     {
         get
@@ -203,7 +206,8 @@ public class DetailsModel : PageModel
                 slug,
                 CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
                 ShowSimpleExplanation: !IsEmbedMode,
-                TerminationSummary: terminationSummary);
+                TerminationSummary: terminationSummary,
+                Warnings: CalculatorResultWarningBuilder.Build(slug, Input, Result));
         }
     }
 

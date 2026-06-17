@@ -77,6 +77,7 @@ else
             <header class="valora-stitch-rescisao-header">
                 <div class="valora-stitch-rescisao-meta">
                     <span class="valora-stitch-rescisao-category">TRABALHISTA</span>
+                    <partial name="Shared/_BenchmarkValidationBadge" model="calculatorSlug" />
                 </div>
                 <h1 class="valora-stitch-rescisao-title">@Model.Definition.Name</h1>
                 <p class="valora-stitch-rescisao-lead">@Model.Definition.Summary</p>
@@ -106,6 +107,10 @@ else
                     </a>
                     <div class="valora-stitch-calc-detail-head">
                         <span class="valora-stitch-calc-detail-badge">@CalculatorUiHelper.GetSimulationBadge(Model.Definition.Category)</span>
+                        @if (CalculatorBenchmarkHelper.IsPrioritySlug(calculatorSlug))
+                        {
+                            <partial name="Shared/_BenchmarkValidationBadge" model="calculatorSlug" />
+                        }
                         <h1 class="valora-stitch-calc-detail-title">@Model.Definition.Name</h1>
                     </div>
                 </div>
@@ -168,7 +173,7 @@ else
                     @if (profile.ShowTerminationReason)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <span class="valora-label">@profile.TerminationReasonLabel</span>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TerminationReasonLabel, null, CalculatorFieldKeys.TerminationReason)' />
                             <div class="valora-choice-group" role="radiogroup" aria-label="@profile.TerminationReasonLabel">
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
                                 {
@@ -190,7 +195,7 @@ else
                     @if (profile.ShowAdmissionDate && !hideDatesInMainForm)
                     {
                         <div>
-                            <label asp-for="Input.AdmissionDate" class="valora-label">@profile.AdmissionDateLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AdmissionDateLabel, "Input.AdmissionDate", CalculatorFieldKeys.AdmissionDate)' />
                             <input asp-for="Input.AdmissionDate" class="valora-input" type="date" />
                             <p class="valora-helper">Usada para calcular tempo na empresa, 13º e férias proporcionais automaticamente.</p>
                         </div>
@@ -198,7 +203,7 @@ else
                     @if (profile.ShowTerminationDate && !hideDatesInMainForm)
                     {
                         <div>
-                            <label asp-for="Input.TerminationDate" class="valora-label">@profile.TerminationDateLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TerminationDateLabel, "Input.TerminationDate", CalculatorFieldKeys.TerminationDate)' />
                             <input asp-for="Input.TerminationDate" class="valora-input" type="date" />
                             <p class="valora-helper">O dia da saída define os dias trabalhados no último mês, se você não informar manualmente.</p>
                         </div>
@@ -206,7 +211,7 @@ else
                     @if (profile.ShowNoticePeriodOptions)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.NoticePeriod" class="valora-label">@profile.NoticePeriodOptionLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.NoticePeriodOptionLabel, "Input.NoticePeriod", CalculatorFieldKeys.NoticePeriod)' />
                             <select asp-for="Input.NoticePeriod" class="valora-input" asp-items="Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.NoticePeriodOption>()"></select>
                             <p class="valora-helper">No pedido de demissão, &quot;Não cumprido&quot; gera desconto de até 30 dias. Na demissão sem justa causa, &quot;Indenizado&quot; inclui aviso na rescisão.</p>
                         </div>
@@ -214,7 +219,7 @@ else
                     @if (profile.ShowAmount && profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AmountLabel, "Input.Amount", CalculatorFieldKeys.Amount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -225,7 +230,7 @@ else
                     @if (profile.ShowSecondaryAmount && profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SecondaryAmountLabel, "Input.SecondaryAmount", CalculatorFieldKeys.SecondaryAmount)' />
                             <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="30" />
                             <p class="valora-helper">Preenchido automaticamente pelo dia da data de afastamento, se você informar a data.</p>
                         </div>
@@ -233,7 +238,7 @@ else
                     @if (profile.ShowAmount && !profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AmountLabel, "Input.Amount", CalculatorFieldKeys.Amount)' />
                             @if (profile.AmountIsCurrency)
                             {
                                 <div class="valora-input-prefix">
@@ -261,7 +266,7 @@ else
                     @if (profile.ShowSecondaryAmount && !profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SecondaryAmountLabel, "Input.SecondaryAmount", CalculatorFieldKeys.SecondaryAmount)' />
                             @if (profile.SecondaryAmountIsDays)
                             {
                                 <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="30" />
@@ -288,17 +293,17 @@ else
                             </summary>
                             <div class="valora-form-row" style="margin-top: 1rem;">
                                 <div>
-                                    <label asp-for="Input.AdmissionDate" class="valora-label">@profile.AdmissionDateLabel</label>
+                                    <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AdmissionDateLabel, "Input.AdmissionDate", CalculatorFieldKeys.AdmissionDate)' />
                                     <input asp-for="Input.AdmissionDate" class="valora-input" type="date" />
                                 </div>
                                 <div>
-                                    <label asp-for="Input.TerminationDate" class="valora-label">@profile.TerminationDateLabel</label>
+                                    <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TerminationDateLabel, "Input.TerminationDate", CalculatorFieldKeys.TerminationDate)' />
                                     <input asp-for="Input.TerminationDate" class="valora-input" type="date" />
                                 </div>
                                 @if (profile.ShowDependents)
                                 {
                                     <div>
-                                        <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                                         <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                                     </div>
                                 }
@@ -326,7 +331,7 @@ else
                             <div class="valora-form-row" style="margin-top: 1rem;">
                                 <partial name="Shared/_VacationAdvancedOptions" model="Model" />
                                 <div>
-                                    <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                    <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                                     <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                                 </div>
                             </div>
@@ -335,14 +340,14 @@ else
                     else if (profile.ShowDependents && profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                             <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                         </div>
                     }
                     @if (profile.ShowTransportDiscount && profile.ShowAdmissionDate)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -352,7 +357,7 @@ else
                     @if (profile.ShowFgtsTerminationReason)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <span class="valora-label">@profile.FgtsTerminationReasonLabel</span>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.FgtsTerminationReasonLabel, null, CalculatorFieldKeys.TerminationReason)' />
                             <div class="valora-choice-group" role="radiogroup" aria-label="@profile.FgtsTerminationReasonLabel">
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
                                 {
@@ -417,7 +422,7 @@ else
                     @if (profile.ShowMeiActivity)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <span class="valora-label">@profile.MeiActivityLabel</span>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.MeiActivityLabel, null, CalculatorFieldKeys.MeiActivity)' />
                             <div class="valora-choice-group" role="radiogroup" aria-label="@profile.MeiActivityLabel">
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.Tax.MeiActivityType>())
                                 {
@@ -498,7 +503,7 @@ else
                     @if (profile.ShowFgtsBalance)
                     {
                         <div>
-                            <label asp-for="Input.FgtsBalance" class="valora-label">@profile.FgtsBalanceLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.FgtsBalanceLabel, "Input.FgtsBalance", CalculatorFieldKeys.FgtsBalance)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.FgtsBalance" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -508,7 +513,7 @@ else
                     @if (profile.ShowMonths && isRescisaoCalculator)
                     {
                         <div>
-                            <label asp-for="Input.Months" class="valora-label">@profile.MonthsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.MonthsLabel, "Input.Months", CalculatorFieldKeys.Months)' />
                             <input asp-for="Input.Months" class="valora-input" type="text" data-mask="integer" data-max-length="3" inputmode="numeric" placeholder="12" />
                             <p class="valora-helper">Conte da data de admissão até a rescisão. Ex.: junho a agosto = 3 meses (não 10).</p>
                         </div>
@@ -581,7 +586,7 @@ else
                     @if (profile.ShowMonths && !isRescisaoCalculator)
                     {
                         <div>
-                            <label asp-for="Input.Months" class="valora-label">@profile.MonthsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.MonthsLabel, "Input.Months", CalculatorFieldKeys.Months)' />
                             <input asp-for="Input.Months" class="valora-input" type="text" data-mask="integer" data-max-length="3" inputmode="numeric" placeholder="12" />
                             @if (profile.ShowVacationOptions)
                             {
@@ -596,7 +601,7 @@ else
                     @if (profile.ShowRate)
                     {
                         <div>
-                            <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.RateLabel, "Input.Rate", CalculatorFieldKeys.Rate)' />
                             <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="0" />
                         </div>
                     }
@@ -651,14 +656,14 @@ else
                                 @if (profile.ShowDependents)
                                 {
                                     <div>
-                                        <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                                         <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                                     </div>
                                 }
                                 @if (profile.ShowTransportDiscount)
                                 {
                                     <div style="grid-column: 1 / -1;">
-                                        <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
                                         <div class="valora-input-prefix">
                                             <span class="valora-prefix">R$</span>
                                             <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -668,7 +673,7 @@ else
                                 @if (profile.ShowOtherDiscounts)
                                 {
                                     <div style="grid-column: 1 / -1;">
-                                        <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                                        <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
                                         <div class="valora-input-prefix">
                                             <span class="valora-prefix">R$</span>
                                             <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -683,14 +688,14 @@ else
                     @if (profile.ShowDependents && !profile.ShowAdmissionDate)
                     {
                         <div>
-                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                             <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                         </div>
                     }
                     @if (profile.ShowTransportDiscount && !profile.ShowAdmissionDate)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -700,7 +705,7 @@ else
                     @if (profile.ShowOtherDiscounts)
                     {
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -740,7 +745,7 @@ else
             {
                 @if (Model.CltPjBreakdown is not null)
                 {
-                    <partial name="Shared/_PjVsCltStitchResults" model="new PjVsCltStitchResultsViewModel(Model.CltPjBreakdown, Model.Share)" />
+                    <partial name="Shared/_PjVsCltStitchResults" model="new PjVsCltStitchResultsViewModel(Model.CltPjBreakdown, Model.Share, CalculatorResultWarningBuilder.BuildPjVsCltWarnings(Model.CltPjBreakdown))" />
                     <p class="valora-stitch-cltpj-legal">@Model.Result!.LegalDisclaimer</p>
                 }
                 else

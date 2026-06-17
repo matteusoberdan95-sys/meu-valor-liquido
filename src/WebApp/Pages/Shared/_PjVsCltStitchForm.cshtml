@@ -31,7 +31,7 @@
                     <p class="valora-helper valora-stitch-cltpj-helper">Informe o salário bruto e descontos mensais do regime CLT.</p>
                     <div class="valora-form-row">
                         <div>
-                            <label asp-for="Input.Amount" class="valora-label">@profile.AmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.AmountLabel, "Input.Amount", CalculatorFieldKeys.Amount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.Amount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -39,11 +39,11 @@
                             <span asp-validation-for="Input.Amount" class="text-danger"></span>
                         </div>
                         <div>
-                            <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.DependentsLabel, "Input.Dependents", CalculatorFieldKeys.Dependents)' />
                             <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                         </div>
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.TransportDiscount" class="valora-label">@profile.TransportDiscountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.TransportDiscountLabel, "Input.TransportDiscount", CalculatorFieldKeys.TransportDiscount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -70,7 +70,7 @@
                     <p class="valora-helper valora-stitch-cltpj-helper">Informe faturamento PJ, alíquota do Simples e despesas fixas.</p>
                     <div class="valora-form-row">
                         <div style="grid-column: 1 / -1;">
-                            <label asp-for="Input.SecondaryAmount" class="valora-label">@profile.SecondaryAmountLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SecondaryAmountLabel, "Input.SecondaryAmount", CalculatorFieldKeys.SecondaryAmount)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.SecondaryAmount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
@@ -78,11 +78,11 @@
                             <p class="valora-helper">Deixe em branco para estimar o faturamento equivalente ao líquido CLT.</p>
                         </div>
                         <div>
-                            <label asp-for="Input.Rate" class="valora-label">@profile.RateLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.RateLabel, "Input.Rate", CalculatorFieldKeys.Rate)' />
                             <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="6" />
                         </div>
                         <div>
-                            <label asp-for="Input.OtherDiscounts" class="valora-label">@profile.OtherDiscountsLabel</label>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
                                 <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />

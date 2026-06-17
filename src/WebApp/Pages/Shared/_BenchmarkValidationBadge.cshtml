@@ -1,0 +1,13 @@
+@model string?
+@if (!string.IsNullOrWhiteSpace(Model) && CalculatorBenchmarkHelper.IsPrioritySlug(Model))
+{
+    var scenarioCount = CalculatorBenchmarkHelper.ScenarioCountForSlug(Model);
+    <div class="valora-benchmark-badge" title="Estimativa educativa calibrada com @scenarioCount cenários de referência em @CalculatorBenchmarkHelper.FormatCalibrationDate(). Não é certificação oficial.">
+        <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+        <span class="valora-benchmark-badge-text">
+            <strong>Validado com cenários de referência</strong>
+            <span class="valora-benchmark-badge-meta">@scenarioCount cenários · calibrado em @CalculatorBenchmarkHelper.FormatCalibrationDate() · estimativa educativa</span>
+        </span>
+        <a class="valora-benchmark-badge-link" asp-page="/ComoCalculamos">Metodologia</a>
+    </div>
+}

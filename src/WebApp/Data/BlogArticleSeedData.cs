@@ -34,6 +34,9 @@ public static class BlogArticleSeedData
             <p>Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para simular seu caso com as tabelas de 2026. Informe salário bruto, dependentes e descontos extras para ver um extrato estimado.</p>
             <h2>Limitações de uma estimativa</h2>
             <p>Convenções coletivas, adicionais noturnos, horas extras e benefícios específicos alteram o resultado final. Trate a simulação como referência educativa e confirme valores oficiais com o departamento pessoal.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>A <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> é calibrada com cenários de referência documentados em <a href="/como-calculamos">Como calculamos</a>, incluindo tabelas INSS/IRRF de 2026 e tolerância de paridade.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui holerite oficial, TRCT ou consultoria contábil/trabalhista.</p>
             """),
         Article(
             "como-calcular-ferias",
@@ -56,6 +59,9 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/ferias">calculadora de férias</a> ajuda a visualizar bruto, adicional, descontos e líquido estimado. Ajuste salário e dias para comparar cenários.</p>
             <h2>Dicas práticas</h2>
             <p>Empresas costumam pagar férias até dois dias antes do início do período. Guarde parte do valor para despesas do mês seguinte, já que o orçamento mensal muda temporariamente.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>Compare cenários na <a href="/calculadoras/ferias">calculadora de férias</a> e leia a <a href="/como-calculamos">metodologia por categoria</a> para entender premissas, fontes e limitações.</p>
+            <p><strong>Estimativa educativa:</strong> médias salariais e adiantamentos não informados podem alterar o holerite real.</p>
             """),
         Article(
             "como-calcular-rescisao-clt",
@@ -76,6 +82,9 @@ public static class BlogArticleSeedData
             <p>Além das verbas rescisórias, podem aparecer descontos de empréstimos consignados, vale-transporte e contribuições sindicais. O Termo de Rescisão detalha cada linha.</p>
             <h2>Estime sua rescisão</h2>
             <p>Use a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> para uma visão educativa dos componentes. Informe salário, meses trabalhados e tipo de desligamento.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>Os cenários de rescisão passam por testes de paridade documentados em <a href="/como-calculamos">Como calculamos</a>. Divergências com TRCT costumam vir de médias salariais, HE ou adiantamentos não informados.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui documento oficial assinado pelo empregador.</p>
             """),
         Article(
             "como-calcular-inss",
@@ -94,6 +103,9 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/inss">calculadora de INSS</a> aplica as faixas de 2026 automaticamente. Informe o salário bruto para ver o valor estimado da contribuição.</p>
             <h2>Autônomos e contribuintes individuais</h2>
             <p>Regras diferem para MEI, contribuinte individual e facultativo. Este artigo foca no desconto sobre salário CLT; consulte um contador para outros vínculos.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>A <a href="/calculadoras/inss">calculadora de INSS</a> usa as faixas oficiais de 2026. Veja fontes, data de calibração e limitações em <a href="/como-calculamos">Como calculamos</a>.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui guia da Previdência ou holerite oficial.</p>
             """),
         Article(
             "entenda-o-irrf",
@@ -112,6 +124,9 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/irrf">calculadora de IRRF</a> estima o imposto com base nas regras vigentes. Combine com a calculadora de salário líquido para ver o holerite completo.</p>
             <h2>Restituição x saldo a pagar</h2>
             <p>O IRRF mensal é uma antecipação. Na declaração anual, você apura se pagou a mais (restituição) ou a menos (saldo devido).</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>Simule na <a href="/calculadoras/irrf">calculadora de IRRF</a> e confira a tabela vigente em <a href="/como-calculamos">Como calculamos</a>, com dedução por dependente e regras de isenção de 2026.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui orientação da Receita Federal ou declaração anual.</p>
             """),
         Article(
             "pj-ou-clt-qual-melhor",
@@ -270,6 +285,9 @@ public static class BlogArticleSeedData
             <p>Demissão sem justa causa, aposentadoria, compra da casa própria e saque-aniversário (com perda de multa em rescisão futura) são hipóteses comuns.</p>
             <h2>Calcule depósitos e multa</h2>
             <p>Use a <a href="/calculadoras/fgts">calculadora de FGTS</a> para estimar depósitos e multa rescisória. Para o pacote completo de desligamento, veja também a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>Cenários de FGTS e multa rescisória estão documentados em <a href="/como-calculamos">Como calculamos</a>. O saldo real depende do extrato da Caixa.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui consulta ao extrato oficial do FGTS.</p>
             """),
         Article(
             "planejamento-financeiro-com-salario",
@@ -292,6 +310,25 @@ public static class BlogArticleSeedData
             <p>Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> e a <a href="/calculadoras/juros-compostos">calculadora de juros compostos</a> para projetar quanto pode guardar todo mês.</p>
             <h2>Revise todo trimestre</h2>
             <p>Promoções, reajustes e novos descontos alteram o líquido. Atualize o orçamento quando o holerite mudar.</p>
+            """),
+        Article(
+            "mei-faturamento-e-das",
+            "MEI: limite de faturamento, DAS e desenquadramento",
+            "Entenda o teto anual do MEI, como estimar o DAS mensal e quando o excesso de faturamento leva ao desenquadramento.",
+            "simulador-mei",
+            "Fiscal",
+            new DateOnly(2026, 6, 17),
+            """
+            <p>O Microempreendedor Individual (MEI) combina formalização simplificada com DAS mensal fixo. O ponto crítico para quem está começando é o <strong>limite anual de faturamento</strong> — ultrapassá-lo pode gerar desenquadramento.</p>
+            <h2>Limite anual e tolerância</h2>
+            <p>Em 2026, o teto de faturamento MEI é de R$ 81.000 por ano. Há tolerância de até 20% (R$ 97.200) com desenquadramento no ano seguinte. Acima disso, o risco de desenquadramento retroativo aumenta.</p>
+            <h2>DAS por atividade</h2>
+            <p>O valor do DAS varia conforme comércio, serviços ou indústria. Mesmo com faturamento baixo, o pagamento mensal é obrigatório enquanto o MEI estiver ativo.</p>
+            <h2>Simule seu cenário</h2>
+            <p>Use o <a href="/calculadoras/simulador-mei">simulador MEI</a> para estimar DAS, comparar com faturamento mensal e receber alertas de limite.</p>
+            <h2>Como validamos esta estimativa</h2>
+            <p>As regras de limite e DAS seguem parâmetros vigentes documentados em <a href="/como-calculamos">Como calculamos</a>. Mudanças na legislação exigem recalibração.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui contador para migração ao Simples Nacional ou ME.</p>
             """)
     ];
 

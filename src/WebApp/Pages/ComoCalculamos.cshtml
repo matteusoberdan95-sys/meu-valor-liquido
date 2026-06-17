@@ -15,7 +15,41 @@
         <p class="valora-stitch-metodologia-hero-lead">
             Nossos cálculos baseiam-se na legislação brasileira vigente para @Model.TaxYear,
             com tabelas centralizadas em <code>BrTaxTables@(Model.TaxYear)</code> e testes automatizados.
+            Última calibração dos cenários de referência: <strong>@Model.LastCalibrationLabel</strong>.
         </p>
+        <partial name="Shared/_BenchmarkValidationBadge" model="CalculatorBenchmarkCatalog.PrioritySlugs[0]" />
+    </section>
+
+    <section class="valora-stitch-metodologia-section">
+        <h2 class="valora-stitch-metodologia-section-title">Metodologia por categoria</h2>
+        <p class="valora-stitch-metodologia-table-hint">
+            Cada grupo de calculadoras segue premissas próprias. Os resultados são <strong>estimativas educativas</strong> —
+            não consultoria jurídica, contábil ou fiscal.
+        </p>
+        <div class="valora-stitch-metodologia-categories">
+            @foreach (var category in Model.CategorySections)
+            {
+                <article class="valora-stitch-metodologia-category valora-stitch-metodologia-category--@category.Key">
+                    <div class="valora-stitch-metodologia-category-head">
+                        <span class="material-symbols-outlined" aria-hidden="true">@category.Icon</span>
+                        <h3>@category.Title</h3>
+                    </div>
+                    <p class="valora-stitch-metodologia-category-summary">@category.Summary</p>
+                    <ul class="valora-stitch-metodologia-list">
+                        @foreach (var highlight in category.Highlights)
+                        {
+                            <li>@highlight</li>
+                        }
+                    </ul>
+                    <div class="valora-stitch-metodologia-category-links">
+                        @foreach (var calculator in category.Calculators)
+                        {
+                            <a asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">@calculator.Name</a>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
     </section>
 
     <section class="valora-stitch-metodologia-section">

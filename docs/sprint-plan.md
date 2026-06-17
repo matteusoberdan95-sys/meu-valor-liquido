@@ -389,41 +389,52 @@
 
 ---
 
-## Sprint 49 - UX de confianca nas calculadoras
+## Sprint 49 - UX de confianca nas calculadoras (concluida)
 
 **Objetivo:** reduzir duvida do usuario e aumentar conversao/tempo de pagina sem poluir a tela.
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Tooltips nos campos de maior impacto: dependentes, descontos, datas, aviso previo, FGTS, taxa, meses |
-| WebApp/Frontend | Avisos no painel de resultado para casos sensiveis: rescisao, ferias, PJ vs CLT, MEI acima do limite |
-| Backend/Calculators | Labels/field profiles normalizados para evitar ambiguidades como VT vs outros descontos |
-| QA/Test | Smoke visual/formulario das 17 calculadoras em desktop e mobile |
-| SEO/Content | Microcopy educativa curta, sem texto promocional em excesso |
+| WebApp/Frontend | Tooltips `(i)` nos campos de maior impacto via `CalculatorFieldTooltipCatalog` e partial `_FieldLabel` |
+| WebApp/Frontend | Avisos no painel de resultado (`CalculatorResultWarningBuilder`) para rescisao, ferias/13o, holerite, PJ vs CLT e MEI |
+| Backend/Calculators | Labels normalizados em `CalculatorFieldProfile` (VT vs outros descontos na rescisao) |
+| QA/Test | `Sprint49TrustUxTests` com smoke das 17 calculadoras e avisos contextuais |
+| SEO/Content | Microcopy educativa curta nos tooltips, sem texto promocional |
 
 **Criterios de aceite:**
 - Usuario entende por que o resultado difere de holerite/TRCT.
-- Nenhum tooltip ou aviso quebra layout mobile.
-- PDF/share continuam sem anuncios e com disclaimers.
+- Nenhum tooltip ou aviso quebra layout mobile (bubble com largura maxima e foco por teclado/toque).
+- PDF/share continuam sem anuncios e com disclaimers existentes.
+
+**Entregue em 2026-06-17:**
+- `CalculatorFieldTooltipCatalog` + `_FieldLabel.cshtml` com icones `info` nos campos de dependentes, descontos, datas, aviso previo, FGTS, taxa e meses.
+- `CalculatorResultWarningBuilder` + `_CalculatorResultWarnings.cshtml` no extrato e no comparador PJ x CLT.
+- Estilos `valora-field-tip` e `valora-result-warning` em `site.css`.
+- `dotnet test .\MeuValorLiquido.slnx` verde: 350 testes.
 
 ---
 
-## Sprint 50 - Metodologia, E-E-A-T e conteudo de apoio
+## Sprint 50 - Metodologia, E-E-A-T e conteudo de apoio (concluida)
 
 **Objetivo:** reforcar autoridade para SEO e confianca, especialmente para AdSense.
 
 | Agent | Entregas |
 |-------|----------|
-| SEO/Content | `/como-calculamos` com tabela de fontes, data da ultima calibracao e metodologia por categoria |
-| SEO/Content | Atualizacao dos artigos de salario liquido, INSS, IRRF, rescisao, ferias, FGTS e MEI |
-| Product Owner | Priorizacao de perguntas com maior intencao de busca e monetizacao |
-| WebApp/Frontend | Badge "Validado com cenarios de referencia" sem parecer selo oficial |
-| QA/Test | Testes de metadata, links internos e schema FAQ/Article |
+| SEO/Content | `/como-calculamos` com metodologia por categoria (trabalhista, fiscal, financeiro), data de calibracao e links para calculadoras |
+| SEO/Content | Artigos atualizados (salario liquido, INSS, IRRF, rescisao, ferias, FGTS) + novo artigo MEI |
+| Product Owner | Secoes "Como validamos esta estimativa" priorizam intencao de busca e monetizacao sem tom promocional |
+| WebApp/Frontend | Badge `Validado com cenarios de referencia` nas 10 calculadoras prioritarias (`_BenchmarkValidationBadge`) |
+| QA/Test | `Sprint50EeatTests` para metadata, links internos, badge e schema Article |
 
 **Criterios de aceite:**
 - Conteudo deixa claro que e estimativa educativa, nao consultoria oficial.
 - Links internos conectam artigo -> calculadora -> metodologia.
 - Paginas legais e politicas permanecem acessiveis.
+
+**Entregue em 2026-06-17:**
+- `MetodologiaCategoryCatalog`, `CalculatorBenchmarkHelper` e badge sem aparentar selo oficial.
+- Seed de blog sincroniza conteudo editorial a cada deploy; 16 artigos no catalogo.
+- `dotnet test .\MeuValorLiquido.slnx` verde: 365 testes.
 
 ---
 

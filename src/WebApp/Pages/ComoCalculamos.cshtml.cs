@@ -30,6 +30,10 @@ public class ComoCalculamosModel : PageModel
                 string.Join(", ", group.Select(scenario => scenario.Slug).Distinct().OrderBy(slug => slug))))
             .ToArray();
 
+    public IReadOnlyList<MetodologiaCategorySection> CategorySections => MetodologiaCategoryCatalog.GetAll();
+
+    public string LastCalibrationLabel => CalculatorBenchmarkHelper.FormatCalibrationDate();
+
     public void OnGet()
     {
         SeoMetadataHelper.Apply(

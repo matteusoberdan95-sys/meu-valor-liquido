@@ -751,6 +751,119 @@ h1, h2, h3, h4,
   margin-top: 0.25rem;
 }
 
+.valora-label--with-tip {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.valora-label-text {
+  line-height: 1.4;
+}
+
+.valora-field-tip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.valora-field-tip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgb(89 219 199 / 12%);
+  color: var(--valora-primary);
+  cursor: help;
+  flex-shrink: 0;
+}
+
+.valora-field-tip-btn .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.valora-field-tip-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(89 219 199 / 35%);
+}
+
+.valora-field-tip-bubble {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  bottom: calc(100% + 0.45rem);
+  transform: translateX(-50%);
+  width: min(17.5rem, calc(100vw - 2rem));
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--valora-radius-md);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-high);
+  color: var(--valora-on-surface);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+  pointer-events: none;
+}
+
+.valora-field-tip:focus-within .valora-field-tip-bubble,
+.valora-field-tip:hover .valora-field-tip-bubble {
+  display: block;
+}
+
+.valora-result-warnings {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.valora-result-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--valora-radius-md);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-result-warning p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-on-surface);
+}
+
+.valora-result-warning .material-symbols-outlined {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.valora-result-warning--info {
+  border-color: rgb(89 219 199 / 25%);
+  background: rgb(89 219 199 / 8%);
+}
+
+.valora-result-warning--info .material-symbols-outlined {
+  color: var(--valora-primary);
+}
+
+.valora-result-warning--warning {
+  border-color: rgb(251 191 36 / 30%);
+  background: rgb(251 191 36 / 10%);
+}
+
+.valora-result-warning--warning .material-symbols-outlined {
+  color: #fbbf24;
+}
+
 .valora-choice-group {
   display: grid;
   grid-template-columns: 1fr;
@@ -4937,6 +5050,125 @@ h1, h2, h3, h4,
   color: var(--valora-text-muted);
   line-height: 1.55;
   font-size: 1.0625rem;
+}
+
+.valora-benchmark-badge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--valora-radius-md);
+  border: 1px solid rgb(89 219 199 / 28%);
+  background: rgb(89 219 199 / 8%);
+  max-width: 36rem;
+}
+
+.valora-stitch-calc-detail-head .valora-benchmark-badge,
+.valora-stitch-rescisao-meta .valora-benchmark-badge {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.valora-benchmark-badge .material-symbols-outlined {
+  color: var(--valora-primary);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.valora-benchmark-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 12rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--valora-on-surface);
+}
+
+.valora-benchmark-badge-text strong {
+  font-weight: 700;
+}
+
+.valora-benchmark-badge-meta {
+  color: var(--valora-outline);
+  font-size: 0.75rem;
+}
+
+.valora-benchmark-badge-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.valora-benchmark-badge-link:hover {
+  text-decoration: underline;
+}
+
+.valora-stitch-metodologia-categories {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-metodologia-categories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.valora-stitch-metodologia-category {
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-metodologia-category--trabalhista { border-top: 3px solid var(--valora-trabalhista-blue); }
+.valora-stitch-metodologia-category--fiscal { border-top: 3px solid var(--valora-fiscal-purple); }
+.valora-stitch-metodologia-category--financeiro { border-top: 3px solid var(--valora-primary); }
+
+.valora-stitch-metodologia-category-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.valora-stitch-metodologia-category-head h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-metodologia-category-summary {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-metodologia-category-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.valora-stitch-metodologia-category-links a {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+  text-decoration: none;
+}
+
+.valora-stitch-metodologia-category-links a:hover {
+  text-decoration: underline;
 }
 
 .valora-stitch-metodologia-section {
