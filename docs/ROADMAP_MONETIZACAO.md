@@ -139,7 +139,7 @@ Sprints legadas (0–16 do repo): fundação, 15 calculadoras, blog — **conclu
 | Clique acidental em anúncio | Espaçamento, altura reservada, revisão `ADSENSE_COMPLIANCE.md` |
 | Thin content em páginas programáticas | Conteúdo original por faixa (Sprint 3) |
 | Páginas institucionais fracas | Sprint 14 + revisão privacidade |
-| Regressão fiscal | Testes + tabelas centralizadas em `BrTaxTables2026` |
+| Regressão fiscal | Testes + tabelas centralizadas em `BrTaxTables2026` + `CalculatorBenchmarkCatalog` com cenários de paridade |
 | `CalculationEngine` monolítico | Refatorar para handlers quando passar de ~20 calculadoras |
 
 ---

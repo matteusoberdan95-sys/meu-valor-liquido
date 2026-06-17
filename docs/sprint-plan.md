@@ -312,6 +312,171 @@
 
 **Referência Stitch:** `p_gina_de_erro_desktop` + revisão de todas as pastas
 
+---
+
+## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
+
+**Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.
+
+**North star:** calculadoras confiaveis, fluxo sem friccao, metodologia transparente e paginas prontas para AdSense sem comprometer UX, Core Web Vitals ou politica de anuncios.
+
+**Agents por trilha:**
+
+| Agent | Responsabilidade |
+|-------|------------------|
+| **Product Owner** | Sequencia de valor, criterios de aceite e corte de escopo |
+| **Backend/Calculators** | Motor, tabelas, contratos e paridade de formulas |
+| **WebApp/Frontend** | Formularios, radios/selects, tooltips, resultado e mobile |
+| **QA/Test** | Smoke das 17 calculadoras, regressao fiscal e benchmark |
+| **SEO/Content** | Metodologia, conteudo de suporte, schema e interlinking |
+| **Monetization/AdSense** | Slots, politicas, CLS e checklist pos-aprovacao |
+| **Security** | CSP, cookies, privacidade e antiforgery |
+| **Infrastructure** | Deploy VPS, observabilidade e rollback |
+| **Documentation** | `sprint-plan.md`, `CHANGELOG.md` e guias de operacao |
+
+**Definition of Done (todas):** `dotnet test .\MeuValorLiquido.slnx` verde; evidencia de smoke manual/automatizado; documentacao atualizada quando houver entrega de produto.
+
+---
+
+## Sprint 47 - Hotfix de confianca e deploy (concluida)
+
+**Objetivo:** colocar em producao as correcoes encontradas na auditoria antes de ampliar escopo.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | `salario-liquido` desconta `OtherDiscounts` e mostra linha separada no extrato |
+| WebApp/Frontend | Radios de ferias, rescisao, hora extra, financiamento, FGTS, MEI e conversor com opcao padrao marcada |
+| QA/Test | Regressao de desconto extra + teste de radios padrao em `CalculatorFormFieldsTests` |
+| Infrastructure | Deploy na VPS em `/var/www/meu-valor-liquido` com rollback documentado |
+| Documentation | `CHANGELOG.md` atualizado com hotfix e resultado dos testes |
+
+**Criterios de aceite:**
+- Producao: salario R$ 4.000, VT R$ 240 e outros R$ 100 retorna liquido R$ 3.291,40.
+- Todas as 17 calculadoras conseguem submeter o formulario com valores default.
+- `dotnet test .\MeuValorLiquido.slnx` verde antes do deploy.
+
+**Validacao em 2026-06-17:**
+- `dotnet test .\MeuValorLiquido.slnx --no-restore` verde: 268 testes.
+- Producao `/health` retornou `Healthy`.
+- Producao `/calculadoras/salario-liquido` retornou R$ 3.291,40 no cenario de aceite.
+- Radios padrao confirmados em producao: ferias, rescisao, hora extra, financiamento, FGTS, MEI e conversor de salario.
+- Tentativa de SSH direto na VPS bloqueada por credenciais nesta maquina; deploy manual nao foi executado daqui, mas a producao ja esta servindo o commit `8d8acbf`.
+
+---
+
+## Sprint 48 - Suite de paridade fiscal/trabalhista (concluida)
+
+**Objetivo:** transformar a auditoria manual em protecao permanente contra regressao.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | `CalculatorBenchmarkCatalog` com entradas, esperado, tolerancia, fonte e data de calibracao |
+| QA/Test | 5 cenarios por slug nas 10 calculadoras prioritarias: salario liquido, bruto necessario, proposta, ferias, 13o, rescisao, INSS, IRRF, FGTS e hora extra |
+| SEO/Content | Lista de fontes em `/como-calculamos` com Planalto, DOU e referencias comerciais |
+| Documentation | Guia rapido para adicionar benchmark ao alterar formula |
+
+**Criterios de aceite:**
+- Benchmarks separados dos testes unitarios triviais.
+- Tolerancia documentada por tipo de calculadora.
+- Fontes oficiais linkadas quando a regra vier de lei/tabela.
+
+**Entregue em 2026-06-17:**
+- `CalculatorBenchmarkCatalog` com 50 cenarios fixos, 5 por slug prioritario.
+- Cobertura: salario liquido, salario bruto necessario, proposta salarial, ferias, 13o, rescisao CLT, INSS, IRRF, FGTS e hora extra.
+- `CalculatorBenchmarkCatalogTests` valida bruto, liquido, linhas criticas, tolerancia, fontes e cobertura minima.
+- `/como-calculamos` exibe fontes, quantidade de cenarios e data de calibracao.
+- Guia de manutencao atualizado em `docs/how-to-create-calculator.md`.
+
+---
+
+## Sprint 49 - UX de confianca nas calculadoras
+
+**Objetivo:** reduzir duvida do usuario e aumentar conversao/tempo de pagina sem poluir a tela.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Tooltips nos campos de maior impacto: dependentes, descontos, datas, aviso previo, FGTS, taxa, meses |
+| WebApp/Frontend | Avisos no painel de resultado para casos sensiveis: rescisao, ferias, PJ vs CLT, MEI acima do limite |
+| Backend/Calculators | Labels/field profiles normalizados para evitar ambiguidades como VT vs outros descontos |
+| QA/Test | Smoke visual/formulario das 17 calculadoras em desktop e mobile |
+| SEO/Content | Microcopy educativa curta, sem texto promocional em excesso |
+
+**Criterios de aceite:**
+- Usuario entende por que o resultado difere de holerite/TRCT.
+- Nenhum tooltip ou aviso quebra layout mobile.
+- PDF/share continuam sem anuncios e com disclaimers.
+
+---
+
+## Sprint 50 - Metodologia, E-E-A-T e conteudo de apoio
+
+**Objetivo:** reforcar autoridade para SEO e confianca, especialmente para AdSense.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | `/como-calculamos` com tabela de fontes, data da ultima calibracao e metodologia por categoria |
+| SEO/Content | Atualizacao dos artigos de salario liquido, INSS, IRRF, rescisao, ferias, FGTS e MEI |
+| Product Owner | Priorizacao de perguntas com maior intencao de busca e monetizacao |
+| WebApp/Frontend | Badge "Validado com cenarios de referencia" sem parecer selo oficial |
+| QA/Test | Testes de metadata, links internos e schema FAQ/Article |
+
+**Criterios de aceite:**
+- Conteudo deixa claro que e estimativa educativa, nao consultoria oficial.
+- Links internos conectam artigo -> calculadora -> metodologia.
+- Paginas legais e politicas permanecem acessiveis.
+
+---
+
+## Sprint 51 - Monetizacao AdSense sem dor de cabeca
+
+**Objetivo:** preparar e/ou ativar anuncios reais com baixo risco de politica, CLS e experiencia ruim.
+
+| Agent | Entregas |
+|-------|----------|
+| Monetization/AdSense | Revisao de `docs/ADSENSE_COMPLIANCE.md` e `docs/adsense-checklist.md` contra o estado atual |
+| WebApp/Frontend | Slots com dimensoes estaveis nas paginas de maior trafego e sem anuncios em PDF, email ou widget |
+| Security | CSP/cookie consent revisados para scripts de publicidade |
+| QA/Test | Testes de renderizacao de slots, embed sem anuncios e paginas legais |
+| Infrastructure | Configuracao por ambiente: ads off em dev/test, on apenas em producao |
+
+**Criterios de aceite:**
+- Sem layout shift agressivo.
+- Sem anuncios em superficies proibidas pelo proprio projeto.
+- Rollback simples por variavel de ambiente.
+
+---
+
+## Sprint 52 - Observabilidade, metricas e melhoria continua
+
+**Objetivo:** medir quais calculadoras geram valor e priorizar proximas melhorias com dados.
+
+| Agent | Entregas |
+|-------|----------|
+| Product Owner | Dashboard de priorizacao: top calculadoras, taxa de calculo, PDF/share/painel |
+| Infrastructure | Checklist pos-deploy e monitoramento basico de erros 500/404 |
+| QA/Test | Smoke automatizado periodico das 17 calculadoras em producao/staging |
+| SEO/Content | Revisao mensal de paginas com impressao alta e CTR baixo |
+| Documentation | Rotina de calibracao trimestral de tabelas e fontes |
+
+**Criterios de aceite:**
+- Decisoes de backlog baseadas em metricas agregadas sem PII.
+- Falhas de formulario/calculo viram alerta antes de afetar receita.
+- Proximo ciclo de sprints nasce dos dados, nao de achismo.
+
+---
+
+## Ordem recomendada pos-auditoria
+
+```
+47 (hotfix/deploy) -> 48 (paridade) -> 49 (UX confianca)
+                         -> 50 (metodologia/SEO) -> 51 (AdSense)
+                                                -> 52 (metricas continuas)
+```
+
+**Atalho pragmatico:** Sprint 47 deve ir antes de qualquer otimizacao de conteudo ou anuncios, porque confianca de calculo e fluxo funcionando sao pre-requisitos para monetizacao.
+
+---
+
 ### Checklist visual manual (390px / 1280px)
 
 Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost:8080`:

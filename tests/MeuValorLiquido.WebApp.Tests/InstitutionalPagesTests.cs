@@ -33,6 +33,18 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
+    public async Task Como_Calculamos_Should_Show_Benchmark_Sources()
+    {
+        var html = await client.GetStringAsync("/como-calculamos");
+
+        html.Should().Contain("Paridade automatizada");
+        html.Should().Contain("CalculatorBenchmarkCatalog");
+        html.Should().Contain(CalculatorBenchmarkCatalog.All.Count.ToString());
+        html.Should().Contain("Portaria Interministerial MPS/MF");
+        html.Should().Contain("CLT e criterios internos documentados");
+    }
+
+    [Fact]
     public async Task Ad_Slots_Should_Show_Placeholder_When_Ads_Disabled()
     {
         var html = await client.GetStringAsync("/calculadoras/salario-liquido");

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Planejamento pos-auditoria
+- Adicionada em `docs/sprint-plan.md` a trilha Sprints 47-52 para hotfix/deploy, paridade fiscal, UX de confianca, metodologia E-E-A-T, AdSense e observabilidade.
+
+### Sprint 47 - Hotfix de confianca e deploy
+- Sprint 47 marcada como concluida apos validacao local e smoke publico.
+- `dotnet test .\MeuValorLiquido.slnx --no-restore` verde com 268 testes.
+- Producao validada: `/health` Healthy, salario liquido R$ 4.000 + VT R$ 240 + outros R$ 100 = R$ 3.291,40, e radios padrao confirmados nas calculadoras afetadas.
+
 ### Auditoria de calculadoras e fluxo
 - Corrigido `salario-liquido`: o campo "Outros descontos" agora entra no calculo e aparece separado no extrato.
 - Corrigidos grupos de radio sem opcao padrao marcada em calculadoras como ferias, rescisao, hora extra, financiamento, FGTS, MEI e conversor de salario.

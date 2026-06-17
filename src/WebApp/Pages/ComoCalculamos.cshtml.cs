@@ -1,5 +1,3 @@
-using MeuValorLiquido.Modules.Calculators.Tax;
-
 namespace MeuValorLiquido.WebApp.Pages;
 
 public class ComoCalculamosModel : PageModel
@@ -14,6 +12,24 @@ public class ComoCalculamosModel : PageModel
 
     public IrrfBracket[] IrrfBrackets => BrTaxTables2026.IrrfBrackets;
 
+    public int BenchmarkScenarioCount => CalculatorBenchmarkCatalog.All.Count;
+
+    public IReadOnlyList<BenchmarkSourceSummary> BenchmarkSources =>
+        CalculatorBenchmarkCatalog.All
+            .GroupBy(scenario => new
+            {
+                scenario.SourceName,
+                scenario.SourceUrl,
+                scenario.CalibratedAt
+            })
+            .Select(group => new BenchmarkSourceSummary(
+                group.Key.SourceName,
+                group.Key.SourceUrl,
+                group.Key.CalibratedAt,
+                group.Count(),
+                string.Join(", ", group.Select(scenario => scenario.Slug).Distinct().OrderBy(slug => slug))))
+            .ToArray();
+
     public void OnGet()
     {
         SeoMetadataHelper.Apply(
@@ -24,3 +40,10 @@ public class ComoCalculamosModel : PageModel
                 "/como-calculamos"));
     }
 }
+
+public sealed record BenchmarkSourceSummary(
+    string SourceName,
+    string SourceUrl,
+    DateOnly CalibratedAt,
+    int ScenarioCount,
+    string CoveredSlugs);

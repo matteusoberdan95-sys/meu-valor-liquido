@@ -126,6 +126,41 @@
         </p>
     </section>
 
+    <section class="valora-stitch-metodologia-section">
+        <h2 class="valora-stitch-metodologia-section-title">Paridade automatizada</h2>
+        <p class="valora-stitch-metodologia-table-hint">
+            Mantemos @Model.BenchmarkScenarioCount cenários de referência em <code>CalculatorBenchmarkCatalog</code>,
+            cobrindo as 10 calculadoras prioritárias com tolerância documentada.
+        </p>
+
+        <div class="valora-stitch-metodologia-table-card">
+            <div class="valora-stitch-metodologia-table-head">Fontes e calibração</div>
+            <div class="valora-stitch-metodologia-table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fonte</th>
+                            <th>Cenários</th>
+                            <th>Calibrado em</th>
+                            <th>Calculadoras cobertas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var source in Model.BenchmarkSources)
+                        {
+                            <tr>
+                                <td><a href="@source.SourceUrl" rel="nofollow noopener" target="_blank">@source.SourceName</a></td>
+                                <td>@source.ScenarioCount</td>
+                                <td>@source.CalibratedAt.ToString("dd/MM/yyyy")</td>
+                                <td>@source.CoveredSlugs</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section class="valora-stitch-metodologia-section valora-stitch-metodologia-principles">
         <h2 class="valora-stitch-metodologia-section-title">Princípios e limitações</h2>
         <ul class="valora-stitch-metodologia-list">
