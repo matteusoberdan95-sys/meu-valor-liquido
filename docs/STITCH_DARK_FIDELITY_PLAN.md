@@ -10,8 +10,8 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | Sprint | Escopo | Status |
 |--------|--------|--------|
 | **39** | Fundação dark: tokens, shell, brand, home base | Concluída |
-| **40** | Shell compartilhado + home polish (footer, forms, blog cards) | Pendente |
-| **41** | Central de calculadoras (hub mobile + desktop) | Pendente |
+| **40** | Shell compartilhado + home polish (footer, forms, blog cards) | Concluída |
+| **41** | Central de calculadoras (hub mobile + desktop) | Concluída |
 | **42** | Template calculadora detail (17 slugs) | Pendente |
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Pendente |
 | **44** | FAQ, blog, artigo, metodologia | Pendente |
@@ -22,10 +22,10 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 
 | Pasta Stitch | Breakpoint | Rota WebApp | Sprint | Status |
 |--------------|------------|-------------|--------|--------|
-| `home_mobile` | mobile | `/` | 39–40 | Em progresso |
-| `home_desktop_dark_premium` | desktop | `/` | 39–40 | Em progresso |
-| `central_de_calculadoras_mobile` | mobile | `/calculadoras` | 41 | Pendente |
-| `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 41 | Pendente |
+| `home_mobile` | mobile | `/` | 39–40 | Concluída |
+| `home_desktop_dark_premium` | desktop | `/` | 39–40 | Concluída |
+| `central_de_calculadoras_mobile` | mobile | `/calculadoras` | 41 | Concluída |
+| `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 41 | Concluída |
 | `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 42 | Pendente |
 | `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Pendente |
 | `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Pendente |

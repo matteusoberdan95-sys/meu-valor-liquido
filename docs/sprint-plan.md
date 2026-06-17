@@ -208,7 +208,7 @@
 
 ---
 
-## Sprint 40 — Shell compartilhado e home polish
+## Sprint 40 — Shell compartilhado e home polish (concluída)
 
 **Objetivo:** componentes globais dark em **todas** as páginas; home com paridade total aos mocks.
 
@@ -216,22 +216,23 @@
 |-------|----------|
 | Frontend | Footer dark multi-coluna (Produtos / Legal / redes); form cards, inputs, radio choices, result panel |
 | Frontend | Blog cards na home com imagem, badge de categoria e tempo de leitura |
-| Frontend | Ad slot horizontal dark; remover `#fff` hardcoded restantes em `site.css` |
-| QA | Smoke das rotas institucionais com tema dark consistente |
+| Frontend | Ad slot horizontal dark (desktop); teaser oculto no mobile; tokens teal unificados |
+| QA | 244 testes verdes |
 
-**Referência Stitch:** `home_mobile` (footer, blog), `home_desktop_dark_premium` (ad slot, bento expandido)
+**Referência Stitch:** `home_mobile` (footer, blog), `home_desktop_dark_premium` (ad slot)
 
 ---
 
-## Sprint 41 — Central de calculadoras
+## Sprint 41 — Central de calculadoras (concluída)
 
 **Objetivo:** hub `/calculadoras` idêntico ao Stitch mobile e desktop.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | Grid bento com badges (Mais Usada, Novo layout); filtros/chips dark; busca no header desktop |
-| Frontend | `_CalculadoraHubCard` com glass card, hover e ícones coloridos |
-| QA | Smoke `/calculadoras` + filtros por categoria |
+| Frontend | Mobile: busca, chips horizontais, cards em linha com badge + chevron, CTA sugerir |
+| Frontend | Desktop: hero, sidebar com categorias e contagem, grid 3 colunas, featured + CTA |
+| Frontend | `_CalculadoraHubRowCard` (mobile) e `_CalculadoraHubCard` redesenhado (desktop) |
+| QA | `GoLiveSmokeTests` hub verde (121 testes WebApp) |
 
 **Referência Stitch:** `central_de_calculadoras_mobile`, `central_de_calculadoras_desktop`
 
@@ -323,7 +324,7 @@
 37 (benchmark suite) — após 31–33, expandir até 38
 38 (UX polish) — último ou intercalado a cada 2 sprints
 
-39 (fundação dark) ✓ → 40 (shell) → 41 (hub) → 42 (template calc)
+39 (fundação dark) ✓ → 40 (shell) ✓ → 41 (hub) ✓ → 42 (template calc)
                                               ↘
                                     43 (rescisão/PJ×CLT)
 40 → 44 (conteúdo) — paralelo após 40

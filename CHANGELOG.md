@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Sprint 41 — Central de calculadoras dark
+- Hub mobile com busca, chips, lista horizontal e CTA de sugestão
+- Hub desktop com sidebar de categorias, grid 3 colunas e card featured
+- Cards `_CalculadoraHubRowCard` e `_CalculadoraHubCard` no padrão Stitch
+
+### Sprint 40 — Shell dark e home polish
+- Footer multi-coluna (Produtos / Legal / ícones sociais)
+- Blog cards na home com imagem, badge e tempo de leitura
+- Form cards, inputs, choices e botões alinhados ao Premium Liquid
+- Ad slot dark no desktop; teaser oculto no mobile
+
 ### Sprint 39 — Dark Premium Liquid (fundação)
 - Tema dark Premium Liquid: tokens, Plus Jakarta Sans, header/bottom nav glass
 - Brand mark Stitch (ícone + wordmark); home mobile e desktop alinhada aos mocks

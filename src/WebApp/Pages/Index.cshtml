@@ -138,13 +138,10 @@
                 <h2 class="valora-stitch-section-title">Últimas do Blog</h2>
                 <a class="valora-stitch-link" asp-page="/Blog/Index">Ver blog</a>
             </div>
-            <div class="valora-stitch-articles">
+            <div class="valora-stitch-home-blog-feed">
                 @foreach (var post in Model.RecentPosts.Take(3))
                 {
-                    <a class="valora-stitch-article-card" asp-page="/Blog/Post" asp-route-slug="@post.Slug">
-                        <h3 class="valora-stitch-article-title">@post.Title</h3>
-                        <p class="valora-stitch-article-summary">@post.Summary</p>
-                    </a>
+                    <partial name="Shared/_HomeStitchBlogCard" model="post" />
                 }
             </div>
         </section>

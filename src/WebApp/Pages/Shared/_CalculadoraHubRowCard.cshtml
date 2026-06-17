@@ -1,0 +1,19 @@
+@model CalculatorDefinition
+
+<a class="valora-stitch-hub-row-card" asp-page="/Calculadoras/Details" asp-route-slug="@Model.Slug">
+    <div class="valora-stitch-hub-row-main">
+        <div class="valora-stitch-hub-icon @CalculatorUiHelper.GetHubIconBgClass(Model.Category, Model.Slug)">
+            <span class="material-symbols-outlined" aria-hidden="true">@CalculatorUiHelper.GetIcon(Model.Slug)</span>
+        </div>
+        <div class="valora-stitch-hub-row-copy">
+            <h3 class="valora-stitch-hub-row-title">@Model.Name</h3>
+            <p class="valora-stitch-hub-row-summary">@Model.Summary</p>
+        </div>
+    </div>
+    <div class="valora-stitch-hub-row-meta">
+        <span class="valora-stitch-hub-row-badge @CalculatorUiHelper.GetHubCategoryBadgeClass(Model.Category)">
+            @Model.Category
+        </span>
+        <span class="material-symbols-outlined valora-stitch-hub-row-chevron" aria-hidden="true">chevron_right</span>
+    </div>
+</a>

@@ -93,6 +93,13 @@ public static class CalculatorUiHelper
                 _ => "valora-hub-icon-bg--financeiro"
             };
 
+    public static string GetHubCategoryBadgeClass(string category) => category.ToLowerInvariant() switch
+    {
+        "fiscal" => "valora-stitch-hub-row-badge--fiscal",
+        "financeiro" => "valora-stitch-hub-row-badge--financeiro",
+        _ => "valora-stitch-hub-row-badge--trabalhista"
+    };
+
     public static string GetHubCardTag(string slug) => slug.ToLowerInvariant() switch
     {
         "pj-vs-clt" => "Novo layout",

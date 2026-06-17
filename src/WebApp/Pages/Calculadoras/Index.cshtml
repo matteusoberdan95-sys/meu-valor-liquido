@@ -1,30 +1,34 @@
 @page "/calculadoras"
 @model MeuValorLiquido.WebApp.Pages.Calculadoras.IndexModel
 @{
-    ViewData["Title"] = "Central de Ferramentas e Cálculos";
+    ViewData["Title"] = "Central de Calculadoras";
     ViewData["Description"] = "Simuladores trabalhistas, fiscais e financeiros atualizados com as regras vigentes.";
     ViewData["CanonicalPath"] = "/calculadoras";
     ViewData["BottomNavTab"] = "calc";
     var showFullHub = string.IsNullOrWhiteSpace(Model.Category)
         && string.IsNullOrWhiteSpace(Model.Query)
         && Model.FeaturedCalculator is not null;
+    var mobileSecondary = showFullHub
+        ? Model.Calculators.Where(c => Model.PopularCalculators.All(p => !p.Slug.Equals(c.Slug, StringComparison.OrdinalIgnoreCase))).ToList()
+        : Model.Calculators.ToList();
 }
 
 <div class="valora-stitch-calc-hub">
-    <section class="valora-stitch-calc-hero">
-        <div class="valora-stitch-calc-hero-copy">
-            <span class="valora-stitch-pill valora-stitch-pill--trabalhista">Ferramentas profissionais</span>
-            <h1 class="valora-stitch-calc-title">Central de Ferramentas e Cálculos</h1>
-            <p class="valora-stitch-calc-lead">
-                Planeje sua carreira com precisão. Simuladores completos atualizados com as regras vigentes para CLT, PJ, MEI e muito mais.
-            </p>
-        </div>
-        <div class="valora-stitch-calc-hero-visual" aria-hidden="true">
-            <span class="material-symbols-outlined">laptop_mac</span>
-        </div>
-    </section>
+    <form class="valora-stitch-calc-search" method="get" asp-page="/Calculadoras/Index" role="search">
+        <span class="material-symbols-outlined valora-stitch-calc-search-icon" aria-hidden="true">search</span>
+        <input type="search"
+               name="q"
+               value="@Model.Query"
+               class="valora-stitch-calc-search-input"
+               placeholder="Buscar calculadora..."
+               aria-label="Buscar calculadoras" />
+        @if (!string.IsNullOrWhiteSpace(Model.Category))
+        {
+            <input type="hidden" name="categoria" value="@Model.Category" />
+        }
+    </form>
 
-    <div class="valora-stitch-calc-filters" aria-label="Filtrar por categoria">
+    <div class="valora-stitch-calc-filters valora-stitch-calc-filters--scroll" aria-label="Filtrar por categoria">
         <a class="valora-stitch-filter-chip @(string.IsNullOrEmpty(Model.Category) ? "active" : "")"
            asp-page="/Calculadoras/Index" asp-route-q="@Model.Query">
             Todas
@@ -49,63 +53,149 @@
     {
         <p class="valora-text-muted">Nenhuma calculadora encontrada. <a asp-page="/Calculadoras/Index">Ver todas</a></p>
     }
-    else if (showFullHub)
-    {
-        <div class="valora-stitch-calc-bento">
-            <article class="valora-stitch-calc-featured">
-                <div class="valora-stitch-calc-featured-accent" aria-hidden="true"></div>
-                <div class="valora-stitch-calc-featured-body">
-                    <div class="valora-stitch-calc-featured-main">
-                        <div class="valora-stitch-calc-featured-head">
-                            <span class="material-symbols-outlined valora-bento-icon--trabalhista" aria-hidden="true">payments</span>
-                            <span class="valora-stitch-calc-badge-popular">Mais utilizada</span>
-                        </div>
-                        <h2 class="valora-stitch-calc-featured-title">@Model.FeaturedCalculator!.Name</h2>
-                        <p class="valora-stitch-calc-featured-summary">@Model.FeaturedCalculator.Summary</p>
-                        <ul class="valora-stitch-calc-checks">
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> INSS</li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> IRRF</li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> FGTS</li>
-                            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> VT/VR</li>
-                        </ul>
-                        <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline"
-                           asp-page="/Calculadoras/Details" asp-route-slug="@Model.FeaturedCalculator.Slug">
-                            Acessar calculadora
-                            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-                        </a>
-                    </div>
-                    <span class="material-symbols-outlined valora-stitch-calc-featured-watermark" aria-hidden="true">calculate</span>
-                </div>
-            </article>
-
-            <div class="valora-stitch-calc-ad" role="complementary" aria-label="Espaço publicitário">
-                <span class="valora-stitch-ad-label">Espaço publicitário</span>
-                <div class="valora-stitch-calc-ad-body">
-                    <span class="material-symbols-outlined" aria-hidden="true">ads_click</span>
-                </div>
-                <p class="valora-stitch-calc-ad-note">Apoie o desenvolvimento de ferramentas gratuitas.</p>
-            </div>
-
-            @foreach (var calculator in Model.HubSecondaryCalculators)
-            {
-                <partial name="Shared/_CalculadoraHubCard" model="calculator" />
-            }
-        </div>
-
-        <div class="valora-stitch-calc-disclaimer">
-            <span class="material-symbols-outlined" aria-hidden="true">info</span>
-            <p>
-                <strong>Isenção de responsabilidade:</strong> Os cálculos têm caráter informativo e educacional. Para decisões críticas, consulte um contador ou o RH da sua organização.
-            </p>
-        </div>
-    }
     else
     {
-        <div class="valora-stitch-calc-list">
-            @foreach (var calculator in Model.Calculators)
+        <div class="valora-stitch-calc-mobile">
+            @if (showFullHub && Model.PopularCalculators.Count > 0)
             {
-                <partial name="Shared/_CalculadoraHubCard" model="calculator" />
+                <section class="valora-stitch-calc-mobile-section">
+                    <h2 class="valora-stitch-calc-section-label">Populares</h2>
+                    <div class="valora-stitch-calc-row-list">
+                        @foreach (var calculator in Model.PopularCalculators)
+                        {
+                            <partial name="Shared/_CalculadoraHubRowCard" model="calculator" />
+                        }
+                    </div>
+                </section>
             }
+
+            @if (!showFullHub || mobileSecondary.Count > 0)
+            {
+                <section class="valora-stitch-calc-mobile-section">
+                    @if (showFullHub)
+                    {
+                        <h2 class="valora-stitch-calc-section-label">Todas as ferramentas</h2>
+                    }
+                    <div class="valora-stitch-calc-row-list">
+                        @foreach (var calculator in showFullHub ? mobileSecondary : Model.Calculators)
+                        {
+                            <partial name="Shared/_CalculadoraHubRowCard" model="calculator" />
+                        }
+                    </div>
+                </section>
+            }
+
+            <section class="valora-stitch-calc-mobile-cta">
+                <div class="valora-stitch-calc-mobile-cta-inner">
+                    <h2 class="valora-stitch-calc-mobile-cta-title">Não encontrou?</h2>
+                    <p class="valora-stitch-calc-mobile-cta-text">Sugira uma nova calculadora e ajude a comunidade a crescer.</p>
+                    <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline" asp-page="/Contato">Sugerir calculadora</a>
+                </div>
+                <span class="material-symbols-outlined valora-stitch-calc-mobile-cta-icon" aria-hidden="true">add_task</span>
+            </section>
+        </div>
+
+        <div class="valora-stitch-calc-desktop">
+            <section class="valora-stitch-calc-hero">
+                <div class="valora-stitch-calc-hero-copy">
+                    <h1 class="valora-stitch-calc-title">Central de Calculadoras</h1>
+                    <p class="valora-stitch-calc-lead">
+                        Ferramentas precisas para planejar sua vida financeira e entender seu valor real no mercado brasileiro.
+                    </p>
+                </div>
+            </section>
+
+            <div class="valora-stitch-calc-layout">
+                <aside class="valora-stitch-calc-sidebar" aria-label="Categorias">
+                    <div class="valora-stitch-calc-sidebar-card">
+                        <h2 class="valora-stitch-calc-sidebar-title">Categorias</h2>
+                        <ul class="valora-stitch-calc-sidebar-list">
+                            <li>
+                                <a class="valora-stitch-calc-sidebar-link @(string.IsNullOrEmpty(Model.Category) ? "active" : "")"
+                                   asp-page="/Calculadoras/Index" asp-route-q="@Model.Query">
+                                    <span>Todas</span>
+                                    <span class="valora-stitch-calc-sidebar-count">@Model.TotalCount</span>
+                                </a>
+                            </li>
+                            @foreach (var category in Model.Categories)
+                            {
+                                var count = Model.CategoryCounts.TryGetValue(category, out var categoryCount) ? categoryCount : 0;
+                                <li>
+                                    <a class="valora-stitch-calc-sidebar-link @(Model.Category == category ? "active" : "")"
+                                       asp-page="/Calculadoras/Index" asp-route-categoria="@category" asp-route-q="@Model.Query">
+                                        <span>@category</span>
+                                        <span class="valora-stitch-calc-sidebar-count">@count</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="valora-stitch-calc-sidebar-promo">
+                        <h3 class="valora-stitch-calc-sidebar-promo-title">Espaço do Especialista</h3>
+                        <p class="valora-stitch-calc-sidebar-promo-text">Aprenda a otimizar seus cálculos com nosso guia de metodologia.</p>
+                        <a class="valora-stitch-link" asp-page="/ComoCalculamos">
+                            Ver metodologia
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                        </a>
+                        <span class="material-symbols-outlined valora-stitch-calc-sidebar-promo-icon" aria-hidden="true">description</span>
+                    </div>
+                </aside>
+
+                <div class="valora-stitch-calc-main">
+                    @if (showFullHub)
+                    {
+                        <div class="valora-stitch-calc-bento">
+                            <article class="valora-stitch-calc-featured">
+                                <div class="valora-stitch-calc-featured-body">
+                                    <div class="valora-stitch-calc-featured-main">
+                                        <div class="valora-stitch-calc-featured-head">
+                                            <div class="valora-bento-icon-box valora-bento-icon-box--trabalhista">
+                                                <span class="material-symbols-outlined valora-stitch-bento-icon" aria-hidden="true">payments</span>
+                                            </div>
+                                            <span class="valora-stitch-calc-badge-popular">Mais utilizada</span>
+                                        </div>
+                                        <h2 class="valora-stitch-calc-featured-title">@Model.FeaturedCalculator!.Name</h2>
+                                        <p class="valora-stitch-calc-featured-summary">@Model.FeaturedCalculator.Summary</p>
+                                        <a class="valora-stitch-hub-card-cta valora-stitch-hub-card-cta--featured"
+                                           asp-page="/Calculadoras/Details" asp-route-slug="@Model.FeaturedCalculator.Slug">
+                                            <span>Acessar calculadora</span>
+                                            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            @foreach (var calculator in Model.HubSecondaryCalculators)
+                            {
+                                <partial name="Shared/_CalculadoraHubCard" model="calculator" />
+                            }
+
+                            <div class="valora-stitch-calc-cta-card">
+                                <span class="material-symbols-outlined valora-stitch-calc-cta-card-icon" aria-hidden="true">rocket_launch</span>
+                                <h3 class="valora-stitch-calc-cta-card-title">Precisa de mais?</h3>
+                                <p class="valora-stitch-calc-cta-card-text">Fale conosco para sugerir novas ferramentas ou tirar dúvidas sobre os cálculos.</p>
+                                <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline" asp-page="/Contato">Fale conosco</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="valora-stitch-calc-list">
+                            @foreach (var calculator in Model.Calculators)
+                            {
+                                <partial name="Shared/_CalculadoraHubCard" model="calculator" />
+                            }
+                        </div>
+                    }
+
+                    <div class="valora-stitch-calc-disclaimer">
+                        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                        <p>
+                            <strong>Isenção de responsabilidade:</strong> Os cálculos têm caráter informativo e educacional. Para decisões críticas, consulte um contador ou o RH da sua organização.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     }
 </div>

@@ -1,0 +1,29 @@
+@model MeuValorLiquido.Modules.Content.BlogPost
+@{
+    var readingMinutes = BlogContentHelper.EstimateReadingMinutes(Model.Content);
+    var badgeClass = BlogContentHelper.GetCategoryBadgeClass(Model.Category);
+    var heroModel = new BlogHeroVisualModel(
+        Model.Slug,
+        Model.Title,
+        Model.Category,
+        "valora-stitch-home-blog-media",
+        Decorative: true,
+        ShowCategoryBadge: false);
+}
+
+<a class="valora-stitch-home-blog-card"
+   asp-page="/Blog/Post"
+   asp-route-slug="@Model.Slug">
+    <div class="valora-stitch-home-blog-media-wrap">
+        <partial name="Shared/_BlogStitchHeroVisual" model="heroModel" />
+        <span class="valora-stitch-home-blog-badge @badgeClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
+    </div>
+    <div class="valora-stitch-home-blog-body">
+        <h3 class="valora-stitch-home-blog-title">@Model.Title</h3>
+        <p class="valora-stitch-home-blog-summary">@Model.Summary</p>
+        <div class="valora-stitch-home-blog-reading">
+            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+            <span>@readingMinutes min de leitura</span>
+        </div>
+    </div>
+</a>

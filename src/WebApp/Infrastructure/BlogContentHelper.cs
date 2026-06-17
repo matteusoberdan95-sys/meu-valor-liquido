@@ -11,6 +11,14 @@ public static class BlogContentHelper
 
     public static string GetCategoryLabel(string? category) => category ?? "Geral";
 
+    public static string GetCategoryBadgeClass(string? category) =>
+        category?.ToLowerInvariant() switch
+        {
+            "fiscal" => "valora-stitch-home-blog-badge--fiscal",
+            "financeiro" => "valora-stitch-home-blog-badge--financeiro",
+            _ => "valora-stitch-home-blog-badge--trabalhista"
+        };
+
     public static string GetCategoryTextClass(string? category) =>
         category?.ToLowerInvariant() switch
         {
