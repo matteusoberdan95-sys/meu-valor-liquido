@@ -63,6 +63,14 @@ builder.Services.AddOutputCache(options =>
 builder.Services.AddSingleton<SitemapXmlCache>();
 builder.Services.AddRazorPages();
 builder.Services.AddProblemDetails();
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    var dataProtectionKeys = new DirectoryInfo(
+        Path.Combine(AppContext.BaseDirectory, "data-protection-keys"));
+    builder.Services.AddDataProtection()
+        .PersistKeysToFileSystem(dataProtectionKeys);
+}
+
 builder.Services.AddAntiforgery();
 builder.Services.AddRateLimiter(options =>
 {

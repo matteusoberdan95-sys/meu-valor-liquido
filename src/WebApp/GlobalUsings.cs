@@ -20,6 +20,7 @@ global using MeuValorLiquido.Shared.Seo;
 global using MeuValorLiquido.WebApp.Data;
 global using MeuValorLiquido.WebApp.Data.Entities;
 global using MeuValorLiquido.WebApp.Infrastructure;
+global using Microsoft.AspNetCore.DataProtection;
 global using Microsoft.AspNetCore.HttpOverrides;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.RazorPages;

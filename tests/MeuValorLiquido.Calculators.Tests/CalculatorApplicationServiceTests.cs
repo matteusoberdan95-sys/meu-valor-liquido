@@ -26,6 +26,24 @@ public class CalculatorApplicationServiceTests
         result.Value.LegalDisclaimer.Should().Contain("estimado");
     }
 
+    [Fact]
+    public void NetSalary_Should_Subtract_Other_Discounts()
+    {
+        var withoutOtherDiscounts = service.Calculate(
+            "salario-liquido",
+            new CalculatorInput(4000m, Dependents: 0, TransportDiscount: 240m));
+        var withOtherDiscounts = service.Calculate(
+            "salario-liquido",
+            new CalculatorInput(4000m, Dependents: 0, TransportDiscount: 240m, OtherDiscounts: 100m));
+
+        withoutOtherDiscounts.IsSuccess.Should().BeTrue();
+        withOtherDiscounts.IsSuccess.Should().BeTrue();
+        withOtherDiscounts.Value.LineItems.Single(item => item.Label == "Outros descontos").Amount.Amount
+            .Should().Be(100m);
+        withOtherDiscounts.Value.EstimatedNetAmount.Amount
+            .Should().Be(withoutOtherDiscounts.Value.EstimatedNetAmount.Amount - 100m);
+    }
+
     [Theory]
     [InlineData("ferias")]
     [InlineData("decimo-terceiro")]

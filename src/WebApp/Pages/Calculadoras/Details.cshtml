@@ -173,11 +173,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
                                 {
                                     var optionId = $"Input_TerminationReason_{option.Value}";
+                                    var isTerminationReasonChecked = option.Value == ((int)Model.Input.TerminationReason).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.TerminationReason"
+                                               name="Input.TerminationReason"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isTerminationReasonChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }
@@ -355,11 +357,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.TerminationReason>())
                                 {
                                     var optionId = $"Input_TerminationReason_fgts_{option.Value}";
+                                    var isFgtsTerminationReasonChecked = option.Value == ((int)Model.Input.TerminationReason).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.TerminationReason"
+                                               name="Input.TerminationReason"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isFgtsTerminationReasonChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }
@@ -375,11 +379,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.SalaryConversionBasis>())
                                 {
                                     var optionId = $"Input_SalaryBasis_{option.Value}";
+                                    var isSalaryBasisChecked = option.Value == ((int)Model.Input.SalaryBasis).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.SalaryBasis"
+                                               name="Input.SalaryBasis"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isSalaryBasisChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }
@@ -394,11 +400,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.FinancingAmortizationSystem>())
                                 {
                                     var optionId = $"Input_FinancingAmortization_{option.Value}";
+                                    var isFinancingAmortizationChecked = option.Value == ((int)Model.Input.FinancingAmortization).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.FinancingAmortization"
+                                               name="Input.FinancingAmortization"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isFinancingAmortizationChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }
@@ -414,11 +422,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.Tax.MeiActivityType>())
                                 {
                                     var optionId = $"Input_MeiActivity_{option.Value}";
+                                    var isMeiActivityChecked = option.Value == ((int)Model.Input.MeiActivity).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.MeiActivity"
+                                               name="Input.MeiActivity"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isMeiActivityChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }
@@ -617,11 +627,13 @@ else
                                 @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.OvertimeShiftType>())
                                 {
                                     var optionId = $"Input_OvertimeShiftType_{option.Value}";
+                                    var isOvertimeShiftTypeChecked = option.Value == ((int)Model.Input.OvertimeShiftType).ToString();
                                     <label class="valora-choice" for="@optionId">
                                         <input type="radio"
-                                               asp-for="Input.OvertimeShiftType"
+                                               name="Input.OvertimeShiftType"
                                                id="@optionId"
-                                               value="@option.Value" />
+                                               value="@option.Value"
+                                               checked="@isOvertimeShiftTypeChecked" />
                                         <span class="valora-choice-text">@option.Text</span>
                                     </label>
                                 }

@@ -55,13 +55,15 @@ public sealed class CalculationEngine
         var breakdown = netSalaryCalculator.Calculate(
             input.Amount,
             input.Dependents,
-            input.TransportDiscount);
+            input.TransportDiscount,
+            otherDiscounts: input.OtherDiscounts);
 
         return Build(definition, breakdown.Gross, breakdown.Net,
         [
             Discount("INSS", breakdown.Inss),
             Discount("IRRF", breakdown.Irrf),
-            Discount("Vale-transporte/outros descontos", breakdown.TransportDiscount)
+            Discount("Vale-transporte", breakdown.TransportDiscount),
+            Discount("Outros descontos", breakdown.OtherDiscounts)
         ], "Salário líquido com INSS progressivo e IRRF com redução legal de " + BrTaxTables2026.Year + ".");
     }
 

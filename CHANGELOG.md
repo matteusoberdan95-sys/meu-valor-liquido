@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Auditoria de calculadoras e fluxo
+- Corrigido `salario-liquido`: o campo "Outros descontos" agora entra no calculo e aparece separado no extrato.
+- Corrigidos grupos de radio sem opcao padrao marcada em calculadoras como ferias, rescisao, hora extra, financiamento, FGTS, MEI e conversor de salario.
+- Testes WebApp passam a usar chaves de Data Protection locais no ambiente `Testing`, evitando falha por acesso ao perfil do usuario.
+- Regressoes adicionadas para desconto extra no salario liquido e opcoes padrao dos formularios.
+
 ### Sprint 46 — Polish final dark (trilha Stitch concluída)
 - Página 404 (`/NotFound`) com layout `valora-stitch-error`, bento de atalhos e re-execução via `StatusCodePages`
 - Página 500 (`/Error`) no mesmo padrão visual com ID de requisição

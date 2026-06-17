@@ -11,11 +11,13 @@
             @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.VacationDayOption>())
             {
                 var optionId = $"Input_VacationDayOption_{option.Value}";
+                var isVacationDayOptionChecked = option.Value == ((int)Model.Input.VacationDayOption).ToString();
                 <label class="valora-choice" for="@optionId">
                     <input type="radio"
-                           asp-for="Input.VacationDayOption"
+                           name="Input.VacationDayOption"
                            id="@optionId"
-                           value="@option.Value" />
+                           value="@option.Value"
+                           checked="@isVacationDayOptionChecked" />
                     <span class="valora-choice-text">@option.Text</span>
                 </label>
             }
