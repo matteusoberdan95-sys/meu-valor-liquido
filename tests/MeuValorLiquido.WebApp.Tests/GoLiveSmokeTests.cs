@@ -220,6 +220,40 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Error_Page_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/Error");
+
+        html.Should().Contain("valora-stitch-error");
+        html.Should().Contain("Erro 500");
+        html.Should().Contain("valora-stitch-error-grid");
+        html.Should().Contain("noindex,nofollow");
+    }
+
+    [Fact]
+    public async Task NotFound_Page_Should_Match_Stitch_Layout()
+    {
+        var response = await client.GetAsync("/salario-liquido/3333");
+        var html = await response.Content.ReadAsStringAsync();
+
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.NotFound);
+        html.Should().Contain("valora-stitch-error");
+        html.Should().Contain("Erro 404");
+        html.Should().Contain("saiu da rota");
+        html.Should().Contain("Central de ajuda");
+    }
+
+    [Fact]
+    public async Task Header_Should_Include_Desktop_Search_Pill()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain("valora-nav-search");
+        html.Should().Contain("valora-nav-search-input");
+        html.Should().Contain("Buscar calculadora...");
+    }
+
+    [Fact]
     public async Task Home_Should_Send_Security_Headers()
     {
         var response = await client.GetAsync("/");

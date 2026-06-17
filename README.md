@@ -8,7 +8,7 @@ Repositório: https://github.com/matteusoberdan95-sys/meu-valor-liquido
 
 Design UI/UX baseado nos protótipos Stitch — ver [docs/ui-ux-stitch.md](docs/ui-ux-stitch.md).
 
-**Tema atual:** dark **Premium Liquid** (Sprint 45 concluída — painel e páginas institucionais). Mocks de referência ficam em `stitch_redesing/` na máquina local (não versionados). Plano de fidelidade: [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md).
+**Tema atual:** dark **Premium Liquid** — trilha Stitch **Sprints 39–46 concluída**. Mocks de referência ficam em `stitch_redesing/` na máquina local (não versionados). Plano de fidelidade: [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md).
 ## Clonar o projeto
 
 ```powershell

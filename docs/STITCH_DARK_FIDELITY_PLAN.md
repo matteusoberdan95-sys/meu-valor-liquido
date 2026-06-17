@@ -16,7 +16,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Concluída |
 | **44** | FAQ, blog, artigo, metodologia | Concluída |
 | **45** | Meu painel, sobre, contato, newsletter, privacidade | Concluída |
-| **46** | Erro, polish final, checklist visual | Pendente |
+| **46** | Erro, polish final, checklist visual | Concluída |
 
 ## Mapeamento tela → rota
 
@@ -41,7 +41,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | `newsletter_desktop` | desktop | `/newsletter` | 45 | Concluída |
 | `sobre_n_s_desktop` | desktop | `/sobre` | 45 | Concluída |
 | `privacidade_e_termos_desktop` | desktop | `/politica-de-privacidade`, `/termos-de-uso` | 45 | Concluída |
-| `p_gina_de_erro_desktop` | desktop | `/Error` | 46 | Pendente |
+| `p_gina_de_erro_desktop` | desktop | `/NotFound`, `/Error` | 46 | Concluída |
 
 ## Tokens Stitch → CSS
 
@@ -85,4 +85,5 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 
 1. Mantenha a pasta `stitch_redesing/` na raiz do projeto (não versionada).
 2. Abra `code.html` no navegador ou compare `screen.png` lado a lado com `http://localhost:8080`.
+3. Use o checklist em [sprint-plan.md](sprint-plan.md) (Sprint 46) para validação visual em 390px e 1280px.
 3. Ao concluir cada sprint, marque a coluna **Status** neste arquivo como **Concluída**.

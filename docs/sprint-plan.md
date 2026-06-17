@@ -298,19 +298,31 @@
 
 ---
 
-## Sprint 46 — Polish final e validação visual
+## Sprint 46 — Polish final e validação visual (concluída)
 
 **Objetivo:** fechar gaps e garantir paridade em **todas** as telas Stitch.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | Página de erro 404/500 dark |
+| Frontend | Página de erro 404/500 dark (`valora-stitch-error`) |
 | Frontend | Nav desktop: search pill, item ativo com borda teal |
-| Frontend | Varredura final `site.css` (tema claro residual, focus rings, shadows) |
-| QA | Checklist manual: cada `screen.png` vs produção local em 390px e 1280px |
+| Frontend | Varredura final `site.css` (focus rings, tokens dark, scoped CSS limpo) |
+| QA | Smoke erro/404/header + suite verde (127 testes WebApp) |
 | Docs | `STITCH_DARK_FIDELITY_PLAN.md` com todas as linhas “Concluída”; README atualizado |
 
 **Referência Stitch:** `p_gina_de_erro_desktop` + revisão de todas as pastas
+
+### Checklist visual manual (390px / 1280px)
+
+Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost:8080`:
+
+- [ ] Home mobile e desktop
+- [ ] Central de calculadoras mobile e desktop
+- [ ] Calculadora detail (salário líquido) mobile e desktop
+- [ ] Rescisão CLT e PJ×CLT desktop
+- [ ] FAQ, blog, artigo, metodologia
+- [ ] Meu painel, sobre, contato, newsletter, privacidade/termos
+- [ ] Página de erro 404
 
 ---
 

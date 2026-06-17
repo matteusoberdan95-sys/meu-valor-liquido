@@ -53,17 +53,27 @@
         <div class="valora-container valora-header-inner">
             <partial name="Shared/_BrandMark" />
             <nav class="valora-nav-desktop" aria-label="Principal">
-                <ul class="valora-nav">
-                    <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
-                    <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
-                    <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
-                    <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
-                    <li>
-                        <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
-                            Meu painel
-                        </a>
-                    </li>
-                </ul>
+                <div class="valora-header-desktop">
+                    <ul class="valora-nav">
+                        <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
+                        <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                        <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
+                        <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
+                        <li>
+                            <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
+                                Meu painel
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="valora-nav-search" method="get" asp-page="/Calculadoras/Index" role="search">
+                        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                        <input type="search"
+                               name="q"
+                               class="valora-nav-search-input"
+                               placeholder="Buscar calculadora..."
+                               aria-label="Buscar calculadoras" />
+                    </form>
+                </div>
             </nav>
             <button class="valora-nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-nav-toggle>
                 <span class="material-symbols-outlined">menu</span>

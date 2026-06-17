@@ -1,29 +1,27 @@
-﻿@page
-@model MeuValorLiquido.WebApp.Pages.ErrorModel
+@page
+@model MeuValorLiquido.WebApp.Pages.NotFoundModel
 @{
-    ViewData["Title"] = "Erro no servidor";
-    ViewData["Description"] = "Ocorreu um erro ao processar sua solicitação.";
+    ViewData["Title"] = Model.IsNotFound ? "Página não encontrada" : "Erro";
+    ViewData["Description"] = Model.Lead;
     ViewData["Robots"] = SeoMetadataHelper.NoIndexRobots;
 }
 
 <div class="valora-stitch-error">
     <div class="valora-stitch-error-inner">
-        <span class="valora-stitch-error-badge">Erro 500 • Falha no servidor</span>
+        <span class="valora-stitch-error-badge">@Model.BadgeText</span>
 
         <h1 class="valora-stitch-error-title">
-            Algo deu errado <span class="valora-stitch-error-title-accent">no processamento.</span>
+            @if (Model.IsNotFound)
+            {
+                <text>Ops, o seu cálculo <span class="valora-stitch-error-title-accent">saiu da rota.</span></text>
+            }
+            else
+            {
+                <text>Algo impediu <span class="valora-stitch-error-title-accent">esta página de carregar.</span></text>
+            }
         </h1>
 
-        <p class="valora-stitch-error-lead">
-            Não foi possível concluir sua solicitação. Tente novamente em instantes ou volte para uma das páginas abaixo.
-        </p>
-
-        @if (Model.ShowRequestId)
-        {
-            <p class="valora-stitch-error-request-id">
-                <strong>ID da requisição:</strong> <code>@Model.RequestId</code>
-            </p>
-        }
+        <p class="valora-stitch-error-lead">@Model.Lead</p>
 
         <div class="valora-stitch-error-grid">
             <a class="valora-stitch-error-card" asp-page="/Index">
@@ -50,14 +48,14 @@
                 </span>
             </a>
 
-            <a class="valora-stitch-error-card" asp-page="/Contato">
+            <a class="valora-stitch-error-card" asp-page="/Duvidas/Index">
                 <span class="valora-stitch-error-card-icon valora-stitch-error-card-icon--secondary">
-                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">help</span>
                 </span>
-                <h2>Contato</h2>
-                <p>Reporte o problema se ele continuar acontecendo.</p>
+                <h2>Central de ajuda</h2>
+                <p>Tire dúvidas ou reporte um problema técnico.</p>
                 <span class="valora-stitch-error-card-link valora-stitch-error-card-link--secondary">
-                    Enviar mensagem
+                    Obter suporte
                     <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                 </span>
             </a>
@@ -68,7 +66,7 @@
                 <span class="material-symbols-outlined valora-stitch-error-footer-bg">data_alert</span>
                 <span class="material-symbols-outlined valora-stitch-error-footer-accent">electrical_services</span>
             </div>
-            <p>Liquid Value Ecosystem • Server Error 500</p>
+            <p>Liquid Value Ecosystem • Connection Error @Model.DisplayStatusCode</p>
         </div>
     </div>
 </div>

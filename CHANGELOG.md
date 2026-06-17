@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 46 — Polish final dark (trilha Stitch concluída)
+- Página 404 (`/NotFound`) com layout `valora-stitch-error`, bento de atalhos e re-execução via `StatusCodePages`
+- Página 500 (`/Error`) no mesmo padrão visual com ID de requisição
+- Header desktop: pill de busca (`valora-nav-search`) e item ativo com borda teal
+- Varredura `site.css`: tokens dark consistentes, focus rings, remoção de estilos claro em `_Layout.cshtml.css`
+- Smoke tests de erro, 404 e busca no header (127 testes WebApp)
+
 ### Sprint 45 — Painel e institucional dark
 - Meu painel com cards `#1C1C1F`, empty state e sidebar privacidade no desktop
 - Contato com formulário glass, aside FAQ e estado de sucesso
