@@ -6,7 +6,9 @@ Plataforma brasileira de calculadoras trabalhistas, fiscais e financeiras para a
 
 Repositório: https://github.com/matteusoberdan95-sys/meu-valor-liquido
 
-Design UI/UX baseado nos protótipos Stitch em `stitch_meu_valor_l_quido_ui_ux/` — ver [docs/ui-ux-stitch.md](docs/ui-ux-stitch.md).
+Design UI/UX baseado nos protótipos Stitch — ver [docs/ui-ux-stitch.md](docs/ui-ux-stitch.md).
+
+**Tema atual:** dark **Premium Liquid** (Sprint 39 concluída). Mocks de referência ficam em `stitch_redesing/` na máquina local (não versionados). Plano de fidelidade: [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md).
 ## Clonar o projeto
 
 ```powershell
@@ -54,7 +56,8 @@ dotnet test .\MeuValorLiquido.slnx
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) (Sprint 30 concluída; deploy após sprints)
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — motor: Sprint 31 concluída, próxima 32 (holerite); visual dark: Sprint 39 concluída, próxima 40 (shell)
+- **Redesign dark Stitch:** [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md) (Sprints 39–46)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
 
 ## Arquitetura

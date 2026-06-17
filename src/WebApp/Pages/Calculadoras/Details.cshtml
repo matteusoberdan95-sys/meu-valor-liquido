@@ -205,6 +205,17 @@ else
                                         <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
                                     </div>
                                 }
+                                @if (profile.ShowThirteenthAdvance)
+                                {
+                                    <div style="grid-column: 1 / -1;">
+                                        <label asp-for="Input.ThirteenthAdvancePaid" class="valora-label">@profile.ThirteenthAdvancePaidLabel</label>
+                                        <div class="valora-input-prefix">
+                                            <span class="valora-prefix">R$</span>
+                                            <input asp-for="Input.ThirteenthAdvancePaid" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                                        </div>
+                                        <p class="valora-helper">Valor já recebido como adiantamento da 1ª parcela do 13º no ano.</p>
+                                    </div>
+                                }
                             </div>
                         </details>
                     }
@@ -216,6 +227,7 @@ else
                                 @profile.LayeredOptionalSectionLabel
                             </summary>
                             <div class="valora-form-row" style="margin-top: 1rem;">
+                                <partial name="Shared/_VacationAdvancedOptions" model="Model" />
                                 <div>
                                     <label asp-for="Input.Dependents" class="valora-label">@profile.DependentsLabel</label>
                                     <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
@@ -443,7 +455,22 @@ else
                         <div>
                             <label asp-for="Input.Months" class="valora-label">@profile.MonthsLabel</label>
                             <input asp-for="Input.Months" class="valora-input" type="text" data-mask="integer" data-max-length="3" inputmode="numeric" placeholder="12" />
-                            <p class="valora-helper">Conte da data de admissão até a rescisão. Ex.: junho a agosto = 3 meses (não 10).</p>
+                            @if (profile.ShowVacationOptions)
+                            {
+                                <p class="valora-helper">12 meses = férias integrais. Com datas de admissão e saída, os meses são calculados automaticamente.</p>
+                            }
+                            else if (isRescisaoCalculator)
+                            {
+                                <p class="valora-helper">Conte da data de admissão até a rescisão. Ex.: junho a agosto = 3 meses (não 10).</p>
+                            }
+                            else if (calculatorSlug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <p class="valora-helper">Avos trabalhados no ano (regra dos 15 dias). Use as datas ou informe manualmente.</p>
+                            }
+                            else
+                            {
+                                <p class="valora-helper">Conte da data de admissão até a rescisão. Ex.: junho a agosto = 3 meses (não 10).</p>
+                            }
                         </div>
                     }
                     @if (profile.ShowAdmissionMonth)

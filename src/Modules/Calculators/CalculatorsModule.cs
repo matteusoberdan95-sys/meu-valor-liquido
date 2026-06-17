@@ -88,7 +88,11 @@ public sealed record CalculatorInput(
     SalaryConversionBasis SalaryBasis = SalaryConversionBasis.Monthly,
     MeiActivityType MeiActivity = MeiActivityType.CommerceOrIndustry,
     FinancingAmortizationSystem FinancingAmortization = FinancingAmortizationSystem.Price,
-    bool IrrfFromGrossSalary = false);
+    bool IrrfFromGrossSalary = false,
+    VacationDayOption VacationDayOption = VacationDayOption.Automatic,
+    bool SellVacationAllowance = false,
+    bool DoubleVacationPayment = false,
+    decimal ThirteenthAdvancePaid = 0m);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 
@@ -151,6 +155,10 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.OtherDiscounts)
             .GreaterThanOrEqualTo(0)
             .WithMessage("Outros descontos não podem ser negativos.");
+
+        RuleFor(input => input.ThirteenthAdvancePaid)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O adiantamento do 13º não pode ser negativo.");
 
         RuleFor(input => input.MonthsSinceLastVacation)
             .InclusiveBetween(0, 12)

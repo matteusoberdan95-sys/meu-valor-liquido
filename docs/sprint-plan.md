@@ -45,6 +45,304 @@
 
 ---
 
+## Meta: ser referência no nicho (Sprints 31–38)
+
+**North star:** resultado **confiável** (paridade com sites líderes ±R$ 1–5), **UX que o usuário entende** (poucos campos essenciais, detalhes opcionais, resultado resumido primeiro) e **transparência** (metodologia, faixas, avisos contextuais).
+
+**Trilhas paralelas:**
+- **Sprints 31–38** — excelência das 17 calculadoras (motor + UX funcional)
+- **Sprints 39–46** — redesign dark Premium Liquid (fidelidade visual Stitch)
+- **Sprint 20** — AdSense pós-aprovação Google (quando a conta for aprovada)
+
+**Agents por sprint:**
+
+| Agent | Responsabilidade |
+|-------|------------------|
+| **Backend/Calculators** | Motor, regras CLT/fiscal, calibração, novos campos |
+| **WebApp/Frontend** | Formulário em camadas, tooltips, resultado agrupado, mobile |
+| **QA/Test** | Benchmark de paridade, regressão, smoke WebApp |
+| **SEO/Content** | FAQ, metodologia, artigos cruzados, JSON-LD |
+
+**Definition of Done (todas):** `dotnet test` verde; cenários de benchmark documentados; `CHANGELOG.md` + este arquivo atualizados.
+
+---
+
+## Sprint 31 — Férias e 13º nível referência (concluída)
+
+**Objetivo:** cobrir modos que sites líderes oferecem e que ainda faltavam no motor.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | Abono pecuniário, 1ª/2ª parcela do 13º, adiantamento, dias 20/30/automático, férias em dobro |
+| Frontend | Accordion com opções de férias e adiantamento do 13º; tooltips nos campos de meses |
+| QA | 10 cenários em `Sprint31FeatureTests` |
+| SEO | FAQ dedicado em férias e 13º com links cruzados |
+
+---
+
+## Sprint 32 — Holerite completo (salário líquido, bruto necessário, proposta)
+
+**Objetivo:** paridade total entre as três calculadoras de holerite — mesmo conjunto de descontos, mesmo extrato.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | VT, VR/VA e plano de saúde em campos separados; pensão alimentícia (% ou valor); isenção IRRF (faixa 2026); bruto necessário com faixa (“entre R$ X e Y”) |
+| Frontend | Camada essencial (bruto) + “Ajustar descontos”; resultado agrupado nas três; proposta com destaque “ganho no bolso” vs “% no bruto” |
+| QA | Paridade salário líquido ↔ bruto necessário (ida e volta); proposta com 4 cenários |
+| SEO | Atualizar artigos “salário líquido” e “proposta salarial” |
+
+---
+
+## Sprint 33 — Rescisão: lacunas legais e confiança
+
+**Objetivo:** fechar gaps que ainda separam o resultado de sites especializados em rescisão.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | Seguro-desemprego (informativo, demissão sem justa causa); adiantamento de 13º já pago; média salarial com HE/comissão (campo opcional); regra dos 15 dias em férias na rescisão (auditoria) |
+| Frontend | Avisos contextuais **no painel de resultado** (não só na explicação); ícones `(i)` nos campos que mais mudam o valor |
+| QA | Expandir `CalculatorBenchmarkTests` para 15+ cenários rescisão (incl. experiência, aposentadoria, acordo 484-A) |
+| SEO | Seção em `/como-calculamos` só para rescisão; disclaimer TRCT/holerite |
+
+---
+
+## Sprint 34 — PJ×CLT e MEI profundos
+
+**Objetivo:** comparador que responde “vale a pena ser PJ?” com a mesma profundidade dos concorrentes.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | Anexo Simples (I–V) com alíquota sugerida; pró-labore editável (%); benefícios CLT em valor (13º, férias+1/3, FGTS) como “custo oculto”; MEI: limite anual, DAS por atividade, alerta de teto |
+| Frontend | Wizard PJ×CLT passo 4 opcional “benefícios”; MEI com faturamento anual acumulado; links cruzados PJ ↔ MEI ↔ custo funcionário |
+| QA | 6 cenários PJ×CLT documentados; MEI no limite vs. abaixo do teto |
+| SEO | FAQ “PJ ou CLT”; artigo MEI atualizado |
+
+---
+
+## Sprint 35 — Hora extra e FGTS integrados
+
+**Objetivo:** ferramentas trabalhistas complementares alinhadas à rescisão e ao holerite.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | HE: quantidades por tipo (50%, 100%, noturna); modo “calcular hora pelo salário” como padrão; DSR explícito no extrato. FGTS: motivos iguais à rescisão; saldo × multa × valor sacável separados |
+| Frontend | Formulário por blocos (jornada → horas → resultado); FGTS com resultado em 3 linhas (depósito, multa, saque) |
+| QA | HE: Súmula 172 TST em 5 cenários; FGTS: multa 40%/20%/0% por motivo |
+| SEO | Links hora extra → rescisão (“média salarial”) |
+
+---
+
+## Sprint 36 — Financeiras avançadas (juros e financiamento)
+
+**Objetivo:** igualar calculadoras financeiras de referência (investimentos e crédito).
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | Juros: taxa anual **ou** mensal com conversão; tabela mês a mês (últimos 12 + totais). Financiamento: entrada + valor financiado; CET aproximado (informativo) |
+| Frontend | Toggle taxa anual/mensal; tabela responsiva pós-cálculo; comparativo Price×SAC já existente mantido |
+| QA | Juros: aporte + taxa anual vs. mensal; financiamento: entrada 20% + CET ordem de grandeza |
+| SEO | FAQ juros compostos e financiamento |
+
+---
+
+## Sprint 37 — Suite de paridade automatizada
+
+**Objetivo:** **não regredir** — qualquer mudança futura passa por benchmark contra referências externas.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend | Arquivo `CalculatorBenchmarkCatalog.cs` com cenários nomeados por slug (entrada + valor esperado + tolerância + fonte) |
+| QA | Mínimo **5 cenários/slug** nas 10 calculadoras prioritárias; job CI opcional `benchmark` |
+| Frontend | Badge “Validado com cenários de referência” em `/como-calculamos` |
+| SEO | Página metodologia com tabela de fontes e data da última calibração |
+
+**Calculadoras prioritárias:** rescisão, salário líquido, férias, 13º, INSS, IRRF, PJ×CLT, hora extra, FGTS, financiamento.
+
+---
+
+## Sprint 38 — UX referência (polish transversal)
+
+**Objetivo:** sensação de produto premium em **todas** as calculadoras.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Accordion “Ajustar detalhes” padronizado nas 17; tooltips `(i)` nos 20 campos de maior impacto; warnings pós-cálculo em rescisão, PJ×CLT e holerite |
+| Backend | Normalização de labels via `CalculatorFieldProfile`; mensagens de validação em linguagem simples |
+| QA | `GoLiveSmokeTests` + snapshot de formulário das 17 slugs |
+| SEO | BreadcrumbList JSON-LD nas calculadoras; revisão title/description por slug |
+
+---
+
+## Meta: Dark Premium Liquid (Sprints 39–46)
+
+**Objetivo:** fidelidade visual **igual aos mocks** do Stitch dark (`stitch_redesing/stitch_meu_valor_l_quido_dark_redesign/`), sem Tailwind CDN — tokens mapeados para `--valora-*` em `site.css`.
+
+**Trilha paralela** às Sprints 31–38 (motor/UX de calculadoras). Os mocks ficam **apenas na máquina local** (pasta `stitch_redesing/` no `.gitignore`).
+
+**Documentação:** [docs/STITCH_DARK_FIDELITY_PLAN.md](STITCH_DARK_FIDELITY_PLAN.md) · [docs/STITCH_DARK_REDESIGN_PROMPT.md](STITCH_DARK_REDESIGN_PROMPT.md)
+
+**Agents por sprint:**
+
+| Agent | Responsabilidade |
+|-------|------------------|
+| **WebApp/Frontend** | Portar `code.html` → Razor; CSS em `site.css`; comparar com `screen.png` |
+| **QA/Test** | `GoLiveSmokeTests`, `BrandAssetsTests`, smoke visual por rota |
+| **SEO/Content** | Metadados e JSON-LD inalterados; revisar contraste e legibilidade |
+
+**Definition of Done (cada sprint dark):** comparar **390px** e **1280px** com `screen.png`; `dotnet test` verde; `CHANGELOG.md` + este arquivo + `STITCH_DARK_FIDELITY_PLAN.md` atualizados.
+
+---
+
+## Sprint 39 — Fundação dark Premium Liquid (concluída)
+
+**Objetivo:** trocar o tema claro pelo design system dark e alinhar shell + home aos mocks.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Tokens `Premium Liquid` em `:root`; Plus Jakarta Sans; header/bottom nav glass; brand mark ícone + wordmark |
+| Frontend | Home: hero mobile (`Educação Financeira`, glow) e desktop (split); bento com icon boxes; CTA com glow |
+| QA | `BrandAssetsTests` atualizado para brand Stitch; suite completa verde |
+| Docs | `STITCH_DARK_FIDELITY_PLAN.md`, sprints 39–46 neste arquivo, README |
+
+**Referência Stitch:** `home_mobile`, `home_desktop_dark_premium`, `premium_liquid/DESIGN.md`
+
+---
+
+## Sprint 40 — Shell compartilhado e home polish
+
+**Objetivo:** componentes globais dark em **todas** as páginas; home com paridade total aos mocks.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Footer dark multi-coluna (Produtos / Legal / redes); form cards, inputs, radio choices, result panel |
+| Frontend | Blog cards na home com imagem, badge de categoria e tempo de leitura |
+| Frontend | Ad slot horizontal dark; remover `#fff` hardcoded restantes em `site.css` |
+| QA | Smoke das rotas institucionais com tema dark consistente |
+
+**Referência Stitch:** `home_mobile` (footer, blog), `home_desktop_dark_premium` (ad slot, bento expandido)
+
+---
+
+## Sprint 41 — Central de calculadoras
+
+**Objetivo:** hub `/calculadoras` idêntico ao Stitch mobile e desktop.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Grid bento com badges (Mais Usada, Novo layout); filtros/chips dark; busca no header desktop |
+| Frontend | `_CalculadoraHubCard` com glass card, hover e ícones coloridos |
+| QA | Smoke `/calculadoras` + filtros por categoria |
+
+**Referência Stitch:** `central_de_calculadoras_mobile`, `central_de_calculadoras_desktop`
+
+---
+
+## Sprint 42 — Template calculadora (detail)
+
+**Objetivo:** layout padrão dark para **todas** as 17 calculadoras via partials compartilhados.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Split desktop: formulário (8 col) + resultado sticky (4 col); mobile: stack com total em destaque |
+| Frontend | Inputs `#121214`, foco teal, accordion “Ajustar detalhes” dark; valor líquido com glow emerald |
+| Frontend | Salário líquido como referência; demais slugs herdam o template |
+| QA | Snapshot HTML das 17 slugs; smoke cálculo + resultado |
+
+**Referência Stitch:** `calculadora_de_sal_rio_l_quido_mobile`, `calculadora_de_sal_rio_l_quido_desktop`
+
+---
+
+## Sprint 43 — Calculadoras prioritárias dark
+
+**Objetivo:** telas complexas com layout próprio no Stitch.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Rescisão CLT desktop (wizard/seções, warnings no painel) |
+| Frontend | Comparador PJ×CLT desktop (wizard 3–4 passos dark) |
+| Frontend | Refino mobile: férias, 13º, INSS, IRRF |
+| QA | Smoke rescisão + PJ×CLT; regressão visual |
+
+**Referência Stitch:** `calculadora_de_rescis_o_desktop`, `comparador_clt_vs_pj_desktop`
+
+---
+
+## Sprint 44 — Conteúdo e ajuda
+
+**Objetivo:** FAQ, blog e metodologia no tema dark.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | FAQ mobile (accordion) + desktop (sidebar + categorias) |
+| Frontend | Blog hub (cards com imagem) e artigo (hero, TOC, newsletter inline) |
+| Frontend | Metodologia `/como-calculamos` com badges e tabelas dark |
+| SEO | Revisar contraste WCAG AA em textos longos |
+
+**Referência Stitch:** `faq_mobile`, `faq_desktop`, `blog_desktop`, `artigo_do_blog_desktop`, `metodologia_desktop`
+
+---
+
+## Sprint 45 — Painel e institucional
+
+**Objetivo:** páginas de suporte e conversão no dark.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Meu painel mobile + desktop (cards de simulação, empty state) |
+| Frontend | Sobre, contato, newsletter com formulários dark |
+| Frontend | Privacidade e termos (layout legível, índice lateral desktop) |
+| QA | Smoke formulários contato/newsletter |
+
+**Referência Stitch:** `meu_painel_mobile`, `meu_painel_desktop`, `sobre_n_s_desktop`, `contato_desktop`, `newsletter_desktop`, `privacidade_e_termos_desktop`
+
+---
+
+## Sprint 46 — Polish final e validação visual
+
+**Objetivo:** fechar gaps e garantir paridade em **todas** as telas Stitch.
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Página de erro 404/500 dark |
+| Frontend | Nav desktop: search pill, item ativo com borda teal |
+| Frontend | Varredura final `site.css` (tema claro residual, focus rings, shadows) |
+| QA | Checklist manual: cada `screen.png` vs produção local em 390px e 1280px |
+| Docs | `STITCH_DARK_FIDELITY_PLAN.md` com todas as linhas “Concluída”; README atualizado |
+
+**Referência Stitch:** `p_gina_de_erro_desktop` + revisão de todas as pastas
+
+---
+
+## Ordem recomendada e dependências
+
+```
+31 (férias/13º) → 32 (holerite) → 33 (rescisão refinamento)
+                              ↘
+34 (PJ/MEI) ← 32              35 (HE/FGTS)
+36 (financeiras) — paralelo
+37 (benchmark suite) — após 31–33, expandir até 38
+38 (UX polish) — último ou intercalado a cada 2 sprints
+
+39 (fundação dark) ✓ → 40 (shell) → 41 (hub) → 42 (template calc)
+                                              ↘
+                                    43 (rescisão/PJ×CLT)
+40 → 44 (conteúdo) — paralelo após 40
+45 (institucional) — após 40
+46 (polish) — após 41–45
+```
+
+**Estimativa calculadoras:** 8 sprints (31–38) ≈ 8–12 semanas com 1 dev.  
+**Estimativa dark:** 8 sprints (39–46) ≈ 6–10 semanas; Sprints 40 e 44 podem rodar em paralelo após a 39.
+
+**Deploy:** adiar até concluir trilha desejada (mínimo 39–42 para experiência dark nas calculadoras principais).
+
+**O que NÃO entra (evitar scope creep):**
+- CCT específica por sindicato (só % editável)
+- Integração eSocial / TRCT oficial
+- App mobile nativo
+
+---
+
 ## Sprint 21–26 — Fidelidade Stitch (Sprint 26 concluída)
 
 **Entregas:** shell, home, central calculadoras, calculadora detail, comparador CLT×PJ, FAQ hub, blog hub/artigo, metodologia, meu painel e polish desktop (≥992px).

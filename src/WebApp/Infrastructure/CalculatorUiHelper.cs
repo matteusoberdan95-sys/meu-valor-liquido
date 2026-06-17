@@ -60,6 +60,17 @@ public static class CalculatorUiHelper
                 _ => "valora-stitch-bento-card--financeiro"
             };
 
+    public static string GetBentoIconBoxClass(string category, string slug) =>
+        slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
+            ? "valora-bento-icon-box--primary"
+            : category.ToLowerInvariant() switch
+            {
+                "trabalhista" => "valora-bento-icon-box--trabalhista",
+                "fiscal" => "valora-bento-icon-box--fiscal",
+                "financeiro" => "valora-bento-icon-box--financeiro",
+                _ => "valora-bento-icon-box--financeiro"
+            };
+
     public static string GetBentoIconColorClass(string category, string slug) =>
         slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
             ? "valora-bento-icon--warning"

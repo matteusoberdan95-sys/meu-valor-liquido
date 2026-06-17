@@ -6,8 +6,8 @@ public static class CalculatorSeedData
         Create("salario-liquido", "Salário líquido", "Trabalhista", "Estime quanto sobra do salário após INSS, IRRF e descontos comuns."),
         CreateRequiredGrossSalary(),
         CreateSalaryProposal(),
-        Create("ferias", "Férias", "Trabalhista", "Calcule uma estimativa de férias com adicional constitucional de um terço."),
-        Create("decimo-terceiro", "Décimo terceiro", "Trabalhista", "Estime o décimo terceiro proporcional ou integral com descontos."),
+        CreateVacation(),
+        CreateThirteenth(),
         Create("rescisao-clt", "Rescisão CLT", "Trabalhista", "Simule todos os tipos de desligamento: demissão, pedido de demissão, acordo 484-A e justa causa."),
         Create("hora-extra", "Hora extra", "Trabalhista", "Calcule horas extras com adicional de CCT, jornada semanal, turno noturno e DSR."),
         Create("inss", "INSS", "Fiscal", "Estime o desconto de INSS pela tabela progressiva oficial de 2026 (Portaria MPS/MF nº 13)."),
@@ -102,5 +102,51 @@ public static class CalculatorSeedData
                 new FaqItem(
                     "Como compartilhar com meu gestor?",
                     "Após calcular, use WhatsApp, copiar link ou baixar PDF. O link reproduz a mesma simulação sem salvar dados no servidor.")
+            ]);
+
+    private static CalculatorDefinition CreateVacation() =>
+        new(
+            "ferias",
+            "Férias",
+            "Trabalhista",
+            "Calcule férias integrais ou proporcionais com 1/3 constitucional, abono pecuniário e descontos de INSS e IRRF.",
+            "Calculadora de férias CLT com 1/3 e abono | Meu Valor Líquido",
+            "Estime férias gozadas ou proporcionais, abono pecuniário (venda de 1/3), férias em dobro e líquido após INSS/IRRF 2026.",
+            [
+                new FaqItem(
+                    "O que é abono pecuniário?",
+                    "É a conversão de até 1/3 dos dias de férias em dinheiro. Você goza o restante e recebe o abono junto com as férias + 1/3."),
+                new FaqItem(
+                    "Férias proporcionais usam quantos meses?",
+                    "Informe os meses trabalhados ou as datas de admissão e saída. Cada mês completo ou fração acima de 15 dias conta como avo."),
+                new FaqItem(
+                    "Quando as férias são pagas em dobro?",
+                    "Quando o empregador atrasa a concessão além do prazo legal. A calculadora dobra férias + 1/3 como estimativa educativa."),
+                new FaqItem(
+                    "Como isso se relaciona com a rescisão?",
+                    "Na rescisão, férias proporcionais e vencidas entram nas verbas. Use a <a href=\"/calculadoras/rescisao-clt\">calculadora de rescisão</a> para o pacote completo.")
+            ]);
+
+    private static CalculatorDefinition CreateThirteenth() =>
+        new(
+            "decimo-terceiro",
+            "Décimo terceiro",
+            "Trabalhista",
+            "Estime o 13º proporcional com 1ª e 2ª parcela, adiantamento já pago e descontos de INSS e IRRF.",
+            "Calculadora de décimo terceiro 2026 | Meu Valor Líquido",
+            "Simule 13º salário proporcional, parcelas de novembro e dezembro, adiantamento e líquido com tabelas 2026.",
+            [
+                new FaqItem(
+                    "Como funciona a 1ª e a 2ª parcela?",
+                    "A 1ª parcela (até 30/11) costuma ser 50% do 13º sem descontos. A 2ª parcela recebe INSS e IRRF sobre o valor integral do 13º."),
+                new FaqItem(
+                    "O que é adiantamento do 13º?",
+                    "Algumas empresas pagam parte do 13º antes de novembro. Informe o valor já recebido para estimar o que ainda falta no ano."),
+                new FaqItem(
+                    "Quantos avos são considerados?",
+                    "Cada mês trabalhado no ano vale 1/12. A regra dos 15 dias também se aplica quando você informa datas completas."),
+                new FaqItem(
+                    "O 13º na rescisão é o mesmo cálculo?",
+                    "A lógica de avos é parecida, mas na rescisão entram outras verbas. Confira na <a href=\"/calculadoras/rescisao-clt\">calculadora de rescisão CLT</a>.")
             ]);
 }

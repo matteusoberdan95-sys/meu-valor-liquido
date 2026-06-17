@@ -165,48 +165,14 @@ public sealed class CalculationEngine
 
     private CalculationResult CalculateVacation(CalculatorDefinition definition, CalculatorInput input)
     {
-        var months = Math.Clamp(input.Months, 1, 12);
-        var salaryBase = input.Amount * months / 12m;
-        var vacationBonus = salaryBase / 3m;
-        var gross = salaryBase + vacationBonus;
-        var inss = inssCalculator.Calculate(gross);
-        var irrf = irrfCalculator.Calculate(gross - inss, input.Dependents);
-        var net = gross - inss - irrf;
-
-        var lines = new List<CalculationLineItem>
-        {
-            Income("Adicional de 1/3", vacationBonus),
-            Discount("INSS", inss),
-            Discount("IRRF", irrf)
-        };
-
-        if (months < 12)
-        {
-            lines.Insert(0, CountInformation("Meses de férias proporcionais", months));
-            lines.Insert(0, Income("Férias proporcionais", salaryBase));
-        }
-
-        var explanation = months < 12
-            ? $"Férias proporcionais ({months}/12) com 1/3 constitucional e descontos de INSS e IRRF ({BrTaxTables2026.Year})."
-            : $"Férias gozadas: salário + 1/3 constitucional com descontos de INSS e IRRF ({BrTaxTables2026.Year}).";
-
-        return Build(definition, gross, net, lines, explanation);
+        var result = VacationCalculator.Calculate(input, inssCalculator, irrfCalculator);
+        return Build(definition, result.Gross, result.Net, result.Lines, result.Explanation);
     }
 
     private CalculationResult CalculateThirteenthSalary(CalculatorDefinition definition, CalculatorInput input)
     {
-        var months = Math.Clamp(input.Months, 1, 12);
-        var gross = input.Amount * months / 12m;
-        var inss = inssCalculator.Calculate(gross);
-        var irrf = irrfCalculator.Calculate(gross - inss, input.Dependents);
-        var net = gross - inss - irrf;
-
-        return Build(definition, gross, net,
-        [
-            CountInformation("Meses considerados", months),
-            Discount("INSS", inss),
-            Discount("IRRF", irrf)
-        ], "Décimo terceiro proporcional. INSS e IRRF calculados separadamente sobre a verba, conforme regra previdenciária.");
+        var result = ThirteenthSalaryCalculator.Calculate(input, inssCalculator, irrfCalculator);
+        return Build(definition, result.Gross, result.Net, result.Lines, result.Explanation);
     }
 
     private CalculationResult CalculateTermination(CalculatorDefinition definition, CalculatorInput input)

@@ -36,25 +36,46 @@
 <div class="valora-stitch-home">
     <section class="valora-stitch-hero valora-stitch-hero--split">
         <div class="valora-stitch-hero-content">
-            <span class="valora-stitch-pill">Simulador 2026 atualizado</span>
-            <h1 class="valora-stitch-hero-title">Entenda quanto sobra de verdade no seu bolso</h1>
-            <p class="valora-stitch-hero-lead">
-                Cálculos precisos de salário líquido, férias, rescisão e impostos para CLT, PJ e MEI.
-            </p>
-            <div class="valora-stitch-hero-actions">
-                <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
-                    <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
-                    Simular salário líquido
-                </a>
-                <a class="valora-stitch-btn valora-stitch-btn--outline" asp-page="/Calculadoras/Details" asp-route-slug="rescisao-clt">
-                    <span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>
-                    Cálculo de rescisão
-                </a>
+            <div class="valora-stitch-hero-mobile">
+                <span class="valora-stitch-pill">
+                    <span class="valora-stitch-pill-dot" aria-hidden="true"></span>
+                    Educação Financeira
+                </span>
+                <h1 class="valora-stitch-hero-title">
+                    Domine sua <span class="valora-text-glow">Liberdade</span> Financeira.
+                </h1>
+                <p class="valora-stitch-hero-lead">
+                    Calculadoras precisas e insights profundos para quem busca clareza nos números.
+                </p>
+                <div class="valora-stitch-hero-actions valora-stitch-hero-actions--mobile">
+                    <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
+                        Começar Cálculo
+                        <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
+                    </a>
+                </div>
             </div>
-            <div class="valora-stitch-trust-row">
-                <span><span class="material-symbols-outlined" aria-hidden="true">verified</span> Gratuito</span>
-                <span><span class="material-symbols-outlined" aria-hidden="true">smartphone</span> Mobile-first</span>
-                <span><span class="material-symbols-outlined" aria-hidden="true">school</span> Educativo</span>
+            <div class="valora-stitch-hero-desktop">
+                <span class="valora-stitch-pill valora-stitch-pill--desktop">Simulador 2026 atualizado</span>
+                <h1 class="valora-stitch-hero-title">
+                    Entenda quanto você recebe, quanto <span class="valora-text-glow">desconta</span> e quanto sobra.
+                </h1>
+                <p class="valora-stitch-hero-lead">
+                    Simplificamos a complexidade tributária brasileira com cálculos precisos e ferramentas intuitivas para sua vida financeira.
+                </p>
+                <div class="valora-stitch-hero-actions">
+                    <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
+                        <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                        Calcular Salário Líquido
+                    </a>
+                    <a class="valora-stitch-btn valora-stitch-btn--outline" asp-page="/Calculadoras/Index">
+                        Ver todas as calculadoras
+                    </a>
+                </div>
+                <div class="valora-stitch-trust-row">
+                    <span><span class="material-symbols-outlined" aria-hidden="true">verified</span> Gratuito</span>
+                    <span><span class="material-symbols-outlined" aria-hidden="true">smartphone</span> Mobile-first</span>
+                    <span><span class="material-symbols-outlined" aria-hidden="true">school</span> Educativo</span>
+                </div>
             </div>
         </div>
         <div class="valora-stitch-hero-visual-wrap" aria-hidden="true">
@@ -75,7 +96,10 @@
 
     <section class="valora-stitch-section">
         <div class="valora-stitch-section-head">
-            <h2 class="valora-stitch-section-title">Calculadoras</h2>
+            <h2 class="valora-stitch-section-title">
+                <span class="valora-stitch-section-title-mobile">Top Cálculos</span>
+                <span class="valora-stitch-section-title-desktop">Principais Calculadoras</span>
+            </h2>
             <a class="valora-stitch-link" asp-page="/Calculadoras/Index">Ver todas</a>
         </div>
         <div class="valora-stitch-bento">
@@ -83,7 +107,7 @@
             {
                 <a class="valora-stitch-bento-card @CalculatorUiHelper.GetBentoAccentClass(calculator.Category, calculator.Slug)"
                    asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
-                    <div class="@CalculatorUiHelper.GetBentoIconColorClass(calculator.Category, calculator.Slug)">
+                    <div class="valora-bento-icon-box @CalculatorUiHelper.GetBentoIconBoxClass(calculator.Category, calculator.Slug)">
                         <span class="material-symbols-outlined valora-stitch-bento-icon" aria-hidden="true">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
                     </div>
                     <h3 class="valora-stitch-bento-title">@calculator.Name</h3>
@@ -111,7 +135,7 @@
     {
         <section class="valora-stitch-section valora-stitch-section--articles">
             <div class="valora-stitch-section-head">
-                <h2 class="valora-stitch-section-title">Últimos artigos</h2>
+                <h2 class="valora-stitch-section-title">Últimas do Blog</h2>
                 <a class="valora-stitch-link" asp-page="/Blog/Index">Ver blog</a>
             </div>
             <div class="valora-stitch-articles">

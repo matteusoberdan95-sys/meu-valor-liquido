@@ -1,0 +1,39 @@
+@model MeuValorLiquido.WebApp.Pages.Calculadoras.DetailsModel
+@{
+    var profile = Model.FieldProfile;
+}
+
+@if (profile.ShowVacationOptions)
+{
+    <div style="grid-column: 1 / -1;">
+        <span class="valora-label">@profile.VacationDayOptionLabel</span>
+        <div class="valora-choice-group" role="radiogroup" aria-label="@profile.VacationDayOptionLabel">
+            @foreach (var option in Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.VacationDayOption>())
+            {
+                var optionId = $"Input_VacationDayOption_{option.Value}";
+                <label class="valora-choice" for="@optionId">
+                    <input type="radio"
+                           asp-for="Input.VacationDayOption"
+                           id="@optionId"
+                           value="@option.Value" />
+                    <span class="valora-choice-text">@option.Text</span>
+                </label>
+            }
+        </div>
+        <p class="valora-helper">Automático usa os meses informados. 30 dias = férias integrais; 20 dias = período reduzido ou acordo.</p>
+    </div>
+    <div style="grid-column: 1 / -1;">
+        <label class="valora-choice" for="Input_SellVacationAllowance" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" asp-for="Input.SellVacationAllowance" id="Input_SellVacationAllowance" />
+            <span>@profile.SellVacationAllowanceLabel</span>
+        </label>
+        <p class="valora-helper">Converte até 10 dias em dinheiro, sem gozá-los. Só vale quando você tira férias.</p>
+    </div>
+    <div style="grid-column: 1 / -1;">
+        <label class="valora-choice" for="Input_DoubleVacationPayment" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" asp-for="Input.DoubleVacationPayment" id="Input_DoubleVacationPayment" />
+            <span>@profile.DoubleVacationPaymentLabel</span>
+        </label>
+        <p class="valora-helper">Dobra férias + 1/3 quando o empregador atrasa a concessão (Art. 137 CLT). Estimativa educativa.</p>
+    </div>
+}

@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Sprint 39 — Dark Premium Liquid (fundação)
+- Tema dark Premium Liquid: tokens, Plus Jakarta Sans, header/bottom nav glass
+- Brand mark Stitch (ícone + wordmark); home mobile e desktop alinhada aos mocks
+- Bento com icon boxes; resultado líquido com glow emerald
+- Sprints 39–46 documentadas; `stitch_redesing/` no `.gitignore`
+
+### Sprint 31 — Férias e 13º nível referência
+- Abono pecuniário, férias em dobro, dias 20/30
+- 13º com 1ª/2ª parcela e adiantamento já pago
+- FAQ dedicado e 10 testes de benchmark
+
 ### Sprint 30 — Camadas e faixas INSS/IRRF
 - Formulário em camadas em salário líquido, férias e 13º
 - IRRF com toggle de salário bruto e faixa de tabela no resultado

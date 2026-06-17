@@ -15,8 +15,8 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/");
 
         html.Should().Contain("valora-brand-mark");
-        html.Should().Contain("valora-brand-logo--horizontal");
-        html.Should().Contain("/images/brand/logo-horizontal");
+        html.Should().Contain("valora-brand-mark--stitch");
+        html.Should().Contain("valora-brand-wordmark");
         html.Should().Contain("Meu Valor Líquido");
         html.Should().Contain("favicon");
         html.Should().Contain("apple-touch-icon");
