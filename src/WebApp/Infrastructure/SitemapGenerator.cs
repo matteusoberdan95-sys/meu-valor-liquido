@@ -43,24 +43,6 @@ public static class SitemapGenerator
         return document.ToString();
     }
 
-    public static async Task PublishToWebRootAsync(WebApplication app)
-    {
-        await using var scope = app.Services.CreateAsyncScope();
-        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-        var xml = await BuildXmlAsync(db, configuration);
-
-        var webRoot = app.Environment.WebRootPath;
-        if (string.IsNullOrWhiteSpace(webRoot))
-        {
-            webRoot = Path.Combine(app.Environment.ContentRootPath, "wwwroot");
-        }
-
-        Directory.CreateDirectory(webRoot);
-        var path = Path.Combine(webRoot, "sitemap.xml");
-        await File.WriteAllTextAsync(path, xml, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-    }
-
     private static XElement CreateUrl(XNamespace ns, string location) =>
         new(ns + "url", new XElement(ns + "loc", location));
 }

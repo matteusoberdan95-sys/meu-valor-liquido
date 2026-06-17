@@ -15,13 +15,6 @@ public static class StaticAssetCacheMiddleware
                 }
 
                 var path = context.Request.Path.Value ?? string.Empty;
-                if (path.Equals("/sitemap.xml", StringComparison.OrdinalIgnoreCase))
-                {
-                    var sitemapMaxAge = (int)PerformanceCacheDurations.Sitemap.TotalSeconds;
-                    context.Response.Headers.CacheControl = $"public,max-age={sitemapMaxAge}";
-                    return Task.CompletedTask;
-                }
-
                 if (!IsCacheableStaticAsset(path))
                 {
                     return Task.CompletedTask;
