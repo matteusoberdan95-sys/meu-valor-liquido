@@ -5,38 +5,72 @@
     ViewData["Description"] = "Fale com o Meu Valor Líquido.";
 }
 
-<h1 class="valora-h1">Contato</h1>
-<p class="valora-lead valora-section">Dúvidas, sugestões ou correções sobre as calculadoras? Envie sua mensagem e responderemos por e-mail.</p>
+<div class="valora-stitch-contact">
+    <header class="valora-stitch-contact-header">
+        <h1 class="valora-stitch-contact-title">Contato</h1>
+        <p class="valora-stitch-contact-lead">
+            Dúvidas, sugestões ou correções sobre as calculadoras? Envie sua mensagem e responderemos por e-mail.
+        </p>
+    </header>
 
-@if (Model.Sent)
-{
-    <div class="valora-alert-success">Mensagem enviada com sucesso.</div>
-}
+    <div class="valora-stitch-contact-layout">
+        <form method="post" class="valora-form-card valora-stitch-contact-form valora-stack-md">
+            @if (Model.Sent)
+            {
+                <div class="valora-stitch-contact-success" role="status">
+                    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                    <div>
+                        <strong>Mensagem enviada com sucesso.</strong>
+                        <p>Responderemos em breve no e-mail informado.</p>
+                    </div>
+                </div>
+            }
 
-<form method="post" class="valora-form-card valora-stack-md" style="max-width: 36rem;">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div>
-        <label asp-for="Input.Name" class="valora-label">Nome</label>
-        <input asp-for="Input.Name" class="valora-input" />
-        <span asp-validation-for="Input.Name" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="valora-form-row">
+                <div>
+                    <label asp-for="Input.Name" class="valora-label">Nome</label>
+                    <input asp-for="Input.Name" class="valora-input" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Input.Email" class="valora-label">E-mail</label>
+                    <input asp-for="Input.Email" class="valora-input" type="email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="Input.Subject" class="valora-label">Assunto</label>
+                <input asp-for="Input.Subject" class="valora-input" />
+                <span asp-validation-for="Input.Subject" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Input.Message" class="valora-label">Mensagem</label>
+                <textarea asp-for="Input.Message" class="valora-textarea"></textarea>
+                <span asp-validation-for="Input.Message" class="text-danger"></span>
+            </div>
+            <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-contact-submit" type="submit">
+                Enviar mensagem
+                <span class="material-symbols-outlined" aria-hidden="true">send</span>
+            </button>
+        </form>
+
+        <aside class="valora-stitch-contact-aside">
+            <a class="valora-stitch-contact-aside-card" asp-page="/Duvidas/Index">
+                <span class="valora-stitch-contact-aside-icon">
+                    <span class="material-symbols-outlined" aria-hidden="true">help_center</span>
+                </span>
+                <h2>Dúvidas frequentes</h2>
+                <p>Encontre respostas rápidas sobre salário, impostos e calculadoras.</p>
+                <span class="valora-stitch-contact-aside-link">Acessar FAQ <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+            </a>
+            <div class="valora-stitch-contact-aside-card valora-stitch-contact-aside-card--muted">
+                <h2>Tempo de resposta</h2>
+                <p>Respondemos em até 2 dias úteis. Não envie dados sensíveis como CPF ou valores reais de holerite.</p>
+            </div>
+        </aside>
     </div>
-    <div>
-        <label asp-for="Input.Email" class="valora-label">E-mail</label>
-        <input asp-for="Input.Email" class="valora-input" type="email" />
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="Input.Subject" class="valora-label">Assunto</label>
-        <input asp-for="Input.Subject" class="valora-input" />
-        <span asp-validation-for="Input.Subject" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="Input.Message" class="valora-label">Mensagem</label>
-        <textarea asp-for="Input.Message" class="valora-textarea"></textarea>
-        <span asp-validation-for="Input.Message" class="text-danger"></span>
-    </div>
-    <button class="valora-btn valora-btn-primary" type="submit">Enviar</button>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

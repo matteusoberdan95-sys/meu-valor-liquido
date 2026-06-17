@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Sprint 45 — Painel e institucional dark
+- Meu painel com cards `#1C1C1F`, empty state e sidebar privacidade no desktop
+- Contato com formulário glass, aside FAQ e estado de sucesso
+- Newsletter centralizada com ícone mail e CTA teal
+- Sobre com grid artigo + cards laterais (transparência, monetização, contato)
+- Privacidade e termos com layout legal, índice lateral sticky no desktop
+- Smoke tests institucionais em `GoLiveSmokeTests` (124 testes WebApp)
+
 ### Sprint 44 — Conteúdo e ajuda dark
 - FAQ com layout sidebar desktop, chips mobile e badges de categoria no accordion
 - Blog hub e artigo com cards dark, TOC no aside e newsletter no tema Premium Liquid

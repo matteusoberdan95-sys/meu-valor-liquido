@@ -4993,6 +4993,281 @@ h1, h2, h3, h4,
   margin: 0;
 }
 
+/* Institucional (contato, newsletter, sobre, legal) */
+
+.valora-stitch-contact,
+.valora-stitch-newsletter,
+.valora-stitch-about,
+.valora-stitch-legal {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
+  padding-bottom: 1.5rem;
+}
+
+.valora-stitch-contact-header,
+.valora-stitch-newsletter-header,
+.valora-stitch-about-header,
+.valora-stitch-legal-header {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-contact-title,
+.valora-stitch-newsletter-title,
+.valora-stitch-about-title,
+.valora-stitch-legal-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  color: var(--valora-text-heading);
+  letter-spacing: -0.02em;
+}
+
+.valora-stitch-contact-lead,
+.valora-stitch-newsletter-lead,
+.valora-stitch-about-lead,
+.valora-stitch-legal-lead {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.valora-stitch-contact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-contact-form {
+  position: relative;
+  overflow: hidden;
+}
+
+.valora-stitch-contact-form::before {
+  content: "";
+  position: absolute;
+  top: -6rem;
+  right: -6rem;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 999px;
+  background: rgb(89 219 199 / 5%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.valora-stitch-contact-form > * {
+  position: relative;
+  z-index: 1;
+}
+
+.valora-stitch-contact-submit,
+.valora-stitch-newsletter-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.valora-stitch-contact-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid rgb(89 219 199 / 25%);
+  background: rgb(89 219 199 / 8%);
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-contact-success .material-symbols-outlined {
+  color: var(--valora-primary);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.valora-stitch-contact-success p {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-stitch-contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-contact-aside-card {
+  display: block;
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+a.valora-stitch-contact-aside-card:hover {
+  background: var(--valora-surface-container-low);
+  border-color: rgb(89 219 199 / 20%);
+}
+
+.valora-stitch-contact-aside-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-contact-aside-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+}
+
+.valora-stitch-contact-aside-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--valora-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(59 130 246 / 12%);
+  color: var(--valora-badge-labour);
+}
+
+.valora-stitch-contact-aside-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-contact-aside-card--muted {
+  cursor: default;
+}
+
+.valora-stitch-newsletter {
+  max-width: 36rem;
+}
+
+.valora-stitch-newsletter-header {
+  text-align: center;
+}
+
+.valora-stitch-newsletter-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(89 219 199 / 10%);
+  color: var(--valora-primary);
+}
+
+.valora-stitch-newsletter-icon .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.valora-stitch-about-badge,
+.valora-stitch-legal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--valora-primary);
+  background: rgb(89 219 199 / 10%);
+  border: 1px solid rgb(89 219 199 / 20%);
+}
+
+.valora-stitch-about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-about-card {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valora-stitch-about-aside-card {
+  padding: 1rem 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-about-aside-card .material-symbols-outlined {
+  color: var(--valora-primary);
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-about-aside-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-about-aside-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface-variant);
+  line-height: 1.5;
+}
+
+.valora-stitch-legal-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.valora-stitch-legal-sidebar {
+  display: none;
+}
+
+.valora-stitch-legal-body section {
+  scroll-margin-top: 6rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-legal-body section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.valora-stitch-legal-body {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
 /* Meu painel */
 
 .valora-stitch-panel {
@@ -5026,6 +5301,7 @@ h1, h2, h3, h4,
   margin: 0 0 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
 .valora-stitch-panel-lead {
@@ -5040,7 +5316,7 @@ h1, h2, h3, h4,
   padding: 1rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
 }
 
 .valora-stitch-panel-toolbar {
@@ -5100,7 +5376,7 @@ h1, h2, h3, h4,
   padding: 1rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-surface-white);
+  background: var(--valora-card-low);
 }
 
 .valora-stitch-panel-privacy-title {
@@ -5302,6 +5578,94 @@ h1, h2, h3, h4,
 
   .valora-stitch-metodologia-table-card {
     margin-bottom: 0;
+  }
+
+  .valora-stitch-contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .valora-stitch-contact-submit {
+    width: auto;
+  }
+
+  .valora-stitch-about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .valora-stitch-legal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .valora-stitch-legal-sidebar {
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .valora-stitch-legal-sidebar-kicker {
+    margin: 0 0 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--valora-primary);
+    opacity: 0.8;
+  }
+
+  .valora-stitch-legal-sidebar-title {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--valora-text-heading);
+  }
+
+  .valora-stitch-legal-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    border-left: 1px solid var(--valora-border-subtle);
+  }
+
+  .valora-stitch-legal-toc a {
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    font-size: 0.875rem;
+    color: var(--valora-on-surface-variant);
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .valora-stitch-legal-toc a:hover {
+    color: var(--valora-primary);
+    border-left-color: var(--valora-primary);
+  }
+
+  .valora-stitch-legal-sidebar-meta {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: var(--valora-radius-xl);
+    border: 1px solid var(--valora-border-subtle);
+    background: var(--valora-card-low);
+  }
+
+  .valora-stitch-legal-sidebar-meta p {
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    color: var(--valora-on-surface-variant);
+  }
+
+  .valora-stitch-legal-sidebar-meta strong {
+    color: var(--valora-primary);
   }
 
   .valora-stitch-panel {

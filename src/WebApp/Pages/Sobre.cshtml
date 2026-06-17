@@ -5,51 +5,61 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.AboutBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Sobre</li>
-    </ol>
-</nav>
+<div class="valora-stitch-about">
+    <nav class="valora-breadcrumb valora-stitch-about-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Sobre</li>
+        </ol>
+    </nav>
 
-<h1 class="valora-h1">Sobre o Meu Valor Líquido</h1>
-<p class="valora-lead">
-    Ajudamos brasileiros a entender quanto recebem, quanto descontam e quanto sobra — com linguagem clara e ferramentas gratuitas.
-</p>
+    <header class="valora-stitch-about-header">
+        <span class="valora-stitch-about-badge">
+            <span class="material-symbols-outlined" aria-hidden="true">info</span>
+            Sobre nós
+        </span>
+        <h1 class="valora-stitch-about-title">Sobre o Meu Valor Líquido</h1>
+        <p class="valora-stitch-about-lead">
+            Ajudamos brasileiros a entender quanto recebem, quanto descontam e quanto sobra — com linguagem clara e ferramentas gratuitas.
+        </p>
+    </header>
 
-<article class="valora-section valora-card valora-article-body">
-    <h2 class="valora-h2">Nossa missão</h2>
-    <p>
-        O Meu Valor Líquido nasceu para transformar perguntas do dia a dia em respostas práticas:
-        salário líquido, INSS, IRRF, férias, décimo terceiro, rescisão, FGTS, comparação CLT x PJ e planejamento financeiro.
-        Tudo com foco em educação financeira e trabalhista, sem substituir um contador ou advogado.
-    </p>
+    <div class="valora-stitch-about-grid">
+        <article class="valora-stitch-about-card valora-article-body">
+            <h2 class="valora-h2">Nossa missão</h2>
+            <p>
+                O Meu Valor Líquido nasceu para transformar perguntas do dia a dia em respostas práticas:
+                salário líquido, INSS, IRRF, férias, décimo terceiro, rescisão, FGTS, comparação CLT x PJ e planejamento financeiro.
+                Tudo com foco em educação financeira e trabalhista, sem substituir um contador ou advogado.
+            </p>
 
-    <h2 class="valora-h2">O que oferecemos</h2>
-    <ul>
-        <li><strong>Calculadoras gratuitas</strong> — sem cadastro para simular.</li>
-        <li><strong>Conteúdo editorial</strong> — artigos no blog e dúvidas populares com links para as ferramentas certas.</li>
-        <li><strong>Compartilhamento e PDF</strong> — resultados estimados para revisar ou enviar com contexto.</li>
-        <li><strong>Meu painel local</strong> — simulações salvas só no seu navegador (<code>localStorage</code>), sem conta.</li>
-        <li><strong>Widget incorporável</strong> — iframe gratuito para blogs e portais, com atribuição ao site.</li>
-    </ul>
+            <h2 class="valora-h2">O que oferecemos</h2>
+            <ul>
+                <li><strong>Calculadoras gratuitas</strong> — sem cadastro para simular.</li>
+                <li><strong>Conteúdo editorial</strong> — artigos no blog e dúvidas populares com links para as ferramentas certas.</li>
+                <li><strong>Compartilhamento e PDF</strong> — resultados estimados para revisar ou enviar com contexto.</li>
+                <li><strong>Meu painel local</strong> — simulações salvas só no seu navegador (<code>localStorage</code>), sem conta.</li>
+                <li><strong>Widget incorporável</strong> — iframe gratuito para blogs e portais, com atribuição ao site.</li>
+            </ul>
+        </article>
 
-    <h2 class="valora-h2">Transparência nos cálculos</h2>
-    <p>
-        Publicamos como estimamos resultados, quais tabelas usamos e quais limitações existem.
-        Leia a página <a asp-page="/ComoCalculamos">Como calculamos</a> antes de tomar decisões importantes.
-    </p>
-
-    <h2 class="valora-h2">Monetização responsável</h2>
-    <p>
-        O site pode exibir anúncios do Google AdSense após aprovação, sempre separados do formulário e do resultado.
-        Não incentivamos clique em anúncios. Widgets incorporáveis e PDFs não contêm publicidade.
-        Detalhes na <a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a>.
-    </p>
-</article>
-
-<div class="valora-disclaimer valora-section">
-    <span class="material-symbols-outlined">info</span>
-    <p style="margin: 0;">Dúvidas ou sugestões? Use o <a asp-page="/Contato">contato</a> ou assine a <a asp-page="/Newsletter">newsletter</a>.</p>
+        <aside class="valora-stitch-about-aside">
+            <div class="valora-stitch-about-aside-card">
+                <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                <h2>Transparência</h2>
+                <p>Leia como estimamos resultados na página <a asp-page="/ComoCalculamos">Como calculamos</a>.</p>
+            </div>
+            <div class="valora-stitch-about-aside-card">
+                <span class="material-symbols-outlined" aria-hidden="true">ads_click</span>
+                <h2>Monetização</h2>
+                <p>Anúncios AdSense quando aprovados, separados do formulário. Detalhes na <a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a>.</p>
+            </div>
+            <div class="valora-stitch-about-aside-card">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                <h2>Fale conosco</h2>
+                <p><a asp-page="/Contato">Contato</a> ou assine a <a asp-page="/Newsletter">newsletter</a>.</p>
+            </div>
+        </aside>
+    </div>
 </div>

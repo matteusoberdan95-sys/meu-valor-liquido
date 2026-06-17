@@ -15,7 +15,7 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **42** | Template calculadora detail (17 slugs) | Concluída |
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Concluída |
 | **44** | FAQ, blog, artigo, metodologia | Concluída |
-| **45** | Meu painel, sobre, contato, newsletter, privacidade | Pendente |
+| **45** | Meu painel, sobre, contato, newsletter, privacidade | Concluída |
 | **46** | Erro, polish final, checklist visual | Pendente |
 
 ## Mapeamento tela → rota
@@ -35,12 +35,12 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | `blog_desktop` | desktop | `/blog` | 44 | Concluída |
 | `artigo_do_blog_desktop` | desktop | `/blog/{slug}` | 44 | Concluída |
 | `metodologia_desktop` | desktop | `/como-calculamos` | 44 | Concluída |
-| `meu_painel_mobile` | mobile | `/meu-painel` | 45 | Pendente |
-| `meu_painel_desktop` | desktop | `/meu-painel` | 45 | Pendente |
-| `contato_desktop` | desktop | `/contato` | 45 | Pendente |
-| `newsletter_desktop` | desktop | `/newsletter` | 45 | Pendente |
-| `sobre_n_s_desktop` | desktop | `/sobre` | 45 | Pendente |
-| `privacidade_e_termos_desktop` | desktop | `/privacidade`, `/termos` | 45 | Pendente |
+| `meu_painel_mobile` | mobile | `/meu-painel` | 45 | Concluída |
+| `meu_painel_desktop` | desktop | `/meu-painel` | 45 | Concluída |
+| `contato_desktop` | desktop | `/contato` | 45 | Concluída |
+| `newsletter_desktop` | desktop | `/newsletter` | 45 | Concluída |
+| `sobre_n_s_desktop` | desktop | `/sobre` | 45 | Concluída |
+| `privacidade_e_termos_desktop` | desktop | `/politica-de-privacidade`, `/termos-de-uso` | 45 | Concluída |
 | `p_gina_de_erro_desktop` | desktop | `/Error` | 46 | Pendente |
 
 ## Tokens Stitch → CSS

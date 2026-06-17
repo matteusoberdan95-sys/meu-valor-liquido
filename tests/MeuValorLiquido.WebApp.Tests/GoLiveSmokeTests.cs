@@ -168,6 +168,43 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Contato_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/contato");
+
+        html.Should().Contain("valora-stitch-contact");
+        html.Should().Contain("valora-stitch-contact-form");
+        html.Should().Contain("Enviar mensagem");
+        html.Should().Contain("Dúvidas frequentes");
+    }
+
+    [Fact]
+    public async Task Newsletter_Should_Match_Stitch_Layout()
+    {
+        var html = await client.GetStringAsync("/newsletter");
+
+        html.Should().Contain("valora-stitch-newsletter");
+        html.Should().Contain("valora-stitch-newsletter-form");
+        html.Should().Contain("Inscrever-se");
+    }
+
+    [Fact]
+    public async Task Institutional_Pages_Should_Match_Stitch_Layout()
+    {
+        var sobre = await client.GetStringAsync("/sobre");
+        var privacidade = await client.GetStringAsync("/politica-de-privacidade");
+        var termos = await client.GetStringAsync("/termos-de-uso");
+
+        sobre.Should().Contain("valora-stitch-about");
+        sobre.Should().Contain("Nossa missão");
+        privacidade.Should().Contain("valora-stitch-legal");
+        privacidade.Should().Contain("valora-stitch-legal-sidebar");
+        privacidade.Should().Contain("Google AdSense");
+        termos.Should().Contain("valora-stitch-legal-toc");
+        termos.Should().Contain("Natureza do serviço");
+    }
+
+    [Fact]
     public async Task Stitch_Desktop_Structure_Should_Be_Present_On_Key_Pages()
     {
         var blog = await client.GetStringAsync("/blog");

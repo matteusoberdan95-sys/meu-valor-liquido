@@ -283,16 +283,16 @@
 
 ---
 
-## Sprint 45 — Painel e institucional
+## Sprint 45 — Painel e institucional (concluída)
 
 **Objetivo:** páginas de suporte e conversão no dark.
 
 | Agent | Entregas |
 |-------|----------|
-| Frontend | Meu painel mobile + desktop (cards de simulação, empty state) |
-| Frontend | Sobre, contato, newsletter com formulários dark |
-| Frontend | Privacidade e termos (layout legível, índice lateral desktop) |
-| QA | Smoke formulários contato/newsletter |
+| Frontend | Meu painel mobile + desktop (cards de simulação, empty state, cards `#1C1C1F`) |
+| Frontend | Sobre, contato, newsletter com formulários dark e aside FAQ |
+| Frontend | Privacidade e termos (layout legível, índice lateral desktop sticky) |
+| QA | Smoke contato, newsletter, sobre e legal verde (124 testes WebApp) |
 
 **Referência Stitch:** `meu_painel_mobile`, `meu_painel_desktop`, `sobre_n_s_desktop`, `contato_desktop`, `newsletter_desktop`, `privacidade_e_termos_desktop`
 

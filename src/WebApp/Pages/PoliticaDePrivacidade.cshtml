@@ -5,72 +5,124 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.PrivacyPolicyBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Política de Privacidade</li>
-    </ol>
-</nav>
+<div class="valora-stitch-legal">
+    <nav class="valora-breadcrumb valora-stitch-legal-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Política de Privacidade</li>
+        </ol>
+    </nav>
 
-<h1 class="valora-h1">Política de Privacidade</h1>
-<p class="valora-lead">Última atualização: junho de 2026. Esta política descreve como tratamos dados no site Meu Valor Líquido.</p>
+    <div class="valora-stitch-legal-layout">
+        <aside class="valora-stitch-legal-sidebar" aria-label="Índice da política">
+            <p class="valora-stitch-legal-sidebar-kicker">Documentação legal</p>
+            <h2 class="valora-stitch-legal-sidebar-title">Transparência &amp; ética</h2>
+            <nav class="valora-stitch-legal-toc">
+                <a href="#priv-1">1. Quem somos</a>
+                <a href="#priv-2">2. Dados que você envia</a>
+                <a href="#priv-3">3. Dados que não coletamos</a>
+                <a href="#priv-4">4. Meu painel</a>
+                <a href="#priv-5">5. Métricas agregadas</a>
+                <a href="#priv-6">6. Cookies</a>
+                <a href="#priv-7">7. Parceiros</a>
+                <a href="#priv-8">8. Seus direitos (LGPD)</a>
+                <a href="#priv-9">9. Alterações</a>
+            </nav>
+            <div class="valora-stitch-legal-sidebar-meta">
+                <p>Última atualização</p>
+                <strong>Junho de 2026</strong>
+            </div>
+        </aside>
 
-<article class="valora-section valora-card valora-article-body">
-    <h2 class="valora-h2">1. Quem somos</h2>
-    <p>
-        O Meu Valor Líquido é um site educativo de calculadoras trabalhistas, fiscais e financeiras para o público brasileiro.
-        Para dúvidas sobre privacidade, use o <a asp-page="/Contato">formulário de contato</a>.
-    </p>
+        <div class="valora-stitch-legal-main">
+            <header class="valora-stitch-legal-header">
+                <span class="valora-stitch-legal-badge">
+                    <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                    Portal de privacidade
+                </span>
+                <h1 class="valora-stitch-legal-title">Política de Privacidade</h1>
+                <p class="valora-stitch-legal-lead">
+                    Esta política descreve como tratamos dados no site Meu Valor Líquido.
+                </p>
+            </header>
 
-    <h2 class="valora-h2">2. Dados que você nos envia</h2>
-    <ul>
-        <li><strong>Contato:</strong> nome, e-mail, assunto e mensagem — usados apenas para responder.</li>
-        <li><strong>Newsletter:</strong> e-mail para envio de conteúdo, se você optar por assinar.</li>
-    </ul>
-    <p>Não solicite cadastro de CPF nem de dados bancários nos formulários.</p>
+            <article class="valora-stitch-legal-body valora-article-body">
+                <section id="priv-1">
+                    <h2 class="valora-h2">1. Quem somos</h2>
+                    <p>
+                        O Meu Valor Líquido é um site educativo de calculadoras trabalhistas, fiscais e financeiras para o público brasileiro.
+                        Para dúvidas sobre privacidade, use o <a asp-page="/Contato">formulário de contato</a>.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">3. Dados que não coletamos no servidor</h2>
-    <ul>
-        <li>Valores de salário ou resultados de simulações enviados às calculadoras.</li>
-        <li>Identificação individual de uso das ferramentas (sem perfil de usuário).</li>
-        <li>IP completo em logs de produto ou métricas internas agregadas.</li>
-    </ul>
+                <section id="priv-2">
+                    <h2 class="valora-h2">2. Dados que você nos envia</h2>
+                    <ul>
+                        <li><strong>Contato:</strong> nome, e-mail, assunto e mensagem — usados apenas para responder.</li>
+                        <li><strong>Newsletter:</strong> e-mail para envio de conteúdo, se você optar por assinar.</li>
+                    </ul>
+                    <p>Não solicite cadastro de CPF nem de dados bancários nos formulários.</p>
+                </section>
 
-    <h2 class="valora-h2">4. Meu painel (armazenamento local)</h2>
-    <p>
-        Se você salvar simulações no <a asp-page="/MeuPainel/Index">Meu painel</a>, os dados ficam apenas no <code>localStorage</code> do seu navegador.
-        Não temos acesso a esse conteúdo. Limpar o cache do navegador apaga as simulações.
-    </p>
+                <section id="priv-3">
+                    <h2 class="valora-h2">3. Dados que não coletamos no servidor</h2>
+                    <ul>
+                        <li>Valores de salário ou resultados de simulações enviados às calculadoras.</li>
+                        <li>Identificação individual de uso das ferramentas (sem perfil de usuário).</li>
+                        <li>IP completo em logs de produto ou métricas internas agregadas.</li>
+                    </ul>
+                </section>
 
-    <h2 class="valora-h2">5. Métricas internas agregadas</h2>
-    <p>
-        Contamos eventos agregados por dia (por exemplo, calculadora mais usada ou downloads de PDF), sem associar a uma pessoa.
-        A página <a asp-page="/MetricasInternas/Index">métricas internas</a> resume esses totais e não é indexada em buscadores.
-    </p>
+                <section id="priv-4">
+                    <h2 class="valora-h2">4. Meu painel (armazenamento local)</h2>
+                    <p>
+                        Se você salvar simulações no <a asp-page="/MeuPainel/Index">Meu painel</a>, os dados ficam apenas no <code>localStorage</code> do seu navegador.
+                        Não temos acesso a esse conteúdo. Limpar o cache do navegador apaga as simulações.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">6. Cookies e tecnologias similares</h2>
-    <ul>
-        <li><strong>Essenciais:</strong> antiforgery e funcionamento do site.</li>
-        <li><strong>Publicidade (quando ativa):</strong> o Google AdSense pode usar cookies para exibir anúncios relevantes, conforme as políticas do Google.</li>
-    </ul>
-    <p>
-        Enquanto os anúncios não estiverem ativos, exibimos apenas placeholders sem rastreamento de publicidade.
-        Quando o AdSense for habilitado, um aviso de cookies será exibido na primeira visita.
-    </p>
+                <section id="priv-5">
+                    <h2 class="valora-h2">5. Métricas internas agregadas</h2>
+                    <p>
+                        Contamos eventos agregados por dia (por exemplo, calculadora mais usada ou downloads de PDF), sem associar a uma pessoa.
+                        A página <a asp-page="/MetricasInternas/Index">métricas internas</a> resume esses totais e não é indexada em buscadores.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">7. Parceiros e transferência</h2>
-    <p>
-        Provedores de hospedagem, e-mail e o Google (AdSense, quando aplicável) podem processar dados conforme seus próprios termos.
-        Não vendemos dados pessoais.
-    </p>
+                <section id="priv-6">
+                    <h2 class="valora-h2">6. Cookies e tecnologias similares</h2>
+                    <ul>
+                        <li><strong>Essenciais:</strong> antiforgery e funcionamento do site.</li>
+                        <li><strong>Publicidade (quando ativa):</strong> o Google AdSense pode usar cookies para exibir anúncios relevantes, conforme as políticas do Google.</li>
+                    </ul>
+                    <p>
+                        Enquanto os anúncios não estiverem ativos, exibimos apenas placeholders sem rastreamento de publicidade.
+                        Quando o AdSense for habilitado, um aviso de cookies será exibido na primeira visita.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">8. Seus direitos (LGPD)</h2>
-    <p>
-        Você pode solicitar acesso, correção ou exclusão de dados enviados por formulário ou newsletter via <a asp-page="/Contato">contato</a>.
-        Responderemos em prazo razoável.
-    </p>
+                <section id="priv-7">
+                    <h2 class="valora-h2">7. Parceiros e transferência</h2>
+                    <p>
+                        Provedores de hospedagem, e-mail e o Google (AdSense, quando aplicável) podem processar dados conforme seus próprios termos.
+                        Não vendemos dados pessoais.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">9. Alterações</h2>
-    <p>Esta política pode ser atualizada. A data no topo indica a versão vigente.</p>
-</article>
+                <section id="priv-8">
+                    <h2 class="valora-h2">8. Seus direitos (LGPD)</h2>
+                    <p>
+                        Você pode solicitar acesso, correção ou exclusão de dados enviados por formulário ou newsletter via <a asp-page="/Contato">contato</a>.
+                        Responderemos em prazo razoável.
+                    </p>
+                </section>
+
+                <section id="priv-9">
+                    <h2 class="valora-h2">9. Alterações</h2>
+                    <p>Esta política pode ser atualizada. A data no topo indica a versão vigente.</p>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>

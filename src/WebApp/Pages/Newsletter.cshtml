@@ -6,24 +6,42 @@
     ViewData["CanonicalPath"] = "/newsletter";
 }
 
-<h1 class="valora-h1">Newsletter</h1>
-<p class="valora-lead valora-section">Cadastre seu e-mail para receber conteúdos educativos sobre salário, descontos e finanças pessoais.</p>
+<div class="valora-stitch-newsletter">
+    <header class="valora-stitch-newsletter-header">
+        <span class="valora-stitch-newsletter-icon" aria-hidden="true">
+            <span class="material-symbols-outlined">mail</span>
+        </span>
+        <h1 class="valora-stitch-newsletter-title">Newsletter</h1>
+        <p class="valora-stitch-newsletter-lead">
+            Cadastre seu e-mail para receber conteúdos educativos sobre salário, descontos e finanças pessoais.
+        </p>
+    </header>
 
-@if (Model.Subscribed)
-{
-    <div class="valora-alert-success">Inscrição registrada! Se o e-mail de confirmação estiver ativo, verifique sua caixa de entrada e o spam.</div>
-}
+    <form method="post" class="valora-form-card valora-stitch-newsletter-form valora-stack-md">
+        @if (Model.Subscribed)
+        {
+            <div class="valora-stitch-contact-success" role="status">
+                <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                <div>
+                    <strong>Inscrição registrada!</strong>
+                    <p>Se o e-mail de confirmação estiver ativo, verifique sua caixa de entrada e o spam.</p>
+                </div>
+            </div>
+        }
 
-<form method="post" class="valora-form-card valora-stack-md" style="max-width: 28rem;">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div>
-        <label asp-for="Email" class="valora-label">E-mail</label>
-        <input asp-for="Email" class="valora-input" type="email" placeholder="seu@email.com" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <p class="valora-text-muted valora-text-sm" style="margin: 0;">Não enviamos spam. Você pode cancelar a inscrição a qualquer momento.</p>
-    <button class="valora-btn valora-btn-primary" type="submit">Inscrever-se</button>
-</form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            <label asp-for="Email" class="valora-label">E-mail</label>
+            <input asp-for="Email" class="valora-input" type="email" placeholder="seu@email.com" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Não enviamos spam. Você pode cancelar a inscrição a qualquer momento.</p>
+        <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-newsletter-submit" type="submit">
+            Inscrever-se
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </button>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

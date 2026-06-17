@@ -5,52 +5,98 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.TermsBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Termos de Uso</li>
-    </ol>
-</nav>
+<div class="valora-stitch-legal">
+    <nav class="valora-breadcrumb valora-stitch-legal-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Termos de Uso</li>
+        </ol>
+    </nav>
 
-<h1 class="valora-h1">Termos de Uso</h1>
-<p class="valora-lead">Ao usar o Meu Valor Líquido, você concorda com os termos abaixo.</p>
+    <div class="valora-stitch-legal-layout">
+        <aside class="valora-stitch-legal-sidebar" aria-label="Índice dos termos">
+            <p class="valora-stitch-legal-sidebar-kicker">Documentação legal</p>
+            <h2 class="valora-stitch-legal-sidebar-title">Termos de uso</h2>
+            <nav class="valora-stitch-legal-toc">
+                <a href="#terms-1">1. Natureza do serviço</a>
+                <a href="#terms-2">2. Uso permitido</a>
+                <a href="#terms-3">3. Uso proibido</a>
+                <a href="#terms-4">4. Propriedade intelectual</a>
+                <a href="#terms-5">5. Limitação de responsabilidade</a>
+                <a href="#terms-6">6. Privacidade</a>
+                <a href="#terms-7">7. Alterações</a>
+            </nav>
+            <div class="valora-stitch-legal-sidebar-meta">
+                <p>Versão vigente</p>
+                <strong>Junho de 2026</strong>
+            </div>
+        </aside>
 
-<article class="valora-section valora-card valora-article-body">
-    <h2 class="valora-h2">1. Natureza do serviço</h2>
-    <p>
-        As calculadoras, artigos e páginas de dúvidas têm caráter <strong>educativo e informativo</strong>.
-        Os resultados são estimativas e podem divergir de holerites, guias oficiais ou contratos reais.
-    </p>
+        <div class="valora-stitch-legal-main">
+            <header class="valora-stitch-legal-header">
+                <span class="valora-stitch-legal-badge">
+                    <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
+                    Termos de uso
+                </span>
+                <h1 class="valora-stitch-legal-title">Termos de Uso</h1>
+                <p class="valora-stitch-legal-lead">
+                    Ao usar o Meu Valor Líquido, você concorda com os termos abaixo.
+                </p>
+            </header>
 
-    <h2 class="valora-h2">2. Uso permitido</h2>
-    <ul>
-        <li>Simular cenários pessoais ou profissionais de boa-fé.</li>
-        <li>Compartilhar links e PDFs gerados pelo site, sem alterar o contexto de estimativa.</li>
-        <li>Incorporar widgets conforme as regras da página <a asp-page="/Widget/Index">Widget incorporável</a>.</li>
-    </ul>
+            <article class="valora-stitch-legal-body valora-article-body">
+                <section id="terms-1">
+                    <h2 class="valora-h2">1. Natureza do serviço</h2>
+                    <p>
+                        As calculadoras, artigos e páginas de dúvidas têm caráter <strong>educativo e informativo</strong>.
+                        Os resultados são estimativas e podem divergir de holerites, guias oficiais ou contratos reais.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">3. Uso proibido</h2>
-    <ul>
-        <li>Automatizar acessos para gerar tráfego artificial ou impressões de anúncios.</li>
-        <li>Remover avisos legais, atribuição ou apresentar o site como cálculo oficial.</li>
-        <li>Explorar vulnerabilidades ou sobrecarregar a infraestrutura.</li>
-    </ul>
+                <section id="terms-2">
+                    <h2 class="valora-h2">2. Uso permitido</h2>
+                    <ul>
+                        <li>Simular cenários pessoais ou profissionais de boa-fé.</li>
+                        <li>Compartilhar links e PDFs gerados pelo site, sem alterar o contexto de estimativa.</li>
+                        <li>Incorporar widgets conforme as regras da página <a asp-page="/Widget/Index">Widget incorporável</a>.</li>
+                    </ul>
+                </section>
 
-    <h2 class="valora-h2">4. Propriedade intelectual</h2>
-    <p>
-        Textos, marca, layout e código são protegidos. É permitido citar com link; cópia integral ou republicação comercial exige autorização.
-    </p>
+                <section id="terms-3">
+                    <h2 class="valora-h2">3. Uso proibido</h2>
+                    <ul>
+                        <li>Automatizar acessos para gerar tráfego artificial ou impressões de anúncios.</li>
+                        <li>Remover avisos legais, atribuição ou apresentar o site como cálculo oficial.</li>
+                        <li>Explorar vulnerabilidades ou sobrecarregar a infraestrutura.</li>
+                    </ul>
+                </section>
 
-    <h2 class="valora-h2">5. Limitação de responsabilidade</h2>
-    <p>
-        Não nos responsabilizamos por decisões tomadas com base nas estimativas.
-        Consulte profissionais habilitados e fontes oficiais quando necessário. Veja também o <a asp-page="/AvisoLegal">aviso legal</a>.
-    </p>
+                <section id="terms-4">
+                    <h2 class="valora-h2">4. Propriedade intelectual</h2>
+                    <p>
+                        Textos, marca, layout e código são protegidos. É permitido citar com link; cópia integral ou republicação comercial exige autorização.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">6. Privacidade</h2>
-    <p>O tratamento de dados pessoais está na <a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a>.</p>
+                <section id="terms-5">
+                    <h2 class="valora-h2">5. Limitação de responsabilidade</h2>
+                    <p>
+                        Não nos responsabilizamos por decisões tomadas com base nas estimativas.
+                        Consulte profissionais habilitados e fontes oficiais quando necessário. Veja também o <a asp-page="/AvisoLegal">aviso legal</a>.
+                    </p>
+                </section>
 
-    <h2 class="valora-h2">7. Alterações</h2>
-    <p>Podemos atualizar estes termos. O uso continuado após mudanças implica aceitação da versão vigente.</p>
-</article>
+                <section id="terms-6">
+                    <h2 class="valora-h2">6. Privacidade</h2>
+                    <p>O tratamento de dados pessoais está na <a asp-page="/PoliticaDePrivacidade">Política de Privacidade</a>.</p>
+                </section>
+
+                <section id="terms-7">
+                    <h2 class="valora-h2">7. Alterações</h2>
+                    <p>Podemos atualizar estes termos. O uso continuado após mudanças implica aceitação da versão vigente.</p>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>
