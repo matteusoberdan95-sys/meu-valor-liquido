@@ -32,8 +32,8 @@ public sealed class EfNewsletterService : INewsletterService
         await emailSender.SendAsync(
             new EmailMessage(
                 normalized,
-                "Confirmação de newsletter (mock)",
-                "Obrigado por se inscrever no Meu Valor Líquido. Esta é uma confirmação mockada para ambiente local."),
+                "Confirmação de inscrição — Meu Valor Líquido",
+                "Obrigado por se inscrever na newsletter do Meu Valor Líquido. Você receberá conteúdos educativos sobre salário, impostos e finanças pessoais."),
             cancellationToken);
 
         return new NewsletterSubscriber(entity.Email, entity.SubscribedAt, entity.IsConfirmed);

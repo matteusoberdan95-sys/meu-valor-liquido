@@ -52,7 +52,7 @@ public sealed class SmtpEmailSender : IEmailSender
         }
         catch (Exception ex)
         {
-            logger.LogWarning(ex, "Falha ao enviar e-mail para {RecipientMasked}. Verifique se o Mailpit está ativo.", MaskEmail(message.To));
+            logger.LogWarning(ex, "Falha ao enviar e-mail para {RecipientMasked}. Verifique a configuração SMTP.", MaskEmail(message.To));
         }
     }
 
