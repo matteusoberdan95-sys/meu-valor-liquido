@@ -84,7 +84,7 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-bottom-nav");
         html.Should().Contain("valora-stitch-hero");
         html.Should().Contain("valora-stitch-bento");
-        html.Should().Contain("O que você quer calcular?");
+        html.Should().Contain("valora-nav-search");
         html.Should().Contain("Relatórios completos");
     }
 

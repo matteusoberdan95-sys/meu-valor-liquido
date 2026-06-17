@@ -2196,6 +2196,12 @@ h1, h2, h3, h4,
   margin-bottom: 1rem;
 }
 
+@media (min-width: 992px) {
+  .valora-stitch-calc-search {
+    display: none;
+  }
+}
+
 .valora-stitch-calc-search-icon {
   position: absolute;
   left: 1rem;
@@ -2780,7 +2786,6 @@ h1, h2, h3, h4,
   .valora-stitch-calc-mobile { display: none; }
   .valora-stitch-calc-desktop { display: block; }
   .valora-stitch-calc-filters--scroll { display: none; }
-  .valora-stitch-calc-search { margin-bottom: 0; }
 
   .valora-stitch-calc-layout {
     grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
@@ -6028,7 +6033,6 @@ a.valora-stitch-contact-aside-card:hover {
   .valora-stitch-section-title-mobile { display: none; }
   .valora-stitch-section-title-desktop { display: inline; }
   .valora-stitch-hero-visual-wrap { display: block; }
-  .valora-stitch-search { display: block; }
   .valora-stitch-ad-slot { display: flex; }
   .valora-stitch-teaser { display: block; }
 
