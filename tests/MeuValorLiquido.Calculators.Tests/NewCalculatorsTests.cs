@@ -64,6 +64,35 @@ public class NewCalculatorsTests
 
         result.Value!.LineItems.Single(i => i.Label == "DAS MEI mensal").Amount.Amount.Should().Be(86.05m);
         result.Value.EstimatedNetAmount.Amount.Should().Be(4913.95m);
+        result.Value.LineItems.Should().Contain(i => i.Label == "Líquido após DAS");
+    }
+
+    [Fact]
+    public void Mei_Above_Tolerance_Should_Show_Excess_And_Disqualification()
+    {
+        var result = service.Calculate("simulador-mei", new CalculatorInput(
+            900_000m,
+            MeiActivity: MeiActivityType.CommerceOrIndustry));
+
+        result.IsSuccess.Should().BeTrue();
+        result.Value!.EstimatedNetAmount.Amount.Should().Be(0m);
+        result.Value.LineItems.Single(i => i.Label == "Faturamento anual projetado").Amount.Amount.Should().Be(10_800_000m);
+        result.Value.LineItems.Single(i => i.Label == "Excedente sobre o teto com tolerância").Amount.Amount.Should().Be(10_702_800m);
+        result.Value.LineItems.Should().Contain(i => i.DisplayText == "Desenquadrado do MEI");
+        result.Value.LineItems.Should().NotContain(i => i.Label == "Líquido após DAS");
+        result.Value.Explanation.Should().Contain("não se aplica");
+    }
+
+    [Fact]
+    public void Mei_Above_Limit_Within_Tolerance_Should_Show_Excess_Over_Limit()
+    {
+        var result = service.Calculate("simulador-mei", new CalculatorInput(
+            8000m,
+            MeiActivity: MeiActivityType.Services));
+
+        result.IsSuccess.Should().BeTrue();
+        result.Value!.LineItems.Single(i => i.Label == "Excedente sobre o limite anual").Amount.Amount.Should().Be(15_000m);
+        result.Value.LineItems.Should().Contain(i => i.DisplayText == "Acima do limite — desenquadramento no ano seguinte");
     }
 
     [Fact]

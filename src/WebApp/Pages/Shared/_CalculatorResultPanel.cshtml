@@ -107,9 +107,21 @@
             }
         }
 
+        @{
+            var meiDisqualified = Model.CalculatorSlug.Equals("simulador-mei", StringComparison.OrdinalIgnoreCase)
+                && Model.Result.LineItems.Any(i => i.DisplayText == "Desenquadrado do MEI");
+        }
         <div class="valora-result-total">
-            <span class="valora-result-total-label">@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "LÍQUIDO PROPOSTO ESTIMADO" : Model.CalculatorSlug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) ? "MELHOR LÍQUIDO NO CENÁRIO" : "VALOR LÍQUIDO ESTIMADO")</span>
-            <span class="valora-result-total-value valora-monetary-display">@Model.Result.EstimatedNetAmount</span>
+            @if (meiDisqualified)
+            {
+                <span class="valora-result-total-label">SITUAÇÃO MEI</span>
+                <span class="valora-result-total-value" style="font-size: 1.35rem;">Desenquadrado</span>
+            }
+            else
+            {
+                <span class="valora-result-total-label">@(Model.CalculatorSlug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) ? "LÍQUIDO PROPOSTO ESTIMADO" : Model.CalculatorSlug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase) ? "MELHOR LÍQUIDO NO CENÁRIO" : "VALOR LÍQUIDO ESTIMADO")</span>
+                <span class="valora-result-total-value valora-monetary-display">@Model.Result.EstimatedNetAmount</span>
+            }
         </div>
         <p class="valora-text-sm" style="margin: 1rem 0 0; opacity: 0.9;">@Model.Result.Explanation</p>
     </div>

@@ -555,30 +555,46 @@ public sealed class CalculationEngine
         var toleranceLimit = annualLimit * (1m + BrMeiTables2026.ExcessTolerancePercent);
         var withinLimit = annualRevenue <= annualLimit;
         var withinTolerance = annualRevenue <= toleranceLimit;
-        var net = monthlyRevenue - das;
+        var excessOverLimit = Math.Max(0m, annualRevenue - annualLimit);
+        var excessOverTolerance = Math.Max(0m, annualRevenue - toleranceLimit);
+        var limitUsagePercent = annualLimit > 0m ? annualRevenue / annualLimit * 100m : 0m;
 
         var lines = new List<CalculationLineItem>
         {
-            Discount("DAS MEI mensal", das),
             Information("Faturamento anual projetado", annualRevenue),
             Information("Limite MEI anual", annualLimit),
-            Information("Líquido após DAS", net)
+            Information("Teto com tolerância (20%)", toleranceLimit),
+            TextInformation("Uso do teto anual", $"{limitUsagePercent:0.#}%")
         };
 
-        if (!withinLimit && withinTolerance)
-        {
-            lines.Add(Information("Alerta: acima do limite", 0m));
-        }
-        else if (!withinTolerance)
-        {
-            lines.Add(Information("Risco de desenquadramento", 0m));
-        }
+        decimal net;
+        string explanation;
 
-        var explanation = withinLimit
-            ? "MEI dentro do limite anual de R$ 81.000. DAS fixo conforme atividade (INSS 5% do salário mínimo + ICMS/ISS)."
-            : withinTolerance
-                ? "Faturamento acima de R$ 81.000/ano, mas dentro da tolerância de 20% (até R$ 97.200). Desenquadramento ocorre no ano seguinte."
-                : "Faturamento acima da tolerância de 20%. Risco de desenquadramento retroativo para ME no Simples Nacional.";
+        if (withinLimit)
+        {
+            net = monthlyRevenue - das;
+            lines.Insert(0, Discount("DAS MEI mensal", das));
+            lines.Add(Information("Líquido após DAS", net));
+            explanation = "MEI dentro do limite anual de R$ 81.000. DAS fixo conforme atividade (INSS 5% do salário mínimo + ICMS/ISS).";
+        }
+        else if (withinTolerance)
+        {
+            net = monthlyRevenue - das;
+            lines.Insert(0, Discount("DAS MEI mensal", das));
+            lines.Add(Information("Excedente sobre o limite anual", excessOverLimit));
+            lines.Add(Information("Líquido após DAS (referência)", net));
+            lines.Add(TextInformation("Situação", "Acima do limite — desenquadramento no ano seguinte"));
+            explanation = "Faturamento acima de R$ 81.000/ano, mas dentro da tolerância de 20% (até R$ 97.200). Desenquadramento ocorre no ano seguinte.";
+        }
+        else
+        {
+            net = 0m;
+            lines.Add(Information("Excedente sobre o teto com tolerância", excessOverTolerance));
+            lines.Add(TextInformation("DAS MEI mensal (referência)", Money.From(das).ToString()));
+            lines.Add(TextInformation("Situação", "Desenquadrado do MEI"));
+            lines.Add(TextInformation("Líquido MEI", "Não aplicável ao faturamento informado"));
+            explanation = "Faturamento acima da tolerância de 20%. O regime MEI não se aplica — há risco de desenquadramento retroativo para ME no Simples Nacional.";
+        }
 
         return Build(definition, monthlyRevenue, net, lines, explanation);
     }
