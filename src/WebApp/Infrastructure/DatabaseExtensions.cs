@@ -15,5 +15,6 @@ public static class DatabaseExtensions
         }
 
         await DataSeeder.SeedAsync(db);
+        await scope.ServiceProvider.GetRequiredService<SitemapXmlCache>().RefreshAsync(app.Services);
     }
 }

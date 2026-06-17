@@ -60,6 +60,7 @@ builder.Services.AddOutputCache(options =>
     options.AddPolicy("sitemap", policy => policy.Expire(PerformanceCacheDurations.Sitemap));
 });
 
+builder.Services.AddSingleton<SitemapXmlCache>();
 builder.Services.AddRazorPages();
 builder.Services.AddProblemDetails();
 builder.Services.AddAntiforgery();
@@ -145,13 +146,14 @@ app.MapGet("/widget/{slug}", (string slug) =>
         ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
         : Results.NotFound());
 
-app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], async (
-    AppDbContext db,
-    HttpRequest request,
-    HttpResponse response,
-    IConfiguration configuration) =>
+app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], (HttpRequest request, HttpResponse response, SitemapXmlCache cache) =>
 {
-    var xml = await SitemapGenerator.BuildXmlAsync(db, configuration);
+    if (!cache.IsReady)
+    {
+        return Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
+    }
+
+    var xml = cache.Xml;
     const string contentType = "application/xml; charset=utf-8";
 
     if (HttpMethods.IsHead(request.Method))
