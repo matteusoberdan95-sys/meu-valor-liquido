@@ -10,6 +10,7 @@
 - Smoke opcional de produção via `SMOKE_BASE_URL` (`ProductionSmokeTests`).
 - Docs: `SEO_MONTHLY_REVIEW.md`, `CALIBRATION_ROUTINE.md`; `METRICS_ROUTINE` e `DEPLOY` atualizados.
 - Testes `Sprint52ObservabilityTests`.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 502 testes (1 ignorado).
 
 ### Sprint 59 - PJ x CLT e MEI profundos
 - Anexo Simples Nacional (I–V) com alíquota sugerida; pró-labore editável (%).
