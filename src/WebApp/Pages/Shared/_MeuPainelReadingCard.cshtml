@@ -1,0 +1,22 @@
+@model MeuValorLiquido.Modules.Content.BlogPost
+@{
+    var categoryClass = BlogContentHelper.GetCategoryTextClass(Model.Category);
+    var heroModel = new BlogHeroVisualModel(
+        Model.Slug,
+        Model.Title,
+        Model.Category,
+        "valora-stitch-panel-reading-visual");
+}
+
+<a class="valora-stitch-panel-reading-card"
+   asp-page="/Blog/Post"
+   asp-route-slug="@Model.Slug">
+    <div class="valora-stitch-panel-reading-thumb" aria-hidden="true">
+        <partial name="Shared/_BlogStitchHeroVisual" model="heroModel" />
+    </div>
+    <div class="valora-stitch-panel-reading-body">
+        <span class="valora-stitch-blog-cat-text @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
+        <h3 class="valora-stitch-panel-reading-title">@Model.Title</h3>
+        <p class="valora-stitch-panel-reading-summary">@Model.Summary</p>
+    </div>
+</a>

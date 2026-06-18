@@ -2,6 +2,8 @@ namespace MeuValorLiquido.WebApp.Infrastructure;
 
 public static class BlogContentHelper
 {
+    public const string DefaultAuthor = "Matteus Oberdan";
+
     public static int EstimateReadingMinutes(string htmlContent)
     {
         var text = System.Text.RegularExpressions.Regex.Replace(htmlContent, "<[^>]+>", " ");

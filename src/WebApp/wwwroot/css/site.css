@@ -7,7 +7,7 @@
   --valora-on-primary-container: #00352e;
   --valora-tertiary: #45dfa4;
   --valora-on-tertiary: #003825;
-  --valora-background: #131314;
+  --valora-background: #0a0a0b;
   --valora-surface: #121214;
   --valora-surface-container-lowest: #0e0e0f;
   --valora-surface-container-low: #1c1b1c;
@@ -83,7 +83,7 @@ h1, h2, h3, h4,
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
   vertical-align: middle;
   line-height: 1;
 }
@@ -1668,24 +1668,66 @@ a.valora-choice.valora-choice--active {
   left: 0;
   right: 0;
   z-index: 100;
+  padding: 1rem;
+  background: var(--valora-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--valora-border-subtle);
+  box-shadow: 0 -8px 32px rgb(0 0 0 / 35%);
+}
+
+.valora-app.valora-has-bottom-nav .valora-cookie-consent {
+  bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+  .valora-app.valora-has-bottom-nav .valora-cookie-consent {
+    bottom: 0;
+  }
+}
+
+.valora-cookie-consent-content {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--valora-surface-container-highest);
-  border-top: 1px solid var(--valora-outline-variant);
-  box-shadow: 0 -4px 24px rgb(0 0 0 / 8%);
+}
+
+.valora-cookie-consent-text {
+  margin: 0;
+  flex: 1 1 16rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--valora-text-muted);
+}
+
+.valora-cookie-consent-text a {
+  color: var(--valora-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.valora-cookie-consent-text a:hover {
+  text-decoration: underline;
+}
+
+.valora-cookie-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.valora-stitch-btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
 }
 
 .valora-cookie-consent[hidden] {
   display: none !important;
-}
-
-.valora-btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
 }
 
 /* Blog */
@@ -1875,9 +1917,19 @@ a.valora-choice.valora-choice--active {
 }
 
 .valora-footer-stitch {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.valora-footer-stitch-brand {
+  grid-column: 1 / -1;
+}
+
+.valora-footer-stitch-col--newsletter,
+.valora-footer--stitch .valora-footer-copy,
+.valora-footer-stitch-ribbon {
+  grid-column: 1 / -1;
 }
 
 .valora-footer-stitch-title {
@@ -1900,6 +1952,77 @@ a.valora-choice.valora-choice--active {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
+}
+
+.valora-footer-stitch-newsletter-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--valora-on-surface-variant);
+}
+
+.valora-footer-stitch-newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.valora-footer-stitch-newsletter-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--valora-on-surface);
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+}
+
+.valora-footer-stitch-newsletter-input:focus {
+  outline: none;
+  border-color: var(--valora-primary);
+  box-shadow: 0 0 0 1px rgb(89 219 199 / 25%);
+}
+
+.valora-footer-stitch-newsletter-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--valora-on-primary);
+  background: var(--valora-primary);
+  border: none;
+  border-radius: var(--valora-radius-lg);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.valora-footer-stitch-newsletter-btn:hover {
+  opacity: 0.9;
+}
+
+.valora-footer-stitch-ribbon {
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--valora-border-subtle);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgb(161 161 170 / 50%);
+}
+
+.valora-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .valora-footer-stitch-col-title {
@@ -1964,25 +2087,33 @@ a.valora-choice.valora-choice--active {
 @media (min-width: 992px) {
   .valora-footer-stitch {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
     align-items: start;
-    column-gap: 3rem;
   }
 
   .valora-footer-stitch-brand { grid-column: 1; }
-  .valora-footer-stitch-columns { grid-column: 2; }
+  .valora-footer-stitch-col:nth-of-type(2) { grid-column: 2; }
+  .valora-footer-stitch-col:nth-of-type(3) { grid-column: 3; }
+  .valora-footer-stitch-col--newsletter { grid-column: 4; }
+
   .valora-footer-stitch-social {
-    grid-column: 3;
-    grid-row: 1;
-    align-self: start;
-    padding-top: 0.25rem;
+    margin-top: 1rem;
   }
 
   .valora-footer--stitch .valora-footer-copy {
     grid-column: 1 / -1;
     border-top: 1px solid var(--valora-border-subtle);
     padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .valora-footer-stitch-ribbon {
+    grid-column: 1 / -1;
+    text-align: left;
+    border-top: none;
+    padding-top: 0;
+    margin-top: -0.5rem;
   }
 
   .valora-app.valora-has-bottom-nav .valora-footer--stitch {
@@ -2392,18 +2523,16 @@ a.valora-choice.valora-choice--active {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-height: 22rem;
     border-radius: var(--valora-radius-xl);
     overflow: hidden;
-    box-shadow: var(--valora-shadow);
-    background: var(--valora-surface-container-low);
+    background: transparent;
   }
 
   .valora-stitch-hero-visual {
     display: block;
     width: 100%;
-    height: 100%;
-    max-height: 22rem;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     object-position: center;
   }
@@ -3451,6 +3580,16 @@ a.valora-choice.valora-choice--active {
   color: var(--valora-badge-fiscal-text);
 }
 
+.valora-stitch-calc-detail--financial .valora-stitch-calc-detail-badge {
+  background: var(--valora-badge-financeiro-bg);
+  color: var(--valora-financeiro-teal);
+}
+
+.valora-stitch-calc-detail--trabalhista .valora-stitch-calc-detail-badge {
+  background: var(--valora-badge-trabalhista-bg);
+  color: var(--valora-trabalhista-blue);
+}
+
 .valora-stitch-calc-detail--layered .valora-stitch-calc-form .valora-form-advanced summary .material-symbols-outlined {
   color: var(--valora-primary);
 }
@@ -3484,7 +3623,8 @@ a.valora-choice.valora-choice--active {
   }
 
   .valora-stitch-calc-detail--fiscal .valora-stitch-calc-estimate .valora-result-total-value,
-  .valora-stitch-calc-detail--layered .valora-stitch-calc-estimate .valora-result-total-value {
+  .valora-stitch-calc-detail--layered .valora-stitch-calc-estimate .valora-result-total-value,
+  .valora-stitch-calc-detail--financial .valora-stitch-calc-estimate .valora-result-total-value {
     font-size: clamp(2rem, 10vw, 2.5rem);
   }
 }
@@ -4548,7 +4688,7 @@ a.valora-choice.valora-choice--active {
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--valora-text-heading);
+  color: var(--valora-primary);
 }
 
 .valora-stitch-faq-cta-text {
@@ -5933,80 +6073,199 @@ a.valora-stitch-contact-aside-card:hover {
   background: var(--valora-card-low);
 }
 
-/* Meu painel */
-
-.valora-stitch-panel {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding-bottom: 1rem;
+.valora-stitch-legal-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
 }
 
-.valora-stitch-panel-hero {
-  text-align: center;
+.valora-stitch-legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.valora-stitch-legal-table th,
+.valora-stitch-legal-table td {
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--valora-border-subtle);
+  text-align: left;
+  vertical-align: top;
+}
+
+.valora-stitch-legal-table th {
+  background: var(--valora-card-med);
+  color: var(--valora-text-heading);
+  font-weight: 600;
+}
+
+.valora-stitch-legal-table code {
+  font-size: 0.8125rem;
+  word-break: break-word;
+}
+
+/* Meu painel */
+
+.valora-stitch-panel--bento {
+  max-width: var(--valora-container-max);
+  margin: 0 auto;
+  padding-bottom: 1.5rem;
+}
+
+.valora-stitch-panel-greeting {
   margin-bottom: 1.5rem;
 }
 
-.valora-stitch-panel-hero-icon {
-  width: 4rem;
-  height: 4rem;
-  margin: 0 auto 0.75rem;
+.valora-stitch-panel-greeting-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-panel-greeting-lead {
+  margin: 0;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-panel-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.valora-stitch-panel-profile {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  text-align: center;
+}
+
+.valora-stitch-panel-profile-avatar {
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto 1rem;
   border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(89 219 199 / 10%);
-  color: var(--valora-primary-container);
+  border: 2px solid rgb(89 219 199 / 20%);
+  background: rgb(89 219 199 / 8%);
+  color: var(--valora-primary);
 }
 
-.valora-stitch-panel-hero-icon .material-symbols-outlined {
-  font-size: 2rem;
+.valora-stitch-panel-profile-avatar .material-symbols-outlined {
+  font-size: 2.25rem;
 }
 
-.valora-stitch-panel-title {
-  margin: 0 0 0.5rem;
-  font-size: 1.5rem;
+.valora-stitch-panel-profile-name {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--valora-text-heading);
 }
 
-.valora-stitch-panel-lead {
-  margin: 0;
-  color: var(--valora-on-surface-variant);
-  line-height: 1.5;
-  font-size: 0.9375rem;
+.valora-stitch-panel-profile-badge {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-panel-profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valora-stitch-panel-profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+  color: var(--valora-on-surface);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.valora-stitch-panel-profile-btn:hover {
+  border-color: rgb(89 219 199 / 30%);
+  background: var(--valora-surface-container);
 }
 
 .valora-stitch-panel-card {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
   background: var(--valora-card-low);
 }
 
-.valora-stitch-panel-toolbar {
+.valora-stitch-panel-card-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.valora-stitch-panel-count {
+.valora-stitch-panel-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.valora-stitch-panel-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--valora-radius-lg);
+}
+
+.valora-stitch-panel-card-icon--primary {
+  background: rgb(89 219 199 / 10%);
+  color: var(--valora-primary);
+}
+
+.valora-stitch-panel-card-icon--tertiary {
+  background: rgb(69 223 164 / 10%);
+  color: var(--valora-net-result);
+}
+
+.valora-stitch-panel-card-title {
   margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-panel-count {
+  margin: 0 0 1rem;
   font-size: 0.8125rem;
   color: var(--valora-text-muted);
 }
 
 .valora-stitch-panel-empty {
   text-align: center;
-  padding: 1.5rem 0.5rem;
+  padding: 2rem 0.5rem;
 }
 
 .valora-stitch-panel-empty-icon {
   font-size: 2.5rem;
   color: var(--valora-outline);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .valora-stitch-panel-empty-title {
@@ -6016,9 +6275,12 @@ a.valora-stitch-contact-aside-card:hover {
 }
 
 .valora-stitch-panel-empty-text {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   font-size: 0.875rem;
   color: var(--valora-text-muted);
+  max-width: 24rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .valora-stitch-panel-list {
@@ -6036,28 +6298,136 @@ a.valora-stitch-contact-aside-card:hover {
   background: var(--valora-surface-container-low);
 }
 
-.valora-stitch-panel-privacy {
-  margin-bottom: 1rem;
-  padding: 1rem;
+.valora-stitch-panel-readings-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--valora-net-result);
+  text-decoration: none;
+}
+
+.valora-stitch-panel-readings-link:hover { text-decoration: underline; }
+
+.valora-stitch-panel-readings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.valora-stitch-panel-reading-card {
+  display: block;
   border-radius: var(--valora-radius-xl);
   border: 1px solid var(--valora-border-subtle);
-  background: var(--valora-card-low);
+  background: var(--valora-surface-container-low);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
 }
 
-.valora-stitch-panel-privacy-title {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
+.valora-stitch-panel-reading-card:hover {
+  border-color: rgb(69 223 164 / 35%);
+}
+
+.valora-stitch-panel-reading-thumb {
+  height: 7rem;
+  overflow: hidden;
+  background: var(--valora-surface-container);
+}
+
+.valora-stitch-panel-reading-body {
+  padding: 1rem;
+}
+
+.valora-stitch-panel-reading-title {
+  margin: 0.35rem 0 0.25rem;
+  font-size: 0.9375rem;
   font-weight: 700;
+  color: var(--valora-text-heading);
 }
 
-.valora-stitch-panel-privacy p {
+.valora-stitch-panel-reading-summary {
   margin: 0;
   font-size: 0.8125rem;
   color: var(--valora-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.valora-stitch-panel-newsletter {
+  background: linear-gradient(160deg, var(--valora-primary-container) 0%, rgb(0 104 95 / 90%) 100%);
+  border-color: rgb(89 219 199 / 25%);
+}
+
+.valora-stitch-panel-newsletter-glow {
+  position: absolute;
+  right: -3rem;
+  bottom: -3rem;
+  width: 10rem;
+  height: 10rem;
+  background: rgb(255 255 255 / 10%);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.valora-stitch-panel-newsletter-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.valora-stitch-panel-newsletter-icon {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.valora-stitch-panel-newsletter-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.valora-stitch-panel-newsletter-lead {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
   line-height: 1.5;
+  color: rgb(255 255 255 / 82%);
+}
+
+.valora-stitch-panel-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valora-stitch-panel-newsletter-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid rgb(255 255 255 / 20%);
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+}
+
+.valora-stitch-panel-newsletter-input::placeholder {
+  color: rgb(255 255 255 / 45%);
+}
+
+.valora-stitch-panel-newsletter-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--valora-radius-lg);
+  background: #fff;
+  color: var(--valora-primary-container);
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .valora-stitch-panel-disclaimer {
+  margin-top: 1.25rem;
   margin-bottom: 0;
 }
 
@@ -6337,34 +6707,37 @@ a.valora-stitch-contact-aside-card:hover {
     color: var(--valora-primary);
   }
 
-  .valora-stitch-panel {
-    max-width: var(--valora-container-max);
-  }
-
-  .valora-stitch-panel-hero {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-
-  .valora-stitch-panel-hero-icon {
-    margin: 0;
-    flex-shrink: 0;
-  }
-
-  .valora-stitch-panel-body {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 18rem;
+  .valora-stitch-panel-bento {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 1.5rem;
-    align-items: start;
   }
 
-  .valora-stitch-panel-privacy {
-    margin-bottom: 0;
-    position: sticky;
-    top: 5.5rem;
+  .valora-stitch-panel-profile {
+    grid-column: span 3;
+  }
+
+  .valora-stitch-panel-saved {
+    grid-column: span 9;
+    padding: 2rem;
+  }
+
+  .valora-stitch-panel-readings {
+    grid-column: span 8;
+    padding: 2rem;
+  }
+
+  .valora-stitch-panel-readings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .valora-stitch-panel-newsletter {
+    grid-column: span 4;
+    padding: 2rem;
+    align-self: stretch;
+  }
+
+  .valora-stitch-panel-greeting-lead {
+    font-size: 1.125rem;
   }
 
   .valora-stitch-faq-hero {
@@ -6438,7 +6811,6 @@ a.valora-stitch-contact-aside-card:hover {
   .valora-stitch-hero-desktop { display: block; }
   .valora-stitch-section-title-mobile { display: none; }
   .valora-stitch-section-title-desktop { display: inline; }
-  .valora-stitch-hero-visual-wrap { display: block; }
   .valora-stitch-ad-slot { display: flex; }
   .valora-stitch-teaser { display: block; }
 
@@ -6589,3 +6961,1384 @@ select:focus-visible {
   outline: 2px solid var(--valora-primary);
   outline-offset: 2px;
 }
+
+/* Sprint 60–61 — Fidelidade Stitch v2 (salário líquido + home desktop) */
+
+.valora-stitch-salario-estimate .valora-stitch-salario-result {
+  background: linear-gradient(160deg, var(--valora-surface) 0%, var(--valora-surface-container-low) 100%);
+  border: 1px solid rgb(89 219 199 / 20%);
+  border-radius: var(--valora-radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--valora-shadow);
+}
+
+.valora-stitch-salario-result-hero-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.valora-stitch-salario-result-kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-salario-result-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--valora-radius-full);
+  background: rgb(20 184 166 / 12%);
+  color: var(--valora-financeiro-teal);
+}
+
+.valora-stitch-salario-result-value {
+  margin: 0;
+  font-family: var(--valora-font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--valora-net-result);
+  text-shadow: var(--valora-glow-net);
+}
+
+.valora-stitch-salario-result-percent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-salario-result-percent .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--valora-net-result);
+}
+
+.valora-stitch-salario-result-chart-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-salario-result-chart-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.valora-stitch-salario-chart {
+  position: relative;
+  width: 11.25rem;
+  height: 11.25rem;
+  flex-shrink: 0;
+}
+
+.valora-stitch-salario-chart-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.valora-stitch-salario-chart-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-salario-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.valora-stitch-salario-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-salario-legend li strong {
+  margin-left: auto;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-salario-legend-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.valora-stitch-salario-tax-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-salario-tax-card {
+  padding: 1rem;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+}
+
+.valora-stitch-salario-tax-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.valora-stitch-salario-tax-value {
+  font-size: 1.125rem;
+  color: var(--valora-error);
+}
+
+.valora-stitch-salario-effective-rate {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-left: 4px solid var(--valora-trabalhista-blue);
+  border-radius: var(--valora-radius-xl);
+}
+
+.valora-stitch-salario-effective-rate .material-symbols-outlined {
+  color: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-salario-effective-rate-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-salario-effective-rate p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-salario-future-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+}
+
+.valora-stitch-salario-future-title {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-salario-future-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-salario-simple {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+}
+
+.valora-stitch-salario-simple-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--valora-text-heading);
+  list-style: none;
+}
+
+.valora-stitch-salario-simple-summary::-webkit-details-marker { display: none; }
+
+.valora-stitch-salario-simple .valora-simple-steps {
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.valora-stitch-salario-edu-grid {
+  display: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .valora-stitch-salario-edu-grid {
+    display: grid;
+  }
+}
+
+.valora-stitch-salario-edu-card {
+  padding: 1.25rem;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+}
+
+.valora-stitch-salario-edu-card--fiscal { border-left: 4px solid var(--valora-fiscal-purple); }
+.valora-stitch-salario-edu-card--labour { border-left: 4px solid var(--valora-trabalhista-blue); }
+
+.valora-stitch-salario-edu-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-salario-edu-card--fiscal .valora-stitch-salario-edu-title { color: var(--valora-fiscal-purple); }
+.valora-stitch-salario-edu-card--labour .valora-stitch-salario-edu-title { color: var(--valora-trabalhista-blue); }
+
+.valora-stitch-salario-edu-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-home-breadcrumb--desktop {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-home-breadcrumb--desktop a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.valora-stitch-home-breadcrumb--desktop a:hover { color: var(--valora-primary); }
+
+.valora-stitch-social-proof {
+  display: none;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.valora-stitch-social-proof p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-social-proof-avatars-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.valora-stitch-social-proof-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding-left: 0.125rem;
+}
+
+.valora-stitch-star-icon {
+  font-size: 1rem;
+  line-height: 1;
+  color: #fbbf24;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+}
+
+.valora-stitch-social-proof-avatars {
+  display: flex;
+}
+
+.valora-stitch-social-proof-avatar {
+  display: block;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--valora-background);
+  margin-left: -0.65rem;
+  overflow: hidden;
+  background: var(--valora-card-med);
+}
+
+.valora-stitch-social-proof-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.valora-stitch-social-proof-avatar:first-child { margin-left: 0; }
+
+/* Home hero backdrop — ilustração grande atrás do bento desktop (lado direito) */
+.valora-stitch-home-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.valora-stitch-home-hero-backdrop {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-home-stage {
+    margin-bottom: 0.5rem;
+  }
+
+  .valora-stitch-home-hero-backdrop {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: -6%;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 42%, rgb(0 0 0 / 88%) 72%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 42%, rgb(0 0 0 / 88%) 72%, transparent 98%);
+  }
+
+  .valora-stitch-home-hero-backdrop .valora-stitch-hero-visual {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: top right;
+  }
+
+  .valora-stitch-home-stage .valora-stitch-hero--split {
+    position: relative;
+    z-index: 1;
+    grid-template-columns: minmax(0, 48%);
+    gap: 0;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0;
+  }
+
+  .valora-stitch-home-stage .valora-stitch-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 36rem;
+  }
+
+  .valora-stitch-home-stage .valora-stitch-section--desktop-bento {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .valora-stitch-home-stage .valora-stitch-section-head--desktop-hub {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 1.25rem;
+  }
+
+  .valora-stitch-home-stage .valora-stitch-home-desktop-bento {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .valora-stitch-home-hero-backdrop {
+    left: 50%;
+    right: -8%;
+    top: -0.5rem;
+    height: clamp(26rem, 46vw, 34rem);
+  }
+
+  .valora-stitch-home-hero-backdrop .valora-stitch-hero-visual {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top right;
+  }
+}
+
+@media (min-width: 1280px) {
+  .valora-stitch-home-hero-backdrop {
+    left: 50%;
+    right: -10%;
+    top: -1rem;
+    height: clamp(28rem, 44vw, 36rem);
+  }
+}
+
+.valora-stitch-section--mobile-bento { display: block; }
+.valora-stitch-section--desktop-bento { display: none; }
+
+.valora-stitch-section-kicker {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-section-head--desktop-hub {
+  align-items: flex-end;
+}
+
+.valora-stitch-link--desktop-hub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.valora-stitch-home-desktop-bento {
+  display: grid;
+  gap: 1rem;
+}
+
+.valora-stitch-home-featured-card,
+.valora-stitch-home-hub-card,
+.valora-stitch-home-prime-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+
+.valora-stitch-home-featured-card:hover,
+.valora-stitch-home-hub-card:hover {
+  border-color: rgb(89 219 199 / 35%);
+  background: var(--valora-card-med);
+  transform: translateY(-2px);
+}
+
+.valora-stitch-home-featured-card {
+  padding: 1.5rem;
+}
+
+.valora-stitch-home-featured-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-home-featured-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.valora-stitch-home-featured-badge {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--valora-radius-full);
+  background: rgb(20 184 166 / 12%);
+  color: var(--valora-financeiro-teal);
+}
+
+.valora-stitch-home-featured-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.valora-stitch-home-featured-summary {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-home-featured-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--valora-primary);
+  font-weight: 700;
+}
+
+.valora-stitch-home-featured-line {
+  flex: 1;
+  height: 1px;
+  background: var(--valora-border-subtle);
+}
+
+.valora-stitch-home-hub-card {
+  position: relative;
+  padding: 1.25rem;
+}
+
+.valora-stitch-home-hub-card-title {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.valora-stitch-home-hub-card-summary {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+  padding-right: 1.5rem;
+}
+
+.valora-stitch-home-hub-card-arrow {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-home-prime-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgb(89 219 199 / 8%);
+  border-color: rgb(89 219 199 / 25%);
+}
+
+.valora-stitch-home-prime-icon {
+  font-size: 2rem;
+  color: var(--valora-primary);
+  margin-bottom: 0.35rem;
+}
+
+.valora-stitch-home-prime-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.valora-stitch-home-prime-text {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-home-methodology {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 3rem 0 2rem;
+}
+
+.valora-stitch-home-methodology-card {
+  position: relative;
+  padding: 2rem;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.valora-stitch-home-methodology-accent {
+  width: 4rem;
+  height: 2px;
+  background: var(--valora-primary);
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-home-methodology-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.valora-stitch-home-methodology-card p {
+  margin: 0 0 1rem;
+  color: var(--valora-text-muted);
+  line-height: 1.6;
+}
+
+.valora-stitch-home-methodology-features {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.valora-stitch-home-methodology-features article {
+  display: flex;
+  gap: 1rem;
+}
+
+.valora-stitch-home-methodology-features .material-symbols-outlined {
+  font-size: 2rem;
+  color: var(--valora-primary);
+  flex-shrink: 0;
+}
+
+.valora-stitch-home-methodology-features h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.valora-stitch-home-methodology-features p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-link--desktop-only { display: none; }
+
+@media (min-width: 1024px) {
+  .valora-stitch-home-breadcrumb--desktop {
+    display: flex;
+  }
+
+  .valora-stitch-social-proof {
+    display: flex;
+  }
+
+  .valora-stitch-section--desktop-bento,
+  .valora-stitch-home-methodology {
+    display: grid;
+  }
+
+  .valora-stitch-section--mobile-bento,
+  .valora-stitch-trust-row {
+    display: none;
+  }
+
+  .valora-stitch-link--desktop-only {
+    display: inline-flex;
+  }
+
+  .valora-stitch-section-kicker--center-desktop {
+    text-align: center;
+  }
+
+  .valora-stitch-section-head--blog {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .valora-stitch-home-desktop-bento {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .valora-stitch-home-featured-card { grid-column: span 6; }
+  .valora-stitch-home-hub-card:nth-of-type(2),
+  .valora-stitch-home-hub-card:nth-of-type(3) { grid-column: span 3; }
+  .valora-stitch-home-hub-card:nth-of-type(4),
+  .valora-stitch-home-hub-card:nth-of-type(5) { grid-column: span 4; }
+  .valora-stitch-home-prime-card { grid-column: span 4; }
+
+  .valora-stitch-home-methodology {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+/* —— Sprint 62: hubs (calculadoras, blog, FAQ) —— */
+
+.valora-stitch-calc-premium-banner {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 18%);
+  background: linear-gradient(135deg, rgb(0 168 150 / 10%) 0%, var(--valora-card-low) 55%);
+}
+
+.valora-stitch-calc-premium-banner-glow {
+  position: absolute;
+  top: -3rem;
+  right: -2rem;
+  width: 14rem;
+  height: 14rem;
+  background: rgb(89 219 199 / 14%);
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.valora-stitch-calc-premium-banner-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.valora-stitch-calc-premium-badge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--valora-primary);
+  border: 1px solid rgb(89 219 199 / 30%);
+  border-radius: var(--valora-radius-full);
+  background: rgb(0 168 150 / 8%);
+}
+
+.valora-stitch-calc-premium-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-calc-premium-text {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--valora-text-muted);
+  max-width: 36rem;
+}
+
+.valora-stitch-calc-premium-btn {
+  align-self: flex-start;
+}
+
+.valora-stitch-calc-premium-visual {
+  display: none;
+}
+
+.valora-stitch-blog-tip-card {
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 22%);
+  background: linear-gradient(160deg, rgb(0 168 150 / 8%) 0%, var(--valora-card-low) 100%);
+}
+
+.valora-stitch-blog-tip-icon {
+  font-size: 1.75rem;
+  color: var(--valora-primary);
+  margin-bottom: 0.5rem;
+}
+
+.valora-stitch-blog-tip-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-blog-tip-text {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-blog-tip-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+  text-decoration: none;
+  border: 1px solid rgb(89 219 199 / 30%);
+  border-radius: var(--valora-radius-lg);
+  background: rgb(0 168 150 / 6%);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.valora-stitch-blog-tip-btn:hover {
+  background: rgb(0 168 150 / 12%);
+  border-color: rgb(89 219 199 / 45%);
+}
+
+.valora-stitch-blog-newsletter {
+  margin-top: 2rem;
+  padding: 2rem 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  text-align: center;
+}
+
+.valora-stitch-blog-newsletter-inner {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.valora-stitch-blog-newsletter-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-blog-newsletter-lead {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-blog-newsletter .valora-footer-stitch-newsletter-form {
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.valora-stitch-blog-newsletter-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-calc-premium-banner {
+    padding: 2rem 2.25rem;
+  }
+
+  .valora-stitch-calc-premium-banner-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .valora-stitch-calc-premium-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.5rem;
+    height: 5.5rem;
+    flex-shrink: 0;
+    border-radius: var(--valora-radius-xl);
+    background: rgb(0 168 150 / 12%);
+    border: 1px solid rgb(89 219 199 / 20%);
+  }
+
+  .valora-stitch-calc-premium-visual .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: var(--valora-primary);
+  }
+
+  .valora-stitch-blog-tip-card {
+    grid-column: 1 / -1;
+  }
+
+  .valora-stitch-blog-newsletter {
+    padding: 2.5rem 2rem;
+  }
+}
+
+/* —— Sprint 63: rescisão multi-card + PJ×CLT visual —— */
+
+.valora-stitch-cltpj-hero-lead {
+  margin: 0 0 1rem;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--valora-text-muted);
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-cltpj-hero-lead {
+    font-size: 1.125rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .valora-stitch-cltpj-title {
+    text-align: center;
+  }
+}
+
+.valora-stitch-cltpj-factor-r {
+  padding: 1rem 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-cltpj-factor-r-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-cltpj-factor-r-badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--valora-radius-full);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--valora-net-result);
+  background: rgb(69 223 164 / 12%);
+}
+
+.valora-stitch-cltpj-verdict--hero {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 20%);
+  background: linear-gradient(160deg, var(--valora-card-low) 0%, var(--valora-surface-container-low) 100%);
+}
+
+.valora-stitch-cltpj-verdict-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--valora-radius-full);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+  background: rgb(89 219 199 / 12%);
+}
+
+.valora-stitch-cltpj-verdict-lead {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-annual-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-cltpj-annual-compare {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.valora-stitch-cltpj-annual-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-annual-value {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-cltpj-annual-value--pj {
+  color: var(--valora-primary);
+}
+
+.valora-stitch-cltpj-annual-bar {
+  height: 0.5rem;
+  border-radius: var(--valora-radius-full);
+  background: var(--valora-surface-container-high);
+  overflow: hidden;
+}
+
+.valora-stitch-cltpj-annual-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(161 161 170 / 40%);
+}
+
+.valora-stitch-cltpj-annual-bar-fill--pj {
+  background: var(--valora-primary);
+  box-shadow: 0 0 10px rgb(89 219 199 / 45%);
+}
+
+.valora-stitch-cltpj-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-cltpj-detail-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.valora-stitch-cltpj-detail-card {
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-cltpj-detail-title {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-cltpj-detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.valora-stitch-cltpj-detail-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--valora-border-subtle);
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-cltpj-detail-list li strong {
+  color: var(--valora-on-surface);
+  font-weight: 600;
+}
+
+.valora-stitch-cltpj-detail-list--debit strong { color: var(--valora-error); }
+.valora-stitch-cltpj-detail-list--credit strong { color: var(--valora-net-result); }
+
+.valora-stitch-cltpj-detail-list--total {
+  border-bottom: none;
+  padding-top: 0.5rem;
+  font-weight: 700;
+}
+
+.valora-stitch-cltpj-detail-list--pj strong { color: var(--valora-primary); }
+
+.valora-stitch-rescisao-breakdown { margin-top: 0.5rem; }
+
+.valora-stitch-rescisao-card {
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-rescisao-card { padding: 1.5rem 2rem; }
+}
+
+.valora-stitch-rescisao-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-rescisao-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.valora-stitch-rescisao-card-title-row--solo {
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-rescisao-card-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-rescisao-card-title-row .material-symbols-outlined {
+  color: var(--valora-net-result);
+}
+
+.valora-stitch-rescisao-icon-error { color: var(--valora-error) !important; }
+.valora-stitch-rescisao-icon-fiscal { color: var(--valora-fiscal-purple) !important; }
+
+.valora-stitch-rescisao-card-total {
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.valora-stitch-rescisao-card-total--credit { color: var(--valora-net-result); }
+.valora-stitch-rescisao-card-total--debit { color: var(--valora-error); }
+
+.valora-stitch-rescisao-line-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valora-stitch-rescisao-line-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: var(--valora-radius-lg);
+  border-left: 4px solid var(--valora-net-result);
+  background: var(--valora-surface);
+}
+
+.valora-stitch-rescisao-line-label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-rescisao-line-hint {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-line-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--valora-on-surface);
+  white-space: nowrap;
+}
+
+.valora-stitch-rescisao-discount-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.valora-stitch-rescisao-discount-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--valora-border-subtle);
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-fgts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-rescisao-fgts-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.valora-stitch-rescisao-fgts-stat {
+  padding: 1rem 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-rescisao-fgts-stat--highlight .valora-stitch-rescisao-fgts-stat-value {
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-rescisao-fgts-stat-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-fgts-stat-value {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-rescisao-summary {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 20%);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-rescisao-summary-glow {
+  position: absolute;
+  top: -3rem;
+  right: -2rem;
+  width: 8rem;
+  height: 8rem;
+  background: rgb(89 219 199 / 12%);
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.valora-stitch-rescisao-summary-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.valora-stitch-rescisao-summary-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-rescisao-summary-title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-rescisao-summary-lead {
+  margin: 0 0 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-summary-net {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 8vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-rescisao-summary-rows {
+  margin: 0 0 1.25rem;
+}
+
+.valora-stitch-rescisao-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+}
+
+.valora-stitch-rescisao-summary-row dt {
+  margin: 0;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-summary-row dd {
+  margin: 0;
+  color: var(--valora-on-surface);
+  font-weight: 500;
+}
+
+.valora-stitch-rescisao-summary-row--debit { color: var(--valora-error); }
+.valora-stitch-rescisao-summary-row--strong dd { font-weight: 700; }
+
+.valora-stitch-rescisao-summary-row--fgts {
+  font-style: italic;
+  color: var(--valora-fiscal-purple);
+}
+
+.valora-stitch-rescisao-summary-row--fgts dd { color: var(--valora-fiscal-purple); }
+
+.valora-stitch-rescisao-summary-divider {
+  height: 1px;
+  margin: 0.5rem 0;
+  background: var(--valora-border-subtle);
+}
+
+.valora-stitch-rescisao-summary-pdf {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.valora-stitch-rescisao-tip {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-rescisao-tip-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-rescisao-tip-title .material-symbols-outlined {
+  color: var(--valora-warning-text, #f59e0b);
+}
+
+.valora-stitch-rescisao-tip-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-tip-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+  text-decoration: none;
+}
+
+.valora-stitch-rescisao-tip-link:hover { text-decoration: underline; }
+

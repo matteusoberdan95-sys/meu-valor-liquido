@@ -68,6 +68,8 @@ public class BlogPostEntity
 
     public string? RelatedCalculatorSlug { get; set; }
 
+    public string Author { get; set; } = "Matteus Oberdan";
+
     public bool IsPublished { get; set; } = true;
 }
 

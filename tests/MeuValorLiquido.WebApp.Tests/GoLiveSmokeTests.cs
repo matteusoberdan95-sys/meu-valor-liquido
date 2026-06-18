@@ -53,6 +53,7 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         xml.Should().Contain("/calculadoras/salario-liquido");
         xml.Should().Contain("/como-calculamos");
         xml.Should().Contain("/politica-de-privacidade");
+        xml.Should().Contain("/politica-de-cookies");
     }
 
     [Fact]
@@ -85,7 +86,10 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-stitch-hero");
         html.Should().Contain("valora-stitch-bento");
         html.Should().Contain("valora-nav-search");
-        html.Should().Contain("Relatórios completos");
+        html.Should().Contain("Nossa Metodologia");
+        html.Should().Contain("images/social-proof/avatar-1");
+        html.Should().Contain("valora-stitch-social-proof-rating");
+        html.Should().Contain("valora-stitch-star-icon");
     }
 
     [Fact]
@@ -94,11 +98,11 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/calculadoras/salario-liquido");
 
         html.Should().Contain("valora-stitch-calc-detail");
+        html.Should().Contain("valora-stitch-salario");
         html.Should().Contain("valora-stitch-calc-detail-hero");
         html.Should().Contain("valora-stitch-calc-detail-badge");
         (html.Contains("Simulação CLT") || html.Contains("Simula&#xE7;&#xE3;o CLT")).Should().BeTrue();
-        html.Should().Contain("CALCULAR AGORA");
-        html.Should().Contain("ESTIMATIVA ATUAL");
+        html.Should().Contain("Calcular Valor");
         html.Should().Contain("valora-bottom-nav");
     }
 
@@ -127,7 +131,7 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("Como podemos ajudar hoje?");
         html.Should().Contain("Perguntas Populares");
         html.Should().Contain("Regime CLT");
-        html.Should().Contain("Entre em contato conosco");
+        html.Should().Contain("Falar com suporte");
         html.Should().Contain("valora-bottom-nav");
     }
 
@@ -160,9 +164,9 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     {
         var html = await client.GetStringAsync("/meu-painel");
 
-        html.Should().Contain("valora-stitch-panel");
-        html.Should().Contain("valora-stitch-panel-body");
-        html.Should().Contain("Meu painel");
+        html.Should().Contain("valora-stitch-panel--bento");
+        html.Should().Contain("valora-stitch-panel-bento");
+        html.Should().Contain("Olá!");
         html.Should().Contain("data-local-panel-page");
         html.Should().Contain("valora-bottom-nav");
     }
@@ -251,6 +255,28 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-nav-search");
         html.Should().Contain("valora-nav-search-input");
         html.Should().Contain("Buscar calculadora...");
+    }
+
+    [Fact]
+    public async Task Home_Should_Load_Stylesheets()
+    {
+        var html = await client.GetStringAsync("/");
+
+        var siteCss = System.Text.RegularExpressions.Regex.Match(
+            html,
+            @"href=""(?<path>/css/site\.[^""]+\.css)""");
+        siteCss.Success.Should().BeTrue();
+        using var siteResponse = await client.GetAsync(siteCss.Groups["path"].Value);
+        siteResponse.IsSuccessStatusCode.Should().BeTrue();
+        siteResponse.Content.Headers.ContentType?.MediaType.Should().Be("text/css");
+
+        var scopedCss = System.Text.RegularExpressions.Regex.Match(
+            html,
+            @"href=""(?<path>/MeuValorLiquido\.WebApp\.[^""]+\.styles\.css)""");
+        scopedCss.Success.Should().BeTrue();
+        using var scopedResponse = await client.GetAsync(scopedCss.Groups["path"].Value);
+        scopedResponse.IsSuccessStatusCode.Should().BeTrue();
+        scopedResponse.Content.Headers.ContentType?.MediaType.Should().Be("text/css");
     }
 
     [Fact]

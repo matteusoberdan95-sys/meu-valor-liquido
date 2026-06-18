@@ -6,7 +6,8 @@ public sealed record BlogArticleSeed(
     string Content,
     DateOnly PublishedAt,
     string Category,
-    string? RelatedCalculatorSlug = null);
+    string? RelatedCalculatorSlug = null,
+    string Author = "Matteus Oberdan");
 
 public static class BlogArticleSeedData
 {
@@ -430,5 +431,100 @@ public static class BlogArticleSeedData
         string category,
         DateOnly publishedAt,
         string content) =>
-        new(slug, title, summary, content.Trim(), publishedAt, category, calculatorSlug);
+        new(
+            slug,
+            title,
+            summary,
+            EnrichContent(slug, content.Trim(), calculatorSlug, category),
+            publishedAt,
+            category,
+            calculatorSlug);
+
+    private static string EnrichContent(string slug, string content, string calculatorSlug, string category)
+    {
+        content = AppendPracticalSection(slug, content);
+        if (content.Contains("id=\"como-validamos\"", StringComparison.Ordinal))
+        {
+            return content;
+        }
+
+        var categoryNote = category switch
+        {
+            "Fiscal" => "As tabelas e regras fiscais seguem parâmetros de 2026 documentados em <a href=\"/como-calculamos\">Como calculamos</a>.",
+            "Financeiro" => "As projeções financeiras usam fórmulas transparentes descritas em <a href=\"/como-calculamos\">Como calculamos</a>.",
+            _ => "Os cenários trabalhistas são calibrados com benchmarks de 2026 em <a href=\"/como-calculamos\">Como calculamos</a>."
+        };
+
+        return content + $"""
+
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
+            <p>{categoryNote}</p>
+            <p>Simule seu caso na <a href="/calculadoras/{calculatorSlug}">calculadora relacionada</a> e consulte a <a href="/duvidas">central de ajuda</a> para perguntas frequentes sobre o tema.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui holerite oficial, contrato assinado, extrato bancário ou orientação de contador, advogado ou RH.</p>
+            """;
+    }
+
+    private static string AppendPracticalSection(string slug, string content)
+    {
+        if (content.Contains("id=\"dica-pratica\"", StringComparison.Ordinal))
+        {
+            return content;
+        }
+
+        var tip = slug switch
+        {
+            "o-que-e-salario-liquido" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de negociar salário, simule o líquido com os mesmos descontos do holerite atual — VT, VR/VA, plano e pensão — para comparar propostas de forma justa.</p>",
+            "como-avaliar-proposta-salarial" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça a proposta por escrito com salário bruto, benefícios e descontos previstos. Depois replique os mesmos parâmetros na calculadora de proposta para ver o ganho real no bolso.</p>",
+            "como-conferir-holerite" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Guarde holerites dos últimos três meses: médias de horas extras e comissões explicam boa parte das divergências com a simulação.</p>",
+            "como-calcular-ferias" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Combine a simulação de férias com o salário líquido do mês seguinte — o orçamento muda quando o pagamento cai fora do ciclo habitual.</p>",
+            "como-calcular-rescisao-clt" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Informe na calculadora se houve adiantamento de 13º ou férias e a média de horas extras dos últimos meses; isso aproxima a simulação do TRCT.</p>",
+            "rescisao-clt-vs-trct" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Assine o TRCT somente depois de comparar linha a linha com a simulação e pedir esclarecimento sobre rubricas que não reconhece.</p>",
+            "como-calcular-inss" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Se o desconto de INSS no holerite parece alto, verifique se o mês inclui férias, 13º ou PLR — a base de contribuição muda conforme a rubrica.</p>",
+            "entenda-o-irrf" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Cadastre dependentes e pensão no RH antes de questionar o IRRF; deduções não informadas aumentam a retenção indevida.</p>",
+            "pj-ou-clt-qual-melhor" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Na comparação PJ vs CLT, inclua custos que a PJ paga por conta própria: contador, INSS, plano de saúde e férias não remuneradas.</p>",
+            "guia-decimo-terceiro" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Reserve parte da segunda parcela do 13º para IR e despesas de janeiro — o imposto costuma surpreender quem planeja só pelo valor bruto.</p>",
+            "juros-compostos-guia" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Simule a mesma meta com taxas conservadora e realista; a diferença mostra o quanto a rentabilidade impacta seu plano de longo prazo.</p>",
+            "hora-extra-como-calcular" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Confira no holerite se HE e DSR sobre horas extras aparecem em rubricas separadas — isso altera a média usada em férias e 13º.</p>",
+            "financiamento-como-calcular-parcelas" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Compare pelo CET e pelo total pago, não só pela parcela inicial — prazos longos podem parecer baratos mês a mês e caros no acumulado.</p>",
+            "tabela-inss-2026-guia" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Salários perto do teto previdenciário mudam pouco o desconto de INSS ao receber aumento — entenda onde sua faixa estabiliza.</p>",
+            "tabela-irrf-2026-guia" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Com a isenção para bases menores em 2026, vale revisar o holerite após reajuste — um aumento pequeno pode não aumentar o IRRF na mesma proporção.</p>",
+            "desconto-vale-transporte" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Multiplique o custo diário de ida e volta por 22 dias úteis e compare com 6% do bruto; só então decida se o VT compensa.</p>",
+            "fgts-guia-completo" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de aderir ao saque-aniversário, entenda que você abre mão da multa de 40% em uma eventual demissão sem justa causa.</p>",
+            "planejamento-financeiro-com-salario" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Atualize o orçamento sempre que o holerite mudar — promoção no bruto nem sempre aumenta o líquido na mesma proporção por causa do imposto progressivo.</p>",
+            "mei-faturamento-e-das" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Acompanhe o faturamento acumulado mês a mês no simulador MEI; ultrapassar o teto sem planejamento gera desenquadramento e custos de migração.</p>",
+            _ => string.Empty
+        };
+
+        if (string.IsNullOrEmpty(tip))
+        {
+            return content;
+        }
+
+        var insertAt = content.LastIndexOf("<h2 id=\"como-validamos\">", StringComparison.Ordinal);
+        if (insertAt < 0)
+        {
+            return content + tip;
+        }
+
+        return content.Insert(insertAt, tip);
+    }
 }

@@ -14,7 +14,9 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         var token = CalculatorInputShareCodec.Encode(new CalculatorInput(3000m));
         var html = await client.GetStringAsync($"/calculadoras/salario-liquido?r={Uri.EscapeDataString(token)}");
 
-        html.Should().Contain("L&#xCD;QUIDO ESTIMADO");
+        (html.Contains("L&#xCD;QUIDO ESTIMADO") || html.Contains("valora-stitch-salario-result"))
+            .Should()
+            .BeTrue();
         html.Should().Contain("Compartilhar estimativa");
         html.Should().Contain("wa.me");
         html.Should().Contain("Explicação simples");

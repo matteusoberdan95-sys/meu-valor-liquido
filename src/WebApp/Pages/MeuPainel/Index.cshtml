@@ -9,46 +9,92 @@
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.LocalPanelBreadcrumbs()" />
 }
 
-<div class="valora-stitch-panel">
-    <header class="valora-stitch-panel-hero">
-        <div class="valora-stitch-panel-hero-icon" aria-hidden="true">
-            <span class="material-symbols-outlined">person</span>
-        </div>
-        <h1 class="valora-stitch-panel-title">Meu painel</h1>
-        <p class="valora-stitch-panel-lead">
-            Simulações que você salvou para revisar depois. Tudo fica no seu navegador —
-            sem login e sem enviar números ao servidor.
+<div class="valora-stitch-panel valora-stitch-panel--bento">
+    <header class="valora-stitch-panel-greeting">
+        <h1 class="valora-stitch-panel-greeting-title">Olá!</h1>
+        <p class="valora-stitch-panel-greeting-lead">
+            Bem-vindo ao seu painel financeiro. Aqui está o resumo das suas simulações e leituras sugeridas.
         </p>
     </header>
 
-    <div class="valora-stitch-panel-body">
-    <section class="valora-stitch-panel-card" data-local-panel-page>
-        <div class="valora-stitch-panel-toolbar">
+    <div class="valora-stitch-panel-bento">
+        <aside class="valora-stitch-panel-profile" aria-label="Perfil local">
+            <div class="valora-stitch-panel-profile-avatar" aria-hidden="true">
+                <span class="material-symbols-outlined">person</span>
+            </div>
+            <h2 class="valora-stitch-panel-profile-name">Painel local</h2>
+            <p class="valora-stitch-panel-profile-badge">Sem login · dados no navegador</p>
+            <div class="valora-stitch-panel-profile-actions">
+                <a class="valora-stitch-panel-profile-btn" asp-page="/PoliticaDePrivacidade">
+                    <span class="material-symbols-outlined" aria-hidden="true">shield</span>
+                    Privacidade
+                </a>
+                <a class="valora-stitch-panel-profile-btn" asp-page="/Calculadoras/Index">
+                    <span class="material-symbols-outlined" aria-hidden="true">explore</span>
+                    Explorar calculadoras
+                </a>
+            </div>
+        </aside>
+
+        <section class="valora-stitch-panel-saved valora-stitch-panel-card" data-local-panel-page aria-labelledby="panel-saved-title">
+            <div class="valora-stitch-panel-card-head">
+                <div class="valora-stitch-panel-card-title-row">
+                    <span class="valora-stitch-panel-card-icon valora-stitch-panel-card-icon--primary" aria-hidden="true">
+                        <span class="material-symbols-outlined">calculate</span>
+                    </span>
+                    <h2 id="panel-saved-title" class="valora-stitch-panel-card-title">Cálculos salvos</h2>
+                </div>
+                <button type="button" class="valora-btn valora-btn-outline valora-btn-sm" data-local-panel-clear hidden>
+                    Limpar tudo
+                </button>
+            </div>
+
             <p class="valora-stitch-panel-count" data-local-panel-count-label>Carregando simulações…</p>
-            <button type="button" class="valora-btn valora-btn-outline valora-btn-sm" data-local-panel-clear hidden>
-                Limpar tudo
-            </button>
-        </div>
 
-        <div class="valora-stitch-panel-empty" data-local-panel-empty hidden>
-            <span class="material-symbols-outlined valora-stitch-panel-empty-icon" aria-hidden="true">bookmark_add</span>
-            <h2 class="valora-stitch-panel-empty-title">Nenhuma simulação salva ainda</h2>
-            <p class="valora-stitch-panel-empty-text">
-                Depois de calcular, use <strong>Salvar no painel</strong> no bloco de compartilhamento.
-            </p>
-            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Index">Ir para calculadoras</a>
-        </div>
+            <div class="valora-stitch-panel-empty" data-local-panel-empty hidden>
+                <span class="material-symbols-outlined valora-stitch-panel-empty-icon" aria-hidden="true">history_toggle_off</span>
+                <h3 class="valora-stitch-panel-empty-title">Nenhum cálculo salvo</h3>
+                <p class="valora-stitch-panel-empty-text">
+                    Comece a planejar hoje. Explore salário líquido, férias, rescisão e outras ferramentas.
+                </p>
+                <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Index">
+                    <span class="material-symbols-outlined" aria-hidden="true">explore</span>
+                    Explorar calculadoras
+                </a>
+            </div>
 
-        <ul class="valora-stitch-panel-list valora-local-panel-list" data-local-panel-list hidden></ul>
-    </section>
+            <ul class="valora-stitch-panel-list valora-local-panel-list" data-local-panel-list hidden></ul>
+        </section>
 
-    <section class="valora-stitch-panel-privacy">
-        <h2 class="valora-stitch-panel-privacy-title">Privacidade</h2>
-        <p>
-            Os dados ficam em <code>localStorage</code> deste navegador. Limpar cache, usar outro aparelho
-            ou navegador anônimo remove o histórico. Não usamos essas simulações para anúncios nem analytics individualizados.
-        </p>
-    </section>
+        <section class="valora-stitch-panel-readings valora-stitch-panel-card" aria-labelledby="panel-readings-title">
+            <div class="valora-stitch-panel-card-head">
+                <div class="valora-stitch-panel-card-title-row">
+                    <span class="valora-stitch-panel-card-icon valora-stitch-panel-card-icon--tertiary" aria-hidden="true">
+                        <span class="material-symbols-outlined">bookmark</span>
+                    </span>
+                    <h2 id="panel-readings-title" class="valora-stitch-panel-card-title">Leituras sugeridas</h2>
+                </div>
+                <a class="valora-stitch-panel-readings-link" asp-page="/Blog/Index">Ver todos</a>
+            </div>
+            <div class="valora-stitch-panel-readings-grid">
+                @foreach (var post in Model.SuggestedPosts)
+                {
+                    <partial name="Shared/_MeuPainelReadingCard" model="post" />
+                }
+            </div>
+        </section>
+
+        <section class="valora-stitch-panel-newsletter valora-stitch-panel-card" aria-labelledby="panel-newsletter-title">
+            <div class="valora-stitch-panel-newsletter-glow" aria-hidden="true"></div>
+            <div class="valora-stitch-panel-newsletter-inner">
+                <span class="material-symbols-outlined valora-stitch-panel-newsletter-icon" aria-hidden="true">mail</span>
+                <h2 id="panel-newsletter-title" class="valora-stitch-panel-newsletter-title">Fique por dentro</h2>
+                <p class="valora-stitch-panel-newsletter-lead">
+                    Receba atualizações sobre legislação e finanças diretamente no seu e-mail.
+                </p>
+                <partial name="Shared/_MeuPainelNewsletterForm" />
+            </div>
+        </section>
     </div>
 
     <div class="valora-disclaimer valora-stitch-panel-disclaimer">

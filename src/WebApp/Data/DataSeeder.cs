@@ -154,6 +154,7 @@ public static class DataSeeder
             existing.Category = article.Category;
             existing.RelatedCalculatorSlug = article.RelatedCalculatorSlug;
             existing.PublishedAt = article.PublishedAt;
+            existing.Author = article.Author;
         }
 
         await db.SaveChangesAsync(cancellationToken);
@@ -168,6 +169,7 @@ public static class DataSeeder
         PublishedAt = article.PublishedAt,
         Category = article.Category,
         RelatedCalculatorSlug = article.RelatedCalculatorSlug,
+        Author = article.Author,
         IsPublished = true
     };
 

@@ -13,6 +13,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     [InlineData("/sobre", "Nossa missão", "Como calculamos")]
     [InlineData("/como-calculamos", "Tabelas de 2026", "BrTaxTables2026")]
     [InlineData("/politica-de-privacidade", "Google AdSense", "localStorage")]
+    [InlineData("/politica-de-cookies", "Política de Cookies", "mvl-cookie-consent")]
     [InlineData("/termos-de-uso", "Natureza do serviço", "educativo")]
     [InlineData("/aviso-legal", "Estimativas, não laudos", "consultoria")]
     public async Task Institutional_Page_Should_Contain_Key_Content(string url, string phraseA, string phraseB)
@@ -30,6 +31,17 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         var xml = await client.GetStringAsync("/sitemap.xml");
 
         xml.Should().Contain("/como-calculamos");
+        xml.Should().Contain("/politica-de-cookies");
+    }
+
+    [Fact]
+    public async Task Home_Should_Include_Cookie_Consent_Banner()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain("data-cookie-consent");
+        html.Should().Contain("/politica-de-cookies");
+        html.Should().Contain("cookie-consent.");
     }
 
     [Fact]

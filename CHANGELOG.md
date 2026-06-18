@@ -2,6 +2,38 @@
 
 ## Unreleased
 
+### Sprint 64 — Meu painel + template C1
+- Meu painel em layout bento Stitch: greeting, perfil local, cálculos salvos, leituras sugeridas, newsletter.
+- Template C1 nas 14 calculadoras restantes: modifiers por categoria + botão “Calcular agora”.
+- Centralização em `CalculatorUiHelper.IsTemplateC1Slug` / `GetStitchDetailModifierClass`.
+- Testes `Sprint64FidelityTests`.
+
+### Sprint 63 — Rescisão multi-card + PJ×CLT visual
+- Rescisão CLT: cards de verbas, descontos e FGTS na coluna principal; resumo sticky com total líquido, PDF e dica.
+- PJ×CLT: hero “Wizard de Comparação”, callout Factor-R, veredito com comparativo anual e detalhamento CLT/PJ.
+- **Divergência intencional:** wizard permanece em 4 passos (benefícios CLT).
+- Testes `Sprint63CalculatorFidelityTests` + builders.
+
+### Sprint 62 — Hubs (calculadoras, blog, FAQ)
+- Banner premium **CLT vs PJ** na central de calculadoras (`/calculadoras`).
+- Blog: card **dica rápida** + seção newsletter “Mantenha seu valor líquido em dia”.
+- FAQ: CTA Stitch “Ainda com dúvidas?” / “Falar com suporte”; lead do hero alinhado ao mock.
+- Placeholder de busca na central: “Qual cálculo você precisa fazer hoje?”.
+- Testes `Sprint62HubTests`.
+
+### Sprint 61 — Shell global sem login
+- Footer Stitch em **4 colunas**: marca, Calculadoras, Institucional, Newsletter inline no rodapé.
+- Background base `#0A0A0B` e Material Symbols com **wght 300**.
+- **Divergência intencional:** sem botão “Entrar” do mock; **Meu painel** no header (produto gratuito + AdSense).
+- Testes `Sprint61ShellTests`.
+
+### Sprint 60 — Fidelidade Stitch v2 (parcial)
+- Painel de resultado Stitch para salário líquido: gráfico donut, % do bruto, cards INSS/IRRF, alíquota efetiva, CTA finanças.
+- Home desktop: bento 12 colunas (featured + ML Prime), seção Nossa Metodologia, social proof, breadcrumb.
+- Home mobile: subtitles descritivos nos cards bento (paridade `home_mobile`).
+- Docs: trilha Sprints 60–64 em `STITCH_DARK_FIDELITY_PLAN.md` e `sprint-plan.md`; `AGENTS.md` atualizado.
+- Testes `Sprint60FidelityTests` e `SalarioLiquidoStitchResultBuilderTests`.
+
 ### Sprint 52 - Observabilidade completa
 - Métricas agregadas de erros HTTP 404/500 e falhas de cálculo (sem PII).
 - Painel `/metricas-internas` com alertas, priorização sugerida e rankings de erro.

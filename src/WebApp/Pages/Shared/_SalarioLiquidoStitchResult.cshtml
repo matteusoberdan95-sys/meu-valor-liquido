@@ -1,0 +1,94 @@
+@model MeuValorLiquido.WebApp.Infrastructure.SalarioLiquidoStitchResultViewModel
+@{
+    var offset = 25m;
+    var circles = new List<(SalarioLiquidoDonutSegment Segment, decimal Offset)>();
+    foreach (var segment in Model.DonutSegments)
+    {
+        circles.Add((segment, offset));
+        offset -= segment.Percent;
+    }
+}
+
+<section class="valora-stitch-salario-result" aria-live="polite">
+    <div class="valora-stitch-salario-result-hero">
+        <div class="valora-stitch-salario-result-hero-head">
+            <span class="valora-stitch-salario-result-kicker">Seu salário líquido</span>
+            <span class="valora-stitch-salario-result-badge">Mensal</span>
+        </div>
+        <p class="valora-stitch-salario-result-value valora-monetary-display">@Money.From(Model.Net)</p>
+        <p class="valora-stitch-salario-result-percent">
+            <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
+            @Model.NetPercentOfGross.ToString("0.#")% do bruto
+        </p>
+    </div>
+
+    <div class="valora-stitch-salario-result-chart-row">
+        <div class="valora-stitch-salario-chart" aria-hidden="true">
+            <svg class="valora-stitch-salario-chart-svg" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="var(--valora-card-low)" stroke-width="3" />
+                @foreach (var (segment, segmentOffset) in circles)
+                {
+                    var dash = segment.Percent.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture);
+                    var remainder = (100m - segment.Percent).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture);
+                    var strokeWidth = segment.Label == "Líquido" ? "4" : "3";
+                    <circle class="valora-stitch-salario-chart-segment"
+                            cx="18"
+                            cy="18"
+                            r="15.915"
+                            fill="transparent"
+                            stroke="@segment.Color"
+                            stroke-width="@strokeWidth"
+                            stroke-dasharray="@dash @remainder"
+                            stroke-dashoffset="@segmentOffset.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture)" />
+                }
+            </svg>
+            <span class="material-symbols-outlined valora-stitch-salario-chart-icon valora-icon-filled">payments</span>
+        </div>
+
+        <ul class="valora-stitch-salario-legend">
+            @foreach (var segment in Model.DonutSegments)
+            {
+                <li>
+                    <span class="valora-stitch-salario-legend-dot" style="background: @segment.Color;"></span>
+                    <span>@segment.Label</span>
+                    <strong>
+                        @(segment.Label switch
+                        {
+                            "Líquido" => Money.From(Model.Net),
+                            "INSS" => Money.From(Model.Inss),
+                            "IRRF" => Money.From(Model.Irrf),
+                            _ => Money.From(Math.Max(0m, Model.Gross - Model.Net - Model.Inss - Model.Irrf))
+                        })
+                    </strong>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="valora-stitch-salario-tax-grid">
+        <div class="valora-stitch-salario-tax-card">
+            <span class="valora-stitch-salario-tax-label">INSS</span>
+            <strong class="valora-stitch-salario-tax-value">@Money.From(Model.Inss)</strong>
+        </div>
+        <div class="valora-stitch-salario-tax-card">
+            <span class="valora-stitch-salario-tax-label">IRRF</span>
+            <strong class="valora-stitch-salario-tax-value">@Money.From(Model.Irrf)</strong>
+        </div>
+    </div>
+
+    <div class="valora-stitch-salario-effective-rate">
+        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+        <div>
+            <h3 class="valora-stitch-salario-effective-rate-title">Sua alíquota efetiva</h3>
+            <p>A porcentagem real de INSS e IRRF sobre o bruto é de <strong>@Model.EffectiveTaxPercent.ToString("0.#")%</strong>.</p>
+        </div>
+    </div>
+
+    <a class="valora-stitch-salario-future-card" asp-page="/Calculadoras/Details" asp-route-slug="juros-compostos">
+        <div>
+            <p class="valora-stitch-salario-future-title">Domine suas finanças</p>
+            <p class="valora-stitch-salario-future-text">Veja como otimizar impostos e projetar o que sobra todo mês.</p>
+        </div>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </a>
+</section>

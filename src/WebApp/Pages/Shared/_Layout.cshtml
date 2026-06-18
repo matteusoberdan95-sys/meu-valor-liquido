@@ -44,7 +44,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Head", required: false)
@@ -101,36 +101,43 @@
             <div class="valora-footer-stitch-brand">
                 <partial name="Shared/_BrandMark" view-data='new ViewDataDictionary(ViewData) { { "BrandMarkClass", "valora-brand-mark--footer" } }' />
                 <p class="valora-footer-stitch-tagline">
-                    &copy; @DateTime.UtcNow.Year Meu Valor Líquido. Educação financeira para brasileiros. Transformando complexidade em clareza.
+                    &copy; @DateTime.UtcNow.Year Meu Valor Líquido. Educação financeira para brasileiros através de ferramentas digitais de alta precisão.
                 </p>
-            </div>
-            <div class="valora-footer-stitch-columns">
-                <div class="valora-footer-stitch-col">
-                    <p class="valora-footer-stitch-col-title">Produtos</p>
-                    <ul class="valora-footer-stitch-links">
-                        <li><a asp-page="/Calculadoras/Index">Calculadoras</a></li>
-                        <li><a asp-page="/Blog/Index">Blog</a></li>
-                        <li><a asp-page="/MeuPainel/Index">Meu painel</a></li>
-                    </ul>
-                </div>
-                <div class="valora-footer-stitch-col">
-                    <p class="valora-footer-stitch-col-title">Legal</p>
-                    <ul class="valora-footer-stitch-links">
-                        <li><a asp-page="/PoliticaDePrivacidade">Privacidade</a></li>
-                        <li><a asp-page="/TermosDeUso">Termos de uso</a></li>
-                        <li><a asp-page="/Contato">Contato</a></li>
-                    </ul>
+                <div class="valora-footer-stitch-social" aria-label="Links úteis">
+                    <a class="valora-footer-stitch-social-btn" asp-page="/Contato" aria-label="Contato">
+                        <span class="material-symbols-outlined" aria-hidden="true">share</span>
+                    </a>
+                    <a class="valora-footer-stitch-social-btn" asp-page="/Newsletter" aria-label="Newsletter">
+                        <span class="material-symbols-outlined" aria-hidden="true">alternate_email</span>
+                    </a>
                 </div>
             </div>
-            <div class="valora-footer-stitch-social" aria-label="Links úteis">
-                <a class="valora-footer-stitch-social-btn" asp-page="/Contato" aria-label="Contato">
-                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-                </a>
-                <a class="valora-footer-stitch-social-btn" asp-page="/Blog/Index" aria-label="Blog">
-                    <span class="material-symbols-outlined" aria-hidden="true">rss_feed</span>
-                </a>
+            <div class="valora-footer-stitch-col">
+                <p class="valora-footer-stitch-col-title">Calculadoras</p>
+                <ul class="valora-footer-stitch-links">
+                    <li><a asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">Salário líquido</a></li>
+                    <li><a asp-page="/Calculadoras/Details" asp-route-slug="rescisao-clt">Rescisão trabalhista</a></li>
+                    <li><a asp-page="/Calculadoras/Details" asp-route-slug="pj-vs-clt">CLT vs PJ</a></li>
+                    <li><a asp-page="/Calculadoras/Details" asp-route-slug="decimo-terceiro">13º salário</a></li>
+                </ul>
+            </div>
+            <div class="valora-footer-stitch-col">
+                <p class="valora-footer-stitch-col-title">Institucional</p>
+                <ul class="valora-footer-stitch-links">
+                    <li><a asp-page="/Sobre">Sobre nós</a></li>
+                    <li><a asp-page="/ComoCalculamos">Metodologia</a></li>
+                    <li><a asp-page="/Contato">Contato</a></li>
+                    <li><a asp-page="/PoliticaDePrivacidade">Privacidade</a></li>
+                    <li><a asp-page="/PoliticaDeCookies">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="valora-footer-stitch-col valora-footer-stitch-col--newsletter">
+                <p class="valora-footer-stitch-col-title">Newsletter</p>
+                <p class="valora-footer-stitch-newsletter-lead">Receba atualizações sobre tributação e finanças.</p>
+                <partial name="Shared/_FooterStitchNewsletter" />
             </div>
             <p class="valora-footer-copy">Resultados estimados para fins educativos. Não substituem orientação profissional.</p>
+            <p class="valora-footer-stitch-ribbon">Design minimalista · Alta precisão · Dados 2026</p>
         </div>
     </footer>
 
@@ -143,12 +150,10 @@
 
     <script src="~/js/product-metrics.js" asp-append-version="true" defer></script>
     <partial name="_AdSenseScript" />
+    <script src="~/js/adsense-init.js" asp-append-version="true" defer></script>
     <script src="~/js/site.js" asp-append-version="true" defer></script>
     <script src="~/js/local-panel.js" asp-append-version="true" defer></script>
-    @if (AdsOptions.Value.IsActive)
-    {
-        <script src="~/js/cookie-consent.js" asp-append-version="true" defer></script>
-    }
+    <script src="~/js/cookie-consent.js" asp-append-version="true" defer></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

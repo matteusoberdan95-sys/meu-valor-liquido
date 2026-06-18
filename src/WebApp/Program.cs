@@ -1,5 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    builder.WebHost.UseStaticWebAssets();
+}
+
 var brazilianCulture = new CultureInfo("pt-BR");
 CultureInfo.DefaultThreadCurrentCulture = brazilianCulture;
 CultureInfo.DefaultThreadCurrentUICulture = brazilianCulture;
@@ -95,7 +100,7 @@ builder.Services.AddRateLimiter(options =>
 });
 
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
-builder.Services.AddSingleton<CalculatorJourneyLinkBuilder>();
+builder.Services.AddScoped<CalculatorJourneyLinkBuilder>();
 builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
 builder.Services.AddScoped<IBlogHeroImageService, BlogHeroImageService>();

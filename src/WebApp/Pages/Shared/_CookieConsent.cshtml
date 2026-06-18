@@ -1,13 +1,44 @@
 @inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
-@if (AdsOptions.Value.IsActive)
-{
-    <div class="valora-cookie-consent" data-cookie-consent hidden role="dialog" aria-label="Consentimento de cookies">
-        <p class="valora-text-sm" style="margin: 0;">
-            Usamos cookies essenciais e, com seu consentimento, cookies de publicidade do Google AdSense.
-            <a asp-page="/PoliticaDePrivacidade">Saiba mais</a>.
-        </p>
-        <button type="button" class="valora-btn valora-btn-primary valora-btn-sm" data-cookie-consent-accept>
-            Entendi
-        </button>
-    </div>
+@{
+    var adsActive = AdsOptions.Value.IsActive;
+    var publisherId = AdsOptions.Value.PublisherId ?? string.Empty;
 }
+<div class="valora-cookie-consent"
+     data-cookie-consent
+     data-ads-enabled="@(adsActive ? "true" : "false")"
+     data-ads-publisher="@publisherId"
+     hidden
+     role="dialog"
+     aria-live="polite"
+     aria-label="Consentimento de cookies">
+    <div class="valora-cookie-consent-content">
+        <p class="valora-cookie-consent-text">
+            @if (adsActive)
+            {
+                <text>Usamos cookies essenciais para o funcionamento do site e, com seu consentimento, cookies de publicidade do Google AdSense. Você pode aceitar todos ou continuar apenas com os essenciais.</text>
+            }
+            else
+            {
+                <text>Usamos cookies essenciais e armazenamento local (por exemplo, no Meu painel) para o site funcionar. Quando a publicidade estiver ativa, pediremos consentimento adicional.</text>
+            }
+            <a asp-page="/PoliticaDeCookies">Política de Cookies</a>.
+        </p>
+        <div class="valora-cookie-consent-actions">
+            @if (adsActive)
+            {
+                <button type="button" class="valora-stitch-btn valora-stitch-btn--outline valora-stitch-btn--sm" data-cookie-consent-essential>
+                    Somente essenciais
+                </button>
+                <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--sm" data-cookie-consent-accept>
+                    Aceitar todos
+                </button>
+            }
+            else
+            {
+                <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--sm" data-cookie-consent-accept>
+                    Entendi
+                </button>
+            }
+        </div>
+    </div>
+</div>

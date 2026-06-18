@@ -62,6 +62,11 @@ namespace MeuValorLiquido.WebApp.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasMaxLength(120)
+                        .HasColumnType("character varying(120)");
+
                     b.Property<string>("Category")
                         .HasMaxLength(40)
                         .HasColumnType("character varying(40)");

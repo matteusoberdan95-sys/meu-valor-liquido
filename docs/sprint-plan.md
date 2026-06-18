@@ -320,6 +320,79 @@
 
 ---
 
+## Trilha Fidelidade Stitch v2 (Sprints 60–64)
+
+**Origem:** auditoria jun/2026 — mocks locais vs produção; Sprints 39–46 entregaram fundação, mas fidelidade visual não atinge 100%.
+
+**Objetivo:** paridade pixel-a-pixel com `stitch_redesing/.../screen.png` em **390px** e **1280px**.
+
+**Documentação:** [STITCH_DARK_FIDELITY_PLAN.md](STITCH_DARK_FIDELITY_PLAN.md) (tabela de gaps e % por tela).
+
+| Sprint | Foco | Agents |
+|--------|------|--------|
+| **60** | Salário líquido (donut, % bruto, cards INSS/IRRF, alíquota efetiva) + home desktop (bento 12 col, metodologia, social proof, subtitles mobile) | Frontend, QA |
+| **61** | Shell: footer 4 col + newsletter inline, background `#0A0A0B`, ícones wght 300 — **sem Entrar** | Frontend |
+| **62** | Hubs: banner CLT×PJ premium, blog newsletter + dica rápida, FAQ CTA gradiente | Frontend, Content |
+| **63** | Rescisão multi-card + PJ×CLT wizard visual (3 passos mock ou doc v2 para 4 passos) | Frontend, Backend |
+| **64** | Meu painel (greeting + cards), template C1 nas 14 calcs restantes, checklist visual final | Frontend, QA |
+
+**Definition of Done (cada sprint 60–64):** comparar telas do escopo com `screen.png`; `dotnet test` verde; `CHANGELOG.md` + `AGENTS.md` + `STITCH_DARK_FIDELITY_PLAN.md` atualizados.
+
+### Sprint 60 — Salário líquido + home desktop (concluída)
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | `_SalarioLiquidoStitchResult.cshtml`, donut SVG, % do bruto, alíquota efetiva, cards educativos desktop |
+| Frontend | Home: bento desktop 12 col (featured + ML Prime), seção Metodologia, social proof, subtitles bento mobile |
+| QA | `Sprint60FidelityTests`, `SalarioLiquidoStitchResultBuilderTests` |
+
+**Referência Stitch:** `calculadora_de_sal_rio_l_quido_mobile`, `calculadora_de_sal_rio_l_quido_desktop`, `home_desktop_dark_premium`, `home_mobile`
+
+### Sprint 61 — Shell global sem login (concluída)
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Footer 4 colunas: marca, Calculadoras, Institucional, Newsletter inline (`_FooterStitchNewsletter.cshtml`) |
+| Frontend | Background `--valora-background: #0A0A0B`; Material Symbols **wght 300** |
+| Produto | **Sem botão Entrar** — mock Stitch ignorado; **Meu painel** cobre a jornada sem auth (AdSense) |
+| QA | `Sprint61ShellTests` |
+
+### Sprint 62 — Hubs (calculadoras, blog, FAQ) (concluída)
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Banner premium CLT×PJ na central (`valora-stitch-calc-premium-banner`); placeholder de busca Stitch |
+| Frontend | Blog: card dica rápida (`_BlogStitchTipCard`) + newsletter (`_BlogStitchNewsletterSection`) |
+| Frontend | FAQ: CTA gradiente “Ainda com dúvidas?” / “Falar com suporte”; lead hero Stitch |
+| QA | `Sprint62HubTests` |
+
+**Referência Stitch:** `central_de_calculadoras_desktop`, `blog_desktop`, `faq_mobile`
+
+### Sprint 63 — Rescisão multi-card + PJ×CLT visual (concluída)
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Rescisão: breakdown multi-card (`_RescisaoStitchBreakdown`) + resumo sticky (`_RescisaoStitchSummary`) |
+| Frontend | PJ×CLT: hero wizard, callout Factor-R, veredito anual com barras e cards de detalhamento |
+| Backend | `RescisaoStitchResultBuilder`, `PjVsCltStitchDisplayBuilder` |
+| QA | `Sprint63CalculatorFidelityTests`, builders unit tests |
+
+**Referência Stitch:** `calculadora_de_rescis_o_desktop`, `comparador_clt_vs_pj_desktop`  
+**Divergência intencional:** wizard PJ×CLT permanece em **4 passos** (benefícios CLT); mock usa 3.
+
+### Sprint 64 — Meu painel + template C1 + polish (concluída)
+
+| Agent | Entregas |
+|-------|----------|
+| Frontend | Meu painel bento: greeting, perfil local, cálculos salvos, leituras sugeridas, newsletter |
+| Frontend | Template C1 nas 14 calculadoras: modifiers fiscal/layered/financial/trabalhista + botão “Calcular agora” |
+| QA | `Sprint64FidelityTests` (14 slugs C1 + painel + 404) |
+
+**Referência Stitch:** `meu_painel_desktop`, `meu_painel_mobile`, template C1 em `STITCH_DARK_REDESIGN_PROMPT.md`  
+**Divergência intencional:** sem perfil premium/login do mock; “Leituras sugeridas” no lugar de favoritos com auth.
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.
@@ -658,7 +731,17 @@
 
 ### Checklist visual manual (390px / 1280px)
 
-Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost:8080`:
+Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost:8080`.
+
+**Trilha 60–64 (fidelidade v2):**
+
+- [x] Sprint 60: salário líquido mobile/desktop + home mobile/desktop
+- [x] Sprint 61: shell global (footer 4 col, newsletter, tokens) — sem Entrar
+- [x] Sprint 62: central calculadoras, blog, FAQ
+- [x] Sprint 63: rescisão, PJ×CLT
+- [x] Sprint 64: meu painel, institucionais, erro, template C1 restante
+
+**Legado 39–46 (revalidar na Sprint 64):**
 
 - [ ] Home mobile e desktop
 - [ ] Central de calculadoras mobile e desktop

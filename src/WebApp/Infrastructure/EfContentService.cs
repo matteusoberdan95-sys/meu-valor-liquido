@@ -29,5 +29,5 @@ public sealed class EfContentService : IContentService
     }
 
     private static BlogPost Map(Data.Entities.BlogPostEntity x) =>
-        new(x.Slug, x.Title, x.Summary, x.Content, x.PublishedAt, x.Category, x.RelatedCalculatorSlug);
+        new(x.Slug, x.Title, x.Summary, x.Content, x.PublishedAt, x.Category, x.RelatedCalculatorSlug, x.Author);
 }

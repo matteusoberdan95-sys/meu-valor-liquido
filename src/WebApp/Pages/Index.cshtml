@@ -18,6 +18,14 @@
     {
         featured = Model.Calculators.Take(4).ToList();
     }
+    var desktopHubSlugs = new[] { "salario-liquido", "rescisao-clt", "pj-vs-clt", "decimo-terceiro", "financiamento" };
+    var desktopHub = desktopHubSlugs
+        .Select(slug => Model.Calculators.FirstOrDefault(c => c.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase)))
+        .Where(c => c is not null)
+        .Cast<CalculatorDefinition>()
+        .ToList();
+    var featuredDesktop = desktopHub.FirstOrDefault();
+    var secondaryDesktop = desktopHub.Skip(1).ToList();
     var webSiteSchema = new Dictionary<string, object>
     {
         ["@context"] = "https://schema.org",
@@ -34,8 +42,25 @@
 }
 
 <div class="valora-stitch-home">
-    <section class="valora-stitch-hero valora-stitch-hero--split">
-        <div class="valora-stitch-hero-content">
+    <div class="valora-stitch-home-stage">
+        <div class="valora-stitch-home-hero-backdrop" aria-hidden="true">
+            <img class="valora-stitch-hero-visual"
+                 src="~/images/hero/home-hero.webp"
+                 asp-append-version="true"
+                 alt=""
+                 width="1200"
+                 height="675"
+                 loading="eager"
+                 decoding="async" />
+        </div>
+
+        <section class="valora-stitch-hero valora-stitch-hero--split">
+            <div class="valora-stitch-hero-content">
+            <nav class="valora-stitch-home-breadcrumb valora-stitch-home-breadcrumb--desktop" aria-label="breadcrumb">
+                <a asp-page="/Index">Home</a>
+                <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                <span>Página Inicial</span>
+            </nav>
             <div class="valora-stitch-hero-mobile">
                 <span class="valora-stitch-pill">
                     <span class="valora-stitch-pill-dot" aria-hidden="true"></span>
@@ -71,31 +96,88 @@
                         Ver todas as calculadoras
                     </a>
                 </div>
-                <div class="valora-stitch-trust-row">
-                    <span><span class="material-symbols-outlined" aria-hidden="true">verified</span> Gratuito</span>
-                    <span><span class="material-symbols-outlined" aria-hidden="true">smartphone</span> Mobile-first</span>
-                    <span><span class="material-symbols-outlined" aria-hidden="true">school</span> Educativo</span>
+                <div class="valora-stitch-social-proof">
+                    <div class="valora-stitch-social-proof-avatars-wrap">
+                        <div class="valora-stitch-social-proof-avatars" aria-hidden="true">
+                            <span class="valora-stitch-social-proof-avatar">
+                                <img src="~/images/social-proof/avatar-1.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
+                            </span>
+                            <span class="valora-stitch-social-proof-avatar">
+                                <img src="~/images/social-proof/avatar-2.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
+                            </span>
+                            <span class="valora-stitch-social-proof-avatar">
+                                <img src="~/images/social-proof/avatar-3.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
+                            </span>
+                        </div>
+                        <div class="valora-stitch-social-proof-rating" role="img" aria-label="Avaliação 5 de 5 estrelas">
+                            @for (var star = 0; star < 5; star++)
+                            {
+                                <span class="material-symbols-outlined valora-stitch-star-icon" aria-hidden="true">star</span>
+                            }
+                        </div>
+                    </div>
+                    <p>+250k cálculos realizados este mês</p>
                 </div>
             </div>
         </div>
-        <div class="valora-stitch-hero-visual-wrap" aria-hidden="true">
-            <img class="valora-stitch-hero-visual"
-                 src="~/images/hero/home-hero.webp"
-                 alt=""
-                 width="1200"
-                 height="675"
-                 loading="eager"
-                 decoding="async" />
-        </div>
-    </section>
+        </section>
 
-    <section class="valora-stitch-section">
+        <section class="valora-stitch-section valora-stitch-section--desktop-bento">
+            <div class="valora-stitch-section-head valora-stitch-section-head--desktop-hub">
+                <div>
+                    <span class="valora-stitch-section-kicker">Ferramentas de Precisão</span>
+                    <h2 class="valora-stitch-section-title">Principais Calculadoras</h2>
+                </div>
+                <a class="valora-stitch-link valora-stitch-link--desktop-hub" asp-page="/Calculadoras/Index">
+                    Explorar catálogo completo
+                    <span class="material-symbols-outlined" aria-hidden="true">trending_flat</span>
+                </a>
+            </div>
+            <div class="valora-stitch-home-desktop-bento">
+                @if (featuredDesktop is not null)
+                {
+                    <a class="valora-stitch-home-featured-card" asp-page="/Calculadoras/Details" asp-route-slug="@featuredDesktop.Slug">
+                        <div class="valora-stitch-home-featured-head">
+                            <div class="valora-bento-icon-box valora-bento-icon-box--financeiro valora-stitch-home-featured-icon">
+                                <span class="material-symbols-outlined" aria-hidden="true">@CalculatorUiHelper.GetIcon(featuredDesktop.Slug)</span>
+                            </div>
+                            <span class="valora-stitch-home-featured-badge">Mais usada</span>
+                        </div>
+                        <h3 class="valora-stitch-home-featured-title">@featuredDesktop.Name</h3>
+                        <p class="valora-stitch-home-featured-summary">@CalculatorUiHelper.GetHomeDesktopCardSummary(featuredDesktop.Slug)</p>
+                        <div class="valora-stitch-home-featured-cta">
+                            <span>Simular agora</span>
+                            <span class="valora-stitch-home-featured-line" aria-hidden="true"></span>
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward_ios</span>
+                        </div>
+                    </a>
+                }
+                @foreach (var calculator in secondaryDesktop)
+                {
+                    <a class="valora-stitch-home-hub-card @CalculatorUiHelper.GetBentoAccentClass(calculator.Category, calculator.Slug)"
+                       asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">
+                        <div class="valora-bento-icon-box @CalculatorUiHelper.GetBentoIconBoxClass(calculator.Category, calculator.Slug)">
+                            <span class="material-symbols-outlined" aria-hidden="true">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
+                        </div>
+                        <h3 class="valora-stitch-home-hub-card-title">@calculator.Name</h3>
+                        <p class="valora-stitch-home-hub-card-summary">@CalculatorUiHelper.GetHomeDesktopCardSummary(calculator.Slug)</p>
+                        <span class="material-symbols-outlined valora-stitch-home-hub-card-arrow" aria-hidden="true">open_in_new</span>
+                    </a>
+                }
+                <div class="valora-stitch-home-prime-card">
+                    <span class="material-symbols-outlined valora-stitch-home-prime-icon" aria-hidden="true">stars</span>
+                    <h3 class="valora-stitch-home-prime-title">ML Prime</h3>
+                    <p class="valora-stitch-home-prime-text">Relatórios financeiros avançados para seu planejamento anual.</p>
+                    <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline" asp-page="/MeuPainel/Index">Conheça agora</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="valora-stitch-section valora-stitch-section--mobile-bento">
         <div class="valora-stitch-section-head">
-            <h2 class="valora-stitch-section-title">
-                <span class="valora-stitch-section-title-mobile">Top Cálculos</span>
-                <span class="valora-stitch-section-title-desktop">Principais Calculadoras</span>
-            </h2>
-            <a class="valora-stitch-link" asp-page="/Calculadoras/Index">Ver todas</a>
+            <h2 class="valora-stitch-section-title">Top Cálculos</h2>
+            <a class="valora-stitch-link" asp-page="/Calculadoras/Index">Ver todos</a>
         </div>
         <div class="valora-stitch-bento">
             @foreach (var calculator in featured)
@@ -106,7 +188,7 @@
                         <span class="material-symbols-outlined valora-stitch-bento-icon" aria-hidden="true">@CalculatorUiHelper.GetIcon(calculator.Slug)</span>
                     </div>
                     <h3 class="valora-stitch-bento-title">@calculator.Name</h3>
-                    <p class="valora-stitch-bento-category">@calculator.Category</p>
+                    <p class="valora-stitch-bento-category">@CalculatorUiHelper.GetBentoSubtitle(calculator.Slug, calculator.Category)</p>
                 </a>
             }
         </div>
@@ -117,21 +199,15 @@
         <p class="valora-stitch-ad-text">Publicidade</p>
     </div>
 
-    <section class="valora-stitch-teaser">
-        <div class="valora-stitch-teaser-content">
-            <h2 class="valora-stitch-teaser-title">Relatórios completos</h2>
-            <p class="valora-stitch-teaser-text">Veja o detalhamento de INSS, FGTS e IRRF em gráficos intuitivos.</p>
-            <a class="valora-stitch-teaser-btn" asp-page="/MeuPainel/Index">Conhecer painel</a>
-        </div>
-        <div class="valora-stitch-teaser-decoration" aria-hidden="true"></div>
-    </section>
-
     @if (Model.RecentPosts.Count > 0)
     {
         <section class="valora-stitch-section valora-stitch-section--articles">
-            <div class="valora-stitch-section-head">
-                <h2 class="valora-stitch-section-title">Últimas do Blog</h2>
-                <a class="valora-stitch-link" asp-page="/Blog/Index">Ver blog</a>
+            <div class="valora-stitch-section-head valora-stitch-section-head--blog">
+                <div>
+                    <span class="valora-stitch-section-kicker valora-stitch-section-kicker--center-desktop">Educação Financeira</span>
+                    <h2 class="valora-stitch-section-title">Últimas do Blog</h2>
+                </div>
+                <a class="valora-stitch-link valora-stitch-link--desktop-only" asp-page="/Blog/Index">Ver blog</a>
             </div>
             <div class="valora-stitch-home-blog-feed">
                 @foreach (var post in Model.RecentPosts.Take(3))
@@ -141,6 +217,45 @@
             </div>
         </section>
     }
+
+    <section class="valora-stitch-home-methodology" aria-labelledby="home-methodology-title">
+        <div class="valora-stitch-home-methodology-card">
+            <div class="valora-stitch-home-methodology-accent" aria-hidden="true"></div>
+            <h2 id="home-methodology-title" class="valora-stitch-home-methodology-title">Nossa Metodologia</h2>
+            <p>
+                No <strong>Meu Valor Líquido</strong>, nossa missão é democratizar o acesso à informação financeira precisa.
+                Utilizamos algoritmos testados e atualizados conforme as legislações vigentes da Receita Federal e do Ministério do Trabalho.
+            </p>
+            <p>
+                Cada cálculo considera alíquotas progressivas, deduções por dependentes e benefícios previdenciários,
+                para você enxergar o poder de compra real do seu salário.
+            </p>
+            <a class="valora-stitch-link" asp-page="/ComoCalculamos">Ver metodologia completa</a>
+        </div>
+        <div class="valora-stitch-home-methodology-features">
+            <article>
+                <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                <div>
+                    <h3>Dados atualizados</h3>
+                    <p>Sincronização com tabelas tributárias nacionais e cenários de benchmark documentados.</p>
+                </div>
+            </article>
+            <article>
+                <span class="material-symbols-outlined" aria-hidden="true">privacy_tip</span>
+                <div>
+                    <h3>Privacidade total</h3>
+                    <p>Simulações salvas ficam no seu navegador — sem login obrigatório para calcular.</p>
+                </div>
+            </article>
+            <article>
+                <span class="material-symbols-outlined" aria-hidden="true">engineering</span>
+                <div>
+                    <h3>Suporte técnico</h3>
+                    <p>Rotina de calibração e revisão mensal documentada em <a asp-page="/ComoCalculamos">Como calculamos</a>.</p>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <div class="valora-stitch-disclaimer">
         <p>

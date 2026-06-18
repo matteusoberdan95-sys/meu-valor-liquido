@@ -37,7 +37,7 @@ else
         }
     }
 
-    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : Model.IsRescisaoStitch ? "valora-stitch-rescisao" : $"valora-stitch-calc-detail{Model.CalcDetailModifierClass}")">
+    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : Model.IsRescisaoStitch ? "valora-stitch-rescisao" : Model.IsSalarioLiquidoStitch ? "valora-stitch-calc-detail valora-stitch-salario" : $"valora-stitch-calc-detail{Model.CalcDetailModifierClass}")">
         @if (!Model.IsEmbedMode && Model.IsPjVsCltStitch)
         {
             <nav class="valora-breadcrumb valora-stitch-cltpj-breadcrumb" aria-label="breadcrumb">
@@ -50,7 +50,8 @@ else
                 </ol>
             </nav>
 
-            <h1 class="valora-stitch-cltpj-title">Comparador Salário CLT vs Prestação de Serviços PJ</h1>
+            <h1 class="valora-stitch-cltpj-title">Wizard de Comparação</h1>
+            <p class="valora-stitch-cltpj-hero-lead">Tome decisões financeiras precisas comparando o valor líquido real entre os regimes de contratação CLT e PJ.</p>
 
             <div class="valora-stitch-cltpj-disclaimer">
                 <span class="material-symbols-outlined" aria-hidden="true">info</span>
@@ -80,7 +81,7 @@ else
                     <partial name="Shared/_BenchmarkValidationBadge" model="calculatorSlug" />
                 </div>
                 <h1 class="valora-stitch-rescisao-title">@Model.Definition.Name</h1>
-                <p class="valora-stitch-rescisao-lead">@Model.Definition.Summary</p>
+                <p class="valora-stitch-rescisao-lead">Calcule o valor a receber no encerramento do contrato: saldo de salário, aviso prévio, férias, 13º e FGTS conforme o motivo do desligamento.</p>
             </header>
 
             @if (Model.TopAdSlot is not null)
@@ -726,12 +727,39 @@ else
                     }
                 </div>
                 <button class="@(Model.IsEmbedMode ? "valora-btn valora-btn-primary" : "valora-stitch-btn valora-stitch-btn--primary valora-stitch-calc-submit")" type="submit">
-                    @(Model.IsEmbedMode ? "Calcular agora" : "CALCULAR AGORA")
+                    @if (Model.IsEmbedMode)
+                    {
+                        @:Calcular agora
+                    }
+                    else if (Model.IsSalarioLiquidoStitch)
+                    {
+                        <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                        @:Calcular Valor
+                    }
+                    else if (Model.IsTemplateC1Stitch)
+                    {
+                        <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                        @:Calcular agora
+                    }
+                    else
+                    {
+                        @:CALCULAR AGORA
+                    }
                 </button>
             </form>
             }
 
-            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch && !Model.IsRescisaoStitch)
+            @if (Model.RescisaoStitchResult is not null)
+            {
+                <partial name="Shared/_RescisaoStitchBreakdown" model="Model.RescisaoStitchResult" />
+            }
+
+            @if (Model.IsSalarioLiquidoStitch)
+            {
+                <partial name="Shared/_SalarioLiquidoStitchEduCards" />
+            }
+
+            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch && !Model.IsRescisaoStitch && !Model.IsSalarioLiquidoStitch)
             {
             <p class="valora-stitch-calc-footer-hint">
                 Os resultados são estimativas educativas. Consulte seu RH ou contador para valores oficiais.
@@ -751,7 +779,7 @@ else
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")} valora-stack-md{(Model.ResultPanel is null ? " valora-stitch-calc-estimate--empty" : "")}")">
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")}{(Model.IsSalarioLiquidoStitch ? " valora-stitch-salario-estimate" : "")} valora-stack-md{(Model.ResultPanel is null && Model.SalarioLiquidoStitchResult is null ? " valora-stitch-calc-estimate--empty" : "")}")">
             @if (Model.IsPjVsCltStitch)
             {
                 @if (Model.CltPjBreakdown is not null)
@@ -768,7 +796,36 @@ else
                     </section>
                 }
             }
-            else if (Model.ResultPanel is not null)
+            else if (Model.RescisaoStitchResult is not null)
+            {
+                <partial name="Shared/_RescisaoStitchSummary" model="Model.RescisaoStitchResult" />
+                @if (Model.ResultPanel?.Journey is not null)
+                {
+                    <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.ResultPanel.Journey" />
+                }
+            }
+            else if (Model.SalarioLiquidoStitchResult is not null)
+            {
+                @if (Model.ResultPanel?.Warnings.Count > 0)
+                {
+                    <partial name="Shared/_CalculatorResultWarnings" model="Model.ResultPanel.Warnings" />
+                }
+                <partial name="Shared/_SalarioLiquidoStitchResult" model="Model.SalarioLiquidoStitchResult" />
+                <p class="valora-stitch-calc-estimate-disclaimer">@Model.Result!.LegalDisclaimer</p>
+                @if (Model.Share is not null)
+                {
+                    <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+                }
+                @if (Model.ResultPanel?.Journey is not null)
+                {
+                    <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.ResultPanel.Journey" />
+                }
+                @if (Model.ResultPanel is not null)
+                {
+                    <partial name="Shared/_CalculatorResultEducation" model="Model.ResultPanel.Explanation" />
+                }
+            }
+            else if (Model.ResultPanel is not null && !Model.IsRescisaoStitch)
             {
                 @if (!Model.IsEmbedMode)
                 {

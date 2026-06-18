@@ -14,8 +14,8 @@
         ["datePublished"] = Model.PublishedAt.ToString("yyyy-MM-dd"),
         ["author"] = new Dictionary<string, string>
         {
-            ["@type"] = "Organization",
-            ["name"] = "Meu Valor Líquido"
+            ["@type"] = "Person",
+            ["name"] = string.IsNullOrWhiteSpace(Model.Author) ? BlogContentHelper.DefaultAuthor : Model.Author
         },
         ["publisher"] = new Dictionary<string, object>
         {

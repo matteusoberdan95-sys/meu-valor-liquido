@@ -45,8 +45,9 @@ public class LocalPanelPageTests
         var html = await response.Content.ReadAsStringAsync();
         html.Should().Contain("Meu painel");
         html.Should().Contain("data-local-panel-page");
-        html.Should().Contain("localStorage");
-        html.Should().Contain("valora-stitch-panel");
+        html.Should().Contain("valora-stitch-panel--bento");
+        html.Should().Contain("Olá!");
+        html.Should().Contain("Cálculos salvos");
         html.Should().Contain("BreadcrumbList");
     }
 

@@ -6,16 +6,16 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 2. `README.md`
 3. Este arquivo (`AGENTS.md`)
 4. `docs/CODING_CONVENTIONS.md` antes de editar código
-5. `docs/sprint-plan.md` — seção **Trilha ativa pós-Sprint 50 (Sprints 53-59)**
+5. `docs/sprint-plan.md` — seção **Trilha Fidelidade Stitch v2 (Sprints 60–64)**
 
 ## Sprint ativa
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 51** — Monetização AdSense (aguardando aprovação Google) |
-| **Prioridade alta** | — |
-| **Prioridade média** | — |
-| **Baixa prioridade** | — |
+| **Próxima sprint** | **Trilha 60–64 concluída** — manutenção / Sprint 51 (AdSense quando aprovar) |
+| **Em seguida** | Sprint 51 (AdSense) ou polish pós-checklist manual |
+| **Concluída recente** | Sprint 64 (painel + C1) · Sprint 63 (rescisão/PJ×CLT) |
+| **Prioridade alta** | Trilha 60–64 (fidelidade visual 100%) |
 | **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -31,7 +31,8 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 ## Estado atual importante
 
-- Trilha Stitch 39–46 e trilhas **47–50, 53 e 54 concluídas**.
+- Trilha Stitch 39–46 e trilhas **47–50, 52–59 concluídas**.
+- **Trilha Fidelidade v2 (60–64)** em andamento — ver `docs/STITCH_DARK_FIDELITY_PLAN.md`.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`.

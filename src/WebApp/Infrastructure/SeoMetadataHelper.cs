@@ -152,6 +152,12 @@ public static class SeoMetadataHelper
         new("Termos de Uso", "/termos-de-uso")
     ];
 
+    public static IReadOnlyList<BreadcrumbItem> CookiePolicyBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Política de Cookies", "/politica-de-cookies")
+    ];
+
     public static IReadOnlyList<BreadcrumbItem> LegalNoticeBreadcrumbs() =>
     [
         new("Início", "/"),

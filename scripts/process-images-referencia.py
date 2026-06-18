@@ -1,4 +1,7 @@
-"""Gera assets web a partir de src/images-referencia/."""
+"""Gera assets web a partir de src/images-referencia/.
+
+Para capas do blog no estilo dark Valora: python scripts/generate-blog-images.py render
+"""
 from __future__ import annotations
 
 from pathlib import Path

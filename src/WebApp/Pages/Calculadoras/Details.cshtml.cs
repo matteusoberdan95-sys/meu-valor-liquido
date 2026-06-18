@@ -54,6 +54,18 @@ public class DetailsModel : PageModel
     public bool IsRescisaoStitch =>
         Definition?.Slug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
 
+    public bool IsSalarioLiquidoStitch =>
+        Definition?.Slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
+
+    public bool IsTemplateC1Stitch =>
+        Definition is not null
+        && CalculatorUiHelper.IsTemplateC1Slug(Definition.Slug)
+        && !IsEmbedMode;
+
+    public SalarioLiquidoStitchResultViewModel? SalarioLiquidoStitchResult { get; private set; }
+
+    public RescisaoStitchResultViewModel? RescisaoStitchResult { get; private set; }
+
     public bool IsLayeredFiscalDetail =>
         Definition is not null
         && !IsEmbedMode
@@ -67,30 +79,10 @@ public class DetailsModel : PageModel
     public FieldLabelViewModel FieldLabel(string text, string? forId, string fieldKey) =>
         new(text, forId, CalculatorFieldTooltipCatalog.GetTooltip(Definition?.Slug ?? string.Empty, fieldKey));
 
-    public string CalcDetailModifierClass
-    {
-        get
-        {
-            if (IsEmbedMode || IsPjVsCltStitch || IsRescisaoStitch || Definition is null)
-            {
-                return string.Empty;
-            }
-
-            if (Definition.Slug.Equals("inss", StringComparison.OrdinalIgnoreCase)
-                || Definition.Slug.Equals("irrf", StringComparison.OrdinalIgnoreCase))
-            {
-                return " valora-stitch-calc-detail--fiscal";
-            }
-
-            if (Definition.Slug.Equals("ferias", StringComparison.OrdinalIgnoreCase)
-                || Definition.Slug.Equals("decimo-terceiro", StringComparison.OrdinalIgnoreCase))
-            {
-                return " valora-stitch-calc-detail--layered";
-            }
-
-            return string.Empty;
-        }
-    }
+    public string CalcDetailModifierClass =>
+        IsEmbedMode || IsPjVsCltStitch || IsRescisaoStitch || IsSalarioLiquidoStitch || Definition is null
+            ? string.Empty
+            : CalculatorUiHelper.GetStitchDetailModifierClass(Definition.Slug);
 
     [BindProperty(SupportsGet = true)]
     public string? Jornada { get; set; }
@@ -212,15 +204,30 @@ public class DetailsModel : PageModel
         {
             var journey = BuildJourneyPanel(slug, ResolveJourneyId(slug));
             var terminationSummary = TerminationResultGrouper.TryGroup(slug, Result);
+            var isSalarioLiquido = slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase);
+            var isRescisao = slug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase);
             ResultPanel = new CalculatorResultPanelViewModel(
                 Result,
                 Input,
                 slug,
                 CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
-                ShowSimpleExplanation: !IsEmbedMode,
+                ShowSimpleExplanation: !IsEmbedMode && !isSalarioLiquido && !(isRescisao && IsRescisaoStitch),
                 TerminationSummary: terminationSummary,
                 Warnings: CalculatorResultWarningBuilder.Build(slug, Input, Result),
                 Journey: journey);
+
+            if (isSalarioLiquido)
+            {
+                SalarioLiquidoStitchResult = SalarioLiquidoStitchResultBuilder.TryBuild(Result);
+            }
+            else if (isRescisao && IsRescisaoStitch)
+            {
+                RescisaoStitchResult = RescisaoStitchResultBuilder.TryBuild(
+                    Result,
+                    terminationSummary,
+                    Share,
+                    CalculatorResultWarningBuilder.Build(slug, Input, Result));
+            }
         }
     }
 

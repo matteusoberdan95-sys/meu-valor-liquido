@@ -54,7 +54,7 @@ Certificado gratuito: [Let's Encrypt](https://letsencrypt.org/) + certbot.
 4. `/health` → `Healthy`
 5. `/sitemap.xml`, `/robots.txt`
 6. Formulário contato + newsletter (verificar caixa SMTP)
-7. `/metricas-internas` — painel carrega, `noindex`, seletor 7/30 dias
+7. `/metricas-internas` — painel carrega, `noindex`, seletor 7/30 dias, alertas 404/500/falhas
 
 ### Calculadoras (17) — formulário e página 200
 

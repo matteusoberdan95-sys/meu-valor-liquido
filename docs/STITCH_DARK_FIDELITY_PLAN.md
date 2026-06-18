@@ -2,10 +2,25 @@
 
 Referência local (gitignored): `stitch_redesing/stitch_meu_valor_l_quido_dark_redesign/`  
 Design system: `premium_liquid/DESIGN.md` (dentro da pasta acima)  
-Tokens implementados em: `src/WebApp/wwwroot/css/site.css` (`:root` + classes `valora-*`)  
-Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
+Tokens implementados em: `src/WebApp/wwwroot/css/site.css` (`:root` + classes `valora-*`)
 
-## Resumo das sprints
+## Status geral
+
+As Sprints **39–46** entregaram a fundação dark e cobertura estrutural. Uma **auditoria pixel-a-pixel** (jun/2026) mostrou fidelidade ~60–85% nas telas com mock — insuficiente para “100% fiel”. A trilha **60–64** fecha os gaps restantes com checklist visual 390/1280px.
+
+## Trilha Fidelidade v2 (Sprints 60–64)
+
+| Sprint | Escopo | Status |
+|--------|--------|--------|
+| **60** | Salário líquido: painel Stitch (donut, % bruto, INSS/IRRF, alíquota efetiva) + home desktop (bento 12 col, metodologia, social proof) | Concluída |
+| **61** | Shell global: footer 4 colunas + newsletter inline, tokens `#0A0A0B`, Material Symbols wght 300 — **sem botão Entrar** (divergência intencional: Meu painel) | Concluída |
+| **62** | Hubs: central calculadoras (banner premium), blog (newsletter + dica rápida), FAQ CTA suporte | Concluída |
+| **63** | Calculadoras-chave: rescisão multi-card + PJ×CLT alinhado ao mock (3 passos visuais ou mock v2) | Concluída |
+| **64** | Meu painel + 14 calculadoras template C1 + checklist visual final 390/1280px | Concluída |
+
+**Estimativa:** 5 sprints · 1 dev · ~5–8 semanas (paralelizável 61+62 após 60).
+
+## Sprints 39–46 (fundação — concluída com ressalvas)
 
 | Sprint | Escopo | Status |
 |--------|--------|--------|
@@ -16,38 +31,44 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | **43** | Rescisão, PJ×CLT e refinamento mobile fiscal | Concluída |
 | **44** | FAQ, blog, artigo, metodologia | Concluída |
 | **45** | Meu painel, sobre, contato, newsletter, privacidade | Concluída |
-| **46** | Erro, polish final, checklist visual | Concluída |
+| **46** | Erro, polish final, checklist visual | Concluída* |
+
+\* Checklist manual em [sprint-plan.md](sprint-plan.md) permanece aberto até Sprint 64.
 
 ## Mapeamento tela → rota
 
-| Pasta Stitch | Breakpoint | Rota WebApp | Sprint | Status |
-|--------------|------------|-------------|--------|--------|
-| `home_mobile` | mobile | `/` | 39–40 | Concluída |
-| `home_desktop_dark_premium` | desktop | `/` | 39–40 | Concluída |
-| `central_de_calculadoras_mobile` | mobile | `/calculadoras` | 41 | Concluída |
-| `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 41 | Concluída |
-| `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 42 | Concluída |
-| `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 42 | Concluída |
-| `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 43 | Concluída |
-| `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 43 | Concluída |
-| `faq_mobile` | mobile | `/duvidas` | 44 | Concluída |
-| `faq_desktop` | desktop | `/duvidas` | 44 | Concluída |
-| `blog_desktop` | desktop | `/blog` | 44 | Concluída |
-| `artigo_do_blog_desktop` | desktop | `/blog/{slug}` | 44 | Concluída |
-| `metodologia_desktop` | desktop | `/como-calculamos` | 44 | Concluída |
-| `meu_painel_mobile` | mobile | `/meu-painel` | 45 | Concluída |
-| `meu_painel_desktop` | desktop | `/meu-painel` | 45 | Concluída |
-| `contato_desktop` | desktop | `/contato` | 45 | Concluída |
-| `newsletter_desktop` | desktop | `/newsletter` | 45 | Concluída |
-| `sobre_n_s_desktop` | desktop | `/sobre` | 45 | Concluída |
-| `privacidade_e_termos_desktop` | desktop | `/politica-de-privacidade`, `/termos-de-uso` | 45 | Concluída |
-| `p_gina_de_erro_desktop` | desktop | `/NotFound`, `/Error` | 46 | Concluída |
+| Pasta Stitch | Breakpoint | Rota WebApp | Sprint alvo | Status fidelidade |
+|--------------|------------|-------------|-------------|-------------------|
+| `home_mobile` | mobile | `/` | 60 | ~90% após 60 |
+| `home_desktop_dark_premium` | desktop | `/` | 60–61 | ~80% após 60 |
+| `central_de_calculadoras_mobile` | mobile | `/calculadoras` | 62 | ~80% |
+| `central_de_calculadoras_desktop` | desktop | `/calculadoras` | 62 | ~80% |
+| `calculadora_de_sal_rio_l_quido_mobile` | mobile | `/calculadoras/salario-liquido` | 60 | ~85% após 60 |
+| `calculadora_de_sal_rio_l_quido_desktop` | desktop | `/calculadoras/salario-liquido` | 60–61 | ~85% após 60 |
+| `calculadora_de_rescis_o_desktop` | desktop | `/calculadoras/rescisao-clt` | 63 | ~85% após 63 |
+| `comparador_clt_vs_pj_desktop` | desktop | `/calculadoras/pj-vs-clt` | 63 | ~80% após 63 |
+| `faq_mobile` | mobile | `/duvidas` | 62 | ~80% |
+| `faq_desktop` | desktop | `/duvidas` | 62 | ~80% |
+| `blog_desktop` | desktop | `/blog` | 62 | ~70% |
+| `artigo_do_blog_desktop` | desktop | `/blog/{slug}` | 62 | ~75% |
+| `metodologia_desktop` | desktop | `/como-calculamos` | 64 | ~75% |
+| `meu_painel_mobile` | mobile | `/meu-painel` | 64 | ~85% após 64 |
+| `meu_painel_desktop` | desktop | `/meu-painel` | 64 | ~85% após 64 |
+| `contato_desktop` | desktop | `/contato` | 64 | ~75% |
+| `newsletter_desktop` | desktop | `/newsletter` | 61–62 | ~75% |
+| `sobre_n_s_desktop` | desktop | `/sobre` | 64 | ~75% |
+| `privacidade_e_termos_desktop` | desktop | `/politica-de-privacidade`, `/termos-de-uso` | 64 | ~75% |
+| `p_gina_de_erro_desktop` | desktop | `/NotFound`, `/Error` | 64 | ~75% |
+
+### Sem mock Stitch local (derivar do template C1)
+
+As 14 calculadoras restantes, páginas SEO (`/salario-liquido/{valor}`), widget e `/metricas-internas` — Sprint **64** (checklist por slug, sem `screen.png` dedicado).
 
 ## Tokens Stitch → CSS
 
 | Stitch | `--valora-*` |
 |--------|----------------|
-| `background` | `--valora-background` (#131314) |
+| `background` | `--valora-background` (#0A0A0B) |
 | `card-low` | `--valora-card-low` (#1C1C1F) |
 | `primary` | `--valora-primary` (#59dbc7) |
 | `on-primary` | `--valora-on-primary` (#003731) |
@@ -62,28 +83,34 @@ Sprints: **39–46** em [sprint-plan.md](sprint-plan.md)
 | Botão primário glow | `--valora-glow-primary` |
 | Resultado líquido glow | `--valora-glow-net` |
 
-## Critérios de aceite
+## Divergências intencionais (produto vs mock Stitch)
 
-- Comparar com `screen.png` em **390px** (mobile) e **1280px** (desktop)
+| Mock Stitch | Implementação | Motivo |
+|-------------|---------------|--------|
+| Botão **Entrar** no header | **Meu painel** (sem autenticação) | Site gratuito + AdSense; sem login real |
+| Teaser “Relatórios completos” na home | Seção **Nossa Metodologia** | Mock desktop `home_desktop_dark_premium` |
+| Wizard PJ×CLT **3 passos** | Wizard **4 passos** (Sprint 59/63) | Funcionalidade ampliada; visual alinhado na Sprint 63 |
+| Mock **perfil premium / Entrar** no painel | **Painel local** sem login | Produto gratuito + AdSense |
+
+## Critérios de aceite (Sprints 60–64)
+
+- Comparar com `screen.png` em **390px** (mobile) e **1280px** (desktop) por tela do mapeamento
 - Não usar Tailwind CDN — apenas tokens em `site.css`
-- Manter `GoLiveSmokeTests` verdes
-- Cores de resultado líquido sempre em `--valora-net-result` com glow
-- Botões primários com `--valora-glow-primary`
+- `dotnet test MeuValorLiquido.slnx` verde
+- Marcar checklist em [sprint-plan.md](sprint-plan.md) item a item ao concluir Sprint 64
 
-## Arquivos principais
+## Arquivos principais (v2)
 
 | Área | Arquivo |
 |------|---------|
-| Tokens + componentes | `src/WebApp/wwwroot/css/site.css` |
-| Layout | `src/WebApp/Pages/Shared/_Layout.cshtml` |
-| Brand | `src/WebApp/Pages/Shared/_BrandMark.cshtml` |
-| Bottom nav | `src/WebApp/Pages/Shared/_BottomNav.cshtml` |
-| Home | `src/WebApp/Pages/Index.cshtml` |
-| Ícones bento | `src/WebApp/Infrastructure/CalculatorUiHelper.cs` |
+| Resultado salário Stitch | `Pages/Shared/_SalarioLiquidoStitchResult.cshtml` |
+| Builder donut / % | `Infrastructure/SalarioLiquidoStitchResultBuilder.cs` |
+| Home desktop bento | `Pages/Index.cshtml` |
+| Tokens + componentes | `wwwroot/css/site.css` |
+| Testes fidelidade | `tests/.../Sprint60FidelityTests.cs` |
 
 ## Como usar os mocks localmente
 
-1. Mantenha a pasta `stitch_redesing/` na raiz do projeto (não versionada).
-2. Abra `code.html` no navegador ou compare `screen.png` lado a lado com `http://localhost:8080`.
-3. Use o checklist em [sprint-plan.md](sprint-plan.md) (Sprint 46) para validação visual em 390px e 1280px.
-3. Ao concluir cada sprint, marque a coluna **Status** neste arquivo como **Concluída**.
+1. Mantenha `stitch_redesing/` na raiz (gitignored).
+2. Compare `screen.png` com `http://localhost:8080` em 390px e 1280px.
+3. Atualize a coluna **Status fidelidade** neste arquivo ao fechar cada sprint.

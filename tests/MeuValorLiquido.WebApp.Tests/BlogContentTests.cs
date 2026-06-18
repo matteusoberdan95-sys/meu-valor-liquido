@@ -29,6 +29,10 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("/calculadoras/salario-liquido");
         html.Should().Contain("Calcular agora");
         html.Should().Contain("valora-stitch-blog-article");
+        html.Should().Contain("Matteus Oberdan");
+        html.Should().Contain("valora-stitch-blog-hero--has-image");
+        html.Should().Contain("id=\"dica-pratica\"");
+        html.Should().Contain("id=\"como-validamos\"");
     }
 
     [Fact]

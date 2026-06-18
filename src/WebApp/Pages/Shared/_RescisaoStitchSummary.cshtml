@@ -1,0 +1,63 @@
+@model MeuValorLiquido.WebApp.Infrastructure.RescisaoStitchResultViewModel
+@{
+    var summary = Model.Summary;
+}
+
+<section class="valora-stitch-rescisao-summary" aria-live="polite">
+    <div class="valora-stitch-rescisao-summary-glow" aria-hidden="true"></div>
+    <div class="valora-stitch-rescisao-summary-inner">
+        <p class="valora-stitch-rescisao-summary-kicker">Resumo da rescisão</p>
+        <h2 class="valora-stitch-rescisao-summary-title">Total líquido estimado</h2>
+        <p class="valora-stitch-rescisao-summary-lead">Você deve receber:</p>
+        <p class="valora-stitch-rescisao-summary-net">@Money.From(Model.NetAmount)</p>
+
+        <dl class="valora-stitch-rescisao-summary-rows">
+            <div class="valora-stitch-rescisao-summary-row">
+                <dt>Total bruto</dt>
+                <dd>@Money.From(summary.VerbasTotal)</dd>
+            </div>
+            <div class="valora-stitch-rescisao-summary-row">
+                <dt>Total descontos</dt>
+                <dd class="valora-stitch-rescisao-summary-row--debit">- @Money.From(summary.DescontosTotal)</dd>
+            </div>
+            <div class="valora-stitch-rescisao-summary-divider" aria-hidden="true"></div>
+            <div class="valora-stitch-rescisao-summary-row valora-stitch-rescisao-summary-row--strong">
+                <dt>Subtotal líquido</dt>
+                <dd>@Money.From(Model.NetAmount)</dd>
+            </div>
+            @if (Model.FgtsPackageTotal > 0m)
+            {
+                <div class="valora-stitch-rescisao-summary-row valora-stitch-rescisao-summary-row--fgts">
+                    <dt>+ FGTS (saque + multa)</dt>
+                    <dd>@Money.From(Model.FgtsPackageTotal)</dd>
+                </div>
+            }
+        </dl>
+
+        @if (Model.Share?.PdfUrl is not null)
+        {
+            <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-rescisao-summary-pdf" href="@Model.Share.PdfUrl" download>
+                <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                Exportar PDF completo
+            </a>
+        }
+
+        @if (Model.Share is not null)
+        {
+            <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+        }
+    </div>
+</section>
+
+<aside class="valora-stitch-rescisao-tip" aria-label="Dica importante">
+    <h3 class="valora-stitch-rescisao-tip-title">
+        <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+        Dica importante
+    </h3>
+    <p class="valora-stitch-rescisao-tip-text">
+        Verifique se a convenção coletiva prevê benefícios adicionais, como multa por atraso no pagamento ou estabilidade.
+    </p>
+    <a class="valora-stitch-rescisao-tip-link" asp-page="/Blog/Post" asp-route-slug="como-calcular-rescisao-clt">Ver guia completo de direitos</a>
+</aside>
+
+<p class="valora-stitch-calc-estimate-disclaimer">@Model.Result.LegalDisclaimer</p>

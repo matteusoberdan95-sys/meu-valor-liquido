@@ -52,6 +52,16 @@
             {
                 <partial name="Shared/_BlogStitchFeedCard" model="post" />
             }
+
+            @if (!Model.HasActiveFilter)
+            {
+                <partial name="Shared/_BlogStitchTipCard" />
+            }
         }
     </section>
+
+    @if (!Model.HasActiveFilter)
+    {
+        <partial name="Shared/_BlogStitchNewsletterSection" />
+    }
 </div>

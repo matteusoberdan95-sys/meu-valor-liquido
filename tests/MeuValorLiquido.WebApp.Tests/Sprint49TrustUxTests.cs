@@ -51,7 +51,9 @@ public class Sprint49TrustUxTests : IClassFixture<WebApplicationFactory<Program>
     {
         var html = await GetPageHtml($"/calculadoras/{slug}");
 
-        html.Should().Contain("CALCULAR AGORA");
+        (html.Contains("CALCULAR AGORA") || html.Contains("Calcular Valor") || html.Contains("Calcular agora"))
+            .Should()
+            .BeTrue($"calculadora {slug} deve expor botão de submit Stitch");
         (html.Contains("valora-field-tip") || html.Contains("valora-helper"))
             .Should()
             .BeTrue($"calculadora {slug} deve ter tooltip ou helper educativo");

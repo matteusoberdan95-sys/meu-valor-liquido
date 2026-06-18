@@ -6,7 +6,8 @@ public sealed record BlogPost(
     string Content,
     DateOnly PublishedAt,
     string? Category = null,
-    string? RelatedCalculatorSlug = null);
+    string? RelatedCalculatorSlug = null,
+    string Author = "Matteus Oberdan");
 
 public interface IContentService
 {

@@ -49,7 +49,7 @@ else
             <span class="valora-stitch-blog-article-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Post.Category)</span>
             <h1 class="valora-stitch-blog-article-title">@Model.Post.Title</h1>
             <p class="valora-stitch-blog-article-meta">
-                <span>Meu Valor Líquido</span>
+                <span>@Model.Post.Author</span>
                 <span aria-hidden="true">·</span>
                 <time datetime="@Model.Post.PublishedAt.ToString("yyyy-MM-dd")">@Model.Post.PublishedAt.ToString("dd/MM/yyyy")</time>
                 <span aria-hidden="true">·</span>
@@ -113,6 +113,13 @@ else
                         <a class="valora-stitch-blog-article-aside-link" href="#como-validamos">
                             <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
                             Como validamos
+                        </a>
+                    }
+                    @if (Model.Post.Content.Contains("id=\"dica-pratica\"", StringComparison.Ordinal))
+                    {
+                        <a class="valora-stitch-blog-article-aside-link" href="#dica-pratica">
+                            <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+                            Dica prática
                         </a>
                     }
                 </div>

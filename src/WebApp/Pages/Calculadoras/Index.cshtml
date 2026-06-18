@@ -20,7 +20,7 @@
                name="q"
                value="@Model.Query"
                class="valora-stitch-calc-search-input"
-               placeholder="Buscar calculadora..."
+               placeholder="Qual cálculo você precisa fazer hoje?"
                aria-label="Buscar calculadoras" />
         @if (!string.IsNullOrWhiteSpace(Model.Category))
         {
@@ -197,5 +197,29 @@
                 </div>
             </div>
         </div>
+    }
+
+    @if (showFullHub)
+    {
+        <section class="valora-stitch-calc-premium-banner" aria-label="Destaque CLT vs PJ">
+            <div class="valora-stitch-calc-premium-banner-glow" aria-hidden="true"></div>
+            <div class="valora-stitch-calc-premium-banner-content">
+                <div class="valora-stitch-calc-premium-banner-copy">
+                    <span class="valora-stitch-calc-premium-badge">Mais usada esta semana</span>
+                    <h2 class="valora-stitch-calc-premium-title">Calculadora CLT vs PJ Premium</h2>
+                    <p class="valora-stitch-calc-premium-text">
+                        Analise benefícios, férias, 13º e tributação em ambos os regimes para decidir com base no líquido real.
+                    </p>
+                    <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-calc-premium-btn"
+                       asp-page="/Calculadoras/Details"
+                       asp-route-slug="pj-vs-clt">
+                        Comparar agora
+                    </a>
+                </div>
+                <div class="valora-stitch-calc-premium-visual" aria-hidden="true">
+                    <span class="material-symbols-outlined valora-icon-filled">insights</span>
+                </div>
+            </div>
+        </section>
     }
 </div>

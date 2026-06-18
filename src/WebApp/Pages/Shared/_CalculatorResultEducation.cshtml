@@ -1,0 +1,45 @@
+@model MeuValorLiquido.WebApp.Infrastructure.CalculatorResultExplanationViewModel
+
+@if (Model.Simple.Steps.Count > 0)
+{
+    <details class="valora-stitch-salario-simple">
+        <summary class="valora-stitch-salario-simple-summary">
+            <span class="material-symbols-outlined" aria-hidden="true">school</span>
+            Explicação simples
+        </summary>
+        <ol class="valora-simple-steps">
+            @foreach (var step in Model.Simple.Steps)
+            {
+                <li class="valora-simple-step">
+                    <div class="valora-simple-step-header">
+                        <span class="valora-simple-step-order">@step.Order</span>
+                        <strong class="valora-simple-step-title">@step.Title</strong>
+                        @if (!string.IsNullOrEmpty(step.Highlight))
+                        {
+                            <span class="valora-simple-step-highlight">@step.Highlight</span>
+                        }
+                    </div>
+                    <p class="valora-simple-step-body">@step.Body</p>
+                </li>
+            }
+        </ol>
+    </details>
+}
+
+@if (Model.RelatedLinks.Count > 0)
+{
+    <section class="valora-related-tools" aria-label="Ferramentas relacionadas">
+        <h3 class="valora-h3" style="font-size: 1rem; margin-bottom: 0.75rem;">Continue explorando</h3>
+        <ul class="valora-related-tools-list">
+            @foreach (var link in Model.RelatedLinks)
+            {
+                <li>
+                    <a class="valora-related-tool-link" href="@link.Url">
+                        <span class="valora-related-tool-name">@link.Name</span>
+                        <span class="valora-related-tool-teaser">@link.Teaser</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </section>
+}

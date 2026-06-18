@@ -100,6 +100,35 @@ public static class CalculatorUiHelper
         _ => "valora-stitch-hub-row-badge--trabalhista"
     };
 
+    private static readonly HashSet<string> TemplateC1Slugs = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "salario-bruto-necessario",
+        "proposta-salarial",
+        "ferias",
+        "decimo-terceiro",
+        "hora-extra",
+        "inss",
+        "irrf",
+        "juros-compostos",
+        "financiamento",
+        "fgts",
+        "simulador-mei",
+        "custo-funcionario",
+        "multa-atraso",
+        "conversor-salario"
+    };
+
+    public static bool IsTemplateC1Slug(string slug) => TemplateC1Slugs.Contains(slug);
+
+    public static string GetStitchDetailModifierClass(string slug) => slug.ToLowerInvariant() switch
+    {
+        "inss" or "irrf" or "simulador-mei" => " valora-stitch-calc-detail--fiscal",
+        "ferias" or "decimo-terceiro" => " valora-stitch-calc-detail--layered",
+        "juros-compostos" or "financiamento" or "multa-atraso" => " valora-stitch-calc-detail--financial",
+        _ when IsTemplateC1Slug(slug) => " valora-stitch-calc-detail--trabalhista",
+        _ => string.Empty
+    };
+
     public static string GetHubCardTag(string slug) => slug.ToLowerInvariant() switch
     {
         "pj-vs-clt" => "Novo layout",
@@ -109,5 +138,28 @@ public static class CalculatorUiHelper
         "simulador-mei" => "MEI",
         "rescisao-clt" => "CLT",
         _ => "Popular"
+    };
+
+    public static string GetBentoSubtitle(string slug, string category) => slug.ToLowerInvariant() switch
+    {
+        "salario-liquido" => "CLT e descontos",
+        "pj-vs-clt" => "Impostos e lucro",
+        "simulador-mei" => "MEI e DAS",
+        "ferias" => "Provisão e terço",
+        "juros-compostos" => "Futuro do patrimônio",
+        "rescisao-clt" => "Verbas e multa FGTS",
+        "decimo-terceiro" => "Parcelas do benefício",
+        "financiamento" => "Parcela e custo total",
+        _ => category
+    };
+
+    public static string GetHomeDesktopCardSummary(string slug) => slug.ToLowerInvariant() switch
+    {
+        "salario-liquido" => "Cálculo completo de IRRF, INSS e descontos em folha com tabelas atualizadas.",
+        "rescisao-clt" => "Calcule verbas rescisórias, férias, aviso prévio e multa do FGTS.",
+        "pj-vs-clt" => "Qual modelo de contratação compensa mais para o seu perfil profissional?",
+        "decimo-terceiro" => "Calcule o valor das parcelas do seu benefício de fim de ano.",
+        "financiamento" => "Analise parcela, juros e se o financiamento cabe no orçamento.",
+        _ => string.Empty
     };
 }

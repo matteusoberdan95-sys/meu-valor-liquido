@@ -1,5 +1,7 @@
 namespace MeuValorLiquido.WebApp.Tests;
 
+using MeuValorLiquido.WebApp.Data;
+
 public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient client;
@@ -54,5 +56,15 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
         var response = await client.GetAsync(path);
 
         response.IsSuccessStatusCode.Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task All_Blog_Posts_Should_Serve_Hero_Images()
+    {
+        foreach (var post in BlogArticleSeedData.GetAll())
+        {
+            var response = await client.GetAsync($"/images/blog/{post.Slug}.webp");
+            response.IsSuccessStatusCode.Should().BeTrue($"hero image missing for {post.Slug}");
+        }
     }
 }
