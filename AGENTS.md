@@ -12,11 +12,11 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 58** — Conteúdo editorial direcionado |
+| **Próxima sprint** | **Sprint 59** — Lacunas legais (trilha antiga 34) |
 | **Prioridade alta** | — |
-| **Prioridade média** | 58 |
-| **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
+| **Prioridade média** | — |
 | **Baixa prioridade** | 59, 52 |
+| **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
 

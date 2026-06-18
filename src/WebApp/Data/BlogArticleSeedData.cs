@@ -35,8 +35,9 @@ public static class BlogArticleSeedData
             <p>Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para simular seu caso com as tabelas de 2026. Informe salário bruto, dependentes e abra <strong>Ajustar descontos</strong> para vale-transporte, VR/VA, plano, pensão e outros itens do holerite.</p>
             <h2>Limitações de uma estimativa</h2>
             <p>Convenções coletivas, adicionais noturnos, horas extras e benefícios específicos alteram o resultado final. Trate a simulação como referência educativa e confirme valores oficiais com o departamento pessoal.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>A <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> é calibrada com cenários de referência documentados em <a href="/como-calculamos">Como calculamos</a>, incluindo tabelas INSS/IRRF de 2026 e tolerância de paridade.</p>
+            <p>Leia <a href="/blog/como-conferir-holerite">como conferir holerite</a> e a <a href="/duvidas/como-calcular-salario-liquido">FAQ de salário líquido</a>.</p>
             <p><strong>Estimativa educativa:</strong> não substitui holerite oficial, TRCT ou consultoria contábil/trabalhista.</p>
             """),
         Article(
@@ -54,9 +55,44 @@ public static class BlogArticleSeedData
             <p>INSS e IRRF são progressivos: parte do aumento pode ir para impostos. A <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> destaca o ganho líquido mensal e os percentuais no bruto e no líquido.</p>
             <h2>Próximo passo</h2>
             <p>Depois de comparar a proposta, simule o holerite completo na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> ou descubra o bruto necessário na <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a>.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Cenários de holerite e proposta estão documentados em <a href="/como-calculamos">Como calculamos</a>, com paridade entre as três calculadoras de salário.</p>
+            <p>Consulte a <a href="/duvidas/proposta-salarial-como-negociar">FAQ de negociação de proposta</a> para argumentos objetivos na conversa com o RH.</p>
             <p><strong>Estimativa educativa:</strong> benefícios não monetários (PLR, bônus, stock options) não entram nesta simulação.</p>
+            <p>Veja o artigo <a href="/blog/como-conferir-holerite">como conferir holerite</a> para validar o holerite após aceitar a proposta.</p>
+            """),
+        Article(
+            "como-conferir-holerite",
+            "Como conferir holerite: checklist linha a linha",
+            "Aprenda a comparar seu holerite com uma simulação de salário líquido e identificar divergências comuns em INSS, IRRF e descontos.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 6, 18),
+            """
+            <p>O holerite oficial é o documento que a empresa emite todo mês. Uma <strong>simulação educativa</strong> ajuda a entender cada linha antes de questionar o RH — mas não substitui o contracheque assinado.</p>
+            <h2>Checklist rápido</h2>
+            <ol>
+            <li><strong>Salário base:</strong> confira se o bruto bate com o contrato ou com adicionais fixos do mês.</li>
+            <li><strong>INSS:</strong> verifique se o desconto segue faixas progressivas de 2026 (não é alíquota única sobre tudo).</li>
+            <li><strong>IRRF:</strong> compare a base após INSS e dependentes; isenção até R$ 5.000 de base pode zerar o imposto (Lei 15.270/2025).</li>
+            <li><strong>Vale-transporte:</strong> desconto limitado a 6% do bruto, se você optou pelo benefício.</li>
+            <li><strong>VR/VA, plano, pensão:</strong> cada item deve aparecer em linha separada — não somados em "outros" sem detalhe.</li>
+            <li><strong>Outros descontos:</strong> empréstimo consignado, sindicato e faltas devem ter rubrica identificada.</li>
+            </ol>
+            <h2>Quando a simulação diverge do holerite</h2>
+            <ul>
+            <li>Horas extras, comissões ou adicional noturno no mês (médias alteram INSS/IRRF).</li>
+            <li>Dependentes não cadastrados ou pensão judicial não informada na simulação.</li>
+            <li>Arredondamentos de centavos ou competência diferente (adiantamento, férias no mesmo mês).</li>
+            <li>Convenção coletiva com regras específicas de desconto ou benefício.</li>
+            </ul>
+            <h2>Simule antes de reclamar</h2>
+            <p>Monte o cenário na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> com os mesmos descontos do holerite. Use <strong>Ajustar descontos</strong> para VT, VR/VA, plano, pensão (% ou valor) e outros itens.</p>
+            <p>Para negociar aumento, combine com a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> e leia <a href="/blog/como-avaliar-proposta-salarial">como avaliar proposta pelo líquido</a>.</p>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
+            <p>Cenários de holerite estão documentados em <a href="/como-calculamos">Como calculamos</a>, com benchmarks de INSS/IRRF 2026 e paridade entre calculadoras de salário.</p>
+            <p>Consulte também a <a href="/duvidas/como-calcular-salario-liquido">FAQ de salário líquido</a> e a <a href="/duvidas/diferenca-salario-bruto-e-liquido">diferença entre bruto e líquido</a>.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui holerite oficial, TRCT ou consultoria contábil/trabalhista.</p>
             """),
         Article(
             "como-calcular-ferias",
@@ -79,7 +115,7 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/ferias">calculadora de férias</a> ajuda a visualizar bruto, adicional, descontos e líquido estimado. Ajuste salário e dias para comparar cenários.</p>
             <h2>Dicas práticas</h2>
             <p>Empresas costumam pagar férias até dois dias antes do início do período. Guarde parte do valor para despesas do mês seguinte, já que o orçamento mensal muda temporariamente.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Compare cenários na <a href="/calculadoras/ferias">calculadora de férias</a> e leia a <a href="/como-calculamos">metodologia por categoria</a> para entender premissas, fontes e limitações.</p>
             <p><strong>Estimativa educativa:</strong> médias salariais e adiantamentos não informados podem alterar o holerite real.</p>
             """),
@@ -102,9 +138,42 @@ public static class BlogArticleSeedData
             <p>Além das verbas rescisórias, podem aparecer descontos de empréstimos consignados, vale-transporte e contribuições sindicais. O Termo de Rescisão detalha cada linha.</p>
             <h2>Estime sua rescisão</h2>
             <p>Use a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> para uma visão educativa dos componentes. Informe salário, meses trabalhados e tipo de desligamento.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <p>Leia também <a href="/blog/rescisao-clt-vs-trct">rescisão CLT vs TRCT</a> para entender o que o documento oficial pode trazer a mais.</p>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Os cenários de rescisão passam por testes de paridade documentados em <a href="/como-calculamos">Como calculamos</a>. Divergências com TRCT costumam vir de médias salariais, HE ou adiantamentos não informados.</p>
+            <p>Veja a <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ de pedido de demissão</a> e <a href="/duvidas/seguro-desemprego-quando-tem-direito">seguro-desemprego</a> quando aplicável.</p>
             <p><strong>Estimativa educativa:</strong> não substitui documento oficial assinado pelo empregador.</p>
+            """),
+        Article(
+            "rescisao-clt-vs-trct",
+            "Rescisão CLT vs TRCT: o que a calculadora estima e o que só o documento traz",
+            "Entenda diferenças entre simulação educativa de rescisão e o Termo de Rescisão oficial — médias, adiantamentos e homologação.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 6, 18),
+            """
+            <p>A <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> projeta verbas comuns: saldo de salário, 13º proporcional, férias + 1/3, aviso prévio, multa FGTS e descontos típicos. O <strong>TRCT</strong> (Termo de Rescisão do Contrato de Trabalho) é o documento que a empresa homologa — pode incluir valores que você não informou na simulação.</p>
+            <h2>O que a calculadora cobre bem</h2>
+            <ul>
+            <li>Verbas rescisórias por tipo de desligamento (demissão, pedido, acordo 484-A, justa causa).</li>
+            <li>INSS e IRRF sobre saldo e 13º conforme regras usuais na rescisão.</li>
+            <li>Multa FGTS (40%, 20% ou zero) e aviso prévio indenizado ou descontado.</li>
+            <li>Campos opcionais: adiantamento de 13º, média de HE/comissão, férias vencidas.</li>
+            </ul>
+            <h2>O que pode aparecer só no TRCT</h2>
+            <ul>
+            <li><strong>Médias salariais</strong> de horas extras, comissões ou adicionais nos últimos meses.</li>
+            <li><strong>Adiantamentos</strong> já pagos (13º, férias, salário) descontados na rescisão.</li>
+            <li><strong>Descontos</strong> de empréstimo, pensão, VT do último mês ou acordos sindicais.</li>
+            <li><strong>Seguro-desemprego</strong> — direito informativo; valor e parcelas são calculados pelo governo, não pela empresa na rescisão.</li>
+            </ul>
+            <h2>Como usar a simulação com segurança</h2>
+            <p>Informe salário, datas de admissão e saída, motivo do desligamento e campos avançados (adiantamento, média HE). Compare o extrato com o TRCT linha a linha antes de assinar.</p>
+            <p>Para FGTS e multa, use também a <a href="/calculadoras/fgts">calculadora de FGTS</a>. Para visão geral do desligamento, leia <a href="/blog/como-calcular-rescisao-clt">como calcular rescisão CLT</a>.</p>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
+            <p>Mais de 15 cenários de rescisão estão em <a href="/como-calculamos">Como calculamos</a> (seção Rescisão CLT), com regra dos 15 dias e motivos raros já suportados no motor.</p>
+            <p>Consulte <a href="/duvidas/multa-fgts-40-porcento">multa de 40% do FGTS</a> e <a href="/duvidas/seguro-desemprego-quando-tem-direito">seguro-desemprego</a> para direitos pós-demissão.</p>
+            <p><strong>Estimativa educativa:</strong> não substitui homologação, sindicato, advogado trabalhista ou Caixa Econômica.</p>
             """),
         Article(
             "como-calcular-inss",
@@ -123,7 +192,7 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/inss">calculadora de INSS</a> aplica as faixas de 2026 automaticamente. Informe o salário bruto para ver o valor estimado da contribuição.</p>
             <h2>Autônomos e contribuintes individuais</h2>
             <p>Regras diferem para MEI, contribuinte individual e facultativo. Este artigo foca no desconto sobre salário CLT; consulte um contador para outros vínculos.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>A <a href="/calculadoras/inss">calculadora de INSS</a> usa as faixas oficiais de 2026. Veja fontes, data de calibração e limitações em <a href="/como-calculamos">Como calculamos</a>.</p>
             <p><strong>Estimativa educativa:</strong> não substitui guia da Previdência ou holerite oficial.</p>
             """),
@@ -144,7 +213,7 @@ public static class BlogArticleSeedData
             <p>A <a href="/calculadoras/irrf">calculadora de IRRF</a> estima o imposto com base nas regras vigentes. Combine com a calculadora de salário líquido para ver o holerite completo.</p>
             <h2>Restituição x saldo a pagar</h2>
             <p>O IRRF mensal é uma antecipação. Na declaração anual, você apura se pagou a mais (restituição) ou a menos (saldo devido).</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Simule na <a href="/calculadoras/irrf">calculadora de IRRF</a> e confira a tabela vigente em <a href="/como-calculamos">Como calculamos</a>, com dedução por dependente e regras de isenção de 2026.</p>
             <p><strong>Estimativa educativa:</strong> não substitui orientação da Receita Federal ou declaração anual.</p>
             """),
@@ -305,7 +374,7 @@ public static class BlogArticleSeedData
             <p>Demissão sem justa causa, aposentadoria, compra da casa própria e saque-aniversário (com perda de multa em rescisão futura) são hipóteses comuns.</p>
             <h2>Calcule depósitos e multa</h2>
             <p>Use a <a href="/calculadoras/fgts">calculadora de FGTS</a> para estimar depósitos e multa rescisória. Para o pacote completo de desligamento, veja também a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Cenários de FGTS e multa rescisória estão documentados em <a href="/como-calculamos">Como calculamos</a>. O saldo real depende do extrato da Caixa.</p>
             <p><strong>Estimativa educativa:</strong> não substitui consulta ao extrato oficial do FGTS.</p>
             """),
@@ -346,7 +415,7 @@ public static class BlogArticleSeedData
             <p>O valor do DAS varia conforme comércio, serviços ou indústria. Mesmo com faturamento baixo, o pagamento mensal é obrigatório enquanto o MEI estiver ativo.</p>
             <h2>Simule seu cenário</h2>
             <p>Use o <a href="/calculadoras/simulador-mei">simulador MEI</a> para estimar DAS, comparar com faturamento mensal e receber alertas de limite.</p>
-            <h2>Como validamos esta estimativa</h2>
+            <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>As regras de limite e DAS seguem parâmetros vigentes documentados em <a href="/como-calculamos">Como calculamos</a>. Mudanças na legislação exigem recalibração.</p>
             <p><strong>Estimativa educativa:</strong> não substitui contador para migração ao Simples Nacional ou ME.</p>
             """)

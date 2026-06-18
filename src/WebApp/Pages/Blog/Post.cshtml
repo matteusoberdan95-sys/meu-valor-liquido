@@ -108,6 +108,13 @@ else
                             Calculadora relacionada
                         </a>
                     }
+                    @if (Model.Post.Content.Contains("id=\"como-validamos\"", StringComparison.Ordinal))
+                    {
+                        <a class="valora-stitch-blog-article-aside-link" href="#como-validamos">
+                            <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+                            Como validamos
+                        </a>
+                    }
                 </div>
                 <div class="valora-stitch-blog-article-aside-card">
                     <h2 class="valora-stitch-blog-article-aside-title">Continue explorando</h2>

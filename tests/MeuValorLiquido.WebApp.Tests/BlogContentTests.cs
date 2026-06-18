@@ -45,6 +45,7 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
         var xml = await client.GetStringAsync("/sitemap.xml");
 
         xml.Should().Contain("/blog/o-que-e-salario-liquido");
+        xml.Should().Contain("/blog/como-conferir-holerite");
         xml.Should().Contain("/blog/planejamento-financeiro-com-salario");
     }
 }

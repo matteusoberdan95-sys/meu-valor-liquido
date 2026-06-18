@@ -5,6 +5,9 @@ public class Sprint50EeatTests : IClassFixture<WebApplicationFactory<Program>>
     private static readonly string[] PriorityEditorialSlugs =
     [
         "o-que-e-salario-liquido",
+        "como-conferir-holerite",
+        "como-avaliar-proposta-salarial",
+        "rescisao-clt-vs-trct",
         "como-calcular-ferias",
         "como-calcular-rescisao-clt",
         "como-calcular-inss",
