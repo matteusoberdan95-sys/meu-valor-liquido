@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Sprint 56 - Métricas enxutas e decisão por dados
+- `/metricas-internas` com seletor de período (7/30 dias), taxas de engajamento (share, PDF, painel) e rankings ampliados.
+- Nomes legíveis das calculadoras no ranking; tops de share e painel local.
+- Checklist pós-deploy das 17 calculadoras em `docs/DEPLOY.md`.
+- Rotina semanal documentada em `docs/METRICS_ROUTINE.md`.
+- Smoke `PostDeploy_All_Calculators_Should_Load` em `GoLiveSmokeTests`.
+- Testes `Sprint56MetricsTests`.
+
 ### Sprint 55 - Rescisão: lacunas legais e confiança
 - Seguro-desemprego como linha informativa (sem promessa de valor) na demissão sem justa causa.
 - Adiantamento do 13º já pago descontado na rescisão; campo opcional de média salarial (HE/comissão).

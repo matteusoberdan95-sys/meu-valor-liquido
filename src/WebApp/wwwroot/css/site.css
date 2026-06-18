@@ -906,6 +906,19 @@ h1, h2, h3, h4,
   line-height: 1.4;
 }
 
+a.valora-choice {
+  text-decoration: none;
+  justify-content: center;
+  color: var(--valora-on-surface);
+}
+
+a.valora-choice.valora-choice--active {
+  border-color: var(--valora-primary);
+  background: var(--valora-card-med);
+  box-shadow: 0 0 0 2px rgb(89 219 199 / 12%);
+  font-weight: 600;
+}
+
 .valora-form-row {
   display: grid;
   grid-template-columns: 1fr;

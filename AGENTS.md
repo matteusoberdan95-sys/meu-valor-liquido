@@ -12,9 +12,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 56** — Métricas enxutas e decisão por dados |
+| **Próxima sprint** | **Sprint 57** — Faixas salariais e widget incorporável |
 | **Prioridade alta** | — |
-| **Prioridade média** | 56, 57, 58 |
+| **Prioridade média** | 57, 58 |
 | **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 | **Baixa prioridade** | 59, 52 |
 

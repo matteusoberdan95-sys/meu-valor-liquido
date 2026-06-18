@@ -46,13 +46,51 @@ Certificado gratuito: [Let's Encrypt](https://letsencrypt.org/) + certbot.
 
 ## 3. Smoke test pós-deploy
 
+### Rotas e infraestrutura
+
 1. `/` — logo, hero, OG PNG
-2. `/calculadoras/salario-liquido` — calcular, extrato, share
-3. `/blog`, `/duvidas`, `/como-calculamos`
-4. `/favicon.ico`, `/images/og-default.png`
-5. `/health` → `Healthy`
-6. `/sitemap.xml`, `/robots.txt`
-7. Formulário contato + newsletter (verificar caixa SMTP)
+2. `/blog`, `/duvidas`, `/como-calculamos`
+3. `/favicon.ico`, `/images/og-default.png`
+4. `/health` → `Healthy`
+5. `/sitemap.xml`, `/robots.txt`
+6. Formulário contato + newsletter (verificar caixa SMTP)
+7. `/metricas-internas` — painel carrega, `noindex`, seletor 7/30 dias
+
+### Calculadoras (17) — formulário e página 200
+
+Para cada URL abaixo: status **200**, campo principal visível, botão calcular presente.
+
+| # | URL |
+|---|-----|
+| 1 | `/calculadoras/salario-liquido` |
+| 2 | `/calculadoras/salario-bruto-necessario` |
+| 3 | `/calculadoras/proposta-salarial` |
+| 4 | `/calculadoras/ferias` |
+| 5 | `/calculadoras/decimo-terceiro` |
+| 6 | `/calculadoras/rescisao-clt` |
+| 7 | `/calculadoras/hora-extra` |
+| 8 | `/calculadoras/inss` |
+| 9 | `/calculadoras/irrf` |
+| 10 | `/calculadoras/pj-vs-clt` |
+| 11 | `/calculadoras/juros-compostos` |
+| 12 | `/calculadoras/financiamento` |
+| 13 | `/calculadoras/fgts` |
+| 14 | `/calculadoras/simulador-mei` |
+| 15 | `/calculadoras/custo-funcionario` |
+| 16 | `/calculadoras/multa-atraso` |
+| 17 | `/calculadoras/conversor-salario` |
+
+**Automatizado:** `GoLiveSmokeTests.PostDeploy_All_Calculators_Should_Load` e `dotnet test` no CI.
+
+### Fluxo crítico
+
+1. `/calculadoras/salario-liquido` — calcular, extrato, share
+2. `/calculadoras/rescisao-clt` — motivo de desligamento e resultado
+3. PDF de resultado (sem anúncios) em calculadora com share
+
+### Métricas pós-deploy (opcional)
+
+Após tráfego real, conferir `/metricas-internas?days=7` na segunda seguinte — ver `docs/METRICS_ROUTINE.md`.
 
 ## 4. AdSense
 

@@ -42,17 +42,32 @@ public sealed record ProductMetricRow(string Label, string EventType, long Count
 public sealed record ProductMetricsSummary(
     DateOnly From,
     DateOnly To,
+    int PeriodDays,
     long TotalCalculations,
     long TotalPdfDownloads,
     long TotalShareCopies,
     long TotalPanelSaves,
     long TotalWidgetViews,
+    decimal SharePerCalculationPercent,
+    decimal PdfPerCalculationPercent,
+    decimal PanelSavePerCalculationPercent,
     IReadOnlyList<ProductMetricRow> TopCalculations,
-    IReadOnlyList<ProductMetricRow> TopPdfDownloads);
+    IReadOnlyList<ProductMetricRow> TopPdfDownloads,
+    IReadOnlyList<ProductMetricRow> TopShareCopies,
+    IReadOnlyList<ProductMetricRow> TopPanelSaves);
+
+public static class ProductMetricsPeriod
+{
+    public const int Week = 7;
+    public const int Month = 30;
+
+    public static int Normalize(int? days) =>
+        days == Week ? Week : Month;
+}
 
 public interface IProductMetricsService
 {
     Task RecordAsync(string eventType, string? dimension = null, CancellationToken cancellationToken = default);
 
-    Task<ProductMetricsSummary> GetSummaryAsync(int days = 30, CancellationToken cancellationToken = default);
+    Task<ProductMetricsSummary> GetSummaryAsync(int days = ProductMetricsPeriod.Month, CancellationToken cancellationToken = default);
 }

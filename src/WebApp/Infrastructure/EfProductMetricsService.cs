@@ -43,10 +43,11 @@ public sealed class EfProductMetricsService : IProductMetricsService
         await db.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<ProductMetricsSummary> GetSummaryAsync(int days = 30, CancellationToken cancellationToken = default)
+    public async Task<ProductMetricsSummary> GetSummaryAsync(int days = ProductMetricsPeriod.Month, CancellationToken cancellationToken = default)
     {
+        var periodDays = ProductMetricsPeriod.Normalize(days);
         var to = DateOnly.FromDateTime(DateTime.UtcNow);
-        var from = to.AddDays(-(days - 1));
+        var from = to.AddDays(-(periodDays - 1));
 
         var rows = await db.AggregatedMetrics
             .AsNoTracking()
@@ -55,20 +56,31 @@ public sealed class EfProductMetricsService : IProductMetricsService
 
         long Sum(string eventType) => rows.Where(x => x.EventType == eventType).Sum(x => x.Count);
 
-        var topCalculations = TopByDimension(rows, ProductMetricEvents.CalculatorCalculation, 10);
-        var topPdfs = TopByDimension(rows, ProductMetricEvents.PdfDownload, 10);
+        var totalCalculations = Sum(ProductMetricEvents.CalculatorCalculation);
+        var totalPdfDownloads = Sum(ProductMetricEvents.PdfDownload);
+        var totalShareCopies = Sum(ProductMetricEvents.ShareCopy);
+        var totalPanelSaves = Sum(ProductMetricEvents.PanelSave);
 
         return new ProductMetricsSummary(
             from,
             to,
-            Sum(ProductMetricEvents.CalculatorCalculation),
-            Sum(ProductMetricEvents.PdfDownload),
-            Sum(ProductMetricEvents.ShareCopy),
-            Sum(ProductMetricEvents.PanelSave),
+            periodDays,
+            totalCalculations,
+            totalPdfDownloads,
+            totalShareCopies,
+            totalPanelSaves,
             Sum(ProductMetricEvents.WidgetView),
-            topCalculations,
-            topPdfs);
+            Rate(totalShareCopies, totalCalculations),
+            Rate(totalPdfDownloads, totalCalculations),
+            Rate(totalPanelSaves, totalCalculations),
+            TopByDimension(rows, ProductMetricEvents.CalculatorCalculation, 10),
+            TopByDimension(rows, ProductMetricEvents.PdfDownload, 10),
+            TopByDimension(rows, ProductMetricEvents.ShareCopy, 10),
+            TopByDimension(rows, ProductMetricEvents.PanelSave, 10));
     }
+
+    private static decimal Rate(long numerator, long denominator) =>
+        denominator <= 0 ? 0m : Math.Round(numerator * 100m / denominator, 1);
 
     private static string NormalizeDimension(string? dimension)
     {

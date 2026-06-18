@@ -262,4 +262,18 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         nosniff!.First().Should().Be("nosniff");
         response.Headers.TryGetValues("Content-Security-Policy", out _).Should().BeTrue();
     }
+
+  public static IEnumerable<object[]> AllCalculatorSlugs =>
+      CalculatorSeedData.GetDefinitions().Select(definition => new object[] { definition.Slug });
+
+  [Theory]
+  [MemberData(nameof(AllCalculatorSlugs))]
+  public async Task PostDeploy_All_Calculators_Should_Load(string slug)
+  {
+      var response = await client.GetAsync($"/calculadoras/{slug}");
+
+      response.IsSuccessStatusCode.Should().BeTrue($"calculadora {slug} should return 200");
+      var html = await response.Content.ReadAsStringAsync();
+      html.Should().Contain("Input_Amount", $"calculadora {slug} should expose amount field or equivalent form");
+  }
 }

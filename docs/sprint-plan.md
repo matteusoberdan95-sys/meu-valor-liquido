@@ -450,12 +450,12 @@
 
 **North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
 
-**Proxima sprint a implementar:** **Sprint 56**.
+**Proxima sprint a implementar:** **Sprint 57**.
 
 | Prioridade | Sprints | Status |
 |------------|---------|--------|
-| **Alta** | — | Sprint 55 concluida |
-| **Media** | 56, 57, 58 | Sprint 56 e a proxima |
+| **Alta** | — | Sprints 53-55 concluidas |
+| **Media** | 56, 57, 58 | Sprint 56 concluida; Sprint 57 e a proxima |
 | **Baixa / bloqueada** | 51 (AdSense), 59, 52 | 51 aguarda aprovacao Google; 52 apos metricas enxutas |
 
 **Mapeamento com trilha antiga (Sprints 31-38):** nao duplicar trabalho. Escopo da antiga Sprint 32 → **Sprint 53**; antiga Sprint 33 → **Sprint 55**; antiga Sprint 34 → **Sprint 59**.
@@ -528,7 +528,7 @@
 
 ---
 
-## Sprint 56 - Metricas enxutas e decisao por dados (PRIORIDADE MEDIA)
+## Sprint 56 - Metricas enxutas e decisao por dados (CONCLUIDA)
 
 **Objetivo:** usar o que ja existe em `ProductMetricsService` para priorizar backlog sem dashboard complexo.
 
