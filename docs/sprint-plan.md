@@ -445,19 +445,19 @@
 
 ---
 
-### Sprint 67 — Próxima calculadora de alto ROI (Passo 3)
+### Sprint 67 — Calculadora seguro-desemprego (Passo 3) — CONCLUÍDA
 
-**Objetivo:** uma calculadora nova dentro do nicho; **Product Owner escolhe** entre `seguro-desemprego`, `emprestimo-consignado` ou `simples-nacional-pj` usando matriz do plano.
+**Objetivo:** uma calculadora nova dentro do nicho; **PO escolheu `seguro-desemprego`** (matriz em `NICHO_REFERENCIA_PLAN.md`).
 
 | Agent | Entregas |
 |-------|----------|
-| Product Owner | Registrar escolha e motivação (matriz 5 critérios) no CHANGELOG ou PR |
-| Backend/Calculators | Motor, seed, FAQ, benchmark se aplicável |
-| WebApp/Frontend | `Details.cshtml` / field profile; hub e jornada atualizados |
-| SEO/Content | 1 artigo + FAQ; entrada no hub correspondente |
-| QA/Test | Unitários + smoke; regressão fiscal se tocar tabelas |
+| Product Owner | Escolha `seguro-desemprego` registrada no `CHANGELOG.md` |
+| Backend/Calculators | `UnemploymentInsuranceCalculator`, tabela MTE 2026, benchmarks, jornada |
+| WebApp/Frontend | `/calculadoras/seguro-desemprego`, field profile, hub `/desligamento` |
+| SEO/Content | Artigo e FAQ atualizados com link para calculadora dedicada |
+| QA/Test | `Sprint67UnemploymentInsuranceTests`, `Sprint67WebTests` |
 
-**Critérios de aceite:** seguir `docs/how-to-create-calculator.md`; recomendação inicial PO: `seguro-desemprego` (ver plano).
+**Calculadora:** `seguro-desemprego` — parcelas, carência e elegibilidade (tabela MTE vigente 11/01/2026).
 
 ---
 

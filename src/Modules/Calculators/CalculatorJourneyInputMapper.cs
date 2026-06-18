@@ -56,11 +56,36 @@ public static class CalculatorJourneyInputMapper
 
     private static CalculatorInput? MapSaidaEmpresa(string targetCalculatorSlug, CalculatorInput sourceInput)
     {
-        if (!targetCalculatorSlug.Equals("fgts", StringComparison.OrdinalIgnoreCase))
+        return targetCalculatorSlug.ToLowerInvariant() switch
         {
-            return null;
-        }
+            "fgts" => MapFgtsFromRescisao(sourceInput),
+            "seguro-desemprego" => MapSeguroDesempregoFromRescisao(sourceInput),
+            _ => null
+        };
+    }
 
+    private static CalculatorInput MapFgtsFromRescisao(CalculatorInput sourceInput)
+    {
+        var months = ResolveTenureMonths(sourceInput);
+        return sourceInput with { Months = months };
+    }
+
+    private static CalculatorInput MapSeguroDesempregoFromRescisao(CalculatorInput sourceInput)
+    {
+        var months = Math.Clamp(ResolveTenureMonths(sourceInput), 1, 36);
+        var qualifyingMonths = sourceInput.MonthsWorkedInYear > 0
+            ? sourceInput.MonthsWorkedInYear
+            : Math.Min(months, 12);
+
+        return sourceInput with
+        {
+            Months = months,
+            MonthsWorkedInYear = qualifyingMonths
+        };
+    }
+
+    private static int ResolveTenureMonths(CalculatorInput sourceInput)
+    {
         var months = sourceInput.Months;
         if (months <= 0 && sourceInput.AdmissionDate is not null && sourceInput.TerminationDate is not null)
         {
@@ -74,6 +99,6 @@ public static class CalculatorJourneyInputMapper
             months = 12;
         }
 
-        return sourceInput with { Months = Math.Clamp(months, 1, 600) };
+        return Math.Clamp(months, 1, 600);
     }
 }

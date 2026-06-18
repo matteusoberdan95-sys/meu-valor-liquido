@@ -46,8 +46,8 @@ public static class CalculatorJourneyCatalog
             [
                 new(CalculatorJourneyStepKind.Calculator, "rescisao-clt", "Simule verbas rescisórias conforme o motivo do desligamento."),
                 new(CalculatorJourneyStepKind.Calculator, "fgts", "Estime depósitos, saldo e multa rescisória para o seu tipo de saída."),
-                new(CalculatorJourneyStepKind.Faq, "multa-fgts-40-porcento", "Entenda quando há multa de 40% e como isso se relaciona ao saque do FGTS."),
-                new(CalculatorJourneyStepKind.Faq, "seguro-desemprego-quando-tem-direito", "Saiba quando pode solicitar o seguro-desemprego após demissão sem justa causa.")
+                new(CalculatorJourneyStepKind.Calculator, "seguro-desemprego", "Estime valor e quantidade de parcelas do seguro-desemprego."),
+                new(CalculatorJourneyStepKind.Faq, "multa-fgts-40-porcento", "Entenda quando há multa de 40% e como isso se relaciona ao saque do FGTS.")
             ]),
         new(
             LiquidoDesejado,

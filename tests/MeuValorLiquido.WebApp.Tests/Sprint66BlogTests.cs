@@ -68,6 +68,7 @@ public sealed class Sprint66BlogTests : IClassFixture<WebApplicationFactory<Prog
 
         html.Should().Contain("/desligamento");
         html.Should().Contain("/calculadoras/rescisao-clt");
+        html.Should().Contain("/calculadoras/seguro-desemprego");
     }
 
     [Fact]

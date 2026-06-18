@@ -598,7 +598,7 @@ public static class BlogArticleSeedData
             <h2>Quantas parcelas</h2>
             <p>O número de parcelas depende do tempo de trabalho na última empresa e de quantas vezes você já solicitou o benefício na vida. O valor de cada parcela segue tabela do Ministério do Trabalho — não é igual ao último salário líquido.</p>
             <h2>Relação com a rescisão</h2>
-            <p>Simule verbas rescisórias na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> e FGTS na <a href="/calculadoras/fgts">calculadora de FGTS</a>. O seguro-desemprego aparece como orientação informativa na rescisão — o valor exato só o governo calcula na solicitação.</p>
+            <p>Simule verbas rescisórias na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, FGTS na <a href="/calculadoras/fgts">calculadora de FGTS</a> e parcelas na <a href="/calculadoras/seguro-desemprego">calculadora de seguro-desemprego</a>. O valor oficial só o governo calcula na solicitação.</p>
             <p>Siga o guia completo em <a href="/desligamento">desligamento CLT</a> e leia <a href="/duvidas/seguro-desemprego-quando-tem-direito">quando solicitar seguro-desemprego</a>.</p>
             """),
         Article(

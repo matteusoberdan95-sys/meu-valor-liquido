@@ -4,9 +4,9 @@ public class NewCalculatorsTests
     private readonly CalculatorApplicationService service = CalculatorTestFactory.CreateService();
 
     [Fact]
-    public void Catalog_Should_Contain_Seventeen_Calculators()
+    public void Catalog_Should_Contain_Eighteen_Calculators()
     {
-        new InMemoryCalculatorCatalogService().GetAll().Should().HaveCount(17);
+        new InMemoryCalculatorCatalogService().GetAll().Should().HaveCount(18);
     }
 
     [Fact]

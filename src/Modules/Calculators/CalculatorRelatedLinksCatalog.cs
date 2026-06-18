@@ -46,6 +46,7 @@ public static class CalculatorRelatedLinksCatalog
             ["rescisao-clt"] =
             [
                 new("fgts", "Estime saldo e multa do FGTS."),
+                new("seguro-desemprego", "Estime parcelas do seguro-desemprego."),
                 new("ferias", "Entenda férias proporcionais e vencidas."),
                 new("decimo-terceiro", "Calcule o 13º isoladamente."),
                 new("salario-liquido", "Compare com o salário mensal.")
@@ -77,8 +78,16 @@ public static class CalculatorRelatedLinksCatalog
             ["fgts"] =
             [
                 new("rescisao-clt", "Multa e saque na demissão."),
+                new("seguro-desemprego", "Estime parcelas após demissão sem justa causa."),
                 new("salario-liquido", "FGTS não entra no líquido mensal."),
                 new("custo-funcionario", "Depósito de 8% no custo da empresa.")
+            ],
+            ["seguro-desemprego"] =
+            [
+                new("rescisao-clt", "Verbas rescisórias no TRCT."),
+                new("fgts", "Multa e saque do FGTS na demissão."),
+                new("salario-liquido", "Compare com o salário mensal habitual."),
+                new("decimo-terceiro", "13º não entra no cálculo do seguro.")
             ],
             ["simulador-mei"] =
             [

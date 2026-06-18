@@ -44,11 +44,11 @@ public static class ThematicHubCatalog
             [
                 new(CalculatorJourneyStepKind.Calculator, "rescisao-clt", "Simule verbas rescisórias conforme o motivo do desligamento."),
                 new(CalculatorJourneyStepKind.Calculator, "fgts", "Estime depósitos, saldo e multa rescisória para o seu tipo de saída."),
-                new(CalculatorJourneyStepKind.Faq, "multa-fgts-40-porcento", "Entenda quando há multa de 40% e como isso se relaciona ao saque do FGTS."),
-                new(CalculatorJourneyStepKind.Faq, "seguro-desemprego-quando-tem-direito", "Saiba quando pode solicitar o seguro-desemprego após demissão sem justa causa.")
+                new(CalculatorJourneyStepKind.Calculator, "seguro-desemprego", "Estime valor e quantidade de parcelas do seguro-desemprego."),
+                new(CalculatorJourneyStepKind.Faq, "multa-fgts-40-porcento", "Entenda quando há multa de 40% e como isso se relaciona ao saque do FGTS.")
             ],
             "rescisao-clt",
-            ["rescisao-clt", "fgts", "decimo-terceiro", "ferias", "salario-liquido"],
+            ["rescisao-clt", "fgts", "seguro-desemprego", "decimo-terceiro", "ferias", "salario-liquido"],
             ["como-calcular-rescisao-clt", "rescisao-clt-vs-trct", "fgts-guia-completo", "seguro-desemprego-quem-tem-direito", "multa-fgts-40-ou-20"],
             ["rescisao-pedido-demissao-o-que-recebo", "multa-fgts-40-porcento", "seguro-desemprego-quando-tem-direito"]),
 

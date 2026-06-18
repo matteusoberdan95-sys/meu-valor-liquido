@@ -160,7 +160,7 @@ public static class PopularQuestionsCatalog
             """
             <p>O <strong>seguro-desemprego</strong> é um benefício pago pelo governo ao trabalhador demitido <strong>sem justa causa</strong>, desde que cumpra requisitos como tempo mínimo de vínculo, não ter recebido o benefício nos últimos meses e não ter renda própria suficiente.</p>
             <p>O valor e o número de parcelas dependem do salário médio e do tempo de contribuição. Não há valor fixo universal — consulte a Caixa, o portal gov.br ou o RH após a homologação.</p>
-            <p>Na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, o seguro-desemprego aparece como <strong>linha informativa</strong> (sem promessa de valor). Para verbas rescisórias, use o extrato da simulação; para FGTS e multa, veja também a <a href="/calculadoras/fgts">calculadora de FGTS</a>.</p>
+            <p>Na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, o seguro-desemprego aparece como <strong>linha informativa</strong>. Use a <a href="/calculadoras/seguro-desemprego">calculadora de seguro-desemprego</a> para estimar parcelas; para FGTS e multa, veja também a <a href="/calculadoras/fgts">calculadora de FGTS</a>.</p>
             """,
             "rescisao-clt",
             [

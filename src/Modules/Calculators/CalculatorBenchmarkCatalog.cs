@@ -1,5 +1,7 @@
 namespace MeuValorLiquido.Modules.Calculators;
 
+using MeuValorLiquido.Modules.Calculators.Tax;
+
 public sealed record CalculatorBenchmarkLineExpectation(
     string Label,
     decimal ExpectedAmount,
@@ -115,6 +117,12 @@ public static class CalculatorBenchmarkCatalog
         Scenario("fgts", "12-meses-pedido-demissao", new CalculatorInput(3000m, Months: 12, TerminationReason: TerminationReason.Resignation), 2880.00m, 2880.00m, CltSourceName, CltSourceUrl),
         Scenario("fgts", "saldo-informado-demissao", new CalculatorInput(5000m, Months: 24, FgtsBalance: 10000m, TerminationReason: TerminationReason.DismissalWithoutCause), 19600.00m, 27440.00m, CltSourceName, CltSourceUrl),
         Scenario("fgts", "seis-meses-salario-minimo", new CalculatorInput(1621m, Months: 6, TerminationReason: TerminationReason.DismissalWithoutCause), 778.08m, 1089.31m, CltSourceName, CltSourceUrl),
+
+        Scenario("seguro-desemprego", "salario-minimo-5-parcelas", new CalculatorInput(1621m, Months: 24, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 1621.00m, 8105.00m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl, Line("Valor da parcela mensal", 1621.00m)),
+        Scenario("seguro-desemprego", "media-2900-5-parcelas", new CalculatorInput(3000m, SecondaryAmount: 2900m, SalaryAverageSupplement: 2800m, Months: 24, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 2116.66m, 10583.30m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
+        Scenario("seguro-desemprego", "teto-4-parcelas", new CalculatorInput(4000m, Months: 12, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 2518.65m, 10074.60m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
+        Scenario("seguro-desemprego", "piso-3-parcelas", new CalculatorInput(2000m, Months: 8, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 1621.00m, 4863.00m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
+        Scenario("seguro-desemprego", "pedido-demissao-sem-direito", new CalculatorInput(3000m, Months: 24, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.Resignation), 2166.66m, 0.00m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
 
         Scenario("hora-extra", "hora-25-10h-50", new CalculatorInput(25m, Hours: 10m, Rate: 50m), 394.23m, 394.23m, CltSourceName, CltSourceUrl),
         Scenario("hora-extra", "mensal-3000-10h-50", new CalculatorInput(1m, SecondaryAmount: 3000m, Hours: 10m, Rate: 50m), 215.03m, 215.03m, CltSourceName, CltSourceUrl),

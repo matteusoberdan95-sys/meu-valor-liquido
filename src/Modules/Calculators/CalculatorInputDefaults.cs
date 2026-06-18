@@ -23,6 +23,13 @@ public static class CalculatorInputDefaults
         "juros-compostos" => new(1000m, Months: 12, Rate: 1m),
         "financiamento" => new(100_000m, Months: 360, Rate: 0.9m),
         "fgts" => new(3000m, Months: 24, TerminationReason: TerminationReason.DismissalWithoutCause),
+        "seguro-desemprego" => new(
+            3000m,
+            SecondaryAmount: 2900m,
+            SalaryAverageSupplement: 2800m,
+            Months: 24,
+            MonthsWorkedInYear: 12,
+            TerminationReason: TerminationReason.DismissalWithoutCause),
         "simulador-mei" => new(5000m, MeiActivity: MeiActivityType.Services),
         "custo-funcionario" => new(4000m, SecondaryAmount: 500m),
         "multa-atraso" => new(1000m, SecondaryAmount: 45m, Rate: 1m, Hours: 2m),

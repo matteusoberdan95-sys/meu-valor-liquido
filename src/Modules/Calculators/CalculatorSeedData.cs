@@ -16,6 +16,7 @@ public static class CalculatorSeedData
         Create("juros-compostos", "Juros compostos", "Financeiro", "Projete o crescimento de um valor com taxa mensal e prazo."),
         Create("financiamento", "Financiamento", "Financeiro", "Estime parcelas no sistema Price ou SAC e compare o custo total de juros."),
         Create("fgts", "FGTS", "Trabalhista", "Calcule depósitos mensais de 8%, saldo acumulado e multa rescisória."),
+        CreateSeguroDesemprego(),
         Create("simulador-mei", "Simulador MEI", "Fiscal", "Estime o DAS MEI, limite de faturamento e alertas de desenquadramento."),
         Create("custo-funcionario", "Custo de funcionário", "Trabalhista", "Estime o custo total da empresa com salário, encargos e provisões."),
         Create("multa-atraso", "Multa de atraso", "Financeiro", "Calcule multa e juros por atraso de pagamento."),
@@ -149,4 +150,31 @@ public static class CalculatorSeedData
                     "O 13º na rescisão é o mesmo cálculo?",
                     "A lógica de avos é parecida, mas na rescisão entram outras verbas. Confira na <a href=\"/calculadoras/rescisao-clt\">calculadora de rescisão CLT</a>.")
             ]);
+
+    private static CalculatorDefinition CreateSeguroDesemprego() =>
+        new(
+            "seguro-desemprego",
+            "Seguro-desemprego",
+            "Trabalhista",
+            "Estime o valor das parcelas do seguro-desemprego com base no salário médio e tempo de carteira.",
+            "Calculadora de seguro-desemprego 2026 | Meu Valor Líquido",
+            "Simule parcelas do seguro-desemprego após demissão sem justa causa. Tabela MTE 2026, carência e quantidade de parcelas.",
+            [
+                new FaqItem(
+                    "Como o valor da parcela é calculado?",
+                    "Usamos a média dos últimos salários brutos e a tabela do MTE vigente em 2026: até R$ 2.222,17 (80% da média), faixa intermediária com 50% do excedente + R$ 1.777,74, e teto de R$ 2.518,65. O piso é o salário mínimo (R$ 1.621,00)."),
+                new FaqItem(
+                    "Quantas parcelas posso receber?",
+                    "Depende dos meses com carteira nos últimos 36 meses: 3 parcelas (6 a 11 meses), 4 parcelas (12 a 23) ou 5 parcelas (24 ou mais). A carência mínima varia conforme solicitações anteriores."),
+                new FaqItem(
+                    "Pedido de demissão dá direito?",
+                    "Em regra, não. O benefício é típico da demissão sem justa causa pelo empregador, com requisitos de tempo de vínculo e ausência de renda própria."),
+                new FaqItem(
+                    "O resultado é oficial?",
+                    "Não. É estimativa educativa. O valor definitivo só o governo calcula na solicitação (Caixa ou gov.br), após análise dos requisitos legais.")
+            ],
+            """
+            <p>O <strong>seguro-desemprego</strong> é pago pelo governo ao trabalhador CLT dispensado sem justa causa (e em alguns términos de contrato), desde que cumpra carência de tempo de serviço e não tenha renda suficiente para se manter.</p>
+            <p>Informe os últimos salários brutos, o tempo de carteira e se já solicitou o benefício antes. A simulação usa a <strong>tabela do MTE de 2026</strong> (vigente desde 11/01/2026) e não substitui a análise oficial na Caixa ou no portal gov.br.</p>
+            """);
 }

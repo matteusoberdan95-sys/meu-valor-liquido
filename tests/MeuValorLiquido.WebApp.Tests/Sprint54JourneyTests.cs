@@ -38,8 +38,8 @@ public sealed class Sprint54JourneyTests : IClassFixture<WebApplicationFactory<P
 
         html.Should().Contain("Sa&#xED;da da empresa");
         html.Should().Contain("/calculadoras/fgts?r=");
+        html.Should().Contain("/calculadoras/seguro-desemprego?r=");
         html.Should().Contain("/duvidas/multa-fgts-40-porcento");
-        html.Should().Contain("/duvidas/seguro-desemprego-quando-tem-direito");
         html.Should().Contain("jornada=saida-empresa");
     }
 

@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 67** — Próxima calculadora (PO escolhe na matriz) |
-| **Em seguida** | Sprint 51 (AdSense) quando Google aprovar |
-| **Concluída recente** | Sprint 66 (4 artigos editoriais) · Sprint 65 (hubs temáticos) |
+| **Próxima sprint** | **Sprint 51** (AdSense) quando Google aprovar |
+| **Em seguida** | Próxima calculadora ou conteúdo conforme `NICHO_REFERENCIA_PLAN.md` |
+| **Concluída recente** | Sprint 67 (calculadora seguro-desemprego) · Sprint 66 · Sprint 65 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -30,7 +30,7 @@ Leia `docs/NICHO_REFERENCIA_PLAN.md` § **Onde os agents começam**. Resumo:
 | **Após escolha PO** | 67 | Backend/Calculators | PO registra 1 calculadora na matriz antes de codar motor |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar com 65/66; não substitui trilha 65–67 |
 
-**Product Owner:** ao abrir Sprint 67, documentar escolha (`seguro-desemprego` recomendado por padrão) no CHANGELOG.
+**Product Owner:** escolha Sprint 67 registrada — calculadora `seguro-desemprego` (recomendação padrão do plano).
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
 

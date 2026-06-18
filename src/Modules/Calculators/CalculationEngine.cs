@@ -42,6 +42,7 @@ public sealed class CalculationEngine
             "juros-compostos" => CalculateCompoundInterest(definition, input),
             "financiamento" => CalculateFinancing(definition, input),
             "fgts" => CalculateFgts(definition, input),
+            "seguro-desemprego" => CalculateUnemploymentInsurance(definition, input),
             "simulador-mei" => CalculateMei(definition, input),
             "custo-funcionario" => CalculateEmployeeCost(definition, input),
             "multa-atraso" => CalculateLatePenalty(definition, input),
@@ -538,6 +539,35 @@ public sealed class CalculationEngine
 
         return Build(definition, balance, balance + fine, lines,
             "FGTS: depósito mensal de 8% pelo empregador. Informe o tipo de desligamento para estimar multa rescisória (40% sem justa causa, 20% em acordo 484-A).");
+    }
+
+    private CalculationResult CalculateUnemploymentInsurance(CalculatorDefinition definition, CalculatorInput input)
+    {
+        var simulation = UnemploymentInsuranceCalculator.Calculate(input);
+        var lines = new List<CalculationLineItem>
+        {
+            Information("Salário médio estimado", simulation.AverageSalary),
+            TextInformation("Elegibilidade", simulation.EligibilitySummary)
+        };
+
+        if (simulation.IsEligible)
+        {
+            lines.Add(Income("Valor da parcela mensal", simulation.MonthlyBenefit));
+            lines.Add(CountInformation("Quantidade de parcelas", simulation.InstallmentCount));
+            lines.Add(Income("Total estimado do benefício", simulation.TotalBenefit));
+        }
+        else
+        {
+            lines.Add(TextInformation("Parcela mensal (referência)", simulation.MonthlyBenefit.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"))));
+            lines.Add(TextInformation("Quantidade de parcelas", "0"));
+        }
+
+        return Build(
+            definition,
+            simulation.MonthlyBenefit,
+            simulation.TotalBenefit,
+            lines,
+            "Seguro-desemprego: tabela MTE 2026 sobre média dos últimos salários. Carência e parcelas conforme tempo de carteira e solicitações anteriores. Solicite na Caixa ou gov.br para valor oficial.");
     }
 
     private CalculationResult CalculateMei(CalculatorDefinition definition, CalculatorInput input)

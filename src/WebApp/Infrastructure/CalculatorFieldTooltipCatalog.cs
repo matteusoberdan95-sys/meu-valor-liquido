@@ -150,6 +150,19 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.TerminationReason] =
                     "Define a multa rescisória: 40% sem justa causa, 20% no acordo 484-A, 0% no pedido de demissão ou justa causa."
             },
+            ["seguro-desemprego"] = new(StringComparer.OrdinalIgnoreCase)
+            {
+                [CalculatorFieldKeys.Amount] =
+                    "Último salário bruto antes da demissão. Informe também os meses anteriores para uma média mais fiel.",
+                [CalculatorFieldKeys.SecondaryAmount] =
+                    "Salário do penúltimo mês, se diferente do último. Deixe em branco se for igual.",
+                [CalculatorFieldKeys.SalaryAverageSupplement] =
+                    "Salário do antepenúltimo mês. A média dos três alimenta a tabela do MTE.",
+                [CalculatorFieldKeys.Months] =
+                    "Meses com carteira assinada nos últimos 36 meses — define 3, 4 ou 5 parcelas.",
+                [CalculatorFieldKeys.TerminationReason] =
+                    "Em geral só há direito na demissão sem justa causa ou término elegível de contrato."
+            },
             ["simulador-mei"] = new(StringComparer.OrdinalIgnoreCase)
             {
                 [CalculatorFieldKeys.Amount] =

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 67 — Calculadora seguro-desemprego (PO: `seguro-desemprego`)
+- Nova calculadora `/calculadoras/seguro-desemprego` com tabela MTE 2026, carência, parcelas e elegibilidade.
+- `BrUnemploymentInsuranceTables2026`, `UnemploymentInsuranceCalculator`; 5 benchmarks; jornada e hub `/desligamento` atualizados.
+- FAQ, artigo `seguro-desemprego-quem-tem-direito` e rescisão CLT apontam para a calculadora dedicada.
+- Testes `Sprint67UnemploymentInsuranceTests` e `Sprint67WebTests`.
+
 ### Sprint 66 — Calendário editorial (4 artigos)
 - Artigos: `irrf-2026-reducao-imposto`, `seguro-desemprego-quem-tem-direito`, `multa-fgts-40-ou-20`, `aumento-salario-quanto-sobra-liquido`.
 - `BlogEditorialCatalog.Sprint66EditorialSlugs`; hubs temáticos atualizados; testes `Sprint66BlogTests`.
