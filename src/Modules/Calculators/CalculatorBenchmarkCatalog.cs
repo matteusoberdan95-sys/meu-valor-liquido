@@ -23,12 +23,16 @@ public static class CalculatorBenchmarkCatalog
 
     public const int MinimumTerminationBenchmarkScenarios = 15;
 
+    public const int MinimumPjVsCltBenchmarkScenarios = 6;
+
     private const string OfficialTaxSourceName =
         "Portaria Interministerial MPS/MF n. 13/2026 e Lei n. 15.270/2025";
     private const string OfficialTaxSourceUrl =
         "https://www.in.gov.br/en/web/dou/-/portaria-interministerial-mps/mf-n-13-de-9-de-janeiro-de-2026-680382603";
     private const string CltSourceName = "CLT e criterios internos documentados";
     private const string CltSourceUrl = "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm";
+    private const string SimplesSourceName = "Lei Complementar 123/2006 e criterios internos documentados";
+    private const string SimplesSourceUrl = "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm";
     private static readonly DateOnly CalibrationDate = new(2026, 6, 17);
 
     public static readonly IReadOnlyList<string> PrioritySlugs =
@@ -116,7 +120,14 @@ public static class CalculatorBenchmarkCatalog
         Scenario("hora-extra", "mensal-3000-10h-50", new CalculatorInput(1m, SecondaryAmount: 3000m, Hours: 10m, Rate: 50m), 215.03m, 215.03m, CltSourceName, CltSourceUrl),
         Scenario("hora-extra", "domingo-3000-8h", new CalculatorInput(1m, SecondaryAmount: 3000m, Hours: 8m, OvertimeShiftType: OvertimeShiftType.SundayOrHoliday), 234.97m, 234.97m, CltSourceName, CltSourceUrl),
         Scenario("hora-extra", "noturna-4000-12h", new CalculatorInput(1m, SecondaryAmount: 4000m, Hours: 12m, Rate: 50m, OvertimeShiftType: OvertimeShiftType.NightWeekday), 394.41m, 394.41m, CltSourceName, CltSourceUrl),
-        Scenario("hora-extra", "jornada-40h-cct-70", new CalculatorInput(1m, SecondaryAmount: 5000m, Hours: 5m, Rate: 70m, WeeklyWorkHours: 40), 225.96m, 225.96m, CltSourceName, CltSourceUrl)
+        Scenario("hora-extra", "jornada-40h-cct-70", new CalculatorInput(1m, SecondaryAmount: 5000m, Hours: 5m, Rate: 70m, WeeklyWorkHours: 40), 225.96m, 225.96m, CltSourceName, CltSourceUrl),
+
+        Scenario("pj-vs-clt", "clt-5000-anexo-iii", new CalculatorInput(5000m, Rate: 6m, SimplesAnnex: SimplesAnnex.AnnexThree), 17993.96m, 4498.49m, SimplesSourceName, SimplesSourceUrl, Line("CLT — líquido estimado", 4498.49m), Line("CLT — benefícios ocultos (mês)", 1372.22m)),
+        Scenario("pj-vs-clt", "clt-5000-pj-9000", new CalculatorInput(5000m, SecondaryAmount: 9000m, Rate: 6m), 9000.00m, 4498.49m, SimplesSourceName, SimplesSourceUrl, Line("PJ — líquido pessoal (pró-labore)", 2242.80m)),
+        Scenario("pj-vs-clt", "clt-3000-anexo-v", new CalculatorInput(3000m, SimplesAnnex: SimplesAnnex.AnnexFive), 11005.60m, 2751.40m, SimplesSourceName, SimplesSourceUrl, Line("CLT — líquido estimado", 2751.40m)),
+        Scenario("pj-vs-clt", "clt-6000-prolabore-35", new CalculatorInput(6000m, SecondaryAmount: 11000m, Rate: 6m, ProLaborePercent: 35m), 11000.00m, 5058.80m, SimplesSourceName, SimplesSourceUrl, Line("PJ — pró-labore (35%)", 3850.00m)),
+        Scenario("pj-vs-clt", "clt-4000-despesas-pj", new CalculatorInput(4000m, SecondaryAmount: 8500m, Rate: 6m, OtherDiscounts: 300m, TransportDiscount: 200m), 8500.00m, 3431.40m, SimplesSourceName, SimplesSourceUrl, Line("PJ — despesas fixas", 300.00m)),
+        Scenario("pj-vs-clt", "clt-8000-anexo-i", new CalculatorInput(8000m, SimplesAnnex: SimplesAnnex.AnnexOne, ProLaborePercent: 28m), 24307.16m, 6076.79m, SimplesSourceName, SimplesSourceUrl, Line("CLT — custo oculto FGTS (8%/mês)", 640.00m))
     ];
 
     public static IReadOnlyList<CalculatorBenchmarkScenario> ForSlug(string slug) =>

@@ -97,7 +97,10 @@ public sealed record CalculatorInput(
     bool SellVacationAllowance = false,
     bool DoubleVacationPayment = false,
     decimal ThirteenthAdvancePaid = 0m,
-    decimal SalaryAverageSupplement = 0m);
+    decimal SalaryAverageSupplement = 0m,
+    SimplesAnnex SimplesAnnex = SimplesAnnex.AnnexThree,
+    decimal ProLaborePercent = 0m,
+    decimal MeiAnnualAccumulated = 0m);
 
 public sealed record CalculationLineItem(string Label, Money Amount, CalculationLineType Type, string? DisplayText = null);
 
@@ -184,6 +187,14 @@ public sealed class CalculatorInputValidator : AbstractValidator<CalculatorInput
         RuleFor(input => input.SalaryAverageSupplement)
             .GreaterThanOrEqualTo(0)
             .WithMessage("A média salarial complementar não pode ser negativa.");
+
+        RuleFor(input => input.ProLaborePercent)
+            .InclusiveBetween(0, 100)
+            .WithMessage("Informe um percentual de pró-labore entre 0 e 100.");
+
+        RuleFor(input => input.MeiAnnualAccumulated)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("O faturamento acumulado no ano não pode ser negativo.");
 
         RuleFor(input => input.MonthsSinceLastVacation)
             .InclusiveBetween(0, 12)

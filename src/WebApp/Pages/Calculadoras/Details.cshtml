@@ -444,6 +444,17 @@ else
                             </div>
                         </div>
                     }
+                    @if (profile.ShowMeiAnnualAccumulated)
+                    {
+                        <div style="grid-column: 1 / -1;">
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.MeiAnnualAccumulatedLabel, "Input.MeiAnnualAccumulated", CalculatorFieldKeys.MeiAnnualAccumulated)' />
+                            <div class="valora-input-prefix">
+                                <span class="valora-prefix">R$</span>
+                                <input asp-for="Input.MeiAnnualAccumulated" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                            </div>
+                            <p class="valora-helper">Some ao faturamento mensal estimado para os meses restantes do ano e projete o teto MEI.</p>
+                        </div>
+                    }
                     @if (profile.ShowNoticePeriod && !profile.ShowNoticePeriodOptions)
                     {
                         <div style="grid-column: 1 / -1;">

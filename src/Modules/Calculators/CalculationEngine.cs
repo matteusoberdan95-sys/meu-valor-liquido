@@ -386,7 +386,10 @@ public sealed class CalculationEngine
         var comparison = cltPjComparisonCalculator.Compare(input);
         var clt = comparison.Clt;
         var pj = comparison.Pj;
+        var hidden = clt.HiddenBenefits;
         var simplesLabel = $"{comparison.SimplesRatePercent:0.#}%";
+        var annexLabel = comparison.SimplesAnnex.GetType().GetField(comparison.SimplesAnnex.ToString())?
+            .GetCustomAttribute<DisplayAttribute>()?.Name ?? comparison.SimplesAnnex.ToString();
 
         var lines = new List<CalculationLineItem>
         {
@@ -401,7 +404,13 @@ public sealed class CalculationEngine
         }
 
         lines.Add(Information("CLT — líquido estimado", clt.Net));
+        lines.Add(Information("CLT — custo oculto FGTS (8%/mês)", hidden.FgtsMonthly));
+        lines.Add(Information("CLT — provisão 13º (1/12)", hidden.ThirteenthProvision));
+        lines.Add(Information("CLT — provisão férias + 1/3", hidden.VacationProvision));
+        lines.Add(Information("CLT — benefícios ocultos (mês)", hidden.TotalMonthly));
+        lines.Add(Information("CLT — benefícios ocultos (ano)", hidden.TotalAnnual));
         lines.Add(Information("PJ — faturamento mensal", pj.Revenue));
+        lines.Add(TextInformation("PJ — anexo Simples (referência)", annexLabel));
         lines.Add(Discount($"PJ — Simples Nacional ({simplesLabel})", pj.SimplesTax));
         lines.Add(Information("PJ — faturamento após Simples", pj.RevenueAfterSimples));
         lines.Add(Information($"PJ — pró-labore ({comparison.ProLaboreSharePercent:0.#}%)", pj.ProLabore));
@@ -421,7 +430,8 @@ public sealed class CalculationEngine
         var explanation =
             $"Para um CLT de {Money.From(clt.Gross)} (líquido {Money.From(clt.Net)}), faturar cerca de " +
             $"{Money.From(comparison.EquivalentPjRevenue)} como PJ tende a equivaler ao bolso, " +
-            $"com Simples de {simplesLabel} sobre o faturamento, pró-labore de {comparison.ProLaboreSharePercent:0.#}% e INSS de 11% sobre o pró-labore. " +
+            $"com {annexLabel}, Simples de {simplesLabel} sobre o faturamento, pró-labore de {comparison.ProLaboreSharePercent:0.#}% e INSS de 11% sobre o pró-labore. " +
+            $"Além do líquido, a CLT acumula cerca de {Money.From(hidden.TotalMonthly)}/mês em FGTS, 13º e férias+1/3 (custo oculto educativo). " +
             "O líquido PJ é o pró-labore após impostos; o Simples é pago pelo CNPJ e reduz a sobra na empresa. " +
             "Anexo do Simples, fator R e custos variam — use como referência educativa.";
 
@@ -534,7 +544,9 @@ public sealed class CalculationEngine
     {
         var monthlyRevenue = input.Amount;
         var das = BrMeiTables2026.GetDas(input.MeiActivity);
-        var annualRevenue = monthlyRevenue * 12m;
+        var annualRevenue = MeiAnnualRevenueProjector.ProjectAnnualRevenue(
+            monthlyRevenue,
+            input.MeiAnnualAccumulated);
         var annualLimit = BrMeiTables2026.AnnualRevenueLimit;
         var toleranceLimit = annualLimit * (1m + BrMeiTables2026.ExcessTolerancePercent);
         var withinLimit = annualRevenue <= annualLimit;
@@ -550,6 +562,12 @@ public sealed class CalculationEngine
             Information("Teto com tolerância (20%)", toleranceLimit),
             TextInformation("Uso do teto anual", $"{limitUsagePercent:0.#}%")
         };
+
+        if (input.MeiAnnualAccumulated > 0m)
+        {
+            lines.Insert(0, Information("Faturamento já acumulado no ano", input.MeiAnnualAccumulated));
+            lines.Insert(1, Information("Faturamento mensal estimado", monthlyRevenue));
+        }
 
         decimal net;
         string explanation;

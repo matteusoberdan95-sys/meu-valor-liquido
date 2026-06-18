@@ -79,6 +79,31 @@
 
     <details class="valora-stitch-cltpj-accordion">
         <summary>
+            <span>Benefícios ocultos CLT</span>
+            <span class="material-symbols-outlined">expand_more</span>
+        </summary>
+        <div class="valora-stitch-cltpj-accordion-body">
+            <div class="valora-stitch-cltpj-tax-line">
+                <span>FGTS (8%/mês)</span>
+                <strong>@Money.From(b.Clt.HiddenBenefits.FgtsMonthly)</strong>
+            </div>
+            <div class="valora-stitch-cltpj-tax-line">
+                <span>Provisão 13º</span>
+                <strong>@Money.From(b.Clt.HiddenBenefits.ThirteenthProvision)</strong>
+            </div>
+            <div class="valora-stitch-cltpj-tax-line">
+                <span>Provisão férias + 1/3</span>
+                <strong>@Money.From(b.Clt.HiddenBenefits.VacationProvision)</strong>
+            </div>
+            <div class="valora-stitch-cltpj-tax-line valora-stitch-cltpj-tax-line--total">
+                <span>Total mensal (educativo)</span>
+                <strong>@Money.From(b.Clt.HiddenBenefits.TotalMonthly)</strong>
+            </div>
+        </div>
+    </details>
+
+    <details class="valora-stitch-cltpj-accordion">
+        <summary>
             <span>Entendendo o CLT / PJ</span>
             <span class="material-symbols-outlined">expand_more</span>
         </summary>

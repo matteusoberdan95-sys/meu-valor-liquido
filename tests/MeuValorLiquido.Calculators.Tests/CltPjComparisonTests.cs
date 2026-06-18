@@ -51,7 +51,7 @@ public class CltPjComparisonTests
     public void PjSide_Should_Cap_ProLabore_Inss_At_Ceiling()
     {
         var proLabore = 10_000m;
-        var side = calculator.CalculatePjSide(proLabore / CltPjComparisonCalculator.ProLaboreShare, 6m, 0m);
+        var side = calculator.CalculatePjSide(proLabore / CltPjComparisonCalculator.DefaultProLaboreShare, 6m, 0m);
 
         side.Inss.Should().Be(BrTaxTables2026.ProLaboreInssMaximumContribution);
     }

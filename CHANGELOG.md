@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Sprint 59 - PJ x CLT e MEI profundos
+- Anexo Simples Nacional (I–V) com alíquota sugerida; pró-labore editável (%).
+- Custo oculto CLT no extrato: FGTS, provisão 13º e férias + 1/3.
+- Wizard PJ×CLT em 4 passos com etapa opcional de benefícios CLT.
+- MEI: campo de faturamento anual acumulado com projeção do teto.
+- 6 cenários `pj-vs-clt` em `CalculatorBenchmarkCatalog`.
+- Artigo MEI atualizado; FAQ `pj-ou-clt-qual-compensa` reforçado.
+- Testes `Sprint59PjMeiTests` e `Sprint59WebTests`.
+- `dotnet test .\MeuValorLiquido.slnx` verde com 460 testes (1 ignorado).
+
 ### Sprint 58 - Conteúdo editorial direcionado
 - Novos artigos: `como-conferir-holerite` e `rescisao-clt-vs-trct`.
 - Atualização de `como-avaliar-proposta-salarial` e artigos de rescisão com links cruzados.

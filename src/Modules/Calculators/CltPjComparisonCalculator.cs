@@ -1,11 +1,19 @@
 namespace MeuValorLiquido.Modules.Calculators;
 
+public sealed record CltHiddenBenefitsBreakdown(
+    decimal FgtsMonthly,
+    decimal ThirteenthProvision,
+    decimal VacationProvision,
+    decimal TotalMonthly,
+    decimal TotalAnnual);
+
 public sealed record CltSideBreakdown(
     decimal Gross,
     decimal Inss,
     decimal Irrf,
     decimal Discounts,
-    decimal Net);
+    decimal Net,
+    CltHiddenBenefitsBreakdown HiddenBenefits);
 
 public sealed record PjSideBreakdown(
     decimal Revenue,
@@ -26,11 +34,12 @@ public sealed record CltPjComparisonBreakdown(
     decimal NetDifference,
     decimal EquivalentPjRevenue,
     decimal SimplesRatePercent,
-    decimal ProLaboreSharePercent);
+    decimal ProLaboreSharePercent,
+    SimplesAnnex SimplesAnnex);
 
 public sealed class CltPjComparisonCalculator
 {
-    public const decimal ProLaboreShare = 0.28m;
+    public const decimal DefaultProLaboreShare = 0.28m;
     public const decimal DefaultSimplesRatePercent = 6m;
 
     private readonly NetSalaryCalculator netSalaryCalculator;
@@ -49,23 +58,26 @@ public sealed class CltPjComparisonCalculator
 
     public CltPjComparisonBreakdown Compare(CalculatorInput input)
     {
-        var simplesRate = input.Rate > 0m ? input.Rate : DefaultSimplesRatePercent;
+        var proLaboreShare = ResolveProLaboreShare(input.ProLaborePercent);
+        var simplesRate = ResolveSimplesRate(input);
         var clt = netSalaryCalculator.Calculate(
             input.Amount,
             input.Dependents,
             input.TransportDiscount);
 
+        var hiddenBenefits = CalculateHiddenBenefits(clt.Gross);
         var cltSide = new CltSideBreakdown(
             clt.Gross,
             clt.Inss,
             clt.Irrf,
             clt.TransportDiscount + clt.MealVoucherDiscount + clt.OtherDiscounts,
-            clt.Net);
+            clt.Net,
+            hiddenBenefits);
 
         var pjExpenses = Math.Max(0m, input.OtherDiscounts);
-        var equivalentRevenue = SolveEquivalentPjRevenue(cltSide.Net, simplesRate, pjExpenses);
+        var equivalentRevenue = SolveEquivalentPjRevenue(cltSide.Net, simplesRate, pjExpenses, proLaboreShare);
         var pjRevenue = input.SecondaryAmount > 0m ? input.SecondaryAmount : equivalentRevenue;
-        var pjSide = CalculatePjSide(pjRevenue, simplesRate, pjExpenses);
+        var pjSide = CalculatePjSide(pjRevenue, simplesRate, pjExpenses, proLaboreShare);
 
         return new CltPjComparisonBreakdown(
             cltSide,
@@ -73,11 +85,46 @@ public sealed class CltPjComparisonCalculator
             pjSide.Net - cltSide.Net,
             equivalentRevenue,
             simplesRate,
-            ProLaboreShare * 100m);
+            proLaboreShare * 100m,
+            input.SimplesAnnex);
     }
 
-    public PjSideBreakdown CalculatePjSide(decimal revenue, decimal simplesRatePercent, decimal expenses)
+    public static decimal ResolveProLaboreShare(decimal proLaborePercent) =>
+        proLaborePercent > 0m ? proLaborePercent / 100m : DefaultProLaboreShare;
+
+    public static decimal ResolveSimplesRate(CalculatorInput input) =>
+        input.Rate > 0m
+            ? input.Rate
+            : SimplesNationalAnnexCatalog.GetSuggestedRatePercent(input.SimplesAnnex);
+
+    public static CltHiddenBenefitsBreakdown CalculateHiddenBenefits(decimal grossSalary)
     {
+        if (grossSalary <= 0m)
+        {
+            return new CltHiddenBenefitsBreakdown(0m, 0m, 0m, 0m, 0m);
+        }
+
+        var fgts = grossSalary * 0.08m;
+        var thirteenth = grossSalary / 12m;
+        var vacation = grossSalary * 4m / 36m;
+        var totalMonthly = fgts + thirteenth + vacation;
+
+        return new CltHiddenBenefitsBreakdown(
+            fgts,
+            thirteenth,
+            vacation,
+            totalMonthly,
+            totalMonthly * 12m);
+    }
+
+    public PjSideBreakdown CalculatePjSide(
+        decimal revenue,
+        decimal simplesRatePercent,
+        decimal expenses,
+        decimal? proLaboreShare = null)
+    {
+        var share = proLaboreShare ?? DefaultProLaboreShare;
+
         if (revenue <= 0m)
         {
             return new PjSideBreakdown(0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m);
@@ -85,7 +132,7 @@ public sealed class CltPjComparisonCalculator
 
         var simples = revenue * simplesRatePercent / 100m;
         var revenueAfterSimples = revenue - simples;
-        var proLabore = revenue * ProLaboreShare;
+        var proLabore = revenue * share;
         var inss = proLaboreInssCalculator.Calculate(proLabore);
         var irrf = irrfCalculator.Calculate(Math.Max(0m, proLabore - inss), dependents: 0);
         var allocatedExpenses = Math.Min(expenses, proLabore);
@@ -104,20 +151,25 @@ public sealed class CltPjComparisonCalculator
             companyRetained);
     }
 
-    public decimal SolveEquivalentPjRevenue(decimal targetCltNet, decimal simplesRatePercent, decimal expenses)
+    public decimal SolveEquivalentPjRevenue(
+        decimal targetCltNet,
+        decimal simplesRatePercent,
+        decimal expenses,
+        decimal? proLaboreShare = null)
     {
         if (targetCltNet <= 0m)
         {
             return 0m;
         }
 
+        var share = proLaboreShare ?? DefaultProLaboreShare;
         decimal low = targetCltNet;
         decimal high = targetCltNet * 4m;
 
         for (var i = 0; i < 48; i++)
         {
             var mid = (low + high) / 2m;
-            var pjNet = CalculatePjSide(mid, simplesRatePercent, expenses).Net;
+            var pjNet = CalculatePjSide(mid, simplesRatePercent, expenses, share).Net;
             if (pjNet < targetCltNet)
             {
                 low = mid;

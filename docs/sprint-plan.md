@@ -450,13 +450,13 @@
 
 **North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
 
-**Proxima sprint a implementar:** **Sprint 59**.
+**Proxima sprint a implementar:** **Sprint 52** (observabilidade completa) ou **Sprint 51** quando AdSense aprovar.
 
 | Prioridade | Sprints | Status |
 |------------|---------|--------|
-| **Alta** | — | Sprints 53-55 concluidas |
-| **Media** | 56, 57, 58 | Sprints 56-58 concluidas; Sprint 59 e a proxima |
-| **Baixa / bloqueada** | 51 (AdSense), 59, 52 | 51 aguarda aprovacao Google; 52 apos metricas enxutas |
+| **Alta** | — | Sprints 53-59 concluidas |
+| **Media** | — | Trilha 53-59 concluida |
+| **Baixa / bloqueada** | 51 (AdSense), 52 | 51 aguarda aprovacao Google; 52 proxima baixa prioridade |
 
 **Mapeamento com trilha antiga (Sprints 31-38):** nao duplicar trabalho. Escopo da antiga Sprint 32 → **Sprint 53**; antiga Sprint 33 → **Sprint 55**; antiga Sprint 34 → **Sprint 59**.
 
@@ -601,7 +601,7 @@
 
 ---
 
-## Sprint 59 - PJ x CLT e MEI profundos (PRIORIDADE BAIXA)
+## Sprint 59 - PJ x CLT e MEI profundos (CONCLUIDA)
 
 **Objetivo:** comparador que responde "vale a pena ser PJ?" com profundidade de referencia.
 

@@ -21,4 +21,7 @@ public static class CalculatorFieldKeys
     public const string MeiActivity = "MeiActivity";
     public const string ThirteenthAdvancePaid = "ThirteenthAdvancePaid";
     public const string SalaryAverageSupplement = "SalaryAverageSupplement";
+    public const string SimplesAnnex = "SimplesAnnex";
+    public const string ProLaborePercent = "ProLaborePercent";
+    public const string MeiAnnualAccumulated = "MeiAnnualAccumulated";
 }

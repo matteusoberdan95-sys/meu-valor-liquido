@@ -6,16 +6,18 @@
 <form method="post" class="valora-stitch-cltpj-form" asp-route-slug="@Model.Definition!.Slug" data-pj-wizard>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="valora-pj-wizard-stepper" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Passos do comparador">
+    <div class="valora-pj-wizard-stepper" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Passos do comparador">
         <span class="valora-pj-wizard-stepper-bar valora-pj-wizard-stepper-bar--active" data-pj-stepper="1"></span>
         <span class="valora-pj-wizard-stepper-bar" data-pj-stepper="2"></span>
         <span class="valora-pj-wizard-stepper-bar" data-pj-stepper="3"></span>
+        <span class="valora-pj-wizard-stepper-bar" data-pj-stepper="4"></span>
     </div>
 
     <nav class="valora-pj-wizard-steps" aria-label="Passos do comparador">
         <span class="valora-pj-wizard-step valora-pj-wizard-step--active" data-pj-step-label="1">1. Dados CLT</span>
         <span class="valora-pj-wizard-step" data-pj-step-label="2">2. Dados PJ</span>
-        <span class="valora-pj-wizard-step" data-pj-step-label="3">3. Calcular</span>
+        <span class="valora-pj-wizard-step" data-pj-step-label="3">3. Benefícios</span>
+        <span class="valora-pj-wizard-step" data-pj-step-label="4">4. Calcular</span>
     </nav>
 
     <div class="valora-pj-wizard-layout">
@@ -67,7 +69,7 @@
                         </span>
                         <h2>Entradas PJ</h2>
                     </div>
-                    <p class="valora-helper valora-stitch-cltpj-helper">Informe faturamento PJ, alíquota do Simples e despesas fixas.</p>
+                    <p class="valora-helper valora-stitch-cltpj-helper">Informe faturamento PJ, anexo do Simples, pró-labore e despesas fixas.</p>
                     <div class="valora-form-row">
                         <div style="grid-column: 1 / -1;">
                             <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SecondaryAmountLabel, "Input.SecondaryAmount", CalculatorFieldKeys.SecondaryAmount)' />
@@ -77,11 +79,22 @@
                             </div>
                             <p class="valora-helper">Deixe em branco para estimar o faturamento equivalente ao líquido CLT.</p>
                         </div>
-                        <div>
-                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.RateLabel, "Input.Rate", CalculatorFieldKeys.Rate)' />
-                            <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="6" />
+                        <div style="grid-column: 1 / -1;">
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.SimplesAnnexLabel, null, CalculatorFieldKeys.SimplesAnnex)' />
+                            <select asp-for="Input.SimplesAnnex" class="valora-input" data-pj-annex-select asp-items="Html.GetEnumSelectList<MeuValorLiquido.Modules.Calculators.Tax.SimplesAnnex>()"></select>
+                            <p class="valora-helper" data-pj-annex-hint></p>
                         </div>
                         <div>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.RateLabel, "Input.Rate", CalculatorFieldKeys.Rate)' />
+                            <input asp-for="Input.Rate" class="valora-input" type="text" data-mask="decimal" data-pj-rate inputmode="decimal" placeholder="6" />
+                            <p class="valora-helper">Deixe em branco para usar a alíquota sugerida do anexo.</p>
+                        </div>
+                        <div>
+                            <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.ProLaborePercentLabel, "Input.ProLaborePercent", CalculatorFieldKeys.ProLaborePercent)' />
+                            <input asp-for="Input.ProLaborePercent" class="valora-input" type="text" data-mask="decimal" inputmode="decimal" placeholder="28" />
+                            <p class="valora-helper">Padrão 28% se vazio.</p>
+                        </div>
+                        <div style="grid-column: 1 / -1;">
                             <partial name="Shared/_FieldLabel" model='Model.FieldLabel(profile.OtherDiscountsLabel, "Input.OtherDiscounts", CalculatorFieldKeys.OtherDiscounts)' />
                             <div class="valora-input-prefix">
                                 <span class="valora-prefix">R$</span>
@@ -96,24 +109,48 @@
                         Voltar
                     </button>
                     <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-pj-wizard-next" data-pj-goto="3">
-                        Ver resumo
-                        <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
+                        Benefícios CLT
+                        <span class="material-symbols-outlined" aria-hidden="true">savings</span>
                     </button>
                 </div>
             </div>
 
             <div class="valora-pj-wizard-panel" data-pj-step="3" hidden>
                 <section class="valora-stitch-cltpj-review-card">
+                    <h2 class="valora-stitch-cltpj-review-title">Benefícios e custo oculto CLT</h2>
+                    <p class="valora-helper">Além do líquido mensal, o regime CLT acumula FGTS (8%), provisão de 13º e férias + 1/3. O resultado incluirá essas linhas educativas no extrato.</p>
+                    <ul class="valora-stitch-cltpj-review-list">
+                        <li><span>FGTS mensal (8%)</span><strong>Depósito do empregador</strong></li>
+                        <li><span>13º salário</span><strong>Provisão de 1/12 por mês</strong></li>
+                        <li><span>Férias + 1/3</span><strong>Provisão mensal equivalente</strong></li>
+                    </ul>
+                    <p class="valora-helper">Compare também com <a href="/calculadoras/custo-funcionario">custo de funcionário</a> (visão empresa) e <a href="/calculadoras/simulador-mei">simulador MEI</a> se estiver entre regimes.</p>
+                </section>
+                <div class="valora-pj-wizard-nav valora-pj-wizard-nav--split">
+                    <button type="button" class="valora-pj-wizard-back" data-pj-goto="2">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                        Voltar
+                    </button>
+                    <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-pj-wizard-next" data-pj-goto="4">
+                        Ver resumo
+                        <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="valora-pj-wizard-panel" data-pj-step="4" hidden>
+                <section class="valora-stitch-cltpj-review-card">
                     <h2 class="valora-stitch-cltpj-review-title">Pronto para comparar</h2>
                     <p class="valora-helper">Revise os dados informados e clique em calcular para ver o veredito CLT × PJ no painel ao lado.</p>
                     <ul class="valora-stitch-cltpj-review-list">
                         <li><span>Salário bruto CLT</span><strong data-pj-review="amount">—</strong></li>
                         <li><span>Faturamento PJ</span><strong data-pj-review="secondary">—</strong></li>
-                        <li><span>Alíquota PJ</span><strong data-pj-review="rate">—</strong></li>
+                        <li><span>Anexo / alíquota PJ</span><strong data-pj-review="rate">—</strong></li>
+                        <li><span>Pró-labore</span><strong data-pj-review="prolabore">—</strong></li>
                     </ul>
                 </section>
                 <div class="valora-pj-wizard-nav valora-pj-wizard-nav--split">
-                    <button type="button" class="valora-pj-wizard-back" data-pj-goto="2">
+                    <button type="button" class="valora-pj-wizard-back" data-pj-goto="3">
                         <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
                         Voltar
                     </button>
@@ -135,9 +172,16 @@
                     <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
                     Planejamento PJ
                 </h3>
-                <p>Ajuste a alíquota do Simples e despesas fixas (contador, taxas) para aproximar o cenário real da sua empresa.</p>
+                <p>Escolha o anexo do Simples (I a V) e ajuste pró-labore e despesas fixas (contador, taxas) para aproximar o cenário real.</p>
             </div>
             <div class="valora-pj-wizard-tip" data-pj-tip="3" hidden>
+                <h3 class="valora-pj-wizard-tip-title">
+                    <span class="material-symbols-outlined" aria-hidden="true">savings</span>
+                    Custo oculto
+                </h3>
+                <p>FGTS, 13º e férias não aparecem no holerite todo mês, mas representam valor real. O extrato mostrará a provisão mensal estimada.</p>
+            </div>
+            <div class="valora-pj-wizard-tip" data-pj-tip="4" hidden>
                 <h3 class="valora-pj-wizard-tip-title">
                     <span class="material-symbols-outlined" aria-hidden="true">compare_arrows</span>
                     Veredito
@@ -147,3 +191,11 @@
         </aside>
     </div>
 </form>
+
+<script type="application/json" id="pj-simples-annex-rates">
+@Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+    Enum.GetValues<MeuValorLiquido.Modules.Calculators.Tax.SimplesAnnex>()
+        .ToDictionary(
+            annex => annex.ToString(),
+            annex => MeuValorLiquido.Modules.Calculators.Tax.SimplesNationalAnnexCatalog.GetSuggestedRatePercent(annex))))
+</script>

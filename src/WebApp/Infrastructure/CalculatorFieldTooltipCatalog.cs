@@ -129,7 +129,11 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.OtherDiscounts] =
                     "Despesas fixas da PJ: contador, software, aluguel de escritório etc.",
                 [CalculatorFieldKeys.Rate] =
-                    "Alíquota efetiva do Simples Nacional sobre o faturamento. Varia por anexo e faixa de receita."
+                    "Alíquota efetiva do Simples Nacional sobre o faturamento. Deixe em branco para usar a sugestão do anexo.",
+                [CalculatorFieldKeys.SimplesAnnex] =
+                    "Anexo I a V do Simples Nacional. A alíquota sugerida é referência da 1ª faixa — a efetiva varia com o faturamento.",
+                [CalculatorFieldKeys.ProLaborePercent] =
+                    "Percentual do faturamento destinado a pró-labore. Padrão 28% quando vazio; mínimo legal costuma ser 1 salário mínimo."
             },
             ["juros-compostos"] = new(StringComparer.OrdinalIgnoreCase)
             {
@@ -149,7 +153,9 @@ public static class CalculatorFieldTooltipCatalog
             ["simulador-mei"] = new(StringComparer.OrdinalIgnoreCase)
             {
                 [CalculatorFieldKeys.Amount] =
-                    "Faturamento médio mensal. O limite MEI é R$ 81.000/ano (tolerância de 20% até R$ 97.200)."
+                    "Faturamento médio mensal. O limite MEI é R$ 81.000/ano (tolerância de 20% até R$ 97.200).",
+                [CalculatorFieldKeys.MeiAnnualAccumulated] =
+                    "Quanto você já faturou no ano corrente. Somamos aos meses restantes para projetar o teto anual."
             },
             ["custo-funcionario"] = new(StringComparer.OrdinalIgnoreCase)
             {

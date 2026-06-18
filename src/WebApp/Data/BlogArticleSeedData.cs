@@ -414,7 +414,8 @@ public static class BlogArticleSeedData
             <h2>DAS por atividade</h2>
             <p>O valor do DAS varia conforme comércio, serviços ou indústria. Mesmo com faturamento baixo, o pagamento mensal é obrigatório enquanto o MEI estiver ativo.</p>
             <h2>Simule seu cenário</h2>
-            <p>Use o <a href="/calculadoras/simulador-mei">simulador MEI</a> para estimar DAS, comparar com faturamento mensal e receber alertas de limite.</p>
+            <p>Use o <a href="/calculadoras/simulador-mei">simulador MEI</a> para estimar DAS, informar o <strong>faturamento já acumulado no ano</strong> e projetar o teto com o faturamento mensal estimado.</p>
+            <p>Para comparar MEI com emprego CLT ou PJ, veja o <a href="/calculadoras/pj-vs-clt">comparador PJ vs CLT</a> e o <a href="/duvidas/pj-ou-clt-qual-compensa">FAQ PJ ou CLT</a>.</p>
             <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>As regras de limite e DAS seguem parâmetros vigentes documentados em <a href="/como-calculamos">Como calculamos</a>. Mudanças na legislação exigem recalibração.</p>
             <p><strong>Estimativa educativa:</strong> não substitui contador para migração ao Simples Nacional ou ME.</p>
