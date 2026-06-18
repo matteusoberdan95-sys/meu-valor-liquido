@@ -420,6 +420,143 @@ public static class BlogArticleSeedData
             <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>As regras de limite e DAS seguem parâmetros vigentes documentados em <a href="/como-calculamos">Como calculamos</a>. Mudanças na legislação exigem recalibração.</p>
             <p><strong>Estimativa educativa:</strong> não substitui contador para migração ao Simples Nacional ou ME.</p>
+            """),
+        Article(
+            "cdb-ou-tesouro-direto-investimentos",
+            "CDB ou Tesouro Direto: qual escolher para começar?",
+            "Compare liquidez, segurança, tributação e rentabilidade entre CDB e Tesouro Direto para montar sua primeira reserva.",
+            "juros-compostos",
+            "Financeiro",
+            new DateOnly(2026, 6, 19),
+            """
+            <p>Quem está começando a investir no Brasil costuma travar na primeira dúvida: <strong>CDB</strong> ou <strong>Tesouro Direto</strong>? Os dois são opções conservadoras, mas funcionam de formas diferentes — e isso muda o que você recebe no bolso e quando pode resgatar.</p>
+            <h2>O que é cada um</h2>
+            <ul>
+            <li><strong>CDB:</strong> você empresta dinheiro ao banco e recebe juros prefixados ou atrelados ao CDI.</li>
+            <li><strong>Tesouro Direto:</strong> você compra títulos públicos federais (Selic, IPCA+ ou prefixado) com liquidação em dias úteis.</li>
+            </ul>
+            <h2>Segurança e garantias</h2>
+            <p>Tesouro tem risco de crédito soberano (governo federal). CDBs de bancos médios costumam pagar mais, mas dependem da solidez da instituição — o FGC cobre até R$ 250 mil por CPF por conglomerado financeiro.</p>
+            <h2>Liquidez e prazo</h2>
+            <p>Tesouro Selic permite resgate rápido com taxa baixa. CDBs podem ter carência ou penalidade para sair antes do vencimento. Para reserva de emergência, liquidez diária pesa mais que meio ponto a mais de rentabilidade.</p>
+            <h2>Impostos</h2>
+            <p>Ambos seguem a tabela regressiva de IR do investimento (22,5% até 180 dias; 15% após 720 dias). IOF pode incidir em resgates muito curtos. Compare sempre o <strong>líquido</strong>, não só a taxa bruta anunciada.</p>
+            <h2>Projete o crescimento</h2>
+            <p>Use a <a href="/calculadoras/juros-compostos">calculadora de juros compostos</a> para simular aportes mensais em cada taxa. Leia também <a href="/blog/juros-compostos-guia">juros compostos: guia prático</a> e <a href="/blog/planejamento-financeiro-com-salario">planejamento financeiro com salário</a>.</p>
+            """),
+        Article(
+            "reserva-emergencia-onde-investir",
+            "Reserva de emergência: quanto guardar e onde investir",
+            "Defina o tamanho ideal da reserva com base no seu custo de vida e saiba onde aplicar com liquidez e baixo risco.",
+            "juros-compostos",
+            "Financeiro",
+            new DateOnly(2026, 6, 20),
+            """
+            <p>A reserva de emergência é o colchão financeiro para imprevistos: demissão, saúde, conserto urgente. Antes de buscar rentabilidade alta, o objetivo é <strong>não perder dinheiro</strong> e conseguir sacar em poucos dias.</p>
+            <h2>Quanto guardar</h2>
+            <p>Regra comum: de <strong>3 a 6 meses</strong> das despesas essenciais (moradia, alimentação, transporte, contas fixas). Quem é CLT com estabilidade pode mirar 3 meses; autônomo ou PJ costuma precisar de 6 ou mais.</p>
+            <h2>Calcule com o líquido real</h2>
+            <p>Baseie a reserva no que entra na conta, não no salário bruto. Simule seu holerite na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> e multiplique o líquido pelas despesas mensais reais.</p>
+            <h2>Onde investir a reserva</h2>
+            <ul>
+            <li><strong>Tesouro Selic</strong> ou <strong>CDB com liquidez diária</strong> para acesso rápido.</li>
+            <li>Evite ações, cripto ou fundos ilíquidos para essa parcela.</li>
+            <li>Mantenha a reserva separada mentalmente do dinheiro de objetivos de médio prazo.</li>
+            </ul>
+            <h2>Revisão anual</h2>
+            <p>Reajuste de aluguel, filhos ou novo financiamento alteram o custo de vida. Atualize a meta da reserva quando o orçamento mudar.</p>
+            <p>Veja <a href="/blog/cdb-ou-tesouro-direto-investimentos">CDB ou Tesouro Direto</a> para comparar onde aplicar o primeiro aporte.</p>
+            """),
+        Article(
+            "como-investir-com-pouco-dinheiro",
+            "Como investir com pouco dinheiro: guia para iniciantes",
+            "Comece com aportes pequenos, entenda taxas e monte hábito de investir sem depender de um salário alto.",
+            "juros-compostos",
+            "Financeiro",
+            new DateOnly(2026, 6, 21),
+            """
+            <p>Investir não exige milhares de reais no primeiro mês. Com <strong>aportes regulares</strong> — mesmo de R$ 50 ou R$ 100 — o efeito dos juros compostos aparece quando o hábito se mantém por anos.</p>
+            <h2>Passo 1: organize o básico</h2>
+            <p>Quite dívidas com juros altos (cartão, cheque especial) antes de buscar rentabilidade em renda fixa. O “investimento” mais rentável pode ser pagar o rotativo.</p>
+            <h2>Passo 2: defina uma meta realista</h2>
+            <p>Escolha um percentual do líquido — por exemplo, 10% após montar a reserva de emergência. Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para saber quanto sobra de fato.</p>
+            <h2>Passo 3: automatize</h2>
+            <p>Programe transferência no dia do pagamento. Automatizar reduz a tentação de gastar o que “sobrou” no fim do mês.</p>
+            <h2>Passo 4: simule o futuro</h2>
+            <p>A <a href="/calculadoras/juros-compostos">calculadora de juros compostos</a> mostra quanto R$ 100/mês podem virar em 5 ou 10 anos com taxas conservadoras. Compare cenários — o tempo é o maior aliado do iniciante.</p>
+            <h2>Cuidados</h2>
+            <p>Desconfie de promessas de ganho rápido. Rentabilidade passada não garante retorno futuro. Priorize educação e diversificação gradual.</p>
+            """),
+        Article(
+            "quanto-cobrar-servicos-pj",
+            "Quanto cobrar como PJ: preço/hora, margem e proposta",
+            "Aprenda a precificar serviços como PJ sem vender barato demais: custos, impostos, férias não pagas e lucro desejado.",
+            "pj-vs-clt",
+            "Financeiro",
+            new DateOnly(2026, 6, 22),
+            """
+            <p>Freelancer ou consultor PJ que cobra “o que o mercado paga” sem planilha costuma descobrir, no fim do ano, que trabalhou mais e guardou menos do que um CLT com salário parecido. Precificar bem exige somar <strong>custos, impostos e margem</strong>.</p>
+            <h2>Liste todos os custos</h2>
+            <ul>
+            <li>Contador, DAS ou impostos do Simples Nacional.</li>
+            <li>Plano de saúde, previdência (INSS como contribuinte individual, se aplicável).</li>
+            <li>Software, equipamento, coworking, deslocamento.</li>
+            <li>Férias e 13º que você paga a si mesmo — não existem automaticamente na PJ.</li>
+            </ul>
+            <h2>Da hora ao valor mensal</h2>
+            <p>Divida a meta de faturamento líquido pelas horas faturáveis reais (desconte prospecção, administração e imprevistos). Muitos profissionais faturam só 60–70% das horas do mês.</p>
+            <h2>Compare com CLT</h2>
+            <p>Antes de aceitar um contrato PJ, simule o equivalente CLT na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>. Leia <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT: qual é melhor?</a> para entender benefícios que você deixa de ter.</p>
+            <h2>Proposta comercial</h2>
+            <p>Apresente escopo, prazo e entregáveis — não só “valor/hora”. Isso protege contra scope creep e facilita reajuste anual.</p>
+            """),
+        Article(
+            "mei-nota-fiscal-quando-emitir",
+            "Nota fiscal MEI: quando emitir e como não errar",
+            "Entenda obrigatoriedade de NFS-e, prazos, cliente PJ e o que acontece se você faturar sem nota.",
+            "simulador-mei",
+            "Financeiro",
+            new DateOnly(2026, 6, 23),
+            """
+            <p>MEI que presta serviço ou vende para outra empresa quase sempre precisa de <strong>nota fiscal</strong>. Emitir corretamente mantém o CNPJ regular, evita autuação e permite o cliente deduzir a despesa quando aplicável.</p>
+            <h2>Quando emitir</h2>
+            <ul>
+            <li><strong>Serviços para PJ:</strong> em geral, NFS-e é obrigatória a cada prestação.</li>
+            <li><strong>Vendas para consumidor final:</strong> regras variam por município e tipo de atividade.</li>
+            <li><strong>Exportação de serviço:</strong> consulte regras específicas e conversão cambial.</li>
+            </ul>
+            <h2>Prazos e DAS</h2>
+            <p>Nota emitida entra no faturamento do mês. O <strong>DAS</strong> continua devido mesmo com faturamento zero — enquanto o MEI estiver ativo. Acompanhe o teto anual no <a href="/calculadoras/simulador-mei">simulador MEI</a>.</p>
+            <h2>Erros comuns</h2>
+            <ul>
+            <li>Faturar acima do limite sem planejar desenquadramento.</li>
+            <li>Confundir recebimento na conta com competência da nota.</li>
+            <li>Não guardar XML/PDF das notas para comprovação.</li>
+            </ul>
+            <h2>Relação com PJ e CLT</h2>
+            <p>MEI não substitui análise de vínculo empregatício. Veja <a href="/blog/mei-faturamento-e-das">MEI: limite de faturamento e DAS</a> e compare modelos na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>.</p>
+            """),
+        Article(
+            "simples-nacional-pj-guia-iniciantes",
+            "Simples Nacional para PJ: guia para quem está começando",
+            "Entenda anexos, alíquotas efetivas, pró-labore e quando vale migrar do MEI para ME no Simples.",
+            "pj-vs-clt",
+            "Financeiro",
+            new DateOnly(2026, 6, 24),
+            """
+            <p>Quem ultrapassa o limite do MEI ou abre empresa como ME/Sociedade Limitada encontra o <strong>Simples Nacional</strong> — regime que unifica vários impostos em guias mensais (DAS). A alíquota depende do anexo da atividade e do faturamento acumulado.</p>
+            <h2>Anexos principais</h2>
+            <ul>
+            <li><strong>Anexo III:</strong> serviços com folha de pagamento relevante.</li>
+            <li><strong>Anexo V:</strong> serviços intelectuais — pode haver redução para Anexo III com folha mínima.</li>
+            <li><strong>Anexo I:</strong> comércio.</li>
+            </ul>
+            <h2>Alíquota efetiva</h2>
+            <p>A tabela é progressiva: quanto maior o faturamento 12 meses, maior a faixa. Dividir imposto pago pelo faturamento revela a <strong>alíquota efetiva real</strong> — útil para comparar com proposta PJ na calculadora.</p>
+            <h2>Pró-labore e distribuição</h2>
+            <p>Sócio que retira pró-labore paga INSS sobre o valor. Lucro distribuído segue regras próprias — converse com contador antes de misturar PF e PJ.</p>
+            <h2>MEI → Simples</h2>
+            <p>Desenquadramento do MEI exige migração planejada. Simule faturamento e impostos no <a href="/calculadoras/simulador-mei">simulador MEI</a> e compare cenários na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>. Leia também <a href="/blog/mei-faturamento-e-das">limite de faturamento MEI</a>.</p>
             """)
     ];
 
@@ -511,6 +648,18 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Atualize o orçamento sempre que o holerite mudar — promoção no bruto nem sempre aumenta o líquido na mesma proporção por causa do imposto progressivo.</p>",
             "mei-faturamento-e-das" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Acompanhe o faturamento acumulado mês a mês no simulador MEI; ultrapassar o teto sem planejamento gera desenquadramento e custos de migração.</p>",
+            "cdb-ou-tesouro-direto-investimentos" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Compare CDB e Tesouro pelo valor líquido após IR no prazo em que você pretende resgatar — não só pela taxa bruta do anúncio.</p>",
+            "reserva-emergencia-onde-investir" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Guarde a reserva em instituição diferente do banco do dia a dia; isso reduz a tentação de gastar em compras por impulso.</p>",
+            "como-investir-com-pouco-dinheiro" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Automatize um aporte fixo no dia seguinte ao pagamento — mesmo valor pequeno cria hábito antes de buscar rentabilidade máxima.</p>",
+            "quanto-cobrar-servicos-pj" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Inclua na planilha de preço pelo menos 25% de horas não faturáveis (prospecção, reuniões, nota fiscal) para não trabalhar de graça.</p>",
+            "mei-nota-fiscal-quando-emitir" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Emita a NFS-e no mesmo mês do serviço prestado; atrasar pode complicar o DAS e a comprovação perante o cliente PJ.</p>",
+            "simples-nacional-pj-guia-iniciantes" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça ao contador a simulação da alíquota efetiva nos anexos III e V antes de fechar o primeiro contrato como ME no Simples.</p>",
             _ => string.Empty
         };
 

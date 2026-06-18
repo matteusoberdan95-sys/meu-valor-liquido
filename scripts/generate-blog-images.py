@@ -59,6 +59,12 @@ VISUAL_BRIEF: dict[str, str] = {
     "tabela-irrf-2026-guia": "tabela IRRF dark, badge 2026",
     "mei-faturamento-e-das": "MEI + limite R$ 81k + DAS mensal",
     "pj-ou-clt-qual-melhor": "balança ou dois caminhos CLT vs CNPJ",
+    "cdb-ou-tesouro-direto-investimentos": "dois cards CDB vs Tesouro Selic; selo liquidez",
+    "reserva-emergencia-onde-investir": "escudo + cofre + 6 meses de despesas",
+    "como-investir-com-pouco-dinheiro": "moedas pequenas + curva de crescimento + aporte mensal",
+    "quanto-cobrar-servicos-pj": "calculadora + nota R$/hora + margem lucro",
+    "mei-nota-fiscal-quando-emitir": "documento NFS-e + selo MEI",
+    "simples-nacional-pj-guia-iniciantes": "anexos Simples + gráfico alíquota efetiva",
     "guia-decimo-terceiro": "13 estilizado + duas parcelas nov/dez",
     "hora-extra-como-calcular": "relógio + badges +50% / +100%",
     "fgts-guia-completo": "cofre/poupança 8% + multa 40%",
@@ -293,6 +299,33 @@ def draw_motif(draw: ImageDraw.ImageDraw, slug: str, color: tuple[int, int, int]
             rounded_rect(draw, (ox, oy + 40, ox + 240, oy + 200), 16, COLORS["card"], color, 2)
             draw.text((ox + 50, oy + 90), "MEI", fill=color, font=font(48, True))
             draw.text((ox + 42, oy + 145), "DAS", fill=COLORS["text"], font=font(28, True))
+        case "cdb-ou-tesouro-direto-investimentos":
+            rounded_rect(draw, (ox, oy + 30, ox + 115, oy + 190), 14, COLORS["card"], color, 2)
+            rounded_rect(draw, (ox + 125, oy + 30, ox + 240, oy + 190), 14, COLORS["card"], COLORS["teal"], 2)
+            draw.text((ox + 28, oy + 95), "CDB", fill=color, font=font(32, True))
+            draw.text((ox + 148, oy + 85), "Tes.", fill=COLORS["teal"], font=font(28, True))
+        case "reserva-emergencia-onde-investir":
+            draw.ellipse((ox + 70, oy + 30, ox + 170, oy + 130), outline=color, width=4)
+            draw.polygon([(ox + 120, oy + 55), (ox + 95, oy + 95), (ox + 145, oy + 95)], fill=color)
+            rounded_rect(draw, (ox + 30, oy + 150, ox + 210, oy + 210), 12, COLORS["card"], color, 2)
+            draw.text((ox + 55, oy + 168), "6 meses", fill=COLORS["text"], font=font(22, True))
+        case "como-investir-com-pouco-dinheiro":
+            draw_growth_line(draw, ox, oy + 10, color)
+            draw_coins(draw, ox + 20, oy + 200, color, 2)
+            draw.text((ox + 100, oy + 215), "+R$", fill=color, font=font(24, True))
+        case "quanto-cobrar-servicos-pj":
+            rounded_rect(draw, (ox + 20, oy + 40, ox + 220, oy + 200), 16, COLORS["card"], color, 2)
+            draw.text((ox + 48, oy + 75), "R$/hora", fill=color, font=font(28, True))
+            draw_chart_bars(draw, ox + 30, oy + 120, color, [35, 55, 75, 95])
+        case "mei-nota-fiscal-quando-emitir":
+            rounded_rect(draw, (ox + 30, oy + 35, ox + 210, oy + 195), 14, COLORS["card"], color, 2)
+            draw.text((ox + 55, oy + 70), "NFS-e", fill=color, font=font(36, True))
+            draw.rectangle((ox + 50, oy + 120, ox + 190, oy + 132), fill=(50, 54, 60))
+            draw.rectangle((ox + 50, oy + 145, ox + 150, oy + 157), fill=(50, 54, 60))
+        case "simples-nacional-pj-guia-iniciantes":
+            draw_table(draw, ox, oy + 20, color, rows=3)
+            draw.text((ox + 40, oy + 200), "SN", fill=color, font=font(40, True))
+            draw_chart_bars(draw, ox + 50, oy + 60, COLORS["teal"], [30, 50, 70, 90])
         case _:
             draw_chart_bars(draw, ox, oy + 20, color, [50, 80, 120, 90, 140])
 
