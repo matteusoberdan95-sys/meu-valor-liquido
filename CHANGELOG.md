@@ -95,7 +95,7 @@
 ### Sprint 56 - Métricas enxutas e decisão por dados
 - `/metricas-internas` com seletor de período (7/30 dias), taxas de engajamento (share, PDF, painel) e rankings ampliados.
 - Nomes legíveis das calculadoras no ranking; tops de share e painel local.
-- Checklist pós-deploy das 17 calculadoras em `docs/DEPLOY.md`.
+- Checklist pós-deploy atualizado em `docs/DEPLOY.md` (18 calculadoras, hubs temáticos, amostra editorial).
 - Rotina semanal documentada em `docs/METRICS_ROUTINE.md`.
 - Smoke `PostDeploy_All_Calculators_Should_Load` em `GoLiveSmokeTests`.
 - Testes `Sprint56MetricsTests`.
