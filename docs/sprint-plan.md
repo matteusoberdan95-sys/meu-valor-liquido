@@ -407,7 +407,8 @@
 |--------|-------|------|--------|
 | **65** | 1 | Hubs temáticos (`/desligamento`, `/negociar-salario`, `/virar-pj`) | **CONCLUÍDA** |
 | **66** | 2 | Calendário editorial 6 meses + ≥4 artigos novos | **CONCLUÍDA** |
-| **67** | 3 | Próxima calculadora (PO escolhe 1 na matriz do plano) | **Próxima** |
+| **67** | 3 | Próxima calculadora (PO escolhe 1 na matriz do plano) | **CONCLUÍDA** |
+| **68** | 2 | Calendário editorial meses 3–6 (7 artigos restantes) | **CONCLUÍDA** |
 
 **Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 65–67.
 
@@ -458,6 +459,21 @@
 | QA/Test | `Sprint67UnemploymentInsuranceTests`, `Sprint67WebTests` |
 
 **Calculadora:** `seguro-desemprego` — parcelas, carência e elegibilidade (tabela MTE vigente 11/01/2026).
+
+---
+
+### Sprint 68 — Calendário editorial meses 3–6 (Passo 2, continuação) — CONCLUÍDA
+
+**Objetivo:** concluir os 7 artigos restantes do calendário de 6 meses em `NICHO_REFERENCIA_PLAN.md` (meses 3–6).
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | 7 artigos em `BlogArticleSeedData.cs`; `BlogEditorialCatalog.Sprint68EditorialSlugs` |
+| WebApp/Frontend | Hubs `/negociar-salario` e `/virar-pj` atualizados; imagens hero |
+| QA/Test | `Sprint68BlogTests` (editorial, sitemap, hubs) |
+| Documentation | `CHANGELOG.md`, `AGENTS.md` |
+
+**Artigos novos:** `quanto-preciso-ganhar-para-receber-x`, `mei-desenquadramento-o-que-fazer`, `pro-labore-pj-quanto-retirar`, `decimo-terceiro-primeira-segunda-parcela`, `ferias-abono-pecuniario-vale-a-pena`, `emprestimo-consignado-desconto-holerite`, `reserva-emergencia-quanto-guardar`.
 
 ---
 

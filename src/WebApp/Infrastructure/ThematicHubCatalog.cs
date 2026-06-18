@@ -74,7 +74,7 @@ public static class ThematicHubCatalog
             ],
             "proposta-salarial",
             ["proposta-salarial", "salario-liquido", "salario-bruto-necessario", "inss", "irrf"],
-            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto"],
+            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x"],
             ["proposta-salarial-como-negociar", "diferenca-salario-bruto-e-liquido", "quanto-preciso-ganhar-para-receber-x-liquido"]),
 
         new(
@@ -99,7 +99,7 @@ public static class ThematicHubCatalog
             ],
             "pj-vs-clt",
             ["pj-vs-clt", "simulador-mei", "custo-funcionario", "salario-liquido"],
-            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes"],
+            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes", "mei-desenquadramento-o-que-fazer", "pro-labore-pj-quanto-retirar"],
             ["pj-ou-clt-qual-compensa", "quanto-faturar-pj-para-equivaler-clt", "mei-pode-trabalhar-como-clt"])
     ];
 

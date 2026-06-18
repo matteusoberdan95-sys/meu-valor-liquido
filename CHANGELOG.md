@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 68 — Calendário editorial meses 3–6 (conclusão)
+- 7 artigos: negociação, MEI/PJ, 13º, férias, consignado e reserva de emergência.
+- `BlogEditorialCatalog.Sprint68EditorialSlugs`; hubs `/negociar-salario` e `/virar-pj` atualizados.
+- Calendário de 6 meses do `NICHO_REFERENCIA_PLAN.md` completo (11 artigos novos nas Sprints 66+68).
+- Testes `Sprint68BlogTests`.
+
 ### Sprint 67 — Calculadora seguro-desemprego (PO: `seguro-desemprego`)
 - Nova calculadora `/calculadoras/seguro-desemprego` com tabela MTE 2026, carência, parcelas e elegibilidade.
 - `BrUnemploymentInsuranceTables2026`, `UnemploymentInsuranceCalculator`; 5 benchmarks; jornada e hub `/desligamento` atualizados.

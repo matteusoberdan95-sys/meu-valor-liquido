@@ -14,8 +14,8 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 | Campo | Valor |
 |-------|--------|
 | **Próxima sprint** | **Sprint 51** (AdSense) quando Google aprovar |
-| **Em seguida** | Próxima calculadora ou conteúdo conforme `NICHO_REFERENCIA_PLAN.md` |
-| **Concluída recente** | Sprint 67 (calculadora seguro-desemprego) · Sprint 66 · Sprint 65 |
+| **Em seguida** | Conteúdo ou calculadora conforme `NICHO_REFERENCIA_PLAN.md` (calendário 6 meses concluído) |
+| **Concluída recente** | Sprint 68 (calendário editorial) · Sprint 67 · Sprint 66 · Sprint 65 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 

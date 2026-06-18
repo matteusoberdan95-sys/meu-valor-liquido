@@ -31,7 +31,7 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
 | **Alta — próxima** | **51** | AdSense (quando Google aprovar) |
-| Concluídas | 47–67 | Auditoria, nicho, hubs, conteúdo Sprint 66, calculadora seguro-desemprego |
+| Concluídas | 47–68 | Hubs, calendário editorial 6 meses, calculadora seguro-desemprego |
 
 **Onde começar:** ver `NICHO_REFERENCIA_PLAN.md` § *Onde os agents começam*. Ordem sugerida **65 → 66 → 67**; conteúdo (66) pode avançar em paralelo aos hubs (65).
 

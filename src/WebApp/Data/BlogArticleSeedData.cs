@@ -636,6 +636,150 @@ public static class BlogArticleSeedData
             <h2>Meta de bolso</h2>
             <p>Se você precisa de um líquido mínimo (aluguel, financiamento), use também a <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a> — ela responde quanto de bruto pedir para chegar no valor desejado.</p>
             <p>Explore o guia <a href="/negociar-salario">negociar salário pelo líquido</a>, <a href="/blog/como-avaliar-proposta-salarial">como avaliar proposta</a> e a <a href="/duvidas/proposta-salarial-como-negociar">FAQ de negociação</a>.</p>
+            """),
+        Article(
+            "quanto-preciso-ganhar-para-receber-x",
+            "Quanto preciso ganhar para receber X líquido?",
+            "Use a calculadora inversa: informe o líquido desejado e descubra o salário bruto com INSS e IRRF 2026.",
+            "salario-bruto-necessario",
+            "Trabalhista",
+            new DateOnly(2026, 6, 23),
+            """
+            <p>Na negociação ou no planejamento pessoal, a pergunta certa costuma ser: <strong>quanto preciso ganhar de bruto</strong> para sobrar X no bolso? Como INSS e IRRF são progressivos, a resposta não é uma conta de três simples — é uma busca sobre as tabelas oficiais de 2026.</p>
+            <h2>Como funciona a calculadora inversa</h2>
+            <p>A <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a> estima o bruto a partir do líquido desejado, usando as mesmas regras da calculadora de salário líquido (INSS progressivo, IRRF com redução legal e dependentes).</p>
+            <ol>
+            <li>Informe o <strong>líquido alvo</strong> (ex.: R$ 4.000).</li>
+            <li>Replique descontos do holerite: VT, VR/VA, plano, pensão.</li>
+            <li>Confira o bruto encontrado na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            </ol>
+            <h2>Quando usar na prática</h2>
+            <ul>
+            <li>Definir piso salarial em entrevista ou promoção interna.</li>
+            <li>Comparar proposta de aumento com meta de orçamento mensal.</li>
+            <li>Entender quanto um bônus ou PLR precisa ser para cobrir uma despesa fixa.</li>
+            </ul>
+            <p>Combine com <a href="/blog/aumento-salario-quanto-sobra-liquido">aumento salarial e líquido real</a> e o hub <a href="/negociar-salario">negociar salário</a>. Veja também <a href="/duvidas/quanto-preciso-ganhar-para-receber-x-liquido">FAQ: quanto ganhar para receber X líquido</a>.</p>
+            """),
+        Article(
+            "mei-desenquadramento-o-que-fazer",
+            "MEI: o que acontece ao ultrapassar o limite",
+            "Tolerância de 20%, desenquadramento, DAS e quando migrar para ME no Simples.",
+            "simulador-mei",
+            "Fiscal",
+            new DateOnly(2026, 6, 24),
+            """
+            <p>O MEI tem teto de faturamento anual (R$ 81.000 em 2026, com tolerância até R$ 97.200). Ultrapassar o limite sem planejamento gera <strong>desenquadramento</strong> — e custos que não aparecem no DAS fixo mensal.</p>
+            <h2>O que muda ao desenquadrar</h2>
+            <ul>
+            <li>Fim do DAS fixo e início de tributação como ME no Simples Nacional (em regra).</li>
+            <li>Obrigações contábeis e fiscais mais complexas (contador, DAS por faturamento).</li>
+            <li>Retroatividade em alguns casos — confirme com contador o mês do desenquadramento.</li>
+            </ul>
+            <h2>Simule antes de estourar o teto</h2>
+            <p>Use o <a href="/calculadoras/simulador-mei">simulador MEI</a> com faturamento mensal e acumulado no ano. O alerta de uso do teto mostra se você ainda está dentro do limite ou na faixa de tolerância.</p>
+            <h2>MEI e CLT ao mesmo tempo?</h2>
+            <p>Ter CNPJ MEI não autoriza, por si só, burlar vínculo CLT. Antes de pedir demissão para virar PJ, compare modelos no hub <a href="/virar-pj">virar PJ</a> e na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>.</p>
+            <p>Leia também <a href="/blog/mei-faturamento-e-das">MEI: faturamento e DAS</a>, <a href="/blog/mei-nota-fiscal-quando-emitir">quando emitir nota fiscal</a> e <a href="/duvidas/mei-pode-trabalhar-como-clt">FAQ MEI e CLT</a>.</p>
+            """),
+        Article(
+            "pro-labore-pj-quanto-retirar",
+            "Pró-labore na PJ: quanto retirar sem prejudicar o líquido",
+            "INSS, IRRF e distribuição de lucros: como o pró-labore afeta o bolso do sócio.",
+            "pj-vs-clt",
+            "Financeiro",
+            new DateOnly(2026, 6, 25),
+            """
+            <p>Na PJ no Simples Nacional, o sócio costuma retirar <strong>pró-labore</strong> — remuneração formal sujeita a INSS e IRRF. O valor escolhido muda o líquido pessoal e a base de contribuição previdenciária, sem ser o mesmo que o faturamento da empresa.</p>
+            <h2>Pró-labore não é o faturamento</h2>
+            <p>Faturamento é o que a empresa recebe dos clientes. Pró-labore é a parcela destinada ao sócio como salário. O restante pode ficar na empresa ou ser distribuído conforme regras contábeis — sempre com orientação profissional.</p>
+            <h2>Como simular</h2>
+            <p>Na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>, ajuste o percentual de pró-labore sobre o faturamento e compare o líquido pessoal com o cenário CLT. Inclua alíquota do Simples, dependentes e despesas fixas (contador, software).</p>
+            <h2>Erros comuns</h2>
+            <ul>
+            <li>Pró-labore zerado para “pagar menos imposto” — pode gerar problemas previdenciários e fiscais.</li>
+            <li>Confundir lucro distribuído com pró-labore sem critério contábil.</li>
+            <li>Ignorar que benefícios CLT (férias, 13º, FGTS) não entram na comparação automática.</li>
+            </ul>
+            <p>Explore <a href="/virar-pj">virar PJ</a>, <a href="/blog/simples-nacional-pj-guia-iniciantes">Simples Nacional para iniciantes</a> e <a href="/duvidas/pj-ou-clt-qual-compensa">FAQ PJ ou CLT</a>.</p>
+            """),
+        Article(
+            "decimo-terceiro-primeira-segunda-parcela",
+            "13º salário: 1ª e 2ª parcela e descontos",
+            "Entenda o pagamento em novembro e dezembro, adiantamento e INSS/IRRF na segunda parcela.",
+            "decimo-terceiro",
+            "Trabalhista",
+            new DateOnly(2026, 6, 26),
+            """
+            <p>O <strong>décimo terceiro</strong> é pago em duas parcelas no fim do ano: a primeira até 30/11 (em geral metade do valor bruto, sem descontos) e a segunda até 20/12, quando entram INSS e IRRF sobre o <strong>valor integral</strong> do 13º.</p>
+            <h2>Por que a 2ª parcela “some” mais</h2>
+            <p>Na 2ª parcela, o imposto incide sobre o 13º cheio, não só sobre a metade que falta. Por isso o líquido de dezembro costuma ser menor do que a conta mental de “metade do bruto”.</p>
+            <h2>Adiantamento e proporcional</h2>
+            <p>Se a empresa adiantou parte do 13º antes de novembro, informe o valor na <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a>. Quem entrou ou saiu no meio do ano recebe <strong>proporcional</strong> (avos) — na rescisão, use a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
+            <h2>Planejamento</h2>
+            <p>Reserve parte da 2ª parcela para despesas de janeiro e possível IR complementar. Compare com o <a href="/calculadoras/salario-liquido">salário líquido</a> habitual para não superestimar o “extra” de fim de ano.</p>
+            <p>Veja também <a href="/blog/guia-decimo-terceiro">guia do 13º</a> e <a href="/duvidas/decimo-terceiro-quem-tem-direito">FAQ do décimo terceiro</a>.</p>
+            """),
+        Article(
+            "ferias-abono-pecuniario-vale-a-pena",
+            "Abono pecuniário: vale a pena vender 1/3 das férias?",
+            "Simule férias com venda de até 10 dias, 1/3 constitucional e descontos de INSS e IRRF.",
+            "ferias",
+            "Trabalhista",
+            new DateOnly(2026, 6, 27),
+            """
+            <p>O <strong>abono pecuniário</strong> permite converter até <strong>1/3 dos dias de férias</strong> em dinheiro (venda de 10 dias em férias de 30). Você goza o restante e recebe o abono junto com férias + 1/3 constitucional — mas o extrato muda e os descontos incidem sobre o total.</p>
+            <h2>Quando pode compensar</h2>
+            <ul>
+            <li>Prioridade imediata de caixa (dívida cara, emergência planejada).</li>
+            <li>Preferência por descanso menor e receber mais naquele mês.</li>
+            </ul>
+            <h2>Quando pensar duas vezes</h2>
+            <ul>
+            <li>Descanso necessário por saúde ou burnout — dias vendidos não voltam.</li>
+            <li>IRRF e INSS sobre o valor maior de férias + abono reduzem o ganho líquido.</li>
+            </ul>
+            <h2>Simule antes de pedir ao RH</h2>
+            <p>Marque a opção de abono na <a href="/calculadoras/ferias">calculadora de férias</a> e compare com férias integrais no mesmo salário. Inclua dependentes e descontos habituais.</p>
+            <p>Complemente com <a href="/blog/como-calcular-ferias">como calcular férias</a> e <a href="/duvidas/ferias-proporcionais-como-funciona">FAQ de férias proporcionais</a>.</p>
+            """),
+        Article(
+            "emprestimo-consignado-desconto-holerite",
+            "Empréstimo consignado: quanto desconta do salário",
+            "Margem consignável, teto de desconto e como estimar o impacto no líquido do holerite.",
+            "salario-liquido",
+            "Financeiro",
+            new DateOnly(2026, 6, 28),
+            """
+            <p>O <strong>empréstimo consignado</strong> desconta parcelas direto no salário ou benefício, dentro de um <strong>teto legal</strong> (em geral 35% do salário, sendo 5% para cartão — regras podem variar por contrato). Isso reduz o líquido disponível todo mês até quitar a dívida.</p>
+            <h2>Margem consignável</h2>
+            <p>Bancos calculam a margem sobre o salário bruto ou base definida no convênio. Antes de contratar, simule o holerite <strong>com</strong> o desconto na <a href="/calculadoras/salario-liquido">calculadoras de salário líquido</a> (campo “outros descontos”).</p>
+            <h2>Consignado vs outros empréstimos</h2>
+            <p>Taxas costumam ser menores que crédito pessoal porque o risco de inadimplência é menor — mas comprometer a margem limita novas operações e reduz folga no orçamento.</p>
+            <h2>Checklist antes de assinar</h2>
+            <ol>
+            <li>Some todas as parcelas consignadas já ativas.</li>
+            <li>Verifique se o total cabe na margem e no seu orçamento líquido.</li>
+            <li>Compare CET com outras linhas de crédito — não só a taxa mensal anunciada.</li>
+            </ol>
+            <p>Para planejar reserva e metas, veja <a href="/blog/planejamento-financeiro-com-salario">planejamento com salário</a>, <a href="/blog/reserva-emergencia-quanto-guardar">reserva de emergência</a> e <a href="/duvidas/como-calcular-salario-liquido">FAQ de salário líquido</a>.</p>
+            """),
+        Article(
+            "reserva-emergencia-quanto-guardar",
+            "Reserva de emergência: quanto guardar com seu salário",
+            "Regra dos 3 a 6 meses de despesas, usando salário líquido e projeção com juros compostos.",
+            "salario-liquido",
+            "Financeiro",
+            new DateOnly(2026, 6, 29),
+            """
+            <p>A <strong>reserva de emergência</strong> cobre despesas essenciais quando falta salário, vêm demissão ou gasto imprevisto. A referência clássica é guardar de <strong>3 a 6 meses</strong> do seu custo de vida — não necessariamente do bruto contratual.</p>
+            <h2>Comece pelo líquido real</h2>
+            <p>Use o valor que cai na conta na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>. Some aluguel, contas, alimentação, transporte e parcelas obrigatórias. Multiplique por 3 (mínimo) ou 6 (mais conservador).</p>
+            <h2>Projete o crescimento</h2>
+            <p>Depois de definir a meta, use a <a href="/calculadoras/juros-compostos">calculadora de juros compostos</a> com aporte mensal fixo e taxa realista (poupança, CDB líquido, Tesouro Selic). O tempo para chegar na meta depende mais do hábito de aportar do que da rentabilidade no início.</p>
+            <h2>Onde guardar</h2>
+            <p>Liquidez diária e baixo risco vêm antes de rentabilidade máxima. Leia <a href="/blog/reserva-emergencia-onde-investir">onde investir a reserva</a> e <a href="/blog/como-investir-com-pouco-dinheiro">como investir com pouco dinheiro</a>.</p>
+            <p>Integre a reserva ao <a href="/blog/planejamento-financeiro-com-salario">planejamento financeiro com salário</a> — especialmente após aumento ou mudança de emprego. Consulte <a href="/duvidas/como-calcular-salario-liquido">como calcular salário líquido</a> para definir a meta em valor real.</p>
             """)
     ];
 
@@ -747,6 +891,20 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de aceitar acordo 484-A, compare o líquido da rescisão com multa de 20% contra o cenário de demissão sem justa causa com 40% — nem sempre o acordo compensa.</p>",
             "aumento-salario-quanto-sobra-liquido" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça ao RH o valor líquido estimado ou use nossa calculadora e compartilhe o PDF na conversa — negociar só pelo bruto esconde metade da história.</p>",
+            "quanto-preciso-ganhar-para-receber-x" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Arredonde o bruto encontrado para cima na negociação — pequenas diferenças de desconto no holerite real podem comer a margem.</p>",
+            "mei-desenquadramento-o-que-fazer" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Se está perto do teto em outubro ou novembro, modele o faturamento dos meses restantes no simulador antes de fechar contratos grandes.</p>",
+            "pro-labore-pj-quanto-retirar" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Teste dois ou três percentuais de pró-labore na calculadora PJ vs CLT — o líquido pessoal nem sempre cresce quando o pró-labore sobe.</p>",
+            "decimo-terceiro-primeira-segunda-parcela" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Programe transferência automática da 1ª parcela para uma conta separada; assim a 2ª parcela não vira único “13º” no orçamento de dezembro.</p>",
+            "ferias-abono-pecuniario-vale-a-pena" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Simule férias com e sem abono no mesmo salário — a diferença líquida costuma ser menor que 10 dias de descanso vendidos parecem valer.</p>",
+            "emprestimo-consignado-desconto-holerite" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de um novo consignado, some as parcelas ativas e informe o total em “outros descontos” na calculadora de líquido.</p>",
+            "reserva-emergencia-quanto-guardar" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Defina a meta em meses de despesas essenciais, não de salário bruto — o líquido é o que paga as contas.</p>",
             _ => string.Empty
         };
 

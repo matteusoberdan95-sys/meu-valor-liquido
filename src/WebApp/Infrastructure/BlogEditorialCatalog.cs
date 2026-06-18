@@ -18,7 +18,19 @@ public static class BlogEditorialCatalog
         "aumento-salario-quanto-sobra-liquido"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint68EditorialSlugs =
+    [
+        "quanto-preciso-ganhar-para-receber-x",
+        "mei-desenquadramento-o-que-fazer",
+        "pro-labore-pj-quanto-retirar",
+        "decimo-terceiro-primeira-segunda-parcela",
+        "ferias-abono-pecuniario-vale-a-pena",
+        "emprestimo-consignado-desconto-holerite",
+        "reserva-emergencia-quanto-guardar"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }

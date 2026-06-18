@@ -134,6 +134,8 @@ Landing pages que agregam calculadoras, artigos, FAQ e jornada — **não** são
 
 **Definition of Done:** calendário em `docs/` (este arquivo, seção mantida); ≥4 artigos novos publicados; nenhum artigo sem calculadora relacionada.
 
+**Status (2026-06):** calendário de 6 meses **concluído** — Sprint 66 (4 artigos) + Sprint 68 (7 artigos). Total 11 artigos novos do plano editorial.
+
 ---
 
 ## Passo 3 — Próxima calculadora (Sprint 67)
