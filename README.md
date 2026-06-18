@@ -22,8 +22,8 @@ Para alternar o trabalho entre os dois agentes sem perder contexto:
 Estado operacional atual:
 
 - Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
-- **Próxima sprint:** 66 (calendário editorial) — ver `docs/sprint-plan.md`, `AGENTS.md` e `docs/NICHO_REFERENCIA_PLAN.md`.
-- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–59; fidelidade v2 (60–64); hubs temáticos (65).
+- **Próxima sprint:** 67 (calculadora de alto ROI) — ver `docs/NICHO_REFERENCIA_PLAN.md` § Passo 3.
+- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–59; fidelidade v2 (60–64); hubs (65); conteúdo (66).
 ## Clonar o projeto
 
 ```powershell

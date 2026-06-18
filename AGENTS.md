@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 66** — Calendário editorial 6 meses + ≥4 artigos |
-| **Em seguida** | Sprint 67 (próxima calculadora) |
-| **Concluída recente** | Sprint 65 (hubs temáticos) · Trilha 60–64 |
+| **Próxima sprint** | **Sprint 67** — Próxima calculadora (PO escolhe na matriz) |
+| **Em seguida** | Sprint 51 (AdSense) quando Google aprovar |
+| **Concluída recente** | Sprint 66 (4 artigos editoriais) · Sprint 65 (hubs temáticos) |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 

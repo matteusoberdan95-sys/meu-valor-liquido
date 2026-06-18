@@ -30,9 +30,8 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
-| **Alta — próxima** | **66** | Calendário editorial 6 meses + ≥4 artigos |
-| **Alta** | **67** | Próxima calculadora (PO escolhe 1 na matriz) |
-| Concluídas | 47–65 | Auditoria, nicho, Stitch v2, hubs temáticos |
+| **Alta — próxima** | **67** | Próxima calculadora (`seguro-desemprego` recomendado) |
+| Concluídas | 47–66 | Auditoria, nicho, Stitch v2, hubs, conteúdo Sprint 66 |
 
 **Onde começar:** ver `NICHO_REFERENCIA_PLAN.md` § *Onde os agents começam*. Ordem sugerida **65 → 66 → 67**; conteúdo (66) pode avançar em paralelo aos hubs (65).
 

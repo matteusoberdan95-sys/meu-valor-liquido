@@ -2,9 +2,10 @@
 
 ## Unreleased
 
-### Planejamento — Trilha referência no nicho (Sprints 65–67)
-- Novo `docs/NICHO_REFERENCIA_PLAN.md`: Passo 1 (hubs), Passo 2 (calendário editorial 6 meses), Passo 3 (matriz calculadora).
-- `docs/sprint-plan.md`, `AGENTS.md` e `docs/agents.md` atualizados.
+### Sprint 66 — Calendário editorial (4 artigos)
+- Artigos: `irrf-2026-reducao-imposto`, `seguro-desemprego-quem-tem-direito`, `multa-fgts-40-ou-20`, `aumento-salario-quanto-sobra-liquido`.
+- `BlogEditorialCatalog.Sprint66EditorialSlugs`; hubs temáticos atualizados; testes `Sprint66BlogTests`.
+- Blog passa a 30 artigos editoriais no seed.
 
 ### Sprint 65 — Hubs temáticos
 - `ThematicHubCatalog`, `ThematicHubPageBuilder`, `ThematicHubLoader` e partial `_ThematicHubPage`.

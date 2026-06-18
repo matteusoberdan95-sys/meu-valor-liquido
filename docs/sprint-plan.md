@@ -406,8 +406,8 @@
 | Sprint | Passo | Tema | Status |
 |--------|-------|------|--------|
 | **65** | 1 | Hubs temáticos (`/desligamento`, `/negociar-salario`, `/virar-pj`) | **CONCLUÍDA** |
-| **66** | 2 | Calendário editorial 6 meses + ≥4 artigos novos | **Próxima** |
-| **67** | 3 | Próxima calculadora (PO escolhe 1 na matriz do plano) | Após 65–66 ou em paralelo ao conteúdo |
+| **66** | 2 | Calendário editorial 6 meses + ≥4 artigos novos | **CONCLUÍDA** |
+| **67** | 3 | Próxima calculadora (PO escolhe 1 na matriz do plano) | **Próxima** |
 
 **Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 65–67.
 
@@ -430,18 +430,18 @@
 
 ---
 
-### Sprint 66 — Calendário editorial 6 meses (Passo 2)
+### Sprint 66 — Calendário editorial 6 meses (Passo 2) — CONCLUÍDA
 
-**Objetivo:** calendário versionado (2 artigos/mês, 6 meses) e primeiros entregáveis — Mês 1 completo + início Mês 2 (≥4 artigos).
+**Objetivo:** calendário versionado em `NICHO_REFERENCIA_PLAN.md` e primeiros 4 artigos (Mês 1 IRRF + Mês 2 desligamento + negociação).
 
 | Agent | Entregas |
 |-------|----------|
-| SEO/Content | Artigos em `BlogArticleSeedData.cs`; slugs sem duplicar existentes; cross-link hubs Sprint 65 |
-| Product Owner | Validar calendário; cortar temas fora dos 4 pilares |
-| WebApp/Frontend | Integração blog ↔ hubs; breadcrumbs |
-| QA/Test | Contagem mínima; links calculadora; sitemap |
+| SEO/Content | 4 artigos em `BlogArticleSeedData.cs`; `BlogEditorialCatalog.Sprint66EditorialSlugs` |
+| WebApp/Frontend | Hubs `/desligamento` e `/negociar-salario` atualizados com novos artigos |
+| QA/Test | `Sprint66BlogTests` (editorial, sitemap, hubs) |
+| Documentation | `CHANGELOG.md`, `AGENTS.md` |
 
-**Critérios de aceite:** calendário em `NICHO_REFERENCIA_PLAN.md`; ≥4 artigos novos; cada artigo com `RelatedCalculatorSlug`.
+**Artigos novos:** `irrf-2026-reducao-imposto`, `seguro-desemprego-quem-tem-direito`, `multa-fgts-40-ou-20`, `aumento-salario-quanto-sobra-liquido`.
 
 ---
 

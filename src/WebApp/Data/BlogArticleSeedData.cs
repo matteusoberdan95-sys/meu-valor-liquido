@@ -324,7 +324,7 @@ public static class BlogArticleSeedData
             <h2>Teto previdenciário</h2>
             <p>Salários acima do teto contribuem somente até o limite máximo. Benefícios futuros também respeitam esse teto na maioria dos casos.</p>
             <h2>Calcule automaticamente</h2>
-            <p>Evite erros manuais usando a <a href="/calculadoras/inss">calculadora de INSS</a>, já configurada com as faixas de 2026.</p>
+            <p>Evite erros manuais usando a <a href="/calculadoras/inss">calculadora de INSS</a>, já configurada com as faixas de 2026. Para ver o INSS no contexto do holerite completo, veja o guia <a href="/negociar-salario">negociar salário pelo líquido</a>.</p>
             """),
         Article(
             "tabela-irrf-2026-guia",
@@ -557,6 +557,85 @@ public static class BlogArticleSeedData
             <p>Sócio que retira pró-labore paga INSS sobre o valor. Lucro distribuído segue regras próprias — converse com contador antes de misturar PF e PJ.</p>
             <h2>MEI → Simples</h2>
             <p>Desenquadramento do MEI exige migração planejada. Simule faturamento e impostos no <a href="/calculadoras/simulador-mei">simulador MEI</a> e compare cenários na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>. Leia também <a href="/blog/mei-faturamento-e-das">limite de faturamento MEI</a>.</p>
+            """),
+        Article(
+            "irrf-2026-reducao-imposto",
+            "IRRF 2026: redução de imposto e quem está isento",
+            "Entenda a Lei 15.270/2025, a isenção para bases menores e como conferir o desconto no holerite.",
+            "irrf",
+            "Fiscal",
+            new DateOnly(2026, 6, 19),
+            """
+            <p>Em 2026, a <strong>Lei 15.270/2025</strong> alterou a forma como o IRRF é calculado para rendimentos do trabalho assalariado. Muitos salários que antes tinham retenção passaram a ficar isentos ou com imposto reduzido — o que explica holerites com IRRF zerado mesmo acima do salário mínimo.</p>
+            <h2>Quem pode ficar isento em 2026</h2>
+            <p>A regra vigente reduz ou zera o imposto quando a <strong>base de cálculo</strong> (após INSS e deduções) está em faixas menores. Não confunda salário bruto com base tributável: dependentes, pensão e o próprio INSS mudam o número.</p>
+            <h2>Como conferir no holerite</h2>
+            <ol>
+            <li>Identifique a rubrica de IRRF e a base informada.</li>
+            <li>Compare com a <a href="/calculadoras/irrf">calculadora de IRRF</a> usando o mesmo bruto e dependentes.</li>
+            <li>Monte o extrato completo na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            </ol>
+            <h2>Negociação salarial</h2>
+            <p>Aumentos pequenos no bruto podem não mudar o líquido na mesma proporção por causa do imposto progressivo. Use o guia <a href="/negociar-salario">negociar salário pelo líquido</a> antes de aceitar proposta.</p>
+            <p>Complemente com <a href="/blog/tabela-irrf-2026-guia">tabela IRRF 2026</a> e a <a href="/duvidas/irrf-quem-paga-e-como-calcular">FAQ de IRRF</a>.</p>
+            """),
+        Article(
+            "seguro-desemprego-quem-tem-direito",
+            "Seguro-desemprego: quem tem direito e como estimar",
+            "Requisitos após demissão sem justa causa, parcelas e o que a rescisão não substitui.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 6, 20),
+            """
+            <p>O <strong>seguro-desemprego</strong> é benefício do trabalhador CLT dispensado sem justa causa (e em alguns casos de extinção do contrato). Ele <strong>não entra no TRCT</strong> como verba rescisória — é solicitado depois, com requisitos próprios de tempo de serviço e número de solicitações anteriores.</p>
+            <h2>Quem costuma ter direito</h2>
+            <ul>
+            <li>Demissão sem justa causa pelo empregador.</li>
+            <li>Extinção normal do contrato por prazo determinado (em regras específicas).</li>
+            <li>Alguns casos de rescisão indireta homologada — confirme com sindicato ou advogado.</li>
+            </ul>
+            <p><strong>Não têm direito</strong> em regra: pedido de demissão, justa causa e aposentadoria.</p>
+            <h2>Quantas parcelas</h2>
+            <p>O número de parcelas depende do tempo de trabalho na última empresa e de quantas vezes você já solicitou o benefício na vida. O valor de cada parcela segue tabela do Ministério do Trabalho — não é igual ao último salário líquido.</p>
+            <h2>Relação com a rescisão</h2>
+            <p>Simule verbas rescisórias na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> e FGTS na <a href="/calculadoras/fgts">calculadora de FGTS</a>. O seguro-desemprego aparece como orientação informativa na rescisão — o valor exato só o governo calcula na solicitação.</p>
+            <p>Siga o guia completo em <a href="/desligamento">desligamento CLT</a> e leia <a href="/duvidas/seguro-desemprego-quando-tem-direito">quando solicitar seguro-desemprego</a>.</p>
+            """),
+        Article(
+            "multa-fgts-40-ou-20",
+            "Multa FGTS 40% ou 20%: quando cada uma se aplica",
+            "Entenda demissão sem justa causa, acordo 484-A e pedido de demissão no contexto da multa rescisória.",
+            "fgts",
+            "Trabalhista",
+            new DateOnly(2026, 6, 21),
+            """
+            <p>A <strong>multa rescisória do FGTS</strong> é paga pelo empregador sobre o saldo da conta vinculada em situações específicas de desligamento. O percentual mais conhecido é <strong>40%</strong>, mas o <strong>acordo entre empregado e empresa (art. 484-A da CLT)</strong> usa <strong>20%</strong> sobre o saldo, com regras de saque diferentes.</p>
+            <h2>Multa de 40%</h2>
+            <p>Aplica-se na <strong>demissão sem justa causa</strong> pelo empregador. O valor é creditado na conta FGTS junto com a possibilidade de saque (conforme modalidade). A multa não é descontada do seu salário — é obrigação da empresa.</p>
+            <h2>Multa de 20% (acordo)</h2>
+            <p>No acordo para encerrar o contrato, as partes combinam verbas e a multa sobre FGTS cai para 20%. O trabalhador pode sacar parte do saldo, mas abre mão de parte da multa cheia.</p>
+            <h2>Sem multa para a empresa</h2>
+            <p>Pedido de demissão e demissão por justa causa, em regra, <strong>não geram multa de 40%</strong> para o empregador. O saldo FGTS pode ficar bloqueado para saque até outra hipótese legal.</p>
+            <h2>Estime saldo e multa</h2>
+            <p>Use a <a href="/calculadoras/fgts">calculadora de FGTS</a> com tipo de desligamento e a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> para o pacote completo. Veja também <a href="/blog/fgts-guia-completo">FGTS: guia completo</a> e o hub <a href="/desligamento">desligamento CLT</a>.</p>
+            <p>Consulte a <a href="/duvidas/multa-fgts-40-porcento">FAQ multa FGTS 40%</a>.</p>
+            """),
+        Article(
+            "aumento-salario-quanto-sobra-liquido",
+            "Aumento de salário: quanto sobra no líquido de verdade",
+            "Por que 10% no bruto pode virar menos no bolso — e como simular antes de aceitar a proposta.",
+            "proposta-salarial",
+            "Trabalhista",
+            new DateOnly(2026, 6, 22),
+            """
+            <p>Comunicar um aumento de <strong>10% no bruto</strong> parece simples, mas INSS e IRRF são progressivos: parte do ganho vira contribuição e imposto. O percentual real no bolso costuma ser <strong>menor</strong> que o anunciado no contracheque futuro.</p>
+            <h2>Exemplo ilustrativo</h2>
+            <p>De R$ 4.000 para R$ 4.400 de bruto (+10%), o líquido pode subir algo como 7% a 9% — dependendo de dependentes, faixa de IRRF e descontos fixos (VT, plano, pensão). Só a simulação com seus números responde com precisão.</p>
+            <h2>Compare com os mesmos descontos</h2>
+            <p>Para negociação justa, mantenha vale-transporte, VR/VA, plano e pensão iguais nos dois cenários. A <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> mostra ganho mensal, anual e percentuais no bruto e no líquido.</p>
+            <h2>Meta de bolso</h2>
+            <p>Se você precisa de um líquido mínimo (aluguel, financiamento), use também a <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a> — ela responde quanto de bruto pedir para chegar no valor desejado.</p>
+            <p>Explore o guia <a href="/negociar-salario">negociar salário pelo líquido</a>, <a href="/blog/como-avaliar-proposta-salarial">como avaliar proposta</a> e a <a href="/duvidas/proposta-salarial-como-negociar">FAQ de negociação</a>.</p>
             """)
     ];
 
@@ -660,6 +739,14 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Emita a NFS-e no mesmo mês do serviço prestado; atrasar pode complicar o DAS e a comprovação perante o cliente PJ.</p>",
             "simples-nacional-pj-guia-iniciantes" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça ao contador a simulação da alíquota efetiva nos anexos III e V antes de fechar o primeiro contrato como ME no Simples.</p>",
+            "irrf-2026-reducao-imposto" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Depois de um reajuste salarial, rode de novo a calculadora de IRRF — a isenção de 2026 pode fazer o imposto cair mais do que em anos anteriores.</p>",
+            "seguro-desemprego-quem-tem-direito" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Separe a solicitação do seguro-desemprego da homologação da rescisão; prazos e documentos são diferentes e perder a data pode custar parcelas.</p>",
+            "multa-fgts-40-ou-20" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de aceitar acordo 484-A, compare o líquido da rescisão com multa de 20% contra o cenário de demissão sem justa causa com 40% — nem sempre o acordo compensa.</p>",
+            "aumento-salario-quanto-sobra-liquido" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça ao RH o valor líquido estimado ou use nossa calculadora e compartilhe o PDF na conversa — negociar só pelo bruto esconde metade da história.</p>",
             _ => string.Empty
         };
 
