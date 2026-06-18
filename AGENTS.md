@@ -12,10 +12,10 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 52** — Observabilidade completa |
+| **Próxima sprint** | **Sprint 51** — Monetização AdSense (aguardando aprovação Google) |
 | **Prioridade alta** | — |
 | **Prioridade média** | — |
-| **Baixa prioridade** | 52 |
+| **Baixa prioridade** | — |
 | **Bloqueada** | Sprint 51 (AdSense — aguardar aprovação Google) |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.

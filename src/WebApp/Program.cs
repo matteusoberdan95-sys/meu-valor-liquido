@@ -135,6 +135,7 @@ app.UseStaticAssetCacheHeaders();
 app.UseSecurityHeaders();
 
 app.UseRouting();
+app.UseMiddleware<ProductMetricsHttpErrorMiddleware>();
 app.UseStatusCodePagesWithReExecute("/NotFound", "?statusCode={0}");
 app.UseRateLimiter();
 app.UseOutputCache();

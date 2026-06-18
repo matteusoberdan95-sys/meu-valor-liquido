@@ -88,9 +88,26 @@ Para cada URL abaixo: status **200**, campo principal visível, botão calcular 
 2. `/calculadoras/rescisao-clt` — motivo de desligamento e resultado
 3. PDF de resultado (sem anúncios) em calculadora com share
 
-### Métricas pós-deploy (opcional)
+### Métricas e observabilidade pós-deploy
 
 Após tráfego real, conferir `/metricas-internas?days=7` na segunda seguinte — ver `docs/METRICS_ROUTINE.md`.
+
+**Alertas no painel (Sprint 52):**
+
+| Métrica | Ação se elevada |
+|---------|-----------------|
+| Erros 404 | Corrigir links; ver rotas em "404 mais frequentes" |
+| Erros 500 | Logs (`Serilog`), `/health`, rollback |
+| Falhas de cálculo | Reproduzir slug; `dotnet test --filter CalculatorSubmissionSmoke` |
+
+**Smoke periódico em produção/staging:**
+
+```bash
+export SMOKE_BASE_URL=https://meuvalorliquido.com
+dotnet test tests/MeuValorLiquido.WebApp.Tests --filter "FullyQualifiedName~ProductionSmokeTests"
+```
+
+Rotinas complementares: `docs/SEO_MONTHLY_REVIEW.md`, `docs/CALIBRATION_ROUTINE.md`.
 
 ## 4. AdSense
 

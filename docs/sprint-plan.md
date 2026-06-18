@@ -450,13 +450,13 @@
 
 **North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
 
-**Proxima sprint a implementar:** **Sprint 52** (observabilidade completa) ou **Sprint 51** quando AdSense aprovar.
+**Proxima sprint a implementar:** **Sprint 51** (AdSense, quando Google aprovar) ou manutencao continua.
 
 | Prioridade | Sprints | Status |
 |------------|---------|--------|
-| **Alta** | — | Sprints 53-59 concluidas |
-| **Media** | — | Trilha 53-59 concluida |
-| **Baixa / bloqueada** | 51 (AdSense), 52 | 51 aguarda aprovacao Google; 52 proxima baixa prioridade |
+| **Alta** | — | Sprints 53-59 e 52 concluidas |
+| **Media** | — | Trilha pos-Sprint 50 concluida |
+| **Baixa / bloqueada** | 51 (AdSense) | 51 aguarda aprovacao Google |
 
 **Mapeamento com trilha antiga (Sprints 31-38):** nao duplicar trabalho. Escopo da antiga Sprint 32 → **Sprint 53**; antiga Sprint 33 → **Sprint 55**; antiga Sprint 34 → **Sprint 59**.
 
@@ -620,7 +620,7 @@
 
 ---
 
-## Sprint 52 - Observabilidade completa (PRIORIDADE BAIXA — apos Sprint 56)
+## Sprint 52 - Observabilidade completa (CONCLUIDA)
 
 **Objetivo:** medir quais calculadoras geram valor e priorizar proximas melhorias com dados (versao completa; a versao enxuta e a Sprint 56).
 

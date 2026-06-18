@@ -68,6 +68,37 @@
         <p class="valora-text-muted valora-text-sm" style="margin: 0;">Views widget</p>
         <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalWidgetViews.ToString("N0")</p>
     </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Erros 404</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalHttp404.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Erros 500</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalHttp500.ToString("N0")</p>
+    </article>
+    <article class="valora-card">
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Falhas de cálculo</p>
+        <p class="valora-h2" style="margin: 0.25rem 0 0;">@Model.Summary.TotalCalculationFailures.ToString("N0")</p>
+        <p class="valora-text-muted valora-text-sm" style="margin: 0.35rem 0 0;">
+            @ProductMetricsDisplayHelper.FormatRate(Model.Summary.CalculationFailureRatePercent) dos envios
+        </p>
+    </article>
+</section>
+
+<section class="valora-section valora-card">
+    <h2 class="valora-h2">Priorização sugerida</h2>
+    <p class="valora-text-muted valora-text-sm">Alertas automáticos com base em erros HTTP, falhas de formulário e engajamento baixo.</p>
+    <ul class="valora-related-tools-list">
+        @foreach (var insight in Model.Summary.PrioritizationInsights)
+        {
+            <li>
+                <span class="valora-related-tool-name">
+                    <span class="valora-metrics-insight valora-metrics-insight--@insight.Severity">@insight.Title</span>
+                </span>
+                <span class="valora-related-tool-teaser">@insight.Detail</span>
+            </li>
+        }
+    </ul>
 </section>
 
 <section class="valora-section valora-card">
@@ -152,10 +183,56 @@
     </section>
 </div>
 
+<div class="valora-section valora-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
+    <section class="valora-card">
+        <h2 class="valora-h2">Rotas 404 mais frequentes</h2>
+        @if (Model.Summary.TopHttp404Routes.Count == 0)
+        {
+            <p class="valora-text-muted valora-text-sm" style="margin: 0;">Nenhum 404 agregado no período.</p>
+        }
+        else
+        {
+            <ul class="valora-related-tools-list">
+                @foreach (var row in Model.Summary.TopHttp404Routes)
+                {
+                    <li>
+                        <span class="valora-related-tool-name"><code>@row.Label</code></span>
+                        <span class="valora-related-tool-teaser">@row.Count.ToString("N0")×</span>
+                    </li>
+                }
+            </ul>
+        }
+    </section>
+
+    <section class="valora-card">
+        <h2 class="valora-h2">Falhas por calculadora</h2>
+        @if (Model.Summary.TopCalculationFailures.Count == 0)
+        {
+            <p class="valora-text-muted valora-text-sm" style="margin: 0;">Nenhuma falha de envio no período.</p>
+        }
+        else
+        {
+            <ul class="valora-related-tools-list">
+                @foreach (var row in Model.Summary.TopCalculationFailures)
+                {
+                    <li>
+                        <span class="valora-related-tool-name">@Model.CalculatorLabel(row.Label)</span>
+                        <span class="valora-related-tool-teaser">@row.Count.ToString("N0") falhas · @row.Label</span>
+                    </li>
+                }
+            </ul>
+        }
+    </section>
+</div>
+
 <div class="valora-disclaimer valora-section">
     <span class="material-symbols-outlined">shield</span>
     <p style="margin: 0;">
-        Uso interno para priorizar produto e conteúdo (Sprints 57-58). Rotina semanal em
-        <code>docs/METRICS_ROUTINE.md</code>. Não substitui Google Analytics nem Search Console.
+        Uso interno para priorizar produto e conteúdo. Rotinas:
+        <code>docs/METRICS_ROUTINE.md</code> (semanal),
+        <code>docs/SEO_MONTHLY_REVIEW.md</code> (mensal),
+        <code>docs/CALIBRATION_ROUTINE.md</code> (trimestral).
+        Smoke de produção: variável <code>SMOKE_BASE_URL</code> + testes <code>ProductionSmokeTests</code>.
+        Não substitui Google Analytics nem Search Console.
     </p>
 </div>

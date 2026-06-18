@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Sprint 52 - Observabilidade completa
+- Métricas agregadas de erros HTTP 404/500 e falhas de cálculo (sem PII).
+- Painel `/metricas-internas` com alertas, priorização sugerida e rankings de erro.
+- Middleware `ProductMetricsHttpErrorMiddleware` + registro em `/Error`.
+- Smoke de submissão das 17 calculadoras (`CalculatorSubmissionSmokeTests`).
+- Smoke opcional de produção via `SMOKE_BASE_URL` (`ProductionSmokeTests`).
+- Docs: `SEO_MONTHLY_REVIEW.md`, `CALIBRATION_ROUTINE.md`; `METRICS_ROUTINE` e `DEPLOY` atualizados.
+- Testes `Sprint52ObservabilityTests`.
+
 ### Sprint 59 - PJ x CLT e MEI profundos
 - Anexo Simples Nacional (I–V) com alíquota sugerida; pró-labore editável (%).
 - Custo oculto CLT no extrato: FGTS, provisão 13º e férias + 1/3.

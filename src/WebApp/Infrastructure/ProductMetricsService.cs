@@ -7,6 +7,9 @@ public static class ProductMetricEvents
     public const string ShareCopy = "share_copy";
     public const string PanelSave = "panel_save";
     public const string WidgetView = "widget_view";
+    public const string HttpError404 = "http_error_404";
+    public const string HttpError500 = "http_error_500";
+    public const string CalculationFailed = "calculation_failed";
 
     private static readonly HashSet<string> All =
     [
@@ -14,7 +17,10 @@ public static class ProductMetricEvents
         PdfDownload,
         ShareCopy,
         PanelSave,
-        WidgetView
+        WidgetView,
+        HttpError404,
+        HttpError500,
+        CalculationFailed
     ];
 
     private static readonly HashSet<string> ClientCollectible =
@@ -51,10 +57,17 @@ public sealed record ProductMetricsSummary(
     decimal SharePerCalculationPercent,
     decimal PdfPerCalculationPercent,
     decimal PanelSavePerCalculationPercent,
+    long TotalHttp404,
+    long TotalHttp500,
+    long TotalCalculationFailures,
+    decimal CalculationFailureRatePercent,
     IReadOnlyList<ProductMetricRow> TopCalculations,
     IReadOnlyList<ProductMetricRow> TopPdfDownloads,
     IReadOnlyList<ProductMetricRow> TopShareCopies,
-    IReadOnlyList<ProductMetricRow> TopPanelSaves);
+    IReadOnlyList<ProductMetricRow> TopPanelSaves,
+    IReadOnlyList<ProductMetricRow> TopHttp404Routes,
+    IReadOnlyList<ProductMetricRow> TopCalculationFailures,
+    IReadOnlyList<ProductMetricsInsight> PrioritizationInsights);
 
 public static class ProductMetricsPeriod
 {

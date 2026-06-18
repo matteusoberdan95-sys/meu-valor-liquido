@@ -147,12 +147,14 @@ public class DetailsModel : PageModel
 
         if (!ModelState.IsValid)
         {
+            await productMetricsService.RecordAsync(ProductMetricEvents.CalculationFailed, slug);
             return Page();
         }
 
         var result = calculatorService.Calculate(slug, Input);
         if (result.IsFailure)
         {
+            await productMetricsService.RecordAsync(ProductMetricEvents.CalculationFailed, slug);
             ModelState.AddModelError(string.Empty, result.Error.Message);
             return Page();
         }

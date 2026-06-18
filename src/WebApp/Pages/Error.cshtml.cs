@@ -7,9 +7,10 @@ public class ErrorModel : PageModel
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-    public void OnGet()
+    public async Task OnGet([FromServices] IProductMetricsService metricsService)
     {
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+        await metricsService.RecordAsync(ProductMetricEvents.HttpError500, "server");
     }
 }
 

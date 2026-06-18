@@ -32,6 +32,11 @@ public class IndexModel : PageModel
             .GroupBy(calculator => calculator.Slug, StringComparer.OrdinalIgnoreCase)
             .ToDictionary(group => group.Key, group => group.First().Name, StringComparer.OrdinalIgnoreCase);
 
+        Summary = Summary with
+        {
+            PrioritizationInsights = ProductMetricsPrioritizationBuilder.Build(Summary, CalculatorNames)
+        };
+
         SeoMetadataHelper.Apply(
             ViewData,
             new SeoMetadata(

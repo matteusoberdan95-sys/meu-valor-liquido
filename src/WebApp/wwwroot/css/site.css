@@ -864,6 +864,29 @@ h1, h2, h3, h4,
   color: #fbbf24;
 }
 
+.valora-metrics-insight {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.35rem;
+}
+
+.valora-metrics-insight--alert {
+  color: #fecaca;
+  background: rgb(239 68 68 / 15%);
+}
+
+.valora-metrics-insight--warning {
+  color: #fde68a;
+  background: rgb(251 191 36 / 12%);
+}
+
+.valora-metrics-insight--info {
+  color: var(--valora-primary);
+  background: rgb(89 219 199 / 10%);
+}
+
 .valora-choice-group {
   display: grid;
   grid-template-columns: 1fr;

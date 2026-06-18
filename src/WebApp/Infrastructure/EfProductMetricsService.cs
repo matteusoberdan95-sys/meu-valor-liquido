@@ -60,6 +60,10 @@ public sealed class EfProductMetricsService : IProductMetricsService
         var totalPdfDownloads = Sum(ProductMetricEvents.PdfDownload);
         var totalShareCopies = Sum(ProductMetricEvents.ShareCopy);
         var totalPanelSaves = Sum(ProductMetricEvents.PanelSave);
+        var totalHttp404 = Sum(ProductMetricEvents.HttpError404);
+        var totalHttp500 = Sum(ProductMetricEvents.HttpError500);
+        var totalCalculationFailures = Sum(ProductMetricEvents.CalculationFailed);
+        var calculationAttempts = totalCalculations + totalCalculationFailures;
 
         return new ProductMetricsSummary(
             from,
@@ -73,10 +77,17 @@ public sealed class EfProductMetricsService : IProductMetricsService
             Rate(totalShareCopies, totalCalculations),
             Rate(totalPdfDownloads, totalCalculations),
             Rate(totalPanelSaves, totalCalculations),
+            totalHttp404,
+            totalHttp500,
+            totalCalculationFailures,
+            Rate(totalCalculationFailures, calculationAttempts),
             TopByDimension(rows, ProductMetricEvents.CalculatorCalculation, 10),
             TopByDimension(rows, ProductMetricEvents.PdfDownload, 10),
             TopByDimension(rows, ProductMetricEvents.ShareCopy, 10),
-            TopByDimension(rows, ProductMetricEvents.PanelSave, 10));
+            TopByDimension(rows, ProductMetricEvents.PanelSave, 10),
+            TopByDimension(rows, ProductMetricEvents.HttpError404, 8),
+            TopByDimension(rows, ProductMetricEvents.CalculationFailed, 8),
+            []);
     }
 
     private static decimal Rate(long numerator, long denominator) =>
