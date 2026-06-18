@@ -450,12 +450,12 @@
 
 **North star desta trilha:** o usuario entende **quanto recebe, quanto desconta e quanto sobra** — com extrato, metodologia e jornada clara entre ferramentas.
 
-**Proxima sprint a implementar:** **Sprint 57**.
+**Proxima sprint a implementar:** **Sprint 58**.
 
 | Prioridade | Sprints | Status |
 |------------|---------|--------|
 | **Alta** | — | Sprints 53-55 concluidas |
-| **Media** | 56, 57, 58 | Sprint 56 concluida; Sprint 57 e a proxima |
+| **Media** | 56, 57, 58 | Sprints 56-57 concluidas; Sprint 58 e a proxima |
 | **Baixa / bloqueada** | 51 (AdSense), 59, 52 | 51 aguarda aprovacao Google; 52 apos metricas enxutas |
 
 **Mapeamento com trilha antiga (Sprints 31-38):** nao duplicar trabalho. Escopo da antiga Sprint 32 → **Sprint 53**; antiga Sprint 33 → **Sprint 55**; antiga Sprint 34 → **Sprint 59**.
@@ -547,7 +547,7 @@
 
 ---
 
-## Sprint 57 - Faixas salariais e widget incorporavel (PRIORIDADE MEDIA)
+## Sprint 57 - Faixas salariais e widget incorporavel (CONCLUIDA)
 
 **Objetivo:** crescimento organico via SEO programatico util e backlinks legitimos.
 

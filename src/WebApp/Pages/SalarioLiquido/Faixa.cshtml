@@ -36,9 +36,12 @@
     <div class="valora-stack-md">
         <section class="valora-card valora-prose">
             @Html.Raw(Model.PageContent.IntroHtml)
+            @Html.Raw(Model.PageContent.EditorialHtml)
             @Html.Raw(Model.PageContent.ContextHtml)
             @Html.Raw(Model.PageContent.TipsHtml)
         </section>
+
+        <partial name="Shared/_WidgetEmbedCta" />
 
         <div class="valora-disclaimer">
             <span class="material-symbols-outlined">warning</span>

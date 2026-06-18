@@ -94,7 +94,7 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 | Tipo | Exemplo | Requisitos |
 |------|---------|------------|
 | Salário bruto necessário | `/calculadora-salario-bruto` | Title, FAQ, links internos |
-| Faixa salarial | `/salario-liquido/3000` | Conteúdo único, canonical, sitemap |
+| Faixa salarial | `/salario-liquido/{valor}` | Conteúdo único por faixa, editorial dedicado, canonical, sitemap (Sprint 57: **31 faixas**) |
 | CLT x PJ derivadas | `/clt-pj/5000-clt-equivale-a-quanto-pj` | Sem thin content |
 | Dúvidas | `/duvidas/{slug}` | FAQPage, link para calculadora |
 
@@ -106,14 +106,14 @@ Checklist técnico com **status atual** (Sprint 0) e critérios por tipo de pág
 
 - `/`, `/calculadoras`, `/sobre`, `/contato`, `/blog`
 - `/politica-de-privacidade`, `/termos-de-uso`, `/aviso-legal`
+- `/widget`, `/salario-liquido` e **31 faixas** `/salario-liquido/{valor}` (Sprint 57)
+- `/duvidas/*`, `/como-calculamos`, `/clt-pj/*`
 - Todas as calculadoras ativas (EF)
 - Posts publicados (EF)
 
-**Lacunas (Sprint 1):**
+**Lacunas:**
 
-- `/newsletter`
-- Páginas programáticas (Sprints 2–3)
-- `/duvidas/*` (Sprint 9)
+- Páginas programáticas adicionais conforme backlog
 
 ---
 

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 57 - Faixas salariais e widget incorporável
+- **31 faixas** em `/salario-liquido/{valor}` (13 novas: 2200–11000 etc.) com texto editorial único por valor.
+- `SalaryBandEditorialCatalog` — cenário de mercado e dica de planejamento por faixa; 5ª FAQ dedicada.
+- CTA do widget em blog, contato, hub e páginas de faixa (`_WidgetEmbedCta.cshtml`).
+- `docs/SEO_CHECKLIST.md` atualizado; sitemap inclui novas faixas.
+- Testes `Sprint57SalaryBandTests` e `Sprint57WidgetCtaTests`.
+
 ### Sprint 56 - Métricas enxutas e decisão por dados
 - `/metricas-internas` com seletor de período (7/30 dias), taxas de engajamento (share, PDF, painel) e rankings ampliados.
 - Nomes legíveis das calculadoras no ranking; tops de share e painel local.

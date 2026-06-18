@@ -7,7 +7,8 @@ public class SalaryBandTests
         var bands = SalaryBandCatalog.GetAll();
         bands.Should().Contain(3000);
         bands.Should().Contain(5000);
-        bands.Should().HaveCountGreaterThan(10);
+        bands.Should().Contain(4200);
+        bands.Should().HaveCountGreaterThanOrEqualTo(SalaryBandCatalog.MinimumIndexedBands);
     }
 
     [Theory]
@@ -28,6 +29,7 @@ public class SalaryBandTests
         content.Title.Should().Contain("3.000");
         content.Description.Should().Contain("Líquido");
         content.IntroHtml.Should().Contain("INSS");
-        content.FaqItems.Should().HaveCountGreaterThanOrEqualTo(4);
+        content.EditorialHtml.Should().NotBeNullOrWhiteSpace();
+        content.FaqItems.Should().HaveCountGreaterThanOrEqualTo(5);
     }
 }

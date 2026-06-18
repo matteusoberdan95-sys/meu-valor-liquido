@@ -6,6 +6,7 @@ public sealed record SalaryBandPageContent(
     string Title,
     string Description,
     string IntroHtml,
+    string EditorialHtml,
     string ContextHtml,
     string TipsHtml,
     IReadOnlyList<SalaryBandFaqItem> FaqItems);
@@ -35,6 +36,7 @@ public static class SalaryBandContentBuilder
             $"O desconto previdenciário estimado é {inssMoney}, na faixa {inssBracket}.</p>";
 
         var context = BuildContextParagraph(gross, minWageRatio, irrfStatus, breakdown);
+        var editorial = SalaryBandEditorialCatalog.BuildEditorialHtml(gross, breakdown, SalaryBandCatalog.GetAll());
         var tips = BuildTipsParagraph(gross);
 
         var faq = new List<SalaryBandFaqItem>
@@ -54,7 +56,13 @@ public static class SalaryBandContentBuilder
                 "ou informe o líquido desejado na <a href=\"/calculadoras/salario-bruto-necessario\">calculadora inversa</a>.")
         };
 
-        return new SalaryBandPageContent(gross, title, description, intro, context, tips, faq);
+        var extraFaq = SalaryBandEditorialCatalog.BuildExtraFaq(gross, breakdown);
+        if (extraFaq is not null)
+        {
+            faq.Add(extraFaq);
+        }
+
+        return new SalaryBandPageContent(gross, title, description, intro, editorial, context, tips, faq);
     }
 
     private static string BuildContextParagraph(int gross, decimal minWageRatio, IrrfStatus irrf, NetSalaryBreakdown breakdown)

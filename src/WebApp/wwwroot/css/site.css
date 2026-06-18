@@ -919,6 +919,18 @@ a.valora-choice.valora-choice--active {
   font-weight: 600;
 }
 
+.valora-widget-embed-cta-head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.valora-widget-embed-cta-head .material-symbols-outlined {
+  font-size: 1.75rem;
+  color: var(--valora-primary);
+  flex-shrink: 0;
+}
+
 .valora-form-row {
   display: grid;
   grid-template-columns: 1fr;
