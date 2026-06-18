@@ -393,6 +393,74 @@
 
 ---
 
+## Trilha referência no nicho e tráfego orgânico (Sprints 65–67)
+
+**Origem:** decisão de produto — ser referência no nicho salário/trabalho (não portal genérico), com tráfego natural e base para AdSense.
+
+**North star:** hubs temáticos no funil salarial + conteúdo editorial cirúrgico + uma calculadora de alto ROI por vez.
+
+**Especificação completa:** `docs/NICHO_REFERENCIA_PLAN.md` (URLs, SEO, calendário 6 meses, matriz de calculadoras).
+
+**Agents:** leiam o plano e **decidam por onde começar** (ver seção “Onde os agents começam”). Ordem sugerida: **65 → 66 → 67**; Sprint 66 (planejamento + artigos) pode avançar em paralelo à 65.
+
+| Sprint | Passo | Tema | Status |
+|--------|-------|------|--------|
+| **65** | 1 | Hubs temáticos (`/desligamento`, `/negociar-salario`, `/virar-pj`) | **CONCLUÍDA** |
+| **66** | 2 | Calendário editorial 6 meses + ≥4 artigos novos | **Próxima** |
+| **67** | 3 | Próxima calculadora (PO escolhe 1 na matriz do plano) | Após 65–66 ou em paralelo ao conteúdo |
+
+**Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 65–67.
+
+**Definition of Done (trilha):** `dotnet test` verde; hubs no sitemap; artigos com calculadora relacionada; uma calculadora nova se Sprint 67 concluída; `CHANGELOG.md` + `AGENTS.md` atualizados.
+
+---
+
+### Sprint 65 — Hubs temáticos (Passo 1) — CONCLUÍDA
+
+**Objetivo:** três landing pages que agregam calculadoras, artigos, FAQ e jornada — reforço de SEO e pageviews sem virar portal genérico.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Páginas `/desligamento`, `/negociar-salario`, `/virar-pj` via `ThematicHubLoader` + `_ThematicHubPage` |
+| SEO/Content | Title, description, canonical, breadcrumbs, JSON-LD; intro editorial por hub |
+| QA/Test | `Sprint65ThematicHubTests`; rotas em `GoLiveSmokeTests` |
+| Documentation | Sitemap, `MapaDoSite`, `CHANGELOG.md` |
+
+**Critérios de aceite:** ver `docs/NICHO_REFERENCIA_PLAN.md` § Passo 1 — atendidos.
+
+---
+
+### Sprint 66 — Calendário editorial 6 meses (Passo 2)
+
+**Objetivo:** calendário versionado (2 artigos/mês, 6 meses) e primeiros entregáveis — Mês 1 completo + início Mês 2 (≥4 artigos).
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | Artigos em `BlogArticleSeedData.cs`; slugs sem duplicar existentes; cross-link hubs Sprint 65 |
+| Product Owner | Validar calendário; cortar temas fora dos 4 pilares |
+| WebApp/Frontend | Integração blog ↔ hubs; breadcrumbs |
+| QA/Test | Contagem mínima; links calculadora; sitemap |
+
+**Critérios de aceite:** calendário em `NICHO_REFERENCIA_PLAN.md`; ≥4 artigos novos; cada artigo com `RelatedCalculatorSlug`.
+
+---
+
+### Sprint 67 — Próxima calculadora de alto ROI (Passo 3)
+
+**Objetivo:** uma calculadora nova dentro do nicho; **Product Owner escolhe** entre `seguro-desemprego`, `emprestimo-consignado` ou `simples-nacional-pj` usando matriz do plano.
+
+| Agent | Entregas |
+|-------|----------|
+| Product Owner | Registrar escolha e motivação (matriz 5 critérios) no CHANGELOG ou PR |
+| Backend/Calculators | Motor, seed, FAQ, benchmark se aplicável |
+| WebApp/Frontend | `Details.cshtml` / field profile; hub e jornada atualizados |
+| SEO/Content | 1 artigo + FAQ; entrada no hub correspondente |
+| QA/Test | Unitários + smoke; regressão fiscal se tocar tabelas |
+
+**Critérios de aceite:** seguir `docs/how-to-create-calculator.md`; recomendação inicial PO: `seguro-desemprego` (ver plano).
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.

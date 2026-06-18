@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Planejamento — Trilha referência no nicho (Sprints 65–67)
+- Novo `docs/NICHO_REFERENCIA_PLAN.md`: Passo 1 (hubs), Passo 2 (calendário editorial 6 meses), Passo 3 (matriz calculadora).
+- `docs/sprint-plan.md`, `AGENTS.md` e `docs/agents.md` atualizados.
+
+### Sprint 65 — Hubs temáticos
+- `ThematicHubCatalog`, `ThematicHubPageBuilder`, `ThematicHubLoader` e partial `_ThematicHubPage`.
+- Páginas `/desligamento`, `/negociar-salario`, `/virar-pj` com calculadoras, jornada, artigos, FAQ e SEO.
+- Jornada `VirarPj` em `CalculatorJourneyCatalog` (entrada `pj-vs-clt`).
+- Sitemap, mapa do site, breadcrumbs JSON-LD e testes `Sprint65ThematicHubTests`.
+
 ### Sprint 64 — Meu painel + template C1
 - Meu painel em layout bento Stitch: greeting, perfil local, cálculos salvos, leituras sugeridas, newsletter.
 - Template C1 nas 14 calculadoras restantes: modifiers por categoria + botão “Calcular agora”.

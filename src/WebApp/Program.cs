@@ -101,6 +101,7 @@ builder.Services.AddRateLimiter(options =>
 
 builder.Services.AddSingleton<CalculatorShareLinkBuilder>();
 builder.Services.AddScoped<CalculatorJourneyLinkBuilder>();
+builder.Services.AddScoped<ThematicHubLoader>();
 builder.Services.AddSingleton<CalculatorResultPdfGenerator>();
 builder.Services.AddCalculatorsModule();
 builder.Services.AddScoped<IBlogHeroImageService, BlogHeroImageService>();

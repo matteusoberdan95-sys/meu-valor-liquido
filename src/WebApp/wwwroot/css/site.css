@@ -8342,3 +8342,124 @@ select:focus-visible {
 
 .valora-stitch-rescisao-tip-link:hover { text-decoration: underline; }
 
+/* Sprint 65 — hubs temáticos */
+.valora-stitch-thematic-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.valora-stitch-thematic-hub-hero {
+  margin-bottom: 0;
+}
+
+.valora-stitch-thematic-hub-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.valora-stitch-thematic-hub-intro {
+  padding: 1.25rem 1.5rem;
+  line-height: 1.6;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-thematic-hub-intro p {
+  margin: 0 0 0.75rem;
+}
+
+.valora-stitch-thematic-hub-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.valora-stitch-thematic-hub-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valora-stitch-thematic-hub-section-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-thematic-hub-section-lead {
+  margin: 0;
+}
+
+.valora-stitch-thematic-hub-articles {
+  display: grid;
+  gap: 1rem;
+}
+
+.valora-stitch-thematic-hub-faq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valora-stitch-thematic-hub-faq-link {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--valora-border-subtle, rgba(255, 255, 255, 0.08));
+  background: var(--valora-surface-elevated, #141416);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.valora-stitch-thematic-hub-faq-link:hover {
+  border-color: var(--valora-primary);
+  background: rgba(45, 212, 191, 0.06);
+}
+
+.valora-stitch-thematic-hub-faq-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--valora-on-surface);
+}
+
+.valora-stitch-thematic-hub-faq-category {
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  white-space: nowrap;
+}
+
+.valora-stitch-thematic-hub-faq-link .material-symbols-outlined {
+  color: var(--valora-text-muted);
+  font-size: 1.25rem;
+}
+
+.valora-stitch-thematic-hub-more {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+}
+
+.valora-stitch-thematic-hub-cta {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-thematic-hub-articles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+

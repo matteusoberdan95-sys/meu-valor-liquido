@@ -16,6 +16,9 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/meu-painel")]
     [InlineData("/widget")]
     [InlineData("/mapa-do-site")]
+    [InlineData("/desligamento")]
+    [InlineData("/negociar-salario")]
+    [InlineData("/virar-pj")]
     [InlineData("/robots.txt")]
     [InlineData("/favicon.ico")]
     public async Task Go_Live_Route_Or_Asset_Should_Be_Available(string path)

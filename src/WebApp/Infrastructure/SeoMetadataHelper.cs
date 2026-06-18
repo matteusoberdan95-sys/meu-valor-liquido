@@ -103,6 +103,12 @@ public static class SeoMetadataHelper
         new("Dúvidas populares", "/duvidas")
     ];
 
+    public static IReadOnlyList<BreadcrumbItem> ThematicHubBreadcrumbs(string title, string path) =>
+    [
+        new("Início", "/"),
+        new(title, path)
+    ];
+
     public static IReadOnlyList<BreadcrumbItem> PopularQuestionBreadcrumbs(string title, string slug) =>
     [
         new("Início", "/"),

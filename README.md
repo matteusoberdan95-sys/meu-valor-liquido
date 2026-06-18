@@ -22,8 +22,8 @@ Para alternar o trabalho entre os dois agentes sem perder contexto:
 Estado operacional atual:
 
 - Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
-- **Próxima sprint:** 53 (holerite completo) — ver `docs/sprint-plan.md` e `AGENTS.md`.
-- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–50. AdSense (Sprint 51) aguarda aprovação Google.
+- **Próxima sprint:** 66 (calendário editorial) — ver `docs/sprint-plan.md`, `AGENTS.md` e `docs/NICHO_REFERENCIA_PLAN.md`.
+- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–59; fidelidade v2 (60–64); hubs temáticos (65).
 ## Clonar o projeto
 
 ```powershell

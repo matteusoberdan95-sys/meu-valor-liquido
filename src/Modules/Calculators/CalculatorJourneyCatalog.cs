@@ -24,6 +24,7 @@ public static class CalculatorJourneyCatalog
     public const string PropostaRecebida = "proposta-recebida";
     public const string SaidaEmpresa = "saida-empresa";
     public const string LiquidoDesejado = "liquido-desejado";
+    public const string VirarPj = "virar-pj";
 
     private static readonly IReadOnlyList<CalculatorJourneyDefinition> All =
     [
@@ -57,6 +58,16 @@ public static class CalculatorJourneyCatalog
                 new(CalculatorJourneyStepKind.Calculator, "salario-bruto-necessario", "Descubra o bruto necessário para o líquido informado."),
                 new(CalculatorJourneyStepKind.Calculator, "salario-liquido", "Valide o extrato a partir do bruto estimado e dos mesmos descontos."),
                 new(CalculatorJourneyStepKind.SalaryBand, "nearest", "Veja uma página de referência para um bruto próximo do valor encontrado.")
+            ]),
+        new(
+            VirarPj,
+            "Virar PJ",
+            "Antes de abrir CNPJ ou pedir demissão, compare líquido CLT com PJ ou MEI — impostos, pró-labore e custo oculto dos benefícios.",
+            "pj-vs-clt",
+            [
+                new(CalculatorJourneyStepKind.Calculator, "pj-vs-clt", "Compare líquido CLT com faturamento PJ, Simples e pró-labore."),
+                new(CalculatorJourneyStepKind.Calculator, "simulador-mei", "Estime DAS, limite anual e alertas de desenquadramento do MEI."),
+                new(CalculatorJourneyStepKind.Calculator, "custo-funcionario", "Veja o custo total que a empresa teria com um funcionário CLT.")
             ])
     ];
 
@@ -96,4 +107,7 @@ public static class CalculatorJourneyCatalog
             ? []
             : journey.Steps.Skip(currentIndex + 1).ToList();
     }
+
+    public static IReadOnlyList<CalculatorJourneyStepDefinition> GetAllSteps(string journeyId) =>
+        TryGet(journeyId)?.Steps ?? [];
 }

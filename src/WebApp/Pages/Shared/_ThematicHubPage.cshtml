@@ -1,0 +1,107 @@
+@model MeuValorLiquido.WebApp.Infrastructure.ThematicHubPageViewModel
+@{
+    var hub = Model.Hub;
+}
+
+<div class="valora-stitch-thematic-hub">
+    <nav aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">@hub.BreadcrumbLabel</li>
+        </ol>
+    </nav>
+
+    <section class="valora-stitch-faq-hero valora-stitch-thematic-hub-hero">
+        <p class="valora-stitch-faq-hero-kicker">@hub.HeroKicker</p>
+        <h1 class="valora-stitch-faq-hero-title">@hub.HeroTitle</h1>
+        <p class="valora-stitch-faq-hero-lead">@hub.HeroLead</p>
+        @if (Model.PrimaryCalculator is not null)
+        {
+            <div class="valora-stitch-thematic-hub-hero-cta">
+                <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline"
+                   asp-page="/Calculadoras/Details"
+                   asp-route-slug="@Model.PrimaryCalculator.Slug">
+                    Abrir @Model.PrimaryCalculator.Name
+                </a>
+                <a class="valora-stitch-btn valora-stitch-btn--ghost valora-stitch-btn--inline"
+                   asp-page="/ComoCalculamos">
+                    Como calculamos
+                </a>
+            </div>
+        }
+    </section>
+
+    <section class="valora-stitch-thematic-hub-intro valora-card" aria-label="Introdução">
+        @Html.Raw(hub.IntroHtml)
+    </section>
+
+  @if (Model.Journey.Steps.Count > 0)
+    {
+        <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.Journey" />
+    }
+
+    <section class="valora-stitch-thematic-hub-section" aria-labelledby="thematic-hub-calculators">
+        <h2 class="valora-stitch-thematic-hub-section-title" id="thematic-hub-calculators">Calculadoras recomendadas</h2>
+        <p class="valora-text-muted valora-text-sm valora-stitch-thematic-hub-section-lead">
+            Ferramentas calibradas com tabelas de @BrTaxTables2026.Year e extrato tipo holerite.
+        </p>
+        <div class="valora-stitch-calc-row-list">
+            @foreach (var calculator in Model.Calculators)
+            {
+                <partial name="Shared/_CalculadoraHubRowCard" model="calculator" />
+            }
+        </div>
+    </section>
+
+    @if (Model.Articles.Count > 0)
+    {
+        <section class="valora-stitch-thematic-hub-section" aria-labelledby="thematic-hub-articles">
+            <h2 class="valora-stitch-thematic-hub-section-title" id="thematic-hub-articles">Artigos relacionados</h2>
+            <div class="valora-stitch-thematic-hub-articles">
+                @foreach (var article in Model.Articles)
+                {
+                    <partial name="Shared/_BlogStitchRelatedCard" model="article" />
+                }
+            </div>
+        </section>
+    }
+
+    @if (Model.Faqs.Count > 0)
+    {
+        <section class="valora-stitch-thematic-hub-section" aria-labelledby="thematic-hub-faqs">
+            <h2 class="valora-stitch-thematic-hub-section-title" id="thematic-hub-faqs">Dúvidas frequentes</h2>
+            <ul class="valora-stitch-thematic-hub-faq-list">
+                @foreach (var faq in Model.Faqs)
+                {
+                    <li>
+                        <a class="valora-stitch-thematic-hub-faq-link" href="@PopularQuestionsCatalog.SlugPath(faq.Slug)">
+                            <span class="valora-stitch-thematic-hub-faq-title">@faq.Title</span>
+                            <span class="valora-stitch-thematic-hub-faq-category">@faq.Category</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            <p class="valora-stitch-thematic-hub-more">
+                <a asp-page="/Duvidas/Index">Ver central de ajuda completa</a>
+            </p>
+        </section>
+    }
+
+    <section class="valora-stitch-thematic-hub-cta valora-card" aria-label="Próximo passo">
+        <h2 class="valora-h3">Pronto para simular?</h2>
+        <p class="valora-text-muted valora-text-sm">
+            Resultado em formato de extrato, com aviso legal e metodologia pública em
+            <a asp-page="/ComoCalculamos">Como calculamos</a>.
+        </p>
+        @if (Model.PrimaryCalculator is not null)
+        {
+            <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline"
+               asp-page="/Calculadoras/Details"
+               asp-route-slug="@Model.PrimaryCalculator.Slug">
+                Começar por @Model.PrimaryCalculator.Name
+            </a>
+        }
+    </section>
+</div>

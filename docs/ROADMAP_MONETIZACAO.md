@@ -146,6 +146,7 @@ Sprints legadas (0–16 do repo): fundação, 15 calculadoras, blog — **conclu
 
 ## Referências
 
+- `docs/NICHO_REFERENCIA_PLAN.md` — trilha ativa Sprints 65–67 (hubs, calendário, calculadora)
 - `docs/SEO_CHECKLIST.md` — checklist técnico de SEO
 - `docs/ADSENSE_COMPLIANCE.md` — regras de anúncios
 - `docs/adsense-checklist.md` — pré-requisitos para solicitar AdSense

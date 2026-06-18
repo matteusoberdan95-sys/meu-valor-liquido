@@ -1,0 +1,11 @@
+@page "/virar-pj"
+@model MeuValorLiquido.WebApp.Pages.VirarPj.IndexModel
+@{
+    Layout = "_Layout";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.ThematicHubBreadcrumbs(Model.HubPage.Hub.BreadcrumbLabel, Model.HubPage.Hub.RoutePath)" />
+}
+
+<partial name="Shared/_ThematicHubPage" model="Model.HubPage" />
