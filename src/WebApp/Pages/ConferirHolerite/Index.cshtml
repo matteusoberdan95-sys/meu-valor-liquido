@@ -1,0 +1,187 @@
+@page "/conferir-holerite"
+@model MeuValorLiquido.WebApp.Pages.ConferirHolerite.IndexModel
+@{
+    ViewData["Title"] = "Conferir holerite";
+    ViewData["Description"] = "Compare INSS, IRRF e líquido do holerite com as tabelas de 2026.";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model='(IReadOnlyList<BreadcrumbItem>)new List<BreadcrumbItem> { new("Início", "/"), new("Conferir holerite", "/conferir-holerite") }' />
+}
+
+<div class="valora-stitch-payslip">
+    <nav class="valora-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Conferir holerite</li>
+        </ol>
+    </nav>
+
+    <header class="valora-stitch-payslip-header">
+        <p class="valora-stitch-payslip-kicker">Ferramenta educativa</p>
+        <h1 class="valora-stitch-payslip-title">Conferir holerite</h1>
+        <p class="valora-stitch-payslip-lead">
+            Informe o que aparece no seu holerite e compare com uma simulação pelas tabelas de INSS e IRRF @BrTaxTables2026.Year.
+            Tolerância de <strong>R$ 1,00</strong> por linha — não substitui o contracheque oficial.
+        </p>
+    </header>
+
+    <div class="valora-stitch-payslip-layout">
+        <form method="post" class="valora-form-card valora-stitch-payslip-form valora-stack-md">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <section class="valora-stitch-payslip-section">
+                <h2 class="valora-stitch-payslip-section-title">Dados do holerite</h2>
+                <div class="valora-form-row">
+                    <div>
+                        <label asp-for="Input.GrossSalary" class="valora-label">Salário bruto</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.GrossSalary" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                        <span asp-validation-for="Input.GrossSalary" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Input.Dependents" class="valora-label">Dependentes (IRRF)</label>
+                        <input asp-for="Input.Dependents" class="valora-input" type="text" data-mask="integer" data-max-length="2" inputmode="numeric" placeholder="0" />
+                    </div>
+                </div>
+            </section>
+
+            <section class="valora-stitch-payslip-section">
+                <h2 class="valora-stitch-payslip-section-title">Descontos do holerite</h2>
+                <p class="valora-text-muted valora-text-sm">Informe os demais descontos para estimar o líquido com precisão.</p>
+                <div class="valora-form-row">
+                    <div>
+                        <label asp-for="Input.TransportDiscount" class="valora-label">Vale-transporte</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.TransportDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                    <div>
+                        <label asp-for="Input.MealVoucherDiscount" class="valora-label">Vale-refeição/alimentação</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.MealVoucherDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                    <div>
+                        <label asp-for="Input.HealthPlanDiscount" class="valora-label">Plano de saúde</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.HealthPlanDiscount" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                    <div>
+                        <label asp-for="Input.OtherDiscounts" class="valora-label">Outros descontos</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.OtherDiscounts" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="valora-stitch-payslip-section">
+                <h2 class="valora-stitch-payslip-section-title">Valores descontados no holerite</h2>
+                <div class="valora-form-row">
+                    <div>
+                        <label asp-for="Input.ReportedInss" class="valora-label">INSS descontado</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.ReportedInss" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                    <div>
+                        <label asp-for="Input.ReportedIrrf" class="valora-label">IRRF descontado</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.ReportedIrrf" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                    <div>
+                        <label asp-for="Input.ReportedNet" class="valora-label">Líquido (opcional)</label>
+                        <div class="valora-input-prefix">
+                            <span class="valora-prefix">R$</span>
+                            <input asp-for="Input.ReportedNet" class="valora-input" type="text" data-mask="currency" placeholder="0,00" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <button class="valora-stitch-btn valora-stitch-btn--primary" type="submit">
+                Conferir holerite
+                <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+            </button>
+        </form>
+
+        <aside class="valora-stitch-payslip-aside">
+            @if (Model.Result is not null)
+            {
+                <div class="valora-stitch-payslip-result @(Model.Result.AllMatched ? "valora-stitch-payslip-result--ok" : "valora-stitch-payslip-result--warn")">
+                    <div class="valora-stitch-payslip-result-head">
+                        <span class="material-symbols-outlined" aria-hidden="true">@(Model.Result.AllMatched ? "check_circle" : "warning")</span>
+                        <div>
+                            <h2 class="valora-stitch-payslip-result-title">@(Model.Result.AllMatched ? "Valores conferem" : "Divergência encontrada")</h2>
+                            <p>@Model.Result.Summary</p>
+                        </div>
+                    </div>
+
+                    @foreach (var check in Model.Result.Checks)
+                    {
+                        <article class="valora-stitch-payslip-check valora-stitch-payslip-check--@(check.Status == PayslipValidationStatus.Match ? "ok" : "warn")">
+                            <div class="valora-stitch-payslip-check-head">
+                                <h3>@check.Label</h3>
+                                <span>@(check.Status == PayslipValidationStatus.Match ? "OK" : "Conferir")</span>
+                            </div>
+                            <dl class="valora-stitch-payslip-check-grid">
+                                <div>
+                                    <dt>Esperado</dt>
+                                    <dd>@Money.From(check.Expected)</dd>
+                                </div>
+                                <div>
+                                    <dt>Holerite</dt>
+                                    <dd>@Money.From(check.Reported)</dd>
+                                </div>
+                                <div>
+                                    <dt>Diferença</dt>
+                                    <dd>@Money.From(check.Difference)</dd>
+                                </div>
+                            </dl>
+                            <p class="valora-stitch-payslip-check-hint">@check.Hint</p>
+                        </article>
+                    }
+
+                    <div class="valora-stitch-payslip-expected">
+                        <h3>Simulação completa (@BrTaxTables2026.Year)</h3>
+                        <ul>
+                            <li><span>INSS estimado</span><strong>@Money.From(Model.Result.ExpectedBreakdown.Inss)</strong></li>
+                            <li><span>IRRF estimado</span><strong>@Money.From(Model.Result.ExpectedBreakdown.Irrf)</strong></li>
+                            <li><span>Líquido estimado</span><strong>@Money.From(Model.Result.ExpectedBreakdown.Net)</strong></li>
+                        </ul>
+                    </div>
+
+                    <p class="valora-text-muted valora-text-sm">
+                        Estimativa educativa. Em caso de dúvida, leve esta conferência ao RH com o holerite impresso ou PDF oficial.
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div class="valora-stitch-contact-aside-card">
+                    <h2>Como usar</h2>
+                    <ol class="valora-stitch-payslip-steps">
+                        <li>Abra o holerite do mês e localize bruto, INSS e IRRF.</li>
+                        <li>Informe dependentes e descontos que aparecem em linhas separadas.</li>
+                        <li>Compare o resultado com tolerância de R$ 1,00 por item.</li>
+                    </ol>
+                    <p><a asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">Simular salário líquido completo</a></p>
+                    <p><a href="/blog/como-conferir-holerite">Guia: como conferir holerite</a></p>
+                    <p><a asp-page="/NegociarSalario/Index">Hub negociar salário</a></p>
+                </div>
+            }
+        </aside>
+    </div>
+</div>

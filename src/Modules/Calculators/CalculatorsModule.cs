@@ -9,6 +9,7 @@ public static class CalculatorsModule
         services.AddScoped<IIrrfCalculator, IrrfCalculator>();
         services.AddScoped<ITerminationTaxCalculator, TerminationTaxCalculator>();
         services.AddScoped<NetSalaryCalculator>();
+        services.AddScoped<IPayslipValidationService, PayslipValidationService>();
         services.AddScoped<CltPjComparisonCalculator>();
         services.AddScoped<CalculationEngine>();
         services.AddSingleton<ICalculatorFieldProfileProvider, CalculatorFieldProfileProvider>();

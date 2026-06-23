@@ -2,7 +2,22 @@
 
 ## Unreleased
 
-### Sprint 68 — Calendário editorial meses 3–6 (conclusão)
+### Sprint 71 — Conferir holerite
+- `PayslipValidationService` com tolerância de R$ 1,00 em INSS, IRRF e líquido opcional.
+- Página `/conferir-holerite` com formulário Stitch e painel de divergências.
+- Links no hub `/negociar-salario`, artigo `como-conferir-holerite`, sitemap e mapa do site.
+- Testes `Sprint71PayslipValidationTests` e `Sprint71ConferirHoleriteTests`.
+
+### Sprint 70 — Editorial contínuo (lote 1)
+- 2 artigos: `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
+- `BlogEditorialCatalog.Sprint70EditorialSlugs`; hubs `/desligamento` e `/virar-pj` atualizados.
+- Testes `Sprint70BlogTests`.
+
+### Sprint 69 — PDF Premium
+- Redesign do relatório PDF (QuestPDF): logo Valora, faixa de marca, seção **Dados informados**, extrato agrupado (proventos/descontos/detalhamento), destaque do líquido, resumo e rodapé com metodologia.
+- `CalculatorPdfReportContext`, `CalculatorPdfInputSummaryBuilder`, `SalaryBandPdfContext`.
+- Testes `Sprint69PdfTests`.
+
 - 7 artigos: negociação, MEI/PJ, 13º, férias, consignado e reserva de emergência.
 - `BlogEditorialCatalog.Sprint68EditorialSlugs`; hubs `/negociar-salario` e `/virar-pj` atualizados.
 - Calendário de 6 meses do `NICHO_REFERENCIA_PLAN.md` completo (11 artigos novos nas Sprints 66+68).

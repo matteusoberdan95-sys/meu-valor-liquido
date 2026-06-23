@@ -477,6 +477,162 @@
 
 ---
 
+## Trilha diferenciação e crescimento orgânico (Sprints 69–78)
+
+**Origem:** decisão de produto pós go-live — reforçar valor percebido (PDF, conferência de holerite, jornadas) e manter ritmo editorial sem expandir para fora do nicho salário/trabalho.
+
+**North star:** o usuário **entende, confere e compartilha** simulações com aparência profissional — não só vê um número.
+
+**Especificação de referência:** conversa de produto (jun/2026) + tiers de diferenciação acordados com PO.
+
+**Agents:** leiam `AGENTS.md` (tabela Sprint ativa) antes de codar. Ordem sugerida: **69 → 70 (paralelo) → 71 → 72 → 73 → 74 → 75–78**.
+
+| Sprint | Tier | Tema | Status |
+|--------|------|------|--------|
+| **69** | PDF | Relatório PDF premium (logo, extrato, inputs) | **CONCLUÍDA** |
+| **70** | Conteúdo | Editorial contínuo (2 artigos/mês) | **CONCLUÍDA** (lote 1) |
+| **71** | 1 | Conferir holerite (validação INSS/IRRF 2026) | **CONCLUÍDA** |
+| **72** | 1 | Comparador visual de propostas salariais | **Próxima** |
+| **73** | 1 | Checklist interativo de rescisão | Planejada |
+| **74** | 1 | Páginas programáticas expandidas | Planejada |
+| **75** | 2 | Simulador “E se…” (cenários pré-montados) | Planejada |
+| **76** | 2 | Meu painel: comparar 2 cenários salvos | Planejada |
+| **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | Planejada |
+| **78** | 3 | Widget embed + newsletter semanal | Planejada |
+
+**Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 69–78.
+
+**Definition of Done (trilha):** `dotnet test` verde; entrega alinhada ao nicho; `CHANGELOG.md` + `AGENTS.md` atualizados ao concluir cada sprint.
+
+**Calendário sugerido (1 dev):** Jul/26 → 69+70 · Ago/26 → 71 · Set/26 → 72+70 · Out/26 → 73+74 · Nov/26 → 75–76 · Dez/26 → 77–78.
+
+---
+
+### Sprint 69 — PDF Premium — CONCLUÍDA
+
+**Objetivo:** relatório PDF com identidade visual Valora, logo, dados informados, extrato agrupado e resumo — substituir layout genérico atual em `CalculatorResultPdfGenerator`.
+
+| Agent | Entregas |
+|-------|----------|
+| Product Owner | Mock de referência (salário líquido, proposta, rescisão) |
+| WebApp/Frontend | `CalculatorPdfReportContext`, `CalculatorPdfInputSummaryBuilder`, redesign QuestPDF |
+| Backend/Calculators | Sem mudança de fórmula; inputs decodificados no WebApp |
+| QA/Test | `Sprint69PdfTests` + regressão endpoints PDF |
+| Security | Sem PII persistida; PDF sem anúncios |
+| Documentation | `CHANGELOG.md`, `AGENTS.md` |
+
+**Definition of Done:** logo no PDF; seção “Dados informados”; extrato em tabela (proventos/descontos/informativos); destaque do líquido; disclaimer + URL; `dotnet test` verde.
+
+---
+
+### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1)
+
+**Objetivo:** manter **2 artigos/mês** com calculadora relacionada, hub e FAQ — ritmo pós-calendário Sprint 68.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | 2 artigos long tail por ciclo mensal |
+| WebApp/Frontend | `BlogEditorialCatalog.Sprint70EditorialSlugs`; cross-link nos hubs |
+| QA/Test | `Sprint70BlogTests` |
+
+**Primeiro lote (Sprint 70):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
+
+**Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ.
+
+---
+
+### Sprint 71 — Conferir holerite (Tier 1) — CONCLUÍDA
+
+**Objetivo:** usuário informa valores do holerite → validação educativa contra tabelas 2026.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | `PayslipValidationService` (tolerância ±R$ 1) |
+| WebApp/Frontend | Rota `/conferir-holerite` |
+| SEO/Content | Links no hub `/negociar-salario` e artigo `como-conferir-holerite` |
+| QA/Test | `Sprint71PayslipValidationTests`, `Sprint71ConferirHoleriteTests` |
+
+---
+
+### Sprint 72 — Comparador visual de propostas (Tier 1)
+
+**Objetivo:** evoluir `proposta-salarial` — lado a lado, % real no bolso, ganho anual, CTA share/PDF.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | UI comparativa + integração PDF Sprint 69 |
+| SEO/Content | Reforço hub `/negociar-salario` |
+
+---
+
+### Sprint 73 — Checklist interativo de rescisão (Tier 1)
+
+**Objetivo:** checklist pós-demissão no hub `/desligamento` (localStorage).
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Componente checklist com links para calculadoras |
+| SEO/Content | FAQ + rich snippets |
+
+---
+
+### Sprint 74 — Páginas programáticas expandidas (Tier 1)
+
+**Objetivo:** escalar `SalaryBandCatalog` / `CltPjBandCatalog` e variantes com dependentes.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Novas faixas e templates SEO únicos |
+| SEO/Content | Titles/descriptions por faixa |
+| QA/Test | Sitemap e contagem de URLs |
+
+---
+
+### Sprint 75 — Simulador “E se…” (Tier 2)
+
+**Objetivo:** cenários pré-montados (pedir demissão, aceitar PJ, vender férias).
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Cards na home e hubs |
+| Backend/Calculators | Presets de `CalculatorInput` |
+
+---
+
+### Sprint 76 — Meu painel: comparar cenários (Tier 2)
+
+**Objetivo:** comparar 2 simulações salvas no `/meu-painel`.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | UI diff lado a lado |
+| QA/Test | localStorage |
+
+---
+
+### Sprint 77 — Badge atualização + FAQ expandido (Tier 2)
+
+**Objetivo:** badge “INSS/IRRF 2026 · Revisado em [mês]”; novas páginas `/duvidas/`.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Badge no template C1 |
+| SEO/Content | 5–10 FAQs indexáveis |
+
+---
+
+### Sprint 78 — Widget + newsletter (Tier 3)
+
+**Objetivo:** distribuição (embed) e retenção (newsletter semanal).
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Landing `/widget` + snippet |
+| SEO/Content | Template newsletter |
+| Monetization | Sem ads no widget |
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.

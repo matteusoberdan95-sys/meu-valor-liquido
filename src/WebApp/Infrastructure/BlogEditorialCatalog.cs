@@ -29,8 +29,15 @@ public static class BlogEditorialCatalog
         "reserva-emergencia-quanto-guardar"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70EditorialSlugs =
+    [
+        "acordo-484a-verbas-e-multa-fgts",
+        "custo-total-clt-para-empregador"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }

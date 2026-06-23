@@ -28,7 +28,8 @@ public static class SitemapGenerator
             CreateUrl(ns, $"{baseUrl}/politica-de-cookies"),
             CreateUrl(ns, $"{baseUrl}/termos-de-uso"),
             CreateUrl(ns, $"{baseUrl}/aviso-legal"),
-            CreateUrl(ns, $"{baseUrl}/como-calculamos")
+            CreateUrl(ns, $"{baseUrl}/como-calculamos"),
+            CreateUrl(ns, $"{baseUrl}/conferir-holerite")
         };
 
         var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();

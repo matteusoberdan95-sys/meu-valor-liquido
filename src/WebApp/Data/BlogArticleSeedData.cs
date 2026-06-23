@@ -88,8 +88,8 @@ public static class BlogArticleSeedData
             <li>Convenção coletiva com regras específicas de desconto ou benefício.</li>
             </ul>
             <h2>Simule antes de reclamar</h2>
-            <p>Monte o cenário na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> com os mesmos descontos do holerite. Use <strong>Ajustar descontos</strong> para VT, VR/VA, plano, pensão (% ou valor) e outros itens.</p>
-            <p>Para negociar aumento, combine com a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> e leia <a href="/blog/como-avaliar-proposta-salarial">como avaliar proposta pelo líquido</a>.</p>
+            <p>Monte o cenário na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> com os mesmos descontos do holerite. Para validar só INSS e IRRF, use a <a href="/conferir-holerite">ferramenta de conferir holerite</a>.</p>
+            <p>Use <strong>Ajustar descontos</strong> para VT, VR/VA, plano, pensão (% ou valor) e outros itens. Para negociar aumento, combine com a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> e leia <a href="/blog/como-avaliar-proposta-salarial">como avaliar proposta pelo líquido</a>.</p>
             <h2 id="como-validamos">Como validamos esta estimativa</h2>
             <p>Cenários de holerite estão documentados em <a href="/como-calculamos">Como calculamos</a>, com benchmarks de INSS/IRRF 2026 e paridade entre calculadoras de salário.</p>
             <p>Consulte também a <a href="/duvidas/como-calcular-salario-liquido">FAQ de salário líquido</a> e a <a href="/duvidas/diferenca-salario-bruto-e-liquido">diferença entre bruto e líquido</a>.</p>
@@ -780,6 +780,44 @@ public static class BlogArticleSeedData
             <h2>Onde guardar</h2>
             <p>Liquidez diária e baixo risco vêm antes de rentabilidade máxima. Leia <a href="/blog/reserva-emergencia-onde-investir">onde investir a reserva</a> e <a href="/blog/como-investir-com-pouco-dinheiro">como investir com pouco dinheiro</a>.</p>
             <p>Integre a reserva ao <a href="/blog/planejamento-financeiro-com-salario">planejamento financeiro com salário</a> — especialmente após aumento ou mudança de emprego. Consulte <a href="/duvidas/como-calcular-salario-liquido">como calcular salário líquido</a> para definir a meta em valor real.</p>
+            """),
+        Article(
+            "acordo-484a-verbas-e-multa-fgts",
+            "Acordo trabalhista (484-A): verbas e multa de 20% do FGTS",
+            "Entenda o que muda na rescisão por acordo comum: verbas, multa de FGTS e saque do fundo.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 6, 30),
+            """
+            <p>O <strong>acordo trabalhista</strong> previsto no art. 484-A da CLT permite encerrar o contrato por mútuo consentimento com regras próprias de verbas e FGTS. A multa sobre o saldo do fundo, em geral, é de <strong>20%</strong> — metade da demissão sem justa causa.</p>
+            <h2>O que costuma ser negociado</h2>
+            <p>As partes definem aviso prévio, verbas rescisórias e condições de homologação. O acordo não é “pedido de demissão” nem “demissão sem justa causa” — tem efeitos próprios sobre seguro-desemprego e saque do FGTS.</p>
+            <h2>Multa do FGTS no acordo</h2>
+            <p>Na demissão sem justa causa, a multa é de 40% sobre o saldo. No acordo 484-A, a referência legal é <strong>20%</strong>. Compare o líquido total da rescisão antes de assinar — em alguns casos o trabalhador prefere outro tipo de desligamento.</p>
+            <h2>Simule antes de assinar</h2>
+            <p>Use a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> selecionando o motivo <strong>Acordo comum (Art. 484-A)</strong>. Cruze com a <a href="/calculadoras/fgts">calculadora de FGTS</a> e o hub <a href="/desligamento">desligamento CLT</a>.</p>
+            <p>Leia também <a href="/blog/multa-fgts-40-ou-20">multa FGTS 40% ou 20%</a>, <a href="/blog/como-calcular-rescisao-clt">como calcular rescisão</a> e a <a href="/duvidas/multa-fgts-40-porcento">FAQ da multa de FGTS</a>.</p>
+            """),
+        Article(
+            "custo-total-clt-para-empregador",
+            "Custo total CLT para o empregador: além do salário bruto",
+            "FGTS, 13º, férias, encargos e provisões que entram no custo real de um funcionário CLT.",
+            "custo-funcionario",
+            "Trabalhista",
+            new DateOnly(2026, 7, 1),
+            """
+            <p>Para o trabalhador, o que importa é o <strong>líquido</strong>. Para a empresa, o custo real de um CLT vai muito além do salário contratual — há encargos, provisões e benefícios que muitas propostas PJ ignoram na comparação.</p>
+            <h2>Componentes do custo empregador</h2>
+            <ul>
+            <li><strong>Salário bruto</strong> e adicionais habituais.</li>
+            <li><strong>FGTS</strong> de 8% e provisão de multa em cenários de desligamento.</li>
+            <li><strong>13º salário</strong> e <strong>férias + 1/3</strong> provisionados ao longo do ano.</li>
+            <li><strong>INSS patronal</strong> e outros encargos conforme o regime da empresa.</li>
+            <li><strong>Benefícios</strong> (VR/VA, plano, VT) que não descontam 100% do colaborador.</li>
+            </ul>
+            <h2>Por que isso importa na negociação PJ</h2>
+            <p>Quem compara CLT com PJ só pelo bruto subestima o pacote CLT. A <a href="/calculadoras/custo-funcionario">calculadora de custo de funcionário</a> estima esse total; combine com <a href="/calculadoras/pj-vs-clt">PJ vs CLT</a> e o hub <a href="/virar-pj">virar PJ</a>.</p>
+            <p>Veja <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT: qual compensa?</a>, <a href="/blog/pro-labore-pj-quanto-retirar">pró-labore na PJ</a> e a <a href="/duvidas/pj-ou-clt-qual-compensa">FAQ PJ ou CLT</a>.</p>
             """)
     ];
 
@@ -905,6 +943,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de um novo consignado, some as parcelas ativas e informe o total em “outros descontos” na calculadora de líquido.</p>",
             "reserva-emergencia-quanto-guardar" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Defina a meta em meses de despesas essenciais, não de salário bruto — o líquido é o que paga as contas.</p>",
+            "acordo-484a-verbas-e-multa-fgts" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça simulação por escrito dos dois cenários — acordo 484-A com multa de 20% e demissão sem justa causa com 40% — antes de assinar qualquer termo.</p>",
+            "custo-total-clt-para-empregador" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Na conversa PJ, some ao seu custo pessoal o que a CLT te dava de benefício líquido — VR, plano e estabilidade de caixa entre empregos.</p>",
             _ => string.Empty
         };
 

@@ -49,7 +49,7 @@ public static class ThematicHubCatalog
             ],
             "rescisao-clt",
             ["rescisao-clt", "fgts", "seguro-desemprego", "decimo-terceiro", "ferias", "salario-liquido"],
-            ["como-calcular-rescisao-clt", "rescisao-clt-vs-trct", "fgts-guia-completo", "seguro-desemprego-quem-tem-direito", "multa-fgts-40-ou-20"],
+            ["como-calcular-rescisao-clt", "rescisao-clt-vs-trct", "fgts-guia-completo", "seguro-desemprego-quem-tem-direito", "multa-fgts-40-ou-20", "acordo-484a-verbas-e-multa-fgts"],
             ["rescisao-pedido-demissao-o-que-recebo", "multa-fgts-40-porcento", "seguro-desemprego-quando-tem-direito"]),
 
         new(
@@ -63,7 +63,7 @@ public static class ThematicHubCatalog
             "O aumento no bruto nem sempre vira o mesmo ganho no bolso. Simule com INSS, IRRF e os mesmos descontos nos dois cenários.",
             """
             <p>Propostas costumam vir em <strong>salário bruto</strong>, mas o que importa na negociação é o <strong>líquido</strong> — após INSS, IRRF, vale-transporte e outros descontos do holerite.</p>
-            <p>Compare cenários, veja ganho mensal e anual e <strong>compartilhe a simulação</strong> (link ou PDF) com transparência. Confirme valores finais com RH antes de assinar.</p>
+            <p>Compare cenários, veja ganho mensal e anual e <strong>compartilhe a simulação</strong> (link ou PDF) com transparência. Use a <a href="/conferir-holerite">ferramenta de conferir holerite</a> para validar INSS e IRRF antes de falar com o RH.</p>
             """,
             "Negociar salário",
             "Avalie a proposta pelo líquido, valide o holerite com os mesmos descontos e descubra o bruto necessário para sua meta.",
@@ -99,7 +99,7 @@ public static class ThematicHubCatalog
             ],
             "pj-vs-clt",
             ["pj-vs-clt", "simulador-mei", "custo-funcionario", "salario-liquido"],
-            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes", "mei-desenquadramento-o-que-fazer", "pro-labore-pj-quanto-retirar"],
+            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes", "mei-desenquadramento-o-que-fazer", "pro-labore-pj-quanto-retirar", "custo-total-clt-para-empregador"],
             ["pj-ou-clt-qual-compensa", "quanto-faturar-pj-para-equivaler-clt", "mei-pode-trabalhar-como-clt"])
     ];
 

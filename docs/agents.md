@@ -23,17 +23,19 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 2. `README.md`
 3. `AGENTS.md` (tabela **Sprint ativa**)
 4. `docs/CODING_CONVENTIONS.md`
-5. `docs/sprint-plan.md` → seção **Trilha referência no nicho (Sprints 65–67)**
-6. `docs/NICHO_REFERENCIA_PLAN.md` — hubs, calendário 6 meses, matriz de calculadoras
+5. `docs/sprint-plan.md` → seção **Trilha diferenciação e crescimento orgânico (Sprints 69–78)**
+6. `docs/NICHO_REFERENCIA_PLAN.md` — regra de corte do nicho
 
 ### Sprint ativa (2026-06)
 
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
-| **Alta — próxima** | **51** | AdSense (quando Google aprovar) |
-| Concluídas | 47–68 | Hubs, calendário editorial 6 meses, calculadora seguro-desemprego |
+| **Alta — agora** | **72** | Comparador visual de propostas |
+| **Contínuo** | **70** | Editorial (2 artigos/mês; lote 1 concluído) |
+| **Paralelo** | **51** | AdSense (quando Google aprovar) |
+| Concluídas | 47–71 | Hubs, editorial, PDF premium, conferir holerite |
 
-**Onde começar:** ver `NICHO_REFERENCIA_PLAN.md` § *Onde os agents começam*. Ordem sugerida **65 → 66 → 67**; conteúdo (66) pode avançar em paralelo aos hubs (65).
+**Onde começar:** ver `docs/sprint-plan.md` § *Trilha diferenciação (Sprints 69–78)*. Ordem sugerida **72 → 73 → 74**.
 
 **Mapeamento legado:** Sprint 32 → 53; Sprint 33 → 55; Sprint 34 → 59 (não implementar em duplicata).
 

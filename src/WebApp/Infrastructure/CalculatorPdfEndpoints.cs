@@ -36,7 +36,15 @@ internal static class CalculatorPdfEndpoints
 
         var shareUrl = shareLinkBuilder.BuildShareUrl(slug, input, httpContext.Request);
         var siteUrl = shareLinkBuilder.BuildAbsoluteUrl("/", httpContext.Request);
-        var pdf = pdfGenerator.Generate(calculation.Value, shareUrl, siteUrl);
+        var context = new CalculatorPdfReportContext(
+            slug,
+            calculation.Value.Title,
+            input,
+            calculation.Value,
+            shareUrl,
+            siteUrl,
+            DateTimeOffset.UtcNow);
+        var pdf = pdfGenerator.Generate(context);
         await productMetricsService.RecordAsync(ProductMetricEvents.PdfDownload, slug);
 
         return Results.File(pdf, "application/pdf", $"{slug}-resultado.pdf");
@@ -59,7 +67,8 @@ internal static class CalculatorPdfEndpoints
         var path = SalaryBandCatalog.SlugPath(valor);
         var shareUrl = shareLinkBuilder.BuildAbsoluteUrl(path, httpContext.Request);
         var siteUrl = shareLinkBuilder.BuildAbsoluteUrl("/", httpContext.Request);
-        var pdf = pdfGenerator.GenerateSalaryBand(valor, breakdown, shareUrl, siteUrl);
+        var context = new SalaryBandPdfContext(valor, breakdown, shareUrl, siteUrl, DateTimeOffset.UtcNow);
+        var pdf = pdfGenerator.GenerateSalaryBand(context);
         await productMetricsService.RecordAsync(ProductMetricEvents.PdfDownload, $"salario-liquido-{valor}");
 
         return Results.File(pdf, "application/pdf", $"salario-liquido-{valor}.pdf");
