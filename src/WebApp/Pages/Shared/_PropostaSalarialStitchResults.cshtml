@@ -1,0 +1,78 @@
+@model MeuValorLiquido.WebApp.Infrastructure.PropostaSalarialStitchResultsViewModel
+@{
+    var c = Model.Comparison;
+    var verdictClass = c.IsGain ? "valora-stitch-proposta-verdict--gain" : "valora-stitch-proposta-verdict--loss";
+    var verdictTitle = c.IsGain
+        ? $"Ganho real de {c.NetIncreasePercent:0.#}% no bolso"
+        : $"Redução de {Money.From(Math.Abs(c.NetGainMonthly))} no bolso";
+    var currentBar = c.ProposedNet <= 0m ? 100m : Math.Min(100m, Math.Round(c.CurrentNet / Math.Max(c.CurrentNet, c.ProposedNet) * 100m, 1));
+    var proposedBar = c.CurrentNet <= 0m ? 100m : Math.Min(100m, Math.Round(c.ProposedNet / Math.Max(c.CurrentNet, c.ProposedNet) * 100m, 1));
+}
+
+<div class="valora-stitch-proposta valora-stack-md" aria-live="polite">
+    <partial name="Shared/_CalculatorResultWarnings" model="Model.Warnings" />
+
+    <div class="valora-stitch-proposta-verdict @verdictClass">
+        <div class="valora-stitch-proposta-verdict-badge">
+            <span class="material-symbols-outlined valora-icon-filled" aria-hidden="true">handshake</span>
+            Comparativo de proposta
+        </div>
+        <h2 class="valora-stitch-proposta-verdict-title">@verdictTitle</h2>
+        <p class="valora-stitch-proposta-verdict-lead">
+            @(c.IsGain ? "+" : "-")@Money.From(Math.Abs(c.NetGainMonthly))/mês
+            · @(c.IsGain ? "+" : "-")@Money.From(Math.Abs(c.NetGainAnnual))/ano
+            · @c.GrossIncreasePercent.ToString("0.#")% no bruto vs @c.NetIncreasePercent.ToString("0.#")% no líquido
+        </p>
+        <div class="valora-stitch-proposta-verdict-highlight">
+            <span>Ganho no bolso</span>
+            <strong>@(c.IsGain ? "+" : "-")@Money.From(Math.Abs(c.NetGainMonthly))</strong>
+        </div>
+    </div>
+
+    <div class="valora-stitch-proposta-compare-grid">
+        <section class="valora-stitch-proposta-card">
+            <p class="valora-stitch-proposta-card-kicker">Salário atual</p>
+            <p class="valora-stitch-proposta-card-gross">@Money.From(c.CurrentGross) <span>bruto</span></p>
+            <ul class="valora-stitch-proposta-card-lines">
+                <li><span>INSS</span><strong>- @Money.From(c.CurrentInss)</strong></li>
+                <li><span>IRRF</span><strong>- @Money.From(c.CurrentIrrf)</strong></li>
+            </ul>
+            <p class="valora-stitch-proposta-card-net">@Money.From(c.CurrentNet)</p>
+            <p class="valora-stitch-proposta-card-net-label">Líquido estimado</p>
+            <div class="valora-stitch-proposta-bar" aria-hidden="true">
+                <span class="valora-stitch-proposta-bar-fill valora-stitch-proposta-bar-fill--current" style="width: @(currentBar)%"></span>
+            </div>
+        </section>
+
+        <section class="valora-stitch-proposta-card valora-stitch-proposta-card--proposed">
+            <p class="valora-stitch-proposta-card-kicker">Proposta</p>
+            <p class="valora-stitch-proposta-card-gross">@Money.From(c.ProposedGross) <span>bruto</span></p>
+            <ul class="valora-stitch-proposta-card-lines">
+                <li><span>INSS</span><strong>- @Money.From(c.ProposedInss)</strong></li>
+                <li><span>IRRF</span><strong>- @Money.From(c.ProposedIrrf)</strong></li>
+            </ul>
+            <p class="valora-stitch-proposta-card-net valora-stitch-proposta-card-net--proposed">@Money.From(c.ProposedNet)</p>
+            <p class="valora-stitch-proposta-card-net-label">Líquido proposto estimado</p>
+            <div class="valora-stitch-proposta-bar" aria-hidden="true">
+                <span class="valora-stitch-proposta-bar-fill valora-stitch-proposta-bar-fill--proposed" style="width: @(proposedBar)%"></span>
+            </div>
+        </section>
+    </div>
+
+    <p class="valora-text-sm valora-stitch-proposta-explanation">@c.Explanation</p>
+
+    @if (Model.Share is not null)
+    {
+        <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+    }
+
+    @if (Model.Journey is not null && Model.Journey.Steps.Count > 0)
+    {
+        <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.Journey" />
+    }
+
+    @if (Model.Explanation is not null)
+    {
+        <partial name="Shared/_CalculatorResultEducation" model="Model.Explanation" />
+    }
+</div>

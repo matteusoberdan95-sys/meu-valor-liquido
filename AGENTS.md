@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 72** — Comparador visual de propostas |
-| **Em seguida** | Sprint 73 (checklist rescisão) · Sprint 70 lote 2 (mais 2 artigos) |
-| **Concluída recente** | Sprint 71 (conferir holerite) · Sprint 70 · Sprint 69 |
+| **Próxima sprint** | **Sprint 73** — Checklist interativo de rescisão |
+| **Em seguida** | Sprint 74 (páginas programáticas) · Sprint 70 lote 2 (mais 2 artigos) |
+| **Concluída recente** | Sprint 72 (comparador propostas) · Sprint 71 · Sprint 70 · Sprint 69 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -25,8 +25,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 72 | WebApp/Frontend | Comparador visual de propostas salariais |
-| **2** | 73–74 | WebApp + SEO | Checklist rescisão + páginas programáticas |
+| **1 — agora** | 73 | WebApp/Frontend | Checklist interativo de rescisão no hub `/desligamento` |
+| **2** | 74 | WebApp + SEO | Páginas programáticas expandidas |
 | **Contínuo** | 70 (lote 2+) | SEO/Content | 2 artigos/mês |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 

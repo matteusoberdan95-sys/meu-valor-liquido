@@ -56,7 +56,15 @@ public sealed class Sprint64FidelityTests : IClassFixture<WebApplicationFactory<
         html.Should().Contain("valora-stitch-calc-detail-grid");
         html.Should().Contain("valora-stitch-calc-detail-hero");
         html.Should().Contain("Calcular agora");
-        html.Should().Contain(CalculatorUiHelper.GetStitchDetailModifierClass(slug).Trim());
+
+        if (slug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase))
+        {
+            html.Should().Contain("valora-stitch-proposta-detail");
+        }
+        else
+        {
+            html.Should().Contain(CalculatorUiHelper.GetStitchDetailModifierClass(slug).Trim());
+        }
     }
 
     [Fact]

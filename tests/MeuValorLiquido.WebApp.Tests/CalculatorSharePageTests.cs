@@ -43,8 +43,9 @@ public class CalculatorSharePageTests : IClassFixture<WebApplicationFactory<Prog
         var token = CalculatorInputShareCodec.Encode(new CalculatorInput(4000m, SecondaryAmount: 4800m));
         var html = await client.GetStringAsync($"/calculadoras/proposta-salarial?r={Uri.EscapeDataString(token)}");
 
-        html.Should().Contain("L&#xCD;QUIDO PROPOSTO ESTIMADO");
-        html.Should().Contain("Ganho l&#xED;quido mensal");
+        html.Should().Contain("valora-stitch-proposta");
+        html.Should().Contain("Líquido proposto estimado");
+        html.Should().Contain("Ganho no bolso");
         html.Should().Contain("Compartilhar estimativa");
         html.Should().Contain("Proposta salarial");
     }

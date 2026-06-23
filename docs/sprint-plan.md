@@ -492,8 +492,8 @@
 | **69** | PDF | Relatório PDF premium (logo, extrato, inputs) | **CONCLUÍDA** |
 | **70** | Conteúdo | Editorial contínuo (2 artigos/mês) | **CONCLUÍDA** (lote 1) |
 | **71** | 1 | Conferir holerite (validação INSS/IRRF 2026) | **CONCLUÍDA** |
-| **72** | 1 | Comparador visual de propostas salariais | **Próxima** |
-| **73** | 1 | Checklist interativo de rescisão | Planejada |
+| **72** | 1 | Comparador visual de propostas salariais | **CONCLUÍDA** |
+| **73** | 1 | Checklist interativo de rescisão | **Próxima** |
 | **74** | 1 | Páginas programáticas expandidas | Planejada |
 | **75** | 2 | Simulador “E se…” (cenários pré-montados) | Planejada |
 | **76** | 2 | Meu painel: comparar 2 cenários salvos | Planejada |
@@ -554,14 +554,15 @@
 
 ---
 
-### Sprint 72 — Comparador visual de propostas (Tier 1)
+### Sprint 72 — Comparador visual de propostas (Tier 1) — CONCLUÍDA
 
 **Objetivo:** evoluir `proposta-salarial` — lado a lado, % real no bolso, ganho anual, CTA share/PDF.
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | UI comparativa + integração PDF Sprint 69 |
+| WebApp/Frontend | `SalaryProposalStitchResultBuilder`, `_PropostaSalarialStitchResults`, CSS `.valora-stitch-proposta-*` |
 | SEO/Content | Reforço hub `/negociar-salario` |
+| QA/Test | `Sprint72PropostaComparisonTests` |
 
 ---
 

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 72 — Comparador visual de propostas
+- UI lado a lado em `proposta-salarial`: veredito com % real no bolso, cards atual vs proposto (INSS, IRRF, líquido), barras comparativas.
+- `SalaryProposalStitchResultBuilder`, partial `_PropostaSalarialStitchResults`; integração em `Details.cshtml`.
+- Hub `/negociar-salario` reforçado com link ao comparador visual.
+- Testes `Sprint72PropostaComparisonTests`; `CalculatorSharePageTests` atualizado.
+
 ### Sprint 71 — Conferir holerite
 - `PayslipValidationService` com tolerância de R$ 1,00 em INSS, IRRF e líquido opcional.
 - Página `/conferir-holerite` com formulário Stitch e painel de divergências.

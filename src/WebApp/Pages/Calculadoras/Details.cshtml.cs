@@ -9,6 +9,7 @@ public class DetailsModel : PageModel
     private readonly CalculatorJourneyLinkBuilder journeyLinkBuilder;
     private readonly IProductMetricsService productMetricsService;
     private readonly CltPjComparisonCalculator cltPjComparisonCalculator;
+    private readonly NetSalaryCalculator netSalaryCalculator;
 
     public DetailsModel(
         ICalculatorApplicationService calculatorService,
@@ -18,7 +19,8 @@ public class DetailsModel : PageModel
         CalculatorShareLinkBuilder shareLinkBuilder,
         CalculatorJourneyLinkBuilder journeyLinkBuilder,
         IProductMetricsService productMetricsService,
-        CltPjComparisonCalculator cltPjComparisonCalculator)
+        CltPjComparisonCalculator cltPjComparisonCalculator,
+        NetSalaryCalculator netSalaryCalculator)
     {
         this.calculatorService = calculatorService;
         this.catalogService = catalogService;
@@ -28,6 +30,7 @@ public class DetailsModel : PageModel
         this.journeyLinkBuilder = journeyLinkBuilder;
         this.productMetricsService = productMetricsService;
         this.cltPjComparisonCalculator = cltPjComparisonCalculator;
+        this.netSalaryCalculator = netSalaryCalculator;
     }
 
     public CalculatorDefinition? Definition { get; private set; }
@@ -57,6 +60,9 @@ public class DetailsModel : PageModel
     public bool IsSalarioLiquidoStitch =>
         Definition?.Slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
 
+    public bool IsPropostaSalarialStitch =>
+        Definition?.Slug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase) == true && !IsEmbedMode;
+
     public bool IsTemplateC1Stitch =>
         Definition is not null
         && CalculatorUiHelper.IsTemplateC1Slug(Definition.Slug)
@@ -65,6 +71,8 @@ public class DetailsModel : PageModel
     public SalarioLiquidoStitchResultViewModel? SalarioLiquidoStitchResult { get; private set; }
 
     public RescisaoStitchResultViewModel? RescisaoStitchResult { get; private set; }
+
+    public PropostaSalarialStitchResultsViewModel? PropostaStitchResult { get; private set; }
 
     public bool IsLayeredFiscalDetail =>
         Definition is not null
@@ -80,7 +88,7 @@ public class DetailsModel : PageModel
         new(text, forId, CalculatorFieldTooltipCatalog.GetTooltip(Definition?.Slug ?? string.Empty, fieldKey));
 
     public string CalcDetailModifierClass =>
-        IsEmbedMode || IsPjVsCltStitch || IsRescisaoStitch || IsSalarioLiquidoStitch || Definition is null
+        IsEmbedMode || IsPjVsCltStitch || IsRescisaoStitch || IsSalarioLiquidoStitch || IsPropostaSalarialStitch || Definition is null
             ? string.Empty
             : CalculatorUiHelper.GetStitchDetailModifierClass(Definition.Slug);
 
@@ -206,15 +214,33 @@ public class DetailsModel : PageModel
             var terminationSummary = TerminationResultGrouper.TryGroup(slug, Result);
             var isSalarioLiquido = slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase);
             var isRescisao = slug.Equals("rescisao-clt", StringComparison.OrdinalIgnoreCase);
-            ResultPanel = new CalculatorResultPanelViewModel(
-                Result,
-                Input,
-                slug,
-                CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService),
-                ShowSimpleExplanation: !IsEmbedMode && !isSalarioLiquido && !(isRescisao && IsRescisaoStitch),
-                TerminationSummary: terminationSummary,
-                Warnings: CalculatorResultWarningBuilder.Build(slug, Input, Result),
-                Journey: journey);
+            var isProposta = slug.Equals("proposta-salarial", StringComparison.OrdinalIgnoreCase);
+            var warnings = CalculatorResultWarningBuilder.Build(slug, Input, Result);
+            var explanation = CalculatorResultExplanationFactory.Build(slug, Input, Result, catalogService);
+
+            if (isProposta && IsPropostaSalarialStitch)
+            {
+                PropostaStitchResult = SalaryProposalStitchResultBuilder.TryBuild(
+                    Result,
+                    Input,
+                    netSalaryCalculator,
+                    Share,
+                    warnings,
+                    journey,
+                    explanation);
+            }
+            else
+            {
+                ResultPanel = new CalculatorResultPanelViewModel(
+                    Result,
+                    Input,
+                    slug,
+                    explanation,
+                    ShowSimpleExplanation: !IsEmbedMode && !isSalarioLiquido && !(isRescisao && IsRescisaoStitch),
+                    TerminationSummary: terminationSummary,
+                    Warnings: warnings,
+                    Journey: journey);
+            }
 
             if (isSalarioLiquido)
             {
@@ -226,7 +252,7 @@ public class DetailsModel : PageModel
                     Result,
                     terminationSummary,
                     Share,
-                    CalculatorResultWarningBuilder.Build(slug, Input, Result));
+                    warnings);
             }
         }
     }

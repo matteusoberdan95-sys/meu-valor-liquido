@@ -8647,3 +8647,218 @@ select:focus-visible {
   }
 }
 
+/* Sprint 72 — comparador visual proposta salarial */
+.valora-stitch-proposta-detail .valora-stitch-proposta-estimate {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.valora-stitch-proposta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-proposta-verdict {
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-proposta-verdict::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.valora-stitch-proposta-verdict--gain::before {
+  background: var(--valora-primary);
+}
+
+.valora-stitch-proposta-verdict--loss::before {
+  background: var(--valora-error);
+}
+
+.valora-stitch-proposta-verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: color-mix(in srgb, var(--valora-primary) 12%, transparent);
+  color: var(--valora-primary);
+}
+
+.valora-stitch-proposta-verdict--loss .valora-stitch-proposta-verdict-badge {
+  background: color-mix(in srgb, var(--valora-error) 12%, transparent);
+  color: var(--valora-error);
+}
+
+.valora-stitch-proposta-verdict-title {
+  margin: 0;
+  font-size: clamp(1.125rem, 4vw, 1.35rem);
+  font-weight: 800;
+  color: var(--valora-text-heading);
+  line-height: 1.25;
+}
+
+.valora-stitch-proposta-verdict-lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+  line-height: 1.45;
+}
+
+.valora-stitch-proposta-verdict-highlight {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--valora-outline-variant);
+}
+
+.valora-stitch-proposta-verdict-highlight span {
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.valora-stitch-proposta-verdict-highlight strong {
+  font-size: clamp(1.35rem, 5vw, 1.75rem);
+  font-weight: 800;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-proposta-verdict--loss .valora-stitch-proposta-verdict-highlight strong {
+  color: var(--valora-error);
+}
+
+.valora-stitch-proposta-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .valora-stitch-proposta-compare-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.valora-stitch-proposta-card {
+  padding: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+}
+
+.valora-stitch-proposta-card--proposed {
+  border-color: color-mix(in srgb, var(--valora-primary) 35%, var(--valora-border-subtle));
+  background: color-mix(in srgb, var(--valora-primary) 5%, var(--valora-card-low));
+}
+
+.valora-stitch-proposta-card-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-proposta-card-gross {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-proposta-card-gross span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-proposta-card-lines {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.valora-stitch-proposta-card-lines li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-proposta-card-lines strong {
+  color: var(--valora-error);
+  font-weight: 600;
+}
+
+.valora-stitch-proposta-card-net {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-proposta-card-net--proposed {
+  color: var(--valora-primary);
+}
+
+.valora-stitch-proposta-card-net-label {
+  margin: 0.15rem 0 0.75rem;
+  font-size: 0.7rem;
+  color: var(--valora-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.valora-stitch-proposta-bar {
+  height: 0.35rem;
+  border-radius: 999px;
+  background: var(--valora-surface-container-high);
+  overflow: hidden;
+}
+
+.valora-stitch-proposta-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
+
+.valora-stitch-proposta-bar-fill--current {
+  background: var(--valora-trabalhista-blue);
+}
+
+.valora-stitch-proposta-bar-fill--proposed {
+  background: var(--valora-primary);
+}
+
+.valora-stitch-proposta-explanation {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--valora-text-muted);
+}
+

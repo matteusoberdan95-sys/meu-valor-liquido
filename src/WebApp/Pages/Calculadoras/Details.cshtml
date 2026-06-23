@@ -37,7 +37,7 @@ else
         }
     }
 
-    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : Model.IsRescisaoStitch ? "valora-stitch-rescisao" : Model.IsSalarioLiquidoStitch ? "valora-stitch-calc-detail valora-stitch-salario" : $"valora-stitch-calc-detail{Model.CalcDetailModifierClass}")">
+    <div class="@(Model.IsEmbedMode ? "valora-embed-page" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj" : Model.IsRescisaoStitch ? "valora-stitch-rescisao" : Model.IsSalarioLiquidoStitch ? "valora-stitch-calc-detail valora-stitch-salario" : Model.IsPropostaSalarialStitch ? "valora-stitch-calc-detail valora-stitch-proposta-detail" : $"valora-stitch-calc-detail{Model.CalcDetailModifierClass}")">
         @if (!Model.IsEmbedMode && Model.IsPjVsCltStitch)
         {
             <nav class="valora-breadcrumb valora-stitch-cltpj-breadcrumb" aria-label="breadcrumb">
@@ -759,7 +759,7 @@ else
                 <partial name="Shared/_SalarioLiquidoStitchEduCards" />
             }
 
-            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch && !Model.IsRescisaoStitch && !Model.IsSalarioLiquidoStitch)
+            @if (!Model.IsEmbedMode && !Model.IsPjVsCltStitch && !Model.IsRescisaoStitch && !Model.IsSalarioLiquidoStitch && !Model.IsPropostaSalarialStitch)
             {
             <p class="valora-stitch-calc-footer-hint">
                 Os resultados são estimativas educativas. Consulte seu RH ou contador para valores oficiais.
@@ -779,7 +779,7 @@ else
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")}{(Model.IsSalarioLiquidoStitch ? " valora-stitch-salario-estimate" : "")} valora-stack-md{(Model.ResultPanel is null && Model.SalarioLiquidoStitchResult is null ? " valora-stitch-calc-estimate--empty" : "")}")">
+        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")}{(Model.IsSalarioLiquidoStitch ? " valora-stitch-salario-estimate" : "")}{(Model.IsPropostaSalarialStitch ? " valora-stitch-proposta-estimate" : "")} valora-stack-md{(Model.ResultPanel is null && Model.SalarioLiquidoStitchResult is null && Model.PropostaStitchResult is null ? " valora-stitch-calc-estimate--empty" : "")}")">
             @if (Model.IsPjVsCltStitch)
             {
                 @if (Model.CltPjBreakdown is not null)
@@ -803,6 +803,12 @@ else
                 {
                     <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.ResultPanel.Journey" />
                 }
+            }
+            else if (Model.PropostaStitchResult is not null)
+            {
+                <p class="valora-stitch-calc-estimate-kicker">COMPARATIVO DA PROPOSTA</p>
+                <partial name="Shared/_PropostaSalarialStitchResults" model="Model.PropostaStitchResult" />
+                <p class="valora-stitch-calc-estimate-disclaimer">@Model.Result!.LegalDisclaimer</p>
             }
             else if (Model.SalarioLiquidoStitchResult is not null)
             {

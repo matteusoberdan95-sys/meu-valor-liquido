@@ -63,7 +63,7 @@ public static class ThematicHubCatalog
             "O aumento no bruto nem sempre vira o mesmo ganho no bolso. Simule com INSS, IRRF e os mesmos descontos nos dois cenários.",
             """
             <p>Propostas costumam vir em <strong>salário bruto</strong>, mas o que importa na negociação é o <strong>líquido</strong> — após INSS, IRRF, vale-transporte e outros descontos do holerite.</p>
-            <p>Compare cenários, veja ganho mensal e anual e <strong>compartilhe a simulação</strong> (link ou PDF) com transparência. Use a <a href="/conferir-holerite">ferramenta de conferir holerite</a> para validar INSS e IRRF antes de falar com o RH.</p>
+            <p>Compare cenários lado a lado na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> (ganho real no bolso e % líquido vs bruto), valide o holerite com a <a href="/conferir-holerite">ferramenta de conferir holerite</a> e <strong>compartilhe a simulação</strong> (link ou PDF) com transparência.</p>
             """,
             "Negociar salário",
             "Avalie a proposta pelo líquido, valide o holerite com os mesmos descontos e descubra o bruto necessário para sua meta.",
