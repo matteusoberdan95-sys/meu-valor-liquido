@@ -36,6 +36,11 @@
         @Html.Raw(hub.IntroHtml)
     </section>
 
+    @if (hub.Id.Equals(ThematicHubCatalog.Desligamento, StringComparison.OrdinalIgnoreCase))
+    {
+        <partial name="Shared/_RescisaoChecklist" model="RescisaoChecklistCatalog.GetAll()" />
+    }
+
   @if (Model.Journey.Steps.Count > 0)
     {
         <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.Journey" />

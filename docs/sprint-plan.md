@@ -493,8 +493,8 @@
 | **70** | Conteúdo | Editorial contínuo (2 artigos/mês) | **CONCLUÍDA** (lote 1) |
 | **71** | 1 | Conferir holerite (validação INSS/IRRF 2026) | **CONCLUÍDA** |
 | **72** | 1 | Comparador visual de propostas salariais | **CONCLUÍDA** |
-| **73** | 1 | Checklist interativo de rescisão | **Próxima** |
-| **74** | 1 | Páginas programáticas expandidas | Planejada |
+| **73** | 1 | Checklist interativo de rescisão | **CONCLUÍDA** |
+| **74** | 1 | Páginas programáticas expandidas | **Próxima** |
 | **75** | 2 | Simulador “E se…” (cenários pré-montados) | Planejada |
 | **76** | 2 | Meu painel: comparar 2 cenários salvos | Planejada |
 | **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | Planejada |
@@ -566,14 +566,15 @@
 
 ---
 
-### Sprint 73 — Checklist interativo de rescisão (Tier 1)
+### Sprint 73 — Checklist interativo de rescisão (Tier 1) — CONCLUÍDA
 
 **Objetivo:** checklist pós-demissão no hub `/desligamento` (localStorage).
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Componente checklist com links para calculadoras |
-| SEO/Content | FAQ + rich snippets |
+| WebApp/Frontend | `RescisaoChecklistCatalog`, `_RescisaoChecklist`, `rescisao-checklist.js` |
+| SEO/Content | FAQ rich snippets no hub; intro atualizada |
+| QA/Test | `Sprint73RescisaoChecklistTests` |
 
 ---
 

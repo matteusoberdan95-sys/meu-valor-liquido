@@ -36,7 +36,7 @@ public static class ThematicHubCatalog
             "Saiu da empresa? Entenda sua rescisão",
             "Estime verbas rescisórias, FGTS e multa — e saiba o que conferir no TRCT antes de assinar.",
             $"""
-            <p>Um desligamento envolve mais que um número final: saldo de salário, verbas proporcionais, descontos, FGTS e multa conforme o motivo. Use as ferramentas abaixo para <strong>estimar cada parte</strong> e saber o que conferir no TRCT.</p>
+            <p>Um desligamento envolve mais que um número final: saldo de salário, verbas proporcionais, descontos, FGTS e multa conforme o motivo. Use o <strong>checklist interativo</strong> abaixo e as ferramentas para <strong>estimar cada parte</strong> e saber o que conferir no TRCT.</p>
             <p>As simulações são educativas e calibradas com tabelas de {BrTaxTables2026.Year} — não substituem homologação, contador ou sindicato.</p>
             """,
             "Saída da empresa",

@@ -1,0 +1,57 @@
+@model IReadOnlyList<MeuValorLiquido.WebApp.Infrastructure.RescisaoChecklistItemDefinition>
+@{
+    var total = Model.Count;
+}
+
+<section class="valora-stitch-rescisao-checklist valora-card" aria-labelledby="rescisao-checklist-title" data-rescisao-checklist>
+    <div class="valora-stitch-rescisao-checklist-head">
+        <div>
+            <p class="valora-stitch-rescisao-checklist-kicker">Pós-demissão</p>
+            <h2 class="valora-stitch-rescisao-checklist-title" id="rescisao-checklist-title">Checklist do desligamento</h2>
+            <p class="valora-text-muted valora-text-sm valora-stitch-rescisao-checklist-lead">
+                Marque o que já fez — o progresso fica salvo só no seu navegador.
+            </p>
+        </div>
+        <div class="valora-stitch-rescisao-checklist-progress" aria-live="polite">
+            <span class="valora-stitch-rescisao-checklist-progress-value" data-rescisao-checklist-progress>0</span>
+            <span class="valora-stitch-rescisao-checklist-progress-label">de @total</span>
+        </div>
+    </div>
+
+    <ul class="valora-stitch-rescisao-checklist-list">
+        @foreach (var item in Model)
+        {
+            <li class="valora-stitch-rescisao-checklist-item" data-rescisao-checklist-item="@item.Id">
+                <label class="valora-stitch-rescisao-checklist-label">
+                    <input type="checkbox"
+                           class="valora-stitch-rescisao-checklist-input"
+                           data-rescisao-checklist-toggle="@item.Id"
+                           aria-describedby="rescisao-check-desc-@item.Id" />
+                    <span class="valora-stitch-rescisao-checklist-check" aria-hidden="true"></span>
+                    <span class="valora-stitch-rescisao-checklist-text">
+                        <strong class="valora-stitch-rescisao-checklist-item-title">@item.Title</strong>
+                        <span class="valora-stitch-rescisao-checklist-item-desc" id="rescisao-check-desc-@item.Id">@item.Description</span>
+                    </span>
+                </label>
+                @if (!string.IsNullOrWhiteSpace(item.LinkUrl))
+                {
+                    <a class="valora-stitch-rescisao-checklist-link"
+                       href="@item.LinkUrl">
+                        @(item.LinkLabel ?? "Saiba mais")
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </a>
+                }
+            </li>
+        }
+    </ul>
+
+    <div class="valora-stitch-rescisao-checklist-actions">
+        <button type="button" class="valora-stitch-btn valora-stitch-btn--ghost valora-stitch-btn--sm" data-rescisao-checklist-reset hidden>
+            Limpar checklist
+        </button>
+        <p class="valora-stitch-rescisao-checklist-hint">
+            Dados locais · não enviamos ao servidor.
+            <a asp-page="/PoliticaDeCookies">Política de Cookies</a>
+        </p>
+    </div>
+</section>

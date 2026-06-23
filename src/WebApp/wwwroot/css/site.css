@@ -8463,6 +8463,170 @@ select:focus-visible {
   }
 }
 
+/* Sprint 73 — Checklist interativo de rescisão */
+.valora-stitch-rescisao-checklist {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-rescisao-checklist-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.valora-stitch-rescisao-checklist-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-rescisao-checklist-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-rescisao-checklist-lead {
+  margin: 0.35rem 0 0;
+}
+
+.valora-stitch-rescisao-checklist-progress {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--valora-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--valora-primary) 25%, transparent);
+}
+
+.valora-stitch-rescisao-checklist-progress-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-rescisao-checklist-progress-label {
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-checklist-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.valora-stitch-rescisao-checklist-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.valora-stitch-rescisao-checklist-item--done {
+  border-color: color-mix(in srgb, var(--valora-primary) 30%, var(--valora-border-subtle));
+  background: color-mix(in srgb, var(--valora-primary) 4%, var(--valora-card-low));
+}
+
+.valora-stitch-rescisao-checklist-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.valora-stitch-rescisao-checklist-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.valora-stitch-rescisao-checklist-check {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+  border-radius: 0.35rem;
+  border: 2px solid var(--valora-outline-variant);
+  background: var(--valora-surface-container-low);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.valora-stitch-rescisao-checklist-input:checked + .valora-stitch-rescisao-checklist-check {
+  border-color: var(--valora-primary);
+  background: var(--valora-primary);
+  box-shadow: inset 0 0 0 2px var(--valora-on-primary);
+}
+
+.valora-stitch-rescisao-checklist-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.valora-stitch-rescisao-checklist-item-title {
+  font-size: 0.9375rem;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-rescisao-checklist-item--done .valora-stitch-rescisao-checklist-item-title {
+  text-decoration: line-through;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-checklist-item-desc {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-rescisao-checklist-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 2rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+  text-decoration: none;
+}
+
+.valora-stitch-rescisao-checklist-link .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.valora-stitch-rescisao-checklist-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.valora-stitch-rescisao-checklist-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--valora-text-muted);
+}
+
 /* Sprint 71 — Conferir holerite */
 .valora-stitch-payslip {
   max-width: var(--valora-container-max);

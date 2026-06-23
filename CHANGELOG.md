@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 73 — Checklist interativo de rescisão
+- Checklist pós-demissão no hub `/desligamento` com progresso em `localStorage` (`mvl-rescisao-checklist-v1`).
+- `RescisaoChecklistCatalog`, partial `_RescisaoChecklist`, `rescisao-checklist.js`.
+- FAQ rich snippets (`FAQPage`) no hub desligamento via `ThematicHubFaqSchemaBuilder`.
+- Política de Cookies atualizada com a nova chave local.
+- Testes `Sprint73RescisaoChecklistTests`.
+
 ### Sprint 72 — Comparador visual de propostas
 - UI lado a lado em `proposta-salarial`: veredito com % real no bolso, cards atual vs proposto (INSS, IRRF, líquido), barras comparativas.
 - `SalaryProposalStitchResultBuilder`, partial `_PropostaSalarialStitchResults`; integração em `Details.cshtml`.

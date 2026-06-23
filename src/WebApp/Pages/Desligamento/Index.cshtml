@@ -6,6 +6,14 @@
 
 @section Head {
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.ThematicHubBreadcrumbs(Model.HubPage.Hub.BreadcrumbLabel, Model.HubPage.Hub.RoutePath)" />
+    @if (Model.FaqSchemaItems.Count > 0)
+    {
+        <partial name="Shared/_JsonLdFaq" model="Model.FaqSchemaItems" />
+    }
 }
 
 <partial name="Shared/_ThematicHubPage" model="Model.HubPage" />
+
+@section Scripts {
+    <script src="~/js/rescisao-checklist.js" asp-append-version="true"></script>
+}
