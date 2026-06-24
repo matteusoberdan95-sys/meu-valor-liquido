@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 78 — Widget embed + newsletter semanal
+- Landing `/widget` redesenhada (Stitch): seletor de calculadoras, pré-visualização única e snippet copiável (`widget-hub.js`).
+- `WeeklyNewsletterTemplateCatalog`, preview em `/newsletter` e template editorial em `docs/NEWSLETTER_WEEKLY_TEMPLATE.md`.
+- E-mail de confirmação cita curadoria semanal; embed continua sem anúncios.
+- Testes `Sprint78WidgetAndNewsletterTests`.
+
 ### Sprint 77 — Badge tabelas 2026 + FAQ expandido
 - Badge `INSS/IRRF 2026 · Revisado em [mês]` nas calculadoras template C1 com INSS/IRRF (`TaxTablesBadgeHelper`, `_TaxTablesRevisionBadge`).
 - 7 novas páginas `/duvidas/`: conferir holerite, redução IRRF 2026, teto INSS, abono pecuniário, acordo 484-A, plano de saúde e saque FGTS.

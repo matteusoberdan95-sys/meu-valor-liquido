@@ -498,7 +498,7 @@
 | **75** | 2 | Simulador “E se…” (cenários pré-montados) | **CONCLUÍDA** |
 | **76** | 2 | Meu painel: comparar 2 cenários salvos | **CONCLUÍDA** |
 | **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | **CONCLUÍDA** |
-| **78** | 3 | Widget embed + newsletter semanal | **Próxima** |
+| **78** | 3 | Widget embed + newsletter semanal | **CONCLUÍDA** |
 
 **Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 69–78.
 
@@ -625,15 +625,16 @@
 
 ---
 
-### Sprint 78 — Widget + newsletter (Tier 3)
+### Sprint 78 — Widget + newsletter (Tier 3) — CONCLUÍDA
 
 **Objetivo:** distribuição (embed) e retenção (newsletter semanal).
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Landing `/widget` + snippet |
-| SEO/Content | Template newsletter |
-| Monetization | Sem ads no widget |
+| WebApp/Frontend | Landing `/widget` Stitch + snippet interativo (`widget-hub.js`) |
+| SEO/Content | `WeeklyNewsletterTemplateCatalog`, preview `/newsletter`, `docs/NEWSLETTER_WEEKLY_TEMPLATE.md` |
+| Monetization | Embed sem anúncios (regressão mantida) |
+| QA/Test | `Sprint78WidgetAndNewsletterTests` |
 
 ---
 

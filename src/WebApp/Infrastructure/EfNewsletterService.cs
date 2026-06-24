@@ -33,7 +33,7 @@ public sealed class EfNewsletterService : INewsletterService
             new EmailMessage(
                 normalized,
                 "Confirmação de inscrição — Meu Valor Líquido",
-                "Obrigado por se inscrever na newsletter do Meu Valor Líquido. Você receberá conteúdos educativos sobre salário, impostos e finanças pessoais."),
+                "Obrigado por se inscrever na newsletter do Meu Valor Líquido. Você receberá nossa curadoria semanal (toda terça-feira) com conteúdos educativos sobre salário, impostos e finanças pessoais."),
             cancellationToken);
 
         return new NewsletterSubscriber(entity.Email, entity.SubscribedAt, entity.IsConfirmed);

@@ -2,59 +2,116 @@
 @model MeuValorLiquido.WebApp.Pages.Widget.IndexModel
 @{
     ViewData["Title"] = "Widget incorporável — calculadoras para seu site";
+    var defaultWidget = Model.WidgetItems.FirstOrDefault(w => w.Slug == Model.DefaultSlug) ?? Model.WidgetItems[0];
 }
 
 @section Head {
     <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.WidgetHubBreadcrumbs()" />
 }
 
-<nav aria-label="breadcrumb">
-    <ol class="valora-breadcrumb">
-        <li><a asp-page="/Index">Início</a></li>
-        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
-        <li class="active" aria-current="page">Widget incorporável</li>
-    </ol>
-</nav>
+<div class="valora-stitch-widget-hub" data-widget-hub data-base-url="@Model.BaseUrl" data-default-slug="@Model.DefaultSlug">
+    <nav class="valora-breadcrumb valora-stitch-widget-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Widget incorporável</li>
+        </ol>
+    </nav>
 
-<h1 class="valora-h1">Widget incorporável</h1>
-<p class="valora-lead">
-    Incorpore calculadoras educativas no seu site com um iframe. Gratuito, sem login e com link de atribuição ao Meu Valor Líquido.
-</p>
+    <header class="valora-stitch-widget-hero">
+        <span class="valora-stitch-widget-hero-badge">
+            <span class="material-symbols-outlined" aria-hidden="true">code</span>
+            Distribuição gratuita
+        </span>
+        <h1 class="valora-stitch-widget-hero-title">Widget incorporável</h1>
+        <p class="valora-stitch-widget-hero-lead">
+            Incorpore calculadoras educativas no seu site com um snippet em iframe. Sem login, <strong>sem anúncios no embed</strong> e com link de atribuição ao Meu Valor Líquido.
+        </p>
+    </header>
 
-<section class="valora-section valora-card">
-    <h2 class="valora-h3">Regras de uso</h2>
-    <ul class="valora-text-muted valora-text-sm" style="margin: 0; padding-left: 1.25rem;">
-        <li>Mantenha o link de atribuição visível abaixo do iframe.</li>
-        <li>Não remova o aviso de estimativa educativa nem apresente o widget como cálculo oficial.</li>
-        <li>Não coloque anúncios sobrepostos ao iframe nem incentive clique em anúncios via widget.</li>
-        <li>O visitante pode abrir a versão completa no site para compartilhar ou salvar no painel local.</li>
-    </ul>
-</section>
+    <section class="valora-stitch-widget-rules valora-stitch-widget-card" aria-labelledby="widget-rules-title">
+        <h2 id="widget-rules-title" class="valora-stitch-widget-card-title">Regras de uso</h2>
+        <ul class="valora-stitch-widget-rules-list">
+            <li>Mantenha o link de atribuição visível abaixo do iframe.</li>
+            <li>Não remova o aviso de estimativa educativa nem apresente o widget como cálculo oficial.</li>
+            <li>Não coloque anúncios sobrepostos ao iframe nem incentive clique em anúncios via widget.</li>
+            <li>O visitante pode abrir a versão completa no site para compartilhar ou salvar no painel local.</li>
+        </ul>
+    </section>
 
-@foreach (var widget in Model.Widgets)
-{
-    var iframeCode = EmbedCodeBuilder.BuildIframeHtml(Model.BaseUrl, widget);
-    <section class="valora-section valora-card valora-widget-doc" id="widget-@widget.Slug">
-        <h2 class="valora-h2">@widget.Name</h2>
-        <p class="valora-text-muted valora-text-sm">@widget.Summary</p>
-
-        <div class="valora-widget-preview" style="margin: 1rem 0;">
-            <iframe src="@EmbedWidgetCatalog.WidgetPath(widget.Slug)"
-                    width="100%"
-                    height="@widget.RecommendedHeight"
-                    style="border:0;border-radius:12px;max-width:100%;"
-                    title="@widget.Name — Meu Valor Líquido"
-                    loading="lazy"></iframe>
+    <section class="valora-stitch-widget-builder valora-stitch-widget-card" aria-labelledby="widget-builder-title">
+        <div class="valora-stitch-widget-card-head">
+            <h2 id="widget-builder-title" class="valora-stitch-widget-card-title">Montar snippet</h2>
+            <p class="valora-stitch-widget-card-lead">Escolha a calculadora, copie o código e cole no seu site.</p>
         </div>
 
-        <label class="valora-label" for="code-@widget.Slug">Código para copiar</label>
-        <textarea id="code-@widget.Slug" class="valora-input valora-widget-code" readonly rows="6">@iframeCode</textarea>
-        <div class="valora-gap-buttons" style="margin-top: 0.75rem;">
-            <button type="button" class="valora-btn valora-btn-outline" data-copy-widget="@widget.Slug">Copiar código</button>
-            <a class="valora-btn valora-btn-primary" asp-page="/Calculadoras/Details" asp-route-slug="@widget.Slug">Abrir versão completa</a>
+        <div class="valora-stitch-widget-chips" role="tablist" aria-label="Calculadoras disponíveis">
+            @foreach (var widget in Model.WidgetItems)
+            {
+                <button type="button"
+                        class="valora-stitch-widget-chip @(widget.Slug == Model.DefaultSlug ? "valora-stitch-widget-chip--active" : null)"
+                        role="tab"
+                        aria-selected="@(widget.Slug == Model.DefaultSlug ? "true" : "false")"
+                        data-widget-chip="@widget.Slug">
+                    @widget.Name
+                </button>
+            }
+        </div>
+
+        <div class="valora-stitch-widget-builder-grid">
+            <div class="valora-stitch-widget-preview-wrap">
+                <p class="valora-stitch-widget-preview-label">Pré-visualização</p>
+                <div class="valora-stitch-widget-preview">
+                    <iframe data-widget-preview
+                            src="@defaultWidget.WidgetPath"
+                            width="100%"
+                            height="@defaultWidget.RecommendedHeight"
+                            style="border:0;border-radius:12px;max-width:100%;"
+                            title="@defaultWidget.Name — Meu Valor Líquido"
+                            loading="lazy"></iframe>
+                </div>
+                <p class="valora-stitch-widget-no-ads">
+                    <span class="material-symbols-outlined" aria-hidden="true">block</span>
+                    Embed sem anúncios · versão educativa
+                </p>
+            </div>
+
+            <div class="valora-stitch-widget-code-wrap">
+                <p class="valora-stitch-widget-preview-label" data-widget-summary>@defaultWidget.Summary</p>
+                <label class="valora-label" for="widget-snippet-code" data-widget-code-label>Snippet para @defaultWidget.Name</label>
+                <textarea id="widget-snippet-code"
+                          class="valora-input valora-widget-code"
+                          data-widget-code
+                          readonly
+                          rows="8">@defaultWidget.IframeCode</textarea>
+                <div class="valora-gap-buttons valora-stitch-widget-actions">
+                    <button type="button" class="valora-stitch-btn valora-stitch-btn--primary" data-copy-widget>Copiar snippet</button>
+                    <a class="valora-stitch-btn valora-stitch-btn--outline"
+                       data-widget-full-link
+                       asp-page="/Calculadoras/Details"
+                       asp-route-slug="@defaultWidget.Slug">Abrir versão completa</a>
+                </div>
+            </div>
         </div>
     </section>
-}
+
+    <section class="valora-stitch-widget-catalog valora-stitch-widget-card" aria-labelledby="widget-catalog-title">
+        <h2 id="widget-catalog-title" class="valora-stitch-widget-card-title">Calculadoras disponíveis</h2>
+        <ul class="valora-stitch-widget-catalog-list">
+            @foreach (var widget in Model.WidgetItems)
+            {
+                <li>
+                    <button type="button" class="valora-stitch-widget-catalog-item" data-widget-jump="@widget.Slug">
+                        <strong>@widget.Name</strong>
+                        <span>@widget.Summary</span>
+                    </button>
+                </li>
+            }
+        </ul>
+    </section>
+</div>
+
+<script type="application/json" id="mvl-widget-catalog">@Html.Raw(Model.WidgetCatalogJson)</script>
 
 @section Scripts {
     <script src="~/js/widget-hub.js" asp-append-version="true"></script>

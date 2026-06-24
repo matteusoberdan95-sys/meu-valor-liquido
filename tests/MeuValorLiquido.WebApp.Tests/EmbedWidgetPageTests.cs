@@ -34,6 +34,8 @@ public class EmbedWidgetPageTests
 
         html.Should().Contain("Widget incorpor");
         html.Should().Contain("data-copy-widget");
+        html.Should().Contain("valora-stitch-widget-hub");
+        html.Should().Contain("mvl-widget-catalog");
         html.Should().Contain("salario-liquido");
         html.Should().Contain("BreadcrumbList");
     }

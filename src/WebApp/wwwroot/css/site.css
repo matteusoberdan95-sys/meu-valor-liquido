@@ -1302,6 +1302,275 @@ a.valora-choice.valora-choice--active {
   resize: vertical;
 }
 
+.valora-stitch-widget-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.valora-stitch-widget-breadcrumb {
+  margin-bottom: 0.25rem;
+}
+
+.valora-stitch-widget-hero {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: linear-gradient(145deg, rgb(89 219 199 / 8%), transparent 55%), var(--valora-surface-container-low);
+}
+
+.valora-stitch-widget-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--valora-badge-financeiro-bg);
+  color: var(--valora-badge-financeiro-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.valora-stitch-widget-hero-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+}
+
+.valora-stitch-widget-hero-lead {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--valora-text-muted);
+  line-height: 1.55;
+}
+
+.valora-stitch-widget-card {
+  padding: 1.5rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-widget-card-head {
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-widget-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.valora-stitch-widget-card-lead {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-widget-rules-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--valora-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.valora-stitch-widget-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-widget-chip {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container);
+  color: inherit;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.valora-stitch-widget-chip--active {
+  border-color: rgb(89 219 199 / 45%);
+  background: rgb(89 219 199 / 12%);
+  color: var(--valora-primary);
+}
+
+.valora-stitch-widget-builder-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .valora-stitch-widget-builder-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: start;
+  }
+}
+
+.valora-stitch-widget-preview-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.valora-stitch-widget-preview {
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container);
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.valora-stitch-widget-no-ads {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-widget-no-ads .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-widget-actions {
+  margin-top: 0.75rem;
+}
+
+.valora-stitch-widget-catalog-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-widget-catalog-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.valora-stitch-widget-catalog-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--valora-radius-lg);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.valora-stitch-widget-catalog-item:hover {
+  border-color: rgb(89 219 199 / 35%);
+}
+
+.valora-stitch-widget-catalog-item span {
+  font-size: 0.8125rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-newsletter-preview {
+  margin-bottom: 1.5rem;
+}
+
+.valora-stitch-newsletter-preview-head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.valora-stitch-newsletter-preview-head .material-symbols-outlined {
+  color: var(--valora-primary);
+  font-size: 1.75rem;
+}
+
+.valora-stitch-newsletter-preview-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.valora-stitch-newsletter-preview-cadence {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--valora-primary);
+  font-weight: 600;
+}
+
+.valora-stitch-newsletter-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid var(--valora-border-subtle);
+  background: var(--valora-surface-container-low);
+}
+
+.valora-stitch-newsletter-preview-block {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-newsletter-preview-block:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.valora-stitch-newsletter-preview-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-newsletter-preview-subject {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valora-stitch-newsletter-preview-link {
+  display: inline-flex;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+  text-decoration: none;
+}
+
+.valora-stitch-newsletter-preview-link:hover {
+  text-decoration: underline;
+}
+
+.valora-stitch-newsletter-preview-note {
+  margin: 0.75rem 0 0;
+}
+
 .valora-result-view-toggle {
   display: flex;
   gap: 0.5rem;

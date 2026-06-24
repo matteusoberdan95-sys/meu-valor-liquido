@@ -13,9 +13,11 @@
         </span>
         <h1 class="valora-stitch-newsletter-title">Newsletter</h1>
         <p class="valora-stitch-newsletter-lead">
-            Cadastre seu e-mail para receber conteúdos educativos sobre salário, descontos e finanças pessoais.
+            Cadastre seu e-mail para receber nossa <strong>curadoria semanal</strong> com calculadoras em destaque, leituras do blog e dicas sobre salário e impostos.
         </p>
     </header>
+
+    <partial name="Shared/_WeeklyNewsletterPreview" />
 
     <form method="post" class="valora-form-card valora-stitch-newsletter-form valora-stack-md">
         @if (Model.Subscribed)
@@ -35,7 +37,7 @@
             <input asp-for="Email" class="valora-input" type="email" placeholder="seu@email.com" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Não enviamos spam. Você pode cancelar a inscrição a qualquer momento.</p>
+        <p class="valora-text-muted valora-text-sm" style="margin: 0;">Envio semanal (terça-feira). Sem spam — cancele quando quiser.</p>
         <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-newsletter-submit" type="submit">
             Inscrever-se
             <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>

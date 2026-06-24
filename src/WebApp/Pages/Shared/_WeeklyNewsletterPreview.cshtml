@@ -1,0 +1,38 @@
+@{
+    var blocks = WeeklyNewsletterTemplateCatalog.GetSampleIssue();
+}
+
+<section class="valora-stitch-newsletter-preview" aria-labelledby="newsletter-preview-title">
+    <div class="valora-stitch-newsletter-preview-head">
+        <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+        <div>
+            <h2 id="newsletter-preview-title" class="valora-stitch-newsletter-preview-title">O que você recebe</h2>
+            <p class="valora-stitch-newsletter-preview-cadence">@WeeklyNewsletterTemplateCatalog.CadenceLabel</p>
+        </div>
+    </div>
+
+    <div class="valora-stitch-newsletter-preview-card">
+        @foreach (var block in blocks)
+        {
+            <article class="valora-stitch-newsletter-preview-block">
+                <h3 class="valora-stitch-newsletter-preview-label">@block.Label</h3>
+                @if (block.Label == "Assunto sugerido")
+                {
+                    <p class="valora-stitch-newsletter-preview-subject">@block.ContentHtml</p>
+                }
+                else
+                {
+                    @Html.Raw(block.ContentHtml)
+                    @if (!string.IsNullOrEmpty(block.LinkUrl))
+                    {
+                        <a class="valora-stitch-newsletter-preview-link" href="@block.LinkUrl">@block.LinkLabel</a>
+                    }
+                }
+            </article>
+        }
+    </div>
+
+    <p class="valora-text-muted valora-text-sm valora-stitch-newsletter-preview-note">
+        Exemplo ilustrativo — cada edição traz calculadoras e artigos atualizados do blog.
+    </p>
+</section>

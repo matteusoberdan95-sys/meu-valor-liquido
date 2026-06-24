@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 78** — Widget embed + newsletter semanal |
-| **Em seguida** | Sprint 70 lote 2 (mais 2 artigos) |
-| **Concluída recente** | Sprint 77 (badge tabelas + FAQ) · Sprint 76 · Sprint 75 · Sprint 74 |
+| **Próxima sprint** | **Sprint 70 lote 2** (2 artigos) · manutenção trilha 69–78 concluída |
+| **Em seguida** | Sprint 51 (AdSense) quando Google aprovar |
+| **Concluída recente** | Sprint 78 (widget + newsletter) · Sprint 77 · Sprint 76 · Sprint 75 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -25,7 +25,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 78 | WebApp/Frontend + SEO | Widget embed + newsletter semanal |
+| **1 — agora** | 70 (lote 2+) | SEO/Content | 2 artigos/mês (editorial contínuo) |
 | **Contínuo** | 70 (lote 2+) | SEO/Content | 2 artigos/mês |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
