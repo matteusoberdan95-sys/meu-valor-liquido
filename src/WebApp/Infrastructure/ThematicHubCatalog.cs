@@ -49,7 +49,7 @@ public static class ThematicHubCatalog
             ],
             "rescisao-clt",
             ["rescisao-clt", "fgts", "seguro-desemprego", "decimo-terceiro", "ferias", "salario-liquido"],
-            ["como-calcular-rescisao-clt", "rescisao-clt-vs-trct", "fgts-guia-completo", "seguro-desemprego-quem-tem-direito", "multa-fgts-40-ou-20", "acordo-484a-verbas-e-multa-fgts"],
+            ["como-calcular-rescisao-clt", "rescisao-clt-vs-trct", "fgts-guia-completo", "seguro-desemprego-quem-tem-direito", "multa-fgts-40-ou-20", "acordo-484a-verbas-e-multa-fgts", "pedir-demissao-ou-aguardar-dispensa"],
             ["rescisao-pedido-demissao-o-que-recebo", "multa-fgts-40-porcento", "seguro-desemprego-quando-tem-direito"]),
 
         new(
@@ -74,7 +74,7 @@ public static class ThematicHubCatalog
             ],
             "proposta-salarial",
             ["proposta-salarial", "salario-liquido", "salario-bruto-necessario", "inss", "irrf"],
-            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x"],
+            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo"],
             ["proposta-salarial-como-negociar", "diferenca-salario-bruto-e-liquido", "quanto-preciso-ganhar-para-receber-x-liquido"]),
 
         new(

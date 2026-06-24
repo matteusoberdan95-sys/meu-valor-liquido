@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 70 — Editorial lote 2 (jul/2026)
+- Artigos longos (~5 min): `ferias-coletivas-clt-guia-completo`, `pedir-demissao-ou-aguardar-dispensa`.
+- Cross-links nos hubs `/desligamento` e `/negociar-salario`.
+- `docs/BLOG_EDITORIAL_PLAN.md` — calendário sazonal, backlog e guia para agents.
+- Testes `Sprint70Lote2BlogTests` (≥850 palavras, links EEAT).
+
 ### Sprint 78 — Widget embed + newsletter semanal
 - Landing `/widget` redesenhada (Stitch): seletor de calculadoras, pré-visualização única e snippet copiável (`widget-hub.js`).
 - `WeeklyNewsletterTemplateCatalog`, preview em `/newsletter` e template editorial em `docs/NEWSLETTER_WEEKLY_TEMPLATE.md`.

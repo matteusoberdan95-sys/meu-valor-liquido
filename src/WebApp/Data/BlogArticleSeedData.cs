@@ -818,6 +818,137 @@ public static class BlogArticleSeedData
             <h2>Por que isso importa na negociação PJ</h2>
             <p>Quem compara CLT com PJ só pelo bruto subestima o pacote CLT. A <a href="/calculadoras/custo-funcionario">calculadora de custo de funcionário</a> estima esse total; combine com <a href="/calculadoras/pj-vs-clt">PJ vs CLT</a> e o hub <a href="/virar-pj">virar PJ</a>.</p>
             <p>Veja <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT: qual compensa?</a>, <a href="/blog/pro-labore-pj-quanto-retirar">pró-labore na PJ</a> e a <a href="/duvidas/pj-ou-clt-qual-compensa">FAQ PJ ou CLT</a>.</p>
+            """),
+        Article(
+            "ferias-coletivas-clt-guia-completo",
+            "Férias coletivas na CLT: direitos, calendário e como calcular",
+            "Guia completo sobre férias coletivas no verão e no inverno: aviso, pagamento, abono pecuniário e impacto no holerite.",
+            "ferias",
+            "Trabalhista",
+            new DateOnly(2026, 7, 15),
+            """
+            <p>Entre <strong>dezembro e março</strong>, muitas empresas concedem <strong>férias coletivas</strong> — período em que parte ou todo o quadro para ao mesmo tempo. No <strong>meio do ano</strong>, alguns setores repetem a prática no recesso de julho. Para o trabalhador CLT, isso muda calendário de pagamento, descanso e, em alguns casos, o valor que cai na conta.</p>
+            <p>Este guia explica o que a lei prevê, o que costuma aparecer no holerite e como <strong>estimar o valor</strong> antes de assinar o aviso — sem substituir o departamento pessoal ou o sindicato da categoria.</p>
+
+            <h2>O que são férias coletivas</h2>
+            <p>Férias coletivas são concedidas <strong>simultaneamente</strong> a todos os empregados de um estabelecimento ou a grupos definidos (setor, unidade, função). A empresa define o período, respeitando regras de aviso prévio e limites legais. O direito ao descanso continua sendo o mesmo do trabalhador CLT: após cada período aquisitivo de 12 meses, você tem direito a férias — a diferença é que a <strong>data de gozo</strong> é escolhida pelo empregador, não individualmente.</p>
+            <p>Em épocas de baixa demanda (fim de ano, carnaval, julho em comércio e indústria), férias coletivas ajudam a empresa a reduzir custos fixos sem dispensar funcionários. Para você, o impacto financeiro depende de <strong>quando o pagamento cai</strong>, se há <strong>abono pecuniário</strong> (venda de 1/3) e se o mês terá só férias ou salário + férias proporcionais.</p>
+
+            <h2>Aviso e comunicação ao empregado</h2>
+            <p>A empresa deve comunicar as férias coletivas com <strong>antecedência mínima de 15 dias</strong>. O aviso costuma vir por e-mail corporativo, mural, sistema de RH ou termo assinado. Guarde o comprovante: a data de início e fim do período define prazos de pagamento e eventuais questionamentos depois.</p>
+            <ul>
+            <li><strong>Quem pode ser incluído:</strong> em regra, todos do estabelecimento, salvo exceções negociadas em convenção coletiva.</li>
+            <li><strong>Quem aderiu há pouco:</strong> quem não completou o período aquisitivo recebe férias <strong>proporcionais</strong> na mesma lógica das férias individuais.</li>
+            <li><strong>Menores de 18 e maiores de 50:</strong> a legislação prevê cuidados específicos; confirme com RH se a categoria permite inclusão no mesmo bloco.</li>
+            </ul>
+
+            <h2>Pagamento: quando o dinheiro cai</h2>
+            <p>As férias devem ser pagas até <strong>dois dias antes</strong> do início do período de descanso. Na prática, muitas empresas antecipam na folha do mês anterior ou pagam em lote no mesmo dia para todo o time. O holerite de férias costuma mostrar:</p>
+            <ol>
+            <li><strong>Valor das férias</strong> (30 dias ou proporcional).</li>
+            <li><strong>Adicional constitucional de 1/3</strong> sobre o valor das férias.</li>
+            <li><strong>Descontos de INSS e IRRF</strong> sobre o total da verba de férias.</li>
+            <li><strong>Abono pecuniário</strong>, se você vendeu até 10 dias (1/3 do período).</li>
+            </ol>
+            <p>Se o mês tiver <strong>salário normal + férias</strong>, o holerite fica mais complexo: parte do salário pode ser proporcional aos dias trabalhados, e a verba de férias entra em rubricas separadas. Isso altera a base de INSS e IRRF do mês — por isso o líquido de janeiro ou julho pode parecer “diferente” mesmo sem mudança de salário contratual.</p>
+
+            <h2>Abono pecuniário nas férias coletivas</h2>
+            <p>Você pode converter até <strong>1/3 das férias</strong> em dinheiro (abono pecuniário), reduzindo os dias de descanso. A solicitação deve ser feita com antecedência ao empregador. Nas férias coletivas, o RH costuma perguntar no mesmo formulário do aviso — se não perguntar, procure o setor antes do prazo interno.</p>
+            <p>O abono paga o valor dos dias vendidos <strong>mais o adicional de 1/3</strong> sobre essa parcela, com INSS e IRRF. Nem sempre compensa financeiramente vender descanso: simule com e sem abono na <a href="/calculadoras/ferias">calculadora de férias</a> e leia <a href="/blog/ferias-abono-pecuniario-vale-a-pena">abono pecuniário: vale a pena?</a> e a <a href="/duvidas/vender-ferias-abono-pecuniario">FAQ de venda de férias</a>.</p>
+
+            <h2>Férias coletivas e rescisão</h2>
+            <p>Se você pedir demissão ou for desligado perto do período coletivo, as verbas mudam. Férias <strong>vencidas</strong> (não gozadas de períodos anteriores) podem ser pagas em dobro na rescisão em alguns casos. Férias <strong>proporcionais</strong> entram no pacote rescisório com o adicional de 1/3.</p>
+            <p>Se a empresa concedeu férias coletivas e você não trabalhou o aviso prévio na rescisão, pode haver descontos ou ajustes. Simule o pacote na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> e consulte <a href="/duvidas/ferias-proporcionais-como-funciona">férias proporcionais</a> e o hub <a href="/desligamento">desligamento CLT</a>.</p>
+
+            <h2>Exemplo ilustrativo (não é recomendação individual)</h2>
+            <p>Salário bruto de <strong>R$ 4.500</strong>, férias coletivas de 30 dias com gozo integral (sem abono): o bruto de férias + 1/3 fica em torno de R$ 6.000 antes dos descontos. INSS e IRRF incidem sobre essa verba; o líquido depende de dependentes e da redução legal de IRRF em 2026. O mesmo salário com venda de 10 dias (abono) reduz o período de descanso e adiciona uma parcela extra tributada — o líquido total do mês pode subir um pouco, mas você troca dias de folga por dinheiro.</p>
+            <p>Use a <a href="/calculadoras/ferias">calculadora de férias</a> marcando <strong>vender 1/3 das férias</strong> para comparar os dois cenários com seus números reais.</p>
+
+            <h2>Checklist antes das férias coletivas</h2>
+            <ol>
+            <li>Confirme datas, aviso de 15 dias e forma de pagamento com o RH.</li>
+            <li>Decida sobre abono pecuniário dentro do prazo interno.</li>
+            <li>Simule líquido de férias e impacto no mês seguinte (contas fixas não param).</li>
+            <li>Verifique se haverá adiantamento de 13º ou descontos de consignado no mesmo holerite.</li>
+            <li>Guarde holerite e comprovante de depósito para conferir INSS e IRRF.</li>
+            </ol>
+            <p>Para o dia a dia após o retorno, combine com <a href="/blog/como-calcular-ferias">como calcular férias</a>, <a href="/blog/planejamento-financeiro-com-salario">planejamento financeiro com salário</a> e a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> do mês de retorno.</p>
+            """),
+        Article(
+            "pedir-demissao-ou-aguardar-dispensa",
+            "Pedir demissão ou aguardar dispensa: comparativo financeiro",
+            "Compare verbas, FGTS, seguro-desemprego e multa antes de decidir entre pedir demissão e esperar demissão sem justa causa.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 7, 22),
+            """
+            <p>Sair do emprego é uma decisão emocional e <strong>financeira</strong>. Muita gente debate: <strong>peço demissão agora</strong> ou <strong>espero a empresa me dispensar</strong> sem justa causa? A resposta depende de verbas rescisórias, FGTS, seguro-desemprego, multa e do seu prazo para encontrar outro trabalho — não há regra única para todos os casos.</p>
+            <p>Este artigo organiza os cenários para você simular com números antes de conversar com RH, sindicato ou profissional habilitado. É conteúdo <strong>educativo</strong>; contrato, convenção coletiva e acordos internos podem mudar o resultado.</p>
+
+            <h2>Panorama rápido dos dois caminhos</h2>
+            <table>
+            <thead>
+            <tr><th>Item</th><th>Pedido de demissão</th><th>Demissão sem justa causa</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Multa FGTS 40%</td><td>Em regra, não</td><td>Sim (paga pela empresa)</td></tr>
+            <tr><td>Saque do saldo FGTS</td><td>Em regra, não</td><td>Sim (conforme regras Caixa)</td></tr>
+            <tr><td>Seguro-desemprego</td><td>Em regra, não</td><td>Sim, se cumprir requisitos</td></tr>
+            <tr><td>Aviso prévio</td><td>Cumprido ou descontado</td><td>Indenizado ou trabalhado</td></tr>
+            <tr><td>Verbas proporcionais</td><td>Saldo, férias, 13º (regras gerais)</td><td>Saldo, férias, 13º (regras gerais)</td></tr>
+            </tbody>
+            </table>
+            <p>A tabela é simplificada. O <strong>acordo 484-A</strong> (art. 484-A da CLT) é um terceiro caminho: multa de 20% sobre FGTS, saque parcial e sem seguro-desemprego na regra usual. Leia <a href="/blog/acordo-484a-verbas-e-multa-fgts">acordo 484-A: verbas e multa</a> e <a href="/blog/multa-fgts-40-ou-20">multa FGTS 40% ou 20%</a>.</p>
+
+            <h2>O que você recebe ao pedir demissão</h2>
+            <p>No <strong>pedido de demissão</strong> voluntário, o trabalhador em geral recebe:</p>
+            <ul>
+            <li><strong>Saldo de salário</strong> dos dias trabalhados no mês da saída.</li>
+            <li><strong>Férias vencidas</strong> (se houver) e <strong>férias proporcionais</strong> + adicional de 1/3.</li>
+            <li><strong>13º salário proporcional</strong> ao ano da rescisão.</li>
+            </ul>
+            <p>Não há multa de 40% do FGTS nem seguro-desemprego na regra geral. O saldo do FGTS permanece na conta, em regra <strong>sem saque</strong>, até outra hipótese legal (compra da casa própria, aposentadoria etc.). Se você <strong>não cumprir o aviso prévio</strong> trabalhado, a empresa pode descontar até 30 dias das verbas rescisórias — isso pode reduzir muito o valor final e até gerar saldo negativo em casos extremos.</p>
+            <p>Simule na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> com motivo <strong>Pedido de demissão</strong> e consulte a <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ de pedido de demissão</a>.</p>
+
+            <h2>O que muda na demissão sem justa causa</h2>
+            <p>Quando o <strong>empregador dispensa</strong> sem justa causa, entram benefícios que muitas vezes superam meses de salário:</p>
+            <ul>
+            <li><strong>Multa de 40%</strong> sobre o saldo do FGTS, paga pela empresa ao fundo (você saca conforme regras).</li>
+            <li><strong>Seguro-desemprego</strong>, se cumprir carência, tempo de vínculo e demais requisitos — valor e parcelas calculados pelo governo.</li>
+            <li><strong>Aviso prévio indenizado</strong> (quando não trabalhado), que integra a base de algumas verbas.</li>
+            </ul>
+            <p>O pacote pode parecer maior, mas você não controla o <strong>timing</strong>: a empresa pode demorar, aplicar justa causa se houver motivo, ou propor acordo 484-A. Além disso, o desemprego entre um emprego e outro tem custo emocional e de busca — o seguro-desemprego cobre parte do buraco, não necessariamente 100% do líquido anterior.</p>
+            <p>Estime FGTS e multa na <a href="/calculadoras/fgts">calculadora de FGTS</a> e parcelas na <a href="/calculadoras/seguro-desemprego">calculadora de seguro-desemprego</a>. Veja também <a href="/blog/seguro-desemprego-quem-tem-direito">seguro-desemprego: quem tem direito</a>.</p>
+
+            <h2>Como comparar com números (passo a passo)</h2>
+            <ol>
+            <li>Levante <strong>salário bruto</strong>, tempo de empresa, saldo FGTS (app Caixa) e se há férias vencidas.</li>
+            <li>Simule <strong>pedido de demissão</strong> na calculadora de rescisão com data de saída e aviso prévio.</li>
+            <li>Simule <strong>demissão sem justa causa</strong> com os mesmos dados.</li>
+            <li>Some à simulação 2: multa 40% + parcelas estimadas de seguro-desemprego (cenário 3).</li>
+            <li>Desconte do cenário 1 o custo de ficar no emprego até a dispensa (meses de desgaste, oportunidade de outro emprego).</li>
+            </ol>
+            <p>A diferença entre os pacotes líquidos pode ser de <strong>milhares de reais</strong> em contratos longos com FGTS alto — mas só faz sentido “esperar dispensa” se isso for plausível no seu contexto (empresa em reestruturação, histórico de layoffs, negociação com gestor). Forçar demissão indireta ou simular falta grave para ser demitido envolve riscos jurídicos que este site não orienta.</p>
+
+            <h2>Quando pedir demissão pode fazer sentido</h2>
+            <ul>
+            <li>Você já tem <strong>outra proposta assinada</strong> e precisa começar em data fixa.</li>
+            <li>O saldo FGTS é baixo e a multa de 40% não mudaria sua vida financeira.</li>
+            <li>A saúde mental ou ambiente tóxico exige saída imediata — coloque isso na balança além do Excel.</li>
+            <li>Você vai abrir PJ/MEI com faturamento garantido e comparou no hub <a href="/virar-pj">virar PJ</a>.</li>
+            </ul>
+
+            <h2>Quando aguardar dispensa pode compensar</h2>
+            <ul>
+            <li>Empresa anunciou <strong>programa de demissão</strong> ou há negociação de acordo 484-A com multa parcial.</li>
+            <li>FGTS acumulado alto e você precisa do <strong>colchão</strong> da multa + seguro-desemprego entre empregos.</li>
+            <li>Tempo curto até aposentadoria ou meta que depende de saque FGTS (avalie regras Caixa).</li>
+            <li>RH sinalizou dispensa em poucos meses — vale simular se esperar bate com pedir demissão + novo emprego.</li>
+            </ul>
+
+            <h2>Documentos e prazos após a decisão</h2>
+            <p>Independentemente do caminho, exija <strong>TRCT</strong>, chave FGTS, guias de seguro-desemprego (se aplicável) e holerite final. Compare linha a linha com a simulação — leia <a href="/blog/rescisao-clt-vs-trct">rescisão CLT vs TRCT</a> e use o <strong>checklist interativo</strong> no hub <a href="/desligamento">desligamento CLT</a>.</p>
+            <p>Para o próximo emprego, simule o líquido da proposta na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> antes de assinar contrato.</p>
             """)
     ];
 
@@ -947,6 +1078,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Peça simulação por escrito dos dois cenários — acordo 484-A com multa de 20% e demissão sem justa causa com 40% — antes de assinar qualquer termo.</p>",
             "custo-total-clt-para-empregador" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Na conversa PJ, some ao seu custo pessoal o que a CLT te dava de benefício líquido — VR, plano e estabilidade de caixa entre empregos.</p>",
+            "ferias-coletivas-clt-guia-completo" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Programe transferência automática na volta das férias coletivas — o primeiro holerite “cheio” após o recesso costuma coincidir com contas atrasadas do mês de folga.</p>",
+            "pedir-demissao-ou-aguardar-dispensa" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Exporte duas simulações da calculadora de rescisão (pedido vs sem justa causa) em PDF e arquive com o saldo FGTS do app — facilita comparar com o TRCT depois.</p>",
             _ => string.Empty
         };
 

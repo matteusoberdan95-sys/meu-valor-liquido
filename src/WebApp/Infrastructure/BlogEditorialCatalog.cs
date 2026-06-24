@@ -35,9 +35,16 @@ public static class BlogEditorialCatalog
         "custo-total-clt-para-empregador"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote2EditorialSlugs =
+    [
+        "ferias-coletivas-clt-guia-completo",
+        "pedir-demissao-ou-aguardar-dispensa"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }

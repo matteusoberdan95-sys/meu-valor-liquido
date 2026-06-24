@@ -525,19 +525,24 @@
 
 ---
 
-### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1)
+### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2)
 
 **Objetivo:** manter **2 artigos/mês** com calculadora relacionada, hub e FAQ — ritmo pós-calendário Sprint 68.
 
 | Agent | Entregas |
 |-------|----------|
-| SEO/Content | 2 artigos long tail por ciclo mensal |
-| WebApp/Frontend | `BlogEditorialCatalog.Sprint70EditorialSlugs`; cross-link nos hubs |
-| QA/Test | `Sprint70BlogTests` |
+| SEO/Content | 2 artigos long tail por ciclo mensal (~5 min leitura) |
+| WebApp/Frontend | `BlogEditorialCatalog`; cross-link nos hubs |
+| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests` |
+| Documentation | `docs/BLOG_EDITORIAL_PLAN.md` |
 
-**Primeiro lote (Sprint 70):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
+**Lote 1 (jun/2026):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
 
-**Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ.
+**Lote 2 (jul/2026):** `ferias-coletivas-clt-guia-completo`, `pedir-demissao-ou-aguardar-dispensa`.
+
+**Próximo:** lote 3 (ago/2026) — ver backlog em `docs/BLOG_EDITORIAL_PLAN.md`.
+
+**Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ; ≥850 palavras.
 
 ---
 

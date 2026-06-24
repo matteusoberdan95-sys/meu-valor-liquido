@@ -8,14 +8,15 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 4. `docs/CODING_CONVENTIONS.md` antes de editar código
 5. `docs/sprint-plan.md` — seção **Trilha diferenciação e crescimento orgânico (Sprints 69–78)**
 6. `docs/NICHO_REFERENCIA_PLAN.md` — regra de corte do nicho
+7. **`docs/BLOG_EDITORIAL_PLAN.md`** — ao escrever ou sugerir artigos (Sprint 70+)
 
 ## Sprint ativa
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 70 lote 2** (2 artigos) · manutenção trilha 69–78 concluída |
-| **Em seguida** | Sprint 51 (AdSense) quando Google aprovar |
-| **Concluída recente** | Sprint 78 (widget + newsletter) · Sprint 77 · Sprint 76 · Sprint 75 |
+| **Próxima sprint** | **Sprint 70 lote 3** (ago/2026 — 2 artigos) · Sprint 51 (AdSense) quando aprovar |
+| **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
+| **Concluída recente** | Sprint 70 lote 2 · Sprint 78 · Sprint 77 · Sprint 76 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -25,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 70 (lote 2+) | SEO/Content | 2 artigos/mês (editorial contínuo) |
-| **Contínuo** | 70 (lote 2+) | SEO/Content | 2 artigos/mês |
+| **1 — agora** | 70 (lote 3) | SEO/Content | 2 artigos/mês — `docs/BLOG_EDITORIAL_PLAN.md` |
+| **Contínuo** | 70 (lote 3+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.

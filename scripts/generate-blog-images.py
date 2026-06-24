@@ -72,6 +72,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "planejamento-financeiro-com-salario": "gráfico 50-30-20 + carteira",
     "juros-compostos-guia": "curva exponencial crescendo, moedas",
     "financiamento-como-calcular-parcelas": "casa wireframe + parcelas Price/SAC",
+    "ferias-coletivas-clt-guia-completo": "calendário coletivo verão + praia sutil + holerite férias +1/3",
+    "pedir-demissao-ou-aguardar-dispensa": "balança pedir demissão vs dispensa; ícones FGTS 40% e seguro-desemprego",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido

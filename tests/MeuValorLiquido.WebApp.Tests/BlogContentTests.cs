@@ -19,6 +19,7 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-stitch-blog-hub");
         html.Should().Contain("Conteúdo Educativo");
         html.Should().Contain("valora-stitch-blog-featured");
+        html.Should().Contain("ferias-coletivas-clt-guia-completo");
     }
 
     [Fact]

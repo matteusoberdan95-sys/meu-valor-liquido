@@ -25,15 +25,16 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 4. `docs/CODING_CONVENTIONS.md`
 5. `docs/sprint-plan.md` → seção **Trilha diferenciação e crescimento orgânico (Sprints 69–78)**
 6. `docs/NICHO_REFERENCIA_PLAN.md` — regra de corte do nicho
+7. **`docs/BLOG_EDITORIAL_PLAN.md`** — artigos Sprint 70+ (calendário, backlog, sugestões)
 
-### Sprint ativa (2026-06)
+### Sprint ativa (2026-07)
 
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
-| **Alta — agora** | **72** | Comparador visual de propostas |
-| **Contínuo** | **70** | Editorial (2 artigos/mês; lote 1 concluído) |
+| **Alta — agora** | **70 lote 3** | 2 artigos ago/2026 — ver `BLOG_EDITORIAL_PLAN.md` |
+| **Contínuo** | **70** | Editorial 2 artigos/mês |
 | **Paralelo** | **51** | AdSense (quando Google aprovar) |
-| Concluídas | 47–71 | Hubs, editorial, PDF premium, conferir holerite |
+| Concluídas | 47–78 | Hubs, trilha 69–78, editorial lote 1–2 |
 
 **Onde começar:** ver `docs/sprint-plan.md` § *Trilha diferenciação (Sprints 69–78)*. Ordem sugerida **72 → 73 → 74**.
 
