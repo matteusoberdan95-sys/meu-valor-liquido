@@ -5494,6 +5494,63 @@ a.valora-choice.valora-choice--active {
   text-decoration: underline;
 }
 
+.valora-tax-tables-badge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--valora-radius-md);
+  border: 1px solid rgb(59 130 246 / 28%);
+  background: rgb(59 130 246 / 8%);
+  max-width: 36rem;
+  width: 100%;
+}
+
+.valora-stitch-calc-detail-head .valora-tax-tables-badge {
+  margin-top: 0.5rem;
+}
+
+.valora-tax-tables-badge .material-symbols-outlined {
+  color: var(--valora-badge-trabalhista-text);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.valora-tax-tables-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 12rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--valora-on-surface);
+}
+
+.valora-tax-tables-badge-text strong {
+  font-weight: 700;
+}
+
+.valora-tax-tables-badge-meta {
+  color: var(--valora-outline);
+  font-size: 0.75rem;
+}
+
+.valora-tax-tables-badge-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--valora-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.valora-tax-tables-badge-link:hover {
+  text-decoration: underline;
+}
+
 .valora-stitch-metodologia-categories {
   display: grid;
   gap: 1rem;

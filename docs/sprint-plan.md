@@ -497,8 +497,8 @@
 | **74** | 1 | Páginas programáticas expandidas | **CONCLUÍDA** |
 | **75** | 2 | Simulador “E se…” (cenários pré-montados) | **CONCLUÍDA** |
 | **76** | 2 | Meu painel: comparar 2 cenários salvos | **CONCLUÍDA** |
-| **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | **Próxima** |
-| **78** | 3 | Widget embed + newsletter semanal | Planejada |
+| **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | **CONCLUÍDA** |
+| **78** | 3 | Widget embed + newsletter semanal | **Próxima** |
 
 **Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 69–78.
 
@@ -613,14 +613,15 @@
 
 ---
 
-### Sprint 77 — Badge atualização + FAQ expandido (Tier 2)
+### Sprint 77 — Badge atualização + FAQ expandido (Tier 2) — CONCLUÍDA
 
 **Objetivo:** badge “INSS/IRRF 2026 · Revisado em [mês]”; novas páginas `/duvidas/`.
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Badge no template C1 |
-| SEO/Content | 5–10 FAQs indexáveis |
+| WebApp/Frontend | `_TaxTablesRevisionBadge` no template C1 (INSS/IRRF) |
+| SEO/Content | 7 FAQs indexáveis em `PopularQuestionsCatalog` |
+| QA/Test | `Sprint77TaxTablesBadgeAndFaqTests` |
 
 ---
 

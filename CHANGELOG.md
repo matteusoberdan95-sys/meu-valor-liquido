@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 77 — Badge tabelas 2026 + FAQ expandido
+- Badge `INSS/IRRF 2026 · Revisado em [mês]` nas calculadoras template C1 com INSS/IRRF (`TaxTablesBadgeHelper`, `_TaxTablesRevisionBadge`).
+- 7 novas páginas `/duvidas/`: conferir holerite, redução IRRF 2026, teto INSS, abono pecuniário, acordo 484-A, plano de saúde e saque FGTS.
+- Testes `Sprint77TaxTablesBadgeAndFaqTests`.
+
 ### Sprint 76 — Meu painel: comparar cenários
 - Comparativo lado a lado de 2 simulações salvas em `/meu-painel` (seleção por checkbox).
 - `local-panel.js`: `renderPanelCompare`, diff de valor estimado, barras visuais e `netAmountValue` no storage.

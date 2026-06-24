@@ -328,7 +328,139 @@ public static class PopularQuestionsCatalog
                 new("Dia útil usa 30 ou 22 dias?", "Para salário diário simplificado, divide-se por 30 dias. Convenções podem usar 22 dias úteis."),
                 new("Horista tem 13º?", "Sim, se for CLT com remuneração por hora, com regras de média.")
             ],
-            ["hora-extra-valor-minimo", "como-calcular-salario-liquido", "decimo-terceiro-quem-tem-direito"])
+            ["hora-extra-valor-minimo", "como-calcular-salario-liquido", "decimo-terceiro-quem-tem-direito"]),
+
+        Create(
+            "como-conferir-holerite",
+            "Como conferir se o holerite está correto?",
+            "Trabalhista",
+            "Passo a passo para validar INSS, IRRF e líquido do holerite com as tabelas de 2026.",
+            """
+            <p>Antes de questionar o RH, compare o que aparece no holerite com uma simulação pelas tabelas oficiais de INSS e IRRF de 2026.</p>
+            <ol>
+            <li>Anote <strong>salário bruto</strong>, <strong>INSS</strong>, <strong>IRRF</strong> e <strong>líquido</strong> do holerite.</li>
+            <li>Informe dependentes e descontos opcionais (VT, plano etc.) se constarem na folha.</li>
+            <li>Use a ferramenta <a href="/conferir-holerite">Conferir holerite</a> ou a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            <li>Pequenas diferenças de centavos podem ser arredondamento; divergências maiores merecem conversa com o departamento pessoal.</li>
+            </ol>
+            """,
+            "salario-liquido",
+            [
+                new("A ferramenta substitui o RH?", "Não. É apoio educativo para você chegar preparado à conversa."),
+                new("E se o holerite tiver benefícios extras?", "Informe descontos opcionais na calculadora completa para aproximar o líquido.")
+            ],
+            ["como-calcular-salario-liquido", "quanto-desconta-inss-2026", "irrf-quem-paga-e-como-calcular"]),
+
+        Create(
+            "reducao-irrf-2026",
+            "Como funciona a redução do IRRF em 2026?",
+            "Fiscal",
+            "Entenda a isenção e a redução decrescente do imposto de renda retido na fonte em 2026.",
+            """
+            <p>Em 2026, a <strong>Lei 15.270/2025</strong> mantém regras de redução do IRRF para rendimentos do trabalho. Em linhas gerais:</p>
+            <ul>
+            <li>Base tributável até <strong>R$ 5.000</strong>: isenção total do IRRF retido.</li>
+            <li>Entre <strong>R$ 5.000,01</strong> e <strong>R$ 7.350</strong>: redução decrescente até zerar o benefício.</li>
+            <li>Acima disso, aplica-se a tabela progressiva normal com dedução por dependente.</li>
+            </ul>
+            <p>Simule seu caso na <a href="/calculadoras/irrf">calculadora de IRRF</a> ou veja as tabelas em <a href="/como-calculamos">Como calculamos</a>.</p>
+            """,
+            "irrf",
+            [
+                new("A redução vale para 13º e férias?", "Sim, quando essas verbas entram na base de IRRF da folha ou rescisão."),
+                new("MEI e PJ têm a mesma redução?", "Esta regra foca no IRRF retido de rendimentos do trabalho CLT. PJ e MEI seguem outros regimes.")
+            ],
+            ["irrf-quem-paga-e-como-calcular", "quanto-desconta-inss-2026", "salario-minimo-liquido-2026"]),
+
+        Create(
+            "teto-inss-2026",
+            "Qual o teto do INSS em 2026?",
+            "Fiscal",
+            "Teto de contribuição previdenciária e impacto no desconto em folha em 2026.",
+            """
+            <p>Em 2026, o <strong>teto do INSS</strong> (salário de contribuição máximo) é de <strong>R$ 8.475,55</strong>. Sobre esse valor, o desconto máximo em folha CLT fica em torno de <strong>R$ 988,09</strong>, pela tabela progressiva.</p>
+            <p>Salários acima do teto não pagam INSS adicional sobre o excedente na folha. Veja o detalhe por faixas na <a href="/calculadoras/inss">calculadora de INSS</a> e na página <a href="/como-calculamos">Como calculamos</a>.</p>
+            """,
+            "inss",
+            [
+                new("Quem ganha acima do teto paga mais INSS?", "Não na folha CLT. O desconto para no teto de contribuição."),
+                new("O teto muda todo ano?", "Sim. É atualizado anualmente conforme legislação previdenciária.")
+            ],
+            ["quanto-desconta-inss-2026", "como-calcular-salario-liquido", "reducao-irrf-2026"]),
+
+        Create(
+            "vender-ferias-abono-pecuniario",
+            "Posso vender 1/3 das férias (abono pecuniário)?",
+            "Trabalhista",
+            "Regras do abono pecuniário, impacto no líquido e quando faz sentido vender férias.",
+            """
+            <p>O trabalhador CLT pode converter até <strong>1/3 das férias</strong> em dinheiro — o chamado <strong>abono pecuniário</strong>. A conversão é opcional e deve ser solicitada ao empregador com antecedência.</p>
+            <p>O valor pago inclui o adicional de 1/3 sobre a parcela vendida e entra na base de INSS e IRRF. Simule na <a href="/calculadoras/ferias">calculadora de férias</a> marcando a opção de venda de 1/3.</p>
+            """,
+            "ferias",
+            [
+                new("Vender férias reduz dias de descanso?", "Sim. Você recebe dinheiro, mas goza apenas 2/3 do período de férias."),
+                new("A empresa pode recusar?", "A venda depende de acordo e prazos legais; consulte o RH da sua empresa.")
+            ],
+            ["ferias-proporcionais-como-funciona", "como-calcular-salario-liquido", "decimo-terceiro-quem-tem-direito"]),
+
+        Create(
+            "acordo-demissao-484-a",
+            "O que é demissão por acordo (art. 484-A)?",
+            "Trabalhista",
+            "Verbas, multa de 20% do FGTS e diferenças em relação ao pedido de demissão e à demissão sem justa causa.",
+            """
+            <p>A <strong>demissão por acordo</strong> (art. 484-A da CLT) é um meio-termo entre pedido de demissão e dispensa sem justa causa. Em geral:</p>
+            <ul>
+            <li>Metade do aviso prévio indenizado e metade da multa do FGTS (<strong>20%</strong>).</li>
+            <li>Saque de até <strong>80%</strong> do saldo FGTS (regra geral educativa).</li>
+            <li><strong>Sem</strong> seguro-desemprego na regra usual.</li>
+            </ul>
+            <p>Compare verbas na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> escolhendo o motivo adequado.</p>
+            """,
+            "rescisao-clt",
+            [
+                new("Acordo é a mesma coisa que pedir demissão?", "Não. As verbas e o FGTS seguem regras próprias do acordo."),
+                new("Posso negociar valores além da lei?", "Partes podem formalizar condições no termo, desde que respeitem direitos mínimos.")
+            ],
+            ["rescisao-pedido-demissao-o-que-recebo", "multa-fgts-40-porcento", "seguro-desemprego-quando-tem-direito"]),
+
+        Create(
+            "desconto-plano-saude-folha",
+            "Como o plano de saúde desconta do salário?",
+            "Trabalhista",
+            "Coparticipação, limite de desconto e efeito no salário líquido.",
+            """
+            <p>O plano de saúde oferecido pelo empregador costuma aparecer no holerite como <strong>desconto autorizado</strong>. A participação do empregado depende do contrato coletivo ou da política da empresa.</p>
+            <p>Esse desconto reduz o <strong>líquido</strong>, mas em geral <strong>não reduz a base do INSS</strong> (que incide sobre o bruto). Informe o valor na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> em &quot;Ajustar descontos&quot;.</p>
+            """,
+            "salario-liquido",
+            [
+                new("Plano desconta antes do IRRF?", "O IRRF usa base após INSS e dependentes; descontos como plano costumam vir depois, afetando o líquido."),
+                new("Dependente no plano reduz IRRF?", "Dependente legal na folha reduz a base do IRRF; dependente só no plano não necessariamente.")
+            ],
+            ["como-calcular-salario-liquido", "vale-transporte-desconto-maximo", "como-conferir-holerite"]),
+
+        Create(
+            "fgts-saque-rescisao",
+            "Quando posso sacar o FGTS na rescisão?",
+            "Trabalhista",
+            "Situações de saque do FGTS, multa rescisória e o que muda no pedido de demissão.",
+            """
+            <p>O saque do FGTS na rescisão depende do <strong>motivo do desligamento</strong>:</p>
+            <ul>
+            <li><strong>Sem justa causa:</strong> saque do saldo + multa de 40% (estimável na <a href="/calculadoras/fgts">calculadora de FGTS</a>).</li>
+            <li><strong>Acordo 484-A:</strong> saque parcial (até 80% na regra geral) e multa de 20%.</li>
+            <li><strong>Pedido de demissão:</strong> em regra, sem saque nem multa de 40%.</li>
+            </ul>
+            <p>Veja o pacote completo na <a href="/calculadoras/rescisao-clt">rescisão CLT</a> ou o guia <a href="/desligamento">desligamento</a>.</p>
+            """,
+            "fgts",
+            [
+                new("Quanto tempo demora o saque?", "Após homologação e liberação pela Caixa; prazos variam por canal."),
+                new("Multa de 40% cai na conta junto com o FGTS?", "A multa é paga pelo empregador ao FGTS; o trabalhador saca conforme regras do fundo.")
+            ],
+            ["multa-fgts-40-porcento", "acordo-demissao-484-a", "rescisao-pedido-demissao-o-que-recebo"])
     ];
 
     private static readonly Dictionary<string, PopularQuestionDefinition> BySlug =

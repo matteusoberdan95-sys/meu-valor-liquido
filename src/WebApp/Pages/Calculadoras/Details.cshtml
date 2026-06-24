@@ -108,6 +108,10 @@ else
                     </a>
                     <div class="valora-stitch-calc-detail-head">
                         <span class="valora-stitch-calc-detail-badge">@CalculatorUiHelper.GetSimulationBadge(Model.Definition.Category)</span>
+                        @if (TaxTablesBadgeHelper.ShouldShowOnCalculator(calculatorSlug))
+                        {
+                            <partial name="Shared/_TaxTablesRevisionBadge" />
+                        }
                         @if (CalculatorBenchmarkHelper.IsPrioritySlug(calculatorSlug))
                         {
                             <partial name="Shared/_BenchmarkValidationBadge" model="calculatorSlug" />
