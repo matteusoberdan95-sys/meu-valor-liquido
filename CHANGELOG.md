@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 75 — Simulador “E se…”
+- `WhatIfScenarioCatalog` com 3 presets: pedir demissão, aceitar PJ, vender 1/3 das férias.
+- Cards na home e nos hubs temáticos (`/desligamento`, `/virar-pj`, `/negociar-salario`).
+- `_WhatIfScenarioCards`, `WhatIfScenarioLinkBuilder` e CSS `.valora-stitch-whatif-*`.
+- Testes `WhatIfScenarioCatalogTests` e `Sprint75WhatIfScenarioTests`.
+
 ### Sprint 74 — Páginas programáticas expandidas
 - `SalaryBandCatalog` ampliado para 46 faixas brutas (2400–19000 preenchendo lacunas).
 - Variantes indexáveis com 0, 1 e 2 dependentes: `/salario-liquido/{valor}/1-dependente` e `/clt-pj/{valor}/1-dependente`.

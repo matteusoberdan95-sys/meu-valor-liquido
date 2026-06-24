@@ -495,8 +495,8 @@
 | **72** | 1 | Comparador visual de propostas salariais | **CONCLUÍDA** |
 | **73** | 1 | Checklist interativo de rescisão | **CONCLUÍDA** |
 | **74** | 1 | Páginas programáticas expandidas | **CONCLUÍDA** |
-| **75** | 2 | Simulador “E se…” (cenários pré-montados) | **Próxima** |
-| **76** | 2 | Meu painel: comparar 2 cenários salvos | Planejada |
+| **75** | 2 | Simulador “E se…” (cenários pré-montados) | **CONCLUÍDA** |
+| **76** | 2 | Meu painel: comparar 2 cenários salvos | **Próxima** |
 | **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | Planejada |
 | **78** | 3 | Widget embed + newsletter semanal | Planejada |
 
@@ -590,14 +590,15 @@
 
 ---
 
-### Sprint 75 — Simulador “E se…” (Tier 2)
+### Sprint 75 — Simulador “E se…” (Tier 2) — CONCLUÍDA
 
 **Objetivo:** cenários pré-montados (pedir demissão, aceitar PJ, vender férias).
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Cards na home e hubs |
-| Backend/Calculators | Presets de `CalculatorInput` |
+| Backend/Calculators | `WhatIfScenarioCatalog` com presets de `CalculatorInput` |
+| WebApp/Frontend | Cards na home e hubs; links com `?r=` |
+| QA/Test | `WhatIfScenarioCatalogTests`, `Sprint75WhatIfScenarioTests` |
 
 ---
 

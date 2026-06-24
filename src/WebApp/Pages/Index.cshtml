@@ -194,6 +194,9 @@
         </div>
     </section>
 
+    @inject ICalculatorCatalogService WhatIfCalculatorCatalog
+    <partial name="Shared/_WhatIfScenarioCards" model="WhatIfScenarioCardBuilder.BuildForHub(null, WhatIfCalculatorCatalog)" />
+
     <div class="valora-stitch-ad-slot" role="complementary" aria-label="Espaço publicitário">
         <span class="valora-stitch-ad-label">Espaço publicitário</span>
         <p class="valora-stitch-ad-text">Publicidade</p>

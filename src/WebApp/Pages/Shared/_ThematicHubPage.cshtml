@@ -41,6 +41,15 @@
         <partial name="Shared/_RescisaoChecklist" model="RescisaoChecklistCatalog.GetAll()" />
     }
 
+    @inject ICalculatorCatalogService WhatIfCalculatorCatalog
+    @{
+        var whatIfScenarios = WhatIfScenarioCardBuilder.BuildForHub(hub.Id, WhatIfCalculatorCatalog);
+    }
+    @if (whatIfScenarios.Count > 0)
+    {
+        <partial name="Shared/_WhatIfScenarioCards" model="whatIfScenarios" />
+    }
+
   @if (Model.Journey.Steps.Count > 0)
     {
         <partial name="Shared/_CalculatorJourneyNextSteps" model="Model.Journey" />

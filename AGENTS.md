@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 75** — Simulador “E se…” (cenários pré-montados) |
-| **Em seguida** | Sprint 70 lote 2 (mais 2 artigos) · Sprint 76 (comparar cenários no painel) |
-| **Concluída recente** | Sprint 74 (páginas programáticas) · Sprint 73 · Sprint 72 · Sprint 71 |
+| **Próxima sprint** | **Sprint 76** — Meu painel: comparar cenários salvos |
+| **Em seguida** | Sprint 70 lote 2 (mais 2 artigos) · Sprint 77 (badge + FAQ) |
+| **Concluída recente** | Sprint 75 (simulador E se…) · Sprint 74 · Sprint 73 · Sprint 72 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -25,7 +25,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 75 | WebApp/Frontend | Simulador “E se…” (cenários pré-montados) |
+| **1 — agora** | 76 | WebApp/Frontend | Meu painel: comparar 2 cenários salvos |
 | **Contínuo** | 70 (lote 2+) | SEO/Content | 2 artigos/mês |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 

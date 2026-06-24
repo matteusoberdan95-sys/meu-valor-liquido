@@ -2311,6 +2311,88 @@ a.valora-choice.valora-choice--active {
   border-left: 1px solid var(--valora-border-subtle);
 }
 
+/* Sprint 75 — Simulador “E se…” */
+.valora-stitch-whatif-lead {
+  margin: -0.25rem 0 1rem;
+  max-width: 42rem;
+}
+
+.valora-stitch-whatif-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-whatif-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.valora-stitch-whatif-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.valora-stitch-whatif-card:hover {
+  border-color: color-mix(in srgb, var(--valora-primary) 35%, var(--valora-border-subtle));
+  background: color-mix(in srgb, var(--valora-primary) 4%, var(--valora-card-low));
+}
+
+.valora-stitch-whatif-icon {
+  font-size: 1.75rem;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-whatif-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-whatif-teaser {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-text-muted);
+  flex: 1;
+}
+
+.valora-stitch-whatif-meta {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-whatif-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-whatif-cta .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.valora-stitch-thematic-hub .valora-stitch-whatif {
+  margin-top: 0.5rem;
+}
+
 .valora-bento-icon-box {
   display: flex;
   align-items: center;

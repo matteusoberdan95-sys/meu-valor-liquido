@@ -1,0 +1,34 @@
+@model IReadOnlyList<MeuValorLiquido.WebApp.Infrastructure.WhatIfScenarioCardViewModel>
+@{
+    if (Model.Count == 0)
+    {
+        return;
+    }
+}
+
+<section class="valora-stitch-whatif valora-stitch-section" aria-labelledby="whatif-scenarios-title">
+    <div class="valora-stitch-section-head">
+        <div>
+            <span class="valora-stitch-section-kicker">Simulador rápido</span>
+            <h2 class="valora-stitch-section-title" id="whatif-scenarios-title">E se…?</h2>
+        </div>
+    </div>
+    <p class="valora-text-muted valora-text-sm valora-stitch-whatif-lead">
+        Cenários pré-montados com valores de exemplo — ajuste na calculadora e compartilhe o resultado.
+    </p>
+    <div class="valora-stitch-whatif-grid">
+        @foreach (var scenario in Model)
+        {
+            <a class="valora-stitch-whatif-card" href="@scenario.Url">
+                <span class="valora-stitch-whatif-icon material-symbols-outlined" aria-hidden="true">@scenario.MaterialIcon</span>
+                <h3 class="valora-stitch-whatif-title">@scenario.Title</h3>
+                <p class="valora-stitch-whatif-teaser">@scenario.Teaser</p>
+                <span class="valora-stitch-whatif-meta">@scenario.CalculatorName</span>
+                <span class="valora-stitch-whatif-cta">
+                    Simular cenário
+                    <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                </span>
+            </a>
+        }
+    </div>
+</section>
