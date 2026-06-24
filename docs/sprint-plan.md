@@ -496,8 +496,8 @@
 | **73** | 1 | Checklist interativo de rescisão | **CONCLUÍDA** |
 | **74** | 1 | Páginas programáticas expandidas | **CONCLUÍDA** |
 | **75** | 2 | Simulador “E se…” (cenários pré-montados) | **CONCLUÍDA** |
-| **76** | 2 | Meu painel: comparar 2 cenários salvos | **Próxima** |
-| **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | Planejada |
+| **76** | 2 | Meu painel: comparar 2 cenários salvos | **CONCLUÍDA** |
+| **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | **Próxima** |
 | **78** | 3 | Widget embed + newsletter semanal | Planejada |
 
 **Paralelo permitido:** Sprint **51** (AdSense) quando Google aprovar — não bloqueia 69–78.
@@ -602,14 +602,14 @@
 
 ---
 
-### Sprint 76 — Meu painel: comparar cenários (Tier 2)
+### Sprint 76 — Meu painel: comparar cenários (Tier 2) — CONCLUÍDA
 
 **Objetivo:** comparar 2 simulações salvas no `/meu-painel`.
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | UI diff lado a lado |
-| QA/Test | localStorage |
+| WebApp/Frontend | UI diff lado a lado; checkboxes na lista; `local-panel.js` + CSS `.valora-stitch-panel-compare-*` |
+| QA/Test | `Sprint76PanelCompareTests` (markup + script localStorage) |
 
 ---
 

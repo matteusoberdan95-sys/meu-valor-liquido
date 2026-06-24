@@ -13,9 +13,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 76** — Meu painel: comparar cenários salvos |
-| **Em seguida** | Sprint 70 lote 2 (mais 2 artigos) · Sprint 77 (badge + FAQ) |
-| **Concluída recente** | Sprint 75 (simulador E se…) · Sprint 74 · Sprint 73 · Sprint 72 |
+| **Próxima sprint** | **Sprint 77** — Badge “Tabelas 2026” + FAQ expandido |
+| **Em seguida** | Sprint 70 lote 2 (mais 2 artigos) · Sprint 78 (widget + newsletter) |
+| **Concluída recente** | Sprint 76 (comparar cenários no painel) · Sprint 75 · Sprint 74 · Sprint 73 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -25,7 +25,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 76 | WebApp/Frontend | Meu painel: comparar 2 cenários salvos |
+| **1 — agora** | 77 | WebApp/Frontend + SEO | Badge “Tabelas 2026” + FAQ expandido |
 | **Contínuo** | 70 (lote 2+) | SEO/Content | 2 artigos/mês |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 

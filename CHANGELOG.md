@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 76 — Meu painel: comparar cenários
+- Comparativo lado a lado de 2 simulações salvas em `/meu-painel` (seleção por checkbox).
+- `local-panel.js`: `renderPanelCompare`, diff de valor estimado, barras visuais e `netAmountValue` no storage.
+- CSS `.valora-stitch-panel-compare-*` e testes `Sprint76PanelCompareTests`.
+
 ### Sprint 75 — Simulador “E se…”
 - `WhatIfScenarioCatalog` com 3 presets: pedir demissão, aceitar PJ, vender 1/3 das férias.
 - Cards na home e nos hubs temáticos (`/desligamento`, `/virar-pj`, `/negociar-salario`).
