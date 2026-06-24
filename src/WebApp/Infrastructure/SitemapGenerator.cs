@@ -34,8 +34,8 @@ public static class SitemapGenerator
 
         var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
         urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}")));
-        urls.AddRange(SalaryBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{SalaryBandCatalog.SlugPath(b)}")));
-        urls.AddRange(CltPjBandCatalog.GetAll().Select(b => CreateUrl(ns, $"{baseUrl}{CltPjBandCatalog.SlugPath(b)}")));
+        urls.AddRange(SalaryBandCatalog.GetAllIndexablePaths().Select(path => CreateUrl(ns, $"{baseUrl}{path}")));
+        urls.AddRange(CltPjBandCatalog.GetAllIndexablePaths().Select(path => CreateUrl(ns, $"{baseUrl}{path}")));
         urls.AddRange(PopularQuestionsCatalog.GetAll().Select(q => CreateUrl(ns, $"{baseUrl}{PopularQuestionsCatalog.SlugPath(q.Slug)}")));
 
         var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();

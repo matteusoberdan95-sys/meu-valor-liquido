@@ -494,8 +494,8 @@
 | **71** | 1 | Conferir holerite (validação INSS/IRRF 2026) | **CONCLUÍDA** |
 | **72** | 1 | Comparador visual de propostas salariais | **CONCLUÍDA** |
 | **73** | 1 | Checklist interativo de rescisão | **CONCLUÍDA** |
-| **74** | 1 | Páginas programáticas expandidas | **Próxima** |
-| **75** | 2 | Simulador “E se…” (cenários pré-montados) | Planejada |
+| **74** | 1 | Páginas programáticas expandidas | **CONCLUÍDA** |
+| **75** | 2 | Simulador “E se…” (cenários pré-montados) | **Próxima** |
 | **76** | 2 | Meu painel: comparar 2 cenários salvos | Planejada |
 | **77** | 2 | Badge “Tabelas 2026” + FAQ expandido | Planejada |
 | **78** | 3 | Widget embed + newsletter semanal | Planejada |
@@ -578,15 +578,15 @@
 
 ---
 
-### Sprint 74 — Páginas programáticas expandidas (Tier 1)
+### Sprint 74 — Páginas programáticas expandidas (Tier 1) — CONCLUÍDA
 
 **Objetivo:** escalar `SalaryBandCatalog` / `CltPjBandCatalog` e variantes com dependentes.
 
 | Agent | Entregas |
 |-------|----------|
-| WebApp/Frontend | Novas faixas e templates SEO únicos |
-| SEO/Content | Titles/descriptions por faixa |
-| QA/Test | Sitemap e contagem de URLs |
+| WebApp/Frontend | 46 faixas; rotas `/1-dependente` e `/2-dependentes`; sitemap expandido |
+| SEO/Content | Titles/descriptions e editorial únicos por faixa e variante |
+| QA/Test | `Sprint74ProgrammaticPagesTests` |
 
 ---
 

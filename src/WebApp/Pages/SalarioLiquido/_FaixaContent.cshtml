@@ -1,0 +1,85 @@
+@model MeuValorLiquido.WebApp.Pages.SalarioLiquido.FaixaPageModelBase
+
+<nav aria-label="breadcrumb">
+    <ol class="valora-breadcrumb">
+        <li><a asp-page="/Index">Início</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        <li><a asp-page="/SalarioLiquido/Index">Salário líquido por valor</a></li>
+        <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+        @if (Model.PageContent.Dependents > 0)
+        {
+            <li><a href="@SalaryBandCatalog.SlugPath(Model.PageContent.GrossAmount)">@SalaryBandCatalog.FormatCurrency(Model.PageContent.GrossAmount)</a></li>
+            <li><span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">@ProgrammaticDependentsCatalog.BreadcrumbLabel(Model.PageContent.Dependents)</li>
+        }
+        else
+        {
+            <li class="active" aria-current="page">@SalaryBandCatalog.FormatCurrency(Model.PageContent.GrossAmount)</li>
+        }
+    </ol>
+</nav>
+
+<header class="valora-section">
+    <span class="valora-badge valora-badge-trabalhista">Trabalhista</span>
+    <h1 class="valora-h1" style="margin-top: 0.75rem;">@Model.PageContent.Title</h1>
+    <p class="valora-lead">Estimativa educativa com tabelas INSS/IRRF @MeuValorLiquido.Modules.Calculators.Tax.BrTaxTables2026.Year (@ProgrammaticDependentsCatalog.SeoPhrase(Model.PageContent.Dependents), sem outros descontos).</p>
+</header>
+
+@if (Model.TopAdSlot is not null)
+{
+    <partial name="Shared/_AdSlot" model="Model.TopAdSlot" />
+}
+
+<div class="valora-page-layout">
+    <div class="valora-stack-md">
+        <section class="valora-card valora-prose">
+            @Html.Raw(Model.PageContent.IntroHtml)
+            @Html.Raw(Model.PageContent.EditorialHtml)
+            @Html.Raw(Model.PageContent.ContextHtml)
+            @Html.Raw(Model.PageContent.TipsHtml)
+        </section>
+
+        <partial name="Shared/_WidgetEmbedCta" />
+
+        <div class="valora-disclaimer">
+            <span class="material-symbols-outlined">warning</span>
+            <p style="margin: 0;">Resultado estimado para fins educativos. Não substitui holerite, RH ou orientação contábil.</p>
+        </div>
+    </div>
+
+    <aside class="valora-calc-sidebar valora-stack-md">
+        <partial name="Shared/_SalaryBandResultPanel" model="Model.ResultPanel" />
+
+        <section class="valora-card">
+            <h2 class="valora-h3">Simular seu caso</h2>
+            <p class="valora-text-muted valora-text-sm" style="margin-bottom: 1rem;">
+                Adicione dependentes, vale-transporte ou descubra o bruto para um líquido desejado.
+            </p>
+            <div class="valora-gap-buttons">
+                <a class="valora-btn valora-btn-primary" href="/calculadoras/salario-liquido?valor=@Model.PageContent.GrossAmount">Calculadora completa</a>
+                <a class="valora-btn valora-btn-outline" asp-page="/Calculadoras/Details" asp-route-slug="salario-bruto-necessario">Bruto necessário</a>
+            </div>
+        </section>
+
+        @if (Model.Share is not null)
+        {
+            <partial name="Shared/_CalculatorResultShare" model="Model.Share" />
+        }
+
+        @if (Model.BottomAdSlot is not null)
+        {
+            <partial name="Shared/_AdSlot" model="Model.BottomAdSlot" />
+        }
+    </aside>
+</div>
+
+<section class="valora-faq valora-section">
+    <h2 class="valora-h2">Perguntas frequentes</h2>
+    @foreach (var faq in Model.PageContent.FaqItems)
+    {
+        <details>
+            <summary>@faq.Question</summary>
+            <p class="valora-text-muted valora-text-sm">@Html.Raw(faq.Answer)</p>
+        </details>
+    }
+</section>

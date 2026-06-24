@@ -77,24 +77,30 @@ public static class SeoMetadataHelper
         new("Salário líquido por valor", "/salario-liquido")
     ];
 
-    public static IReadOnlyList<BreadcrumbItem> SalaryBandBreadcrumbs(int gross) =>
+    public static IReadOnlyList<BreadcrumbItem> SalaryBandBreadcrumbs(int gross, int dependents = 0) =>
     [
         new("Início", "/"),
         new("Salário líquido por valor", "/salario-liquido"),
-        new(SalaryBandCatalog.FormatCurrency(gross), SalaryBandCatalog.SlugPath(gross))
+        new(SalaryBandCatalog.FormatCurrency(gross), SalaryBandCatalog.SlugPath(gross)),
+        .. dependents > 0
+            ? [new(ProgrammaticDependentsCatalog.BreadcrumbLabel(dependents), SalaryBandCatalog.SlugPath(gross, dependents))]
+            : Array.Empty<BreadcrumbItem>()
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> CltPjBandBreadcrumbs(int cltGross, int dependents = 0) =>
+    [
+        new("Início", "/"),
+        new("CLT x PJ", "/clt-pj"),
+        new($"{CltPjBandCatalog.FormatCurrency(cltGross)} CLT", CltPjBandCatalog.SlugPath(cltGross)),
+        .. dependents > 0
+            ? [new(ProgrammaticDependentsCatalog.BreadcrumbLabel(dependents), CltPjBandCatalog.SlugPath(cltGross, dependents))]
+            : Array.Empty<BreadcrumbItem>()
     ];
 
     public static IReadOnlyList<BreadcrumbItem> CltPjHubBreadcrumbs() =>
     [
         new("Início", "/"),
         new("CLT x PJ", "/clt-pj")
-    ];
-
-    public static IReadOnlyList<BreadcrumbItem> CltPjBandBreadcrumbs(int cltGross) =>
-    [
-        new("Início", "/"),
-        new("CLT x PJ", "/clt-pj"),
-        new($"{CltPjBandCatalog.FormatCurrency(cltGross)} CLT", CltPjBandCatalog.SlugPath(cltGross))
     ];
 
     public static IReadOnlyList<BreadcrumbItem> PopularQuestionsHubBreadcrumbs() =>

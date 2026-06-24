@@ -1,11 +1,11 @@
 namespace MeuValorLiquido.WebApp.Pages.SalarioLiquido;
 
-public class FaixaModel(
+public class FaixaVariantModel(
     NetSalaryCalculator netSalaryCalculator,
     IAdSlotProvider adSlotProvider,
     CalculatorShareLinkBuilder shareLinkBuilder,
     ICalculatorCatalogService catalogService)
     : FaixaPageModelBase(netSalaryCalculator, adSlotProvider, shareLinkBuilder, catalogService)
 {
-    public IActionResult OnGet(int valor) => LoadPage(valor, null);
+    public IActionResult OnGet(int valor, string variant) => LoadPage(valor, variant);
 }

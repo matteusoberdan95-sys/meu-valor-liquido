@@ -21,10 +21,18 @@ public static class SalaryBandEditorialCatalog
             "Auxiliar administrativo e operacional",
             "Valor recorrente em vagas de auxiliar de escritório, recepcionista e operador de caixa com alguma experiência.",
             "Confira se o convênio médico é coparticipação ou mensalidade fixa; o desconto em folha reduz o líquido além do INSS/IRRF."),
+        [2400] = new(
+            "Operacional urbano em expansão",
+            "Comum em atendimento ao cliente, estoquista e motorista de entregas leves com contrato CLT integral.",
+            "Adicional noturno e HE podem elevar o bruto real — esta página considera apenas o salário base informado."),
         [2500] = new(
             "CLT de entrada consolidado",
             "Bate com analistas júnior, técnicos de nível médio e cargos operacionais com 1–3 anos de casa.",
             "Compare esta faixa com a proposta de {nearbyLower} ou {nearbyHigher} se estiver avaliando mudança de emprego."),
+        [2600] = new(
+            "Suporte e backoffice",
+            "Típico de assistentes de compras, telemarketing especializado e técnicos de manutenção predial.",
+            "Se tem filho dependente no IR, abra a variante com 1 ou 2 dependentes — a dedução pode zerar ou reduzir o IRRF."),
         [2800] = new(
             "Serviços e indústria leve",
             "Aparece em funções de suporte TI nível 1, assistente comercial e produção com adicional de insalubridade baixo.",
@@ -37,10 +45,18 @@ public static class SalaryBandEditorialCatalog
             "Pleno inicial em cidades médias",
             "Típico de coordenadores de primeira linha, vendedores internos e técnicos com certificação profissional.",
             "Se recebe comissão variável, a rescisão e o 13º usam média — simule com o campo de média na rescisão CLT."),
+        [3300] = new(
+            "Analista júnior em crescimento",
+            "Aparece em marketing, RH generalista e TI de suporte com alguns anos de experiência formal.",
+            "Compare o líquido com e sem dependentes nesta mesma faixa — a diferença aparece principalmente no IRRF."),
         [3500] = new(
             "Faixa de analista pleno",
             "Compatível com analistas, desenvolvedores júnior e especialistas administrativos em empresas de médio porte.",
             "Avalie propostas pelo líquido, não só pelo percentual de aumento no bruto — impostos são progressivos."),
+        [3600] = new(
+            "Profissional pleno estável",
+            "Comum em design, contabilidade de departamento e engenharia de aplicação em indústrias regionais.",
+            "Vale-transporte acima de 6% do bruto exige autorização — confira se o desconto está dentro do limite legal."),
         [3800] = new(
             "Especialista técnico",
             "Comum em engenharia júnior, enfermagem plantão parcial e funções fiscal/contábil de apoio.",
@@ -53,10 +69,18 @@ public static class SalaryBandEditorialCatalog
             "Pleno em expansão",
             "Frequente em customer success, QA pleno e gestão de equipes pequenas no varejo ou serviços.",
             "FGTS e 13º proporcional crescem com o bruto — lembre disso ao comparar com PJ na calculadora PJ×CLT."),
+        [4400] = new(
+            "Especialista operacional",
+            "Perfis de comprador pleno, analista fiscal e desenvolvedor com stack consolidada em empresas médias.",
+            "Dedução por dependente ({dependentDeduction}) pode mudar a faixa efetiva de IRRF — teste as variantes desta página."),
         [4500] = new(
             "Meio da escala CLT urbana",
             "Cargos de supervisão, dev front-end pleno e profissionais de marketing digital experientes.",
             "Acima de R$ 4.500 o impacto percentual do INSS diminui, mas o IRRF pode voltar a aparecer conforme a base."),
+        [4600] = new(
+            "Coordenação técnica inicial",
+            "Líderes de squad pequeno, enfermeiros CLT sem plantão fixo e consultores de implantação.",
+            "Se está negociando aumento para {nearbyHigher}, simule a proposta salarial com os mesmos dependentes."),
         [4800] = new(
             "Coordenação e senioridade inicial",
             "Gestores de turno, devs com stack consolidada e profissionais de saúde em regime CLT parcial.",
@@ -73,18 +97,34 @@ public static class SalaryBandEditorialCatalog
             "Especialista consolidado",
             "Típico de tech pleno/sênior em cidades fora do eixo SP-RJ e cargos de confiança sem gratificação separada.",
             "Negociações de home office podem incluir auxílio internet — não confunda com aumento de salário base."),
+        [5800] = new(
+            "Tech e produto em maturação",
+            "Engenheiros de software pleno+, product designers sênior e analistas de dados com stack definida.",
+            "Nesta faixa, dependentes no IR costumam reduzir retenção — compare as três variantes indexadas desta faixa."),
         [6000] = new(
             "Faixa alta com IRRF relevante",
             "A partir daqui o IRRF tende a pesar mais; comissões e HE elevam a base real de imposto.",
             "Compare o líquido com a faixa de {nearbyLower} para ver se um aumento menor no bruto já atende sua meta."),
+        [6200] = new(
+            "Sênior técnico em escala",
+            "Staff engineers iniciais, gerentes de conta enterprise e especialistas de compliance em bancos.",
+            "PLR e bônus não entram aqui — apenas salário mensal fixo CLT para comparar holerite base."),
         [6500] = new(
             "Gestão e tech em crescimento",
             "Coordenadores de produto, engenheiros sênior iniciais e especialistas financeiros em indústria.",
             "Plano de saúde empresarial pode descontar 200–400 reais — informe na calculadora completa."),
+        [6800] = new(
+            "Liderança funcional",
+            "Gerentes de área compacta, arquitetos de solução e médicos CLT em clínicas de médio porte.",
+            "Acima de R$ 6.500 o IRRF pesa mais — valide dependentes cadastrados no eSocial antes de contestar retenção."),
         [7000] = new(
             "Sênior em mercado competitivo",
             "Referência para devs sênior, gerentes de projeto e profissionais de dados em empresas estruturadas.",
             "A multa de 40% do FGTS em demissão sem justa causa cresce com o tempo de casa — simule na rescisão CLT."),
+        [7200] = new(
+            "Especialista premium regional",
+            "Tech lead, gerente comercial sênior e profissionais de saúde com agenda estável em capitais.",
+            "Compare {nearbyLower} e {nearbyHigher} se estiver avaliando proposta interna de promoção."),
         [7500] = new(
             "Alta responsabilidade operacional",
             "Gerentes regionais, arquitetos de software e especialistas regulatórios costumam orbitar este valor.",
@@ -101,6 +141,10 @@ public static class SalaryBandEditorialCatalog
             "Topo da média CLT urbana",
             "Gerentes médios, tech lead consolidados e consultores internos sênior em multinacionais.",
             "INSS atinge o teto progressivo — acima disso, aumentos de bruto vão mais para o líquido até o IRRF limitar."),
+        [9500] = new(
+            "Alta especialização formal",
+            "Staff principal, diretores associados e profissionais de saúde de alta complexidade em regime CLT.",
+            "Financiamento imobiliário usa renda comprovada — exporte o PDF da calculadora com seus dependentes reais."),
         [10000] = new(
             "Marco dos R$ 10 mil",
             "Faixa de referência para profissionais seniores; buscas frequentes para planejamento de crédito imobiliário.",
@@ -117,14 +161,30 @@ public static class SalaryBandEditorialCatalog
             "Faixa executiva inicial",
             "Gerentes gerais de unidade e especialistas internacionais com contrato Brasil.",
             "Pensão por percentual sobre o bruto impacta fortemente o bolso — use o campo de pensão na calculadora."),
+        [14000] = new(
+            "Diretoria funcional",
+            "Heads de departamento, principal engineers e consultores sênior em projetos longos.",
+            "Pacotes com stock options exigem simulação separada — esta página cobre salário fixo mensal."),
         [15000] = new(
             "Executivo e expert sênior",
             "Diretores funcionais e especialistas com mais de uma década de mercado formal.",
             "Nesta altura, vale simular proposta com holerite completo (plano, VR, VT) antes de aceitar aumento."),
+        [16000] = new(
+            "Executivo de linha",
+            "Diretores regionais e tech directors em empresas de capital nacional ou scale-ups maduras.",
+            "IRRF e INSS no teto: foque em variável anual e benefícios flexíveis além do bruto fixo."),
+        [17000] = new(
+            "Alta liderança corporativa",
+            "VPs de primeira linha e especialistas globais com contrato localizado no Brasil.",
+            "Compare cenários PJ×CLT antes de migrar regime — benefícios CLT pesam nesta faixa salarial."),
         [18000] = new(
             "Alta gerência corporativa",
             "Gestores de VP em empresas nacionais e tech staff principal em scale-ups maduras.",
             "IRRF e INSS no teto: o percentual líquido/bruto estabiliza — foque em benefícios e bônus anuais."),
+        [19000] = new(
+            "Pacote executivo elevado",
+            "C-level de empresas médias e staff principal em corporações com política salarial rígida.",
+            "Use a calculadora interativa para holerite completo — VT, plano e pensão alteram o líquido final."),
         [20000] = new(
             "Teto das faixas indexadas",
             "Referência para comparação de pacotes executivos; poucos contratos CLT fixos chegam aqui sem variáveis.",
@@ -162,7 +222,7 @@ public static class SalaryBandEditorialCatalog
             $"<p>{scenario}</p><p><strong>Planejamento:</strong> {tip}</p>";
     }
 
-    public static SalaryBandFaqItem? BuildExtraFaq(int gross, NetSalaryBreakdown breakdown)
+    public static SalaryBandFaqItem? BuildExtraFaq(int gross, NetSalaryBreakdown breakdown, int dependents = 0)
     {
         if (!TryGetAngle(gross, out var angle))
         {
@@ -172,7 +232,7 @@ public static class SalaryBandEditorialCatalog
         return new SalaryBandFaqItem(
             $"Quem costuma ganhar {SalaryBandCatalog.FormatCurrency(gross)} bruto?",
             $"{angle.Scenario.Replace("{year}", BrTaxTables2026.Year.ToString(), StringComparison.Ordinal)} " +
-            $"Neste cenário sem dependentes, o líquido estimado é {Money.From(breakdown.Net)}.");
+            $"Neste cenário {ProgrammaticDependentsCatalog.SeoPhrase(dependents)}, o líquido estimado é {Money.From(breakdown.Net)}.");
     }
 
     private static (int Lower, int Higher) FindNeighbors(int gross, IReadOnlyList<int> allBands)

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 74 — Páginas programáticas expandidas
+- `SalaryBandCatalog` ampliado para 46 faixas brutas (2400–19000 preenchendo lacunas).
+- Variantes indexáveis com 0, 1 e 2 dependentes: `/salario-liquido/{valor}/1-dependente` e `/clt-pj/{valor}/1-dependente`.
+- `ProgrammaticDependentsCatalog`, SEO/breadcrumbs por variante; sitemap com todas as URLs.
+- Ângulos editoriais únicos para as novas faixas; conteúdo diferenciado por dependentes.
+- Testes `Sprint74ProgrammaticPagesTests`.
+
 ### Sprint 73 — Checklist interativo de rescisão
 - Checklist pós-demissão no hub `/desligamento` com progresso em `localStorage` (`mvl-rescisao-checklist-v1`).
 - `RescisaoChecklistCatalog`, partial `_RescisaoChecklist`, `rescisao-checklist.js`.

@@ -2,6 +2,7 @@ namespace MeuValorLiquido.WebApp.Infrastructure;
 
 public sealed record CltPjPageContent(
     int CltGross,
+    int Dependents,
     string Title,
     string Description,
     string IntroHtml,
@@ -11,7 +12,7 @@ public sealed record CltPjPageContent(
 
 public static class CltPjContentBuilder
 {
-    public static CltPjPageContent Build(int cltGross, CltPjComparisonBreakdown comparison)
+    public static CltPjPageContent Build(int cltGross, CltPjComparisonBreakdown comparison, int dependents = 0)
     {
         var clt = comparison.Clt;
         var pj = comparison.Pj;
@@ -21,9 +22,12 @@ public static class CltPjContentBuilder
         var equivalent = Money.From(comparison.EquivalentPjRevenue);
         var diff = comparison.NetDifference;
 
-        var title = $"{grossMoney} CLT equivale a quanto PJ em {BrTaxTables2026.Year}?";
+        var dependentPhrase = ProgrammaticDependentsCatalog.SeoPhrase(dependents);
+        var title = dependents == 0
+            ? $"{grossMoney} CLT equivale a quanto PJ em {BrTaxTables2026.Year}?"
+            : $"{grossMoney} CLT {dependentPhrase} equivale a quanto PJ em {BrTaxTables2026.Year}?";
         var description =
-            $"Salário CLT de {grossMoney} (líquido {cltNet}) equivale a cerca de {equivalent} de faturamento PJ. " +
+            $"Salário CLT de {grossMoney} ({dependentPhrase}, líquido {cltNet}) equivale a cerca de {equivalent} de faturamento PJ. " +
             $"Comparativo educativo com Simples {comparison.SimplesRatePercent:0.#}% e pró-labore de {comparison.ProLaboreSharePercent:0.#}%.";
 
         var intro =
@@ -42,7 +46,7 @@ public static class CltPjContentBuilder
             "<p>Benefícios CLT como férias, 13º, FGTS e seguro-desemprego não entram nesta comparação mensal. " +
             "Ajuste dependentes, descontos CLT, alíquota do Simples e despesas na " +
             "<a href=\"/calculadoras/pj-vs-clt\">calculadora PJ vs CLT</a> " +
-            "ou compare com <a href=\"/calculadoras/simulador-mei\">MEI</a> se for o seu caso.</p>";
+            $"ou compare variantes com {string.Join(" e ", ProgrammaticDependentsCatalog.IndexedDependentCounts.Where(c => c != dependents).Select(c => $"<a href=\"{CltPjBandCatalog.SlugPath(cltGross, c)}\">{ProgrammaticDependentsCatalog.BreadcrumbLabel(c).ToLowerInvariant()}</a>"))}.</p>";
 
         var faq = new List<SalaryBandFaqItem>
         {
@@ -51,7 +55,7 @@ public static class CltPjContentBuilder
                 $"Neste cenário simplificado, cerca de {equivalent} de faturamento mensal, com pró-labore de {comparison.ProLaboreSharePercent:0.#}% e Simples de {comparison.SimplesRatePercent:0.#}%."),
             new(
                 $"Qual o líquido CLT de {grossMoney}?",
-                $"Aproximadamente {cltNet}, após INSS e IRRF estimados (sem dependentes nem outros descontos, salvo os informados na calculadora completa)."),
+                $"Aproximadamente {cltNet}, após INSS e IRRF estimados ({dependentPhrase}, sem outros descontos além dos informados na calculadora completa)."),
             new(
                 "O PJ sempre ganha mais que o CLT?",
                 "Não. Depende do faturamento, impostos, despesas e do valor dos benefícios trabalhistas. Use o comparativo como ponto de partida, não como decisão automática."),
@@ -60,6 +64,6 @@ public static class CltPjContentBuilder
                 "Abra a <a href=\"/calculadoras/pj-vs-clt\">calculadora PJ vs CLT</a> com faturamento, Simples, dependentes e despesas reais.")
         };
 
-        return new CltPjPageContent(cltGross, title, description, intro, context, tips, faq);
+        return new CltPjPageContent(cltGross, dependents, title, description, intro, context, tips, faq);
     }
 }
