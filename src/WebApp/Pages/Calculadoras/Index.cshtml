@@ -201,6 +201,10 @@
 
     @if (showFullHub)
     {
+        <partial name="Shared/_ThematicJourneyCards" view-data="@(new ViewDataDictionary(ViewData) { { "ThematicJourneyCompact", true }, { "ThematicJourneySectionId", "jornadas-tematicas-calc" } })" />
+
+        <partial name="Shared/_UtilityToolsCards" />
+
         <section class="valora-stitch-calc-premium-banner" aria-label="Destaque CLT vs PJ">
             <div class="valora-stitch-calc-premium-banner-glow" aria-hidden="true"></div>
             <div class="valora-stitch-calc-premium-banner-content">

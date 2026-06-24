@@ -147,6 +147,20 @@ else
             </header>
         }
 
+        @if (!Model.IsEmbedMode)
+        {
+            var thematicHub = ThematicHubCatalog.TryGetByCalculatorSlug(calculatorSlug);
+            var showHoleritePromo = SiteUtilityToolCatalog.ShouldPromoteConferirHolerite(calculatorSlug);
+            @if (thematicHub is not null)
+            {
+                <partial name="Shared/_ThematicHubPromoBanner" model="thematicHub" />
+            }
+            @if (showHoleritePromo)
+            {
+                <partial name="Shared/_ConferirHoleritePromoBanner" />
+            }
+        }
+
         <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-layout" : "valora-stitch-calc-detail-grid")">
         <div class="valora-stack-md @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-main" : "valora-stitch-calc-detail-main")">
             @if (Model.IsPjVsCltStitch)

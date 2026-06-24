@@ -58,6 +58,8 @@
                     <ul class="valora-nav">
                         <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
                         <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
+                        <li><a class="@(IsActive("/conferir-holerite") ? "active" : "")" asp-page="/ConferirHolerite/Index" data-testid="nav-conferir-holerite">Conferir holerite</a></li>
+                        <li><a class="@(IsActive("/desligamento") || IsActive("/negociar-salario") || IsActive("/virar-pj") ? "active" : "")" asp-page="/Index" asp-fragment="jornadas-tematicas" data-testid="nav-guias">Guias</a></li>
                         <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
                         <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
                         <li>
@@ -83,6 +85,8 @@
         <div class="valora-container valora-nav-mobile" data-nav-mobile>
             <a asp-page="/Index">Início</a>
             <a asp-page="/Calculadoras/Index">Calculadoras</a>
+            <a asp-page="/ConferirHolerite/Index" data-testid="nav-mobile-conferir-holerite">Conferir holerite</a>
+            <a asp-page="/Index" asp-fragment="jornadas-tematicas" data-testid="nav-mobile-guias">Guias</a>
             <a asp-page="/Blog/Index">Blog</a>
             <a asp-page="/Duvidas/Index">Ajuda</a>
             <a asp-page="/MeuPainel/Index">Meu painel</a>
@@ -119,6 +123,15 @@
                     <li><a asp-page="/Calculadoras/Details" asp-route-slug="rescisao-clt">Rescisão trabalhista</a></li>
                     <li><a asp-page="/Calculadoras/Details" asp-route-slug="pj-vs-clt">CLT vs PJ</a></li>
                     <li><a asp-page="/Calculadoras/Details" asp-route-slug="decimo-terceiro">13º salário</a></li>
+                    <li><a asp-page="/ConferirHolerite/Index" data-testid="footer-conferir-holerite">Conferir holerite</a></li>
+                </ul>
+            </div>
+            <div class="valora-footer-stitch-col">
+                <p class="valora-footer-stitch-col-title">Guias</p>
+                <ul class="valora-footer-stitch-links">
+                    <li><a href="/desligamento" data-testid="footer-hub-desligamento">Desligamento CLT</a></li>
+                    <li><a href="/negociar-salario" data-testid="footer-hub-negociar-salario">Negociar salário</a></li>
+                    <li><a href="/virar-pj" data-testid="footer-hub-virar-pj">Virar PJ</a></li>
                 </ul>
             </div>
             <div class="valora-footer-stitch-col">

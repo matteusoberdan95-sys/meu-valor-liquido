@@ -2662,6 +2662,164 @@ a.valora-choice.valora-choice--active {
   margin-top: 0.5rem;
 }
 
+/* Navegação para hubs temáticos e ferramentas extras */
+.valora-stitch-thematic-nav-lead {
+  margin: -0.25rem 0 1rem;
+  max-width: 42rem;
+}
+
+.valora-stitch-thematic-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.valora-stitch-thematic-nav-grid--single {
+  max-width: 36rem;
+}
+
+@media (min-width: 768px) {
+  .valora-stitch-thematic-nav-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .valora-stitch-thematic-nav-grid--single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.valora-stitch-thematic-nav--compact {
+  margin-top: 0.5rem;
+}
+
+.valora-stitch-thematic-nav-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--valora-card-low);
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-xl);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.valora-stitch-thematic-nav-card:hover {
+  border-color: color-mix(in srgb, var(--valora-primary) 35%, var(--valora-border-subtle));
+  background: color-mix(in srgb, var(--valora-primary) 4%, var(--valora-card-low));
+}
+
+.valora-stitch-thematic-nav-icon {
+  font-size: 1.75rem;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-thematic-nav-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-thematic-nav-teaser {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-text-muted);
+  flex: 1;
+}
+
+.valora-stitch-thematic-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+}
+
+.valora-stitch-thematic-nav-cta .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.valora-stitch-thematic-nav-promo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.15rem;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--valora-primary) 6%, var(--valora-card-low));
+  border: 1px solid color-mix(in srgb, var(--valora-primary) 22%, var(--valora-border-subtle));
+  border-radius: var(--valora-radius-xl);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.valora-stitch-thematic-nav-promo:hover {
+  border-color: color-mix(in srgb, var(--valora-primary) 40%, var(--valora-border-subtle));
+  background: color-mix(in srgb, var(--valora-primary) 10%, var(--valora-card-low));
+}
+
+.valora-stitch-thematic-nav-promo-icon {
+  font-size: 1.75rem;
+  color: var(--valora-primary);
+  flex-shrink: 0;
+}
+
+.valora-stitch-thematic-nav-promo-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: min(100%, 14rem);
+}
+
+.valora-stitch-thematic-nav-promo-kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-thematic-nav-promo-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--valora-text-heading);
+}
+
+.valora-stitch-thematic-nav-promo-text {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-thematic-nav-promo-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--valora-primary);
+  white-space: nowrap;
+}
+
+.valora-stitch-thematic-nav-promo-action .material-symbols-outlined {
+  font-size: 1.125rem;
+}
+
+@media (max-width: 639px) {
+  .valora-stitch-thematic-nav-promo-action {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
 .valora-bento-icon-box {
   display: flex;
   align-items: center;

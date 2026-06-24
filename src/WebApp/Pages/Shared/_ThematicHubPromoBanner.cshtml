@@ -1,0 +1,14 @@
+@model MeuValorLiquido.WebApp.Infrastructure.ThematicHubDefinition
+
+<a class="valora-stitch-thematic-nav-promo" href="@Model.RoutePath" data-testid="thematic-hub-promo-@Model.Id">
+    <span class="material-symbols-outlined valora-stitch-thematic-nav-promo-icon" aria-hidden="true">@ThematicHubUiHelper.GetNavIcon(Model.Id)</span>
+    <span class="valora-stitch-thematic-nav-promo-copy">
+        <span class="valora-stitch-thematic-nav-promo-kicker">Guia completo</span>
+        <span class="valora-stitch-thematic-nav-promo-title">@Model.BreadcrumbLabel</span>
+        <span class="valora-stitch-thematic-nav-promo-text">Etapas, checklist e artigos para o seu momento.</span>
+    </span>
+    <span class="valora-stitch-thematic-nav-promo-action">
+        @ThematicHubUiHelper.GetNavCtaLabel(Model)
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+    </span>
+</a>

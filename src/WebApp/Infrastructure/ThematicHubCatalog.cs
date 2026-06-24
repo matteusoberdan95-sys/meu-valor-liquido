@@ -127,4 +127,19 @@ public static class ThematicHubCatalog
         var normalized = routePath.StartsWith('/') ? routePath.TrimEnd('/') : $"/{routePath.TrimEnd('/')}";
         return ByRoute.TryGetValue(normalized, out var hub) ? hub : null;
     }
+
+    public static ThematicHubDefinition? TryGetByPrimaryCalculatorSlug(string? calculatorSlug) =>
+        TryGetByCalculatorSlug(calculatorSlug);
+
+    public static ThematicHubDefinition? TryGetByCalculatorSlug(string? calculatorSlug)
+    {
+        if (string.IsNullOrWhiteSpace(calculatorSlug))
+        {
+            return null;
+        }
+
+        return All.FirstOrDefault(hub =>
+            hub.PrimaryCalculatorSlug.Equals(calculatorSlug, StringComparison.OrdinalIgnoreCase)
+            || hub.CalculatorSlugs.Any(slug => slug.Equals(calculatorSlug, StringComparison.OrdinalIgnoreCase)));
+    }
 }

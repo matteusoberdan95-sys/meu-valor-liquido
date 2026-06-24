@@ -29,6 +29,7 @@
     <Project Path="tests/MeuValorLiquido.Calculators.Tests/MeuValorLiquido.Calculators.Tests.csproj" />
     <Project Path="tests/MeuValorLiquido.Core.Tests/MeuValorLiquido.Core.Tests.csproj" />
     <Project Path="tests/MeuValorLiquido.Integration.Tests/MeuValorLiquido.Integration.Tests.csproj" />
+    <Project Path="tests/MeuValorLiquido.Playwright.Tests/MeuValorLiquido.Playwright.Tests.csproj" />
     <Project Path="tests/MeuValorLiquido.WebApp.Tests/MeuValorLiquido.WebApp.Tests.csproj" />
   </Folder>
 </Solution>

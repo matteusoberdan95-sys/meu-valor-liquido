@@ -1,0 +1,36 @@
+@{
+    var hubs = ThematicHubCatalog.GetAll();
+    var sectionId = ViewData["ThematicJourneySectionId"]?.ToString() ?? "jornadas-tematicas";
+    var compact = ViewData["ThematicJourneyCompact"] as bool? == true;
+}
+
+<section class="valora-stitch-thematic-nav valora-stitch-section@(compact ? " valora-stitch-thematic-nav--compact" : "")"
+         id="@sectionId"
+         aria-labelledby="@(sectionId)-title">
+    <div class="valora-stitch-section-head">
+        <div>
+            <span class="valora-stitch-section-kicker">Passo a passo</span>
+            <h2 class="valora-stitch-section-title" id="@(sectionId)-title">Jornadas por momento</h2>
+        </div>
+    </div>
+    @if (!compact)
+    {
+        <p class="valora-text-muted valora-text-sm valora-stitch-thematic-nav-lead">
+            Guias com etapas, calculadoras recomendadas, artigos e checklist — comece pelo seu momento.
+        </p>
+    }
+    <div class="valora-stitch-thematic-nav-grid">
+        @foreach (var hub in hubs)
+        {
+            <a class="valora-stitch-thematic-nav-card" href="@hub.RoutePath" data-testid="thematic-hub-@hub.Id">
+                <span class="valora-stitch-thematic-nav-icon material-symbols-outlined" aria-hidden="true">@ThematicHubUiHelper.GetNavIcon(hub.Id)</span>
+                <h3 class="valora-stitch-thematic-nav-title">@hub.BreadcrumbLabel</h3>
+                <p class="valora-stitch-thematic-nav-teaser">@ThematicHubUiHelper.GetNavTeaser(hub)</p>
+                <span class="valora-stitch-thematic-nav-cta">
+                    @ThematicHubUiHelper.GetNavCtaLabel(hub)
+                    <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                </span>
+            </a>
+        }
+    </div>
+</section>
