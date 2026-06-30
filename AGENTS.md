@@ -44,6 +44,18 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 - Ao **iniciar** uma sprint: marque no `docs/sprint-plan.md` se necessário.
 - Ao **concluir** uma sprint: atualize `docs/sprint-plan.md`, `CHANGELOG.md` e esta tabela "Sprint ativa".
 
+## Commits
+
+- Use Conventional Commits em todos os PCs e agentes: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`.
+- Escolha o prefixo pelo tipo principal da mudanca:
+  - `feat:` nova funcionalidade ou tela.
+  - `fix:` correcao de bug, UX quebrada, responsividade, SEO tecnico ou comportamento incorreto.
+  - `docs:` documentacao, planos, handoff e instrucoes.
+  - `refactor:` reorganizacao interna sem mudanca de comportamento.
+  - `test:` somente testes.
+  - `chore:` manutencao sem impacto direto no produto.
+- Nao criar commits sem prefixo. Exemplo: `fix: melhora banner de cookies e header`.
+
 ## Estado atual importante
 
 - Trilhas **47–71 concluídas** (hubs, editorial, seguro-desemprego, PDF premium, conferir holerite).
