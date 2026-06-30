@@ -949,6 +949,101 @@ public static class BlogArticleSeedData
             <h2>Documentos e prazos após a decisão</h2>
             <p>Independentemente do caminho, exija <strong>TRCT</strong>, chave FGTS, guias de seguro-desemprego (se aplicável) e holerite final. Compare linha a linha com a simulação — leia <a href="/blog/rescisao-clt-vs-trct">rescisão CLT vs TRCT</a> e use o <strong>checklist interativo</strong> no hub <a href="/desligamento">desligamento CLT</a>.</p>
             <p>Para o próximo emprego, simule o líquido da proposta na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> antes de assinar contrato.</p>
+            """),
+        Article(
+            "dissidio-salarial-2026-como-avaliar",
+            "Dissídio e reajuste: quanto sobra no líquido",
+            "Entenda como avaliar dissídio salarial em 2026 pelo valor líquido, considerando INSS, IRRF e descontos do holerite.",
+            "proposta-salarial",
+            "Trabalhista",
+            new DateOnly(2026, 8, 6),
+            """
+            <p>Quando chega a conversa de <strong>dissidio salarial</strong>, muita gente olha apenas para o percentual anunciado: 4%, 5%, 8% de reajuste. O problema e que o salario que melhora o orcamento nao e o bruto do comunicado, e sim o <strong>liquido que cai na conta</strong> depois de INSS, IRRF e descontos do holerite.</p>
+            <p>Este guia mostra como transformar o reajuste coletivo em uma comparacao pratica: quanto voce ganha antes, quanto passaria a receber, quais impostos mudam e que perguntas levar ao RH. E uma analise educativa para planejar o bolso, sem substituir sindicato, convencao coletiva ou orientacao trabalhista.</p>
+            <h2>O que e dissidio salarial na pratica</h2>
+            <p>No uso comum, dissidio e o reajuste anual negociado entre sindicato de trabalhadores e sindicato patronal, ou definido em acordo ou convencao coletiva. Ele pode corrigir inflacao, repor perdas e, em alguns casos, trazer ganho real. O valor pode aparecer como percentual sobre o salario base, piso da categoria, abono, retroativo ou combinacao desses itens.</p>
+            <p>Por isso, duas pessoas da mesma empresa podem sentir impactos diferentes. Quem estava proximo do piso pode ter reajuste maior. Quem recebe acima do piso pode ter apenas percentual geral. Quem teve promocao recente pode ter compensacao interna. Antes de comemorar ou reclamar, confirme se o reajuste incide sobre o salario base, sobre adicionais habituais ou apenas sobre determinada faixa.</p>
+            <h2>Percentual no bruto nao e percentual no bolso</h2>
+            <p>INSS e IRRF sao progressivos. Quando o bruto sobe, uma parte do aumento pode entrar em faixa maior de desconto, e o ganho liquido fica menor que o percentual anunciado. Tambem ha descontos fixos ou variaveis: vale-transporte, VR/VA, plano de saude, pensao, sindicato, consignado e outros itens que aparecem no holerite.</p>
+            <p>Exemplo ilustrativo: um salario bruto de R$ 4.500 com reajuste de 6% vai para R$ 4.770. O aumento bruto e R$ 270. Mas o liquido nao cresce exatamente R$ 270, porque INSS e possivel IRRF usam a nova base. Se o trabalhador tem dependentes, plano de saude ou vale-transporte, o resultado final muda de novo. A decisao correta e comparar cenarios completos, nao apenas multiplicar o bruto.</p>
+            <h2>Como simular o reajuste em 5 passos</h2>
+            <ol>
+            <li>Pegue o salario bruto atual no holerite, nao no extrato bancario.</li>
+            <li>Aplique o percentual do dissidio ou informe o novo bruto comunicado pelo RH.</li>
+            <li>Repita dependentes, vale-transporte, VR/VA, plano, pensao e outros descontos nos dois cenarios.</li>
+            <li>Compare ganho liquido mensal, ganho anual e percentual real no bolso.</li>
+            <li>Se houver retroativo, simule o mes normal separadamente do pagamento acumulado.</li>
+            </ol>
+            <p>A forma mais simples e usar a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a>. Coloque o bruto atual de um lado, o bruto reajustado do outro e mantenha os mesmos descontos. Para conferir um holerite depois que o reajuste entrar na folha, use tambem a <a href="/conferir-holerite">ferramenta de conferir holerite</a>.</p>
+            <h2>Retroativo pode distorcer o holerite do mes</h2>
+            <p>E comum a convencao ser assinada depois da data-base. Nesse caso, a empresa pode pagar diferencas retroativas em uma folha posterior. O holerite do mes com retroativo pode parecer alto e ter descontos maiores, porque junta salario normal, diferenca de meses anteriores e, as vezes, reflexos em ferias, 13o ou horas extras.</p>
+            <p>Para nao confundir renda recorrente com valor pontual, separe mentalmente: <strong>novo salario mensal</strong> e <strong>ajuste retroativo</strong>. O primeiro melhora seu orcamento daqui para frente. O segundo e uma parcela eventual; pode ajudar a quitar divida ou formar reserva, mas nao deve virar despesa fixa.</p>
+            <h2>O que perguntar ao RH ou ao sindicato</h2>
+            <ul>
+            <li>Qual e a data-base da categoria e a partir de quando o reajuste vale?</li>
+            <li>O percentual incide sobre salario base, piso, adicionais ou total da remuneracao?</li>
+            <li>Havera retroativo? Em qual folha e com quais rubricas?</li>
+            <li>O vale-refeicao, vale-alimentacao ou plano de saude tambem mudam?</li>
+            <li>Existe abono ou parcela unica fora do salario mensal?</li>
+            </ul>
+            <p>Guarde o comunicado, a convencao coletiva e o primeiro holerite com reajuste. Se o valor liquido ficar muito diferente do esperado, confira INSS e IRRF em <a href="/como-calculamos">Como calculamos</a> e veja a <a href="/duvidas/proposta-salarial-como-negociar">FAQ de proposta salarial</a>.</p>
+            <h2>Como usar o reajuste para negociar melhor</h2>
+            <p>Dissidio repoe uma regra coletiva; promocao e merito sao conversas diferentes. Se seu ganho real ficou pequeno, leve numeros objetivos: liquido atual, liquido apos dissidio, impacto anual e comparacao com responsabilidades novas. O hub <a href="/negociar-salario">Negociar salario</a> organiza calculadoras e artigos para montar essa conversa sem depender de achismo.</p>
+            <p>Depois de simular, salve o resultado ou gere PDF quando a calculadora oferecer essa opcao. Isso ajuda a conversar com RH, gestor ou sindicato com uma base clara: qual e o ganho real no bolso e qual e apenas aumento no papel.</p>
+            <h2>Reflexos em 13o, ferias e horas extras</h2>
+            <p>O reajuste tambem pode afetar verbas calculadas sobre salario: 13o, ferias, adicional de 1/3, horas extras e medias habituais. Quando o aumento entra no meio do ano, alguns valores futuros usam o novo salario e outros podem considerar medias ou regras da convencao. Se estiver planejando ferias, rescisao ou troca de emprego, simule novamente depois que o primeiro holerite reajustado sair.</p>
+            <p>Essa revisao evita um erro comum: contar apenas com o ganho mensal e esquecer que parte do aumento aparece ao longo do ano em verbas futuras. Para o trabalhador, isso melhora previsibilidade; para a conversa com RH, mostra que voce esta avaliando o pacote completo, nao so o valor de agosto.</p>
+            """),
+        Article(
+            "vale-refeicao-desconto-holerite",
+            "VR e VA: o que desconta e o que não desconta no holerite",
+            "Entenda como vale-refeição e vale-alimentação aparecem no holerite, quando há coparticipação e como simular o salário líquido.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 8, 20),
+            """
+            <p>Vale-refeicao (VR) e vale-alimentacao (VA) parecem simples: a empresa deposita um valor no cartao e o trabalhador usa para comer. Mas, no holerite, esses beneficios podem aparecer com desconto, coparticipacao, integracao parcial em acordos especificos ou mudanca por convencao coletiva.</p>
+            <p>Para entender o <strong>salario liquido real</strong>, voce precisa separar o que e dinheiro que cai na conta, o que e beneficio em cartao e o que sai como desconto em folha. Este artigo explica como conferir VR/VA sem confundir com vale-transporte, plano de saude ou outros descontos autorizados.</p>
+            <h2>VR, VA e salario liquido: cada coisa em seu lugar</h2>
+            <p>O salario liquido e o valor depositado em conta apos descontos obrigatorios e autorizados. VR e VA normalmente nao entram como dinheiro livre na conta bancaria; entram como beneficio para refeicao ou alimentacao. Mesmo assim, podem afetar o liquido quando a empresa cobra uma parte do custo do empregado.</p>
+            <p>Exemplo: se a empresa concede R$ 700 de VA e desconta R$ 70 de coparticipacao, o cartao recebe R$ 700, mas o salario liquido bancario cai R$ 70. Para o orcamento mensal, voce deve considerar os dois lados: mais poder de compra em alimentacao e menos dinheiro livre na conta.</p>
+            <h2>Quando pode haver desconto no holerite</h2>
+            <p>O desconto de VR/VA depende de politica interna, acordo coletivo, adesao a programas de alimentacao e regras da categoria. Em muitos casos, a empresa subsidia quase tudo e desconta um valor simbolico. Em outros, ha percentual fixo, valor por dia util ou coparticipacao diferente por faixa salarial.</p>
+            <ul>
+            <li><strong>Valor fixo mensal:</strong> exemplo de R$ 50 ou R$ 100 descontados todo mes.</li>
+            <li><strong>Valor por dia util:</strong> desconto muda conforme dias trabalhados, ferias, afastamentos e feriados.</li>
+            <li><strong>Percentual do beneficio:</strong> a empresa paga uma parte e desconta outra.</li>
+            <li><strong>Sem desconto:</strong> algumas empresas oferecem o beneficio integralmente subsidiado.</li>
+            </ul>
+            <p>Se o holerite mostra apenas "outros descontos" sem detalhar, peca a rubrica ao RH. O ideal e que VR, VA, VT, plano e consignado aparecam separados para voce conferir cada linha.</p>
+            <h2>VR/VA nao e igual a vale-transporte</h2>
+            <p>Vale-transporte tem regra conhecida de desconto limitado a ate 6% do salario bruto quando o trabalhador opta pelo beneficio. VR e VA nao seguem automaticamente esse mesmo limite. O tratamento depende da natureza do beneficio, do acordo e da politica da empresa.</p>
+            <p>Por isso, nao use a regra do VT para estimar VR/VA. Na <a href="/calculadoras/salario-liquido">calculadora de salario liquido</a>, informe vale-transporte em campo separado e coloque VR/VA no campo proprio de desconto de refeicao/alimentacao. Isso evita somar tudo como se fosse uma regra unica.</p>
+            <h2>Como simular corretamente no Meu Valor Liquido</h2>
+            <ol>
+            <li>Abra seu holerite mais recente e localize a rubrica de VR, VA ou alimentacao.</li>
+            <li>Informe o salario bruto e dependentes na calculadora de salario liquido.</li>
+            <li>Preencha vale-transporte apenas se houver desconto de VT.</li>
+            <li>Coloque a coparticipacao de VR/VA no campo "Vale-refeicao/alimentacao".</li>
+            <li>Deixe o valor total carregado no cartao fora do liquido bancario, a menos que a empresa pague em dinheiro.</li>
+            </ol>
+            <p>Depois, compare o resultado com o holerite oficial. Se INSS, IRRF ou liquido divergirem muito, use a pagina <a href="/conferir-holerite">conferir holerite</a> para ver qual linha merece revisao.</p>
+            <h2>Impacto em ferias, afastamentos e home office</h2>
+            <p>VR e VA podem mudar em meses com ferias, afastamento, licenca ou home office. Algumas empresas mantem o beneficio integral; outras reduzem conforme dias uteis trabalhados. O desconto em folha tambem pode acompanhar essa mudanca. Por isso, nao compare um holerite de ferias com um mes normal sem ajustar os dias.</p>
+            <p>Se voce recebeu aumento, mudou de jornada ou entrou em escala hibrida, confira se o beneficio continuou coerente. Um desconto pequeno recorrente pode parecer irrelevante, mas em 12 meses pesa no orcamento tanto quanto uma parcela fixa.</p>
+            <h2>Checklist para conversar com o RH</h2>
+            <ul>
+            <li>Qual e o valor mensal carregado no cartao de VR/VA?</li>
+            <li>Qual parte e paga pela empresa e qual parte e descontada do empregado?</li>
+            <li>O desconto muda por falta, ferias, home office ou afastamento?</li>
+            <li>A convencao coletiva define piso de beneficio ou coparticipacao?</li>
+            <li>O holerite separa VR, VA, VT e plano de saude em rubricas diferentes?</li>
+            </ul>
+            <p>Para entender outros descontos, leia <a href="/blog/como-conferir-holerite">como conferir holerite</a>, consulte a <a href="/duvidas/diferenca-salario-bruto-e-liquido">FAQ sobre bruto e liquido</a> e veja a metodologia em <a href="/como-calculamos">Como calculamos</a>.</p>
+            <h2>Como diferenciar beneficio bom de desconto escondido</h2>
+            <p>Um beneficio bom e aquele que aumenta seu poder de compra sem criar surpresa no holerite. Se a empresa oferece R$ 900 de VA e desconta R$ 20, o impacto costuma ser positivo. Se oferece R$ 500 e desconta R$ 250, a vantagem real depende do seu gasto com alimentacao, da rede aceita e da possibilidade de usar o valor todo no mes.</p>
+            <p>Compare tres numeros: valor carregado no cartao, desconto em folha e gasto real que voce teria fora do beneficio. Se voce ja gastaria R$ 800 em mercado e recebe R$ 700 de VA com desconto de R$ 70, o ganho pratico e diferente de alguem que mora com a familia e quase nao usa o cartao. Beneficio tambem tem qualidade: cobertura de estabelecimentos, prazo de credito, acumulacao de saldo e regras durante ferias importam.</p>
+            <p>Na negociacao salarial, nao some VR/VA ao salario bruto como se fosse dinheiro livre. Use como parte do pacote total, mas mantenha separado do liquido bancario. Essa separacao deixa sua comparacao mais honesta quando voce avalia proposta nova, dissidio ou troca entre CLT e PJ.</p>
             """)
     ];
 
@@ -1082,6 +1177,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Programe transferência automática na volta das férias coletivas — o primeiro holerite “cheio” após o recesso costuma coincidir com contas atrasadas do mês de folga.</p>",
             "pedir-demissao-ou-aguardar-dispensa" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Exporte duas simulações da calculadora de rescisão (pedido vs sem justa causa) em PDF e arquive com o saldo FGTS do app — facilita comparar com o TRCT depois.</p>",
+            "dissidio-salarial-2026-como-avaliar" =>
+                "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Antes de ajustar seu orcamento, simule o salario atual e o salario reajustado lado a lado; trate retroativo como parcela pontual, nao como renda fixa mensal.</p>",
+            "vale-refeicao-desconto-holerite" =>
+                "<h2 id=\"dica-pratica\">Dica pratica</h2><p>No holerite, separe desconto de VR/VA do valor carregado no cartao: um reduz o liquido bancario, o outro aumenta seu orcamento de alimentacao.</p>",
             _ => string.Empty
         };
 

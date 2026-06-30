@@ -164,6 +164,12 @@ Antes de propor um artigo, consulte (quando disponível):
 
 ---
 
+## Sprint 70 - lote 3 publicado (ago/2026)
+
+- `dissidio-salarial-2026-como-avaliar` -> hub `/negociar-salario`, calc `proposta-salarial`
+- `vale-refeicao-desconto-holerite` -> hub `/negociar-salario`, calc `salario-liquido`
+- Proximo lote sugerido: lote 4 (set/2026), com `experiencia-clt-direitos-e-rescisao` e `home-office-clt-descontos`.
+
 ## Como sugerir novo artigo (template para agents)
 
 Copie e preencha num PR ou issue:

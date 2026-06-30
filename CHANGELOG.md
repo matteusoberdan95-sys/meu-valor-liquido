@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 70 - Editorial lote 3 (ago/2026)
+- Artigos longos (~5 min): `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
+- Cross-links no hub `/negociar-salario` e capas WebP em `wwwroot/images/blog`.
+- `BlogEditorialCatalog.Sprint70Lote3EditorialSlugs` e testes `Sprint70Lote3BlogTests`.
+
 ### Sprint 81 - Diagnostico do Holerite
 - `/conferir-holerite` agora mostra status geral do holerite: correto, atencao ou diferenca relevante.
 - Resultado reorganizado em cards por INSS, IRRF e liquido, com esperado, informado e diferenca.

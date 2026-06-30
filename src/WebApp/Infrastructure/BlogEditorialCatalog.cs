@@ -41,10 +41,17 @@ public static class BlogEditorialCatalog
         "pedir-demissao-ou-aguardar-dispensa"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote3EditorialSlugs =
+    [
+        "dissidio-salarial-2026-como-avaliar",
+        "vale-refeicao-desconto-holerite"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }
