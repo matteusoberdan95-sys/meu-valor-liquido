@@ -15,7 +15,10 @@ public sealed class Sprint71ConferirHoleriteTests : IClassFixture<WebApplication
     {
         var html = await client.GetStringAsync("/conferir-holerite");
 
-        html.Should().Contain("Conferir holerite");
+        html.Should().Contain("Seu holerite está certo?");
+        html.Should().Contain("Diagnóstico do Holerite");
+        html.Should().Contain("Gerar diagnóstico do holerite");
+        html.Should().Contain("Como funciona o diagnóstico");
         html.Should().Contain("INSS descontado");
         html.Should().Contain("rel=\"canonical\"");
     }
@@ -31,7 +34,9 @@ public sealed class Sprint71ConferirHoleriteTests : IClassFixture<WebApplication
             ["Input.ReportedIrrf"] = FormatDecimal(0m)
         });
 
-        html.Should().Contain("Valores conferem");
+        html.Should().Contain("Seu holerite parece correto");
+        html.Should().Contain("O que conferir no RH");
+        html.Should().Contain("Abrir salário líquido");
         html.Should().Contain("INSS");
     }
 
@@ -46,8 +51,9 @@ public sealed class Sprint71ConferirHoleriteTests : IClassFixture<WebApplication
             ["Input.ReportedIrrf"] = FormatDecimal(0m)
         });
 
-        html.Should().Contain("valora-stitch-payslip-result--warn");
-        html.Should().Contain("Conferir");
+        html.Should().Contain("valora-stitch-payslip-diagnosis--danger");
+        html.Should().Contain("valora-stitch-payslip-diagnostic-card--warn");
+        html.Should().Contain("Tirar dúvida no chat");
     }
 
     [Fact]

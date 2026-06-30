@@ -53,7 +53,7 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
             await holeriteCard.ClickAsync();
 
             await page.WaitForURLAsync("**/conferir-holerite");
-            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Conferir holerite" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Seu holerite está certo?" })).ToBeVisibleAsync();
         });
     }
 
@@ -93,7 +93,7 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
             await page.GetByTestId("conferir-holerite-promo").ClickAsync();
 
             await page.WaitForURLAsync("**/conferir-holerite");
-            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Conferir holerite" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Seu holerite está certo?" })).ToBeVisibleAsync();
         });
     }
 

@@ -9728,10 +9728,244 @@ select:focus-visible {
   gap: 0.35rem;
 }
 
+.valora-stitch-payslip-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.valora-stitch-payslip-hero-actions span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-md);
+  color: var(--valora-text-muted);
+  background: color-mix(in srgb, var(--valora-primary) 4%, var(--valora-card-low));
+  font-size: 0.85rem;
+}
+
+.valora-stitch-payslip-hero-actions strong {
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: rgb(89 219 199 / 14%);
+  color: var(--valora-primary);
+  font-size: 0.75rem;
+}
+
+.valora-stitch-payslip-submit {
+  justify-content: center;
+}
+
+.valora-stitch-payslip-diagnosis {
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  padding: 1.25rem;
+  background: var(--valora-card-low);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.valora-stitch-payslip-diagnosis--ok {
+  border-color: rgb(69 223 164 / 36%);
+  background: linear-gradient(160deg, rgb(69 223 164 / 8%), var(--valora-card-low) 44%);
+}
+
+.valora-stitch-payslip-diagnosis--warn {
+  border-color: rgb(245 158 11 / 42%);
+  background: linear-gradient(160deg, rgb(245 158 11 / 8%), var(--valora-card-low) 44%);
+}
+
+.valora-stitch-payslip-diagnosis--danger {
+  border-color: rgb(239 68 68 / 46%);
+  background: linear-gradient(160deg, rgb(239 68 68 / 8%), var(--valora-card-low) 44%);
+}
+
+.valora-stitch-payslip-diagnosis-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.valora-stitch-payslip-diagnosis-head .material-symbols-outlined {
+  flex: 0 0 auto;
+  font-size: 2rem;
+  color: var(--valora-net-result);
+}
+
+.valora-stitch-payslip-diagnosis--warn .valora-stitch-payslip-diagnosis-head .material-symbols-outlined {
+  color: var(--valora-warning-text);
+}
+
+.valora-stitch-payslip-diagnosis--danger .valora-stitch-payslip-diagnosis-head .material-symbols-outlined {
+  color: #ef4444;
+}
+
+.valora-stitch-payslip-diagnosis-head p,
+.valora-stitch-payslip-diagnostic-card p {
+  margin: 0;
+  color: var(--valora-text-muted);
+  line-height: 1.5;
+}
+
+.valora-stitch-payslip-diagnosis-kicker {
+  margin: 0 0 0.25rem;
+  color: var(--valora-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.valora-stitch-payslip-diagnosis-summary {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-md);
+  background: rgb(255 255 255 / 3%);
+  color: var(--valora-text-main);
+  font-size: 0.9rem;
+}
+
+.valora-stitch-payslip-diagnostic-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.valora-stitch-payslip-diagnostic-card {
+  border: 1px solid var(--valora-border-subtle);
+  border-left-width: 3px;
+  border-radius: var(--valora-radius-md);
+  padding: 0.9rem;
+  background: var(--valora-surface-container);
+}
+
+.valora-stitch-payslip-diagnostic-card--ok {
+  border-left-color: var(--valora-net-result);
+}
+
+.valora-stitch-payslip-diagnostic-card--warn {
+  border-left-color: var(--valora-warning-text);
+}
+
+.valora-stitch-payslip-diagnostic-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.valora-stitch-payslip-diagnostic-card-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.valora-stitch-payslip-diagnostic-card-head span {
+  flex: 0 0 auto;
+  color: var(--valora-text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.valora-stitch-payslip-diagnostic-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0 0 0.65rem;
+}
+
+.valora-stitch-payslip-diagnostic-card dt {
+  margin: 0;
+  color: var(--valora-text-muted);
+  font-size: 0.7rem;
+}
+
+.valora-stitch-payslip-diagnostic-card dd {
+  margin: 0.15rem 0 0;
+  color: var(--valora-text-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.valora-stitch-payslip-diagnostic-diff dd {
+  color: var(--valora-primary);
+}
+
+.valora-stitch-payslip-rh-checklist {
+  border: 1px solid rgb(89 219 199 / 18%);
+  border-radius: var(--valora-radius-md);
+  padding: 1rem;
+  background: rgb(89 219 199 / 5%);
+}
+
+.valora-stitch-payslip-rh-checklist h3,
+.valora-stitch-payslip-expected h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.valora-stitch-payslip-rh-checklist ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.05rem;
+  color: var(--valora-text-muted);
+}
+
+.valora-stitch-payslip-rh-checklist li + li {
+  margin-top: 0.45rem;
+}
+
+.valora-stitch-payslip-next-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.valora-stitch-payslip-next-actions .valora-stitch-btn {
+  min-height: 2.65rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.valora-stitch-btn--secondary {
+  color: var(--valora-on-primary);
+  background: var(--valora-tertiary);
+  border-color: transparent;
+}
+
+.valora-stitch-btn--ghost {
+  color: var(--valora-primary);
+  background: transparent;
+  border-color: rgb(89 219 199 / 34%);
+}
+
+@media (max-width: 640px) {
+  .valora-stitch-payslip-diagnostic-card dl {
+    grid-template-columns: 1fr;
+  }
+
+  .valora-stitch-payslip-hero-actions span {
+    width: 100%;
+  }
+}
+
 @media (min-width: 960px) {
   .valora-stitch-payslip-layout {
     grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
     align-items: start;
+  }
+
+  .valora-stitch-payslip-next-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

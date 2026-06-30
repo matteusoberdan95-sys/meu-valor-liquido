@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 81 - Diagnostico do Holerite
+- `/conferir-holerite` agora mostra status geral do holerite: correto, atencao ou diferenca relevante.
+- Resultado reorganizado em cards por INSS, IRRF e liquido, com esperado, informado e diferenca.
+- Checklist contextual para o usuario conferir pontos com o RH e CTAs para salario liquido e assistente.
+- Testes WebApp atualizados para carregamento, diagnostico positivo e divergencia relevante.
+
 ### Sprint 80 - Assistente educativo Meu Valor Liquido
 - Nova pagina `/assistente` com chat educativo responsivo inspirado no mock Stitch IA 2080.
 - Respostas guiadas no front-end para INSS, IRRF, CLT vs PJ, rescisao e holerite, sempre apontando para calculadoras relacionadas.

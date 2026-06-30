@@ -19,12 +19,17 @@
     </nav>
 
     <header class="valora-stitch-payslip-header">
-        <p class="valora-stitch-payslip-kicker">Ferramenta educativa</p>
-        <h1 class="valora-stitch-payslip-title">Conferir holerite</h1>
+        <p class="valora-stitch-payslip-kicker">Diagnóstico do Holerite</p>
+        <h1 class="valora-stitch-payslip-title">Seu holerite está certo?</h1>
         <p class="valora-stitch-payslip-lead">
-            Informe o que aparece no seu holerite e compare com uma simulação pelas tabelas de INSS e IRRF @BrTaxTables2026.Year.
-            Tolerância de <strong>R$ 1,00</strong> por linha — não substitui o contracheque oficial.
+            Informe os valores do contracheque e veja se INSS, IRRF e líquido batem com a simulação pelas tabelas @BrTaxTables2026.Year.
+            A ferramenta aponta diferenças, explica onde olhar e monta um checklist para conversar com o RH.
         </p>
+        <div class="valora-stitch-payslip-hero-actions" aria-label="Fluxo do diagnóstico">
+            <span><strong>1</strong> Informe o holerite</span>
+            <span><strong>2</strong> Veja as diferenças</span>
+            <span><strong>3</strong> Confira com o RH</span>
+        </div>
     </header>
 
     <div class="valora-stitch-payslip-layout">
@@ -111,51 +116,56 @@
                 </div>
             </section>
 
-            <button class="valora-stitch-btn valora-stitch-btn--primary" type="submit">
-                Conferir holerite
+            <button class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-payslip-submit" type="submit">
+                Gerar diagnóstico do holerite
                 <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
             </button>
         </form>
 
         <aside class="valora-stitch-payslip-aside">
-            @if (Model.Result is not null)
+            @if (Model.Result is not null && Model.Diagnosis is not null)
             {
-                <div class="valora-stitch-payslip-result @(Model.Result.AllMatched ? "valora-stitch-payslip-result--ok" : "valora-stitch-payslip-result--warn")">
-                    <div class="valora-stitch-payslip-result-head">
-                        <span class="material-symbols-outlined" aria-hidden="true">@(Model.Result.AllMatched ? "check_circle" : "warning")</span>
+                <div class="valora-stitch-payslip-diagnosis valora-stitch-payslip-diagnosis--@Model.Diagnosis.Tone">
+                    <div class="valora-stitch-payslip-diagnosis-head">
+                        <span class="material-symbols-outlined" aria-hidden="true">@Model.Diagnosis.Icon</span>
                         <div>
-                            <h2 class="valora-stitch-payslip-result-title">@(Model.Result.AllMatched ? "Valores conferem" : "Divergência encontrada")</h2>
-                            <p>@Model.Result.Summary</p>
+                            <p class="valora-stitch-payslip-diagnosis-kicker">Status geral</p>
+                            <h2 class="valora-stitch-payslip-result-title">@Model.Diagnosis.Title</h2>
+                            <p>@Model.Diagnosis.Summary</p>
                         </div>
                     </div>
+                    <p class="valora-stitch-payslip-diagnosis-summary">@Model.Result.Summary</p>
 
-                    @foreach (var check in Model.Result.Checks)
-                    {
-                        <article class="valora-stitch-payslip-check valora-stitch-payslip-check--@(check.Status == PayslipValidationStatus.Match ? "ok" : "warn")">
-                            <div class="valora-stitch-payslip-check-head">
-                                <h3>@check.Label</h3>
-                                <span>@(check.Status == PayslipValidationStatus.Match ? "OK" : "Conferir")</span>
-                            </div>
-                            <dl class="valora-stitch-payslip-check-grid">
-                                <div>
-                                    <dt>Esperado</dt>
-                                    <dd>@Money.From(check.Expected)</dd>
+                    <div class="valora-stitch-payslip-diagnostic-grid">
+                        @foreach (var check in Model.Result.Checks)
+                        {
+                            var isMatch = check.Status == PayslipValidationStatus.Match;
+                            <article class="valora-stitch-payslip-diagnostic-card valora-stitch-payslip-diagnostic-card--@(isMatch ? "ok" : "warn")">
+                                <div class="valora-stitch-payslip-diagnostic-card-head">
+                                    <h3>@check.Label</h3>
+                                    <span>@(isMatch ? "OK" : "Conferir")</span>
                                 </div>
-                                <div>
-                                    <dt>Holerite</dt>
-                                    <dd>@Money.From(check.Reported)</dd>
-                                </div>
-                                <div>
-                                    <dt>Diferença</dt>
-                                    <dd>@Money.From(check.Difference)</dd>
-                                </div>
-                            </dl>
-                            <p class="valora-stitch-payslip-check-hint">@check.Hint</p>
-                        </article>
-                    }
+                                <dl>
+                                    <div>
+                                        <dt>Esperado</dt>
+                                        <dd>@Money.From(check.Expected)</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Holerite</dt>
+                                        <dd>@Money.From(check.Reported)</dd>
+                                    </div>
+                                    <div class="valora-stitch-payslip-diagnostic-diff">
+                                        <dt>Diferença</dt>
+                                        <dd>@Money.From(check.Difference)</dd>
+                                    </div>
+                                </dl>
+                                <p>@check.Hint</p>
+                            </article>
+                        }
+                    </div>
 
                     <div class="valora-stitch-payslip-expected">
-                        <h3>Simulação completa (@BrTaxTables2026.Year)</h3>
+                        <h3>Resumo esperado (@BrTaxTables2026.Year)</h3>
                         <ul>
                             <li><span>INSS estimado</span><strong>@Money.From(Model.Result.ExpectedBreakdown.Inss)</strong></li>
                             <li><span>IRRF estimado</span><strong>@Money.From(Model.Result.ExpectedBreakdown.Irrf)</strong></li>
@@ -163,23 +173,43 @@
                         </ul>
                     </div>
 
+                    <div class="valora-stitch-payslip-rh-checklist">
+                        <h3>O que conferir no RH</h3>
+                        <ul>
+                            @foreach (var item in Model.Diagnosis.RhChecklist)
+                            {
+                                <li>@item</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="valora-stitch-payslip-next-actions">
+                        <a class="valora-stitch-btn valora-stitch-btn--secondary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
+                            Abrir salário líquido
+                        </a>
+                        <a class="valora-stitch-btn valora-stitch-btn--ghost" asp-page="/Assistente/Index">
+                            Tirar dúvida no chat
+                        </a>
+                    </div>
+
                     <p class="valora-text-muted valora-text-sm">
-                        Estimativa educativa. Em caso de dúvida, leve esta conferência ao RH com o holerite impresso ou PDF oficial.
+                        Conteúdo educativo. Não substitui holerite oficial, orientação profissional ou conferência formal do RH.
                     </p>
                 </div>
             }
             else
             {
                 <div class="valora-stitch-contact-aside-card">
-                    <h2>Como usar</h2>
+                    <h2>Como funciona o diagnóstico</h2>
                     <ol class="valora-stitch-payslip-steps">
-                        <li>Abra o holerite do mês e localize bruto, INSS e IRRF.</li>
+                        <li>Abra o holerite do mês e localize bruto, INSS, IRRF e líquido recebido.</li>
                         <li>Informe dependentes e descontos que aparecem em linhas separadas.</li>
-                        <li>Compare o resultado com tolerância de R$ 1,00 por item.</li>
+                        <li>Receba um status geral: correto, atenção ou diferença relevante.</li>
+                        <li>Use o checklist para conversar com o RH com mais segurança.</li>
                     </ol>
                     <p><a asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">Simular salário líquido completo</a></p>
                     <p><a href="/blog/como-conferir-holerite">Guia: como conferir holerite</a></p>
-                    <p><a asp-page="/NegociarSalario/Index">Hub negociar salário</a></p>
+                    <p><a asp-page="/Assistente/Index">Assistente Meu Valor Líquido</a></p>
                 </div>
             }
         </aside>

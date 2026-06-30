@@ -676,6 +676,21 @@
 
 ---
 
+### Sprint 81 - Diagnostico do Holerite - CONCLUIDA
+
+**Objetivo:** transformar `/conferir-holerite` em uma experiencia de diagnostico, com status geral, leitura por linha e checklist pratico para o usuario conversar com o RH.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Hero orientado a fluxo, CTA "Gerar diagnostico", painel responsivo de status geral e cards por INSS/IRRF/liquido |
+| Backend/Calculators | Reuso de `PayslipValidationService`; sem duplicar regra fiscal no WebApp |
+| Product/UX | Checklist contextual para RH e proximos passos para salario liquido e assistente |
+| QA/Test | Regressao WebApp para carregamento, diagnostico positivo e diferenca relevante |
+
+**Criterios de aceite:** a pagina explica se o holerite parece correto, quando ha diferenca relevante e quais pontos conferir; mantem carater educativo; `dotnet test` verde.
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.
