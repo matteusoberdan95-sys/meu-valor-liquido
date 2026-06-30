@@ -59,14 +59,15 @@
                     <ul class="valora-nav">
                         <li><a class="@(currentPath == "/" ? "active" : "")" asp-page="/Index">Início</a></li>
                         <li><a class="@(IsActive("/calculadoras") ? "active" : "")" asp-page="/Calculadoras/Index">Calculadoras</a></li>
-                        <li><a class="@(IsActive("/conferir-holerite") ? "active" : "")" asp-page="/ConferirHolerite/Index" data-testid="nav-conferir-holerite">Conferir holerite</a></li>
+                        <li><a class="@(IsActive("/conferir-holerite") ? "active" : "")" asp-page="/ConferirHolerite/Index" data-testid="nav-conferir-holerite">Holerite</a></li>
                         <li><a class="@(IsActive("/desligamento") || IsActive("/negociar-salario") || IsActive("/virar-pj") ? "active" : "")" asp-page="/Index" asp-fragment="jornadas-tematicas" data-testid="nav-guias">Guias</a></li>
                         <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
                         <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
-                        <li><a class="@(IsActive("/assistente") ? "active" : "")" asp-page="/Assistente/Index">Assistente</a></li>
-                        <li>
-                            <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
-                                Meu painel
+                        <li><a class="@(IsActive("/assistente") ? "active" : "")" asp-page="/Assistente/Index">Chat</a></li>
+                        <li class="valora-nav-icon-item">
+                            <a class="valora-nav-icon-link @(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index" aria-label="Meu painel" title="Meu painel">
+                                <span class="material-symbols-outlined" aria-hidden="true">person</span>
+                                <span class="valora-sr-only">Meu painel</span>
                             </a>
                         </li>
                     </ul>
@@ -75,7 +76,7 @@
                         <input type="search"
                                name="q"
                                class="valora-nav-search-input"
-                               placeholder="Buscar calculadora..."
+                               placeholder="Buscar..."
                                aria-label="Buscar calculadoras" />
                     </form>
                 </div>

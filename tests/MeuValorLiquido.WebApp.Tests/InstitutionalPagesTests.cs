@@ -41,7 +41,24 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
 
         html.Should().Contain("data-cookie-consent");
         html.Should().Contain("/politica-de-cookies");
+        html.Should().Contain("/politica-de-privacidade");
+        html.Should().Contain("Aceitar todos");
+        html.Should().Contain("Rejeitar todos");
+        html.Should().Contain("Personalizar");
+        html.Should().Contain("data-cookie-consent-preferences");
         html.Should().Contain("cookie-consent.");
+    }
+
+    [Fact]
+    public async Task Cookie_Consent_Script_Should_Handle_Reject_And_Customize()
+    {
+        var script = await client.GetStringAsync("/js/cookie-consent.js");
+
+        script.Should().Contain("data-cookie-consent-close");
+        script.Should().Contain("data-cookie-consent-customize");
+        script.Should().Contain("data-cookie-consent-save");
+        script.Should().Contain("data-cookie-consent-advertising");
+        script.Should().Contain("saveConsent(false");
     }
 
     [Fact]

@@ -12,33 +12,58 @@
      aria-live="polite"
      aria-label="Consentimento de cookies">
     <div class="valora-cookie-consent-content">
+        <button class="valora-cookie-consent-close" type="button" aria-label="Fechar aviso de cookies" data-cookie-consent-close>
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+
+        <h2 class="valora-cookie-consent-title">Este site usa cookies para melhorar sua experiencia</h2>
         <p class="valora-cookie-consent-text">
+            Usamos cookies para aprimorar sua experiencia de navegacao, lembrar preferencias, analisar uso do site
             @if (adsActive)
             {
-                <text>Usamos cookies essenciais para o funcionamento do site e, com seu consentimento, cookies de publicidade do Google AdSense. Você pode aceitar todos ou continuar apenas com os essenciais.</text>
+                <text> e veicular anuncios personalizados quando voce permitir.</text>
             }
             else
             {
-                <text>Usamos cookies essenciais e armazenamento local (por exemplo, no Meu painel) para o site funcionar. Quando a publicidade estiver ativa, pediremos consentimento adicional.</text>
+                <text>. Quando a publicidade estiver ativa, pediremos consentimento para cookies de anuncios.</text>
             }
-            <a asp-page="/PoliticaDeCookies">Política de Cookies</a>.
         </p>
+
         <div class="valora-cookie-consent-actions">
-            @if (adsActive)
-            {
-                <button type="button" class="valora-stitch-btn valora-stitch-btn--outline valora-stitch-btn--sm" data-cookie-consent-essential>
-                    Somente essenciais
-                </button>
-                <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--sm" data-cookie-consent-accept>
-                    Aceitar todos
-                </button>
-            }
-            else
-            {
-                <button type="button" class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--sm" data-cookie-consent-accept>
-                    Entendi
-                </button>
-            }
+            <button type="button" class="valora-cookie-consent-btn valora-cookie-consent-btn--primary" data-cookie-consent-accept>
+                Aceitar todos
+            </button>
+            <button type="button" class="valora-cookie-consent-btn valora-cookie-consent-btn--secondary" data-cookie-consent-essential>
+                Rejeitar todos
+            </button>
+            <button type="button" class="valora-cookie-consent-btn valora-cookie-consent-btn--secondary" data-cookie-consent-customize aria-expanded="false" aria-controls="cookie-consent-preferences">
+                Personalizar
+            </button>
+        </div>
+
+        <div class="valora-cookie-consent-preferences" id="cookie-consent-preferences" data-cookie-consent-preferences hidden>
+            <label class="valora-cookie-consent-option">
+                <input type="checkbox" checked disabled />
+                <span>
+                    <strong>Cookies essenciais</strong>
+                    <small>Necessarios para funcionamento do site, seguranca e preferencias locais.</small>
+                </span>
+            </label>
+            <label class="valora-cookie-consent-option">
+                <input type="checkbox" data-cookie-consent-advertising @(adsActive ? string.Empty : "disabled") />
+                <span>
+                    <strong>Publicidade e medicao</strong>
+                    <small>@(adsActive ? "Permite carregar Google AdSense e medir desempenho de anuncios." : "Indisponivel enquanto os anuncios estiverem desligados.")</small>
+                </span>
+            </label>
+            <button type="button" class="valora-cookie-consent-save" data-cookie-consent-save>
+                Salvar preferencias
+            </button>
+        </div>
+
+        <div class="valora-cookie-consent-links">
+            <a asp-page="/PoliticaDeCookies">Politica de cookies</a>
+            <a asp-page="/PoliticaDePrivacidade">Politica de privacidade</a>
         </div>
     </div>
 </div>

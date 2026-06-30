@@ -27,4 +27,24 @@ public sealed class Sprint61ShellTests : IClassFixture<WebApplicationFactory<Pro
         html.Should().Contain("Meu painel");
         html.Should().NotContain("asp-page=\"/Login\"");
     }
+
+    [Fact]
+    public async Task Header_Should_Use_Compact_Navigation()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain(">Holerite</a>");
+        html.Should().Contain("href=\"/assistente\">Chat</a>");
+        html.Should().Contain("aria-label=\"Meu painel\"");
+        html.Should().Contain("placeholder=\"Buscar...\"");
+    }
+
+    [Fact]
+    public async Task Home_Should_Not_Render_Redundant_Breadcrumb()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().NotContain("Página Inicial");
+        html.Should().NotContain("valora-stitch-home-breadcrumb");
+    }
 }

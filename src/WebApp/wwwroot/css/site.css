@@ -113,9 +113,9 @@ h1, h2, h3, h4,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 5rem;
+  min-height: 4.25rem;
   height: auto;
-  padding: 0.5rem 0;
+  padding: 0.35rem 0;
   gap: 0.75rem;
 }
 
@@ -126,8 +126,8 @@ h1, h2, h3, h4,
 
 @media (min-width: 992px) {
   .valora-header-inner {
-    min-height: 5.75rem;
-    padding: 0.625rem 0;
+    min-height: 4.5rem;
+    padding: 0.35rem 0;
   }
 
   .valora-header-inner .valora-brand-mark {
@@ -149,9 +149,9 @@ h1, h2, h3, h4,
 }
 
 .valora-brand-logo--horizontal {
-  height: 3.5rem;
+  height: 3rem;
   width: auto;
-  max-width: min(20rem, 70vw);
+  max-width: min(17rem, 68vw);
 }
 
 .valora-brand-logo--stacked {
@@ -174,8 +174,8 @@ h1, h2, h3, h4,
 
 @media (min-width: 768px) {
   .valora-brand-logo--horizontal {
-    height: 4.5rem;
-    max-width: 24rem;
+    height: 3.25rem;
+    max-width: 17rem;
   }
 
   .valora-brand-logo--footer {
@@ -186,8 +186,8 @@ h1, h2, h3, h4,
 
 @media (min-width: 1200px) {
   .valora-brand-logo--horizontal {
-    height: 5rem;
-    max-width: 28rem;
+    height: 3.35rem;
+    max-width: 18rem;
   }
 
   .valora-brand-logo--footer {
@@ -198,10 +198,12 @@ h1, h2, h3, h4,
 
 .valora-nav {
   display: none;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.05rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -209,10 +211,14 @@ h1, h2, h3, h4,
 }
 
 .valora-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
   color: var(--valora-on-surface-variant);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.1;
   padding-bottom: 0.25rem;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
@@ -227,17 +233,41 @@ h1, h2, h3, h4,
   border-bottom-color: var(--valora-primary);
 }
 
+.valora-nav-icon-item {
+  display: flex;
+  align-items: center;
+}
+
+.valora-nav .valora-nav-icon-link {
+  justify-content: center;
+  width: 2.35rem;
+  padding: 0;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: 999px;
+  background: var(--valora-card-low);
+}
+
+.valora-nav .valora-nav-icon-link.active {
+  border-color: rgb(89 219 199 / 45%);
+  background: rgb(89 219 199 / 10%);
+}
+
+.valora-nav .valora-nav-icon-link .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
 .valora-header-desktop {
   display: none;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  min-width: 0;
 }
 
 .valora-nav-search {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.375rem 1rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 999px;
   border: 1px solid var(--valora-border-subtle);
   background: var(--valora-card-low);
@@ -256,7 +286,7 @@ h1, h2, h3, h4,
 }
 
 .valora-nav-search-input {
-  width: 12rem;
+  width: 9.5rem;
   border: none;
   background: transparent;
   font-family: inherit;
@@ -271,6 +301,16 @@ h1, h2, h3, h4,
 
 @media (min-width: 992px) {
   .valora-header-desktop { display: flex; }
+}
+
+@media (min-width: 1280px) {
+  .valora-nav {
+    gap: 1.25rem;
+  }
+
+  .valora-nav-search-input {
+    width: 11rem;
+  }
 }
 
 .valora-nav-toggle {
@@ -1933,61 +1973,187 @@ a.valora-choice.valora-choice--active {
 
 .valora-cookie-consent {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  bottom: 1rem;
+  width: min(40rem, calc(100vw - 1rem));
   z-index: 100;
-  padding: 1rem;
-  background: var(--valora-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--valora-border-subtle);
-  box-shadow: 0 -8px 32px rgb(0 0 0 / 35%);
+  transform: translateX(-50%);
+  padding: 0;
+  color: var(--valora-text-main);
 }
 
 .valora-app.valora-has-bottom-nav .valora-cookie-consent {
-  bottom: 4rem;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 992px) {
   .valora-app.valora-has-bottom-nav .valora-cookie-consent {
-    bottom: 0;
+    bottom: 1.25rem;
   }
 }
 
 .valora-cookie-consent-content {
-  max-width: var(--valora-container-max);
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  position: relative;
+  display: grid;
   gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgb(89 219 199 / 20%);
+  border-radius: var(--valora-radius-xl);
+  background:
+    linear-gradient(180deg, rgb(28 28 31 / 96%), rgb(18 18 20 / 98%)),
+    radial-gradient(circle at top left, rgb(89 219 199 / 13%), transparent 34%);
+  box-shadow: 0 18px 56px rgb(0 0 0 / 46%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.valora-cookie-consent-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--valora-text-main);
+  background: transparent;
+  cursor: pointer;
+}
+
+.valora-cookie-consent-close:hover,
+.valora-cookie-consent-close:focus {
+  border-color: var(--valora-border-subtle);
+  background: var(--valora-card-low);
+  outline: none;
+}
+
+.valora-cookie-consent-title {
+  margin: 0;
+  padding-right: 2rem;
+  color: var(--valora-text-heading);
+  font-family: var(--valora-font-display);
+  font-size: 1rem;
+  line-height: 1.3;
+  text-align: center;
 }
 
 .valora-cookie-consent-text {
   margin: 0;
-  flex: 1 1 16rem;
   font-size: 0.875rem;
   line-height: 1.55;
   color: var(--valora-text-muted);
-}
-
-.valora-cookie-consent-text a {
-  color: var(--valora-primary);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.valora-cookie-consent-text a:hover {
-  text-decoration: underline;
+  text-align: center;
 }
 
 .valora-cookie-consent-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+}
+
+.valora-cookie-consent-btn,
+.valora-cookie-consent-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: var(--valora-radius-md);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.15s, filter 0.15s, background 0.15s;
+}
+
+.valora-cookie-consent-btn--primary,
+.valora-cookie-consent-save {
+  border: 1px solid rgb(89 219 199 / 45%);
+  color: var(--valora-on-primary);
+  background: var(--valora-primary);
+  box-shadow: 0 10px 28px rgb(0 168 150 / 22%);
+}
+
+.valora-cookie-consent-btn--secondary {
+  border: 1px solid var(--valora-border-subtle);
+  color: var(--valora-text-main);
+  background: var(--valora-card-low);
+}
+
+.valora-cookie-consent-btn:hover,
+.valora-cookie-consent-save:hover {
+  filter: brightness(1.06);
+}
+
+.valora-cookie-consent-preferences {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  border: 1px solid var(--valora-border-subtle);
+  border-radius: var(--valora-radius-lg);
+  background: var(--valora-surface-container-lowest);
+}
+
+.valora-cookie-consent-preferences[hidden] {
+  display: none;
+}
+
+.valora-cookie-consent-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: var(--valora-text-main);
+}
+
+.valora-cookie-consent-option input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.1rem;
+  accent-color: var(--valora-primary);
+}
+
+.valora-cookie-consent-option strong,
+.valora-cookie-consent-option small {
+  display: block;
+}
+
+.valora-cookie-consent-option strong {
+  font-size: 0.9rem;
+}
+
+.valora-cookie-consent-option small {
+  margin-top: 0.15rem;
+  color: var(--valora-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.valora-cookie-consent-save {
+  width: 100%;
+}
+
+.valora-cookie-consent-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  flex-shrink: 0;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.valora-cookie-consent-links a {
+  color: var(--valora-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.valora-cookie-consent[hidden] {
+  display: none !important;
 }
 
 .valora-stitch-btn--sm {
@@ -1995,8 +2161,14 @@ a.valora-choice.valora-choice--active {
   font-size: 0.875rem;
 }
 
-.valora-cookie-consent[hidden] {
-  display: none !important;
+@media (min-width: 640px) {
+  .valora-cookie-consent-content {
+    padding: 1.35rem 1.5rem 1.15rem;
+  }
+
+  .valora-cookie-consent-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* Blog */

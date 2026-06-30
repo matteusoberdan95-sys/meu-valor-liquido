@@ -131,11 +131,40 @@
             });
         }
 
+        var closeButton = banner.querySelector("[data-cookie-consent-close]");
+        if (closeButton) {
+            closeButton.addEventListener("click", function () {
+                saveConsent(false, banner, adsEnabled, publisherId);
+            });
+        }
+
+        var preferences = banner.querySelector("[data-cookie-consent-preferences]");
+        var customizeButton = banner.querySelector("[data-cookie-consent-customize]");
+        if (customizeButton && preferences) {
+            customizeButton.addEventListener("click", function () {
+                var isOpen = preferences.hasAttribute("hidden");
+                preferences.toggleAttribute("hidden", !isOpen);
+                customizeButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            });
+        }
+
+        var saveButton = banner.querySelector("[data-cookie-consent-save]");
+        var advertisingInput = banner.querySelector("[data-cookie-consent-advertising]");
+        if (saveButton) {
+            saveButton.addEventListener("click", function () {
+                saveConsent(!!(advertisingInput && advertisingInput.checked && adsEnabled), banner, adsEnabled, publisherId);
+            });
+        }
+
         document.querySelectorAll("[data-cookie-consent-manage]").forEach(function (button) {
             button.addEventListener("click", function (event) {
                 event.preventDefault();
                 localStorage.removeItem(storageKey);
                 showBanner(banner);
+                if (preferences && customizeButton) {
+                    preferences.setAttribute("hidden", "");
+                    customizeButton.setAttribute("aria-expanded", "false");
+                }
             });
         });
 

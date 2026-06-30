@@ -16,6 +16,15 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
         await action(page);
     }
 
+    private static async Task DismissCookieBannerAsync(IPage page)
+    {
+        var rejectButton = page.GetByRole(AriaRole.Button, new() { Name = "Rejeitar todos" });
+        if (await rejectButton.CountAsync() > 0 && await rejectButton.IsVisibleAsync())
+        {
+            await rejectButton.ClickAsync();
+        }
+    }
+
     [Fact]
     public async Task Home_Should_Navigate_To_Desligamento_Hub()
     {
@@ -54,9 +63,10 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
         await WithPageAsync(async page =>
         {
             await page.GotoAsync("/");
-            await page.GetByTestId("nav-conferir-holerite").ClickAsync();
+            await Task.WhenAll(
+                page.WaitForURLAsync("**/conferir-holerite"),
+                page.GetByTestId("nav-conferir-holerite").ClickAsync());
 
-            await page.WaitForURLAsync("**/conferir-holerite");
             await Assertions.Expect(page.Locator(".valora-stitch-payslip-form")).ToBeVisibleAsync();
         });
     }
@@ -108,6 +118,7 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
         {
             await page.SetViewportSizeAsync(width, height);
             await page.GotoAsync("/assistente");
+            await DismissCookieBannerAsync(page);
 
             await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Assistente Meu Valor Líquido" })).ToBeVisibleAsync();
             await Assertions.Expect(page.Locator("[data-assistant-chat]")).ToBeVisibleAsync();
@@ -134,6 +145,44 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
 
             await Assertions.Expect(page.GetByText("Quer tirar uma dúvida rápida?")).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { Name = "Iniciar chat" })).ToHaveAttributeAsync("href", "/assistente");
+        });
+    }
+
+    [Fact]
+    public async Task Desktop_Header_Should_Stay_Compact()
+    {
+        await WithPageAsync(async page =>
+        {
+            await page.SetViewportSizeAsync(1366, 768);
+            await page.GotoAsync("/");
+
+            var headerHeight = await page.Locator(".valora-header").EvaluateAsync<double>("header => header.getBoundingClientRect().height");
+            Assert.True(headerHeight <= 82, $"Header ficou alto demais: {headerHeight}px.");
+
+            var hasWrappedNavItem = await page.Locator(".valora-nav a").EvaluateAllAsync<bool>(
+                "items => items.some(item => item.getBoundingClientRect().height > 44)");
+            Assert.False(hasWrappedNavItem);
+
+            await Assertions.Expect(page.GetByText("Página Inicial")).ToHaveCountAsync(0);
+        });
+    }
+
+    [Fact]
+    public async Task Cookie_Consent_Should_Offer_Choice_And_Customization()
+    {
+        await WithPageAsync(async page =>
+        {
+            await page.SetViewportSizeAsync(430, 884);
+            await page.GotoAsync("/");
+
+            await Assertions.Expect(page.GetByRole(AriaRole.Dialog, new() { Name = "Consentimento de cookies" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Aceitar todos" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Rejeitar todos" })).ToBeVisibleAsync();
+
+            await page.GetByRole(AriaRole.Button, new() { Name = "Personalizar" }).ClickAsync();
+
+            await Assertions.Expect(page.GetByText("Cookies essenciais")).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Salvar preferencias" })).ToBeVisibleAsync();
         });
     }
 }

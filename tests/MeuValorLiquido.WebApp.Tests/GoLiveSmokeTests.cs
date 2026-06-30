@@ -258,7 +258,7 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
 
         html.Should().Contain("valora-nav-search");
         html.Should().Contain("valora-nav-search-input");
-        html.Should().Contain("Buscar calculadora...");
+        html.Should().Contain("Buscar...");
     }
 
     [Fact]
