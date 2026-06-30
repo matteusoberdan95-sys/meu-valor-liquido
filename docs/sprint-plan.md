@@ -525,7 +525,7 @@
 
 ---
 
-### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3)
+### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3 + lote 4)
 
 **Objetivo:** manter **2 artigos/mês** com calculadora relacionada, hub e FAQ — ritmo pós-calendário Sprint 68.
 
@@ -533,7 +533,7 @@
 |-------|----------|
 | SEO/Content | 2 artigos long tail por ciclo mensal (~5 min leitura) |
 | WebApp/Frontend | `BlogEditorialCatalog`; cross-link nos hubs |
-| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests` |
+| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests`, `Sprint70Lote4BlogTests` |
 | Documentation | `docs/BLOG_EDITORIAL_PLAN.md` |
 
 **Lote 1 (jun/2026):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
@@ -542,7 +542,9 @@
 
 **Lote 3 (ago/2026):** `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
 
-**Próximo:** lote 4 (set/2026) — ver backlog em `docs/BLOG_EDITORIAL_PLAN.md`.
+**Lote 4 (set/2026):** `experiencia-clt-direitos-e-rescisao`, `home-office-clt-descontos`.
+
+**Próximo:** Sprint 82 (conversão interna nos artigos) ou lote 5 editorial — ver `docs/BLOG_EDITORIAL_PLAN.md`.
 
 **Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ; ≥850 palavras.
 
@@ -690,6 +692,24 @@
 | QA/Test | Regressao WebApp para carregamento, diagnostico positivo e diferenca relevante |
 
 **Criterios de aceite:** a pagina explica se o holerite parece correto, quando ha diferenca relevante e quais pontos conferir; mantem carater educativo; `dotnet test` verde.
+
+---
+
+### Sprint 82 - Conversao interna nos artigos - CONCLUIDA
+
+**Objetivo:** transformar leitura editorial em acao pratica, levando usuarios dos artigos para calculadoras, assistente, hubs e FAQs sem sair do nicho salario/trabalho.
+
+| Agent | Entregas |
+|-------|----------|
+| Product/SEO | Mapa contextual de proximo passo por calculadora relacionada |
+| WebApp/Frontend | Painel responsivo no template de artigo com CTA primario para calculadora, CTA secundario para assistente e links para hub/FAQ |
+| Architecture | `BlogConversionPathCatalog` centraliza rotas editoriais sem regra fiscal no WebApp |
+| QA/Test | `Sprint82BlogConversionTests` cobre artigos com calculadora relacionada e rotas contextuais |
+| Documentation | `CHANGELOG.md`, `AGENTS.md`, `docs/BLOG_EDITORIAL_PLAN.md` |
+
+**Criterios de aceite:** todo artigo com calculadora relacionada tem painel de conversao; CTAs internos ficam claros e educativos; mobile nao quebra layout; `dotnet test` verde.
+
+**Proximo recomendado:** Sprint 70 lote 5 (definir pauta editorial) ou Sprint 51 quando AdSense aprovar.
 
 ---
 

@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 70 lote 4** (set/2026 — 2 artigos) · Sprint 51 (AdSense) quando aprovar |
+| **Próxima sprint** | **Sprint 70 lote 5** (definir pauta editorial) · Sprint 51 (AdSense) quando aprovar |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 70 lote 3 · Sprint 81 · Sprint 80 · Sprint 79 |
+| **Concluída recente** | Sprint 82 · Sprint 70 lote 4 · Sprint 70 lote 3 · Sprint 81 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 70 (lote 4) | SEO/Content | 2 artigos/mês — `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Contínuo** | 70 (lote 4+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | 70 (lote 5) | SEO/Content | Definir pauta e manter 2 artigos/mês |
+| **Contínuo** | 70 (lote 5+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -58,8 +58,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–81 concluídas** (hubs, editorial, seguro-desemprego, PDF premium, conferir holerite, assistente, diagnostico do holerite).
-- **Trilha ativa:** diferenciação **Sprints 72–78**; editorial contínuo (Sprint 70 em lotes mensais).
+- Trilhas **47–82 concluídas** + Sprint 70 lote 4 (hubs, editorial, seguro-desemprego, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna).
+- **Trilha ativa:** editorial contínuo (Sprint 70 em lotes mensais) + Sprint 51 quando AdSense aprovar.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.

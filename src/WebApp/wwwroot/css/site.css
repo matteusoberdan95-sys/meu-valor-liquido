@@ -5856,6 +5856,65 @@ a.valora-choice.valora-choice--active {
   justify-content: center;
 }
 
+.valora-stitch-blog-conversion {
+  display: grid;
+  gap: 1rem;
+}
+
+.valora-stitch-blog-conversion-kicker {
+  margin: 0 0 0.25rem;
+  color: var(--valora-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.valora-stitch-blog-conversion-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.valora-stitch-blog-conversion-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--valora-border-subtle);
+}
+
+.valora-stitch-blog-conversion-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  color: var(--valora-on-surface);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.valora-stitch-blog-conversion-links a:hover {
+  color: var(--valora-primary);
+}
+
+.valora-stitch-blog-conversion-links .material-symbols-outlined {
+  color: var(--valora-primary);
+  font-size: 1.15rem;
+}
+
+@media (max-width: 640px) {
+  .valora-stitch-blog-conversion-actions,
+  .valora-stitch-blog-conversion-links {
+    grid-template-columns: 1fr;
+  }
+
+  .valora-stitch-blog-conversion-links a {
+    min-height: 2.25rem;
+  }
+}
+
 .valora-stitch-blog-article-disclaimer {
   margin-bottom: 2rem;
 }

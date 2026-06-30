@@ -28,7 +28,8 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
         var html = await client.GetStringAsync("/blog/o-que-e-salario-liquido");
 
         html.Should().Contain("/calculadoras/salario-liquido");
-        html.Should().Contain("Calcular agora");
+        html.Should().Contain("data-testid=\"blog-conversion-panel\"");
+        html.Should().Contain("data-blog-conversion-action=\"calculator\"");
         html.Should().Contain("valora-stitch-blog-article");
         html.Should().Contain("Matteus Oberdan");
         html.Should().Contain("valora-stitch-blog-hero--has-image");

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Sprint 82 - Conversao interna nos artigos
+- Artigos com calculadora relacionada agora exibem um painel contextual de proximo passo com CTA para calculadora, assistente, hub e FAQ.
+- Novo `BlogConversionPathCatalog` centraliza rotas de conversao por calculadora sem misturar regra de negocio.
+- CSS responsivo e testes `Sprint82BlogConversionTests` validam links internos em todos os artigos relacionados.
+
+### Sprint 70 - Editorial lote 4 (set/2026)
+- Artigos longos (~5 min): `experiencia-clt-direitos-e-rescisao`, `home-office-clt-descontos`.
+- Cross-links nos hubs `/desligamento` e `/negociar-salario` e capas WebP em `wwwroot/images/blog`.
+- `BlogEditorialCatalog.Sprint70Lote4EditorialSlugs` e testes `Sprint70Lote4BlogTests`.
+
 ### Sprint 70 - Editorial lote 3 (ago/2026)
 - Artigos longos (~5 min): `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
 - Cross-links no hub `/negociar-salario` e capas WebP em `wwwroot/images/blog`.

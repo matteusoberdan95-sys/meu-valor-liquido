@@ -67,25 +67,48 @@ else
             @Html.Raw(Model.Post.Content)
         </article>
 
-        @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
+        @if (Model.ConversionPath is not null)
         {
-            <div class="valora-stitch-blog-article-cta" id="article-calculator">
+            <section class="valora-stitch-blog-article-cta valora-stitch-blog-conversion"
+                     id="article-calculator"
+                     data-testid="blog-conversion-panel"
+                     aria-labelledby="blog-conversion-title">
                 <div class="valora-stitch-blog-article-cta-head">
                     <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
                     <div>
-                        <h2 class="valora-stitch-blog-article-cta-title">Quer saber seu valor real?</h2>
-                        <p class="valora-stitch-blog-article-cta-text">
+                        <p class="valora-stitch-blog-conversion-kicker">Próximo passo recomendado</p>
+                        <h2 class="valora-stitch-blog-article-cta-title" id="blog-conversion-title">@Model.ConversionPath.Title</h2>
+                        <p class="valora-stitch-blog-article-cta-text">@Model.ConversionPath.Description</p>
+                        @*
                             Use nossa calculadora gratuita e tenha o resultado em segundos com as deduções atualizadas.
-                        </p>
+                        *@
                     </div>
                 </div>
-                <a class="valora-btn valora-btn-primary valora-stitch-blog-article-cta-btn"
-                   asp-page="/Calculadoras/Details"
-                   asp-route-slug="@Model.Post.RelatedCalculatorSlug">
-                    Calcular agora
-                    <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-                </a>
-            </div>
+                <div class="valora-stitch-blog-conversion-actions">
+                    <a class="valora-btn valora-btn-primary valora-stitch-blog-article-cta-btn"
+                       href="@Model.ConversionPath.CalculatorHref"
+                       data-blog-conversion-action="calculator">
+                        @Model.ConversionPath.PrimaryCtaLabel
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </a>
+                    <a class="valora-btn valora-btn-outline valora-stitch-blog-article-cta-btn"
+                       asp-page="/Assistente/Index"
+                       data-blog-conversion-action="assistant">
+                        Tirar dúvida no assistente
+                        <span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>
+                    </a>
+                </div>
+                <div class="valora-stitch-blog-conversion-links" aria-label="Outros caminhos úteis">
+                    <a href="@Model.ConversionPath.HubHref">
+                        <span class="material-symbols-outlined" aria-hidden="true">route</span>
+                        <span>@Model.ConversionPath.HubLabel</span>
+                    </a>
+                    <a href="@Model.ConversionPath.FaqHref">
+                        <span class="material-symbols-outlined" aria-hidden="true">help</span>
+                        <span>@Model.ConversionPath.FaqLabel</span>
+                    </a>
+                </div>
+            </section>
         }
 
         <div class="valora-disclaimer valora-stitch-blog-article-disclaimer">
@@ -101,11 +124,11 @@ else
                         <span class="material-symbols-outlined" aria-hidden="true">subject</span>
                         Resumo
                     </a>
-                    @if (!string.IsNullOrEmpty(Model.Post.RelatedCalculatorSlug))
+                    @if (Model.ConversionPath is not null)
                     {
                         <a class="valora-stitch-blog-article-aside-link" href="#article-calculator">
                             <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
-                            Calculadora relacionada
+                            Próximo passo
                         </a>
                     }
                     @if (Model.Post.Content.Contains("id=\"como-validamos\"", StringComparison.Ordinal))

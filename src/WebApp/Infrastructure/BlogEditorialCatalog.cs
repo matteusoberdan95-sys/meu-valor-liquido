@@ -47,11 +47,18 @@ public static class BlogEditorialCatalog
         "vale-refeicao-desconto-holerite"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote4EditorialSlugs =
+    [
+        "experiencia-clt-direitos-e-rescisao",
+        "home-office-clt-descontos"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }

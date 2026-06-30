@@ -1044,6 +1044,98 @@ public static class BlogArticleSeedData
             <p>Um beneficio bom e aquele que aumenta seu poder de compra sem criar surpresa no holerite. Se a empresa oferece R$ 900 de VA e desconta R$ 20, o impacto costuma ser positivo. Se oferece R$ 500 e desconta R$ 250, a vantagem real depende do seu gasto com alimentacao, da rede aceita e da possibilidade de usar o valor todo no mes.</p>
             <p>Compare tres numeros: valor carregado no cartao, desconto em folha e gasto real que voce teria fora do beneficio. Se voce ja gastaria R$ 800 em mercado e recebe R$ 700 de VA com desconto de R$ 70, o ganho pratico e diferente de alguem que mora com a familia e quase nao usa o cartao. Beneficio tambem tem qualidade: cobertura de estabelecimentos, prazo de credito, acumulacao de saldo e regras durante ferias importam.</p>
             <p>Na negociacao salarial, nao some VR/VA ao salario bruto como se fosse dinheiro livre. Use como parte do pacote total, mas mantenha separado do liquido bancario. Essa separacao deixa sua comparacao mais honesta quando voce avalia proposta nova, dissidio ou troca entre CLT e PJ.</p>
+            """),
+        Article(
+            "experiencia-clt-direitos-e-rescisao",
+            "Contrato de experiência CLT: direitos, fim e verbas",
+            "Entenda o que acontece no fim do contrato de experiência, quando há rescisão antecipada e quais verbas comparar antes de assinar.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 9, 5),
+            """
+            <p>O <strong>contrato de experiência</strong> é um período inicial em que empresa e trabalhador avaliam se a relação faz sentido. Ele é comum em admissões CLT, mas ainda gera muita dúvida: tem FGTS? recebe férias proporcionais? pode acabar antes do prazo? muda se a empresa dispensa ou se o empregado pede para sair?</p>
+            <p>Este guia organiza os cenários mais comuns para você entender o que conferir no holerite final e no TRCT. É conteúdo educativo: contrato, convenção coletiva e detalhes do caso concreto podem alterar valores e prazos.</p>
+
+            <h2>Como funciona o contrato de experiência</h2>
+            <p>Na prática, a experiência é um contrato por prazo determinado. Ele costuma ser combinado por 30, 45 ou 90 dias, podendo ter uma prorrogação dentro do limite legal. Ao terminar o prazo, a empresa pode efetivar o empregado, encerrar o vínculo ou deixar a relação seguir como contrato por prazo indeterminado.</p>
+            <p>Mesmo sendo período inicial, o trabalhador CLT tem registro, salário, FGTS, INSS, descanso semanal, férias proporcionais, 13º proporcional e demais direitos aplicáveis. A diferença principal está no <strong>tipo de término</strong>: fim normal do prazo, dispensa antecipada pela empresa ou pedido de saída pelo trabalhador antes da data combinada.</p>
+
+            <h2>Fim normal do prazo: o que costuma entrar</h2>
+            <p>Quando o contrato chega ao fim combinado e não é renovado, normalmente entram saldo de salário dos dias trabalhados, 13º proporcional, férias proporcionais com 1/3 e liberação de valores conforme regras do FGTS para contrato a termo. O aviso prévio e a multa de 40% do FGTS não seguem a mesma lógica da demissão sem justa causa de contrato por prazo indeterminado.</p>
+            <p>Isso faz muita diferença na expectativa do trabalhador. Uma pessoa que espera pacote completo de demissão sem justa causa pode se frustrar ao ver o TRCT de fim de experiência. Por isso, antes de assinar, compare o motivo registrado, as datas e as verbas proporcionais.</p>
+
+            <h2>Rescisão antecipada pela empresa</h2>
+            <p>Se a empresa encerra o contrato antes do prazo final, podem surgir indenizações específicas do contrato por prazo determinado, além das verbas proporcionais. Em muitos casos, a discussão gira em torno do que faltava para completar o período e se havia cláusula de rescisão antecipada. O RH deve detalhar as rubricas no TRCT.</p>
+            <p>Na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, selecione o motivo de experiência quando disponível e informe datas coerentes de admissão e saída. Depois compare com o documento oficial. Se aparecer uma linha genérica como “indenização contrato experiência”, peça a memória de cálculo ao RH para saber quantos dias foram considerados.</p>
+
+            <h2>Pedido de saída durante a experiência</h2>
+            <p>Quando o trabalhador pede para sair antes do fim da experiência, o pacote costuma ser menor. Podem entrar saldo de salário, férias proporcionais e 13º proporcional, mas sem os mesmos efeitos de uma dispensa pela empresa. Dependendo do contrato, pode haver desconto ou indenização relacionada ao prazo restante.</p>
+            <p>Por isso, antes de pedir desligamento em uma nova empresa, compare o custo de sair agora com o benefício de aguardar o fim do prazo. Se já existe outra proposta, use também a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> para avaliar se o ganho líquido compensa o risco e a perda de verbas.</p>
+
+            <h2>Checklist para conferir o TRCT</h2>
+            <ol>
+            <li>Confirme data de admissão, data final prevista e data real de saída.</li>
+            <li>Veja se o motivo está como fim de contrato, rescisão antecipada pela empresa ou pedido do empregado.</li>
+            <li>Confira saldo de salário, 13º proporcional e férias proporcionais com 1/3.</li>
+            <li>Peça explicação de qualquer rubrica de indenização ou desconto do prazo restante.</li>
+            <li>Compare FGTS, guias e valores líquidos antes de assinar o recebimento.</li>
+            </ol>
+            <p>O hub <a href="/desligamento">Desligamento CLT</a> reúne calculadoras e checklist para esse momento. Leia também <a href="/blog/pedir-demissao-ou-aguardar-dispensa">pedir demissão ou aguardar dispensa</a> e a <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ de pedido de demissão</a>.</p>
+
+            <h2>Exemplo educativo</h2>
+            <p>Imagine salário bruto de R$ 3.200, contrato de experiência de 90 dias e saída no dia 60. Se o contrato termina por decisão da empresa antes do prazo, o cálculo pode incluir verbas proporcionais e possível indenização do período restante. Se a saída ocorre por pedido do trabalhador, a leitura muda e pode haver desconto. O valor final depende das datas, dos dias trabalhados no mês, do motivo e das cláusulas do contrato.</p>
+            <p>A melhor forma de evitar surpresa é simular antes e conferir depois. A simulação não substitui o TRCT, mas ajuda você a identificar se o problema está no motivo informado, nos dias considerados ou em descontos que não apareceram no seu planejamento.</p>
+            """),
+        Article(
+            "home-office-clt-descontos",
+            "Home office CLT: o que pode mudar no holerite",
+            "Veja como trabalho remoto pode afetar vale-transporte, VR/VA, ajuda de custo, reembolso e conferência do salário líquido.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 9, 19),
+            """
+            <p>O <strong>home office CLT</strong> virou parte da rotina de muitos trabalhadores, mas o holerite nem sempre fica claro. Vale-transporte pode sumir, VR/VA pode mudar, ajuda de custo pode aparecer como reembolso e alguns descontos ficam diferentes quando a jornada alterna entre casa e escritório.</p>
+            <p>Este artigo mostra como conferir o salário líquido quando você trabalha remoto, híbrido ou mudou recentemente de regime. O foco é prático: entender quais linhas do holerite merecem atenção e como simular o líquido sem misturar benefício, reembolso e salário.</p>
+
+            <h2>Home office não é aumento automático de salário</h2>
+            <p>Trabalhar de casa pode reduzir gasto com transporte, alimentação fora e tempo de deslocamento. Mas isso não significa que o salário líquido subiu. Se a empresa deixa de descontar vale-transporte, o líquido bancário pode aumentar. Se também reduz benefício, adiciona coparticipação ou troca VR por ajuda de custo, o efeito final pode ser menor do que parece.</p>
+            <p>Por isso, compare o holerite antes e depois da mudança. Use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> com os mesmos dados de salário bruto, dependentes e descontos. Depois altere apenas VT, VR/VA, plano, ajuda de custo e outros itens que mudaram no novo modelo.</p>
+
+            <h2>Vale-transporte no trabalho remoto</h2>
+            <p>O vale-transporte existe para deslocamento entre casa e trabalho. Se você passa a trabalhar 100% remoto, é comum que a empresa suspenda o benefício e também pare de descontar a parte do empregado. Em regime híbrido, o valor pode ser proporcional aos dias presenciais.</p>
+            <p>O erro mais comum é comparar só o valor carregado no cartão. O que importa no holerite é o desconto efetivo. Se antes havia desconto de 6% e agora não há VT, seu líquido pode subir. Se você ainda vai ao escritório duas vezes por semana, confira se a quantidade de dias considerada bate com sua escala real.</p>
+
+            <h2>VR, VA e alimentação em casa</h2>
+            <p>VR e VA dependem de política interna e convenção coletiva. Algumas empresas mantêm o mesmo valor no remoto; outras ajustam por dias presenciais, trocam VR por VA ou criam ajuda de custo. Como esses itens afetam o orçamento de formas diferentes, não some tudo como salário.</p>
+            <p>Se houver desconto de refeição/alimentação no holerite, informe esse valor no campo de VR/VA da calculadora. Se houver valor carregado no cartão sem desconto, trate como benefício separado do líquido bancário. Para entender melhor a lógica, leia <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a>.</p>
+
+            <h2>Ajuda de custo, internet e equipamentos</h2>
+            <p>Algumas empresas pagam ajuda de custo para internet, energia, cadeira, monitor ou manutenção de equipamento. O ideal é que o holerite ou demonstrativo deixe claro se o valor é reembolso, ajuda indenizatória ou verba salarial. Essa distinção importa porque pode afetar encargos e descontos.</p>
+            <p>Guarde notas, políticas internas e comunicados. Se a empresa paga valor fixo mensal, confira se ele aparece separado do salário. Se reembolsa mediante comprovante, veja se o pagamento cai fora da folha. Em dúvida, peça ao RH a natureza da rubrica antes de comparar com uma simulação de salário líquido.</p>
+
+            <h2>Como conferir o holerite híbrido</h2>
+            <ol>
+            <li>Separe mês 100% presencial, mês híbrido e mês 100% remoto.</li>
+            <li>Compare salário bruto, INSS e IRRF: eles não deveriam mudar só por causa do local de trabalho.</li>
+            <li>Confira VT conforme dias presenciais.</li>
+            <li>Confira VR/VA, ajuda de custo e reembolsos em rubricas separadas.</li>
+            <li>Use <a href="/conferir-holerite">conferir holerite</a> se INSS, IRRF ou líquido informado não baterem.</li>
+            </ol>
+            <p>Se a diferença estiver em VT, VR/VA ou ajuda de custo, a explicação costuma estar na política de benefícios. Se a diferença estiver em INSS ou IRRF sem mudança de bruto, pode haver outra verba no mês: férias, bônus, hora extra, comissão ou retroativo.</p>
+
+            <h2>Home office e proposta de emprego</h2>
+            <p>Ao comparar uma proposta remota com uma presencial, olhe o pacote inteiro. Uma vaga remota com salário bruto igual pode valer mais se reduz transporte e alimentação fora, mas pode valer menos se a empresa corta benefícios importantes. Uma vaga híbrida pode ter custo escondido de deslocamento, estacionamento, almoço e tempo.</p>
+            <p>Use a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> para comparar o bruto atual e o proposto. Depois monte uma estimativa de gastos fora do holerite: internet, energia, cadeira, transporte eventual e alimentação. O número decisivo é o que sobra no mês depois de salário líquido, benefícios e custos reais.</p>
+
+            <h2>Perguntas para levar ao RH</h2>
+            <ul>
+            <li>O VT será suspenso, proporcional ou mantido?</li>
+            <li>VR/VA muda no remoto ou no híbrido?</li>
+            <li>Ajuda de custo entra no holerite ou é reembolso separado?</li>
+            <li>Equipamentos são fornecidos pela empresa ou comprados pelo trabalhador?</li>
+            <li>Como registrar dias presenciais para evitar desconto incorreto?</li>
+            </ul>
+            <p>Depois da primeira folha no novo regime, salve o holerite e compare com a simulação. Pequenas diferenças podem ser normais; diferenças recorrentes merecem pergunta objetiva ao RH com as rubricas em mãos.</p>
             """)
     ];
 
@@ -1181,6 +1273,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Antes de ajustar seu orcamento, simule o salario atual e o salario reajustado lado a lado; trate retroativo como parcela pontual, nao como renda fixa mensal.</p>",
             "vale-refeicao-desconto-holerite" =>
                 "<h2 id=\"dica-pratica\">Dica pratica</h2><p>No holerite, separe desconto de VR/VA do valor carregado no cartao: um reduz o liquido bancario, o outro aumenta seu orcamento de alimentacao.</p>",
+            "experiencia-clt-direitos-e-rescisao" =>
+                "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Antes de assinar o TRCT da experiencia, confira se o motivo esta como fim de contrato, rescisao antecipada pela empresa ou pedido do empregado; essa linha muda o pacote de verbas. Guarde tambem contrato, prorrogacao, aviso de encerramento e comprovantes de pagamento. Se o valor liquido parecer baixo, compare primeiro datas, dias trabalhados, descontos, saldo de FGTS e comprovante bancario antes de discutir percentuais com o RH.</p>",
+            "home-office-clt-descontos" =>
+                "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Compare um holerite presencial e um remoto lado a lado: se o bruto e igual, a diferenca deve estar em VT, VR/VA, ajuda de custo ou reembolso. Para separar melhor bruto, liquido e beneficios, veja tambem a <a href=\"/duvidas/diferenca-salario-bruto-e-liquido\">FAQ sobre salario bruto e liquido</a>.</p>",
             _ => string.Empty
         };
 

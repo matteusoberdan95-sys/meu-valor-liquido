@@ -4,16 +4,23 @@ public class PostModel : PageModel
 {
     private readonly IContentService contentService;
     private readonly IBlogHeroImageService blogHeroImages;
+    private readonly ICalculatorCatalogService calculatorCatalog;
 
-    public PostModel(IContentService contentService, IBlogHeroImageService blogHeroImages)
+    public PostModel(
+        IContentService contentService,
+        IBlogHeroImageService blogHeroImages,
+        ICalculatorCatalogService calculatorCatalog)
     {
         this.contentService = contentService;
         this.blogHeroImages = blogHeroImages;
+        this.calculatorCatalog = calculatorCatalog;
     }
 
     public BlogPost? Post { get; private set; }
 
     public IReadOnlyList<BlogPost> RelatedPosts { get; private set; } = [];
+
+    public BlogConversionPath? ConversionPath { get; private set; }
 
     public int ReadingMinutes { get; private set; }
 
@@ -26,6 +33,12 @@ public class PostModel : PageModel
         }
 
         ReadingMinutes = BlogContentHelper.EstimateReadingMinutes(Post.Content);
+        var relatedCalculator = string.IsNullOrEmpty(Post.RelatedCalculatorSlug)
+            ? null
+            : calculatorCatalog.GetBySlug(Post.RelatedCalculatorSlug);
+
+        ConversionPath = BlogConversionPathCatalog.Build(Post, relatedCalculator);
+
         var sameCategory = contentService.GetPublishedPosts()
             .Where(p => p.Slug != Post.Slug && p.Category == Post.Category)
             .Take(3)

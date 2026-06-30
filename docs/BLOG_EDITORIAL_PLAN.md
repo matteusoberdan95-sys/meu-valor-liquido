@@ -168,7 +168,13 @@ Antes de propor um artigo, consulte (quando disponível):
 
 - `dissidio-salarial-2026-como-avaliar` -> hub `/negociar-salario`, calc `proposta-salarial`
 - `vale-refeicao-desconto-holerite` -> hub `/negociar-salario`, calc `salario-liquido`
-- Proximo lote sugerido: lote 4 (set/2026), com `experiencia-clt-direitos-e-rescisao` e `home-office-clt-descontos`.
+- Lote seguinte publicado na Sprint 70 lote 4.
+
+## Sprint 70 - lote 4 publicado (set/2026)
+
+- `experiencia-clt-direitos-e-rescisao` -> hub `/desligamento`, calc `rescisao-clt`
+- `home-office-clt-descontos` -> hub `/negociar-salario`, calc `salario-liquido`
+- Sprint 82 concluiu conversao interna nos artigos. Proximo ciclo recomendado: definir backlog do lote 5 editorial.
 
 ## Como sugerir novo artigo (template para agents)
 
