@@ -159,6 +159,7 @@ app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/
 app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: false));
 app.MapGet("/painel", () => Results.Redirect("/meu-painel", permanent: false));
 app.MapGet("/incorporar", () => Results.Redirect("/widget", permanent: false));
+app.MapGet("/duvidas/o-que-e-irrf", () => Results.Redirect("/duvidas/irrf-quem-paga-e-como-calcular", permanent: true));
 app.MapGet("/widget/{slug}", (string slug) =>
     EmbedWidgetCatalog.IsEmbeddable(slug)
         ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)

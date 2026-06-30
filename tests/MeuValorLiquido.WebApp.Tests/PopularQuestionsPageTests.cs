@@ -71,6 +71,20 @@ public class PopularQuestionsPageTests
     }
 
     [Fact]
+    public async Task Irrf_Question_Intuitive_Slug_Should_Redirect_To_Canonical_Page()
+    {
+        using var factory = new WebApplicationFactory<Program>();
+        using var client = factory
+            .WithWebHostBuilder(b => b.UseEnvironment("Testing"))
+            .CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+
+        using var response = await client.GetAsync("/duvidas/o-que-e-irrf");
+
+        response.StatusCode.Should().Be(HttpStatusCode.MovedPermanently);
+        response.Headers.Location?.ToString().Should().Be("/duvidas/irrf-quem-paga-e-como-calcular");
+    }
+
+    [Fact]
     public async Task Sitemap_Should_Include_Duvidas_Urls()
     {
         using var factory = new WebApplicationFactory<Program>();

@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+### Sprint 80 - Assistente educativo Meu Valor Liquido
+- Nova pagina `/assistente` com chat educativo responsivo inspirado no mock Stitch IA 2080.
+- Respostas guiadas no front-end para INSS, IRRF, CLT vs PJ, rescisao e holerite, sempre apontando para calculadoras relacionadas.
+- Botao flutuante global com pop-up para iniciar o chat sem tirar o usuario do fluxo principal.
+- `/assistente` incluido no sitemap, mapa do site, breadcrumbs JSON-LD e navegacao mobile/desktop.
+
+### Sprint 79 - Indexacao inicial e primeiros ganhos SEO
+- `/sitemap.xml` agora inclui `lastmod` para URLs estaticas, calculadoras, FAQs, faixas programaticas e artigos.
+- Redirect permanente de `/duvidas/o-que-e-irrf` para `/duvidas/irrf-quem-paga-e-como-calcular`, evitando 404 em slug intuitivo.
+- Nova rotina `docs/SEARCH_CONSOLE_INDEXATION_PLAYBOOK.md` para inspecao manual de URLs prioritarias no Search Console.
+- Sprint futura 80 registrada para avaliar um assistente educativo com IA/FAQ limitado ao nicho salario/trabalho.
+
 ### Sprint 70 — Editorial lote 2 (jul/2026)
 - Artigos longos (~5 min): `ferias-coletivas-clt-guia-completo`, `pedir-demissao-ou-aguardar-dispensa`.
 - Cross-links nos hubs `/desligamento` e `/negociar-salario`.

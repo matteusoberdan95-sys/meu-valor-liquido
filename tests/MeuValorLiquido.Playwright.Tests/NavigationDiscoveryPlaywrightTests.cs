@@ -98,4 +98,42 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
             await Assertions.Expect(page.GetByTestId("conferir-holerite-card")).ToBeVisibleAsync();
         });
     }
+
+    [Theory]
+    [InlineData(1366, 900)]
+    [InlineData(430, 884)]
+    public async Task Assistant_Page_Should_Be_Responsive_And_Submit_Guided_Question(int width, int height)
+    {
+        await WithPageAsync(async page =>
+        {
+            await page.SetViewportSizeAsync(width, height);
+            await page.GotoAsync("/assistente");
+
+            await Assertions.Expect(page.GetByRole(AriaRole.Heading, new() { Name = "Assistente Meu Valor Líquido" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator("[data-assistant-chat]")).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator("[data-assistant-input]")).ToBeVisibleAsync();
+
+            var hasHorizontalOverflow = await page.EvaluateAsync<bool>("() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1");
+            Assert.False(hasHorizontalOverflow);
+
+            await page.Locator("[data-assistant-prompt='Quanto desconta de INSS?']").ClickAsync();
+            await page.Locator("[data-assistant-chat-form]").EvaluateAsync("form => form.requestSubmit()");
+
+            await Assertions.Expect(page.GetByText("Calcular INSS").Nth(0)).ToBeVisibleAsync();
+        });
+    }
+
+    [Fact]
+    public async Task Home_Assistant_Launcher_Should_Open_Invite()
+    {
+        await WithPageAsync(async page =>
+        {
+            await page.GotoAsync("/");
+
+            await page.Locator("[data-assistant-launcher-toggle]").ClickAsync();
+
+            await Assertions.Expect(page.GetByText("Quer tirar uma dúvida rápida?")).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Link, new() { Name = "Iniciar chat" })).ToHaveAttributeAsync("href", "/assistente");
+        });
+    }
 }

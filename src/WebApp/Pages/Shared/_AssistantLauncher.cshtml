@@ -1,0 +1,31 @@
+@{
+    var currentPath = Context.Request.Path.Value ?? "/";
+}
+
+<aside class="valora-assistant-launcher" data-assistant-launcher aria-label="Assistente Meu Valor Líquido">
+    <button class="valora-assistant-launcher-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="assistant-launcher-panel"
+            data-assistant-launcher-toggle>
+        <span class="material-symbols-outlined" aria-hidden="true">smart_toy</span>
+        <span class="valora-assistant-launcher-label">Assistente</span>
+    </button>
+    <div class="valora-assistant-launcher-panel" id="assistant-launcher-panel" data-assistant-launcher-panel hidden>
+        <div class="valora-assistant-launcher-panel-head">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+            <div>
+                <strong>Quer tirar uma dúvida rápida?</strong>
+                <span>O assistente responde sobre salário, INSS, IRRF, rescisão e CLT vs PJ.</span>
+            </div>
+        </div>
+        <div class="valora-assistant-launcher-actions">
+            <a class="valora-assistant-launcher-primary" href="/assistente">Iniciar chat</a>
+            @if (!currentPath.StartsWith("/calculadoras", StringComparison.OrdinalIgnoreCase))
+            {
+                <a class="valora-assistant-launcher-secondary" href="/calculadoras">Ver calculadoras</a>
+            }
+        </div>
+        <p>Conteúdo educativo. Não envie dados pessoais.</p>
+    </div>
+</aside>

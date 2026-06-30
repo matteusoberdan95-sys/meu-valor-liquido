@@ -643,6 +643,39 @@
 
 ---
 
+### Sprint 79 — Indexação inicial e primeiros ganhos SEO — CONCLUÍDA
+
+**Objetivo:** transformar a indexação inicial no Search Console em ganho prático de rastreio, corrigindo sinais técnicos e criando rotina operacional.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | `docs/SEARCH_CONSOLE_INDEXATION_PLAYBOOK.md` com URLs prioritárias, interpretação de status e checklist |
+| WebApp/Frontend | `lastmod` no `/sitemap.xml` para páginas estáticas, calculadoras, FAQs, faixas e artigos |
+| WebApp/Frontend | Redirect permanente `/duvidas/o-que-e-irrf` → `/duvidas/irrf-quem-paga-e-como-calcular` |
+| QA/Test | Testes para `lastmod` no sitemap e redirect do slug intuitivo de IRRF |
+
+**Critérios de aceite:** sitemap segue processável pelo Google; URLs prioritárias têm rotina de inspeção manual; slug intuitivo de IRRF não gera 404; `dotnet test` verde.
+
+---
+
+### Sprint 80 — Assistente educativo Meu Valor Líquido — CONCLUÍDA
+
+**Objetivo:** publicar um chat educativo responsivo, inspirado no mock Stitch "IA 2080", limitado ao nicho salário/trabalho e sem IA generativa em produção.
+
+| Agent | Entregas |
+|-------|----------|
+| WebApp/Frontend | Página `/assistente` com layout desktop + mobile, sugestões rápidas, respostas guiadas e links para calculadoras |
+| WebApp/Frontend | Botão flutuante global com pop-up perguntando se o usuário quer iniciar o chat |
+| SEO/Content | Metadados, breadcrumb JSON-LD, sitemap e mapa do site com `/assistente` |
+| Monetization | Espaço publicitário discreto na tela do assistente, sem bloquear o fluxo do chat |
+| QA/Test | Smoke da página, launcher global, sitemap e mapa do site |
+
+**Critérios de aceite:** chat deixa claro que é educativo; não coleta PII; aponta para calculadoras; é responsivo; `/assistente` é indexável; `dotnet test` verde.
+
+**Evolução futura:** RAG com conteúdo próprio, limites de uso, logs sem dados sensíveis e bloqueio explícito de aconselhamento jurídico/contábil individual.
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.

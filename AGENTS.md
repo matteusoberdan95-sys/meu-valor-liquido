@@ -16,7 +16,7 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 |-------|--------|
 | **Próxima sprint** | **Sprint 70 lote 3** (ago/2026 — 2 artigos) · Sprint 51 (AdSense) quando aprovar |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 70 lote 2 · Sprint 78 · Sprint 77 · Sprint 76 |
+| **Concluída recente** | Sprint 80 · Sprint 79 · Sprint 70 lote 2 · Sprint 78 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 

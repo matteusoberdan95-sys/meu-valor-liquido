@@ -5,6 +5,7 @@
     bool IsActive(string path) =>
         path == "/" ? currentPath == "/" : currentPath.StartsWith(path, StringComparison.OrdinalIgnoreCase);
     var hideBottomNav = ViewData["HideBottomNav"] as bool? == true;
+    var hideAssistantLauncher = ViewData["HideAssistantLauncher"] as bool? == true;
 }
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -62,6 +63,7 @@
                         <li><a class="@(IsActive("/desligamento") || IsActive("/negociar-salario") || IsActive("/virar-pj") ? "active" : "")" asp-page="/Index" asp-fragment="jornadas-tematicas" data-testid="nav-guias">Guias</a></li>
                         <li><a class="@(IsActive("/blog") ? "active" : "")" asp-page="/Blog/Index">Blog</a></li>
                         <li><a class="@(IsActive("/duvidas") ? "active" : "")" asp-page="/Duvidas/Index">Ajuda</a></li>
+                        <li><a class="@(IsActive("/assistente") ? "active" : "")" asp-page="/Assistente/Index">Assistente</a></li>
                         <li>
                             <a class="@(IsActive("/meu-painel") ? "active" : "")" asp-page="/MeuPainel/Index">
                                 Meu painel
@@ -89,6 +91,7 @@
             <a asp-page="/Index" asp-fragment="jornadas-tematicas" data-testid="nav-mobile-guias">Guias</a>
             <a asp-page="/Blog/Index">Blog</a>
             <a asp-page="/Duvidas/Index">Ajuda</a>
+            <a asp-page="/Assistente/Index">Assistente</a>
             <a asp-page="/MeuPainel/Index">Meu painel</a>
             <a asp-page="/Contato">Contato</a>
         </div>
@@ -157,6 +160,11 @@
     @if (!hideBottomNav)
     {
         <partial name="Shared/_BottomNav" />
+    }
+
+    @if (!hideAssistantLauncher)
+    {
+        <partial name="Shared/_AssistantLauncher" />
     }
 
     <partial name="_CookieConsent" />

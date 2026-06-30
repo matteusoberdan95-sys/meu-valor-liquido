@@ -69,6 +69,24 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Fact]
+    public async Task Sitemap_Should_Include_Lastmod_For_Indexation_Signals()
+    {
+        var xml = await client.GetStringAsync("/sitemap.xml");
+        var document = XDocument.Parse(xml);
+        XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
+
+        xml.Should().Contain("<lastmod>2026-06-29</lastmod>");
+        var salaryCalculatorUrls = document
+            .Descendants(ns + "url")
+            .Where(url => url.Element(ns + "loc")?.Value == "https://meuvalorliquido.com/calculadoras/salario-liquido")
+            .ToArray();
+
+        salaryCalculatorUrls.Should().NotBeEmpty();
+        salaryCalculatorUrls.Should().OnlyContain(url =>
+            url.Element(ns + "lastmod") != null && url.Element(ns + "lastmod")!.Value == "2026-06-29");
+    }
+
+    [Fact]
     public async Task Mapa_Do_Site_Should_List_Calculators()
     {
         var html = await client.GetStringAsync("/mapa-do-site");

@@ -3,7 +3,8 @@
     var tab = ViewData["BottomNavTab"]?.ToString();
     if (string.IsNullOrEmpty(tab))
     {
-        if (currentPath.StartsWith("/duvidas", StringComparison.OrdinalIgnoreCase)) tab = "help";
+        if (currentPath.StartsWith("/assistente", StringComparison.OrdinalIgnoreCase)) tab = "assistant";
+        else if (currentPath.StartsWith("/duvidas", StringComparison.OrdinalIgnoreCase)) tab = "help";
         else if (currentPath.StartsWith("/meu-painel", StringComparison.OrdinalIgnoreCase)) tab = "profile";
         else if (currentPath.StartsWith("/calculadoras", StringComparison.OrdinalIgnoreCase) || currentPath.StartsWith("/salario-liquido", StringComparison.OrdinalIgnoreCase) || currentPath.StartsWith("/clt-pj", StringComparison.OrdinalIgnoreCase)) tab = "calc";
         else tab = "home";
@@ -24,6 +25,10 @@
     <a class="@ItemClass("help")" asp-page="/Duvidas/Index">
         <span class="@IconClass("help")" aria-hidden="true">help</span>
         <span>Ajuda</span>
+    </a>
+    <a class="@ItemClass("assistant")" asp-page="/Assistente/Index">
+        <span class="@IconClass("assistant")" aria-hidden="true">smart_toy</span>
+        <span>Chat</span>
     </a>
     <a class="@ItemClass("profile")" asp-page="/MeuPainel/Index">
         <span class="@IconClass("profile")" aria-hidden="true">person</span>

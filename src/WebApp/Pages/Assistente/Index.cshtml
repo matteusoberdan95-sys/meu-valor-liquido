@@ -1,0 +1,156 @@
+@page "/assistente"
+@model MeuValorLiquido.WebApp.Pages.Assistente.IndexModel
+@using System.Text.Json
+@{
+    ViewData["Title"] = "Assistente educativo";
+    ViewData["Description"] = "Tire dúvidas educativas sobre salário líquido, INSS, IRRF, rescisão, férias e CLT vs PJ com links para calculadoras.";
+    ViewData["CanonicalPath"] = "/assistente";
+
+    var webApplicationSchema = new Dictionary<string, object>
+    {
+        ["@context"] = "https://schema.org",
+        ["@type"] = "WebApplication",
+        ["name"] = "Assistente Meu Valor Líquido",
+        ["applicationCategory"] = "FinanceApplication",
+        ["operatingSystem"] = "Web",
+        ["url"] = "https://meuvalorliquido.com/assistente",
+        ["description"] = ViewData["Description"]!
+    };
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model='(IReadOnlyList<BreadcrumbItem>)new List<BreadcrumbItem> { new("Início", "/"), new("Assistente", "/assistente") }' />
+    <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(webApplicationSchema))</script>
+}
+
+<div class="valora-assistant-page">
+    <aside class="valora-assistant-sidebar" aria-label="Atalhos do assistente">
+        <div class="valora-assistant-sidebar-head">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+            <div>
+                <p class="valora-assistant-kicker">IA 2080</p>
+                <h2>Atalhos úteis</h2>
+            </div>
+        </div>
+        <nav class="valora-assistant-shortcuts">
+            @foreach (var shortcut in Model.Shortcuts)
+            {
+                <a class="valora-assistant-shortcut" href="@shortcut.Href">
+                    <span class="valora-assistant-shortcut-icon material-symbols-outlined" aria-hidden="true">@shortcut.Icon</span>
+                    <span>
+                        <strong>@shortcut.Title</strong>
+                        <small>@shortcut.Summary</small>
+                    </span>
+                </a>
+            }
+        </nav>
+        <div class="valora-assistant-ad-card" aria-label="Espaço publicitário">
+            @if (Model.AdSlot is not null)
+            {
+                <partial name="Shared/_AdSlot" model="Model.AdSlot" />
+            }
+            else
+            {
+                <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
+                <strong>Espaço publicitário</strong>
+                <small>Reservado para AdSense</small>
+            }
+        </div>
+    </aside>
+
+    <section class="valora-assistant-shell" aria-labelledby="assistant-title">
+        <header class="valora-assistant-hero">
+            <div class="valora-assistant-hero-icon" aria-hidden="true">
+                <span class="material-symbols-outlined">smart_toy</span>
+            </div>
+            <div>
+                <p class="valora-assistant-kicker">Assistente educativo</p>
+                <h1 id="assistant-title">Assistente Meu Valor Líquido</h1>
+                <p>
+                    Pergunte sobre salário, descontos, CLT, INSS, IRRF, rescisão ou PJ.
+                    O assistente responde com orientação educativa e aponta a calculadora certa.
+                </p>
+            </div>
+        </header>
+
+        <div class="valora-assistant-mobile-ad" aria-label="Espaço publicitário">
+            <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
+            <span>Espaço publicitário</span>
+        </div>
+
+        <div class="valora-assistant-chat" data-assistant-chat>
+            <div class="valora-assistant-messages" data-assistant-log aria-live="polite">
+                <article class="valora-assistant-message valora-assistant-message--ai">
+                    <div class="valora-assistant-avatar" aria-hidden="true">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <div class="valora-assistant-bubble">
+                        <p>
+                            Olá! Eu ajudo com dúvidas rápidas sobre salário líquido, INSS, IRRF,
+                            rescisão, férias, 13º e comparação CLT vs PJ.
+                        </p>
+                        <div class="valora-assistant-answer-card">
+                            <span class="material-symbols-outlined" aria-hidden="true">privacy_tip</span>
+                            <div>
+                                <strong>Privacidade simples</strong>
+                                <span>Não envie CPF, nome de empresa, holerite completo ou dados sensíveis.</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="valora-assistant-message valora-assistant-message--user">
+                    <div class="valora-assistant-bubble">
+                        <p>Quanto desconta de INSS para um salário bruto de R$ 5.000?</p>
+                    </div>
+                </article>
+
+                <article class="valora-assistant-message valora-assistant-message--ai">
+                    <div class="valora-assistant-avatar" aria-hidden="true">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <div class="valora-assistant-bubble">
+                        <p>
+                            O INSS é progressivo: cada faixa do salário usa uma alíquota própria.
+                            Para estimar com segurança, use a calculadora de INSS e depois veja o líquido completo.
+                        </p>
+                        <div class="valora-assistant-answer-card">
+                            <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+                            <div>
+                                <strong>Cálculo detalhado</strong>
+                                <span>Abra a calculadora para considerar faixas, teto e salário bruto.</span>
+                            </div>
+                            <a href="/calculadoras/inss">Abrir</a>
+                        </div>
+                    </div>
+                    <p class="valora-assistant-disclaimer">Conteúdo educativo. Não substitui orientação profissional.</p>
+                </article>
+            </div>
+
+            <form class="valora-assistant-composer" data-assistant-chat-form>
+                <div class="valora-assistant-suggestions" aria-label="Sugestões de pergunta">
+                    @foreach (var prompt in Model.Prompts)
+                    {
+                        <button type="button" data-assistant-prompt="@prompt.Text" data-assistant-intent="@prompt.Intent">
+                            @prompt.Text
+                        </button>
+                    }
+                </div>
+                <div class="valora-assistant-input-row">
+                    <label class="valora-sr-only" for="assistant-question">Pergunta para o assistente</label>
+                    <textarea id="assistant-question"
+                              data-assistant-input
+                              rows="1"
+                              maxlength="220"
+                              placeholder="Pergunte sobre salário líquido, INSS, IRRF ou rescisão..."></textarea>
+                    <button type="submit" aria-label="Enviar pergunta">
+                        <span class="material-symbols-outlined" aria-hidden="true">send</span>
+                    </button>
+                </div>
+                <p class="valora-assistant-input-note">
+                    Este assistente usa respostas guiadas do próprio site. Para cálculos exatos, abra as calculadoras.
+                </p>
+            </form>
+        </div>
+    </section>
+</div>
