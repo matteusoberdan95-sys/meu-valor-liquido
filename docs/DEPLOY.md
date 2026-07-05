@@ -46,6 +46,8 @@ docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
 | `ConnectionStrings__DefaultConnection` | PostgreSQL produção |
 | `ASPNETCORE_ENVIRONMENT` | `Production` |
 | `Ads__Enabled` | `false` até aprovação AdSense (Sprint 51) |
+| `Ads__VerificationEnabled` | `true` somente durante verificação do site no AdSense |
+| `Ads__PublisherId` | `ca-pub-...` informado pelo AdSense |
 | `Mail__Host` / `Mail__Port` / `Mail__UseSsl` | SMTP real |
 | `Mail__UserName` / `Mail__Password` | Se o provedor exigir auth |
 

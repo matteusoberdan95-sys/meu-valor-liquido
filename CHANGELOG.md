@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### Fix - Verificacao AdSense
+- Adicionado modo `Ads:VerificationEnabled` para renderizar o script de verificacao do AdSense no `<head>` sem ativar slots de anuncios.
+- `docker-compose.prod.yml` agora repassa `ADS_VERIFICATION_ENABLED` e `ADS_PUBLISHER_ID` para a WebApp.
+- Documentacao de VPS/Deploy separa verificacao AdSense de ativacao de anuncios.
+
+### Fix - PageSpeed e cookie mobile
+- Banner de cookies no mobile agora fica compacto, com altura limitada e rolagem interna ao personalizar preferências.
+- Logo do header/footer recebeu `width` e `height` explícitos para reduzir CLS.
+- Hero da home ganhou preload e `fetchpriority="high"` para melhorar descoberta do LCP.
+
 ### Sprint 82 - Conversao interna nos artigos
 - Artigos com calculadora relacionada agora exibem um painel contextual de proximo passo com CTA para calculadora, assistente, hub e FAQ.
 - Novo `BlogConversionPathCatalog` centraliza rotas de conversao por calculadora sem misturar regra de negocio.

@@ -27,6 +27,8 @@ services:
       ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=${POSTGRES_DB:-meu_valor_liquido};Username=${POSTGRES_USER:-meu_valor_liquido};Password=${POSTGRES_PASSWORD}
       Site__BaseUrl: ${SITE_BASE_URL:?defina SITE_BASE_URL com https://}
       Ads__Enabled: ${ADS_ENABLED:-false}
+      Ads__VerificationEnabled: ${ADS_VERIFICATION_ENABLED:-false}
+      Ads__PublisherId: ${ADS_PUBLISHER_ID:-}
       Mail__Host: ${MAIL_HOST:?defina MAIL_HOST}
       Mail__Port: ${MAIL_PORT:-587}
       Mail__UseSsl: ${MAIL_USE_SSL:-true}

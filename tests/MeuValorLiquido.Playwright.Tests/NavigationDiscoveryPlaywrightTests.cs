@@ -179,10 +179,18 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
             await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Aceitar todos" })).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Rejeitar todos" })).ToBeVisibleAsync();
 
+            var compactHeight = await page.Locator(".valora-cookie-consent-content")
+                .EvaluateAsync<double>("el => el.getBoundingClientRect().height");
+            Assert.True(compactHeight <= 380, $"Cookie banner mobile ficou alto demais: {compactHeight}px.");
+
             await page.GetByRole(AriaRole.Button, new() { Name = "Personalizar" }).ClickAsync();
 
             await Assertions.Expect(page.GetByText("Cookies essenciais")).ToBeVisibleAsync();
             await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Salvar preferencias" })).ToBeVisibleAsync();
+
+            var expandedHeight = await page.Locator(".valora-cookie-consent-content")
+                .EvaluateAsync<double>("el => el.getBoundingClientRect().height");
+            Assert.True(expandedHeight <= 380, $"Cookie banner mobile expandido ficou alto demais: {expandedHeight}px.");
         });
     }
 }

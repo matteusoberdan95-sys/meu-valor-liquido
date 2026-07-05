@@ -1,1 +1,9 @@
-@* AdSense é carregado por cookie-consent.js somente após consentimento de publicidade. *@
+@inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
+@{
+    var ads = AdsOptions.Value;
+}
+@if (ads.ShouldRenderVerificationScript)
+{
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=@ads.PublisherId"
+            crossorigin="anonymous"></script>
+}

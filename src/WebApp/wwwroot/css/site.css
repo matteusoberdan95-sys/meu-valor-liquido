@@ -2161,6 +2161,86 @@ a.valora-choice.valora-choice--active {
   font-size: 0.875rem;
 }
 
+@media (max-width: 639.98px) {
+  .valora-cookie-consent {
+    bottom: calc(3.9rem + env(safe-area-inset-bottom));
+    width: min(100vw - 0.75rem, 26rem);
+  }
+
+  .valora-cookie-consent-content {
+    max-height: min(42vh, 18.5rem);
+    gap: 0.55rem;
+    overflow-y: auto;
+    padding: 0.75rem 0.8rem 0.7rem;
+    border-radius: var(--valora-radius-lg);
+    overscroll-behavior: contain;
+  }
+
+  .valora-cookie-consent-close {
+    top: 0.45rem;
+    right: 0.45rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .valora-cookie-consent-title {
+    padding-right: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .valora-cookie-consent-text {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    text-align: left;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .valora-cookie-consent-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .valora-cookie-consent-actions .valora-cookie-consent-btn--primary {
+    grid-column: 1 / -1;
+  }
+
+  .valora-cookie-consent-btn,
+  .valora-cookie-consent-save {
+    min-height: 2.25rem;
+    padding: 0 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  .valora-cookie-consent-preferences {
+    gap: 0.55rem;
+    padding: 0.65rem;
+  }
+
+  .valora-cookie-consent-option {
+    gap: 0.55rem;
+  }
+
+  .valora-cookie-consent-option strong {
+    font-size: 0.82rem;
+  }
+
+  .valora-cookie-consent-option small {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .valora-cookie-consent-links {
+    gap: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+}
+
 @media (min-width: 640px) {
   .valora-cookie-consent-content {
     padding: 1.35rem 1.5rem 1.15rem;

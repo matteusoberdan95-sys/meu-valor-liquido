@@ -38,6 +38,7 @@
 }
 
 @section Head {
+    <link rel="preload" as="image" href="~/images/hero/home-hero.webp" asp-append-version="true" fetchpriority="high" />
     <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(webSiteSchema))</script>
 }
 
@@ -51,6 +52,7 @@
                  width="1200"
                  height="675"
                  loading="eager"
+                 fetchpriority="high"
                  decoding="async" />
         </div>
 

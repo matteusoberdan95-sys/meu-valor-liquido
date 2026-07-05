@@ -57,6 +57,8 @@ Preencha **obrigatório**:
 | `MAIL_PASSWORD` | senha do e-mail |
 | `MAIL_FROM_ADDRESS` | `noreply@meuvalorliquido.com` |
 | `ADS_ENABLED` | `false` (até AdSense aprovar) |
+| `ADS_VERIFICATION_ENABLED` | `true` durante verificação do site no AdSense |
+| `ADS_PUBLISHER_ID` | `ca-pub-...` informado pelo AdSense |
 
 Subir:
 
@@ -108,11 +110,11 @@ sudo docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --buil
 
 ---
 
-## AdSense (depois do site estável)
+## AdSense
 
-1. Site online com HTTPS por algumas semanas.
-2. Solicitar em https://www.google.com/adsense/
-3. Após aprovação: `ADS_ENABLED=true` + Publisher ID no `.env.prod` e rebuild (Sprint 20).
+1. Para verificação do site: configure `ADS_VERIFICATION_ENABLED=true`, `ADS_PUBLISHER_ID=ca-pub-...` e mantenha `ADS_ENABLED=false`.
+2. Depois do deploy, clique em **Adicionei o código** e **Verificar** no painel AdSense.
+3. Após aprovação: `ADS_ENABLED=true` + IDs dos slots no `.env.prod` e rebuild (Sprint 20/51).
 
 Ver: `docs/DEPLOY.md`, `docs/ADSENSE_COMPLIANCE.md`.
 

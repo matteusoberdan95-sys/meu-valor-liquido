@@ -6,6 +6,8 @@ public sealed class AdsOptions
 
     public bool Enabled { get; set; }
 
+    public bool VerificationEnabled { get; set; }
+
     public string? PublisherId { get; set; }
 
     public string CalculatorTopSlotId { get; set; } = string.Empty;
@@ -14,4 +16,7 @@ public sealed class AdsOptions
 
     public bool IsActive =>
         Enabled && !string.IsNullOrWhiteSpace(PublisherId);
+
+    public bool ShouldRenderVerificationScript =>
+        VerificationEnabled && !string.IsNullOrWhiteSpace(PublisherId);
 }

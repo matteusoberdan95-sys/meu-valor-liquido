@@ -201,7 +201,8 @@ internal static class SecurityHeadersExtensions
         return app.Use(async (context, next) =>
         {
             var configuration = context.RequestServices.GetRequiredService<IConfiguration>();
-            var adsEnabled = configuration.GetSection(AdsOptions.SectionName).Get<AdsOptions>()?.IsActive == true;
+            var adsOptions = configuration.GetSection(AdsOptions.SectionName).Get<AdsOptions>();
+            var adsScriptAllowed = adsOptions is { IsActive: true } or { ShouldRenderVerificationScript: true };
 
             context.Response.OnStarting(() =>
             {
@@ -218,7 +219,7 @@ internal static class SecurityHeadersExtensions
                     context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
                     context.Response.Headers.TryAdd(
                         "Content-Security-Policy",
-                        AdsContentSecurityPolicy.Build(adsEnabled));
+                        AdsContentSecurityPolicy.Build(adsScriptAllowed));
                 }
 
                 return Task.CompletedTask;

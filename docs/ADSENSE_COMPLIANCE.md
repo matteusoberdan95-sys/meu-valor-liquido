@@ -1,6 +1,6 @@
 # AdSense Compliance — Meu Valor Líquido
 
-Regras internas para monetização via Google AdSense de forma **legítima e segura**. Não integrar script AdSense real até aprovação e revisão deste documento.
+Regras internas para monetização via Google AdSense de forma **legítima e segura**. Antes da aprovação, permitir apenas o script de verificação solicitado pelo Google; não ativar slots de anúncios até aprovação e revisão deste documento.
 
 > Pré-requisitos de conteúdo: `docs/adsense-checklist.md`
 
@@ -8,6 +8,7 @@ Regras internas para monetização via Google AdSense de forma **legítima e seg
 
 ## O que é permitido
 
+- Script de verificação do AdSense no `<head>` com `Ads:VerificationEnabled=true` e `Ads:Enabled=false`.
 - Placeholders com altura reservada até aprovação.
 - Anúncios em áreas claramente separadas do conteúdo interativo.
 - Texto educativo e avisos legais sobre cálculos estimativos.
@@ -89,6 +90,7 @@ Antes de ativar AdSense:
 
 ## Checklist de revisão pré-ativação
 
+- [x] Verificação de propriedade via script AdSense configurável (`Ads:VerificationEnabled`)
 - [ ] Conta AdSense aprovada
 - [x] Política de privacidade completa (cookies/ads) — Sprint 14
 - [x] Páginas institucionais revisadas — Sprint 14
@@ -103,8 +105,8 @@ Antes de ativar AdSense:
 
 ## Integração futura (pós-aprovação)
 
-1. Configurar `Ads:PublisherId` e `Ads:Enabled` em variáveis de ambiente.
-2. Substituir `PlaceholderAdSlotProvider` por implementação que injeta script apenas quando `Enabled=true`.
+1. Para verificação: configurar `Ads:VerificationEnabled=true`, `Ads:PublisherId` e manter `Ads:Enabled=false`.
+2. Após aprovação: configurar `Ads:Enabled=true` e IDs reais dos slots.
 3. Manter CSP atualizada para domínios Google Ads.
 4. Monitorar relatório de políticas no painel AdSense.
 

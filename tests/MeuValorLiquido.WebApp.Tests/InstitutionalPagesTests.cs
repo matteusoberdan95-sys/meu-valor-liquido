@@ -2,10 +2,12 @@ namespace MeuValorLiquido.WebApp.Tests;
 
 public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Program>>
 {
+    private readonly WebApplicationFactory<Program> factory;
     private readonly HttpClient client;
 
     public InstitutionalPagesTests(WebApplicationFactory<Program> factory)
     {
+        this.factory = factory;
         client = factory.WithWebHostBuilder(builder => builder.UseEnvironment("Testing")).CreateClient();
     }
 
@@ -80,5 +82,37 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
 
         html.Should().Contain("Espaço publicitário");
         html.Should().NotContain("adsbygoogle");
+    }
+    [Fact]
+    public async Task Home_Should_Not_Render_Adsense_Verification_Script_By_Default()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().NotContain("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+    }
+
+    [Fact]
+    public async Task Home_Should_Render_Adsense_Verification_Script_When_Configured()
+    {
+        var configuredClient = factory.WithWebHostBuilder(builder =>
+        {
+            builder.UseEnvironment("Testing");
+            builder.ConfigureAppConfiguration((_, config) =>
+            {
+                config.AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["Ads:VerificationEnabled"] = "true",
+                    ["Ads:PublisherId"] = "ca-pub-test"
+                });
+            });
+        }).CreateClient();
+
+        var response = await configuredClient.GetAsync("/");
+        var html = await response.Content.ReadAsStringAsync();
+
+        html.Should().Contain("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-test");
+        html.Should().Contain("crossorigin=\"anonymous\"");
+        html.Should().NotContain("data-ad-client=\"ca-pub-test\"");
+        response.Headers.GetValues("Content-Security-Policy").First().Should().Contain("pagead2.googlesyndication.com");
     }
 }
