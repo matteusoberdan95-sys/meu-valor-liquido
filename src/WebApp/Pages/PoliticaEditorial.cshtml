@@ -1,0 +1,97 @@
+@page "/politica-editorial"
+@model MeuValorLiquido.WebApp.Pages.PoliticaEditorialModel
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.EditorialPolicyBreadcrumbs()" />
+}
+
+<div class="valora-stitch-legal">
+    <nav class="valora-breadcrumb valora-stitch-legal-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" aria-hidden="true" style="font-size: 1rem;">chevron_right</span></li>
+            <li class="active" aria-current="page">Política Editorial</li>
+        </ol>
+    </nav>
+
+    <div class="valora-stitch-legal-layout">
+        <aside class="valora-stitch-legal-sidebar" aria-label="Índice editorial">
+            <p class="valora-stitch-legal-sidebar-kicker">Confiança editorial</p>
+            <h2 class="valora-stitch-legal-sidebar-title">Como publicamos</h2>
+            <nav class="valora-stitch-legal-toc">
+                <a href="#editorial-1">1. Objetivo</a>
+                <a href="#editorial-2">2. Fontes oficiais</a>
+                <a href="#editorial-3">3. Revisão</a>
+                <a href="#editorial-4">4. Limites</a>
+                <a href="#editorial-5">5. Correções</a>
+            </nav>
+            <div class="valora-stitch-legal-sidebar-meta">
+                <p>Última atualização</p>
+                <strong>Julho de 2026</strong>
+            </div>
+        </aside>
+
+        <div class="valora-stitch-legal-main">
+            <header class="valora-stitch-legal-header">
+                <span class="valora-stitch-legal-badge">
+                    <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+                    Política editorial
+                </span>
+                <h1 class="valora-stitch-legal-title">Política Editorial</h1>
+                <p class="valora-stitch-legal-lead">
+                    Esta página explica como o Meu Valor Líquido escolhe pautas, valida informações e corrige conteúdos sobre salário,
+                    CLT, INSS, IRRF, FGTS, holerite, rescisão e comparação CLT x PJ.
+                </p>
+            </header>
+
+            <partial name="Shared/_EditorialAuthorCard" model="Model.Author" />
+
+            <article class="valora-stitch-legal-body valora-article-body">
+                <section id="editorial-1">
+                    <h2 class="valora-h2">1. Objetivo do conteúdo</h2>
+                    <p>
+                        Publicamos calculadoras, guias e respostas educativas para ajudar brasileiros a entender descontos no salário,
+                        verbas trabalhistas e simulações financeiras do dia a dia. O foco é clareza prática, não consultoria jurídica,
+                        contábil ou fiscal individual.
+                    </p>
+                </section>
+
+                <section id="editorial-2">
+                    <h2 class="valora-h2">2. Fontes oficiais e critérios</h2>
+                    <p>
+                        Priorizamos fontes oficiais e documentação pública: legislação vigente, portarias, tabelas de INSS/IRRF,
+                        materiais do governo federal e páginas de referência dos órgãos responsáveis. Quando usamos benchmarks de mercado,
+                        eles servem apenas para comparar consistência, nunca para substituir a regra oficial.
+                    </p>
+                    <p>
+                        As premissas principais das calculadoras ficam documentadas em <a asp-page="/ComoCalculamos">Como calculamos</a>.
+                    </p>
+                </section>
+
+                <section id="editorial-3">
+                    <h2 class="valora-h2">3. Revisão e atualização</h2>
+                    <p>
+                        Conteúdos sensíveis a tabelas anuais, como INSS, IRRF, salário mínimo e regras trabalhistas, são revisados quando
+                        há mudança relevante ou quando uma divergência é identificada nos testes automatizados e cenários de referência.
+                    </p>
+                </section>
+
+                <section id="editorial-4">
+                    <h2 class="valora-h2">4. Limites das estimativas</h2>
+                    <p>
+                        Resultados de calculadoras são estimativas educativas. Convenções coletivas, benefícios específicos, decisões judiciais,
+                        acordos particulares e detalhes do contrato podem alterar o valor real.
+                    </p>
+                </section>
+
+                <section id="editorial-5">
+                    <h2 class="valora-h2">5. Correções e contato</h2>
+                    <p>
+                        Se encontrar erro, fonte desatualizada ou cálculo divergente, envie uma mensagem pelo <a asp-page="/Contato">contato</a>.
+                        Revisões relevantes podem gerar ajuste no texto, na calculadora ou na metodologia pública.
+                    </p>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,7 @@ public static class SitemapGenerator
             CreateUrl(ns, $"{baseUrl}/widget", SeoBaselineLastModified),
             CreateUrl(ns, $"{baseUrl}/politica-de-privacidade", SeoBaselineLastModified),
             CreateUrl(ns, $"{baseUrl}/politica-de-cookies", SeoBaselineLastModified),
+            CreateUrl(ns, $"{baseUrl}/politica-editorial", new DateOnly(2026, 7, 5)),
             CreateUrl(ns, $"{baseUrl}/termos-de-uso", SeoBaselineLastModified),
             CreateUrl(ns, $"{baseUrl}/aviso-legal", SeoBaselineLastModified),
             CreateUrl(ns, $"{baseUrl}/como-calculamos", SeoBaselineLastModified),

@@ -12,6 +12,8 @@ Regras internas para monetização via Google AdSense de forma **legítima e seg
 - Placeholders com altura reservada até aprovação.
 - Anúncios em áreas claramente separadas do conteúdo interativo.
 - Texto educativo e avisos legais sobre cálculos estimativos.
+- Perfil editorial visível com autor responsável, foto e LinkedIn quando fizer sentido.
+- Página de Política Editorial com fontes oficiais, revisão e fluxo de correções.
 - Links naturais para outras calculadoras e artigos.
 - Compartilhamento voluntário de resultados (Sprint 4).
 - PDF com marca do site, **sem anúncios dentro do PDF** (Sprint 5).
@@ -95,6 +97,7 @@ Antes de ativar AdSense:
 - [x] Política de privacidade completa (cookies/ads) — Sprint 14
 - [x] Páginas institucionais revisadas — Sprint 14
 - [x] Página `/como-calculamos` — Sprint 14
+- [x] Política editorial indexável + autoria visível — Sprint 83
 - [ ] Nenhum texto incentivando clique
 - [ ] Slots com espaçamento validado em desktop e mobile
 - [x] Core Web Vitals — cache, defer, slots com altura fixa (Sprint 12)

@@ -16,6 +16,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     [InlineData("/como-calculamos", "Tabelas de 2026", "BrTaxTables2026")]
     [InlineData("/politica-de-privacidade", "Google AdSense", "localStorage")]
     [InlineData("/politica-de-cookies", "Política de Cookies", "mvl-cookie-consent")]
+    [InlineData("/politica-editorial", "Política Editorial", "fontes oficiais")]
     [InlineData("/termos-de-uso", "Natureza do serviço", "educativo")]
     [InlineData("/aviso-legal", "Estimativas, não laudos", "consultoria")]
     public async Task Institutional_Page_Should_Contain_Key_Content(string url, string phraseA, string phraseB)
@@ -34,6 +35,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
 
         xml.Should().Contain("/como-calculamos");
         xml.Should().Contain("/politica-de-cookies");
+        xml.Should().Contain("/politica-editorial");
     }
 
     [Fact]

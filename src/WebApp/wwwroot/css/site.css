@@ -6928,6 +6928,79 @@ a.valora-stitch-contact-aside-card:hover {
   line-height: 1.5;
 }
 
+.valora-editorial-author-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--valora-radius-xl);
+  border: 1px solid rgb(89 219 199 / 22%);
+  background: linear-gradient(135deg, rgb(89 219 199 / 9%), var(--valora-card-low));
+}
+
+.valora-editorial-author-photo {
+  width: 4rem;
+  height: 4rem;
+  flex: 0 0 4rem;
+  border-radius: 999px;
+  border: 2px solid rgb(89 219 199 / 45%);
+  object-fit: cover;
+  background: var(--valora-surface-container-low);
+}
+
+.valora-editorial-author-content {
+  min-width: 0;
+}
+
+.valora-editorial-author-kicker {
+  margin: 0 0 0.15rem;
+  color: var(--valora-primary);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.valora-editorial-author-name {
+  margin: 0;
+  color: var(--valora-text-heading);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.valora-editorial-author-role,
+.valora-editorial-author-bio {
+  margin: 0.25rem 0 0;
+  color: var(--valora-on-surface-variant);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.valora-editorial-author-role {
+  color: var(--valora-on-surface);
+  font-weight: 600;
+}
+
+.valora-editorial-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.65rem;
+  color: var(--valora-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.valora-editorial-author-link:hover {
+  text-decoration: underline;
+}
+
+.valora-editorial-author-link .material-symbols-outlined {
+  font-size: 1rem;
+}
+
 .valora-stitch-legal-layout {
   display: flex;
   flex-direction: column;

@@ -170,6 +170,12 @@ public static class SeoMetadataHelper
         new("Política de Cookies", "/politica-de-cookies")
     ];
 
+    public static IReadOnlyList<BreadcrumbItem> EditorialPolicyBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Política Editorial", "/politica-editorial")
+    ];
+
     public static IReadOnlyList<BreadcrumbItem> LegalNoticeBreadcrumbs() =>
     [
         new("Início", "/"),

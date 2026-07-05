@@ -709,6 +709,24 @@
 
 **Criterios de aceite:** todo artigo com calculadora relacionada tem painel de conversao; CTAs internos ficam claros e educativos; mobile nao quebra layout; `dotnet test` verde.
 
+**Proximo recomendado:** Sprint 83 (autoridade editorial para AdSense) antes da revisão final do Google; depois Sprint 70 lote 5 ou Sprint 51 quando AdSense aprovar.
+
+---
+
+### Sprint 83 - Autoridade editorial para AdSense - CONCLUIDA
+
+**Objetivo:** elevar os sinais de confiança, autoria e transparência editorial para melhorar a chance de aprovação e manutenção do Google AdSense.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | Página `/politica-editorial` com fontes oficiais, revisão, limites e correções |
+| WebApp/Frontend | Card editorial reutilizável com foto, bio, LinkedIn e responsividade |
+| Architecture | `EditorialAuthorCatalog` centraliza dados do autor sem duplicar texto em Razor |
+| SEO Técnico | JSON-LD `Article` com `Person`, `sameAs`, imagem e publisher |
+| QA/Test | `Sprint83AdSenseTrustTests` cobrindo autoria, schema, sitemap e páginas institucionais |
+
+**Criterios de aceite:** autor visível nos artigos; LinkedIn e foto pública disponíveis; Política Editorial indexável; sitemap/mapa/footer linkam a página; `dotnet test` verde.
+
 **Proximo recomendado:** Sprint 70 lote 5 (definir pauta editorial) ou Sprint 51 quando AdSense aprovar.
 
 ---

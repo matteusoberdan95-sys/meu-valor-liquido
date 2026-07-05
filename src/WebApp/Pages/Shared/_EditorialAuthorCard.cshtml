@@ -1,0 +1,23 @@
+@model EditorialAuthorProfile
+
+<aside class="valora-editorial-author-card" aria-label="Responsável editorial">
+    <img class="valora-editorial-author-photo"
+         src="@Model.ImagePath"
+         alt="Foto de @Model.Name"
+         width="96"
+         height="96"
+         loading="lazy" />
+    <div class="valora-editorial-author-content">
+        <p class="valora-editorial-author-kicker">Responsável editorial</p>
+        <h2 class="valora-editorial-author-name">@Model.Name</h2>
+        <p class="valora-editorial-author-role">@Model.Role</p>
+        <p class="valora-editorial-author-bio">@Model.Bio</p>
+        <a class="valora-editorial-author-link"
+           href="@Model.LinkedInUrl"
+           target="_blank"
+           rel="me noopener noreferrer">
+            Ver LinkedIn
+            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+        </a>
+    </div>
+</aside>

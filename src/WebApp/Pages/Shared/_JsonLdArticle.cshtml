@@ -4,7 +4,7 @@
 @using System.Text.Json
 
 @{
-    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br";
+    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com";
     var schema = new Dictionary<string, object>
     {
         ["@context"] = "https://schema.org",
@@ -12,15 +12,12 @@
         ["headline"] = Model.Title,
         ["description"] = Model.Summary,
         ["datePublished"] = Model.PublishedAt.ToString("yyyy-MM-dd"),
-        ["author"] = new Dictionary<string, string>
-        {
-            ["@type"] = "Person",
-            ["name"] = string.IsNullOrWhiteSpace(Model.Author) ? BlogContentHelper.DefaultAuthor : Model.Author
-        },
+        ["author"] = EditorialAuthorCatalog.BuildPersonSchema(baseUrl),
         ["publisher"] = new Dictionary<string, object>
         {
             ["@type"] = "Organization",
-            ["name"] = "Meu Valor Líquido"
+            ["name"] = "Meu Valor Líquido",
+            ["url"] = baseUrl
         },
         ["mainEntityOfPage"] = $"{baseUrl}/blog/{Model.Slug}"
     };

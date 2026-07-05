@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 83 - Autoridade editorial para AdSense
+- Nova página `/politica-editorial` com critérios de fontes oficiais, revisão, limites das estimativas e correções.
+- Perfil editorial de Matteus Oberdan centralizado com foto, bio e LinkedIn, exibido em artigos, `/sobre` e `/como-calculamos`.
+- JSON-LD `Article` agora expõe autor como `Person` com `sameAs`, imagem e vínculo público ao LinkedIn.
+- Footer, mapa do site e sitemap incluem a Política Editorial como sinal institucional indexável.
+
 ### Fix - PageSpeed mobile
 - Fontes Google e Material Symbols deixaram de bloquear a renderizacao inicial e passam a carregar em idle via `font-loader.js`.
 - `local-panel.js` agora e carregado sob demanda apenas em paginas com salvar/comparar simulacoes.

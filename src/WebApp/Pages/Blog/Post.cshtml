@@ -57,6 +57,8 @@ else
             </p>
         </header>
 
+        <partial name="Shared/_EditorialAuthorCard" model="EditorialAuthorCatalog.Primary" />
+
         <div class="valora-stitch-blog-article-layout">
             <div class="valora-stitch-blog-article-main">
         <partial name="Shared/_BlogStitchHeroVisual" model="articleHeroModel" />
@@ -113,7 +115,10 @@ else
 
         <div class="valora-disclaimer valora-stitch-blog-article-disclaimer">
             <span class="material-symbols-outlined" aria-hidden="true">info</span>
-            <p style="margin: 0;">Este conteúdo tem finalidade educativa e não substitui orientação profissional.</p>
+            <p style="margin: 0;">
+                Este conteúdo tem finalidade educativa e não substitui orientação profissional.
+                Consulte também nossa <a asp-page="/PoliticaEditorial">Política Editorial</a>.
+            </p>
         </div>
             </div>
 
