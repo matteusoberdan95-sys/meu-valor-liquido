@@ -113,6 +113,18 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
+    public async Task Home_Should_Preload_Decorative_Hero_Image_Only_On_Desktop()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain("rel=\"preload\" as=\"image\"");
+        html.Should().Contain("media=\"(min-width: 992px)\"");
+        html.Should().Contain("images/hero/home-hero");
+        html.Should().Contain("loading=\"lazy\"");
+        html.Should().NotContain("loading=\"eager\"");
+    }
+
+    [Fact]
     public async Task Home_Should_Render_Adsense_Verification_Script_When_Configured()
     {
         var configuredClient = factory.WithWebHostBuilder(builder =>
