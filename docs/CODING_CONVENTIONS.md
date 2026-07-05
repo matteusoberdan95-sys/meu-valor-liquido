@@ -35,6 +35,31 @@ Cada projeto .NET tem um arquivo `GlobalUsings.cs` na raiz do projeto:
 - WebApp: Razor Pages, SEO, PDF, compartilhamento, infraestrutura — **sem duplicar fórmulas**.
 - PDF e share usam o token `?r=` (`CalculatorInputShareCodec`); PDF **sem anúncios** (ver `docs/ADSENSE_COMPLIANCE.md`).
 
+## Frontend e padrão visual
+
+- Preserve o tema dark **Premium Liquid**. Use tokens `--valora-*`, superfícies, bordas e sombras já existentes em `src/WebApp/wwwroot/css/site.css`.
+- Antes de criar um novo bloco visual, procure por partial/CSS semelhante: cards de blog, cards institucionais, painéis de resultado, banners, CTAs e autor editorial devem seguir o mesmo ritmo visual.
+- Não crie variações soltas de radius, cor, sombra ou espaçamento. Se precisar de um bloco novo, derive de padrões existentes e mantenha responsivo mobile/desktop.
+- Blog e conteúdo editorial devem usar o template de artigo existente, card de autor, painel de conversão e capas WebP padronizadas. Regras completas em `docs/BLOG_EDITORIAL_PLAN.md`.
+
+## Blog, imagens e editorial
+
+- Todo artigo novo precisa de:
+  - slug único em `BlogArticleSeedData.cs`;
+  - entrada em `BlogEditorialCatalog`;
+  - links para calculadora relacionada, `/como-calculamos` e FAQ `/duvidas`;
+  - seções `id="dica-pratica"` e `id="como-validamos"`;
+  - capa `src/WebApp/wwwroot/images/blog/{slug}.webp`;
+  - brief visual em `scripts/generate-blog-images.py`;
+  - teste `Sprint70LoteNBlogTests`.
+- Capas do blog devem ser WebP 1200×675 e seguir o padrão dark Premium Liquid. Gere com:
+
+```powershell
+python scripts/generate-blog-images.py render --slug exemplo-slug
+```
+
+Se `python` não estiver no PATH, use o Python bundled do Codex Desktop ou o Python local com Pillow instalado.
+
 ## Testes
 
 - Rode `dotnet test` antes de concluir uma sprint.

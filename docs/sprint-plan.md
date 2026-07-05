@@ -525,7 +525,7 @@
 
 ---
 
-### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3 + lote 4)
+### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3 + lote 4 + lote 5)
 
 **Objetivo:** manter **2 artigos/mês** com calculadora relacionada, hub e FAQ — ritmo pós-calendário Sprint 68.
 
@@ -533,18 +533,20 @@
 |-------|----------|
 | SEO/Content | 2 artigos long tail por ciclo mensal (~5 min leitura) |
 | WebApp/Frontend | `BlogEditorialCatalog`; cross-link nos hubs |
-| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests`, `Sprint70Lote4BlogTests` |
+| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests`, `Sprint70Lote4BlogTests`, `Sprint70Lote5BlogTests` |
 | Documentation | `docs/BLOG_EDITORIAL_PLAN.md` |
 
 **Lote 1 (jun/2026):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
 
-**Lote 2 (jul/2026):** `ferias-coletivas-clt-guia-completo`, `pedir-demissao-ou-aguardar-dispensa`.
+**Lote 2 (jun/2026, publicação escalonada):** `ferias-coletivas-clt-guia-completo`, `pedir-demissao-ou-aguardar-dispensa`.
 
-**Lote 3 (ago/2026):** `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
+**Lote 3 (jun/2026, publicação escalonada):** `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
 
-**Lote 4 (set/2026):** `experiencia-clt-direitos-e-rescisao`, `home-office-clt-descontos`.
+**Lote 4 (jun/2026, publicação escalonada):** `experiencia-clt-direitos-e-rescisao`, `home-office-clt-descontos`.
 
-**Próximo:** Sprint 82 (conversão interna nos artigos) ou lote 5 editorial — ver `docs/BLOG_EDITORIAL_PLAN.md`.
+**Lote 5 (jul/2026):** `vale-transporte-home-office-hibrido`, `plano-saude-holerite-coparticipacao`.
+
+**Próximo:** Sprint 51 quando AdSense aprovar ou lote 6 editorial — ver `docs/BLOG_EDITORIAL_PLAN.md`.
 
 **Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ; ≥850 palavras.
 

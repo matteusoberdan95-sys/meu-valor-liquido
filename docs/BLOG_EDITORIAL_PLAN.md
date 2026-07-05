@@ -17,7 +17,7 @@ Documento de referência para **agents (Cursor/Codex)** e para a rotina **Sprint
 | Seções obrigatórias | `id="dica-pratica"` + `id="como-validamos"` (via `EnrichContent` ou manual) |
 | Código | `BlogArticleSeedData.cs`, slug em `BlogEditorialCatalog`, testes `Sprint70LoteNBlogTests` |
 | Hub | Cross-link em hub temático quando fizer sentido (`ThematicHubCatalog`) |
-| Capa | `scripts/generate-blog-images.py` → `wwwroot/images/blog/{slug}.webp` |
+| Capa | **Obrigatória**: `scripts/generate-blog-images.py` → `wwwroot/images/blog/{slug}.webp` |
 
 ---
 
@@ -33,6 +33,27 @@ Documento de referência para **agents (Cursor/Codex)** e para a rotina **Sprint
 **Categorias:** `Trabalhista` | `Fiscal` | `Financeiro`
 
 **Autor padrão:** `Matteus Oberdan` (já no seed).
+
+## Padrão visual das capas
+
+As capas do blog fazem parte da identidade do site e devem seguir o mesmo padrão em qualquer máquina/agente:
+
+- Formato obrigatório: WebP 1200×675 em `src/WebApp/wwwroot/images/blog/{slug}.webp`.
+- Estilo: dark Premium Liquid, fintech educacional BR, sem stock genérico e sem texto longo.
+- Todo slug novo precisa de entrada em `VISUAL_BRIEF` no arquivo `scripts/generate-blog-images.py`.
+- Gere localmente com:
+
+```powershell
+python scripts/generate-blog-images.py render --slug exemplo-slug
+```
+
+Se `python` não estiver no PATH, use o Python bundled do Codex Desktop:
+
+```powershell
+& 'C:\Users\mober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' scripts/generate-blog-images.py render --slug exemplo-slug
+```
+
+Em Cursor/CLI de outra máquina, use o Python local com Pillow instalado. Depois rode ou mantenha coberto por `BrandAssetsTests`, que falha se algum post do seed estiver sem capa.
 
 ---
 
@@ -62,7 +83,7 @@ Documento de referência para **agents (Cursor/Codex)** e para a rotina **Sprint
 - `acordo-484a-verbas-e-multa-fgts` → hub `/desligamento`
 - `custo-total-clt-para-empregador` → hub `/virar-pj`
 
-### Sprint 70 — lote 2 (jul/2026) ✅
+### Sprint 70 — lote 2 (jun/2026, publicação escalonada) ✅
 - `ferias-coletivas-clt-guia-completo` → hub `/negociar-salario`, calc `ferias`
 - `pedir-demissao-ou-aguardar-dispensa` → hub `/desligamento`, calc `rescisao-clt`
 
@@ -113,19 +134,21 @@ Antes de propor um artigo, consulte (quando disponível):
 
 ---
 
-## Backlog sugerido — lote 3 (ago/2026)
+## Sprint 70 - lote 3 publicado (jun/2026, publicação escalonada)
 
-| Slug proposto | Título | Calc | Hub |
-|---------------|--------|------|-----|
-| `dissidio-salarial-2026-como-avaliar` | Dissídio e reajuste: quanto sobra no líquido | `proposta-salarial` | `/negociar-salario` |
-| `vale-refeicao-desconto-holerite` | VR e VA: o que desconta e o que não desconta | `salario-liquido` | `/negociar-salario` |
+- `dissidio-salarial-2026-como-avaliar` -> hub `/negociar-salario`, calc `proposta-salarial`
+- `vale-refeicao-desconto-holerite` -> hub `/negociar-salario`, calc `salario-liquido`
 
-### Backlog — lote 4 (set/2026)
+## Sprint 70 - lote 4 publicado (jun/2026, publicação escalonada)
 
-| Slug proposto | Título | Calc | Hub |
-|---------------|--------|------|-----|
-| `experiencia-clt-direitos-e-rescisao` | Contrato de experiência: fim e verbas | `rescisao-clt` | `/desligamento` |
-| `home-office-clt-descontos` | Home office CLT: o que pode mudar no holerite | `salario-liquido` | `/negociar-salario` |
+- `experiencia-clt-direitos-e-rescisao` -> hub `/desligamento`, calc `rescisao-clt`
+- `home-office-clt-descontos` -> hub `/negociar-salario`, calc `salario-liquido`
+
+## Sprint 70 - lote 5 publicado (jul/2026)
+
+- `vale-transporte-home-office-hibrido` -> hub `/negociar-salario`, calc `salario-liquido`
+- `plano-saude-holerite-coparticipacao` -> hub `/negociar-salario`, calc `salario-liquido`
+- Cadência recente normalizada: artigos publicados em 05/06, 10/06, 15/06, 20/06, 25/06, 30/06 e lote 5 em 05/07.
 
 ### Backlog — sazonal / trending
 
@@ -164,17 +187,7 @@ Antes de propor um artigo, consulte (quando disponível):
 
 ---
 
-## Sprint 70 - lote 3 publicado (ago/2026)
-
-- `dissidio-salarial-2026-como-avaliar` -> hub `/negociar-salario`, calc `proposta-salarial`
-- `vale-refeicao-desconto-holerite` -> hub `/negociar-salario`, calc `salario-liquido`
-- Lote seguinte publicado na Sprint 70 lote 4.
-
-## Sprint 70 - lote 4 publicado (set/2026)
-
-- `experiencia-clt-direitos-e-rescisao` -> hub `/desligamento`, calc `rescisao-clt`
-- `home-office-clt-descontos` -> hub `/negociar-salario`, calc `salario-liquido`
-- Sprint 82 concluiu conversao interna nos artigos. Proximo ciclo recomendado: definir backlog do lote 5 editorial.
+- Sprint 82 concluiu conversao interna nos artigos. Proximo ciclo recomendado: Sprint 51 quando AdSense aprovar ou lote 6 editorial.
 
 ## Como sugerir novo artigo (template para agents)
 

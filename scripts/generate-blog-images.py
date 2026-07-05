@@ -74,6 +74,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "financiamento-como-calcular-parcelas": "casa wireframe + parcelas Price/SAC",
     "ferias-coletivas-clt-guia-completo": "calendário coletivo verão + praia sutil + holerite férias +1/3",
     "pedir-demissao-ou-aguardar-dispensa": "balança pedir demissão vs dispensa; ícones FGTS 40% e seguro-desemprego",
+    "vale-transporte-home-office-hibrido": "cartão de transporte + calendário híbrido com dias presenciais marcados",
+    "plano-saude-holerite-coparticipacao": "holerite com rubrica plano de saúde, dependentes e alerta de coparticipação",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido

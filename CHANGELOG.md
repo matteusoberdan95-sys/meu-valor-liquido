@@ -8,6 +8,12 @@
 - JSON-LD `Article` agora expõe autor como `Person` com `sameAs`, imagem e vínculo público ao LinkedIn.
 - Footer, mapa do site e sitemap incluem a Política Editorial como sinal institucional indexável.
 
+### Sprint 70 - Editorial lote 5 (jul/2026)
+- Artigos longos (~5 min): `vale-transporte-home-office-hibrido`, `plano-saude-holerite-coparticipacao`.
+- Datas dos artigos recentes foram escalonadas em cadência de 5 dias reais, sem publicações futuras.
+- Cross-links no hub `/negociar-salario`, capas WebP e testes `Sprint70Lote5BlogTests`.
+- README, AGENTS e docs editoriais reforçam padrão de capas, blocos Premium Liquid e handoff entre Cursor/Codex.
+
 ### Fix - PageSpeed mobile
 - Fontes Google e Material Symbols deixaram de bloquear a renderizacao inicial e passam a carregar em idle via `font-loader.js`.
 - `local-panel.js` agora e carregado sob demanda apenas em paginas com salvar/comparar simulacoes.
@@ -33,12 +39,12 @@
 - Novo `BlogConversionPathCatalog` centraliza rotas de conversao por calculadora sem misturar regra de negocio.
 - CSS responsivo e testes `Sprint82BlogConversionTests` validam links internos em todos os artigos relacionados.
 
-### Sprint 70 - Editorial lote 4 (set/2026)
+### Sprint 70 - Editorial lote 4 (jun/2026, publicação escalonada)
 - Artigos longos (~5 min): `experiencia-clt-direitos-e-rescisao`, `home-office-clt-descontos`.
 - Cross-links nos hubs `/desligamento` e `/negociar-salario` e capas WebP em `wwwroot/images/blog`.
 - `BlogEditorialCatalog.Sprint70Lote4EditorialSlugs` e testes `Sprint70Lote4BlogTests`.
 
-### Sprint 70 - Editorial lote 3 (ago/2026)
+### Sprint 70 - Editorial lote 3 (jun/2026, publicação escalonada)
 - Artigos longos (~5 min): `dissidio-salarial-2026-como-avaliar`, `vale-refeicao-desconto-holerite`.
 - Cross-links no hub `/negociar-salario` e capas WebP em `wwwroot/images/blog`.
 - `BlogEditorialCatalog.Sprint70Lote3EditorialSlugs` e testes `Sprint70Lote3BlogTests`.

@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | **Sprint 70 lote 5** (definir pauta editorial) · Sprint 51 (AdSense) quando aprovar |
+| **Próxima sprint** | Sprint 51 (AdSense) quando aprovar · Sprint 70 lote 6 se precisar manter editorial |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 83 · Sprint 82 · Sprint 70 lote 4 · Sprint 70 lote 3 |
+| **Concluída recente** | Sprint 70 lote 5 · Sprint 83 · Sprint 82 · Sprint 70 lote 4 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,7 +26,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 70 (lote 5) | SEO/Content | Definir pauta e manter 2 artigos/mês |
+| **1 — agora** | 51 ou 70 (lote 6) | Monetization / SEO | AdSense quando aprovar; editorial contínuo se necessário |
 | **Contínuo** | 70 (lote 5+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
@@ -38,7 +38,9 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 - Não reverta mudanças do usuário sem pedido explícito.
 - Ao corrigir calculadoras compartilhadas, revise `src/WebApp/Pages/Calculadoras/Details.cshtml` antes de páginas isoladas.
 - Se alterar layout dark, revise `src/WebApp/wwwroot/css/site.css` e preserve o padrão Premium Liquid.
+- Novos blocos/cards/CTAs devem reaproveitar padrões existentes; não criar estilo isolado sem necessidade.
 - **Nicho:** não adicionar calculadoras ou artigos fora do funil salário/trabalho — ver regra de corte em `NICHO_REFERENCIA_PLAN.md`.
+- Artigos Sprint 70+: capa WebP obrigatória em `wwwroot/images/blog/{slug}.webp`, brief em `scripts/generate-blog-images.py` e teste de lote.
 - PDF: sem anúncios; usar `CalculatorResultPdfGenerator` + `CalculatorPdfInputSummaryBuilder`.
 - Conferência de holerite: lógica em `PayslipValidationService`; UI em `/conferir-holerite`.
 - Ao **iniciar** uma sprint: marque no `docs/sprint-plan.md` se necessário.
@@ -58,7 +60,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–83 concluídas** + Sprint 70 lote 4 (hubs, editorial, seguro-desemprego, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
+- Trilhas **47–83 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
 - **Trilha ativa:** editorial contínuo (Sprint 70 em lotes mensais) + Sprint 51 quando AdSense aprovar.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.

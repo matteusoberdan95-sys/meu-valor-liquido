@@ -14,6 +14,8 @@ Resumo para agentes:
 - **AdSense** — sem anúncios em PDF, e-mail ou widget; ver `docs/ADSENSE_COMPLIANCE.md`.
 - **Deploy VPS** — o diretório padrão de produção é `/var/www/meu-valor-liquido`.
 - **UI compartilhada das calculadoras CLT** — priorize `src/WebApp/Pages/Calculadoras/Details.cshtml` antes de editar slugs individuais.
+- **Premium Liquid** — blocos/cards/CTAs devem seguir partials e tokens existentes; evite estilo isolado.
+- **Blog** — todo artigo novo precisa de capa WebP, brief visual no gerador de imagens e teste de lote.
 
 ## Handoff rápido
 
@@ -31,10 +33,10 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 
 | Prioridade | Sprints | O quê |
 |------------|---------|-------|
-| **Alta — agora** | **70 lote 3** | 2 artigos ago/2026 — ver `BLOG_EDITORIAL_PLAN.md` |
+| **Alta — agora** | **51 ou 70 lote 6** | AdSense quando aprovar; senão manter 2 artigos/mês |
 | **Contínuo** | **70** | Editorial 2 artigos/mês |
 | **Paralelo** | **51** | AdSense (quando Google aprovar) |
-| Concluídas | 47–78 | Hubs, trilha 69–78, editorial lote 1–2 |
+| Concluídas | 47–83 + 70 lote 5 | Hubs, trilha 69–78, editorial lote 1–5, autoridade editorial AdSense |
 
 **Onde começar:** ver `docs/sprint-plan.md` § *Trilha diferenciação (Sprints 69–78)*. Ordem sugerida **72 → 73 → 74**.
 

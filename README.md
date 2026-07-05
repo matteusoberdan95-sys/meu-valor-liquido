@@ -22,8 +22,10 @@ Para alternar o trabalho entre os dois agentes sem perder contexto:
 Estado operacional atual:
 
 - Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
-- **Próxima sprint:** 67 (calculadora de alto ROI) — ver `docs/NICHO_REFERENCIA_PLAN.md` § Passo 3.
-- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–59; fidelidade v2 (60–64); hubs (65); conteúdo (66).
+- **Próxima sprint:** Sprint 51 quando o Google aprovar o AdSense; caso contrário, seguir Sprint 70 lote 6 (editorial contínuo).
+- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–83; fidelidade v2 60–64; hubs 65; editorial contínuo até Sprint 70 lote 5.
+- AdSense: verificação/`ads.txt` prontos; anúncios reais continuam desligados por configuração até aprovação.
+- Editorial: blog usa autor Matteus Oberdan, Política Editorial e capas WebP padronizadas.
 ## Clonar o projeto
 
 ```powershell
@@ -62,8 +64,8 @@ dotnet test .\MeuValorLiquido.slnx
 
 Suite validada recentemente:
 
-- `tests/MeuValorLiquido.WebApp.Tests`: 135 testes
-- `tests/MeuValorLiquido.Calculators.Tests`: 117 testes
+- `tests/MeuValorLiquido.WebApp.Tests`: 539 testes
+- Testes focados Sprint 70 lote 5 + blog/imagens/conversão: 89 testes
 
 ## Calculadoras
 
@@ -76,9 +78,22 @@ Suite validada recentemente:
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 
 - **Criar ou alterar calculadora:** [docs/how-to-create-calculator.md](docs/how-to-create-calculator.md)
-- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — **próxima: Sprint 55** (rescisão); trilhas 47–50, 53 e 54 concluídas; AdSense (51) aguardando aprovação
+- **Planejamento de melhorias:** [docs/sprint-plan.md](docs/sprint-plan.md) — Sprint 51 aguardando aprovação AdSense; Sprint 70 continua com lotes editoriais.
 - **Redesign dark Stitch:** [docs/STITCH_DARK_FIDELITY_PLAN.md](docs/STITCH_DARK_FIDELITY_PLAN.md) (Sprints 39–46)
 - **Metodologia e tabelas 2026:** página `/como-calculamos`
+- **Blog e capas:** [docs/BLOG_EDITORIAL_PLAN.md](docs/BLOG_EDITORIAL_PLAN.md). Todo artigo novo precisa de slug no seed, capa `wwwroot/images/blog/{slug}.webp`, brief em `scripts/generate-blog-images.py`, teste `Sprint70LoteNBlogTests` e links para calculadora/metodologia/FAQ.
+
+## Padrão visual e editorial
+
+- Tema visual: dark Premium Liquid. Ao criar blocos, cards, CTAs, banners ou painéis, reaproveite tokens `--valora-*`, radius, bordas e partials existentes.
+- Não crie um bloco com estilo isolado se já houver padrão equivalente em `site.css` ou em partial compartilhada.
+- Blog: capas sempre em WebP 1200×675, geradas pelo script abaixo para manter identidade visual:
+
+```powershell
+python scripts/generate-blog-images.py render --slug exemplo-slug
+```
+
+No Codex Desktop, o Python bundled costuma ficar em `C:\Users\mober\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`. Em outra máquina, use o Python disponível com Pillow instalado.
 
 ## Arquitetura
 

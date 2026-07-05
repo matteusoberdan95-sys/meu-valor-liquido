@@ -74,7 +74,7 @@ public static class ThematicHubCatalog
             ],
             "proposta-salarial",
             ["proposta-salarial", "salario-liquido", "salario-bruto-necessario", "inss", "irrf"],
-            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo", "dissidio-salarial-2026-como-avaliar", "vale-refeicao-desconto-holerite", "home-office-clt-descontos"],
+            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo", "dissidio-salarial-2026-como-avaliar", "vale-refeicao-desconto-holerite", "home-office-clt-descontos", "vale-transporte-home-office-hibrido", "plano-saude-holerite-coparticipacao"],
             ["proposta-salarial-como-negociar", "diferenca-salario-bruto-e-liquido", "quanto-preciso-ganhar-para-receber-x-liquido"]),
 
         new(

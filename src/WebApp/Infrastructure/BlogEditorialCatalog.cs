@@ -53,6 +53,12 @@ public static class BlogEditorialCatalog
         "home-office-clt-descontos"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote5EditorialSlugs =
+    [
+        "vale-transporte-home-office-hibrido",
+        "plano-saude-holerite-coparticipacao"
+    ];
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
@@ -60,5 +66,6 @@ public static class BlogEditorialCatalog
         || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote5EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 }

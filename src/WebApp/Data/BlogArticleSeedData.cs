@@ -825,7 +825,7 @@ public static class BlogArticleSeedData
             "Guia completo sobre férias coletivas no verão e no inverno: aviso, pagamento, abono pecuniário e impacto no holerite.",
             "ferias",
             "Trabalhista",
-            new DateOnly(2026, 7, 15),
+            new DateOnly(2026, 6, 5),
             """
             <p>Entre <strong>dezembro e março</strong>, muitas empresas concedem <strong>férias coletivas</strong> — período em que parte ou todo o quadro para ao mesmo tempo. No <strong>meio do ano</strong>, alguns setores repetem a prática no recesso de julho. Para o trabalhador CLT, isso muda calendário de pagamento, descanso e, em alguns casos, o valor que cai na conta.</p>
             <p>Este guia explica o que a lei prevê, o que costuma aparecer no holerite e como <strong>estimar o valor</strong> antes de assinar o aviso — sem substituir o departamento pessoal ou o sindicato da categoria.</p>
@@ -880,7 +880,7 @@ public static class BlogArticleSeedData
             "Compare verbas, FGTS, seguro-desemprego e multa antes de decidir entre pedir demissão e esperar demissão sem justa causa.",
             "rescisao-clt",
             "Trabalhista",
-            new DateOnly(2026, 7, 22),
+            new DateOnly(2026, 6, 10),
             """
             <p>Sair do emprego é uma decisão emocional e <strong>financeira</strong>. Muita gente debate: <strong>peço demissão agora</strong> ou <strong>espero a empresa me dispensar</strong> sem justa causa? A resposta depende de verbas rescisórias, FGTS, seguro-desemprego, multa e do seu prazo para encontrar outro trabalho — não há regra única para todos os casos.</p>
             <p>Este artigo organiza os cenários para você simular com números antes de conversar com RH, sindicato ou profissional habilitado. É conteúdo <strong>educativo</strong>; contrato, convenção coletiva e acordos internos podem mudar o resultado.</p>
@@ -956,7 +956,7 @@ public static class BlogArticleSeedData
             "Entenda como avaliar dissídio salarial em 2026 pelo valor líquido, considerando INSS, IRRF e descontos do holerite.",
             "proposta-salarial",
             "Trabalhista",
-            new DateOnly(2026, 8, 6),
+            new DateOnly(2026, 6, 15),
             """
             <p>Quando chega a conversa de <strong>dissidio salarial</strong>, muita gente olha apenas para o percentual anunciado: 4%, 5%, 8% de reajuste. O problema e que o salario que melhora o orcamento nao e o bruto do comunicado, e sim o <strong>liquido que cai na conta</strong> depois de INSS, IRRF e descontos do holerite.</p>
             <p>Este guia mostra como transformar o reajuste coletivo em uma comparacao pratica: quanto voce ganha antes, quanto passaria a receber, quais impostos mudam e que perguntas levar ao RH. E uma analise educativa para planejar o bolso, sem substituir sindicato, convencao coletiva ou orientacao trabalhista.</p>
@@ -1000,7 +1000,7 @@ public static class BlogArticleSeedData
             "Entenda como vale-refeição e vale-alimentação aparecem no holerite, quando há coparticipação e como simular o salário líquido.",
             "salario-liquido",
             "Trabalhista",
-            new DateOnly(2026, 8, 20),
+            new DateOnly(2026, 6, 20),
             """
             <p>Vale-refeicao (VR) e vale-alimentacao (VA) parecem simples: a empresa deposita um valor no cartao e o trabalhador usa para comer. Mas, no holerite, esses beneficios podem aparecer com desconto, coparticipacao, integracao parcial em acordos especificos ou mudanca por convencao coletiva.</p>
             <p>Para entender o <strong>salario liquido real</strong>, voce precisa separar o que e dinheiro que cai na conta, o que e beneficio em cartao e o que sai como desconto em folha. Este artigo explica como conferir VR/VA sem confundir com vale-transporte, plano de saude ou outros descontos autorizados.</p>
@@ -1051,7 +1051,7 @@ public static class BlogArticleSeedData
             "Entenda o que acontece no fim do contrato de experiência, quando há rescisão antecipada e quais verbas comparar antes de assinar.",
             "rescisao-clt",
             "Trabalhista",
-            new DateOnly(2026, 9, 5),
+            new DateOnly(2026, 6, 25),
             """
             <p>O <strong>contrato de experiência</strong> é um período inicial em que empresa e trabalhador avaliam se a relação faz sentido. Ele é comum em admissões CLT, mas ainda gera muita dúvida: tem FGTS? recebe férias proporcionais? pode acabar antes do prazo? muda se a empresa dispensa ou se o empregado pede para sair?</p>
             <p>Este guia organiza os cenários mais comuns para você entender o que conferir no holerite final e no TRCT. É conteúdo educativo: contrato, convenção coletiva e detalhes do caso concreto podem alterar valores e prazos.</p>
@@ -1092,7 +1092,7 @@ public static class BlogArticleSeedData
             "Veja como trabalho remoto pode afetar vale-transporte, VR/VA, ajuda de custo, reembolso e conferência do salário líquido.",
             "salario-liquido",
             "Trabalhista",
-            new DateOnly(2026, 9, 19),
+            new DateOnly(2026, 6, 30),
             """
             <p>O <strong>home office CLT</strong> virou parte da rotina de muitos trabalhadores, mas o holerite nem sempre fica claro. Vale-transporte pode sumir, VR/VA pode mudar, ajuda de custo pode aparecer como reembolso e alguns descontos ficam diferentes quando a jornada alterna entre casa e escritório.</p>
             <p>Este artigo mostra como conferir o salário líquido quando você trabalha remoto, híbrido ou mudou recentemente de regime. O foco é prático: entender quais linhas do holerite merecem atenção e como simular o líquido sem misturar benefício, reembolso e salário.</p>
@@ -1136,6 +1136,114 @@ public static class BlogArticleSeedData
             <li>Como registrar dias presenciais para evitar desconto incorreto?</li>
             </ul>
             <p>Depois da primeira folha no novo regime, salve o holerite e compare com a simulação. Pequenas diferenças podem ser normais; diferenças recorrentes merecem pergunta objetiva ao RH com as rubricas em mãos.</p>
+            """)
+        ,
+        Article(
+            "vale-transporte-home-office-hibrido",
+            "Vale-transporte no home office híbrido: como calcular dias presenciais",
+            "Entenda quando o vale-transporte pode ser proporcional no trabalho híbrido e como conferir o desconto no holerite.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 7, 5),
+            """
+            <p>O trabalho híbrido criou uma dúvida muito comum no holerite: se você vai ao escritório só alguns dias por semana, o <strong>vale-transporte</strong> deve ser cheio, proporcional ou suspenso? A resposta depende da escala presencial, da política da empresa e da informação que você passa ao RH. O ponto central é simples: VT existe para deslocamento casa-trabalho. Quando o deslocamento muda, o benefício e o desconto também podem mudar.</p>
+            <p>Para quem olha apenas o salário líquido, a mudança pode confundir. Em um mês presencial, o holerite pode descontar até 6% do salário bruto referente ao vale-transporte. Em um mês híbrido, o desconto pode cair, sumir ou continuar igual se a empresa mantém crédito maior por segurança operacional. Este guia mostra como pensar no cálculo sem misturar VT com VR, ajuda de custo ou reembolso.</p>
+
+            <h2>Como o vale-transporte entra no salário líquido</h2>
+            <p>O vale-transporte não é aumento de salário. Ele é um benefício destinado ao deslocamento do trabalhador. No holerite, normalmente aparecem duas informações: o valor que a empresa concede em crédito de transporte e a parte descontada do empregado. O desconto do empregado é limitado pela regra usual de até 6% do salário bruto, mas a empresa pode arcar com o custo que excede esse limite.</p>
+            <p>Exemplo educativo: salário bruto de R$ 4.000 e gasto mensal de transporte de R$ 320. O desconto máximo do empregado, pela regra de 6%, seria R$ 240. Se o trabalhador passa a ir ao escritório apenas metade dos dias e o custo estimado cai para R$ 160, o desconto esperado tende a cair também, porque o benefício necessário ficou menor do que o limite de 6%. Na prática, o RH precisa saber quantos dias presenciais serão considerados.</p>
+
+            <h2>Híbrido fixo, híbrido flexível e meses irregulares</h2>
+            <p>Nem todo híbrido é igual. Há empresas com escala fixa, por exemplo terça e quinta no escritório. Há empresas com escala flexível, em que o trabalhador combina dias conforme reuniões, sprint presencial ou necessidade do time. Também existem meses irregulares por férias, feriados, treinamento, viagem ou mudança de endereço.</p>
+            <p>No híbrido fixo, o cálculo costuma ser mais previsível: dias presenciais por semana multiplicados pelas passagens de ida e volta. No flexível, a empresa pode pedir previsão mensal ou ajustar no mês seguinte. É aí que surgem divergências: se você informou quatro dias presenciais e usou dois, pode sobrar crédito; se informou dois e precisou ir cinco, pode faltar VT. O ideal é ter registro claro da política para evitar desconto ou crédito incoerente.</p>
+
+            <h2>Quando o desconto pode continuar igual</h2>
+            <p>Alguns trabalhadores estranham quando o desconto de VT não muda mesmo indo menos ao escritório. Isso pode acontecer se o custo real de transporte ainda supera 6% do bruto. Imagine salário de R$ 2.000: 6% equivale a R$ 120. Se o trabalhador híbrido ainda usa R$ 180 de transporte no mês, o desconto pode permanecer em R$ 120, porque continua abaixo do custo total concedido pela empresa. Nesse caso, o número de dias caiu, mas ainda não o bastante para reduzir o desconto limitado.</p>
+            <p>Outra possibilidade é atraso de folha. O RH pode processar a escala do mês anterior ou usar um calendário padrão. Se a mudança para home office começou depois do fechamento da folha, o ajuste pode aparecer só no próximo holerite. Por isso, sempre compare pelo período de competência, não só pela data em que o dinheiro caiu na conta.</p>
+
+            <h2>Como simular no Meu Valor Líquido</h2>
+            <ol>
+            <li>Levante seu salário bruto e os demais descontos fixos do holerite.</li>
+            <li>Calcule quantos dias presenciais serão considerados no mês.</li>
+            <li>Multiplique passagem de ida e volta pelo número de dias presenciais.</li>
+            <li>Compare esse custo com 6% do salário bruto.</li>
+            <li>Na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>, informe o desconto efetivo de VT esperado, não o crédito total do cartão.</li>
+            </ol>
+            <p>Se o holerite oficial vier diferente, use a página <a href="/conferir-holerite">conferir holerite</a> para validar INSS, IRRF e líquido. A diferença pode estar no VT, mas também pode vir de VR/VA, plano de saúde, consignado ou outro desconto lançado no mesmo mês.</p>
+
+            <h2>VT, VR/VA e ajuda de custo são coisas diferentes</h2>
+            <p>No home office, empresas costumam mexer em vários benefícios ao mesmo tempo. Vale-transporte pode cair; vale-refeição pode ser mantido; vale-alimentação pode substituir refeição; ajuda de custo de internet pode entrar como reembolso. Para o orçamento, tudo afeta sua vida. Para o holerite, cada rubrica tem lógica própria.</p>
+            <p>Não some ajuda de custo ao salário bruto sem saber a natureza do pagamento. Não trate VR/VA como dinheiro livre na conta. E não use a regra de 6% do VT para alimentação, plano de saúde ou coparticipação. Se o objetivo é saber o que sobra no banco, informe cada desconto no campo correto da calculadora e mantenha benefícios de cartão separados do líquido bancário.</p>
+
+            <h2>Perguntas objetivas para o RH</h2>
+            <ul>
+            <li>A escala híbrida é fixa ou variável por mês?</li>
+            <li>O VT será calculado por dias presenciais previstos ou por dias efetivamente usados?</li>
+            <li>Quando ocorre o fechamento da folha para ajustar mudanças de escala?</li>
+            <li>Se faltar crédito em semana presencial extra, como pedir complemento?</li>
+            <li>Se sobrar crédito por home office, haverá desconto, compensação ou nada muda?</li>
+            </ul>
+            <p>Guarde comunicados internos, escala do mês e holerite. Isso ajuda a conversar com RH sem depender de memória. Leia também <a href="/blog/home-office-clt-descontos">home office CLT e descontos</a>, <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a> e a <a href="/duvidas/diferenca-salario-bruto-e-liquido">FAQ sobre bruto e líquido</a>.</p>
+
+            <h2>Como transformar isso em decisão financeira</h2>
+            <p>Se o home office reduz seu desconto de VT, o líquido bancário pode subir. Mas isso não significa que o custo total caiu na mesma proporção. Você pode gastar mais com energia, internet, cadeira, alimentação em casa ou coworking. Por outro lado, pode economizar tempo de deslocamento e almoço fora. O melhor comparativo é mensal: líquido no banco, benefícios em cartão e despesas reais do novo modelo.</p>
+            <p>Para negociar uma proposta híbrida, peça o pacote completo por escrito: salário bruto, dias presenciais esperados, VT, VR/VA, ajuda de custo e política de reembolso. Depois simule o salário líquido com os descontos prováveis. Assim você evita aceitar uma proposta que parece melhor no bruto, mas fica pior quando transporte e benefícios entram na conta.</p>
+            """),
+        Article(
+            "plano-saude-holerite-coparticipacao",
+            "Plano de saúde no holerite: desconto, dependentes e coparticipação",
+            "Veja como plano de saúde, dependentes e coparticipação podem alterar o salário líquido e como conferir as rubricas.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 7, 5),
+            """
+            <p>Plano de saúde é um dos benefícios mais valorizados na CLT, mas também é uma das linhas que mais confundem o holerite. Em algumas empresas, o trabalhador não paga mensalidade. Em outras, paga uma parte fixa. Em muitas, paga mensalidade por dependente e ainda recebe <strong>coparticipação</strong> quando usa consulta, exame ou pronto atendimento. Tudo isso pode reduzir o salário líquido do mês.</p>
+            <p>O desafio é que o desconto nem sempre vem com nome claro. Às vezes aparece como “assistência médica”, “convênio”, “copart”, “benefícios” ou “outros descontos”. Se você não separa mensalidade fixa, dependentes e uso eventual, fica difícil entender por que o líquido caiu em um mês específico. Este guia organiza a conferência sem transformar o conteúdo em consultoria individual.</p>
+
+            <h2>Mensalidade fixa versus coparticipação</h2>
+            <p>A mensalidade fixa é o valor recorrente que pode ser descontado todos os meses para manter o plano ativo. Ela pode variar por faixa salarial, tipo de plano, número de dependentes e política da empresa. Já a coparticipação é um valor cobrado quando alguém usa o serviço: consulta, exame, terapia, pronto-socorro ou procedimento coberto com participação do usuário.</p>
+            <p>Na prática, a mensalidade ajuda a prever o líquido; a coparticipação cria variação. Um mês com consultas de dependentes pode ter desconto maior. Um mês sem uso pode voltar ao valor normal. Por isso, se o salário líquido caiu de repente, compare o holerite com o extrato do convênio antes de culpar INSS ou IRRF.</p>
+
+            <h2>Dependentes mudam muito o desconto</h2>
+            <p>Incluir cônjuge, filhos ou outros dependentes pode aumentar o desconto mensal. Algumas empresas subsidiam parte do titular e cobram mais pelos dependentes. Outras cobram por faixa etária ou por tipo de acomodação. Também há casos em que dependente entra sem custo fixo, mas gera coparticipação quando usa o plano.</p>
+            <p>Esse detalhe importa na negociação salarial. Uma proposta com salário bruto maior pode render menos líquido se o plano familiar for caro. Por outro lado, um salário um pouco menor com plano bem subsidiado pode ser melhor para quem teria gasto alto no mercado individual. Ao comparar propostas, trate plano de saúde como parte do pacote, mas separe o valor que sai do holerite do valor que a empresa paga por fora.</p>
+
+            <h2>Como lançar o desconto na calculadora</h2>
+            <ol>
+            <li>Abra o holerite e localize todas as rubricas ligadas a plano de saúde.</li>
+            <li>Some mensalidade do titular, dependentes e coparticipação cobradas no mês.</li>
+            <li>Se houver odontológico separado, decida se vai somar ou lançar como outro desconto.</li>
+            <li>Na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>, informe o total no campo de plano de saúde ou em outros descontos, conforme o formulário disponível.</li>
+            <li>Compare o líquido estimado com o líquido do holerite oficial.</li>
+            </ol>
+            <p>Se a diferença continuar alta, revise também vale-transporte, VR/VA, pensão, consignado, faltas, horas extras e adiantamentos. Use <a href="/conferir-holerite">conferir holerite</a> para separar divergências de INSS, IRRF e líquido.</p>
+
+            <h2>Plano de saúde altera INSS ou IRRF?</h2>
+            <p>Para a simulação do salário líquido, o plano de saúde é tratado como desconto informado pelo usuário. Ele reduz o valor depositado em conta, mas a base de INSS e IRRF depende da natureza da rubrica e das regras aplicáveis. Como o objetivo do Meu Valor Líquido é educativo, a recomendação prática é não presumir que todo desconto privado reduz imposto. Confira o holerite oficial e a política da empresa.</p>
+            <p>Na conversa com RH, pergunte se o valor aparece antes ou depois das bases de contribuição e se há informe anual para imposto de renda. Muitos trabalhadores descobrem só na declaração anual que precisam guardar comprovantes do convênio, especialmente quando há dependentes ou reembolso.</p>
+
+            <h2>Coparticipação atrasada pode parecer erro</h2>
+            <p>É comum a coparticipação aparecer um ou dois meses depois do uso. Você faz uma consulta em maio e vê o desconto em junho ou julho. Isso dá a impressão de desconto inesperado. Antes de abrir chamado, peça o demonstrativo do plano ou acesse o portal do convênio para conferir data, usuário, serviço e valor.</p>
+            <p>Também vale observar limites. Algumas empresas definem teto de coparticipação, outras não. Se uma sequência de exames gerou desconto alto, pergunte se existe parcelamento, limite mensal ou regra específica da categoria. A resposta pode estar em acordo interno, política de benefícios ou contrato do plano.</p>
+
+            <h2>Checklist para conferir a linha do plano</h2>
+            <ul>
+            <li>Qual é o desconto fixo mensal do titular?</li>
+            <li>Quanto custa cada dependente e quando começa a cobrança?</li>
+            <li>Existe coparticipação? Qual percentual ou valor por procedimento?</li>
+            <li>O desconto aparece no mesmo mês do uso ou com atraso?</li>
+            <li>Há teto mensal, parcelamento ou regra para exames caros?</li>
+            <li>Odontológico, seguro de vida e farmácia aparecem separados?</li>
+            </ul>
+            <p>Se o holerite agrupa tudo em uma linha só, peça detalhamento. Rubricas genéricas tornam o orçamento menos previsível e dificultam comparar proposta salarial, dissídio ou mudança de empresa.</p>
+
+            <h2>Como comparar duas propostas CLT</h2>
+            <p>Imagine duas ofertas. A primeira paga R$ 5.500 brutos e cobra R$ 450 de plano familiar. A segunda paga R$ 5.300 brutos e cobra R$ 80 pelo mesmo tipo de cobertura. Olhar apenas o bruto favorece a primeira. Olhar o líquido pode mudar a decisão, principalmente se os descontos de INSS, IRRF, VT e VR/VA também forem diferentes.</p>
+            <p>Use a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> para comparar bruto atual e proposto. Depois refine na calculadora de salário líquido com os descontos do pacote. Leia também <a href="/blog/como-conferir-holerite">como conferir holerite</a>, <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a> e a <a href="/duvidas/desconto-plano-saude-folha">FAQ sobre plano de saúde no salário líquido</a>.</p>
+
+            <h2>Quando vale questionar o RH</h2>
+            <p>Questione quando o desconto não bate com a política, quando dependente já excluído continua aparecendo, quando há coparticipação sem demonstrativo ou quando o valor muda sem comunicação. Leve números: mês, rubrica, valor descontado, usuário do plano e procedimento. Uma pergunta objetiva aumenta a chance de resposta objetiva.</p>
+            <p>O objetivo não é brigar com o benefício, e sim entender quanto ele custa no seu líquido. Benefício bom é aquele que protege sua família e ainda cabe no orçamento. Sem clareza de holerite, o trabalhador pode achar que ganhou aumento e descobrir depois que parte do ganho foi absorvida por descontos de saúde.</p>
             """)
     ];
 
@@ -1277,6 +1385,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Antes de assinar o TRCT da experiencia, confira se o motivo esta como fim de contrato, rescisao antecipada pela empresa ou pedido do empregado; essa linha muda o pacote de verbas. Guarde tambem contrato, prorrogacao, aviso de encerramento e comprovantes de pagamento. Se o valor liquido parecer baixo, compare primeiro datas, dias trabalhados, descontos, saldo de FGTS e comprovante bancario antes de discutir percentuais com o RH.</p>",
             "home-office-clt-descontos" =>
                 "<h2 id=\"dica-pratica\">Dica pratica</h2><p>Compare um holerite presencial e um remoto lado a lado: se o bruto e igual, a diferenca deve estar em VT, VR/VA, ajuda de custo ou reembolso. Para separar melhor bruto, liquido e beneficios, veja tambem a <a href=\"/duvidas/diferenca-salario-bruto-e-liquido\">FAQ sobre salario bruto e liquido</a>.</p>",
+            "vale-transporte-home-office-hibrido" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de questionar o VT, calcule dias presenciais × custo de ida e volta e compare com 6% do bruto. Leve essa conta pronta ao RH.</p>",
+            "plano-saude-holerite-coparticipacao" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Separe mensalidade fixa, dependentes e coparticipação em uma planilha simples. Assim você identifica se a queda do líquido veio de uso do plano ou de outro desconto.</p>",
             _ => string.Empty
         };
 

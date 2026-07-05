@@ -54,4 +54,15 @@ public class BlogContentTests : IClassFixture<WebApplicationFactory<Program>>
         xml.Should().Contain("/blog/como-conferir-holerite");
         xml.Should().Contain("/blog/planejamento-financeiro-com-salario");
     }
+
+    [Fact]
+    public void Blog_Seed_Should_Not_Publish_Future_Dated_Articles()
+    {
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        var futurePosts = BlogArticleSeedData.GetAll()
+            .Where(post => post.PublishedAt > today)
+            .Select(post => $"{post.Slug} ({post.PublishedAt:yyyy-MM-dd})");
+
+        futurePosts.Should().BeEmpty("artigos indexáveis não devem exibir data de publicação futura");
+    }
 }
