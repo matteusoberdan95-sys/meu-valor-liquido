@@ -100,6 +100,19 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
+    public async Task Home_Should_Defer_Fonts_And_LocalPanel_From_Initial_Html()
+    {
+        var html = await client.GetStringAsync("/");
+        var fontLoader = await client.GetStringAsync("/js/font-loader.js");
+
+        html.Should().Contain("/js/font-loader");
+        html.Should().NotContain("fonts.googleapis.com/css2");
+        html.Should().NotContain("/js/local-panel");
+        fontLoader.Should().Contain("fonts.googleapis.com/css2");
+        fontLoader.Should().Contain("Material+Symbols+Outlined");
+    }
+
+    [Fact]
     public async Task Home_Should_Render_Adsense_Verification_Script_When_Configured()
     {
         var configuredClient = factory.WithWebHostBuilder(builder =>

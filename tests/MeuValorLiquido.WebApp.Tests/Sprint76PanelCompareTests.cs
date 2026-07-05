@@ -15,7 +15,12 @@ public sealed class Sprint76PanelCompareTests : IClassFixture<WebApplicationFact
         html.Should().Contain("data-local-panel-compare");
         html.Should().Contain("data-local-panel-compare-content");
         html.Should().Contain("Comparar cen");
-        html.Should().Contain("/js/local-panel");
+        html.Should().Contain("data-local-panel-page");
+
+        var siteScript = await client.GetStringAsync("/js/site.js");
+
+        siteScript.Should().Contain("/js/local-panel.js");
+        siteScript.Should().Contain("[data-local-panel-save], [data-local-panel-page], [data-local-panel-count]");
     }
 
     [Fact]

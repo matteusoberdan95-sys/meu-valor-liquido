@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const loadScriptOnce = (id, src) => {
+    if (document.getElementById(id)) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = id;
+    script.src = src;
+    script.defer = true;
+    document.body.appendChild(script);
+  };
+
+  if (
+    document.querySelector(
+      "[data-local-panel-save], [data-local-panel-page], [data-local-panel-count]",
+    )
+  ) {
+    loadScriptOnce("mvl-local-panel-script", "/js/local-panel.js");
+  }
+
   const toggle = document.querySelector("[data-nav-toggle]");
   const mobileNav = document.querySelector("[data-nav-mobile]");
 

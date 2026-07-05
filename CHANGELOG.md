@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fix - PageSpeed mobile
+- Fontes Google e Material Symbols deixaram de bloquear a renderizacao inicial e passam a carregar em idle via `font-loader.js`.
+- `local-panel.js` agora e carregado sob demanda apenas em paginas com salvar/comparar simulacoes.
+
 ### Fix - Ads.txt AdSense
 - Adicionado `/ads.txt` publico com o publisher Google AdSense para resolver o status "ads.txt nao encontrado".
 
