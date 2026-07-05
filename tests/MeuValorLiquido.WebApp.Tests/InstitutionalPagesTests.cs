@@ -112,11 +112,15 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         html.Should().Contain("valora-stitch-home");
         html.Should().NotContain("fonts.googleapis.com/css2");
         html.Should().NotContain("/js/local-panel");
+        html.Should().Contain("rel=\"stylesheet\" href=\"/css/site");
+        html.Should().Contain("media=\"(min-width: 992px)\"");
         html.Should().Contain("rel=\"preload\" href=\"/css/site");
+        html.Should().Contain("media=\"(max-width: 991.98px)\"");
         html.Should().Contain("<noscript");
         fontLoader.Should().Contain("fonts.googleapis.com/css2");
         fontLoader.Should().Contain("Material+Symbols+Outlined");
         cssLoader.Should().Contain("link[data-deferred-stylesheet]");
+        cssLoader.Should().Contain("window.matchMedia(preload.media).matches");
         cssLoader.Should().Contain("stylesheet.rel = \"stylesheet\"");
     }
 

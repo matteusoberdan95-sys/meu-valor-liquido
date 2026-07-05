@@ -47,8 +47,10 @@
     @if (deferMainCss)
     {
         <partial name="Shared/_HomeCriticalCss" />
-        <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" data-deferred-stylesheet />
-        <link rel="preload" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" as="style" data-deferred-stylesheet />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" media="(min-width: 992px)" />
+        <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" media="(min-width: 992px)" />
+        <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" media="(max-width: 991.98px)" data-deferred-stylesheet />
+        <link rel="preload" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" as="style" media="(max-width: 991.98px)" data-deferred-stylesheet />
         <noscript>
             <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
             <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
