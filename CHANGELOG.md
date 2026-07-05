@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fix - Ads.txt AdSense
+- Adicionado `/ads.txt` publico com o publisher Google AdSense para resolver o status "ads.txt nao encontrado".
+
 ### Fix - Verificacao AdSense
 - Adicionado modo `Ads:VerificationEnabled` para renderizar o script de verificacao do AdSense no `<head>` sem ativar slots de anuncios.
 - `docker-compose.prod.yml` agora repassa `ADS_VERIFICATION_ENABLED` e `ADS_PUBLISHER_ID` para a WebApp.

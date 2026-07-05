@@ -37,6 +37,14 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
+    public async Task AdsTxt_Should_Expose_Google_Publisher_Record()
+    {
+        var adsTxt = await client.GetStringAsync("/ads.txt");
+
+        adsTxt.Trim().Should().Be("google.com, pub-4150358596824425, DIRECT, f08c47fec0942fa0");
+    }
+
+    [Fact]
     public async Task Home_Should_Include_Cookie_Consent_Banner()
     {
         var html = await client.GetStringAsync("/");
