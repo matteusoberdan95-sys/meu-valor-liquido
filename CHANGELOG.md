@@ -6,6 +6,7 @@
 - Fontes Google e Material Symbols deixaram de bloquear a renderizacao inicial e passam a carregar em idle via `font-loader.js`.
 - `local-panel.js` agora e carregado sob demanda apenas em paginas com salvar/comparar simulacoes.
 - Imagem decorativa da hero passa a ter preload somente no desktop e deixa de competir com o carregamento inicial mobile.
+- Home ganhou CSS critico inline e carregamento adiado do CSS completo para reduzir bloqueio de renderizacao no mobile.
 
 ### Fix - Ads.txt AdSense
 - Adicionado `/ads.txt` publico com o publisher Google AdSense para resolver o status "ads.txt nao encontrado".

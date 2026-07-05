@@ -7,6 +7,7 @@
     ViewData["Description"] = "Entenda quanto você realmente recebe, quanto desconta e quanto sobra com calculadoras simples para brasileiros.";
     ViewData["CanonicalPath"] = "/";
     ViewData["BottomNavTab"] = "home";
+    ViewData["DeferMainCss"] = true;
     var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br";
     var featuredSlugs = new[] { "salario-liquido", "pj-vs-clt", "simulador-mei", "ferias" };
     var featured = featuredSlugs

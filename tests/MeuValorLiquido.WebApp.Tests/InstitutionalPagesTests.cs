@@ -104,12 +104,20 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     {
         var html = await client.GetStringAsync("/");
         var fontLoader = await client.GetStringAsync("/js/font-loader.js");
+        var cssLoader = await client.GetStringAsync("/js/css-loader.js");
 
         html.Should().Contain("/js/font-loader");
+        html.Should().Contain("/js/css-loader");
+        html.Should().Contain("data-deferred-stylesheet");
+        html.Should().Contain("valora-stitch-home");
         html.Should().NotContain("fonts.googleapis.com/css2");
         html.Should().NotContain("/js/local-panel");
+        html.Should().Contain("rel=\"preload\" href=\"/css/site");
+        html.Should().Contain("<noscript");
         fontLoader.Should().Contain("fonts.googleapis.com/css2");
         fontLoader.Should().Contain("Material+Symbols+Outlined");
+        cssLoader.Should().Contain("link[data-deferred-stylesheet]");
+        cssLoader.Should().Contain("stylesheet.rel = \"stylesheet\"");
     }
 
     [Fact]

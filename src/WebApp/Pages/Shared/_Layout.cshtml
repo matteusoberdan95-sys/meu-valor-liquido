@@ -6,6 +6,7 @@
         path == "/" ? currentPath == "/" : currentPath.StartsWith(path, StringComparison.OrdinalIgnoreCase);
     var hideBottomNav = ViewData["HideBottomNav"] as bool? == true;
     var hideAssistantLauncher = ViewData["HideAssistantLauncher"] as bool? == true;
+    var deferMainCss = ViewData["DeferMainCss"] as bool? == true;
 }
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -41,11 +42,24 @@
     <link rel="icon" href="~/favicon.ico" sizes="any" />
     <link rel="icon" href="~/images/brand/logo-icon.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="~/apple-touch-icon.png" />
-    <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
+    @if (deferMainCss)
+    {
+        <partial name="Shared/_HomeCriticalCss" />
+        <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" data-deferred-stylesheet />
+        <link rel="preload" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" as="style" data-deferred-stylesheet />
+        <noscript>
+            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+            <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
+        </noscript>
+    }
+    else
+    {
+        <link rel="preload" href="~/css/site.css" asp-append-version="true" as="style" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/MeuValorLiquido.WebApp.styles.css" asp-append-version="true" />
+    }
     @await RenderSectionAsync("Head", required: false)
 </head>
 <body class="valora-app@(hideBottomNav ? "" : " valora-has-bottom-nav")">
@@ -171,6 +185,10 @@
     <script src="~/js/product-metrics.js" asp-append-version="true" defer></script>
     <partial name="_AdSenseScript" />
     <script src="~/js/adsense-init.js" asp-append-version="true" defer></script>
+    @if (deferMainCss)
+    {
+        <script src="~/js/css-loader.js" asp-append-version="true" defer></script>
+    }
     <script src="~/js/font-loader.js" asp-append-version="true" defer></script>
     <script src="~/js/site.js" asp-append-version="true" defer></script>
     <script src="~/js/cookie-consent.js" asp-append-version="true" defer></script>
