@@ -733,6 +733,25 @@
 
 ---
 
+### Sprint 84 - Otimizacao CTR GSC - CONCLUIDA
+
+**Objetivo:** transformar o primeiro sinal forte do Google Search Console em ganho de CTR sem criar pagina duplicada nem mexer pesado durante a revisao do AdSense.
+
+| Agent | Entregas |
+|-------|----------|
+| SEO/Content | Titulo, resumo e abertura do artigo de vale-transporte hibrido alinhados ao cluster real de consultas |
+| SEO/Content | Titles/metas de vale-refeicao, home office CLT, ferias coletivas, acordo 484-A e salario liquido programatico ajustados para consultas com CTR baixo |
+| WebApp/SEO | Meta description renderizada com termos de intencao: regime hibrido, dias presenciais, desconto em holerite e salario liquido |
+| Interlinking | Artigo de home office aponta para o guia dedicado de vale-transporte proporcional, reforcando a pagina com maior oportunidade |
+| QA/Test | `Sprint84GscCtrTests` cobrindo titulo, descricao e termos principais dos clusters GSC |
+| Documentation | `CHANGELOG.md`, `AGENTS.md` e `docs/BLOG_EDITORIAL_PLAN.md` atualizados com rotina GSC CTR |
+
+**Criterios de aceite:** pagina `/blog/vale-transporte-home-office-hibrido` mantem conteudo natural, melhora aderencia a consultas com muita impressao e CTR baixo, sem trocar slug ou perder links internos.
+
+**Proximo recomendado:** aguardar 7 a 14 dias de Search Console para medir CTR do artigo; se continuar com posicao 1-10 e CTR baixo, testar novo ajuste de title/meta antes de criar nova pagina.
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.

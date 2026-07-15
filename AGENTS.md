@@ -16,7 +16,7 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 |-------|--------|
 | **Próxima sprint** | Sprint 51 (AdSense) quando aprovar · Sprint 70 lote 6 se precisar manter editorial |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 70 lote 5 · Sprint 83 · Sprint 82 · Sprint 70 lote 4 |
+| **Concluída recente** | Sprint 84 · Sprint 70 lote 5 · Sprint 83 · Sprint 82 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -67,6 +67,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: infra pronta, **desligado** (`ADS_ENABLED=false`) até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/politica-editorial` + LinkedIn do autor; manter esses sinais ao alterar blog/institucional.
+- GSC/CTR: Sprint 84 otimizou `/blog/vale-transporte-home-office-hibrido`, artigos secundarios e paginas `/salario-liquido/{valor}`; priorizar paginas com muitas impressoes, posicao media 1-10 e CTR baixo antes de criar pauta nova.
 
 ## Comandos úteis
 

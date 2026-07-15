@@ -150,6 +150,17 @@ Antes de propor um artigo, consulte (quando disponível):
 - `plano-saude-holerite-coparticipacao` -> hub `/negociar-salario`, calc `salario-liquido`
 - Cadência recente normalizada: artigos publicados em 05/06, 10/06, 15/06, 20/06, 25/06, 30/06 e lote 5 em 05/07.
 
+## Rotina GSC CTR
+
+Antes de abrir pauta nova, exporte `Consultas.csv` e `Páginas.csv` do Google Search Console e procure páginas com:
+
+- muitas impressões nos últimos 7 a 28 dias;
+- posição média entre 1 e 10;
+- CTR baixo ou zerado;
+- consulta claramente dentro do nicho salário/trabalho.
+
+Para esses casos, otimize primeiro a página existente: title, meta description, H1/abertura e um subtítulo natural com os termos reais da consulta. Não troque slug, não crie página duplicada e aguarde 7 a 14 dias antes de novo ajuste.
+
 ### Backlog — sazonal / trending
 
 | Gatilho | Artigo |

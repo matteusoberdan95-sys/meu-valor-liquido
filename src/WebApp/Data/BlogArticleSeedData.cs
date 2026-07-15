@@ -783,8 +783,8 @@ public static class BlogArticleSeedData
             """),
         Article(
             "acordo-484a-verbas-e-multa-fgts",
-            "Acordo trabalhista (484-A): verbas e multa de 20% do FGTS",
-            "Entenda o que muda na rescisão por acordo comum: verbas, multa de FGTS e saque do fundo.",
+            "Acordo 484-A CLT: verbas, saque do FGTS e multa de 20%",
+            "Entenda o que muda na rescisão por acordo comum: verbas, multa de 20% do FGTS, saque parcial e seguro-desemprego.",
             "rescisao-clt",
             "Trabalhista",
             new DateOnly(2026, 6, 30),
@@ -821,8 +821,8 @@ public static class BlogArticleSeedData
             """),
         Article(
             "ferias-coletivas-clt-guia-completo",
-            "Férias coletivas na CLT: direitos, calendário e como calcular",
-            "Guia completo sobre férias coletivas no verão e no inverno: aviso, pagamento, abono pecuniário e impacto no holerite.",
+            "Férias coletivas na CLT: como calcular, pagamento e direitos",
+            "Guia completo para calcular férias coletivas: aviso, pagamento, abono pecuniário, férias proporcionais e impacto no holerite.",
             "ferias",
             "Trabalhista",
             new DateOnly(2026, 6, 5),
@@ -996,8 +996,8 @@ public static class BlogArticleSeedData
             """),
         Article(
             "vale-refeicao-desconto-holerite",
-            "VR e VA: o que desconta e o que não desconta no holerite",
-            "Entenda como vale-refeição e vale-alimentação aparecem no holerite, quando há coparticipação e como simular o salário líquido.",
+            "Desconto de VR e VA no holerite: quanto pode sair do salário?",
+            "Entenda quando vale-refeição e vale-alimentação descontam do salário, como separar VR, VA e VT e como simular o salário líquido.",
             "salario-liquido",
             "Trabalhista",
             new DateOnly(2026, 6, 20),
@@ -1088,8 +1088,8 @@ public static class BlogArticleSeedData
             """),
         Article(
             "home-office-clt-descontos",
-            "Home office CLT: o que pode mudar no holerite",
-            "Veja como trabalho remoto pode afetar vale-transporte, VR/VA, ajuda de custo, reembolso e conferência do salário líquido.",
+            "Home office CLT: descontos, vale-transporte e VR no holerite",
+            "Veja como trabalho remoto e regime híbrido afetam vale-transporte, VR/VA, ajuda de custo, reembolso e salário líquido.",
             "salario-liquido",
             "Trabalhista",
             new DateOnly(2026, 6, 30),
@@ -1103,7 +1103,7 @@ public static class BlogArticleSeedData
 
             <h2>Vale-transporte no trabalho remoto</h2>
             <p>O vale-transporte existe para deslocamento entre casa e trabalho. Se você passa a trabalhar 100% remoto, é comum que a empresa suspenda o benefício e também pare de descontar a parte do empregado. Em regime híbrido, o valor pode ser proporcional aos dias presenciais.</p>
-            <p>O erro mais comum é comparar só o valor carregado no cartão. O que importa no holerite é o desconto efetivo. Se antes havia desconto de 6% e agora não há VT, seu líquido pode subir. Se você ainda vai ao escritório duas vezes por semana, confira se a quantidade de dias considerada bate com sua escala real.</p>
+            <p>O erro mais comum é comparar só o valor carregado no cartão. O que importa no holerite é o desconto efetivo. Se antes havia desconto de 6% e agora não há VT, seu líquido pode subir. Se você ainda vai ao escritório duas vezes por semana, confira se a quantidade de dias considerada bate com sua escala real. Para o caso específico de <a href="/blog/vale-transporte-home-office-hibrido">vale-transporte proporcional por dias presenciais no trabalho híbrido</a>, veja o guia dedicado antes de falar com o RH.</p>
 
             <h2>VR, VA e alimentação em casa</h2>
             <p>VR e VA dependem de política interna e convenção coletiva. Algumas empresas mantêm o mesmo valor no remoto; outras ajustam por dias presenciais, trocam VR por VA ou criam ajuda de custo. Como esses itens afetam o orçamento de formas diferentes, não some tudo como salário.</p>
@@ -1140,20 +1140,20 @@ public static class BlogArticleSeedData
         ,
         Article(
             "vale-transporte-home-office-hibrido",
-            "Vale-transporte no home office híbrido: como calcular dias presenciais",
-            "Entenda quando o vale-transporte pode ser proporcional no trabalho híbrido e como conferir o desconto no holerite.",
+            "Vale-transporte no trabalho híbrido: cálculo proporcional por dias presenciais",
+            "Entenda como calcular vale-transporte no regime híbrido, quando o desconto pode ser proporcional aos dias presenciais e como conferir no holerite.",
             "salario-liquido",
             "Trabalhista",
             new DateOnly(2026, 7, 5),
             """
-            <p>O trabalho híbrido criou uma dúvida muito comum no holerite: se você vai ao escritório só alguns dias por semana, o <strong>vale-transporte</strong> deve ser cheio, proporcional ou suspenso? A resposta depende da escala presencial, da política da empresa e da informação que você passa ao RH. O ponto central é simples: VT existe para deslocamento casa-trabalho. Quando o deslocamento muda, o benefício e o desconto também podem mudar.</p>
-            <p>Para quem olha apenas o salário líquido, a mudança pode confundir. Em um mês presencial, o holerite pode descontar até 6% do salário bruto referente ao vale-transporte. Em um mês híbrido, o desconto pode cair, sumir ou continuar igual se a empresa mantém crédito maior por segurança operacional. Este guia mostra como pensar no cálculo sem misturar VT com VR, ajuda de custo ou reembolso.</p>
+            <p>O <strong>vale-transporte no trabalho híbrido</strong> criou uma dúvida muito comum no holerite: se você vai ao escritório só alguns dias por semana, o benefício deve ser cheio, proporcional aos dias presenciais ou suspenso? A resposta depende da escala presencial, da política da empresa e da informação que você passa ao RH. O ponto central é simples: VT existe para deslocamento casa-trabalho. Quando o deslocamento muda no regime híbrido ou no teletrabalho, o benefício e o desconto também podem mudar.</p>
+            <p>Para quem olha apenas o salário líquido, a mudança pode confundir. Em um mês presencial, o holerite pode descontar até 6% do salário bruto referente ao vale-transporte. Em um mês híbrido, o cálculo proporcional por dias presenciais pode reduzir o desconto, zerar a linha ou manter o valor igual se a empresa concede crédito maior por segurança operacional. Este guia mostra como pensar no cálculo sem misturar VT com VR, ajuda de custo ou reembolso.</p>
 
             <h2>Como o vale-transporte entra no salário líquido</h2>
             <p>O vale-transporte não é aumento de salário. Ele é um benefício destinado ao deslocamento do trabalhador. No holerite, normalmente aparecem duas informações: o valor que a empresa concede em crédito de transporte e a parte descontada do empregado. O desconto do empregado é limitado pela regra usual de até 6% do salário bruto, mas a empresa pode arcar com o custo que excede esse limite.</p>
             <p>Exemplo educativo: salário bruto de R$ 4.000 e gasto mensal de transporte de R$ 320. O desconto máximo do empregado, pela regra de 6%, seria R$ 240. Se o trabalhador passa a ir ao escritório apenas metade dos dias e o custo estimado cai para R$ 160, o desconto esperado tende a cair também, porque o benefício necessário ficou menor do que o limite de 6%. Na prática, o RH precisa saber quantos dias presenciais serão considerados.</p>
 
-            <h2>Híbrido fixo, híbrido flexível e meses irregulares</h2>
+            <h2>Regime híbrido fixo, híbrido flexível e meses irregulares</h2>
             <p>Nem todo híbrido é igual. Há empresas com escala fixa, por exemplo terça e quinta no escritório. Há empresas com escala flexível, em que o trabalhador combina dias conforme reuniões, sprint presencial ou necessidade do time. Também existem meses irregulares por férias, feriados, treinamento, viagem ou mudança de endereço.</p>
             <p>No híbrido fixo, o cálculo costuma ser mais previsível: dias presenciais por semana multiplicados pelas passagens de ida e volta. No flexível, a empresa pode pedir previsão mensal ou ajustar no mês seguinte. É aí que surgem divergências: se você informou quatro dias presenciais e usou dois, pode sobrar crédito; se informou dois e precisou ir cinco, pode faltar VT. O ideal é ter registro claro da política para evitar desconto ou crédito incoerente.</p>
 
@@ -1192,7 +1192,7 @@ public static class BlogArticleSeedData
         Article(
             "plano-saude-holerite-coparticipacao",
             "Plano de saúde no holerite: desconto, dependentes e coparticipação",
-            "Veja como plano de saúde, dependentes e coparticipação podem alterar o salário líquido e como conferir as rubricas.",
+            "Veja como o desconto do plano de saúde, dependentes e coparticipação podem alterar o salário líquido e como conferir as rubricas.",
             "salario-liquido",
             "Trabalhista",
             new DateOnly(2026, 7, 5),

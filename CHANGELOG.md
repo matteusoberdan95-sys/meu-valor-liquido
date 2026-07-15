@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 84 - Otimizacao CTR GSC
+- Artigo `/blog/vale-transporte-home-office-hibrido` teve titulo, resumo e abertura alinhados ao cluster real do Search Console: trabalho hibrido, regime hibrido, teletrabalho e vale-transporte proporcional por dias presenciais.
+- Titles/metas de `/blog/vale-refeicao-desconto-holerite`, `/blog/home-office-clt-descontos`, `/blog/ferias-coletivas-clt-guia-completo`, `/blog/acordo-484a-verbas-e-multa-fgts` e paginas programaticas `/salario-liquido/{valor}` foram ajustados para consultas com posicao boa e CTR baixo.
+- Artigo de home office passou a apontar para o guia dedicado de vale-transporte proporcional no trabalho hibrido, reforcando a pagina com maior oportunidade de impressoes.
+- Novo teste `Sprint84GscCtrTests` protege titulo, meta description e termos de intencao para evitar regressao editorial.
+- Processo editorial passa a priorizar paginas com muitas impressoes, posicao media boa e CTR baixo antes de criar novas pautas.
+
 ### Sprint 83 - Autoridade editorial para AdSense
 - Nova página `/politica-editorial` com critérios de fontes oficiais, revisão, limites das estimativas e correções.
 - Perfil editorial de Matteus Oberdan centralizado com foto, bio e LinkedIn, exibido em artigos, `/sobre` e `/como-calculamos`.

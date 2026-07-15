@@ -28,10 +28,10 @@ public static class SalaryBandContentBuilder
 
         var dependentPhrase = ProgrammaticDependentsCatalog.SeoPhrase(dependents);
         var title = dependents == 0
-            ? $"Salário de {grossMoney}: quanto sobra líquido em {BrTaxTables2026.Year}?"
-            : $"Salário de {grossMoney} {dependentPhrase}: quanto sobra líquido em {BrTaxTables2026.Year}?";
+            ? $"Salário líquido de {grossMoney} em {BrTaxTables2026.Year}: quanto sobra do bruto?"
+            : $"Salário líquido de {grossMoney} {dependentPhrase} em {BrTaxTables2026.Year}: quanto sobra?";
         var description =
-            $"Veja quanto sobra de {grossMoney} bruto ({dependentPhrase}) após INSS ({inssMoney}) e IRRF ({irrfMoney}). " +
+            $"Calcule o salário líquido de {grossMoney} bruto ({dependentPhrase}) após INSS ({inssMoney}) e IRRF ({irrfMoney}). " +
             $"Líquido estimado: {netMoney}. Tabelas {BrTaxTables2026.Year}, conteúdo educativo.";
 
         var intro =
