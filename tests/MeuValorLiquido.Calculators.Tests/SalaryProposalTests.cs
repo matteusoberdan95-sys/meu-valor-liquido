@@ -9,7 +9,7 @@ public class SalaryProposalTests
     {
         var catalog = new InMemoryCalculatorCatalogService();
 
-        catalog.GetAll().Should().HaveCount(18);
+        catalog.GetAll().Should().HaveCount(19);
         catalog.GetBySlug("proposta-salarial").Should().NotBeNull();
     }
 

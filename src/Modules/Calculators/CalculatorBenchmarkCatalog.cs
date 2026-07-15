@@ -33,6 +33,8 @@ public static class CalculatorBenchmarkCatalog
         "https://www.in.gov.br/en/web/dou/-/portaria-interministerial-mps/mf-n-13-de-9-de-janeiro-de-2026-680382603";
     private const string CltSourceName = "CLT e criterios internos documentados";
     private const string CltSourceUrl = "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm";
+    private const string TransportVoucherSourceName = "Lei 7.418/1985 e Decreto 95.247/1987 (vale-transporte)";
+    private const string TransportVoucherSourceUrl = "https://www.planalto.gov.br/ccivil_03/leis/l7418.htm";
     private const string SimplesSourceName = "Lei Complementar 123/2006 e criterios internos documentados";
     private const string SimplesSourceUrl = "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm";
     private static readonly DateOnly CalibrationDate = new(2026, 6, 17);
@@ -123,6 +125,10 @@ public static class CalculatorBenchmarkCatalog
         Scenario("seguro-desemprego", "teto-4-parcelas", new CalculatorInput(4000m, Months: 12, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 2518.65m, 10074.60m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
         Scenario("seguro-desemprego", "piso-3-parcelas", new CalculatorInput(2000m, Months: 8, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.DismissalWithoutCause), 1621.00m, 4863.00m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
         Scenario("seguro-desemprego", "pedido-demissao-sem-direito", new CalculatorInput(3000m, Months: 24, MonthsWorkedInYear: 12, TerminationReason: TerminationReason.Resignation), 2166.66m, 0.00m, BrUnemploymentInsuranceTables2026.SourceName, BrUnemploymentInsuranceTables2026.SourceUrl),
+
+        Scenario("vale-transporte-hibrido", "oito-dias-custo-menor-que-seis-por-cento", new CalculatorInput(4000m, SecondaryAmount: 16m, Months: 8, TransportDiscount: 240m), 128.00m, 128.00m, TransportVoucherSourceName, TransportVoucherSourceUrl, Line("Desconto esperado de vale-transporte", 128.00m), Line("Desconto atual no holerite", 240.00m), Line("Possivel desconto acima do esperado", 112.00m)),
+        Scenario("vale-transporte-hibrido", "vinte-e-dois-dias-limitado-a-seis-por-cento", new CalculatorInput(2000m, SecondaryAmount: 12m, Months: 22), 264.00m, 120.00m, TransportVoucherSourceName, TransportVoucherSourceUrl, Line("Desconto esperado de vale-transporte", 120.00m), Line("Parte estimada paga pela empresa", 144.00m)),
+        Scenario("vale-transporte-hibrido", "dez-dias-holerite-bate", new CalculatorInput(5000m, SecondaryAmount: 20m, Months: 10, TransportDiscount: 200m), 200.00m, 200.00m, TransportVoucherSourceName, TransportVoucherSourceUrl, Line("Desconto esperado de vale-transporte", 200.00m)),
 
         Scenario("hora-extra", "hora-25-10h-50", new CalculatorInput(25m, Hours: 10m, Rate: 50m), 394.23m, 394.23m, CltSourceName, CltSourceUrl),
         Scenario("hora-extra", "mensal-3000-10h-50", new CalculatorInput(1m, SecondaryAmount: 3000m, Hours: 10m, Rate: 50m), 215.03m, 215.03m, CltSourceName, CltSourceUrl),

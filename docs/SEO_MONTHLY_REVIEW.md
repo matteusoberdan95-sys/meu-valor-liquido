@@ -47,3 +47,20 @@ URL com CTR baixo: ...
 Ajuste: title / links / artigo
 Próxima revisão: ...
 ```
+
+## Experimento Sprint 85 - VT hibrido
+
+**Origem:** export Search Console 7d/28d de julho de 2026 indicou impressao alta, posicao media boa e CTR baixo para consultas de vale-transporte proporcional no trabalho hibrido.
+
+**URL principal:** `/blog/vale-transporte-home-office-hibrido`
+
+**Mudancas aplicadas:**
+
+- nova calculadora `/calculadoras/vale-transporte-hibrido`;
+- artigo principal aponta para a calculadora especifica, sem trocar slug;
+- FAQ do artigo cobre VT proporcional, home office, limite de 6% e holerite divergente;
+- hub `/negociar-salario`, FAQ de VT e artigo de home office reforcam link interno.
+
+**Como medir:** no Search Console, filtrar a pagina `/blog/vale-transporte-home-office-hibrido` e comparar 7d/28d antes e depois do deploy. Observar CTR, cliques, posicao media e consultas com "vale transporte hibrido", "dias presenciais", "home office" e "desconto vt".
+
+**Regra de decisao:** aguardar 7 a 14 dias antes de novo ajuste. Se posicao continuar 1-10 e CTR seguir abaixo de 1%, testar novo title/meta. Se CTR subir, manter e criar proximo reforco editorial apenas dentro do funil salario/trabalho.

@@ -10,7 +10,7 @@ Checklist operacional — publicar releases (Sprints 65–68: hubs temáticos, c
 
 - [x] `dotnet test MeuValorLiquido.slnx` verde localmente e no CI
 - [x] `GoLiveSmokeTests` — rotas, assets, sitemap, health, headers, hubs temáticos
-- [x] `CalculatorSubmissionSmokeTests` — submissão das 18 calculadoras
+- [x] `CalculatorSubmissionSmokeTests` — submissão das 19 calculadoras
 - [x] CI com job `docker-build` (imagem `infra/docker/WebApp.Dockerfile`)
 - [x] `docs/adsense-checklist.md` revisado
 - [x] Brand assets em `wwwroot/` (inclui hero `/images/blog/{slug}.webp` por artigo)
@@ -72,7 +72,7 @@ Certificado gratuito: [Let's Encrypt](https://letsencrypt.org/) + certbot.
 7. Formulário contato + newsletter (verificar caixa SMTP)
 8. `/metricas-internas` — painel carrega, `noindex`, seletor 7/30 dias, alertas 404/500/falhas
 
-### Calculadoras (18) — formulário e página 200
+### Calculadoras (19) — formulário e página 200
 
 Para cada URL abaixo: status **200**, campo principal visível, botão calcular presente.
 
@@ -92,10 +92,11 @@ Para cada URL abaixo: status **200**, campo principal visível, botão calcular 
 | 12 | `/calculadoras/financiamento` |
 | 13 | `/calculadoras/fgts` |
 | 14 | `/calculadoras/seguro-desemprego` |
-| 15 | `/calculadoras/simulador-mei` |
-| 16 | `/calculadoras/custo-funcionario` |
-| 17 | `/calculadoras/multa-atraso` |
-| 18 | `/calculadoras/conversor-salario` |
+| 15 | `/calculadoras/vale-transporte-hibrido` |
+| 16 | `/calculadoras/simulador-mei` |
+| 17 | `/calculadoras/custo-funcionario` |
+| 18 | `/calculadoras/multa-atraso` |
+| 19 | `/calculadoras/conversor-salario` |
 
 **Automatizado:** `GoLiveSmokeTests.PostDeploy_All_Calculators_Should_Load` (lê slugs de `CalculatorSeedData`) e `dotnet test` no CI.
 

@@ -30,6 +30,7 @@ public static class CalculatorInputDefaults
             Months: 24,
             MonthsWorkedInYear: 12,
             TerminationReason: TerminationReason.DismissalWithoutCause),
+        "vale-transporte-hibrido" => new(4000m, SecondaryAmount: 16m, Months: 8, TransportDiscount: 240m),
         "simulador-mei" => new(5000m, MeiActivity: MeiActivityType.Services),
         "custo-funcionario" => new(4000m, SecondaryAmount: 500m),
         "multa-atraso" => new(1000m, SecondaryAmount: 45m, Rate: 1m, Hours: 2m),

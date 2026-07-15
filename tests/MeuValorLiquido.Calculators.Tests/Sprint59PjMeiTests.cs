@@ -48,7 +48,10 @@ public sealed class Sprint59PjMeiTests
       new CalculatorInput(5000m, MeiAnnualAccumulated: 50000m, MeiActivity: MeiActivityType.Services));
 
     result.IsSuccess.Should().BeTrue();
-    var projected = MeiAnnualRevenueProjector.ProjectAnnualRevenue(5000m, 50000m, new DateOnly(2026, 6, 15));
+    var projected = MeiAnnualRevenueProjector.ProjectAnnualRevenue(
+      5000m,
+      50000m,
+      DateOnly.FromDateTime(DateTime.UtcNow));
     result.Value!.LineItems.Should().Contain(item =>
       item.Label == "Faturamento anual projetado" && item.Amount.Amount == projected);
     result.Value.LineItems.Should().Contain(item => item.Label == "Faturamento já acumulado no ano");

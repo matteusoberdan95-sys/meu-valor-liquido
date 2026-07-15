@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 85 - VT hibrido e medicao GSC
+- Nova calculadora `/calculadoras/vale-transporte-hibrido` estima VT proporcional por dias presenciais, compara com o limite educativo de 6% e aponta divergencia do holerite.
+- Artigo `/blog/vale-transporte-home-office-hibrido` manteve o slug que ja tem impressoes, passou a converter para a calculadora especifica e ganhou FAQ de VT hibrido.
+- Hub `/negociar-salario`, FAQ de desconto maximo de VT e artigo de home office reforcam links internos para o cluster.
+- `docs/SEO_MONTHLY_REVIEW.md` registra o experimento de CTR, janela de 7 a 14 dias e criterio de decisao antes de novo ajuste.
+- Testes `Sprint85HybridTransportVoucherTests` e `Sprint85HybridTransportVoucherWebTests` cobrem formula, pagina, sitemap, hub e conversao editorial.
+
 ### Sprint 84 - Otimizacao CTR GSC
 - Artigo `/blog/vale-transporte-home-office-hibrido` teve titulo, resumo e abertura alinhados ao cluster real do Search Console: trabalho hibrido, regime hibrido, teletrabalho e vale-transporte proporcional por dias presenciais.
 - Titles/metas de `/blog/vale-refeicao-desconto-holerite`, `/blog/home-office-clt-descontos`, `/blog/ferias-coletivas-clt-guia-completo`, `/blog/acordo-484a-verbas-e-multa-fgts` e paginas programaticas `/salario-liquido/{valor}` foram ajustados para consultas com posicao boa e CTR baixo.

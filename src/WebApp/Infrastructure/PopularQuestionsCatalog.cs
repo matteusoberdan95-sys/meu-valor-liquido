@@ -94,9 +94,9 @@ public static class PopularQuestionsCatalog
             "O VT pode ser descontado em até 6% do salário bruto. Veja como isso afeta o líquido.",
             """
             <p>By law, o desconto de vale-transporte na folha é limitado a <strong>6% do salário bruto</strong>, mesmo que o benefício custe mais para a empresa. O excedente é custeado pelo empregador.</p>
-            <p>Informe o valor descontado na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para ver o impacto no bolso.</p>
+            <p>Para conferir o proporcional por dias presenciais, use a <a href="/calculadoras/vale-transporte-hibrido">calculadora de vale-transporte híbrido</a>. Depois informe o desconto na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> para ver o impacto no bolso.</p>
             """,
-            "salario-liquido",
+            "vale-transporte-hibrido",
             [
                 new("Posso recusar o vale-transporte?", "Em regra, o benefício é para deslocamento. Recusas têm regras específicas; consulte RH ou sindicato."),
                 new("VT desconta antes ou depois do INSS?", "O INSS incide sobre o salário bruto; o VT é desconto posterior na folha, reduzindo o líquido.")

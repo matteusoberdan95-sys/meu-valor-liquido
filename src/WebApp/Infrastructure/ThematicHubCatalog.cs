@@ -70,10 +70,11 @@ public static class ThematicHubCatalog
             [
                 new(CalculatorJourneyStepKind.Calculator, "proposta-salarial", "Compare salário atual e proposto pelo ganho real no bolso."),
                 new(CalculatorJourneyStepKind.Calculator, "salario-liquido", "Monte o extrato do bruto proposto com INSS, IRRF e descontos."),
+                new(CalculatorJourneyStepKind.Calculator, "vale-transporte-hibrido", "Confira VT proporcional por dias presenciais no regime híbrido."),
                 new(CalculatorJourneyStepKind.Calculator, "salario-bruto-necessario", "Descubra quanto de bruto precisa para receber o líquido desejado.")
             ],
             "proposta-salarial",
-            ["proposta-salarial", "salario-liquido", "salario-bruto-necessario", "inss", "irrf"],
+            ["proposta-salarial", "salario-liquido", "vale-transporte-hibrido", "salario-bruto-necessario", "inss", "irrf"],
             ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo", "dissidio-salarial-2026-como-avaliar", "vale-refeicao-desconto-holerite", "home-office-clt-descontos", "vale-transporte-home-office-hibrido", "plano-saude-holerite-coparticipacao"],
             ["proposta-salarial-como-negociar", "diferenca-salario-bruto-e-liquido", "quanto-preciso-ganhar-para-receber-x-liquido"]),
 

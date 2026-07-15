@@ -86,6 +86,15 @@ public static class BlogConversionPathCatalog
                 "/duvidas/seguro-desemprego-quando-tem-direito",
                 "Quem tem direito"),
 
+            "vale-transporte-hibrido" => new(
+                "Calcule seu VT híbrido",
+                "Use salário, custo por dia e dias presenciais para estimar o desconto de vale-transporte no holerite.",
+                "Calcular VT híbrido",
+                "/negociar-salario",
+                "Guia de negociação",
+                "/duvidas/vale-transporte-desconto-maximo",
+                "Desconto máximo de VT"),
+
             "ferias" => new(
                 "Planeje férias pelo líquido",
                 "Compare férias integrais, proporcionais e abono para entender o valor que realmente cai na conta.",

@@ -8,6 +8,7 @@ public static class SiteUtilityToolCatalog
     {
         "salario-liquido",
         "proposta-salarial",
+        "vale-transporte-hibrido",
         "inss",
         "irrf"
     };

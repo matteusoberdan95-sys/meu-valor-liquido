@@ -118,6 +118,13 @@ public static class CalculatorSimpleExplanationBuilder
                     "O DAS e o limite anual do MEI dependem da atividade e do volume de receita.",
                     Money.From(input.Amount).ToString())
             ],
+            "vale-transporte-hibrido" =>
+            [
+                (
+                    "Escala presencial do mês",
+                    "Comparamos dias presenciais, custo de deslocamento e limite educativo de 6% do salário base.",
+                    result.GrossAmount.ToString())
+            ],
             _ =>
             [
                 (

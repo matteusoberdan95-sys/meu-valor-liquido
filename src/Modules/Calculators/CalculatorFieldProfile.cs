@@ -246,6 +246,14 @@ public sealed class CalculatorFieldProfileProvider : ICalculatorFieldProfileProv
             ThirteenthMonthsLabel: "Meses no período de carência exigido",
             ShowTerminationReason: true,
             TerminationReasonLabel: "Motivo do desligamento"),
+        ["vale-transporte-hibrido"] = new(
+            AmountLabel: "Salário base",
+            ShowSecondaryAmount: true,
+            SecondaryAmountLabel: "Custo ida e volta por dia",
+            ShowMonths: true,
+            MonthsLabel: "Dias presenciais no mês",
+            ShowTransportDiscount: true,
+            TransportDiscountLabel: "Desconto atual no holerite (opcional)"),
         ["simulador-mei"] = new(
             AmountLabel: "Faturamento mensal estimado",
             ShowMeiActivity: true,

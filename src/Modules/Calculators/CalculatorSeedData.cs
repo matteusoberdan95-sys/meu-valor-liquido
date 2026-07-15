@@ -17,6 +17,7 @@ public static class CalculatorSeedData
         Create("financiamento", "Financiamento", "Financeiro", "Estime parcelas no sistema Price ou SAC e compare o custo total de juros."),
         Create("fgts", "FGTS", "Trabalhista", "Calcule depósitos mensais de 8%, saldo acumulado e multa rescisória."),
         CreateSeguroDesemprego(),
+        CreateHybridTransportVoucher(),
         Create("simulador-mei", "Simulador MEI", "Fiscal", "Estime o DAS MEI, limite de faturamento e alertas de desenquadramento."),
         Create("custo-funcionario", "Custo de funcionário", "Trabalhista", "Estime o custo total da empresa com salário, encargos e provisões."),
         Create("multa-atraso", "Multa de atraso", "Financeiro", "Calcule multa e juros por atraso de pagamento."),
@@ -176,5 +177,32 @@ public static class CalculatorSeedData
             """
             <p>O <strong>seguro-desemprego</strong> é pago pelo governo ao trabalhador CLT dispensado sem justa causa (e em alguns términos de contrato), desde que cumpra carência de tempo de serviço e não tenha renda suficiente para se manter.</p>
             <p>Informe os últimos salários brutos, o tempo de carteira e se já solicitou o benefício antes. A simulação usa a <strong>tabela do MTE de 2026</strong> (vigente desde 11/01/2026) e não substitui a análise oficial na Caixa ou no portal gov.br.</p>
+            """);
+
+    private static CalculatorDefinition CreateHybridTransportVoucher() =>
+        new(
+            "vale-transporte-hibrido",
+            "Vale-transporte híbrido",
+            "Trabalhista",
+            "Calcule o desconto esperado de vale-transporte por dias presenciais no trabalho híbrido.",
+            "Calculadora de vale-transporte híbrido: dias presenciais | Meu Valor Líquido",
+            "Simule vale-transporte proporcional no trabalho híbrido: custo por dia, dias presenciais, limite de 6% e diferença no holerite.",
+            [
+                new FaqItem(
+                    "Como calcular vale-transporte proporcional no trabalho híbrido?",
+                    "Multiplique o custo de ida e volta pelos dias presenciais do mês e compare com 6% do salário base. A estimativa usa o menor desses valores como desconto esperado do empregado."),
+                new FaqItem(
+                    "O desconto de VT sempre é 6%?",
+                    "Não. O desconto costuma ser limitado a 6% do salário base, mas pode ser menor quando o custo de transporte concedido no período é menor que esse limite."),
+                new FaqItem(
+                    "A empresa pode cortar VT no home office?",
+                    "Se não há deslocamento casa-trabalho no período, o vale-transporte pode deixar de ser concedido. Em regime híbrido, o cálculo pode considerar apenas os dias presenciais."),
+                new FaqItem(
+                    "Por que meu holerite pode não bater com a simulação?",
+                    "Fechamento de folha, saldo de cartão, política interna, acordo coletivo e dias informados ao RH podem alterar o desconto. Use a ferramenta como conferência educativa.")
+            ],
+            """
+            <p>Use esta calculadora para estimar o <strong>vale-transporte proporcional por dias presenciais</strong> no regime híbrido. Informe salário base, custo de ida e volta por dia, quantidade de dias no escritório e, se quiser, o desconto que apareceu no holerite.</p>
+            <p>A estimativa compara o custo de transporte do período com o limite educativo de 6% do salário base. Convenções coletivas, política interna e fechamento de folha podem mudar o resultado oficial.</p>
             """);
 }

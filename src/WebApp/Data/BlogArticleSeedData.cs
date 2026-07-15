@@ -1103,7 +1103,7 @@ public static class BlogArticleSeedData
 
             <h2>Vale-transporte no trabalho remoto</h2>
             <p>O vale-transporte existe para deslocamento entre casa e trabalho. Se você passa a trabalhar 100% remoto, é comum que a empresa suspenda o benefício e também pare de descontar a parte do empregado. Em regime híbrido, o valor pode ser proporcional aos dias presenciais.</p>
-            <p>O erro mais comum é comparar só o valor carregado no cartão. O que importa no holerite é o desconto efetivo. Se antes havia desconto de 6% e agora não há VT, seu líquido pode subir. Se você ainda vai ao escritório duas vezes por semana, confira se a quantidade de dias considerada bate com sua escala real. Para o caso específico de <a href="/blog/vale-transporte-home-office-hibrido">vale-transporte proporcional por dias presenciais no trabalho híbrido</a>, veja o guia dedicado antes de falar com o RH.</p>
+            <p>O erro mais comum é comparar só o valor carregado no cartão. O que importa no holerite é o desconto efetivo. Se antes havia desconto de 6% e agora não há VT, seu líquido pode subir. Se você ainda vai ao escritório duas vezes por semana, confira se a quantidade de dias considerada bate com sua escala real. Para o caso específico de <a href="/blog/vale-transporte-home-office-hibrido">vale-transporte proporcional por dias presenciais no trabalho híbrido</a>, veja o guia dedicado ou simule direto na <a href="/calculadoras/vale-transporte-hibrido">calculadora de vale-transporte híbrido</a> antes de falar com o RH.</p>
 
             <h2>VR, VA e alimentação em casa</h2>
             <p>VR e VA dependem de política interna e convenção coletiva. Algumas empresas mantêm o mesmo valor no remoto; outras ajustam por dias presenciais, trocam VR por VA ou criam ajuda de custo. Como esses itens afetam o orçamento de formas diferentes, não some tudo como salário.</p>
@@ -1142,7 +1142,7 @@ public static class BlogArticleSeedData
             "vale-transporte-home-office-hibrido",
             "Vale-transporte no trabalho híbrido: cálculo proporcional por dias presenciais",
             "Entenda como calcular vale-transporte no regime híbrido, quando o desconto pode ser proporcional aos dias presenciais e como conferir no holerite.",
-            "salario-liquido",
+            "vale-transporte-hibrido",
             "Trabalhista",
             new DateOnly(2026, 7, 5),
             """
@@ -1167,8 +1167,9 @@ public static class BlogArticleSeedData
             <li>Calcule quantos dias presenciais serão considerados no mês.</li>
             <li>Multiplique passagem de ida e volta pelo número de dias presenciais.</li>
             <li>Compare esse custo com 6% do salário bruto.</li>
-            <li>Na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>, informe o desconto efetivo de VT esperado, não o crédito total do cartão.</li>
+            <li>Na <a href="/calculadoras/vale-transporte-hibrido">calculadora de vale-transporte híbrido</a>, informe salário base, custo ida e volta por dia, dias presenciais e o desconto atual do holerite.</li>
             </ol>
+            <p>Depois de estimar o VT proporcional, leve esse desconto para a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> se quiser ver o impacto no valor final que cai na conta.</p>
             <p>Se o holerite oficial vier diferente, use a página <a href="/conferir-holerite">conferir holerite</a> para validar INSS, IRRF e líquido. A diferença pode estar no VT, mas também pode vir de VR/VA, plano de saúde, consignado ou outro desconto lançado no mesmo mês.</p>
 
             <h2>VT, VR/VA e ajuda de custo são coisas diferentes</h2>
@@ -1184,6 +1185,18 @@ public static class BlogArticleSeedData
             <li>Se sobrar crédito por home office, haverá desconto, compensação ou nada muda?</li>
             </ul>
             <p>Guarde comunicados internos, escala do mês e holerite. Isso ajuda a conversar com RH sem depender de memória. Leia também <a href="/blog/home-office-clt-descontos">home office CLT e descontos</a>, <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a> e a <a href="/duvidas/diferenca-salario-bruto-e-liquido">FAQ sobre bruto e líquido</a>.</p>
+
+            <h2>Perguntas frequentes sobre VT híbrido</h2>
+            <h3>Vale-transporte no trabalho híbrido pode ser proporcional?</h3>
+            <p>Sim, quando o deslocamento casa-trabalho acontece apenas em alguns dias presenciais, a estimativa pode considerar o custo desses dias. A <a href="/calculadoras/vale-transporte-hibrido">calculadora de VT híbrido</a> ajuda a comparar custo do período, limite de 6% e desconto no holerite.</p>
+            <h3>A empresa pode descontar VT em home office?</h3>
+            <p>Se não há deslocamento no período, normalmente não faz sentido conceder VT para aqueles dias. Se houver regime híbrido, confira se a empresa calcula por dias previstos, dias usados ou ajuste de competência.</p>
+            <h3>Como calcular VT por dias presenciais?</h3>
+            <p>Multiplique o custo de ida e volta pelo número de dias presenciais do mês e compare com 6% do salário base. O desconto educativo esperado é o menor valor entre o custo do período e esse limite.</p>
+            <h3>O desconto de VT sempre é 6%?</h3>
+            <p>Não. Se o custo de transporte do período for menor que 6% do salário, o desconto tende a ser menor. Se o custo for maior, a empresa pode arcar com a diferença acima do limite do empregado.</p>
+            <h3>O que fazer se o holerite veio diferente?</h3>
+            <p>Confira escala, fechamento da folha e saldo de cartão. Depois compare INSS, IRRF e líquido em <a href="/conferir-holerite">conferir holerite</a> para separar erro de imposto de divergência de benefício.</p>
 
             <h2>Como transformar isso em decisão financeira</h2>
             <p>Se o home office reduz seu desconto de VT, o líquido bancário pode subir. Mas isso não significa que o custo total caiu na mesma proporção. Você pode gastar mais com energia, internet, cadeira, alimentação em casa ou coworking. Por outro lado, pode economizar tempo de deslocamento e almoço fora. O melhor comparativo é mensal: líquido no banco, benefícios em cartão e despesas reais do novo modelo.</p>

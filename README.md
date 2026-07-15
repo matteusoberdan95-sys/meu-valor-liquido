@@ -23,7 +23,7 @@ Estado operacional atual:
 
 - Deploy de produção usa `/var/www/meu-valor-liquido` na VPS, não `~/meu-valor-liquido`.
 - **Próxima sprint:** Sprint 51 quando o Google aprovar o AdSense; caso contrário, seguir Sprint 70 lote 6 (editorial contínuo).
-- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–83; fidelidade v2 60–64; hubs 65; editorial contínuo até Sprint 70 lote 5.
+- Trilhas concluídas: Stitch 39–46; pós-auditoria 47–85; fidelidade v2 60–64; hubs 65; editorial contínuo até Sprint 70 lote 5.
 - AdSense: verificação/`ads.txt` prontos; anúncios reais continuam desligados por configuração até aprovação.
 - Editorial: blog usa autor Matteus Oberdan, Política Editorial e capas WebP padronizadas.
 ## Clonar o projeto
@@ -69,11 +69,11 @@ Suite validada recentemente:
 
 ## Calculadoras
 
-17 ferramentas em `/calculadoras` (trabalhistas, fiscais e financeiras). Cada uma usa o motor em `src/Modules/Calculators` com extrato, explicação simples, compartilhamento e PDF.
+19 ferramentas em `/calculadoras` (trabalhistas, fiscais e financeiras). Cada uma usa o motor em `src/Modules/Calculators` com extrato, explicação simples, compartilhamento e PDF.
 
 | Categoria | Slugs |
 |-----------|--------|
-| Trabalhista | `salario-liquido`, `salario-bruto-necessario`, `proposta-salarial`, `ferias`, `decimo-terceiro`, `rescisao-clt`, `hora-extra`, `fgts`, `custo-funcionario`, `conversor-salario` |
+| Trabalhista | `salario-liquido`, `salario-bruto-necessario`, `proposta-salarial`, `ferias`, `decimo-terceiro`, `rescisao-clt`, `hora-extra`, `fgts`, `seguro-desemprego`, `vale-transporte-hibrido`, `custo-funcionario`, `conversor-salario` |
 | Fiscal | `inss`, `irrf`, `simulador-mei` |
 | Financeiro | `pj-vs-clt`, `juros-compostos`, `financiamento`, `multa-atraso` |
 

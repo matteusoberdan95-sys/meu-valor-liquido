@@ -189,6 +189,8 @@ public static class DataSeeder
             "O INSS é calculado de forma progressiva por faixas, respeitando o teto de contribuição vigente.",
         "fgts" =>
             "Informe salário e meses trabalhados para ver depósitos de 8%. Opcionalmente informe saldo atual e tipo de desligamento para estimar multa rescisória.",
+        "vale-transporte-hibrido" =>
+            "Informe salário base, custo de ida e volta por dia, dias presenciais e, se quiser, o desconto atual do holerite. A ferramenta compara o custo do período com o limite educativo de 6% do salário base. Para ver o impacto final no bolso, use também a <a href=\"/calculadoras/salario-liquido\">calculadora de salário líquido</a>.",
         "simulador-mei" =>
             "O DAS MEI é fixo conforme a atividade (comércio, serviços ou ambos). O limite anual é R$ 81.000.",
         "custo-funcionario" =>

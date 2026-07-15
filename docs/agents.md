@@ -36,7 +36,7 @@ Use esta sequência para continuar o trabalho sem perder contexto:
 | **Alta — agora** | **51 ou 70 lote 6** | AdSense quando aprovar; senão manter 2 artigos/mês |
 | **Contínuo** | **70** | Editorial 2 artigos/mês |
 | **Paralelo** | **51** | AdSense (quando Google aprovar) |
-| Concluídas | 47–83 + 70 lote 5 | Hubs, trilha 69–78, editorial lote 1–5, autoridade editorial AdSense |
+| Concluídas | 47–85 + 70 lote 5 | Hubs, trilha 69–78, editorial lote 1–5, autoridade editorial AdSense, VT hibrido |
 
 **Onde começar:** ver `docs/sprint-plan.md` § *Trilha diferenciação (Sprints 69–78)*. Ordem sugerida **72 → 73 → 74**.
 

@@ -12,7 +12,8 @@ public static class CalculatorRelatedLinksCatalog
                 new("irrf", "Entenda a base e as faixas do imposto de renda."),
                 new("salario-bruto-necessario", "Descubra o bruto para um líquido desejado."),
                 new("conversor-salario", "Converta o valor entre mês, dia e hora."),
-                new("fgts", "Estime depósitos e multa do FGTS.")
+                new("fgts", "Estime depósitos e multa do FGTS."),
+                new("vale-transporte-hibrido", "Confira VT proporcional por dias presenciais.")
             ],
             ["salario-bruto-necessario"] =
             [
@@ -88,6 +89,13 @@ public static class CalculatorRelatedLinksCatalog
                 new("fgts", "Multa e saque do FGTS na demissão."),
                 new("salario-liquido", "Compare com o salário mensal habitual."),
                 new("decimo-terceiro", "13º não entra no cálculo do seguro.")
+            ],
+            ["vale-transporte-hibrido"] =
+            [
+                new("salario-liquido", "Veja o impacto do desconto no líquido mensal."),
+                new("proposta-salarial", "Compare proposta considerando dias presenciais."),
+                new("salario-bruto-necessario", "Descubra o bruto para manter uma meta de líquido."),
+                new("irrf", "Confira se a divergência está no imposto ou no benefício.")
             ],
             ["simulador-mei"] =
             [

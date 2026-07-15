@@ -43,6 +43,7 @@ public sealed class CalculationEngine
             "financiamento" => CalculateFinancing(definition, input),
             "fgts" => CalculateFgts(definition, input),
             "seguro-desemprego" => CalculateUnemploymentInsurance(definition, input),
+            "vale-transporte-hibrido" => CalculateHybridTransportVoucher(definition, input),
             "simulador-mei" => CalculateMei(definition, input),
             "custo-funcionario" => CalculateEmployeeCost(definition, input),
             "multa-atraso" => CalculateLatePenalty(definition, input),
@@ -568,6 +569,57 @@ public sealed class CalculationEngine
             simulation.TotalBenefit,
             lines,
             "Seguro-desemprego: tabela MTE 2026 sobre média dos últimos salários. Carência e parcelas conforme tempo de carteira e solicitações anteriores. Solicite na Caixa ou gov.br para valor oficial.");
+    }
+
+    private CalculationResult CalculateHybridTransportVoucher(CalculatorDefinition definition, CalculatorInput input)
+    {
+        var salary = input.Amount;
+        var dailyRoundTripCost = Math.Max(0m, input.SecondaryAmount);
+        var inPersonDays = Math.Clamp(input.Months, 1, 31);
+        var currentDiscount = Math.Max(0m, input.TransportDiscount);
+
+        var transportCostForPeriod = dailyRoundTripCost * inPersonDays;
+        var maxEmployeeDiscount = salary * 0.06m;
+        var expectedDiscount = Math.Min(transportCostForPeriod, maxEmployeeDiscount);
+        var companyShare = Math.Max(0m, transportCostForPeriod - expectedDiscount);
+        var difference = currentDiscount - expectedDiscount;
+
+        var lines = new List<CalculationLineItem>
+        {
+            Information("Salario base informado", salary),
+            CountInformation("Dias presenciais no mes", inPersonDays),
+            Information("Custo ida e volta por dia", dailyRoundTripCost),
+            Information("Custo de VT no periodo", transportCostForPeriod),
+            Information("Limite de desconto do empregado (6%)", maxEmployeeDiscount),
+            Discount("Desconto esperado de vale-transporte", expectedDiscount)
+        };
+
+        if (companyShare > 0m)
+        {
+            lines.Add(Information("Parte estimada paga pela empresa", companyShare));
+        }
+
+        if (currentDiscount > 0m)
+        {
+            lines.Add(Discount("Desconto atual no holerite", currentDiscount));
+            lines.Add(difference switch
+            {
+                > 0m => Discount("Possivel desconto acima do esperado", difference),
+                < 0m => Income("Possivel desconto menor que o esperado", Math.Abs(difference)),
+                _ => Information("Diferenca vs. holerite", 0m)
+            });
+        }
+
+        var explanation = currentDiscount > 0m
+            ? difference switch
+            {
+                > 0m => $"O desconto informado esta {Money.From(difference)} acima da estimativa educativa. Confira se o RH considerou mais dias presenciais, competencia anterior ou regra coletiva.",
+                < 0m => $"O desconto informado esta {Money.From(Math.Abs(difference))} abaixo da estimativa educativa. Pode haver subsidio maior da empresa, ajuste por saldo anterior ou politica interna.",
+                _ => "O desconto informado bate com a estimativa educativa para os dias presenciais e custo de transporte preenchidos."
+            }
+            : $"Para {inPersonDays} dias presenciais, o desconto educativo esperado e {Money.From(expectedDiscount)}, limitado ao menor valor entre o custo de VT do periodo e 6% do salario base.";
+
+        return Build(definition, transportCostForPeriod, expectedDiscount, lines, explanation);
     }
 
     private CalculationResult CalculateMei(CalculatorDefinition definition, CalculatorInput input)

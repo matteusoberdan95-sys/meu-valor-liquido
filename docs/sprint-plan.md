@@ -752,6 +752,25 @@
 
 ---
 
+### Sprint 85 - VT hibrido: calculadora, FAQ e medicao GSC - CONCLUIDA
+
+**Objetivo:** transformar a oportunidade de impressao alta e CTR baixo em utilidade direta, sem trocar o slug do artigo que ja aparece no Google.
+
+| Agent | Entregas |
+|-------|----------|
+| Backend/Calculators | Nova calculadora `vale-transporte-hibrido` com custo por dia, dias presenciais, limite educativo de 6% e comparacao com holerite |
+| WebApp/UX | Campos, tooltips, iconografia, defaults, links relacionados e promocao de conferir holerite |
+| SEO/Content | Artigo `/blog/vale-transporte-home-office-hibrido` aponta para a calculadora especifica e ganhou FAQ de VT hibrido |
+| Interlinking | Hub `/negociar-salario`, FAQ de VT e artigo de home office reforcam o cluster interno |
+| Measurement | `docs/SEO_MONTHLY_REVIEW.md` registra experimento, janela de 7-14 dias e criterio de decisao |
+| QA/Test | Testes de formula, benchmark, render, sitemap, hub e conversao editorial |
+
+**Criterios de aceite:** `/calculadoras/vale-transporte-hibrido` renderiza e calcula; artigo mantem slug e passa a converter para a calculadora propria; sitemap e hub descobrem a nova pagina; proxima revisao GSC ocorre apos 7 a 14 dias.
+
+**Proximo recomendado:** subir na VPS, solicitar/aguardar recrawl natural da pagina e comparar CTR da pagina no Search Console em 7 a 14 dias.
+
+---
+
 ## Trilha pos-auditoria: referencia no nicho e monetizacao (Sprints 47-52)
 
 **Origem:** auditoria manual em producao + comparacao com referencias externas de salario liquido/INSS/IRRF 2026.
@@ -765,7 +784,7 @@
 | **Product Owner** | Sequencia de valor, criterios de aceite e corte de escopo |
 | **Backend/Calculators** | Motor, tabelas, contratos e paridade de formulas |
 | **WebApp/Frontend** | Formularios, radios/selects, tooltips, resultado e mobile |
-| **QA/Test** | Smoke das 17 calculadoras, regressao fiscal e benchmark |
+| **QA/Test** | Smoke de todas as calculadoras, regressao fiscal e benchmark |
 | **SEO/Content** | Metodologia, conteudo de suporte, schema e interlinking |
 | **Monetization/AdSense** | Slots, politicas, CLS e checklist pos-aprovacao |
 | **Security** | CSP, cookies, privacidade e antiforgery |

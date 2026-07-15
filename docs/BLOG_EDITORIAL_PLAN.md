@@ -146,7 +146,7 @@ Antes de propor um artigo, consulte (quando disponível):
 
 ## Sprint 70 - lote 5 publicado (jul/2026)
 
-- `vale-transporte-home-office-hibrido` -> hub `/negociar-salario`, calc `salario-liquido`
+- `vale-transporte-home-office-hibrido` -> hub `/negociar-salario`, calc `vale-transporte-hibrido`
 - `plano-saude-holerite-coparticipacao` -> hub `/negociar-salario`, calc `salario-liquido`
 - Cadência recente normalizada: artigos publicados em 05/06, 10/06, 15/06, 20/06, 25/06, 30/06 e lote 5 em 05/07.
 

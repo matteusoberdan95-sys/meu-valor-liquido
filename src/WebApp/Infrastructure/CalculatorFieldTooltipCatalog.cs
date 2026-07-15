@@ -163,6 +163,17 @@ public static class CalculatorFieldTooltipCatalog
                 [CalculatorFieldKeys.TerminationReason] =
                     "Em geral só há direito na demissão sem justa causa ou término elegível de contrato."
             },
+            ["vale-transporte-hibrido"] = new(StringComparer.OrdinalIgnoreCase)
+            {
+                [CalculatorFieldKeys.Amount] =
+                    "Salário base usado como referência para o limite educativo de 6% do vale-transporte.",
+                [CalculatorFieldKeys.SecondaryAmount] =
+                    "Some ida e volta de um dia presencial. Exemplo: duas passagens de R$ 4,40 = R$ 8,80.",
+                [CalculatorFieldKeys.Months] =
+                    "Quantidade de dias em que haverá deslocamento casa-trabalho no mês analisado.",
+                [CalculatorFieldKeys.TransportDiscount] =
+                    "Opcional. Informe o desconto que apareceu no holerite para comparar com a estimativa."
+            },
             ["simulador-mei"] = new(StringComparer.OrdinalIgnoreCase)
             {
                 [CalculatorFieldKeys.Amount] =
