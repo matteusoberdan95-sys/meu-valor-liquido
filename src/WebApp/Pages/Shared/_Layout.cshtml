@@ -195,7 +195,10 @@
     <partial name="_CookieConsent" />
 
     <script src="~/js/product-metrics.js" asp-append-version="true" defer></script>
-    <script src="~/js/adsense-init.js" asp-append-version="true" defer></script>
+    @if (AdsOptions.Value.IsActive)
+    {
+        <script src="~/js/adsense-init.js" asp-append-version="true" defer></script>
+    }
     @if (deferMainCss)
     {
         <script src="~/js/css-loader.js" asp-append-version="true" defer></script>

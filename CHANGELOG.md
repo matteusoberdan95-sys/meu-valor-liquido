@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 94 - Pré-revisão final do AdSense
+- Checklist go/no-go em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` com status por área e branches pendentes.
+- Testes `Sprint94AdSensePreReviewTests` travam institucional, SEO, ads off, consentimento, editorial prioritário e `ads.txt`.
+- `adsense-init.js` só carrega no layout quando os anúncios estão ativos.
+- Veredito **GO CONDICIONAL**: mergear Sprints 91–93 antes de solicitar/reenviar ao Google.
+
 ### Sprint 90 - Privacidade, cookies e preparação AdSense
 - Banner com Essenciais, Analytics, Personalização e Publicidade; nenhuma categoria opcional vem marcada.
 - Consentimento versionado (`v2`, política `2026-07-17`) com rejeição real, personalização e reabertura.

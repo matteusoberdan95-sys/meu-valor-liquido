@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 91 — validação matemática das calculadoras (após validação da Sprint 90) |
+| **Próxima sprint** | Sprint 51 (AdSense) quando Google aprovar · editorial lote 7 se precisar manter ritmo |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 90 · Sprint 89 · Sprint 88 · Sprint 87 · Sprint 86 |
+| **Concluída recente** | Sprint 94 · Sprint 90 · Sprint 89 · Sprint 88 · Sprint 87 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -60,8 +60,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–90 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
-- **Trilha ativa:** plano de aprovação AdSense (Sprint 91 após validação) + editorial contínuo.
+- Trilhas **47–90 + 94 concluídas** em main; Sprints 91–93 em `feat/adsense-sprint-6/7/8` (merge antes do envio AdSense).
+- **Trilha ativa:** GO CONDICIONAL AdSense — ver `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` + editorial contínuo.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
