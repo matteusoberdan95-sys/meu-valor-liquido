@@ -8,6 +8,7 @@ public static class SeoMetadataHelper
     public const string DefaultOgImagePath = "/images/og-default.webp";
     public const string DefaultRobots = "index,follow";
     public const string NoIndexRobots = "noindex,nofollow";
+    public const string NoIndexFollowRobots = "noindex,follow";
 
     public static string BuildCanonicalUrl(string baseUrl, string canonicalPath)
     {
@@ -174,6 +175,20 @@ public static class SeoMetadataHelper
     [
         new("Início", "/"),
         new("Política Editorial", "/politica-editorial")
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> AuthorBreadcrumbs(string authorName, string profilePath) =>
+    [
+        new("Início", "/"),
+        new("Sobre", "/sobre"),
+        new(authorName, profilePath)
+    ];
+
+    public static IReadOnlyList<BreadcrumbItem> CorrectionsBreadcrumbs() =>
+    [
+        new("Início", "/"),
+        new("Política Editorial", "/politica-editorial"),
+        new("Correções", "/correcoes")
     ];
 
     public static IReadOnlyList<BreadcrumbItem> LegalNoticeBreadcrumbs() =>

@@ -1,0 +1,97 @@
+@page "/autores/matteus-oberdan"
+@model MeuValorLiquido.WebApp.Pages.Autores.MatteusOberdanModel
+@inject IConfiguration Configuration
+@using System.Text.Json
+@{
+    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com";
+    var personSchema = EditorialAuthorCatalog.BuildPersonSchema(baseUrl);
+    personSchema["@context"] = "https://schema.org";
+}
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.AuthorBreadcrumbs(Model.Author.Name, Model.Author.ProfilePath)" />
+    <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(personSchema))</script>
+}
+
+<div class="valora-author-profile">
+    <nav class="valora-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></li>
+            <li><a asp-page="/Sobre">Sobre</a></li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></li>
+            <li class="active" aria-current="page">@Model.Author.Name</li>
+        </ol>
+    </nav>
+
+    <header class="valora-card valora-author-profile-hero">
+        <img src="@Model.Author.ImagePath"
+             alt="Avatar de @Model.Author.Name"
+             width="160"
+             height="160" />
+        <div>
+            <p class="valora-stitch-section-kicker">Responsável editorial</p>
+            <h1 class="valora-h1">@Model.Author.Name</h1>
+            <p class="valora-lead">@Model.Author.Role</p>
+            <p>@Model.Author.Bio</p>
+            <div class="valora-author-profile-actions">
+                <a class="valora-btn valora-btn-primary"
+                   href="@Model.Author.LinkedInUrl"
+                   target="_blank"
+                   rel="me noopener noreferrer">
+                    Ver LinkedIn
+                </a>
+                <a class="valora-btn valora-btn-outline" asp-page="/Contato">Contato editorial</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="valora-author-profile-grid">
+        <article class="valora-card valora-article-body">
+            <h2 class="valora-h2">Atuação no projeto</h2>
+            <p>@Model.Author.Experience</p>
+            <p>
+                As informações deste perfil se limitam à atuação verificável no próprio portal e ao perfil profissional público.
+                O site não atribui título, licença ou certificação que não tenha sido comprovada.
+            </p>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h2 class="valora-h2">Como o conteúdo é revisado</h2>
+            <ul>
+                <li>Consulta prioritária a legislação, portarias e páginas oficiais.</li>
+                <li>Registro de premissas e limitações na metodologia pública.</li>
+                <li>Testes automatizados para cenários de cálculo e regressões.</li>
+                <li>Revisão quando tabelas, regras ou fontes relevantes mudam.</li>
+            </ul>
+            <p>
+                Conheça os critérios completos na <a asp-page="/PoliticaEditorial">Política Editorial</a>
+                e veja as premissas em <a asp-page="/ComoCalculamos">Como calculamos</a>.
+            </p>
+        </article>
+    </div>
+
+    <section class="valora-section" aria-labelledby="author-posts-title">
+        <div class="valora-stitch-section-head">
+            <div>
+                <span class="valora-stitch-section-kicker">@Model.PublishedPosts.Count artigos publicados</span>
+                <h2 id="author-posts-title" class="valora-h2">Conteúdos de @Model.Author.Name</h2>
+            </div>
+            <a class="valora-stitch-link" asp-page="/Blog/Index">Ver todo o blog</a>
+        </div>
+        <div class="valora-stitch-home-blog-feed">
+            @foreach (var post in Model.PublishedPosts)
+            {
+                <partial name="Shared/_HomeStitchBlogCard" model="post" />
+            }
+        </div>
+    </section>
+
+    <footer class="valora-card valora-author-profile-review">
+        <p>
+            Perfil revisado em
+            <time datetime="@Model.Author.LastReviewedAt.ToString("yyyy-MM-dd")">@Model.Author.LastReviewedAt.ToString("dd/MM/yyyy")</time>.
+            Para reportar erro de autoria, fonte ou cálculo, use o <a asp-page="/Contato">canal editorial</a>.
+        </p>
+    </footer>
+</div>

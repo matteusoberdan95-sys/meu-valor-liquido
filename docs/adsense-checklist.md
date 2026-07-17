@@ -12,6 +12,9 @@ Não integrar AdSense real no MVP. Regras de layout: `docs/ADSENSE_COMPLIANCE.md
 - [x] Nenhum slot, placeholder ou altura reservada com `Ads:Enabled=false`
 - [x] Slots reais só são renderizados com publisher e ID configurados
 - [x] Home sem métricas, avaliações ou provas sociais não comprovadas
+- [x] Perfil indexável do responsável editorial com autoria clicável nos artigos
+- [x] Política Editorial documenta fontes, revisão, correções, patrocínio e automação
+- [x] Processo de correções público em `noindex,follow`, sem histórico fictício
 - [x] Layout mobile-first (Valores Públicos)
 - [x] `Ads:Enabled=false` por padrão
 

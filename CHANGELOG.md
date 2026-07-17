@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Sprint 88 - Autoria, autoridade e transparência
+- Novo perfil indexável `/autores/matteus-oberdan` reúne atuação verificável, processo de revisão, LinkedIn, contato e artigos publicados.
+- Assinaturas dos artigos e schema `Person` apontam para o perfil interno; avatar SVG existente substitui a referência anterior a uma imagem ausente.
+- Página Sobre descreve criação, pesquisa, atualização e relato de erros sem atribuir credenciais não comprovadas.
+- Política Editorial passa a documentar fontes, proibição de dados inventados, revisão, patrocínio, automação responsável e frequência de atualização.
+- Nova página `/correcoes` explica o processo e permanece em `noindex,follow`, fora do sitemap XML, até existir histórico real.
+- Sitemap, mapa do site, footer e testes protegem a descoberta e a consistência dos sinais editoriais.
+
 ### Sprint 87 - Conteudo editorial das calculadoras
 - Doze calculadoras prioritárias ganharam conteúdo específico sobre funcionamento, entradas, limitações, interpretação e erros comuns.
 - Exemplos editoriais usam o mesmo `ICalculatorApplicationService` da UI, evitando números de resultado duplicados no texto.

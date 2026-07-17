@@ -49,7 +49,7 @@ else
             <span class="valora-stitch-blog-article-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Post.Category)</span>
             <h1 class="valora-stitch-blog-article-title">@Model.Post.Title</h1>
             <p class="valora-stitch-blog-article-meta">
-                <span>@Model.Post.Author</span>
+                <a href="@EditorialAuthorCatalog.Primary.ProfilePath" rel="author">@Model.Post.Author</a>
                 <span aria-hidden="true">·</span>
                 <time datetime="@Model.Post.PublishedAt.ToString("yyyy-MM-dd")">@Model.Post.PublishedAt.ToString("dd/MM/yyyy")</time>
                 <span aria-hidden="true">·</span>

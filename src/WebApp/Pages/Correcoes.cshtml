@@ -1,0 +1,71 @@
+@page "/correcoes"
+@model MeuValorLiquido.WebApp.Pages.CorrecoesModel
+
+@section Head {
+    <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CorrectionsBreadcrumbs()" />
+}
+
+<div class="valora-stitch-legal">
+    <nav class="valora-breadcrumb" aria-label="breadcrumb">
+        <ol class="valora-breadcrumb">
+            <li><a asp-page="/Index">Início</a></li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></li>
+            <li><a asp-page="/PoliticaEditorial">Política Editorial</a></li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></li>
+            <li class="active" aria-current="page">Correções</li>
+        </ol>
+    </nav>
+
+    <header class="valora-stitch-legal-header">
+        <span class="valora-stitch-legal-badge">
+            <span class="material-symbols-outlined" aria-hidden="true">published_with_changes</span>
+            Transparência editorial
+        </span>
+        <h1 class="valora-stitch-legal-title">Correções editoriais</h1>
+        <p class="valora-stitch-legal-lead">
+            Esta página explica como recebemos, verificamos e registramos correções de textos, fontes e cálculos.
+        </p>
+    </header>
+
+    <div class="valora-author-profile-grid">
+        <article class="valora-card valora-article-body">
+            <h2 class="valora-h2">Como reportar uma divergência</h2>
+            <ol>
+                <li>Envie a URL da página pelo <a asp-page="/Contato">formulário de contato</a>.</li>
+                <li>Descreva a informação ou resultado divergente e os dados usados na simulação.</li>
+                <li>Inclua a fonte oficial, competência ou documento de referência quando possível.</li>
+                <li>Não envie CPF, holerite completo, dados bancários ou outros dados pessoais sensíveis.</li>
+            </ol>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h2 class="valora-h2">Como analisamos</h2>
+            <ol>
+                <li>Reproduzimos o cenário e verificamos a fonte citada.</li>
+                <li>Classificamos o caso como erro, atualização de regra, diferença de premissa ou situação não coberta.</li>
+                <li>Quando necessário, corrigimos código, teste, texto, fonte e data de revisão.</li>
+                <li>Alterações relevantes passam pela suíte automatizada antes da publicação.</li>
+            </ol>
+        </article>
+    </div>
+
+    <article class="valora-card valora-article-body valora-section">
+        <h2 class="valora-h2">Histórico público</h2>
+        <p>
+            Até a revisão de 17/07/2026, não há correções editoriais relevantes publicadas neste histórico.
+            Não criamos entradas fictícias: novos registros serão adicionados somente quando uma correção real for confirmada.
+        </p>
+        <p>
+            Cada registro futuro deverá informar página afetada, data, natureza da correção e resumo objetivo da mudança,
+            sem expor dados de quem enviou o relato.
+        </p>
+    </article>
+
+    <div class="valora-disclaimer">
+        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+        <p>
+            Esta página permanece fora do índice de busca enquanto não houver histórico de correções.
+            O processo editorial completo está na <a asp-page="/PoliticaEditorial">Política Editorial</a>.
+        </p>
+    </div>
+</div>

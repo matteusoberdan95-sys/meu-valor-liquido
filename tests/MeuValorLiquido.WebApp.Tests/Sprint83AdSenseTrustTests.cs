@@ -17,7 +17,7 @@ public class Sprint83AdSenseTrustTests : IClassFixture<WebApplicationFactory<Pro
         html.Should().Contain("Responsável editorial");
         html.Should().Contain("Matteus Oberdan");
         html.Should().Contain("https://www.linkedin.com/in/matteus-oberdan-203205289/");
-        html.Should().Contain("/images/authors/matteus-oberdan.png");
+        html.Should().Contain("/images/authors/matteus-oberdan.svg");
         html.Should().Contain("Política Editorial");
     }
 
@@ -29,7 +29,7 @@ public class Sprint83AdSenseTrustTests : IClassFixture<WebApplicationFactory<Pro
         html.Should().Contain("\"@type\":\"Person\"");
         html.Should().Contain("\"name\":\"Matteus Oberdan\"");
         html.Should().Contain("\"sameAs\":[\"https://www.linkedin.com/in/matteus-oberdan-203205289/\"]");
-        html.Should().Contain("/images/authors/matteus-oberdan.png");
+        html.Should().Contain("/images/authors/matteus-oberdan.svg");
     }
 
     [Fact]

@@ -1,5 +1,25 @@
 # Sprint Plan
 
+## Sprint 88 — Autoria, autoridade e transparência (concluída)
+
+**Objetivo:** executar a Sprint 3 do plano de aprovação AdSense, identificando o responsável editorial e tornando públicos os processos de pesquisa, revisão e correção sem inventar credenciais.
+
+**Entregas:**
+- [x] Perfil indexável `/autores/matteus-oberdan` com atuação verificável, LinkedIn, contato, revisão e artigos publicados.
+- [x] Avatar profissional consistente em SVG, sem apresentar imagem gerada como fotografia real.
+- [x] Assinatura clicável nos artigos e schema `Person` com URL interna e `sameAs` externo.
+- [x] Página Sobre ampliada com criação, objetivo, fontes, atualização e canal para erros.
+- [x] Política Editorial ampliada com critérios de fontes, proibição de dados inventados, revisão, patrocínio, automação e frequência.
+- [x] Página `/correcoes` em `noindex,follow`, fora do sitemap XML até existir histórico real.
+- [x] Descoberta do perfil pelo sitemap, mapa do site e footer.
+- [x] Testes de autoria, schema, indexação, correções e integridade do avatar.
+
+**Fora do escopo:** inventar formação ou certificações, alterar fórmulas, publicar correções fictícias, ativar AdSense e executar o inventário técnico completo da Sprint 4.
+
+**Definition of Done:** build sem avisos, suíte automatizada verde e relatório em `docs/adsense/SPRINT_3_REPORT.md`.
+
+---
+
 ## Sprint 87 — Conteúdo completo das calculadoras prioritárias (concluída)
 
 **Objetivo:** executar a Sprint 2 do plano de aprovação AdSense, transformando as calculadoras prioritárias em páginas editoriais completas sem alterar fórmulas.

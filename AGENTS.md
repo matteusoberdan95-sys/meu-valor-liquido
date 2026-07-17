@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 88 — autoria, autoridade e transparência (após validação da Sprint 87) |
+| **Próxima sprint** | Sprint 89 — SEO técnico e controle de indexação (após validação da Sprint 88) |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 87 · Sprint 86 · Sprint 85 · Sprint 84 · Sprint 70 lote 5 |
+| **Concluída recente** | Sprint 88 · Sprint 87 · Sprint 86 · Sprint 85 · Sprint 84 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -60,13 +60,13 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–87 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
-- **Trilha ativa:** plano de aprovação AdSense (Sprint 88 após validação) + editorial contínuo.
+- Trilhas **47–88 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
+- **Trilha ativa:** plano de aprovação AdSense (Sprint 89 após validação) + editorial contínuo.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Ativação real continua bloqueada até aprovação e revisão de consentimento/configuração.
-- Autoridade editorial: `EditorialAuthorCatalog` + `/politica-editorial` + LinkedIn do autor; manter esses sinais ao alterar blog/institucional.
+- Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.
 - Conteúdo de calculadoras: `CalculatorEditorialCatalog` cobre as 12 páginas prioritárias; exemplos devem continuar usando `ICalculatorApplicationService`, nunca valores de saída escritos manualmente.
 - GSC/CTR: Sprint 85 criou `/calculadoras/vale-transporte-hibrido` e reforcou `/blog/vale-transporte-home-office-hibrido`; medir CTR em 7-14 dias antes de novo title/meta. Priorizar paginas com muitas impressoes, posicao media 1-10 e CTR baixo antes de criar pauta nova.
 
