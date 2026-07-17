@@ -15,9 +15,10 @@ Garantir que tabelas fiscais, benchmarks e fontes citadas em `/como-calculamos` 
    - Salário mínimo e faixas (`BrTaxTables2026`).
 
 2. **Benchmarks**
-   - Rodar `dotnet test` — `CalculatorBenchmarkCatalogTests` deve permanecer verde.
+   - Rodar `dotnet test` — `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests` devem permanecer verdes.
    - Atualizar `CalculatorBenchmarkCatalog.CalibrationDate` ao recalibrar cenários.
    - Documentar tolerância e fonte em cada cenário novo.
+   - Não sobrescrever `BrTaxTablesYYYY` anteriores; criar novo ano e registrar vigência em `BrTaxTableCatalog`.
 
 3. **Conteúdo**
    - `/como-calculamos` — data de calibração e quantidade de cenários.

@@ -225,7 +225,40 @@
             <strong>Fontes:</strong> Portaria Interministerial MPS/MF nº 13/@Model.TaxYear (INSS);
             redução legal do IRRF conforme Lei nº 15.270/2025.
             Salário mínimo @Model.TaxYear: R$ @MetodologiaTableHelper.FormatCurrency(Model.MinimumWage).
+            Tabelas anteriores permanecem versionadas (<code>BrTaxTables2025</code>) e não são sobrescritas.
         </p>
+
+        <div class="valora-stitch-metodologia-table-card" style="margin-top:1rem;">
+            <div class="valora-stitch-metodologia-table-head">Vigência das tabelas versionadas</div>
+            <div class="valora-stitch-metodologia-table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ano</th>
+                            <th>Vigência</th>
+                            <th>Salário mínimo</th>
+                            <th>Teto INSS</th>
+                            <th>Fonte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var period in Model.TaxTablePeriods)
+                        {
+                            var vigencia = period.ValidTo is null
+                                ? $"a partir de {period.ValidFrom:dd/MM/yyyy}"
+                                : $"{period.ValidFrom:dd/MM/yyyy} a {period.ValidTo:dd/MM/yyyy}";
+                            <tr>
+                                <td>@period.Year</td>
+                                <td>@vigencia</td>
+                                <td>R$ @MetodologiaTableHelper.FormatCurrency(period.MinimumWage)</td>
+                                <td>R$ @MetodologiaTableHelper.FormatCurrency(period.InssCeiling)</td>
+                                <td><a href="@period.SourceUrl" rel="nofollow noopener" target="_blank">@period.SourceName</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
 
     <section class="valora-stitch-metodologia-section">
@@ -233,6 +266,8 @@
         <p class="valora-stitch-metodologia-table-hint">
             Mantemos @Model.BenchmarkScenarioCount cenários de referência em <code>CalculatorBenchmarkCatalog</code>,
             cobrindo as 10 calculadoras prioritárias com tolerância documentada.
+            Entradas inválidas (zero, negativo, datas invertidas) são rejeitadas por validação e documentadas em
+            <code>CalculatorEdgeCaseCatalog</code>.
         </p>
 
         <div class="valora-stitch-metodologia-table-card">

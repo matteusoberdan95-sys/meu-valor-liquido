@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 91 - Validação matemática e testes
+- Tabelas fiscais versionadas (`BrTaxTables2025` + `BrTaxTables2026`) com vigência via `BrTaxTableCatalog`.
+- Casos de borda documentados e testados (zero, negativo, inválido, datas invertidas, limites).
+- Arredondamento monetário explícito em `MoneyRounding`; benchmarks recalibrados em 17/07/2026.
+- Evidências internas em `docs/adsense/MATH_VALIDATION_EVIDENCE.md` e vigência exibida em `/como-calculamos`.
+
 ### Sprint 89 - SEO técnico e controle de indexação
 - Nova política central separa rotas indexáveis de páginas utilitárias, pessoais, parametrizadas e operacionais.
 - Sitemap XML remove assistente, painel local, newsletter e widget, consolida slugs duplicados e usa revisão editorial real nas calculadoras prioritárias.

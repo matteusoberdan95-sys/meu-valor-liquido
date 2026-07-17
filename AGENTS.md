@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 90 — privacidade, cookies e preparação AdSense (após validação da Sprint 89) |
+| **Próxima sprint** | Sprint 92 — performance e mobile (após validação da Sprint 91) |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 89 · Sprint 88 · Sprint 87 · Sprint 86 · Sprint 85 |
+| **Concluída recente** | Sprint 91 · Sprint 89 · Sprint 88 · Sprint 87 · Sprint 86 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -60,10 +60,11 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–89 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
-- **Trilha ativa:** plano de aprovação AdSense (Sprint 90 após validação) + editorial contínuo.
+- Trilhas **47–91 concluídas** (Sprint 90 em `feat/adsense-sprint-5` se ainda pendente de merge) + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
+- **Trilha ativa:** plano de aprovação AdSense (Sprint 92 após validação) + editorial contínuo.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
-- Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
+- Benchmark fiscal: `CalculatorBenchmarkCatalog` + `CalculatorEdgeCaseCatalog`; testes em `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests`.
+- Tabelas fiscais versionadas: `BrTaxTables2025` / `BrTaxTables2026` via `BrTaxTableCatalog` (não sobrescrever anos anteriores).
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Ativação real continua bloqueada até aprovação e revisão de consentimento/configuração.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.

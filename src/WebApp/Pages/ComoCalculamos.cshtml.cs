@@ -12,6 +12,8 @@ public class ComoCalculamosModel : PageModel
 
     public IrrfBracket[] IrrfBrackets => BrTaxTables2026.IrrfBrackets;
 
+    public IReadOnlyList<BrTaxTablePeriod> TaxTablePeriods => BrTaxTableCatalog.All;
+
     public int BenchmarkScenarioCount => CalculatorBenchmarkCatalog.All.Count;
 
     public IReadOnlyList<BenchmarkSourceSummary> BenchmarkSources =>
