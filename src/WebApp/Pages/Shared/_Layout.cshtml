@@ -19,6 +19,7 @@
         var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? $"{Context.Request.Scheme}://{Context.Request.Host}";
         var canonicalPath = ViewData["CanonicalPath"]?.ToString() ?? Context.Request.Path.Value ?? "/";
         var canonicalUrl = SeoMetadataHelper.BuildCanonicalUrl(baseUrl, canonicalPath);
+        var suppressCanonical = ViewData["SuppressCanonical"] as bool? == true;
         var ogType = ViewData["OgType"]?.ToString() ?? "website";
         var robots = ViewData["Robots"]?.ToString() ?? SeoMetadataHelper.DefaultRobots;
         var ogImagePath = ViewData["OgImagePath"]?.ToString();
@@ -26,11 +27,17 @@
     }
     <meta name="robots" content="@robots" />
     <meta name="description" content="@description" />
-    <link rel="canonical" href="@canonicalUrl" />
+    @if (!suppressCanonical)
+    {
+        <link rel="canonical" href="@canonicalUrl" />
+    }
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
     <meta property="og:type" content="@ogType" />
-    <meta property="og:url" content="@canonicalUrl" />
+    @if (!suppressCanonical)
+    {
+        <meta property="og:url" content="@canonicalUrl" />
+    }
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="@SeoMetadataHelper.SiteName" />
     <meta property="og:image" content="@ogImageUrl" />

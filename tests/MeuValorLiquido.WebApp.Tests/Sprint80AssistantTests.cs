@@ -40,15 +40,15 @@ public sealed class Sprint80AssistantTests : IClassFixture<WebApplicationFactory
     }
 
     [Fact]
-    public async Task Sitemap_And_Site_Map_Should_Include_Assistant()
+    public async Task Assistant_Should_Be_NoIndex_And_Excluded_From_Sitemaps()
     {
         var sitemap = await client.GetStringAsync("/sitemap.xml");
         var siteMap = await client.GetStringAsync("/mapa-do-site");
+        var assistant = await client.GetStringAsync("/assistente");
 
-        sitemap.Should().Contain("https://meuvalorliquido.com/assistente");
-        sitemap.Should().Contain("<lastmod>2026-06-29</lastmod>");
-        siteMap.Should().Contain("/assistente");
-        siteMap.Should().Contain("Assistente educativo");
+        sitemap.Should().NotContain("https://meuvalorliquido.com/assistente");
+        siteMap.Should().NotContain("<h2 class=\"valora-h2\">Assistente educativo</h2>");
+        assistant.Should().Contain("noindex,follow");
     }
 
     [Fact]

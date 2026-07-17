@@ -4,6 +4,7 @@
     ViewData["Title"] = Model.IsNotFound ? "Página não encontrada" : "Erro";
     ViewData["Description"] = Model.Lead;
     ViewData["Robots"] = SeoMetadataHelper.NoIndexRobots;
+    ViewData["SuppressCanonical"] = true;
 }
 
 <div class="valora-stitch-error">

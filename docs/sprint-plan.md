@@ -1,5 +1,28 @@
 # Sprint Plan
 
+## Sprint 89 — SEO técnico e controle de indexação (concluída)
+
+**Objetivo:** executar a Sprint 4 do plano de aprovação AdSense, expondo ao Google somente URLs públicas, canônicas e consolidadas.
+
+**Entregas:**
+- [x] Política central de rotas indexáveis e páginas `noindex`.
+- [x] Matriz de URL com tipo, canonical, sitemap, conteúdo, autoria, fontes, revisão, status e ação.
+- [x] Sitemap sem assistente, painel local, newsletter, widget, métricas, correções, filtros ou resultados parametrizados.
+- [x] `lastmod` estável e revisão real de 17/07/2026 nas calculadoras prioritárias.
+- [x] Slugs duplicados consolidados no sitemap.
+- [x] Aliases, caixa alta e barra final normalizados com `301`.
+- [x] Calculadora inexistente corrigida de soft 404 para `404` real.
+- [x] Página `/Error` com `500`; erros sem canonical.
+- [x] Filtros, presets, resultados compartilhados e embeds fora do índice.
+- [x] `X-Robots-Tag` e `robots.txt` para API, health check e PDFs.
+- [x] Auditoria de breadcrumbs, links e schemas sem avaliações fictícias.
+
+**Fora do escopo:** CMP e consentimento publicitário, alterações de fórmula, validação externa no domínio implantado e ativação do AdSense.
+
+**Definition of Done:** build sem avisos, suíte automatizada verde, matriz em `docs/adsense/URL_INDEXATION_MATRIX.md`, auditoria em `docs/adsense/TECHNICAL_SEO_AUDIT.md` e relatório em `docs/adsense/SPRINT_4_REPORT.md`.
+
+---
+
 ## Sprint 88 — Autoria, autoridade e transparência (concluída)
 
 **Objetivo:** executar a Sprint 3 do plano de aprovação AdSense, identificando o responsável editorial e tornando públicos os processos de pesquisa, revisão e correção sem inventar credenciais.

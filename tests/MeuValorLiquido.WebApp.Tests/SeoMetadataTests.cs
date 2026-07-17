@@ -49,18 +49,21 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Error_Page_Should_Use_NoIndex()
     {
-        var html = await client.GetStringAsync("/Error");
+        using var response = await client.GetAsync("/Error");
+        var html = await response.Content.ReadAsStringAsync();
 
+        response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
         html.Should().Contain("name=\"robots\"");
         html.Should().Contain("noindex,nofollow");
+        html.Should().NotContain("rel=\"canonical\"");
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_Newsletter_And_Site_Map_Page()
+    public async Task Sitemap_Should_Exclude_Newsletter_And_Include_Indexable_Hubs()
     {
         var xml = await client.GetStringAsync("/sitemap.xml");
 
-        xml.Should().Contain("/newsletter");
+        xml.Should().NotContain("/newsletter");
         xml.Should().Contain("/mapa-do-site");
         xml.Should().Contain("/salario-liquido");
         xml.Should().Contain("/salario-liquido/3000");
@@ -83,7 +86,7 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
 
         salaryCalculatorUrls.Should().NotBeEmpty();
         salaryCalculatorUrls.Should().OnlyContain(url =>
-            url.Element(ns + "lastmod") != null && url.Element(ns + "lastmod")!.Value == "2026-06-29");
+            url.Element(ns + "lastmod") != null && url.Element(ns + "lastmod")!.Value == "2026-07-17");
     }
 
     [Fact]

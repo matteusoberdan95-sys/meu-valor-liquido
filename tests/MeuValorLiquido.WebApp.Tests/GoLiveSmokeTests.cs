@@ -232,8 +232,10 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Error_Page_Should_Match_Stitch_Layout()
     {
-        var html = await client.GetStringAsync("/Error");
+        using var response = await client.GetAsync("/Error");
+        var html = await response.Content.ReadAsStringAsync();
 
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.InternalServerError);
         html.Should().Contain("valora-stitch-error");
         html.Should().Contain("Erro 500");
         html.Should().Contain("valora-stitch-error-grid");

@@ -110,27 +110,29 @@ public class DetailsModel : PageModel
         }
 
         LoadPage(slug);
-        if (Definition is not null)
+        if (Definition is null)
         {
-            Input = CalculatorInputDefaults.ForSlug(slug);
-            if (slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase)
-                && decimal.TryParse(Request.Query["valor"], out var presetGross)
-                && presetGross > 0m)
-            {
-                Input = Input with { Amount = presetGross };
-            }
-            else if (slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase)
-                && decimal.TryParse(Request.Query["valor"], out var cltPreset)
-                && cltPreset > 0m)
-            {
-                Input = CalculatorInputDefaults.ForSlug(slug) with { Amount = cltPreset };
-            }
+            return NotFound();
+        }
 
-            TryApplySharedCalculation(slug);
-            if (IsEmbedMode)
-            {
-                await productMetricsService.RecordAsync(ProductMetricEvents.WidgetView, slug);
-            }
+        Input = CalculatorInputDefaults.ForSlug(slug);
+        if (slug.Equals("salario-liquido", StringComparison.OrdinalIgnoreCase)
+            && decimal.TryParse(Request.Query["valor"], out var presetGross)
+            && presetGross > 0m)
+        {
+            Input = Input with { Amount = presetGross };
+        }
+        else if (slug.Equals("pj-vs-clt", StringComparison.OrdinalIgnoreCase)
+            && decimal.TryParse(Request.Query["valor"], out var cltPreset)
+            && cltPreset > 0m)
+        {
+            Input = CalculatorInputDefaults.ForSlug(slug) with { Amount = cltPreset };
+        }
+
+        TryApplySharedCalculation(slug);
+        if (IsEmbedMode)
+        {
+            await productMetricsService.RecordAsync(ProductMetricEvents.WidgetView, slug);
         }
 
         return Page();
@@ -146,7 +148,7 @@ public class DetailsModel : PageModel
         LoadPage(slug);
         if (Definition is null)
         {
-            return Page();
+            return NotFound();
         }
 
         if (!ModelState.IsValid)
@@ -179,6 +181,11 @@ public class DetailsModel : PageModel
         IsEmbedMode = string.Equals(Request.Query["embed"].ToString(), "1", StringComparison.Ordinal);
         if (!IsEmbedMode)
         {
+            if (Request.QueryString.HasValue)
+            {
+                ViewData["Robots"] = SeoMetadataHelper.NoIndexFollowRobots;
+            }
+
             return true;
         }
 

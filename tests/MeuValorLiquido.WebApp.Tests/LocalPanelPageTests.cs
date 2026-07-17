@@ -60,7 +60,7 @@ public class LocalPanelPageTests
 
         var response = await client.GetAsync("/painel");
 
-        response.StatusCode.Should().Be(HttpStatusCode.Redirect);
+        response.StatusCode.Should().Be(HttpStatusCode.MovedPermanently);
         response.Headers.Location?.ToString().Should().Contain("/meu-painel");
     }
 
@@ -91,13 +91,15 @@ public class LocalPanelPageTests
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_Local_Panel()
+    public async Task Local_Panel_Should_Be_NoIndex_And_Excluded_From_Sitemap()
     {
         using var factory = new WebApplicationFactory<Program>();
         using var client = factory.WithWebHostBuilder(b => b.UseEnvironment("Testing")).CreateClient();
 
         var xml = await client.GetStringAsync("/sitemap.xml");
+        var html = await client.GetStringAsync("/meu-painel");
 
-        xml.Should().Contain("/meu-painel");
+        xml.Should().NotContain("/meu-painel");
+        html.Should().Contain("noindex,follow");
     }
 }

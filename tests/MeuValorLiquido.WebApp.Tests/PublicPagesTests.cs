@@ -59,7 +59,7 @@ public class PublicPagesTests : IClassFixture<WebApplicationFactory<Program>>
 
         var response = await noRedirectClient.GetAsync("/proposta-salarial");
 
-        response.StatusCode.Should().Be(System.Net.HttpStatusCode.Redirect);
+        response.StatusCode.Should().Be(System.Net.HttpStatusCode.MovedPermanently);
         response.Headers.Location!.ToString().Should().Contain("proposta-salarial");
     }
 

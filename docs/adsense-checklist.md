@@ -15,6 +15,10 @@ Não integrar AdSense real no MVP. Regras de layout: `docs/ADSENSE_COMPLIANCE.md
 - [x] Perfil indexável do responsável editorial com autoria clicável nos artigos
 - [x] Política Editorial documenta fontes, revisão, correções, patrocínio e automação
 - [x] Processo de correções público em `noindex,follow`, sem histórico fictício
+- [x] Sitemap contém somente URLs canônicas e indexáveis
+- [x] Assistente, painel, newsletter, widget, métricas, filtros e resultados parametrizados fora do índice
+- [x] URLs inexistentes retornam 404 real; erros 500 não possuem canonical
+- [x] Aliases e variações de caixa/barra redirecionam permanentemente para a URL canônica
 - [x] Layout mobile-first (Valores Públicos)
 - [x] `Ads:Enabled=false` por padrão
 

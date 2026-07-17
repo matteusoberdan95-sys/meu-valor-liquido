@@ -140,6 +140,8 @@ app.UseResponseCompression();
 app.UseHttpsRedirection();
 app.UseStaticAssetCacheHeaders();
 app.UseSecurityHeaders();
+app.UseCanonicalUrlRedirects();
+app.UseSeoResponseHeaders();
 
 app.UseRouting();
 app.UseMiddleware<ProductMetricsHttpErrorMiddleware>();
@@ -153,16 +155,16 @@ app.MapHealthChecks("/health");
 CalculatorPdfEndpoints.Map(app);
 ProductMetricsEndpoints.Map(app);
 app.MapGet("/calculadora-salario-bruto", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: true));
-app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: false));
-app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
-app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: false));
-app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: false));
-app.MapGet("/painel", () => Results.Redirect("/meu-painel", permanent: false));
-app.MapGet("/incorporar", () => Results.Redirect("/widget", permanent: false));
+app.MapGet("/quanto-preciso-ganhar-para-receber-liquido", () => Results.Redirect("/calculadoras/salario-bruto-necessario", permanent: true));
+app.MapGet("/proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: true));
+app.MapGet("/comparar-proposta-salarial", () => Results.Redirect("/calculadoras/proposta-salarial", permanent: true));
+app.MapGet("/clt-vs-pj", () => Results.Redirect("/clt-pj", permanent: true));
+app.MapGet("/painel", () => Results.Redirect("/meu-painel", permanent: true));
+app.MapGet("/incorporar", () => Results.Redirect("/widget", permanent: true));
 app.MapGet("/duvidas/o-que-e-irrf", () => Results.Redirect("/duvidas/irrf-quem-paga-e-como-calcular", permanent: true));
 app.MapGet("/widget/{slug}", (string slug) =>
     EmbedWidgetCatalog.IsEmbeddable(slug)
-        ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: false)
+        ? Results.Redirect($"/calculadoras/{slug}?embed=1", permanent: true)
         : Results.NotFound());
 
 app.MapMethods("/sitemap.xml", [HttpMethods.Get, HttpMethods.Head], (HttpRequest request, HttpResponse response, SitemapXmlCache cache) =>
@@ -193,6 +195,62 @@ app.MapRazorPages()
 app.Run();
 
 public partial class Program;
+
+internal static class SeoHttpExtensions
+{
+    public static IApplicationBuilder UseCanonicalUrlRedirects(this IApplicationBuilder app)
+    {
+        return app.Use(async (context, next) =>
+        {
+            var request = context.Request;
+            var path = request.Path.Value;
+            var canRedirect = HttpMethods.IsGet(request.Method) || HttpMethods.IsHead(request.Method);
+            var isInternalErrorPath = path is not null
+                && (path.Equals("/Error", StringComparison.OrdinalIgnoreCase)
+                    || path.Equals("/NotFound", StringComparison.OrdinalIgnoreCase));
+            var isCanonicalSeoFile = path is not null
+                && (path.TrimEnd('/').Equals("/sitemap.xml", StringComparison.OrdinalIgnoreCase)
+                    || path.TrimEnd('/').Equals("/robots.txt", StringComparison.OrdinalIgnoreCase));
+
+            if (canRedirect
+                && !isInternalErrorPath
+                && !string.IsNullOrEmpty(path)
+                && path != "/"
+                && (!Path.HasExtension(path) || isCanonicalSeoFile))
+            {
+                var normalizedPath = path.TrimEnd('/').ToLowerInvariant();
+                if (!path.Equals(normalizedPath, StringComparison.Ordinal))
+                {
+                    context.Response.StatusCode = StatusCodes.Status301MovedPermanently;
+                    context.Response.Headers.Location =
+                        $"{request.PathBase}{new PathString(normalizedPath).ToUriComponent()}{request.QueryString}";
+                    return;
+                }
+            }
+
+            await next();
+        });
+    }
+
+    public static IApplicationBuilder UseSeoResponseHeaders(this IApplicationBuilder app)
+    {
+        return app.Use(async (context, next) =>
+        {
+            context.Response.OnStarting(() =>
+            {
+                if (SeoRoutePolicyCatalog.RequiresNoIndexHeader(context.Request.Path))
+                {
+                    var isHtmlPage = SeoRoutePolicyCatalog.IsNoIndexPage(context.Request.Path);
+                    context.Response.Headers["X-Robots-Tag"] = isHtmlPage ? "noindex" : "noindex, nofollow";
+                }
+
+                return Task.CompletedTask;
+            });
+
+            await next();
+        });
+    }
+}
 
 internal static class SecurityHeadersExtensions
 {
