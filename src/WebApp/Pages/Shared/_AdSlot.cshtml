@@ -1,10 +1,10 @@
 @model MeuValorLiquido.Modules.Ads.AdSlotDefinition
 @inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
 
-<div class="ad-slot-wrap" role="complementary" aria-label="Espaço publicitário">
-    <span class="ad-slot-label">Espaço publicitário</span>
-    @if (AdsOptions.Value.IsActive && !Model.IsPlaceholder && !string.IsNullOrWhiteSpace(Model.AdSlotId))
-    {
+@if (AdsOptions.Value.IsActive && !Model.IsPlaceholder && !string.IsNullOrWhiteSpace(Model.AdSlotId))
+{
+    <div class="ad-slot-wrap" role="complementary" aria-label="Publicidade">
+        <span class="ad-slot-label">Publicidade</span>
         <div class="ad-slot ad-slot--live">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -13,9 +13,5 @@
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
         </div>
-    }
-    else if (Model.IsEnabled)
-    {
-        <div class="ad-slot" aria-hidden="true">@Model.Label</div>
-    }
-</div>
+    </div>
+}

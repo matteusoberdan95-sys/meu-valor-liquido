@@ -13,23 +13,31 @@ public sealed class ConfigurableAdSlotProvider : IAdSlotProvider
     {
         if (!options.IsActive)
         {
-            return new PlaceholderAdSlotProvider().GetSlots();
+            return [];
         }
 
-        return
-        [
-            new(
+        var slots = new List<AdSlotDefinition>();
+
+        if (!string.IsNullOrWhiteSpace(options.CalculatorTopSlotId))
+        {
+            slots.Add(new(
                 "calculator-top",
-                "Espaço reservado para anúncio",
+                "Publicidade",
                 true,
                 IsPlaceholder: false,
-                AdSlotId: options.CalculatorTopSlotId),
-            new(
+                AdSlotId: options.CalculatorTopSlotId));
+        }
+
+        if (!string.IsNullOrWhiteSpace(options.CalculatorBottomSlotId))
+        {
+            slots.Add(new(
                 "calculator-bottom",
-                "Espaço reservado para anúncio",
+                "Publicidade",
                 true,
                 IsPlaceholder: false,
-                AdSlotId: options.CalculatorBottomSlotId)
-        ];
+                AdSlotId: options.CalculatorBottomSlotId));
+        }
+
+        return slots;
     }
 }

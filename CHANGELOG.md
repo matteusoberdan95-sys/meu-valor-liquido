@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 86 - Confianca e readiness AdSense
+- Home sem contador `+250k`, estrelas, avatares, selos de popularidade ou promoção “ML Prime” sem evidência auditável.
+- Linguagem de precisão e autoridade não comprovada foi substituída por descrições de estimativas, metodologia e fontes oficiais.
+- Anúncios desligados agora produzem zero slots, zero placeholders e nenhuma altura reservada em calculadoras, home, dúvidas e assistente.
+- Slots ativos só são retornados quando possuem publisher e ID configurados; testes cobrem configuração desativada e incompleta.
+- Política de Privacidade e documentação de compliance foram alinhadas ao comportamento real.
+
 ### Sprint 85 - VT hibrido e medicao GSC
 - Nova calculadora `/calculadoras/vale-transporte-hibrido` estima VT proporcional por dias presenciais, compara com o limite educativo de 6% e aponta divergencia do holerite.
 - Artigo `/blog/vale-transporte-home-office-hibrido` manteve o slug que ja tem impressoes, passou a converter para a calculadora especifica e ganhou FAQ de VT hibrido.

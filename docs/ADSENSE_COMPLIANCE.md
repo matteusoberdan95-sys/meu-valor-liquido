@@ -9,7 +9,7 @@ Regras internas para monetização via Google AdSense de forma **legítima e seg
 ## O que é permitido
 
 - Script de verificação do AdSense no `<head>` com `Ads:VerificationEnabled=true` e `Ads:Enabled=false`.
-- Placeholders com altura reservada até aprovação.
+- Nenhum slot, placeholder ou espaço reservado enquanto `Ads:Enabled=false`.
 - Anúncios em áreas claramente separadas do conteúdo interativo.
 - Texto educativo e avisos legais sobre cálculos estimativos.
 - Perfil editorial visível com autor responsável, foto e LinkedIn quando fizer sentido.
@@ -33,21 +33,28 @@ Regras internas para monetização via Google AdSense de forma **legítima e seg
   - Botões de compartilhar ou baixar PDF
 - Pop-ups, interstitials agressivos ou anúncios que cubram o conteúdo principal.
 - Conteúdo copiado, thin content ou páginas criadas só para ads.
+- Métricas, avaliações, depoimentos ou provas sociais sem evidência auditável.
 
 ---
 
-## Slots atuais (placeholders)
+## Slots configuráveis
 
 | Key | Posição | Arquivo |
 |-----|---------|---------|
-| `calculator-top` | Acima do layout calculadora | `Details.cshtml` (após hero) |
-| `calculator-bottom` | Sidebar, abaixo do resultado | `Details.cshtml` |
+| `calculator-top` | Após o hero/resumo | Calculadoras, faixas salariais, comparativos CLT/PJ e dúvidas |
+| `calculator-bottom` | Após resultado/conteúdo | Calculadoras, faixas salariais, comparativos CLT/PJ, dúvidas e assistente |
 
 Implementação:
 
-- Definições: `src/Modules/Ads/AdsModule.cs` (`PlaceholderAdSlotProvider`)
+- Provider: `src/WebApp/Infrastructure/ConfigurableAdSlotProvider.cs`
 - Partial: `src/WebApp/Pages/Shared/_AdSlot.cshtml`
 - Estilo: `src/WebApp/wwwroot/css/site.css` (`.ad-slot`)
+
+Comportamento obrigatório:
+
+- `Ads:Enabled=false`: provider retorna coleção vazia e a página não produz markup nem reserva altura.
+- `Ads:Enabled=true`: somente slots com publisher e ID real configurados são retornados.
+- Não criar placeholders estáticos fora do provider.
 
 ---
 
@@ -67,10 +74,9 @@ Implementação:
   - Painel de resultado
 - Slot superior: após o hero/resumo, **antes** do formulário (posição atual aceitável se mantiver margem).
 
-### Rótulos dos placeholders
+### Rótulos dos anúncios ativos
 
-- Usar texto neutro: “Espaço publicitário” (implementado em `_AdSlot.cshtml`).
-- Placeholder interno do módulo Ads pode manter texto técnico; a UI exibe o rótulo público.
+- Usar texto neutro: “Publicidade” quando um anúncio real estiver ativo.
 - **Não** usar: “Clique no anúncio”, “Anúncio importante”, setas apontando para o slot.
 
 ### Mobile
@@ -98,6 +104,8 @@ Antes de ativar AdSense:
 - [x] Páginas institucionais revisadas — Sprint 14
 - [x] Página `/como-calculamos` — Sprint 14
 - [x] Política editorial indexável + autoria visível — Sprint 83
+- [x] Nenhum placeholder ou espaço reservado com anúncios desligados — Sprint 86
+- [x] Nenhuma métrica, avaliação ou prova social sem comprovação na home — Sprint 86
 - [ ] Nenhum texto incentivando clique
 - [ ] Slots com espaçamento validado em desktop e mobile
 - [x] Core Web Vitals — cache, defer, slots com altura fixa (Sprint 12)

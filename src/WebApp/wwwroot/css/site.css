@@ -8811,8 +8811,7 @@ select:focus-visible {
   .valora-stitch-home-hub-card:nth-of-type(2),
   .valora-stitch-home-hub-card:nth-of-type(3) { grid-column: span 3; }
   .valora-stitch-home-hub-card:nth-of-type(4),
-  .valora-stitch-home-hub-card:nth-of-type(5) { grid-column: span 4; }
-  .valora-stitch-home-prime-card { grid-column: span 4; }
+  .valora-stitch-home-hub-card:nth-of-type(5) { grid-column: span 6; }
 
   .valora-stitch-home-methodology {
     grid-template-columns: 1fr 1fr;

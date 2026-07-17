@@ -28,7 +28,7 @@
         <div class="valora-assistant-sidebar-head">
             <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
             <div>
-                <p class="valora-assistant-kicker">IA 2080</p>
+                <p class="valora-assistant-kicker">Conteúdo guiado</p>
                 <h2>Atalhos úteis</h2>
             </div>
         </div>
@@ -44,18 +44,12 @@
                 </a>
             }
         </nav>
-        <div class="valora-assistant-ad-card" aria-label="Espaço publicitário">
-            @if (Model.AdSlot is not null)
-            {
+        @if (Model.AdSlot is not null)
+        {
+            <div class="valora-assistant-ad-card">
                 <partial name="Shared/_AdSlot" model="Model.AdSlot" />
-            }
-            else
-            {
-                <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
-                <strong>Espaço publicitário</strong>
-                <small>Reservado para AdSense</small>
-            }
-        </div>
+            </div>
+        }
     </aside>
 
     <section class="valora-assistant-shell" aria-labelledby="assistant-title">
@@ -72,11 +66,6 @@
                 </p>
             </div>
         </header>
-
-        <div class="valora-assistant-mobile-ad" aria-label="Espaço publicitário">
-            <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
-            <span>Espaço publicitário</span>
-        </div>
 
         <div class="valora-assistant-chat" data-assistant-chat>
             <div class="valora-assistant-messages" data-assistant-log aria-live="polite">

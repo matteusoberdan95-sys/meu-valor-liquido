@@ -1,5 +1,23 @@
 # Sprint Plan
 
+## Sprint 86 — AdSense: confiança e remoção de placeholders (concluída)
+
+**Objetivo:** executar a Sprint 1 do plano de aprovação AdSense, removendo sinais não comprovados e qualquer aparência de monetização antes da aprovação.
+
+**Entregas:**
+- [x] Removidos `+250k cálculos`, estrelas, avatares e selos de popularidade sem telemetria comprovável.
+- [x] Removidos “ML Prime”, `IA 2080` e promessas promocionais não sustentadas.
+- [x] `ConfigurableAdSlotProvider` retorna vazio com anúncios desligados e omite slots sem ID real.
+- [x] Home, dúvidas e assistente não possuem placeholders estáticos.
+- [x] Política de Privacidade, compliance e checklist alinhados ao comportamento real.
+- [x] Testes protegem ausência de placeholders e alegações não comprovadas.
+
+**Fora do escopo:** fórmulas, indexação, CMP, ativação do AdSense e conteúdo editorial em massa.
+
+**Definition of Done:** build sem avisos, suíte automatizada verde e relatório em `docs/adsense/SPRINT_1_REPORT.md`.
+
+---
+
 ## Sprint 27 — Rescisão CLT: UX e precisão (concluída)
 
 **Objetivo:** aproximar a experiência de calculadoras de referência (datas completas, aviso prévio claro, resultado agrupado) sem quebrar os testes de cálculo existentes.
@@ -673,7 +691,7 @@
 | WebApp/Frontend | Página `/assistente` com layout desktop + mobile, sugestões rápidas, respostas guiadas e links para calculadoras |
 | WebApp/Frontend | Botão flutuante global com pop-up perguntando se o usuário quer iniciar o chat |
 | SEO/Content | Metadados, breadcrumb JSON-LD, sitemap e mapa do site com `/assistente` |
-| Monetization | Espaço publicitário discreto na tela do assistente, sem bloquear o fluxo do chat |
+| Monetization | Espaço publicitário discreto previsto no mock; placeholder removido pela Sprint 86 |
 | QA/Test | Smoke da página, launcher global, sitemap e mapa do site |
 
 **Critérios de aceite:** chat deixa claro que é educativo; não coleta PII; aponta para calculadoras; é responsivo; `/assistente` é indexável; `dotnet test` verde.
@@ -1209,7 +1227,7 @@ Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost
 **Entregas:**
 - Widget, Newsletter, Contato, institucionais, faixas salariais com tokens Valores Públicos
 - `_EmbedLayout` com favicon e logo
-- `_AdSlot` com label “Espaço publicitário”
+- `_AdSlot` com label “Espaço publicitário” (comportamento histórico substituído pela Sprint 86)
 - Cookie consent estilizado
 
 **Definition of Done:** páginas públicas consistentes; testes de ads/institucionais verdes.
@@ -1247,7 +1265,7 @@ Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost
 **Entregas:**
 - Páginas expandidas: `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`, `/aviso-legal`
 - Nova página `/como-calculamos` com metodologia e tabelas @2026
-- `AdsOptions` + `ConfigurableAdSlotProvider` (placeholders até `Ads:Enabled=true`)
+- `AdsOptions` + `ConfigurableAdSlotProvider` (placeholders históricos removidos pela Sprint 86)
 - Partial `_AdSenseScript`, banner de cookies quando ads ativos, CSP para domínios Google
 - Sitemap, mapa do site e footer atualizados
 

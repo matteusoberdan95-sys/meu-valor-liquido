@@ -68,4 +68,28 @@ public class Sprint83AdSenseTrustTests : IClassFixture<WebApplicationFactory<Pro
         xml.Should().Contain("/politica-editorial");
         html.Should().Contain("Política Editorial");
     }
+
+    [Fact]
+    public async Task Home_Should_Use_Verifiable_Trust_Copy()
+    {
+        var html = await client.GetStringAsync("/");
+
+        html.Should().Contain("tabelas oficiais indicadas na metodologia");
+        html.Should().Contain("Resultados educativos com metodologia");
+        html.Should().NotContain("+250k");
+        html.Should().NotContain("Avaliação 5 de 5 estrelas");
+        html.ToLowerInvariant().Should().NotContain("alta precisão");
+        html.ToLowerInvariant().Should().NotContain("insights profundos");
+        html.Should().NotContain("ML Prime");
+    }
+
+    [Fact]
+    public async Task Assistant_Should_Identify_Guided_Content_Without_Future_Ai_Claim()
+    {
+        var html = await client.GetStringAsync("/assistente");
+
+        html.Should().Contain("Conteúdo guiado");
+        html.Should().NotContain("IA 2080");
+        html.Should().NotContain("Espaço publicitário");
+    }
 }
