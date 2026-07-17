@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 94 - Pré-revisão final do AdSense
+- Checklist go/no-go em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` com status por área e branches pendentes.
+- Testes `Sprint94AdSensePreReviewTests` travam institucional, SEO, ads off, consentimento, editorial prioritário e `ads.txt`.
+- `adsense-init.js` só carrega no layout quando os anúncios estão ativos.
+- Veredito **GO CONDICIONAL**: mergear Sprints 91–93 antes de solicitar/reenviar ao Google.
+
 ### Sprint 93 — Editorial contínuo lote 6 (AdSense Sprint 8)
 - Artigos longos (~5 min): `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
 - Publicação escalonada em 10/07 e 15/07/2026; cross-links nos hubs `/desligamento` e `/negociar-salario`.

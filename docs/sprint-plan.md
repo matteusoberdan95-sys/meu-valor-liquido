@@ -1,5 +1,20 @@
 # Sprint Plan
 
+## Sprint 94 — Pré-revisão final do AdSense (concluída)
+
+**Objetivo:** executar a Sprint 9 do plano de aprovação AdSense, consolidando checklist go/no-go e testes que travam regressões críticas antes de solicitar ou reenviar ao Google.
+
+**Entregas:**
+- [x] Checklist em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` com status por área.
+- [x] Testes `Sprint94AdSensePreReviewTests` (institucional, SEO, ads off, consentimento, editorial, ads.txt).
+- [x] P0: `adsense-init.js` só no layout quando anúncios ativos.
+- [x] Veredito **GO CONDICIONAL** — mergear branches 6/7/8 antes do envio.
+- [x] Relatório `docs/adsense/SPRINT_9_REPORT.md` e atualização de `docs/adsense-checklist.md`.
+
+**Fora do escopo:** ativar `Ads:Enabled`, inventar scores Lighthouse, merge automático das branches pendentes.
+
+**Definition of Done:** build sem avisos, suíte verde e veredito documentado.
+
 ## Sprint 93 — Editorial contínuo lote 6 / AdSense Sprint 8 (concluída)
 
 **Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 6, reforçando hubs de desligamento e negociação salarial para continuidade editorial AdSense.
