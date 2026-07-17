@@ -38,7 +38,7 @@ Integration: 1 aprovado
 Calculators: 269 aprovados, 1 ignorado
 Playwright: 11 aprovados
 WebApp: 614 aprovados
-Total esperado: ~900 aprovados, 1 ignorado, 0 falhas
+Total: 900 aprovados, 1 ignorado, 0 falhas
 ```
 
 ## Próxima sprint recomendada
