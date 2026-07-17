@@ -5,8 +5,8 @@
 **Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 7, reforçando hubs de negociação salarial e desligamento.
 
 **Entregas:**
-- [x] `banco-de-horas-clt-como-funciona` → hub `/negociar-salario`, calc `hora-extra`, publicado 20/07/2026.
-- [x] `ferias-vencidas-e-proporcionais-na-rescisao` → hub `/desligamento`, calc `ferias`, publicado 25/07/2026.
+- [x] `banco-de-horas-clt-como-funciona` → hub `/negociar-salario`, calc `hora-extra`, publicado 16/07/2026.
+- [x] `ferias-vencidas-e-proporcionais-na-rescisao` → hub `/desligamento`, calc `ferias`, publicado 17/07/2026.
 - [x] `BlogEditorialCatalog.Sprint70Lote7EditorialSlugs` e `IsSprint70Editorial`.
 - [x] Cross-links em `ThematicHubCatalog`, `AppendPracticalSection`, capas WebP e `Sprint70Lote7BlogTests`.
 - [x] Documentação: `BLOG_EDITORIAL_PLAN.md`, `CHANGELOG.md`, `AGENTS.md`.

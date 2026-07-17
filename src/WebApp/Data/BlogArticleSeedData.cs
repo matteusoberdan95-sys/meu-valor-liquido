@@ -1420,7 +1420,7 @@ public static class BlogArticleSeedData
             "Entenda banco de horas na CLT, prazo de compensação, diferença para hora extra paga e como conferir saldo e holerite.",
             "hora-extra",
             "Trabalhista",
-            new DateOnly(2026, 7, 20),
+            new DateOnly(2026, 7, 16),
             """
             <p>O <strong>banco de horas</strong> é um mecanismo de compensação de jornada previsto na CLT que permite acumular horas extras trabalhadas para serem abatidas com folgas ou redução de jornada em outro momento, em vez de pagá-las imediatamente na folha. Na prática, muitos trabalhadores veem horas positivas no espelho de ponto, rubricas zeradas de hora extra no holerite e, meses depois, compensações que não batem com a expectativa. Este guia explica como funciona o banco de horas na CLT, o que conferir no holerite e como estimar valores quando a empresa opta por pagar horas extras em dinheiro — com base no <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">Decreto-Lei nº 5.452/1943 (CLT, art. 59 e seguintes)</a>. Conteúdo educativo: acordos individuais, convenções coletivas e políticas internas podem alterar prazos e percentuais; o holerite oficial prevalece sobre qualquer simulação.</p>
             <p>Se você trabalha com jornada flexível, plantões ou picos de demanda, comece pela <a href="/calculadoras/hora-extra">calculadora de hora extra</a> para estimar quanto valeria cada hora se fosse paga na folha. Depois compare com o saldo do banco de horas e use o hub <a href="/negociar-salario">negociar salário pelo líquido</a> para revisar holerite, adicionais e impacto no orçamento mensal.</p>
@@ -1508,7 +1508,7 @@ public static class BlogArticleSeedData
             "Veja como estimar férias vencidas e proporcionais na rescisão CLT, o terço constitucional e o que conferir no TRCT.",
             "ferias",
             "Trabalhista",
-            new DateOnly(2026, 7, 25),
+            new DateOnly(2026, 7, 17),
             """
             <p>Na rescisão CLT, <strong>férias vencidas</strong> e <strong>férias proporcionais</strong> costumam ser duas das verbas que mais geram dúvida no TRCT — tanto pelo valor quanto pela forma como aparecem nas linhas do documento. Férias vencidas referem-se a períodos aquisitivos já completos que não foram gozados; proporcionais são a fração do período aquisitivo em curso na data do desligamento. Ambas, quando devidas, levam o <strong>terço constitucional</strong> de férias (+ 1/3). Este guia explica como estimar e conferir essas verbas com linguagem educativa, com base nos <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">arts. 129 a 146 da CLT</a> e na prática usual de rescisão, sem substituir homologação ou assessoria jurídica individual.</p>
             <p>Comece simulando na <a href="/calculadoras/ferias">calculadora de férias</a> e, em seguida, no pacote completo da <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, informando motivo do desligamento, datas e se há férias vencidas. Depois compare linha a linha com o TRCT e use o hub <a href="/desligamento">desligamento CLT</a> para revisar aviso prévio, FGTS, multa e seguro-desemprego quando aplicável.</p>

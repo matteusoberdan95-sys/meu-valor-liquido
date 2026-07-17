@@ -94,7 +94,7 @@ public sealed class Sprint70Lote7BlogTests : IClassFixture<WebApplicationFactory
 
         posts["aviso-previo-trabalhado-vs-indenizado"].PublishedAt.Should().Be(new DateOnly(2026, 7, 10));
         posts["adicional-noturno-clt-como-calcular"].PublishedAt.Should().Be(new DateOnly(2026, 7, 15));
-        posts["banco-de-horas-clt-como-funciona"].PublishedAt.Should().Be(new DateOnly(2026, 7, 20));
-        posts["ferias-vencidas-e-proporcionais-na-rescisao"].PublishedAt.Should().Be(new DateOnly(2026, 7, 25));
+        posts["banco-de-horas-clt-como-funciona"].PublishedAt.Should().Be(new DateOnly(2026, 7, 16));
+        posts["ferias-vencidas-e-proporcionais-na-rescisao"].PublishedAt.Should().Be(new DateOnly(2026, 7, 17));
     }
 }

@@ -159,8 +159,8 @@ Antes de propor um artigo, consulte (quando disponível):
 
 ## Sprint 70 - lote 7 publicado (jul/2026, publicação escalonada)
 
-- `banco-de-horas-clt-como-funciona` -> hub `/negociar-salario`, calc `hora-extra`, publicado 20/07/2026
-- `ferias-vencidas-e-proporcionais-na-rescisao` -> hub `/desligamento`, calc `ferias`, publicado 25/07/2026
+- `banco-de-horas-clt-como-funciona` -> hub `/negociar-salario`, calc `hora-extra`, publicado 16/07/2026
+- `ferias-vencidas-e-proporcionais-na-rescisao` -> hub `/desligamento`, calc `ferias`, publicado 17/07/2026
 - Testes: `Sprint70Lote7BlogTests`; catálogo: `Sprint70Lote7EditorialSlugs`
 
 ## Rotina GSC CTR
