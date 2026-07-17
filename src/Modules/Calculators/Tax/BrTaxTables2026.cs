@@ -2,10 +2,23 @@ namespace MeuValorLiquido.Modules.Calculators.Tax;
 /// <summary>
 /// Tabelas vigentes a partir de janeiro/2026 (Portaria Interministerial MPS/MF nº 13/2026).
 /// IRRF com redução adicional conforme Lei nº 15.270/2025.
+/// Mantém <see cref="BrTaxTables2025"/> intacta para regressão anual — não sobrescrever anos anteriores.
 /// </summary>
 public static class BrTaxTables2026
 {
     public const int Year = 2026;
+
+    public static readonly DateOnly ValidFrom = new(2026, 1, 1);
+
+    /// <summary>Vigência aberta até nova portaria; o catálogo versionado preserva 2025 em paralelo.</summary>
+    public static readonly DateOnly? ValidTo = null;
+
+    public const string SourceName =
+        "Portaria Interministerial MPS/MF n. 13/2026 e Lei n. 15.270/2025";
+
+    public const string SourceUrl =
+        "https://www.in.gov.br/en/web/dou/-/portaria-interministerial-mps/mf-n-13-de-9-de-janeiro-de-2026-680382603";
+
     public const decimal MinimumWage = 1621.00m;
     public const decimal DependentDeduction = 189.59m;
     public const decimal InssCeiling = 8475.55m;
@@ -89,7 +102,7 @@ public sealed class InssCalculator : IInssCalculator
             }
         }
 
-        return decimal.Round(Math.Min(total, BrTaxTables2026.InssMaximumContribution), 2, MidpointRounding.AwayFromZero);
+        return MoneyRounding.Round(Math.Min(total, BrTaxTables2026.InssMaximumContribution));
     }
 }
 
@@ -114,7 +127,7 @@ public sealed class IrrfCalculator : IIrrfCalculator
         }
 
         var reduction = BrTaxTables2026.CalculateIrrfReduction(basis, grossIrrf);
-        return decimal.Round(Math.Max(0m, grossIrrf - reduction), 2, MidpointRounding.AwayFromZero);
+        return MoneyRounding.Round(Math.Max(0m, grossIrrf - reduction));
     }
 }
 
@@ -135,9 +148,7 @@ public sealed class ProLaboreInssCalculator : IProLaboreInssCalculator
 
         var capped = Math.Min(proLaboreGross, BrTaxTables2026.InssCeiling);
         var contribution = capped * BrTaxTables2026.ProLaboreInssRate;
-        return decimal.Round(
-            Math.Min(contribution, BrTaxTables2026.ProLaboreInssMaximumContribution),
-            2,
-            MidpointRounding.AwayFromZero);
+        return MoneyRounding.Round(
+            Math.Min(contribution, BrTaxTables2026.ProLaboreInssMaximumContribution));
     }
 }

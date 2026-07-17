@@ -1,5 +1,24 @@
 # Sprint Plan
 
+## Sprint 91 — Validação matemática e testes (concluída)
+
+**Objetivo:** executar a Sprint 6 do plano de aprovação AdSense, comprovando que as calculadoras prioritárias não apenas parecem corretas.
+
+**Entregas:**
+- [x] Cobertura de benchmarks das 10 calculadoras prioritárias recalibrada em 17/07/2026.
+- [x] Catálogo de casos de borda (`CalculatorEdgeCaseCatalog`) para zero, negativo, inválido, datas invertidas e limites.
+- [x] Tabelas versionadas `BrTaxTables2025` e `BrTaxTables2026` com vigência explícita via `BrTaxTableCatalog`.
+- [x] Política de arredondamento monetário centralizada em `MoneyRounding` (`decimal`, AwayFromZero).
+- [x] Evidências internas em `docs/adsense/MATH_VALIDATION_EVIDENCE.md`.
+- [x] `/como-calculamos` mostra vigência das tabelas versionadas e menção aos casos de borda.
+- [x] Testes `Sprint91MathValidationTests` e `Sprint91MathValidationWebTests`.
+
+**Fora do escopo:** alterar fórmulas de produção para 2025, ativar AdSense, CMP e performance mobile (Sprint 92).
+
+**Definition of Done:** build sem avisos, suíte automatizada verde e relatório em `docs/adsense/SPRINT_6_REPORT.md`.
+
+---
+
 ## Sprint 90 — Privacidade, cookies e preparação AdSense (concluída)
 
 **Objetivo:** executar a Sprint 5 do plano de aprovação AdSense, alinhando consentimento, políticas e carregamento de scripts ao comportamento real, sem ativar anúncios.

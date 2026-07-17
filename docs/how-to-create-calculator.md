@@ -20,3 +20,9 @@ Ao criar ou alterar formula de calculadora trabalhista/fiscal:
 5. Rode `dotnet test tests/MeuValorLiquido.Calculators.Tests/MeuValorLiquido.Calculators.Tests.csproj --filter CalculatorBenchmarkCatalogTests`.
 
 As 10 calculadoras prioritarias devem manter pelo menos 5 cenarios cada: salario liquido, salario bruto necessario, proposta salarial, ferias, 13o, rescisao CLT, INSS, IRRF, FGTS e hora extra.
+
+Tabelas fiscais sao versionadas (`BrTaxTables2025`, `BrTaxTables2026`) com vigencia em `BrTaxTableCatalog`. Nunca sobrescreva o arquivo do ano anterior ao atualizar faixas.
+
+Casos de borda (zero, negativo, invalido, datas invertidas) ficam em `CalculatorEdgeCaseCatalog` e devem falhar com `Calculators.InvalidInput`.
+
+Evidencias internas: `docs/adsense/MATH_VALIDATION_EVIDENCE.md`.

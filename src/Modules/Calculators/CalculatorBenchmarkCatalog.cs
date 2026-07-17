@@ -37,7 +37,7 @@ public static class CalculatorBenchmarkCatalog
     private const string TransportVoucherSourceUrl = "https://www.planalto.gov.br/ccivil_03/leis/l7418.htm";
     private const string SimplesSourceName = "Lei Complementar 123/2006 e criterios internos documentados";
     private const string SimplesSourceUrl = "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm";
-    private static readonly DateOnly CalibrationDate = new(2026, 6, 17);
+    private static readonly DateOnly CalibrationDate = new(2026, 7, 17);
 
     public static readonly IReadOnlyList<string> PrioritySlugs =
     [
