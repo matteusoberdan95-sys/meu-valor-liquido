@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 93 — Editorial contínuo lote 6 (AdSense Sprint 8)
+- Artigos longos (~5 min): `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
+- Publicação escalonada em 10/07 e 15/07/2026; cross-links nos hubs `/desligamento` e `/negociar-salario`.
+- `BlogEditorialCatalog.Sprint70Lote6EditorialSlugs`, helper `IsSprint70Editorial`, capas WebP e testes `Sprint70Lote6BlogTests`.
+
 ### Sprint 90 - Privacidade, cookies e preparação AdSense
 - Banner com Essenciais, Analytics, Personalização e Publicidade; nenhuma categoria opcional vem marcada.
 - Consentimento versionado (`v2`, política `2026-07-17`) com rejeição real, personalização e reabertura.

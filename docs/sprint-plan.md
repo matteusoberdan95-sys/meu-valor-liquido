@@ -1,5 +1,22 @@
 # Sprint Plan
 
+## Sprint 93 — Editorial contínuo lote 6 / AdSense Sprint 8 (concluída)
+
+**Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 6, reforçando hubs de desligamento e negociação salarial para continuidade editorial AdSense.
+
+**Entregas:**
+- [x] `aviso-previo-trabalhado-vs-indenizado` → hub `/desligamento`, calc `rescisao-clt`, publicado 10/07/2026.
+- [x] `adicional-noturno-clt-como-calcular` → hub `/negociar-salario`, calc `hora-extra`, publicado 15/07/2026.
+- [x] `BlogEditorialCatalog.Sprint70Lote6EditorialSlugs` e helper `IsSprint70Editorial`.
+- [x] Cross-links em `ThematicHubCatalog`, `AppendPracticalSection`, capas WebP e `Sprint70Lote6BlogTests`.
+- [x] Documentação: `BLOG_EDITORIAL_PLAN.md`, `CHANGELOG.md`, `AGENTS.md`, `docs/adsense/SPRINT_8_REPORT.md`.
+
+**Fora do escopo:** alterar fórmulas de calculadoras, inventar métricas AdSense ou ativar anúncios.
+
+**Definition of Done:** ≥850 palavras por artigo; links para calculadora + `/como-calculamos` + FAQ; sitemap; `dotnet test` verde.
+
+---
+
 ## Sprint 90 — Privacidade, cookies e preparação AdSense (concluída)
 
 **Objetivo:** executar a Sprint 5 do plano de aprovação AdSense, alinhando consentimento, políticas e carregamento de scripts ao comportamento real, sem ativar anúncios.
@@ -629,7 +646,7 @@
 
 ---
 
-### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3 + lote 4 + lote 5)
+### Sprint 70 — Editorial contínuo — CONCLUÍDA (lote 1 + lote 2 + lote 3 + lote 4 + lote 5 + lote 6)
 
 **Objetivo:** manter **2 artigos/mês** com calculadora relacionada, hub e FAQ — ritmo pós-calendário Sprint 68.
 
@@ -637,7 +654,7 @@
 |-------|----------|
 | SEO/Content | 2 artigos long tail por ciclo mensal (~5 min leitura) |
 | WebApp/Frontend | `BlogEditorialCatalog`; cross-link nos hubs |
-| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests`, `Sprint70Lote4BlogTests`, `Sprint70Lote5BlogTests` |
+| QA/Test | `Sprint70BlogTests`, `Sprint70Lote2BlogTests`, `Sprint70Lote3BlogTests`, `Sprint70Lote4BlogTests`, `Sprint70Lote5BlogTests`, `Sprint70Lote6BlogTests` |
 | Documentation | `docs/BLOG_EDITORIAL_PLAN.md` |
 
 **Lote 1 (jun/2026):** `acordo-484a-verbas-e-multa-fgts`, `custo-total-clt-para-empregador`.
@@ -650,7 +667,9 @@
 
 **Lote 5 (jul/2026):** `vale-transporte-home-office-hibrido`, `plano-saude-holerite-coparticipacao`.
 
-**Próximo:** Sprint 51 quando AdSense aprovar ou lote 6 editorial — ver `docs/BLOG_EDITORIAL_PLAN.md`.
+**Lote 6 (jul/2026):** `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
+
+**Próximo:** Sprint 51 quando AdSense aprovar ou lote 7 editorial — ver `docs/BLOG_EDITORIAL_PLAN.md`.
 
 **Definition of Done:** 2 artigos publicados; sitemap; links para calculadora + `/como-calculamos` + FAQ; ≥850 palavras.
 
