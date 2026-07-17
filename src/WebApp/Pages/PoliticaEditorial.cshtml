@@ -24,6 +24,9 @@
                 <a href="#editorial-3">3. Revisão</a>
                 <a href="#editorial-4">4. Limites</a>
                 <a href="#editorial-5">5. Correções</a>
+                <a href="#editorial-6">6. Patrocínio</a>
+                <a href="#editorial-7">7. Automação</a>
+                <a href="#editorial-8">8. Frequência</a>
             </nav>
             <div class="valora-stitch-legal-sidebar-meta">
                 <p>Última atualização</p>
@@ -64,6 +67,10 @@
                         eles servem apenas para comparar consistência, nunca para substituir a regra oficial.
                     </p>
                     <p>
+                        Não inventamos números, fontes, credenciais, avaliações, depoimentos ou resultados para preencher lacunas.
+                        Quando uma informação não pode ser confirmada, ela deve ser apresentada como limitação ou permanecer fora da publicação.
+                    </p>
+                    <p>
                         As premissas principais das calculadoras ficam documentadas em <a asp-page="/ComoCalculamos">Como calculamos</a>.
                     </p>
                 </section>
@@ -73,6 +80,10 @@
                     <p>
                         Conteúdos sensíveis a tabelas anuais, como INSS, IRRF, salário mínimo e regras trabalhistas, são revisados quando
                         há mudança relevante ou quando uma divergência é identificada nos testes automatizados e cenários de referência.
+                    </p>
+                    <p>
+                        Alterações de fórmula exigem fonte, cenário reproduzível e teste. Alterações editoriais exigem conferência do texto,
+                        dos links e da data de vigência. A data de atualização não muda apenas por causa de um novo deploy.
                     </p>
                 </section>
 
@@ -89,6 +100,41 @@
                     <p>
                         Se encontrar erro, fonte desatualizada ou cálculo divergente, envie uma mensagem pelo <a asp-page="/Contato">contato</a>.
                         Revisões relevantes podem gerar ajuste no texto, na calculadora ou na metodologia pública.
+                    </p>
+                    <p>
+                        O processo e o histórico público ficam em <a asp-page="/Correcoes">Correções editoriais</a>.
+                        Não publicamos correções fictícias; o histórico recebe entrada somente depois de uma divergência real ser confirmada.
+                    </p>
+                </section>
+
+                <section id="editorial-6">
+                    <h2 class="valora-h2">6. Conteúdo patrocinado e publicidade</h2>
+                    <p>
+                        Publicidade não interfere em fórmulas, conclusões ou seleção de fontes. Caso exista conteúdo patrocinado,
+                        ele será identificado de forma visível no início da página e separado do conteúdo editorial.
+                        Links comerciais não serão apresentados como recomendação técnica independente.
+                    </p>
+                </section>
+
+                <section id="editorial-7">
+                    <h2 class="valora-h2">7. Uso responsável de automação</h2>
+                    <p>
+                        Automação pode apoiar testes, formatação, inventários e revisão técnica, mas não autoriza inventar fatos,
+                        fontes, experiência profissional ou resultados. Conteúdo público deve permanecer versionado, revisável e atribuído
+                        ao responsável editorial. Os textos das calculadoras não são gerados por IA durante a visita do usuário.
+                    </p>
+                </section>
+
+                <section id="editorial-8">
+                    <h2 class="valora-h2">8. Frequência de atualização</h2>
+                    <p>
+                        Tabelas fiscais e previdenciárias são revisadas quando uma norma com nova vigência é publicada.
+                        Artigos são revistos quando a legislação, a fonte ou a intenção de busca muda de forma material.
+                        Também realizamos revisão após relatos confirmados de divergência.
+                    </p>
+                    <p>
+                        Consulte o <a href="@Model.Author.ProfilePath">perfil do responsável editorial</a> e a página
+                        <a asp-page="/ComoCalculamos">Como calculamos</a> para conhecer autoria, tabelas e premissas.
                     </p>
                 </section>
             </article>
