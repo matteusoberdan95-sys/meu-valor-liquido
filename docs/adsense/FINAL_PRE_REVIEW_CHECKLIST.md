@@ -6,15 +6,14 @@
 
 ## Veredito
 
-**GO CONDICIONAL** — a trilha 86–90 em `main` está pronta para revisão técnica. Antes de solicitar/reenviar ao Google, mergear e validar:
+**GO CONDICIONAL** — sprints 86–96 estão em `main`. Antes de solicitar/reenviar ao Google:
 
-| Branch | Sprint | Motivo |
-|--------|--------|--------|
-| `feat/adsense-sprint-6` | 91 | Validação matemática / tabelas versionadas |
-| `feat/adsense-sprint-7` | 92 | Performance e mobile (LCP/CLS) |
-| `feat/adsense-sprint-8` | 93 | Editorial lote 6 (2 artigos) |
-
-Depois: smoke no domínio HTTPS com `Ads:VerificationEnabled` via env **sem** ativar slots (`Ads:Enabled=false`).
+| Item | Status |
+|------|--------|
+| Merge Sprints 91–96 | FEITO em `main` |
+| Deploy HTTPS + smoke | Validar em produção |
+| Lighthouse mobile | Após deploy |
+| `Ads:Enabled=false` até aprovação | Mantido |
 
 ---
 
