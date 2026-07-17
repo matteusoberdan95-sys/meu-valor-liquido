@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 93 — Editorial contínuo lote 6 (AdSense Sprint 8)
+- Artigos longos (~5 min): `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
+- Publicação escalonada em 10/07 e 15/07/2026; cross-links nos hubs `/desligamento` e `/negociar-salario`.
+- `BlogEditorialCatalog.Sprint70Lote6EditorialSlugs`, helper `IsSprint70Editorial`, capas WebP e testes `Sprint70Lote6BlogTests`.
+
 ### Sprint 92 - Performance e experiência mobile
 - Hero da home e do artigo priorizam LCP (`eager` + `fetchpriority="high"`); imagens secundárias seguem lazy.
 - `adsense-init.js` só entra no layout com anúncios ativos; fontes carregam mais cedo no idle.

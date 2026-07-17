@@ -59,13 +59,23 @@ public static class BlogEditorialCatalog
         "plano-saude-holerite-coparticipacao"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote6EditorialSlugs =
+    [
+        "aviso-previo-trabalhado-vs-indenizado",
+        "adicional-noturno-clt-como-calcular"
+    ];
+
+    public static bool IsSprint70Editorial(string slug) =>
+        Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote5EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote6EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint66EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint68EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote5EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || IsSprint70Editorial(slug);
 }

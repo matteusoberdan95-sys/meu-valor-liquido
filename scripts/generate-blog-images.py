@@ -76,6 +76,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "pedir-demissao-ou-aguardar-dispensa": "balança pedir demissão vs dispensa; ícones FGTS 40% e seguro-desemprego",
     "vale-transporte-home-office-hibrido": "cartão de transporte + calendário híbrido com dias presenciais marcados",
     "plano-saude-holerite-coparticipacao": "holerite com rubrica plano de saúde, dependentes e alerta de coparticipação",
+    "aviso-previo-trabalhado-vs-indenizado": "calendário de aviso prévio split trabalhado vs indenizado + documento TRCT",
+    "adicional-noturno-clt-como-calcular": "relógio noturno 22h–5h + badge +20% e hora reduzida 52:30",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido
@@ -290,6 +292,17 @@ def draw_motif(draw: ImageDraw.ImageDraw, slug: str, color: tuple[int, int, int]
             draw.line((ox + 120, oy + 100, ox + 120, oy + 55), fill=color, width=4)
             draw.line((ox + 120, oy + 100, ox + 165, oy + 100), fill=color, width=4)
             draw.text((ox + 210, oy + 150), "+50%", fill=color, font=font(36, True))
+        case "adicional-noturno-clt-como-calcular":
+            draw.ellipse((ox + 40, oy + 20, ox + 200, oy + 180), outline=color, width=4)
+            draw.line((ox + 120, oy + 100, ox + 120, oy + 70), fill=color, width=4)
+            draw.line((ox + 120, oy + 100, ox + 150, oy + 100), fill=color, width=4)
+            draw.text((ox + 210, oy + 40), "22h", fill=COLORS["muted"], font=font(22, True))
+            draw.text((ox + 210, oy + 150), "+20%", fill=color, font=font(36, True))
+        case "aviso-previo-trabalhado-vs-indenizado":
+            draw_calendar(draw, ox, oy, color)
+            rounded_rect(draw, (ox + 130, oy + 50, ox + 250, oy + 200), 12, COLORS["card"], color, 2)
+            draw.text((ox + 148, oy + 95), "TRCT", fill=color, font=font(32, True))
+            draw.text((ox + 142, oy + 140), "aviso", fill=COLORS["text"], font=font(24, True))
         case "financiamento-como-calcular-parcelas":
             rounded_rect(draw, (ox, oy + 60, ox + 200, oy + 180), 8, COLORS["card"], color, 2)
             draw.polygon([(ox + 100, oy + 20), (ox + 60, oy + 70), (ox + 140, oy + 70)], fill=color)

@@ -1257,6 +1257,162 @@ public static class BlogArticleSeedData
             <h2>Quando vale questionar o RH</h2>
             <p>Questione quando o desconto não bate com a política, quando dependente já excluído continua aparecendo, quando há coparticipação sem demonstrativo ou quando o valor muda sem comunicação. Leve números: mês, rubrica, valor descontado, usuário do plano e procedimento. Uma pergunta objetiva aumenta a chance de resposta objetiva.</p>
             <p>O objetivo não é brigar com o benefício, e sim entender quanto ele custa no seu líquido. Benefício bom é aquele que protege sua família e ainda cabe no orçamento. Sem clareza de holerite, o trabalhador pode achar que ganhou aumento e descobrir depois que parte do ganho foi absorvida por descontos de saúde.</p>
+            """),
+        Article(
+            "aviso-previo-trabalhado-vs-indenizado",
+            "Aviso prévio trabalhado ou indenizado: diferenças na rescisão",
+            "Entenda aviso prévio trabalhado e indenizado na rescisão CLT, como cada modalidade altera verbas e o que conferir no TRCT.",
+            "rescisao-clt",
+            "Trabalhista",
+            new DateOnly(2026, 7, 10),
+            """
+            <p>O <strong>aviso prévio</strong> é um dos pontos que mais confundem na hora de estimar uma rescisão CLT. Muita gente olha só para saldo de salário, férias e 13º, mas esquece que o aviso — <strong>trabalhado</strong> ou <strong>indenizado</strong> — muda dias trabalhados, verbas proporcionais e, em alguns casos, o valor que cai na conta. Este guia organiza as diferenças na rescisão com linguagem educativa, citando a regra geral da <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm" rel="noopener noreferrer" target="_blank">CLT (art. 487 e seguintes)</a>, sem substituir homologação, sindicato ou orientação jurídica individual.</p>
+            <p>Se você está saindo da empresa ou recebeu aviso de dispensa, simule primeiro na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> informando motivo do desligamento, datas e se o aviso será cumprido. Depois compare linha a linha com o TRCT e use o hub <a href="/desligamento">desligamento CLT</a> para revisar FGTS, multa e seguro-desemprego quando aplicável.</p>
+
+            <h2>O que é aviso prévio na prática</h2>
+            <p>O aviso prévio é o período de comunicação prévia entre empregado e empregador antes do fim do contrato. Na <strong>demissão sem justa causa</strong> iniciada pela empresa, o empregador deve avisar com antecedência mínima de 30 dias, podendo ser cumprido trabalhando ou pago como verba indenizatória. Na <strong>dispensa por justa causa</strong>, em regra, não há aviso prévio devido ao empregado.</p>
+            <p>No <strong>pedido de demissão</strong>, quem avisa é o trabalhador. Se não cumprir o aviso trabalhado, a empresa pode descontar até 30 dias das verbas rescisórias — limite que aparece na simulação educativa e na <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ de pedido de demissão</a>. Convenções coletivas podem ampliar prazos ou tratar redução de jornada de forma específica; o contrato e o acordo sindical prevalecem quando forem mais favoráveis.</p>
+
+            <h2>Aviso prévio trabalhado</h2>
+            <p>No aviso prévio <strong>trabalhado</strong>, o empregado continua prestando serviços durante o período de aviso. A remuneração do mês inclui os dias efetivamente trabalhados até a data de saída. Durante esse período, a jornada pode ser reduzida: em geral, duas horas a menos por dia ou sete dias corridos de dispensa no final do aviso, conforme opção do empregado na regra usual da CLT.</p>
+            <p>Para o orçamento pessoal, o aviso trabalhado significa salário normal por mais tempo, com possível queda de jornada no fim. Para a rescisão, a data de término do contrato costuma ser o último dia do aviso cumprido. Saldo de salário, férias proporcionais, 13º proporcional e demais verbas consideram essa data. Se houve horas extras ou adicional noturno no aviso, eles entram no holerite daquele mês e podem integrar médias em férias e 13º conforme política da empresa.</p>
+            <p>Exemplo educativo: admissão em 2020, dispensa sem justa causa em 10/07/2026 com aviso trabalhado de 30 dias. A saída efetiva pode cair em agosto, dependendo de como o RH contabiliza o período. O saldo de salário será dos dias trabalhados no mês da rescisão; férias e 13º proporcionais usam meses completos ou frações conforme regra aplicada. Por isso, informe na calculadora a data real de saída e os dias trabalhados no mês — pequenas diferenças de data mudam centenas de reais.</p>
+
+            <h2>Aviso prévio indenizado</h2>
+            <p>No aviso prévio <strong>indenizado</strong>, o empregado não trabalha o período de aviso e recebe o valor correspondente como verba rescisória. Esse pagamento integra a remuneração para efeito de férias, 13º e FGTS na rescisão, conforme entendimento consolidado e prática usual de folha — a simulação educativa trata o aviso indenizado como componente do pacote rescisório quando o motivo de desligamento prevê essa verba.</p>
+            <p>A vantagem para quem busca novo emprego é sair antes e usar o tempo para entrevistas. A desvantagem é perder salários dos dias que não serão trabalhados, embora parte disso seja compensada pela indenização do aviso. O valor indenizado não sofre desconto de INSS e IRRF como salário ordinário em muitos lançamentos, mas aparece no TRCT em rubrica própria; confira o extrato oficial antes de assinar.</p>
+            <p>Na demissão sem justa causa, é comum a empresa optar pelo aviso indenizado para liberar o colaborador imediatamente. Compare o pacote total — aviso indenizado + verbas + multa FGTS + seguro-desemprego estimado — com o cenário de cumprir aviso trabalhado recebendo salários mensais. Leia também <a href="/blog/pedir-demissao-ou-aguardar-dispensa">pedir demissão ou aguardar dispensa</a> e <a href="/blog/rescisao-clt-vs-trct">rescisão CLT vs TRCT</a>.</p>
+
+            <h2>Aviso proporcional aos anos de serviço</h2>
+            <p>Além dos 30 dias base, a CLT prevê acréscimo de três dias por ano completo de serviço na mesma empresa, limitado a 90 dias no total. Quem trabalhou cinco anos, por exemplo, pode ter aviso de 45 dias; quem passou de 20 anos, atinge o teto de 90. Esse cálculo impacta tanto o aviso trabalhado quanto o indenizado.</p>
+            <p>Na simulação, informe o tempo de empresa em meses ou use as datas de admissão e demissão para o motor estimar o aviso. Se o TRCT mostrar aviso menor que o esperado, verifique se houve acordo de redução, dispensa no período de experiência ou cláusula coletiva diferente. Documentos de prorrogação de contrato de experiência também alteram o pacote — veja <a href="/blog/experiencia-clt-direitos-e-rescisao">experiência CLT: direitos e rescisão</a>.</p>
+
+            <h2>Como cada modalidade altera o líquido rescisório</h2>
+            <table>
+            <thead>
+            <tr><th>Aspecto</th><th>Aviso trabalhado</th><th>Aviso indenizado</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Salário no período</td><td>Recebe salários mensais normais</td><td>Recebe verba indenizatória no TRCT</td></tr>
+            <tr><td>Data de saída</td><td>Após cumprimento do prazo</td><td>Pode ser imediata após acordo</td></tr>
+            <tr><td>Horas extras no aviso</td><td>Podem ocorrer se houver jornada</td><td>Não há jornada no período indenizado</td></tr>
+            <tr><td>Impacto em verbas</td><td>Proporcionais até a data final</td><td>Proporcionais + integração do aviso</td></tr>
+            </tbody>
+            </table>
+            <p>A tabela é simplificada. Descontos de empréstimo consignado, pensão ou plano de saúde podem continuar nos holerites do aviso trabalhado. Na rescisão final, INSS e IRRF incidem sobre verbas salariais conforme natureza de cada rubrica — a calculadora separa estimativas educativas de proventos e descontos, mas o holerite oficial prevalece.</p>
+
+            <h2>Passo a passo para simular no Meu Valor Líquido</h2>
+            <ol>
+            <li>Abra a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a> e selecione o motivo correto (demissão sem justa causa, pedido, acordo 484-A etc.).</li>
+            <li>Informe salário bruto, datas de admissão e demissão e dias trabalhados no mês da saída.</li>
+            <li>Marque se o aviso será trabalhado, indenizado ou se há desconto por pedido de demissão sem cumprimento.</li>
+            <li>Revise saldo de salário, aviso, férias (+ 1/3), 13º proporcional, multa FGTS e descontos.</li>
+            <li>Compare o PDF ou tela da simulação com o TRCT e use <a href="/conferir-holerite">conferir holerite</a> se houver holerite final separado.</li>
+            </ol>
+            <p>As regras de cálculo e tolerâncias usadas pelo site estão documentadas em <a href="/como-calculamos">Como calculamos</a>. Para entender cada linha do documento oficial, consulte a <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ sobre verbas na demissão</a> e a <a href="/duvidas/ferias-proporcionais-como-funciona">FAQ de férias proporcionais</a>.</p>
+
+            <h2>Erros comuns ao conferir aviso prévio</h2>
+            <ul>
+            <li>Confundir data do aviso com data de saída — o TRCT usa a data de término do contrato.</li>
+            <li>Esquecer acréscimo de três dias por ano na mesma empresa.</li>
+            <li>Assumir que aviso indenizado entra igual a salário no holerite mensal — rubrica e tributação podem diferir.</li>
+            <li>Não comparar pedido de demissão com desconto de 30 dias versus dispensa com aviso pago pela empresa.</li>
+            <li>Ignorar redução de jornada no aviso trabalhado ao estimar horas e saldo de salário.</li>
+            </ul>
+            <p>Se a diferença entre simulação e TRCT for pequena, pode ser arredondamento ou convenção coletiva. Se for grande, peça memória de cálculo ao RH antes de assinar. Em acordo 484-A, as regras de aviso e multa FGTS são distintas — leia <a href="/blog/acordo-484a-verbas-e-multa-fgts">acordo 484-A: verbas e multa</a>.</p>
+
+            <h2>Perguntas frequentes sobre aviso prévio</h2>
+            <h3>Empresa pode escolher aviso trabalhado ou indenizado?</h3>
+            <p>Na demissão sem justa causa, a empresa costuma definir a modalidade, respeitando direitos do empregado e acordos. Negociações podem antecipar a saída com aviso indenizado mesmo quando o trabalhador preferiria cumprir.</p>
+            <h3>Pedido de demissão tem aviso indenizado?</h3>
+            <p>Em regra, quem pede demissão deve cumprir aviso ou indenizar a empresa, não o contrário. Se sair sem cumprir, pode haver desconto limitado às verbas rescisórias.</p>
+            <h3>Aviso prévio conta para seguro-desemprego?</h3>
+            <p>O seguro-desemprego depende de demissão sem justa causa e requisitos legais, não do tipo de aviso em si. Estime parcelas na <a href="/calculadoras/seguro-desemprego">calculadora de seguro-desemprego</a> após confirmar elegibilidade.</p>
+            <h3>O que integra base de FGTS no aviso?</h3>
+            <p>Verbas de natureza salarial na rescisão, incluindo aviso indenizado na prática usual, podem gerar depósito de FGTS. Use a <a href="/calculadoras/fgts">calculadora de FGTS</a> com o motivo de desligamento correto.</p>
+
+            <h2>Próximos passos após entender o aviso</h2>
+            <p>Depois de estimar o aviso, feche o pacote completo: multa do FGTS, saque, guias de seguro-desemprego e prazos de homologação. Guarde comunicados de dispensa, e-mails de RH e holerites do período. Se for negociar acordo, simule os dois cenários antes da reunião e exporte a comparação em PDF para facilitar a conversa objetiva.</p>
+            <p>Para o próximo emprego, avalie propostas pelo líquido na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a>. Transição bem planejada reduz surpresas entre o valor simulado e o depósito bancário final.</p>
+            """),
+        Article(
+            "adicional-noturno-clt-como-calcular",
+            "Adicional noturno CLT: como calcular e conferir no holerite",
+            "Aprenda a calcular adicional noturno na CLT, entenda a hora noturna reduzida e confira se o valor no holerite está coerente.",
+            "hora-extra",
+            "Trabalhista",
+            new DateOnly(2026, 7, 15),
+            """
+            <p>O <strong>adicional noturno</strong> é um dos adicionais mais comuns — e mais mal interpretados — no holerite CLT. Trabalhar entre 22h e 5h (urbano) ou em jornadas noturnas especiais exige pagamento mínimo de <strong>20% sobre a hora diurna</strong>, além da regra da <strong>hora noturna reduzida</strong> (52 minutos e 30 segundos). Se você faz plantões, turnos ou estende jornada à noite, conferir essa rubrica evita receber menos do que a estimativa educativa sugere.</p>
+            <p>Este guia explica como calcular e conferir no holerite com base na <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm" rel="noopener noreferrer" target="_blank">CLT (art. 73 e seguintes)</a> e práticas usuais de folha. É conteúdo educativo: convenções coletivas podem elevar o percentual, alterar horário noturno em setores específicos ou combinar adicional noturno com horas extras — sempre confirme contrato, acordo e holerite oficial.</p>
+
+            <h2>O que caracteriza trabalho noturno</h2>
+            <p>Na regra urbana geral, considera-se noturno o trabalho executado entre <strong>22h de um dia e 5h do dia seguinte</strong>. Jornadas que cruzam a meia-noite podem misturar horas diurnas e noturnas no mesmo dia. A contagem correta separa cada faixa antes de aplicar o adicional de 20%.</p>
+            <p>Algumas categorias usam horários distintos (rural, hospitalar etc.) por lei ou convenção. Se você trabalha em escala 12x36, turnos rotativos ou sobrejornada após as 22h, o holerite pode trazer rubricas separadas: adicional noturno, hora extra noturna (+50% ou +100% sobre a hora já majorada) e DSR sobre essas parcelas. Não some tudo mentalmente — identifique cada linha.</p>
+
+            <h2>Hora noturna reduzida: o detalhe que multiplica valores</h2>
+            <p>Na CLT, cada <strong>hora noturna</strong> equivale a 52 minutos e 30 segundos de hora diurna. Assim, uma jornada de sete horas noturnas (22h às 5h) corresponde a oito horas diurnas para efeito de pagamento. Esse fator aumenta o valor da hora base antes mesmo do adicional de 20%.</p>
+            <p>Exemplo educativo: salário de R$ 3.300 com divisor 220h. A hora diurna seria R$ 15,00. A hora noturna reduzida costuma ser calculada multiplicando a hora diurna por 1,142857 (7/6,125) na prática usual, resultando em cerca de R$ 17,14 antes do adicional. Sobre essa base aplica-se +20% de adicional noturno, chegando a aproximadamente R$ 20,57 por hora noturna efetiva — valor ilustrativo, não substituto do holerite.</p>
+            <p>Empresas podem usar fórmulas equivalentes desde que respeitem a remuneração mínima legal. Se o holerite parece baixo, verifique se o RH converteu corretamente minutos noturnos e se não houve compensação indevida com banco de horas.</p>
+
+            <h2>Como calcular o adicional noturno passo a passo</h2>
+            <ol>
+            <li>Obtenha o salário base mensal e confirme o divisor (220h para jornada 44h semanal é o usual).</li>
+            <li>Calcule a hora diurna: salário ÷ divisor.</li>
+            <li>Converta horas noturnas trabalhadas para horas noturnas reduzidas (ou use a fórmula adotada pela empresa).</li>
+            <li>Aplique +20% sobre o valor da hora noturna (ou percentual maior da convenção).</li>
+            <li>Some ao salário do mês ou confira rubrica específica no holerite.</li>
+            </ol>
+            <p>Para horas extras noturnas, o adicional de hora extra (+50% ou +100%) incide sobre a hora noturna já majorada — cadeia que aumenta rápido o valor. Use a <a href="/calculadoras/hora-extra">calculadora de hora extra</a> informando salário, quantidade de horas e tipo de adicional. Veja também a <a href="/duvidas/hora-extra-valor-minimo">FAQ sobre valor mínimo de hora extra</a> e o artigo <a href="/blog/hora-extra-como-calcular">hora extra: como calcular</a>.</p>
+
+            <h2>Conferir adicional noturno no holerite</h2>
+            <p>No holerite, o adicional noturno pode aparecer como “adic. noturno”, “HN”, “noturno 20%” ou agrupado em “horas extras / adicionais”. Peça o espelho de ponto ou relatório de jornada quando a rubrica vier genérica. Compare:</p>
+            <ul>
+            <li>Quantidade de horas noturnas registradas no ponto.</li>
+            <li>Percentual aplicado (20% ou valor coletivo maior).</li>
+            <li>Se houve conversão de hora reduzida.</li>
+            <li>Se DSR sobre adicional noturno foi pago em rubrica separada.</li>
+            <li>Se descontos de VT, plano ou consignado não mascaram o bruto adicional.</li>
+            </ul>
+            <p>Depois de estimar o bruto adicional, leve o holerite completo para a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> ou para <a href="/conferir-holerite">conferir holerite</a> e validar INSS, IRRF e líquido. Adicional noturno habitual pode integrar médias de férias, 13º e, em rescisões, verbas proporcionais — simule férias na <a href="/calculadoras/ferias">calculadora de férias</a> se o adicional for recorrente.</p>
+
+            <h2>Adicional noturno e negociação salarial</h2>
+            <p>Quem trabalha à noite fixa ou em escala precisa comparar propostas pelo pacote real, não só pelo salário base. Uma vaga com R$ 200 a mais no bruto pode pagar menos se não houver adicional noturno correto ou se a escala tiver menos horas noturnas remuneradas. Na negociação, pergunte:</p>
+            <ul>
+            <li>Qual percentual de adicional noturno (20% legal ou mais pela CCT)?</li>
+            <li>Como é registrado o ponto entre 22h e 5h?</li>
+            <li>Há hora extra noturna frequente? Com qual adicional?</li>
+            <li>O adicional entra na média de férias e 13º?</li>
+            </ul>
+            <p>Use a <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> para comparar bruto atual e proposto, depois ajuste na calculadora de hora extra uma estimativa mensal de horas noturnas. O hub <a href="/negociar-salario">negociar salário pelo líquido</a> reúne artigos sobre holerite, dissídio e benefícios para fechar a análise.</p>
+
+            <h2>Metodologia do Meu Valor Líquido</h2>
+            <p>As fórmulas usadas nas calculadoras seguem parâmetros documentados em <a href="/como-calculamos">Como calculamos</a>, com divisor configurável e adicionais de hora extra aplicados sobre a hora normal estimada. A calculadora de hora extra trata adicionais de 50% e 100% de forma educativa; para plantões exclusivamente noturnos, combine a estimativa de horas noturnas reduzidas com o percentual de adicional noturno antes de comparar ao holerite.</p>
+            <p>Não alteramos fórmulas oficiais de INSS ou IRRF aqui — apenas estimamos proventos informados. Se o adicional noturno mudou sua faixa de contribuição, o desconto previdenciário pode subir mesmo com salário base igual. Isso explica casos em que o líquido não cresce na mesma proporção do adicional.</p>
+
+            <h2>Erros comuns na conferência</h2>
+            <ul>
+            <li>Tratar hora noturna como hora diurna sem redução.</li>
+            <li>Esquecer que hora extra noturna usa base já majorada.</li>
+            <li>Comparar simulação anual com holerite de um mês atípico (férias, afastamento).</li>
+            <li>Ignorar convenção coletiva com percentual acima de 20%.</li>
+            <li>Não solicitar espelho de ponto quando a rubrica vem zerada ou agrupada.</li>
+            </ul>
+            <p>Se você também recebe vale-refeição, plano de saúde ou trabalha em home office híbrido, leia <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a> e <a href="/blog/home-office-clt-descontos">home office CLT e descontos</a>. Para dúvidas sobre bruto e líquido, consulte a <a href="/duvidas/diferenca-salario-bruto-e-liquido">FAQ salário bruto e líquido</a>.</p>
+
+            <h2>Perguntas frequentes</h2>
+            <h3>Adicional noturno é obrigatório?</h3>
+            <p>Sim, para trabalho em horário noturno urbano na regra geral da CLT, com mínimo de 20% sobre a hora diurna. Percentuais maiores podem vir de acordo coletivo.</p>
+            <h3>Trabalho até 22h recebe adicional?</h3>
+            <p>Antes das 22h, em regra urbana, aplica-se jornada diurna. Se a jornada continua após 22h, só o período noturno recebe o adicional.</p>
+            <h3>Como usar a calculadora de hora extra para plantão?</h3>
+            <p>Estime horas noturnas reduzidas, calcule o valor base noturno e informe horas extras adicionais se houver prorrogação. Compare com a soma das rubricas do holerite.</p>
+            <h3>Adicional noturno entra no 13º?</h3>
+            <p>Se for habitual e integrar remuneração, pode compor médias. Use a <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a> com salário atualizado.</p>
+
+            <h2>Checklist rápido antes de questionar o RH</h2>
+            <p>Reúna holerite, espelho de ponto, contrato e convenção coletiva. Simule na calculadora de hora extra com salário e quantidade de horas equivalentes. Se a diferença for persistente, envie planilha com datas, horários e valor esperado por linha — abordagem objetiva acelera a resposta do departamento pessoal.</p>
+            <p>Manter registro mensal dos adicionais ajuda em dissídios, rescisões e metas de orçamento. Trabalho noturno costuma impactar saúde e transporte; inclua esses custos quando comparar propostas pelo líquido real, não só pelo percentual do adicional.</p>
             """)
     ];
 
@@ -1402,6 +1558,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Antes de questionar o VT, calcule dias presenciais × custo de ida e volta e compare com 6% do bruto. Leve essa conta pronta ao RH.</p>",
             "plano-saude-holerite-coparticipacao" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Separe mensalidade fixa, dependentes e coparticipação em uma planilha simples. Assim você identifica se a queda do líquido veio de uso do plano ou de outro desconto.</p>",
+            "aviso-previo-trabalhado-vs-indenizado" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Simule demissão sem justa causa com aviso indenizado e com data estendida de aviso trabalhado; exporte os dois PDFs e compare o líquido total antes de aceitar saída antecipada.</p>",
+            "adicional-noturno-clt-como-calcular" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Guarde três holerites com plantão noturno e calcule a média de horas; use esse número fixo na calculadora de hora extra para prever o líquido dos próximos meses.</p>",
             _ => string.Empty
         };
 

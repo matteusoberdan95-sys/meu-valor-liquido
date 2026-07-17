@@ -150,6 +150,13 @@ Antes de propor um artigo, consulte (quando disponível):
 - `plano-saude-holerite-coparticipacao` -> hub `/negociar-salario`, calc `salario-liquido`
 - Cadência recente normalizada: artigos publicados em 05/06, 10/06, 15/06, 20/06, 25/06, 30/06 e lote 5 em 05/07.
 
+## Sprint 70 - lote 6 publicado (jul/2026)
+
+- `aviso-previo-trabalhado-vs-indenizado` -> hub `/desligamento`, calc `rescisao-clt`, publicado 10/07/2026
+- `adicional-noturno-clt-como-calcular` -> hub `/negociar-salario`, calc `hora-extra`, publicado 15/07/2026
+- Palavras-chave: aviso prévio trabalhado, aviso prévio indenizado, adicional noturno, hora noturna, holerite
+- Testes: `Sprint70Lote6BlogTests`; catálogo: `Sprint70Lote6EditorialSlugs` + `IsSprint70Editorial`
+
 ## Rotina GSC CTR
 
 Antes de abrir pauta nova, exporte `Consultas.csv` e `Páginas.csv` do Google Search Console e procure páginas com:
@@ -198,7 +205,7 @@ Para esses casos, otimize primeiro a página existente: title, meta description,
 
 ---
 
-- Sprint 82 concluiu conversao interna nos artigos. Proximo ciclo recomendado: Sprint 51 quando AdSense aprovar ou lote 6 editorial.
+- Sprint 93 concluiu lote 6 editorial. Proximo ciclo recomendado: Sprint 94 (editorial lote 7) ou Sprint 51 quando AdSense aprovar.
 
 ## Como sugerir novo artigo (template para agents)
 
@@ -216,4 +223,4 @@ Copie e preencha num PR ou issue:
 - **Conflito com slug existente:** não / qual
 ```
 
-Última atualização: **jul/2026** (lote 2 publicado).
+Última atualização: **jul/2026** (lote 6 publicado).
