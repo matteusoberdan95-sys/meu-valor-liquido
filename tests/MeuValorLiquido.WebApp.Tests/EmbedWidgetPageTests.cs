@@ -68,6 +68,11 @@ public class EmbedWidgetPageTests
         response.Headers.GetValues("Content-Security-Policy").First().Should().Contain("frame-ancestors *");
         html.Should().Contain("valora-embed-body");
         html.Should().Contain("noindex,nofollow");
+        html.Should().Contain(
+            "<link rel=\"canonical\" href=\"https://meuvalorliquido.com/calculadoras/salario-liquido\"");
+        html.Should().Contain(
+            "href=\"https://meuvalorliquido.com/calculadoras/salario-liquido\" target=\"_blank\"");
+        html.Should().NotContain("meuvalorliquido.com.br");
         html.Should().NotContain("ad-slot");
         html.Should().NotContain("data-local-panel-save");
     }

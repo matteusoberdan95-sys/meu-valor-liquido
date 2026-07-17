@@ -62,6 +62,19 @@ public sealed class Sprint89TechnicalSeoTests : IClassFixture<WebApplicationFact
             "<link rel=\"canonical\" href=\"https://meuvalorliquido.com/calculadoras/salario-liquido\"");
     }
 
+    [Theory]
+    [InlineData("/calculadoras?q=nao-existe", "/calculadoras")]
+    [InlineData("/duvidas?q=nao-existe", "/duvidas")]
+    public async Task Filtered_Hub_Should_Be_NoIndex_With_Canonical_Pointing_To_Hub(
+        string requested,
+        string canonicalPath)
+    {
+        var html = await client.GetStringAsync(requested);
+
+        html.Should().Contain("name=\"robots\" content=\"noindex,follow\"");
+        html.Should().Contain($"<link rel=\"canonical\" href=\"https://meuvalorliquido.com{canonicalPath}\"");
+    }
+
     [Fact]
     public async Task Sitemap_Should_Contain_Only_Unique_Canonical_Indexable_Urls()
     {

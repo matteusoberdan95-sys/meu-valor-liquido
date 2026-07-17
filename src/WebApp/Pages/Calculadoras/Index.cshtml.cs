@@ -68,5 +68,10 @@ public class IndexModel : PageModel
             .Cast<CalculatorDefinition>()
             .Where(c => Calculators.Any(x => x.Slug.Equals(c.Slug, StringComparison.OrdinalIgnoreCase)))
             .ToList();
+
+        if (Request.QueryString.HasValue)
+        {
+            ViewData["Robots"] = SeoMetadataHelper.NoIndexFollowRobots;
+        }
     }
 }

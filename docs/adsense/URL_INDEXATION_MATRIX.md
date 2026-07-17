@@ -38,7 +38,9 @@ Esta matriz define quais grupos de URL podem ser enviados ao Google. Somente rot
 | `/widget` | Gerador de iframe | `noindex,follow` | Não | 200 | Utilitário para publishers |
 | `/calculadoras/{slug}?embed=1` | Documento incorporável | `noindex,nofollow` | Não | 200 | Versão duplicada e reduzida da calculadora |
 | `/calculadoras/{slug}?…` | Preset/resultado compartilhado | `noindex,follow` | Não | 200 | Estado parametrizado; canonical aponta para a ferramenta |
+| `/calculadoras?q=…`, `/calculadoras?categoria=…` | Busca/filtro | `noindex,follow` | Não | 200 | Faceta, inclusive sem resultados; canonical aponta para `/calculadoras` |
 | `/blog?cat=…` ou qualquer query | Filtro | `noindex,follow` | Não | 200 | Faceta; canonical aponta para `/blog` |
+| `/duvidas?q=…`, `/duvidas?cat=…` | Busca/filtro | `noindex,follow` | Não | 200 | Faceta, inclusive sem resultados; canonical aponta para `/duvidas` |
 | `/metricas-internas` | Operacional | `noindex,nofollow` | Não | 200 | Métricas agregadas internas |
 | `/correcoes` | Processo sem histórico atual | `noindex,follow` | Não | 200 | Indexar somente quando existir histórico útil |
 | `/Error` | Erro | `noindex,nofollow` | Não | 500 | Sem canonical |

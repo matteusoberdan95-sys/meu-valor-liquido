@@ -26,6 +26,9 @@ public class IndexModel : PageModel
             new SeoMetadata(
                 "Central de Ajuda — dúvidas sobre salário, CLT e impostos",
                 "Respostas educativas sobre salário líquido, INSS, IRRF, férias, rescisão, PJ e MEI — com links para calculadoras.",
-                "/duvidas"));
+                "/duvidas",
+                Request.QueryString.HasValue
+                    ? SeoMetadataHelper.NoIndexFollowRobots
+                    : SeoMetadataHelper.DefaultRobots));
     }
 }

@@ -3,6 +3,9 @@
     var title = ViewData["Title"]?.ToString() ?? "Meu Valor Líquido";
     var description = ViewData["Description"]?.ToString() ?? "Calculadora incorporada.";
     var robots = ViewData["Robots"]?.ToString() ?? SeoMetadataHelper.NoIndexRobots;
+    var baseUrl = Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com";
+    var canonicalPath = ViewData["CanonicalPath"]?.ToString() ?? "/";
+    var canonicalUrl = SeoMetadataHelper.BuildCanonicalUrl(baseUrl, canonicalPath);
 }
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="@robots" />
     <meta name="description" content="@description" />
+    <link rel="canonical" href="@canonicalUrl" />
     <title>@title</title>
     <link rel="icon" href="~/favicon.ico" sizes="any" />
     <link rel="icon" href="~/images/brand/logo-icon.png" type="image/png" sizes="32x32" />
@@ -30,7 +34,7 @@
     <footer class="valora-embed-footer">
         <partial name="Shared/_BrandMark" view-data='new ViewDataDictionary(ViewData) { { "BrandMarkClass", "valora-brand-mark--compact" } }' />
         <span aria-hidden="true">·</span>
-        <a href="@(Configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com.br")" target="_blank" rel="noopener noreferrer">Abrir no site</a>
+        <a href="@canonicalUrl" target="_blank" rel="noopener noreferrer">Abrir no site</a>
         <span aria-hidden="true">·</span>
         <span>Estimativa educativa</span>
     </footer>

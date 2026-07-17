@@ -40,7 +40,7 @@ Aliases de calculadoras, CLT/PJ, painel, widget e dúvida antiga agora retornam 
 
 ### P1 — parâmetros e estados derivados
 
-- `/blog?cat=...` e qualquer variação com query recebem `noindex,follow` e canonical `/blog`.
+- Buscas e filtros de `/calculadoras`, `/duvidas` e `/blog` recebem `noindex,follow` e canonical do respectivo hub, inclusive quando não há resultados.
 - Calculadoras com preset, resultado compartilhado ou outro query string recebem `noindex,follow` e canonical da ferramenta.
 - Embeds continuam em `noindex,nofollow`.
 

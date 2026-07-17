@@ -24,7 +24,7 @@ Garantir que mecanismos de busca encontrem somente páginas públicas, úteis, c
   - widget e embeds;
   - métricas internas;
   - correções sem histórico;
-  - filtros do blog;
+  - buscas e filtros de calculadoras, dúvidas e blog;
   - presets e resultados parametrizados das calculadoras.
 - `X-Robots-Tag` aplicado a páginas fora do índice e endpoints operacionais.
 - `robots.txt` impede crawl de API, health check e PDFs.
@@ -59,11 +59,11 @@ Core: 5 aprovados
 Calculators: 243 aprovados, 1 teste gerador ignorado
 Integration: 1 aprovado
 Playwright: 11 aprovados
-WebApp: 611 aprovados
-Total: 871 aprovados, 0 falhas, 1 ignorado
+WebApp: 613 aprovados
+Total: 873 aprovados, 0 falhas, 1 ignorado
 ```
 
-Os 24 cenários específicos de `Sprint89TechnicalSeoTests` também passaram isoladamente.
+Os 26 cenários específicos de `Sprint89TechnicalSeoTests` também passaram isoladamente.
 
 ## Critérios de aceite
 
