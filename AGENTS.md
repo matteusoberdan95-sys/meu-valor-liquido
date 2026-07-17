@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Merge AdSense 91–94 · Sprint 51 quando Google aprovar · editorial lote 8 |
+| **Próxima sprint** | Merge AdSense 91–94 + lotes 7–8 · Sprint 51 quando Google aprovar · editorial lote 9 |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 95 (lote 7) · Sprint 93 · Sprint 90 · Sprint 89 |
+| **Concluída recente** | Sprint 96 (lote 8) · Sprint 95 (lote 7) · Sprint 93 · Sprint 90 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | Merge 91–94 ou 51 | Monetization / SEO | AdSense quando aprovar; merge branches pendentes |
-| **Contínuo** | 70 (lote 8+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | Merge 91–94 / lotes 7–8 | Monetization / SEO | AdSense quando aprovar; merge branches pendentes |
+| **Contínuo** | 70 (lote 9+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -60,8 +60,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–90 + 93–95** no fluxo AdSense/editorial; Sprints 91–92 e 94 em branches paralelas (merge antes do envio AdSense).
-- **Trilha ativa:** GO CONDICIONAL AdSense + editorial contínuo (lote 7 publicado).
+- Trilhas **47–90 + 93–96** no fluxo AdSense/editorial; Sprints 91–92 e 94 em branches paralelas (merge antes do envio AdSense).
+- **Trilha ativa:** GO CONDICIONAL AdSense + editorial contínuo (lote 8 publicado).
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.

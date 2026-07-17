@@ -1588,6 +1588,172 @@ public static class BlogArticleSeedData
             <p>Para aprofundar, leia <a href="/blog/como-calcular-ferias">como calcular férias</a>, use o hub <a href="/desligamento">desligamento CLT</a> e consulte <a href="/como-calculamos">Como calculamos</a> para entender tolerâncias e premissas das calculadoras. Planejar o desligamento com estimativas educativas reduz surpresas entre o valor simulado e o depósito bancário — mas a homologação e o TRCT assinado são a referência final.</p>
             
             """),
+        Article(
+            "dsr-sobre-horas-extras-como-calcular",
+            "DSR sobre horas extras: como estimar e conferir no holerite",
+            "Entenda o reflexo de DSR sobre horas extras, como estimar o valor e onde conferir a rubrica no holerite.",
+            "hora-extra",
+            "Trabalhista",
+            new DateOnly(2026, 7, 17),
+            """
+            <p>O <strong>DSR sobre horas extras</strong> é um dos reflexos mais comuns — e também um dos mais confusos — quando você tenta conferir o holerite. O Descanso Semanal Remunerado não aparece só como “folga”: quando há horas extras habituais, parte do valor dessas horas também deve refletir no cálculo do repouso semanal. Neste artigo, você aprende a <strong>estimar</strong> esse reflexo, entender onde ele costuma surgir no contracheque e comparar o resultado com o que a empresa informou — sempre como referência educativa, não como parecer jurídico.</p>
+            <p>Antes de seguir, vale lembrar: os valores abaixo são <strong>estimativas</strong>. Cada convenção coletiva, acordo interno e forma de apuração pode alterar o resultado. Para aprofundar a metodologia usada em nossas ferramentas, consulte <a href="/como-calculamos">como calculamos</a>.</p>
+            <h2>O que é DSR e por que ele “reflete” horas extras</h2>
+            <p>O DSR garante que o repouso semanal seja pago como se você tivesse trabalhado naquele dia — inclusive quando parte da remuneração vem de horas extras. Na prática, isso significa que as horas extras habituais entram na base de cálculo do descanso semanal remunerado, gerando um valor adicional no mês.</p>
+            <p>Esse entendimento está ligado ao repouso semanal previsto na legislação trabalhista. O artigo 7º da Constituição Federal assegura o repouso semanal remunerado, preferencialmente aos domingos. Na <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">Consolidação das Leis do Trabalho (CLT)</a>, os artigos 67 a 71 tratam do repouso semanal, da duração da jornada e das condições em que o descanso deve ocorrer. Horas extras, por sua vez, são regidas por outros dispositivos da mesma CLT e por entendimentos consolidados sobre reflexos salariais.</p>
+            <p>Para quem está negociando salário ou revisando benefícios variáveis, entender esse reflexo ajuda a enxergar o custo real da jornada estendida. Veja também nosso hub sobre <a href="/negociar-salario">negociar salário</a>.</p>
+            <h2>Como estimar o DSR sobre horas extras: passo a passo</h2>
+            <p>De forma simplificada, o cálculo educativo do reflexo de DSR sobre horas extras segue esta lógica:</p>
+            <ol>
+            <li>Some o valor total das horas extras do mês (já com adicional de 50% ou 100%, conforme o caso).</li>
+            <li>Identifique quantos dias úteis e quantos domingos/feriados compõem o mês de referência.</li>
+            <li>Divida o total de horas extras pelos dias úteis do mês.</li>
+            <li>Multiplique o resultado pelo número de domingos e feriados do período.</li>
+            </ol>
+            <p>Essa fórmula é uma referência didática. Empresas podem usar sistemas de folha com arredondamentos, médias ou critérios internos compatíveis com a prática contábil e sindical da categoria.</p>
+            <h3>Exemplo educativo: estimativa mensal</h3>
+            <p><strong>Exemplo educativo:</strong> suponha que, em um mês com 22 dias úteis e 4 domingos, você tenha recebido R$ 880,00 em horas extras (já com adicional). A estimativa do DSR seria:</p>
+            <ul>
+            <li>880 ÷ 22 = R$ 40,00 (média diária de HE para fins de DSR)</li>
+            <li>40 × 4 = R$ 160,00 (reflexo estimado de DSR sobre horas extras)</li>
+            </ul>
+            <p>Esse valor não substitui a apuração oficial da folha, mas ajuda a saber se a ordem de grandeza faz sentido no holerite. Em meses com feriados em dias úteis, o divisor muda e a estimativa sobe ou desce junto com o calendário.</p>
+            <h2>Tabela de referência: elementos que entram na estimativa</h2>
+            <table>
+            <thead>
+            <tr><th>Elemento</th><th>O que considerar na estimativa</th><th>Onde conferir no holerite</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Horas extras 50%</td><td>Horas acima da jornada com adicional mínimo legal ou convencional</td><td>Linhas de HE diurna ou “hora extra 50%”</td></tr>
+            <tr><td>Horas extras 100%</td><td>Domingos, feriados ou condições previstas em norma</td><td>Linhas de HE 100% ou “domingo/feriado”</td></tr>
+            <tr><td>DSR sobre HE</td><td>Reflexo calculado sobre o total de HE do mês</td><td>“DSR s/ HE”, “Repouso s/ extras” ou rubrica similar</td></tr>
+            <tr><td>Descontos</td><td>INSS e IRRF incidem conforme regras da folha</td><td>Coluna de descontos do contracheque</td></tr>
+            </tbody>
+            </table>
+            <p>Para simular horas extras e adicionais antes de estimar o DSR, use a <a href="/calculadoras/hora-extra">calculadora de hora extra</a>. Guarde o valor bruto estimado das horas e só depois aplique a regra educativa do repouso semanal.</p>
+            <h2>Como o DSR sobre horas extras aparece no holerite</h2>
+            <p>Na maioria das folhas de pagamento, o reflexo não vem “escondido” dentro da hora extra: ele costuma aparecer como rubrica separada. Nomes comuns incluem “DSR s/ horas extras”, “Repouso remunerado s/ HE” ou códigos internos que o RH reconhece, mas o trabalhador talvez não associe imediatamente ao descanso semanal.</p>
+            <p>Alguns pontos para conferência educativa:</p>
+            <ul>
+            <li>Verifique se há horas extras no mês; sem HE, em geral não há DSR sobre extras.</li>
+            <li>Confira se domingos e feriados do mês batem com o divisor usado implicitamente pela empresa.</li>
+            <li>Observe se férias, afastamentos ou faltas injustificadas alteraram a base — situações específicas podem impactar a apuração.</li>
+            <li>Compare o valor da rubrica de DSR com a estimativa que você fez manualmente.</li>
+            </ul>
+            <p>Se você recebe adicional noturno ou usa banco de horas, outros reflexos podem interagir com a folha. Leia também <a href="/blog/adicional-noturno-clt-como-calcular">adicional noturno na CLT: como calcular</a> e <a href="/blog/banco-de-horas-clt-como-funciona">banco de horas na CLT: como funciona</a>.</p>
+            <h2>Horas extras habituais versus eventuais: impacto no reflexo</h2>
+            <p>O debate sobre reflexos salariais costuma distinguir horas extras <strong>habituais</strong> (recorrentes, integradas à rotina) de horas <strong>eventuais</strong> (pontuais). Na prática trabalhista, quando as horas extras são pagas de forma regular, é comum que o DSR sobre elas seja apurado mês a mês. Já extras esporádicas podem gerar reflexo menor ou até ausência da rubrica, dependendo de como a folha está parametrizada.</p>
+            <p>Para calcular a hora extra em si — base de todo o reflexo — consulte <a href="/blog/hora-extra-como-calcular">hora extra: como calcular</a>. Dúvidas sobre piso ou valor mínimo da hora extra estão em <a href="/duvidas/hora-extra-valor-minimo">hora extra: qual o valor mínimo?</a>.</p>
+            <p>Se a empresa usa banco de horas e as horas extras não são pagas no mês, o DSR sobre HE também pode não aparecer, porque não houve pagamento de extras naquele período. Nesse caso, o controle fica no ponto e no saldo do banco — outro motivo para separar “hora trabalhada a mais” de “hora paga com adicional”.</p>
+            <h2>Erros frequentes ao conferir o DSR no contracheque</h2>
+            <p>Muitos trabalhadores comparam apenas o total de horas extras com o salário base e esquecem o repouso semanal. Outros erros comuns:</p>
+            <ol>
+            <li><strong>Usar 30 dias fixos</strong> em meses com 28, 29 ou 31 dias, distorcendo a média.</li>
+            <li><strong>Ignorar feriados</strong> que caem em dias úteis e entram no cálculo do DSR.</li>
+            <li><strong>Misturar bruto e líquido</strong> — o DSR integra a remuneração bruta antes dos descontos legais.</li>
+            <li><strong>Esperar DSR sobre adicional noturno da mesma forma</strong> em todas as empresas; a parametrização pode variar conforme categoria e sistema.</li>
+            <li><strong>Somar DSR duas vezes</strong> quando o holerite já inclui a rubrica e a estimativa manual também.</li>
+            </ol>
+            <p>Se a diferença for pequena, pode ser arredondamento. Se for grande e recorrente, vale registrar o histórico de holerites e buscar esclarecimento no RH ou na contabilidade da empresa. Leve números objetivos: horas, valor de HE, dias úteis, domingos/feriados e estimativa de DSR.</p>
+            <h2>Perguntas frequentes</h2>
+            <h3>Todo mês com hora extra gera DSR sobre extras?</h3>
+            <p>Em regra, quando há pagamento de horas extras no mês, a folha costuma apurar o reflexo de DSR correspondente. Meses sem horas extras normalmente não exibem essa rubrica. Trate sempre como estimativa e confira o contracheque.</p>
+            <h3>O DSR incide sobre o valor bruto da hora extra?</h3>
+            <p>Na lógica educativa mais difundida, sim: considera-se o valor já acrescido do adicional de hora extra (50% ou 100%) para calcular o repouso semanal reflexo. Detalhes podem variar conforme acordo coletivo.</p>
+            <h3>Posso usar calculadora para validar meu holerite?</h3>
+            <p>Sim, como referência. Nossa <a href="/calculadoras/hora-extra">calculadora de hora extra</a> ajuda a estimar a base; em seguida, aplique a lógica de DSR descrita aqui. Veja <a href="/como-calculamos">como calculamos</a> para entender premissas e limitações.</p>
+            <h3>DSR sobre horas extras tem desconto de INSS e IRRF?</h3>
+            <p>Como integra a remuneração, o valor reflexo em geral compõe a base de encargos e impostos retidos na fonte conforme as faixas do mês. O holerite mostrará os descontos aplicados.</p>
+            <h2>Quando buscar ajuda especializada</h2>
+            <p>Este conteúdo é educativo. Divergências persistentes entre sua estimativa e a folha podem envolver convenção coletiva, acordo de compensação, banco de horas ou parametrização interna. Nesses casos, documente holerites, escala de trabalho e comprovantes de horas extras antes de formalizar questionamentos.</p>
+            <p>Para continuar estudando remuneração variável e reflexos salariais, explore <a href="/negociar-salario">negociar salário</a>, a <a href="/calculadoras/hora-extra">calculadora de hora extra</a> e os artigos relacionados sobre <a href="/blog/hora-extra-como-calcular">cálculo de hora extra</a>, <a href="/blog/banco-de-horas-clt-como-funciona">banco de horas</a> e <a href="/blog/adicional-noturno-clt-como-calcular">adicional noturno</a>.</p>
+            """),
+        Article(
+            "decimo-terceiro-proporcional-na-rescisao",
+            "13º proporcional na rescisão: avos, descontos e TRCT",
+            "Veja como estimar o décimo terceiro proporcional na rescisão CLT, conferir avos no TRCT e o que muda por tipo de desligamento.",
+            "decimo-terceiro",
+            "Trabalhista",
+            new DateOnly(2026, 7, 17),
+            """
+            <p>Na rescisão do contrato de trabalho, o <strong>13º salário proporcional</strong> costuma ser uma das verbas mais esperadas — e também uma das que geram mais dúvidas na hora de conferir o TRCT. Quantos avos você tem direito? Há descontos? O pedido de demissão muda alguma coisa? Este guia explica, de forma educativa, como <strong>estimar</strong> o décimo terceiro na rescisão, o que observar no Termo de Rescisão e quando a justa causa pode excluir o pagamento.</p>
+            <p>Os valores mencionados são apenas <strong>estimativas</strong> para aprendizado. Cada caso pode variar conforme salário, tempo de trabalho, motivo do desligamento e regras da categoria. Confira também <a href="/como-calculamos">como calculamos</a> para entender as premissas das nossas ferramentas.</p>
+            <h2>O que diz a lei sobre o 13º salário</h2>
+            <p>O 13º salário foi instituído pela Lei nº 4.090/1962, que define o pagamento de gratificação natalina aos empregados. Em linhas gerais, todo trabalhador com carteira assinada tem direito a receber, ao longo do ano, o equivalente a 1/12 avos do salário por mês trabalhado — ou fração igual ou superior a 15 dias no mês.</p>
+            <p>Na rescisão, esse direito não desaparece automaticamente: o que muda é a forma de pagamento. Em vez de aguardar a segunda parcela do ano, o valor proporcional aos meses trabalhados no ano corrente é quitado no desligamento, junto com as demais verbas rescisórias previstas na <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">CLT</a> e na legislação específica do 13º.</p>
+            <p>Para navegar outros temas de desligamento — aviso prévio, férias, FGTS — use o hub <a href="/desligamento">desligamento</a>.</p>
+            <h2>Como funcionam os avos do 13º proporcional</h2>
+            <p>Cada mês do ano civil em que você trabalhou pelo menos 15 dias gera <strong>1/12 avos</strong> do 13º, salvo exceções legais. Na rescisão, somam-se os avos do ano até a data do término do contrato.</p>
+            <ol>
+            <li>Identifique quantos meses do ano você trabalhou (contando frações a partir de 15 dias).</li>
+            <li>Divida o salário-base de cálculo por 12.</li>
+            <li>Multiplique o resultado pelo número de avos proporcionais.</li>
+            <li>Desconte eventuais adiantamentos da 1ª parcela já pagos no ano, se houver.</li>
+            </ol>
+            <h3>Exemplo educativo: rescisão em julho</h3>
+            <p><strong>Exemplo educativo:</strong> um trabalhador com salário-base de R$ 3.600,00 é desligado sem justa causa em 17 de julho, tendo trabalhado todos os meses de janeiro a julho (cada um com mais de 15 dias). Os avos proporcionais seriam 7/12:</p>
+            <ul>
+            <li>3.600 ÷ 12 = R$ 300,00 por avo</li>
+            <li>300 × 7 = R$ 2.100,00 de 13º proporcional estimado</li>
+            <li>Se já recebeu a 1ª parcela (50% do 13º) no ano, esse adiantamento deve ser considerado na conferência final</li>
+            </ul>
+            <p>Simule cenários com a <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a> e veja o panorama completo da rescisão na <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
+            <h2>Tabela de referência: 13º proporcional por tipo de desligamento</h2>
+            <table>
+            <thead>
+            <tr><th>Tipo de desligamento</th><th>13º proporcional na rescisão (visão educativa)</th><th>Observação para conferência</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Sem justa causa (dispensa pelo empregador)</td><td>Em geral, sim — avos proporcionais ao ano</td><td>Verificar adiantamento da 1ª parcela e reflexos no TRCT</td></tr>
+            <tr><td>Pedido de demissão</td><td>Em geral, sim — proporcional aos meses trabalhados</td><td>Outras verbas podem ser reduzidas; o 13º proporcional costuma ser pago</td></tr>
+            <tr><td>Acordo (Lei 13.467/2017)</td><td>Em geral, sim — conforme acordo e verbas negociadas</td><td>Conferir termo e valores específicos acordados</td></tr>
+            <tr><td>Justa causa</td><td>Em regra, não há direito ao 13º proporcional</td><td>Exceções dependem de interpretação judicial e provas; conteúdo educativo apenas</td></tr>
+            <tr><td>Término de contrato por prazo determinado</td><td>Proporcional aos meses do ano, salvo previsão contratual</td><td>Conferir cláusulas do contrato e TRCT</td></tr>
+            </tbody>
+            </table>
+            <p>Mais detalhes sobre quem tem direito ao 13º estão em <a href="/duvidas/decimo-terceiro-quem-tem-direito">décimo terceiro: quem tem direito?</a>. Para pedido de demissão, veja <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">rescisão por pedido de demissão: o que recebo?</a>.</p>
+            <h2>Pedido de demissão e 13º proporcional</h2>
+            <p>Um equívoco comum é achar que quem pede demissão “perde tudo” na rescisão. Na realidade, embora verbas como aviso prévio indenizado e multa de 40% do FGTS normalmente não se apliquem ao empregado que pede demissão, o <strong>13º salário proporcional</strong> em geral continua devido, calculado pelos avos trabalhados no ano.</p>
+            <p>O mesmo vale para férias proporcionais e, conforme o caso, saldo de salário — mas cada verba tem regra própria. Por isso, ao pedir demissão, estime item a item em vez de assumir um valor único. Leia também <a href="/blog/aviso-previo-trabalhado-vs-indenizado">aviso prévio trabalhado vs indenizado</a> para entender diferenças que impactam o total líquido da rescisão.</p>
+            <h2>Justa causa: quando o 13º proporcional pode não ser pago</h2>
+            <p>Na dispensa por justa causa, prevista nos artigos da CLT que tratam das faltas graves, o empregado perde o direito ao 13º salário proporcional na rescisão, entre outras verbas. Essa é uma regra sensível e frequentemente discutida judicialmente quando há controvérsia sobre a motivação do desligamento.</p>
+            <p>Se você está conferindo um TRCT após justa causa, verifique se a rubrica do 13º proporcional aparece zerada ou ausente — e compare com a fundamentação do desligamento. Este artigo não substitui assessoria jurídica; serve apenas para orientar a leitura educativa dos documentos.</p>
+            <h2>Descontos que podem aparecer no 13º da rescisão</h2>
+            <p>O valor proporcional do 13º integra as verbas rescisórias e pode sofrer descontos legais, assim como o salário:</p>
+            <ul>
+            <li><strong>INSS</strong> — incide conforme a tabela vigente sobre o total das verbas salariais da rescisão, respeitando tetos.</li>
+            <li><strong>IRRF</strong> — retido na fonte quando aplicável, considerando deduções e faixas do mês do pagamento.</li>
+            <li><strong>Pensão alimentícia</strong> — se houver ordem judicial, pode incidir sobre verbas rescisórias.</li>
+            <li><strong>Adiantamento do 13º</strong> — a 1ª parcela paga até novembro deve ser abatida do cálculo final na rescisão ocorrida ainda no mesmo ano.</li>
+            </ul>
+            <p>Para entender parcelas ao longo do ano, consulte <a href="/blog/decimo-terceiro-primeira-segunda-parcela">décimo terceiro: primeira e segunda parcela</a> e o <a href="/blog/guia-decimo-terceiro">guia completo do décimo terceiro</a>.</p>
+            <p>Se a rescisão ocorre em dezembro, depois do pagamento da 2ª parcela, a conferência muda: em vez de “proporcional a receber”, você verifica se o valor anual já quitado bate com os avos devidos até a saída e se houve diferença a complementar ou a descontar.</p>
+            <h2>Como conferir o 13º proporcional no TRCT</h2>
+            <p>O Termo de Rescisão do Contrato de Trabalho (TRCT) lista as verbas pagas no desligamento. Para o 13º proporcional, observe:</p>
+            <ol>
+            <li><strong>Rubrica específica</strong> — procure “13º salário proporcional” ou código equivalente.</li>
+            <li><strong>Base de cálculo</strong> — confira se o salário usado inclui médias de horas extras habituais, comissões ou outros adicionais incorporados à remuneração.</li>
+            <li><strong>Número de avos</strong> — divida o valor informado pelo salário-base mensal ÷ 12 para verificar se os meses batem.</li>
+            <li><strong>Adiantamentos</strong> — some a 1ª parcela do 13º já recebida no ano ao valor pago na rescisão para estimar o total anual.</li>
+            <li><strong>Descontos</strong> — compare bruto e líquido; diferenças grandes podem vir de INSS, IRRF ou outros descontos autorizados.</li>
+            </ol>
+            <p>Férias vencidas e proporcionais seguem lógica parecida de proporcionalidade, mas com regras distintas. Veja <a href="/blog/ferias-vencidas-e-proporcionais-na-rescisao">férias vencidas e proporcionais na rescisão</a> para não misturar as verbas na conferência.</p>
+            <h2>Salário-base de cálculo: o que entra e o que pode ficar de fora</h2>
+            <p>O 13º é calculado sobre a remuneração habitual. Na prática educativa, isso significa que o salário fixo é a base principal, mas parcelas regulares — como certas comissões ou horas extras habituais — podem integrar o valor conforme entendimento consolidado e prática da empresa.</p>
+            <p>Se sua remuneração é variável, estime uma média dos meses anteriores ao desligamento antes de aplicar a regra dos avos. Use a <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a> e, para o pacote completo, a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</p>
+            <h2>Perguntas frequentes</h2>
+            <h3>Trabalhei 10 dias no mês da rescisão. Conta avo?</h3>
+            <p>Pela regra geral da Lei 4.090/1962, frações iguais ou superiores a 15 dias no mês geram 1/12 avos. Com menos de 15 dias, aquele mês em geral não conta como avo completo. Trate como estimativa e confira o TRCT.</p>
+            <h3>Recebi a 1ª parcela do 13º e fui demitido no mesmo ano. Perco o restante?</h3>
+            <p>Não necessariamente. A 1ª parcela é adiantamento. Na rescisão, o empregador costuma pagar o proporcional ao tempo trabalhado no ano, abatendo o que já foi adiantado, conforme o caso.</p>
+            <h3>Pedido de demissão dá direito ao 13º proporcional?</h3>
+            <p>Em geral, sim. O pedido de demissão costuma reduzir outras verbas rescisórias, mas o 13º proporcional aos meses trabalhados normalmente é devido. Veja <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">o que recebo na rescisão por pedido de demissão</a>.</p>
+            <h3>Justa causa elimina todo o 13º do ano?</h3>
+            <p>Na rescisão por justa causa, o 13º proporcional em geral não é pago. Parcelas já recebidas no ano e outros direitos podem ser analisados conforme o caso — este texto é apenas educativo.</p>
+            <h2>Próximos passos para estimar sua rescisão</h2>
+            <p>Conferir o 13º proporcional exige cruzar calendário de trabalho, tipo de desligamento, holerites anteriores e TRCT. Organize esses documentos antes de simular valores. Lembre-se: diferenças pequenas podem ser arredondamento; diferenças grandes pedem esclarecimento formal.</p>
+            <p>Continue por <a href="/desligamento">desligamento</a>, simule com <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a> e <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, leia <a href="/como-calculamos">como calculamos</a> e explore os guias <a href="/blog/guia-decimo-terceiro">guia do décimo terceiro</a>, <a href="/blog/decimo-terceiro-primeira-segunda-parcela">primeira e segunda parcela</a>, <a href="/blog/ferias-vencidas-e-proporcionais-na-rescisao">férias na rescisão</a> e <a href="/blog/aviso-previo-trabalhado-vs-indenizado">aviso prévio</a>.</p>
+            """),
     ];
 
     private static BlogArticleSeed Article(
@@ -1740,6 +1906,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Exporte o saldo do banco de horas e estime o valor das horas positivas na calculadora de hora extra; leve a comparação ao RH antes do crédito vencer.</p>",
             "ferias-vencidas-e-proporcionais-na-rescisao" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Liste períodos aquisitivos e avos em uma planilha, simule na calculadora de férias e compare linha a linha com o TRCT antes de assinar.</p>",
+            "dsr-sobre-horas-extras-como-calcular" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Some as horas extras do mês, estime o DSR (total HE ÷ dias úteis × domingos/feriados) e compare com a rubrica do holerite antes de questionar o RH.</p>",
+            "decimo-terceiro-proporcional-na-rescisao" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Conte os avos até a data de saída, abata a 1ª parcela se já recebeu e compare o resultado com a linha de 13º no TRCT.</p>",
             _ => string.Empty
         };
 
