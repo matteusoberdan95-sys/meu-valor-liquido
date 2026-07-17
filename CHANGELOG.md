@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 87 - Conteudo editorial das calculadoras
+- Doze calculadoras prioritárias ganharam conteúdo específico sobre funcionamento, entradas, limitações, interpretação e erros comuns.
+- Exemplos editoriais usam o mesmo `ICalculatorApplicationService` da UI, evitando números de resultado duplicados no texto.
+- Fontes oficiais, data de revisão, responsável editorial, links relacionados e aviso educativo passaram a aparecer nas páginas.
+- Cada calculadora recebeu FAQs próprias adicionais, incluídas no conteúdo visível e no JSON-LD.
+- Novo layout editorial responsivo e testes protegem cobertura, unicidade, exemplos e ausência no modo embed.
+
 ### Sprint 86 - Confianca e readiness AdSense
 - Home sem contador `+250k`, estrelas, avatares, selos de popularidade ou promoção “ML Prime” sem evidência auditável.
 - Linguagem de precisão e autoridade não comprovada foi substituída por descrições de estimativas, metodologia e fontes oficiais.

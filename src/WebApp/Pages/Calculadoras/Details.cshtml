@@ -32,7 +32,7 @@ else
     if (!Model.IsEmbedMode)
     {
         @section Head {
-            <partial name="Shared/_JsonLdFaq" model="Model.Definition.FaqItems" />
+            <partial name="Shared/_JsonLdFaq" model="Model.PageFaqItems" />
             <partial name="Shared/_JsonLdBreadcrumb" model="SeoMetadataHelper.CalculatorBreadcrumbs(Model.Definition.Name, Model.Definition.Slug)" />
         }
     }
@@ -792,7 +792,7 @@ else
             {
             <div class="valora-disclaimer">
                 <span class="material-symbols-outlined">warning</span>
-                <p style="margin: 0;">Os resultados são estimativas educativas baseados nas tabelas vigentes. Consulte seu RH ou contador para valores oficiais.</p>
+                <p style="margin: 0;">Os resultados são estimativas educativas baseadas nas tabelas vigentes. Consulte seu RH ou contador para valores oficiais.</p>
             </div>
             }
         </div>
@@ -891,11 +891,16 @@ else
         </aside>
     </div>
 
+    @if (!Model.IsEmbedMode && Model.EditorialContent is not null)
+    {
+        <partial name="Shared/_CalculatorEditorialContent" model="Model.EditorialContent" />
+    }
+
     @if (!Model.IsEmbedMode)
     {
         <section class="valora-faq @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-faq" : "valora-stitch-calc-faq")">
             <h2 class="valora-h2">@(Model.IsPjVsCltStitch ? "Perguntas Frequentes" : "Perguntas frequentes")</h2>
-            @foreach (var faq in Model.Definition.FaqItems)
+            @foreach (var faq in Model.PageFaqItems)
             {
                 <details>
                     <summary>

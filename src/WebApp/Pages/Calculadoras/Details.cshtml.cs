@@ -35,6 +35,8 @@ public class DetailsModel : PageModel
 
     public CalculatorDefinition? Definition { get; private set; }
 
+    public IReadOnlyList<FaqItem> PageFaqItems { get; private set; } = [];
+
     public CalculationResult? Result { get; private set; }
 
     public CalculatorFieldProfile FieldProfile { get; private set; } = new();
@@ -46,6 +48,8 @@ public class DetailsModel : PageModel
     public CalculatorShareViewModel? Share { get; private set; }
 
     public CalculatorResultPanelViewModel? ResultPanel { get; private set; }
+
+    public CalculatorEditorialViewModel? EditorialContent { get; private set; }
 
     public CltPjComparisonBreakdown? CltPjBreakdown { get; private set; }
 
@@ -306,6 +310,11 @@ public class DetailsModel : PageModel
             return;
         }
 
+        PageFaqItems = Definition.FaqItems
+            .Concat(CalculatorEditorialCatalog.GetFaqs(slug))
+            .DistinctBy(faq => faq.Question)
+            .ToList();
+
         FieldProfile = fieldProfileProvider.GetProfile(slug);
         if (IsEmbedMode)
         {
@@ -317,5 +326,29 @@ public class DetailsModel : PageModel
         var slots = adSlotProvider.GetSlots();
         TopAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-top");
         BottomAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-bottom");
+        BuildEditorialContent(slug);
+    }
+
+    private void BuildEditorialContent(string slug)
+    {
+        var content = CalculatorEditorialCatalog.GetBySlug(slug);
+        if (content is null)
+        {
+            return;
+        }
+
+        var exampleResult = calculatorService.Calculate(slug, content.Example.Input);
+        if (exampleResult.IsFailure)
+        {
+            return;
+        }
+
+        var related = content.RelatedCalculatorSlugs
+            .Select(catalogService.GetBySlug)
+            .Where(definition => definition is not null)
+            .Cast<CalculatorDefinition>()
+            .ToList();
+
+        EditorialContent = new CalculatorEditorialViewModel(content, exampleResult.Value, related);
     }
 }

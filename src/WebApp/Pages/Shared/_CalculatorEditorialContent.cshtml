@@ -1,0 +1,111 @@
+@model CalculatorEditorialViewModel
+
+<section class="valora-calculator-editorial valora-section" aria-labelledby="calculator-editorial-title">
+    <header class="valora-calculator-editorial-header">
+        <span class="valora-stitch-section-kicker">Entenda o cálculo</span>
+        <h2 id="calculator-editorial-title" class="valora-h2">Como esta calculadora funciona</h2>
+        <p class="valora-lead">@Model.Content.Summary</p>
+    </header>
+
+    <div class="valora-calculator-editorial-grid">
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">Como o cálculo funciona</h3>
+            <p>@Model.Content.HowItWorks</p>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">O que entra no cálculo</h3>
+            <ul>
+                @foreach (var item in Model.Content.IncludedItems)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">O que não entra no cálculo</h3>
+            <ul>
+                @foreach (var item in Model.Content.ExcludedItems)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">Como interpretar o resultado</h3>
+            <p>@Model.Content.HowToInterpret</p>
+        </article>
+    </div>
+
+    <article class="valora-card valora-calculator-example">
+        <div class="valora-calculator-example-copy">
+            <span class="valora-stitch-section-kicker">Exemplo calculado pelo mesmo motor</span>
+            <h3 class="valora-h3">@Model.Content.Example.Title</h3>
+            <p>@Model.Content.Example.InputSummary</p>
+            <p>@Model.Content.Example.Interpretation</p>
+        </div>
+        <div class="valora-calculator-example-result">
+            <p class="valora-text-muted valora-text-sm">Resultado principal da simulação</p>
+            <strong>@Model.ExampleResult.EstimatedNetAmount</strong>
+            <ul>
+                @foreach (var line in Model.ExampleResult.LineItems.Take(6))
+                {
+                    <li>
+                        <span>@line.Label</span>
+                        <strong>@(line.DisplayText ?? line.Amount.ToString())</strong>
+                    </li>
+                }
+            </ul>
+        </div>
+    </article>
+
+    <div class="valora-calculator-editorial-grid">
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">Erros comuns</h3>
+            <ul>
+                @foreach (var error in Model.Content.CommonErrors)
+                {
+                    <li>@error</li>
+                }
+            </ul>
+        </article>
+
+        <article class="valora-card valora-article-body">
+            <h3 class="valora-h3">Fontes oficiais</h3>
+            <ul>
+                @foreach (var source in Model.Content.Sources)
+                {
+                    <li>
+                        <a href="@source.Url" target="_blank" rel="noopener noreferrer">@source.Name</a>
+                    </li>
+                }
+            </ul>
+            <p class="valora-text-muted valora-text-sm">
+                Última revisão: <time datetime="@Model.Content.LastReviewedAt.ToString("yyyy-MM-dd")">@Model.Content.LastReviewedAt.ToString("dd/MM/yyyy")</time><br />
+                Revisão: @Model.Content.ReviewedBy
+            </p>
+        </article>
+    </div>
+
+    @if (Model.RelatedCalculators.Count > 0)
+    {
+        <nav class="valora-card valora-calculator-related" aria-label="Calculadoras relacionadas">
+            <h3 class="valora-h3">Calculadoras relacionadas</h3>
+            <ul>
+                @foreach (var calculator in Model.RelatedCalculators)
+                {
+                    <li>
+                        <a asp-page="/Calculadoras/Details" asp-route-slug="@calculator.Slug">@calculator.Name</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
+    <div class="valora-disclaimer">
+        <span class="material-symbols-outlined" aria-hidden="true">school</span>
+        <p>@Model.Content.EducationalNotice</p>
+    </div>
+</section>
