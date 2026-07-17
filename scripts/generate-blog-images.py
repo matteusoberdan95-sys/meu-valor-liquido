@@ -78,6 +78,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "plano-saude-holerite-coparticipacao": "holerite com rubrica plano de saúde, dependentes e alerta de coparticipação",
     "aviso-previo-trabalhado-vs-indenizado": "calendário de aviso prévio split trabalhado vs indenizado + documento TRCT",
     "adicional-noturno-clt-como-calcular": "relógio noturno 22h–5h + badge +20% e hora reduzida 52:30",
+    "banco-de-horas-clt-como-funciona": "relógio + balança crédito/débito de horas + calendário de compensação",
+    "ferias-vencidas-e-proporcionais-na-rescisao": "calendário de férias + documento TRCT + badge +1/3",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido
@@ -298,6 +300,18 @@ def draw_motif(draw: ImageDraw.ImageDraw, slug: str, color: tuple[int, int, int]
             draw.line((ox + 120, oy + 100, ox + 150, oy + 100), fill=color, width=4)
             draw.text((ox + 210, oy + 40), "22h", fill=COLORS["muted"], font=font(22, True))
             draw.text((ox + 210, oy + 150), "+20%", fill=color, font=font(36, True))
+        case "banco-de-horas-clt-como-funciona":
+            draw.ellipse((ox + 20, oy + 40, ox + 140, oy + 160), outline=color, width=4)
+            draw.line((ox + 80, oy + 100, ox + 80, oy + 70), fill=color, width=4)
+            draw.line((ox + 80, oy + 100, ox + 110, oy + 100), fill=color, width=4)
+            rounded_rect(draw, (ox + 160, oy + 50, ox + 280, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 175, oy + 90), "+HE", fill=color, font=font(28, True))
+            draw.text((ox + 175, oy + 130), "banco", fill=COLORS["text"], font=font(22, True))
+        case "ferias-vencidas-e-proporcionais-na-rescisao":
+            draw_calendar(draw, ox, oy, color)
+            rounded_rect(draw, (ox + 130, oy + 50, ox + 260, oy + 200), 12, COLORS["card"], color, 2)
+            draw.text((ox + 148, oy + 90), "TRCT", fill=color, font=font(28, True))
+            draw.text((ox + 145, oy + 135), "+1/3", fill=COLORS["text"], font=font(26, True))
         case "aviso-previo-trabalhado-vs-indenizado":
             draw_calendar(draw, ox, oy, color)
             rounded_rect(draw, (ox + 130, oy + 50, ox + 250, oy + 200), 12, COLORS["card"], color, 2)

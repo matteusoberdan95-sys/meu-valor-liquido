@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 95 — editorial lote 7 (merge em andamento) |
+| **Próxima sprint** | Sprint 96 — editorial lote 8 (merge em andamento) |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 94 · Sprint 93 · Sprint 92 · Sprint 91 |
+| **Concluída recente** | Sprint 95 · Sprint 94 · Sprint 93 · Sprint 92 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | 51 ou 70 (lote 7) | Monetization / SEO | AdSense quando aprovar; editorial contínuo se necessário |
-| **Contínuo** | 70 (lote 7+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | Merge 91–94 ou 51 | Monetization / SEO | AdSense quando aprovar; merge branches pendentes |
+| **Contínuo** | 70 (lote 8+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -61,7 +61,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 ## Estado atual importante
 
 - Trilhas **47+** em merge contínuo das sprints AdSense/editorial.
-- **Trilha ativa:** Sprint 95 — editorial lote 7 (merge em andamento)
+- **Trilha ativa:** Sprint 96 — editorial lote 8 (merge em andamento)
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Script externo só após consentimento de Publicidade; verificação usa meta tag. Ativação real continua bloqueada até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.

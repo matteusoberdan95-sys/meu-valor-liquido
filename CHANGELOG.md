@@ -2,11 +2,15 @@
 
 ## Unreleased
 
+### Sprint 95 / Sprint 70 lote 7 - Editorial contínuo
+- Artigos `banco-de-horas-clt-como-funciona` (16/07) e `ferias-vencidas-e-proporcionais-na-rescisao` (17/07) com capas WebP, hubs e testes.
+
 ### Sprint 94 - Pré-revisão final do AdSense
 - Checklist go/no-go em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` com status por área e branches pendentes.
 - Testes `Sprint94AdSensePreReviewTests` travam institucional, SEO, ads off, consentimento, editorial prioritário e `ads.txt`.
 - `adsense-init.js` só carrega no layout quando os anúncios estão ativos.
 - Veredito **GO CONDICIONAL**: mergear Sprints 91–93 antes de solicitar/reenviar ao Google.
+
 
 ### Sprint 93 — Editorial contínuo lote 6 (AdSense Sprint 8)
 - Artigos longos (~5 min): `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
