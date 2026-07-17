@@ -1,5 +1,26 @@
 # Sprint Plan
 
+## Sprint 87 — Conteúdo completo das calculadoras prioritárias (concluída)
+
+**Objetivo:** executar a Sprint 2 do plano de aprovação AdSense, transformando as calculadoras prioritárias em páginas editoriais completas sem alterar fórmulas.
+
+**Entregas:**
+- [x] Catálogo editorial estático e específico para 12 calculadoras prioritárias.
+- [x] Seções de funcionamento, itens incluídos/excluídos, interpretação e erros comuns.
+- [x] Exemplos calculados em runtime pelo mesmo `ICalculatorApplicationService` usado pela UI.
+- [x] Fontes oficiais, data de revisão, responsável editorial, relacionados e aviso educativo.
+- [x] Duas FAQs específicas adicionais por calculadora, também expostas no schema visível.
+- [x] Conteúdo longo excluído do modo embed.
+- [x] Layout responsivo compartilhado e testes contra conteúdo duplicado/incompleto.
+
+**Calculadoras:** salário líquido, rescisão CLT, férias, décimo terceiro, INSS, IRRF, hora extra, FGTS, PJ vs CLT, MEI, juros compostos e financiamento.
+
+**Fora do escopo:** mudanças de fórmulas, indexação, ativação do AdSense e geração de conteúdo por IA.
+
+**Definition of Done:** build sem avisos, suíte automatizada verde, matriz em `docs/adsense/CONTENT_QUALITY_MATRIX.md` e relatório em `docs/adsense/SPRINT_2_REPORT.md`.
+
+---
+
 ## Sprint 86 — AdSense: confiança e remoção de placeholders (concluída)
 
 **Objetivo:** executar a Sprint 1 do plano de aprovação AdSense, removendo sinais não comprovados e qualquer aparência de monetização antes da aprovação.
