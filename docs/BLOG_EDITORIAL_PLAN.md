@@ -157,6 +157,12 @@ Antes de propor um artigo, consulte (quando disponível):
 - Palavras-chave: aviso prévio trabalhado, aviso prévio indenizado, adicional noturno, hora noturna, holerite
 - Testes: `Sprint70Lote6BlogTests`; catálogo: `Sprint70Lote6EditorialSlugs` + `IsSprint70Editorial`
 
+## Sprint 70 - lote 7 publicado (jul/2026, publicação escalonada)
+
+- `banco-de-horas-clt-como-funciona` -> hub `/negociar-salario`, calc `hora-extra`, publicado 20/07/2026
+- `ferias-vencidas-e-proporcionais-na-rescisao` -> hub `/desligamento`, calc `ferias`, publicado 25/07/2026
+- Testes: `Sprint70Lote7BlogTests`; catálogo: `Sprint70Lote7EditorialSlugs`
+
 ## Rotina GSC CTR
 
 Antes de abrir pauta nova, exporte `Consultas.csv` e `Páginas.csv` do Google Search Console e procure páginas com:
@@ -205,7 +211,7 @@ Para esses casos, otimize primeiro a página existente: title, meta description,
 
 ---
 
-- Sprint 93 concluiu lote 6 editorial. Proximo ciclo recomendado: Sprint 94 (editorial lote 7) ou Sprint 51 quando AdSense aprovar.
+- Sprint 95 concluiu lote 7 editorial. Proximo ciclo recomendado: merge das branches AdSense 91–94 ou Sprint 51 quando Google aprovar.
 
 ## Como sugerir novo artigo (template para agents)
 
@@ -223,4 +229,4 @@ Copie e preencha num PR ou issue:
 - **Conflito com slug existente:** não / qual
 ```
 
-Última atualização: **jul/2026** (lote 6 publicado).
+Última atualização: **jul/2026** (lote 7 publicado).

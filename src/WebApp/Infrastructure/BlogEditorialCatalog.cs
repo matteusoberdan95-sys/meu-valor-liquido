@@ -65,13 +65,20 @@ public static class BlogEditorialCatalog
         "adicional-noturno-clt-como-calcular"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote7EditorialSlugs =
+    [
+        "banco-de-horas-clt-como-funciona",
+        "ferias-vencidas-e-proporcionais-na-rescisao"
+    ];
+
     public static bool IsSprint70Editorial(string slug) =>
         Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote3EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote4EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote5EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote6EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote6EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote7EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)

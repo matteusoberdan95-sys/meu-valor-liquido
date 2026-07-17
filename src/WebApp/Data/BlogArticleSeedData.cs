@@ -1413,7 +1413,181 @@ public static class BlogArticleSeedData
             <h2>Checklist rápido antes de questionar o RH</h2>
             <p>Reúna holerite, espelho de ponto, contrato e convenção coletiva. Simule na calculadora de hora extra com salário e quantidade de horas equivalentes. Se a diferença for persistente, envie planilha com datas, horários e valor esperado por linha — abordagem objetiva acelera a resposta do departamento pessoal.</p>
             <p>Manter registro mensal dos adicionais ajuda em dissídios, rescisões e metas de orçamento. Trabalho noturno costuma impactar saúde e transporte; inclua esses custos quando comparar propostas pelo líquido real, não só pelo percentual do adicional.</p>
-            """)
+            """),
+        Article(
+            "banco-de-horas-clt-como-funciona",
+            "Banco de horas CLT: como funciona e o que conferir no holerite",
+            "Entenda banco de horas na CLT, prazo de compensação, diferença para hora extra paga e como conferir saldo e holerite.",
+            "hora-extra",
+            "Trabalhista",
+            new DateOnly(2026, 7, 20),
+            """
+            <p>O <strong>banco de horas</strong> é um mecanismo de compensação de jornada previsto na CLT que permite acumular horas extras trabalhadas para serem abatidas com folgas ou redução de jornada em outro momento, em vez de pagá-las imediatamente na folha. Na prática, muitos trabalhadores veem horas positivas no espelho de ponto, rubricas zeradas de hora extra no holerite e, meses depois, compensações que não batem com a expectativa. Este guia explica como funciona o banco de horas na CLT, o que conferir no holerite e como estimar valores quando a empresa opta por pagar horas extras em dinheiro — com base no <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">Decreto-Lei nº 5.452/1943 (CLT, art. 59 e seguintes)</a>. Conteúdo educativo: acordos individuais, convenções coletivas e políticas internas podem alterar prazos e percentuais; o holerite oficial prevalece sobre qualquer simulação.</p>
+            <p>Se você trabalha com jornada flexível, plantões ou picos de demanda, comece pela <a href="/calculadoras/hora-extra">calculadora de hora extra</a> para estimar quanto valeria cada hora se fosse paga na folha. Depois compare com o saldo do banco de horas e use o hub <a href="/negociar-salario">negociar salário pelo líquido</a> para revisar holerite, adicionais e impacto no orçamento mensal.</p>
+            
+            <h2>O que é banco de horas na CLT</h2>
+            <p>O banco de horas, também chamado de acordo de compensação de jornada, autoriza que horas trabalhadas além da jornada normal sejam registradas como crédito para compensação futura. A ideia é equilibrar semanas ou meses mais intensos com períodos de jornada reduzida, sem necessariamente gerar pagamento imediato de hora extra. A CLT permite essa modalidade mediante acordo, com regras distintas para acordo individual escrito e acordo coletivo.</p>
+            <p>Importante separar dois conceitos: <strong>compensação dentro da mesma semana</strong> (comum em acordos de jornada 44h) e <strong>banco de horas com prazo ampliado</strong> (até seis meses no acordo individual, ou prazo maior quando previsto em convenção coletiva). Se não houver acordo válido ou se o prazo de compensação expirar sem folga, as horas em atraso tendem a ser tratadas como hora extra devida — situação que muda o holerite e o líquido do mês.</p>
+            <p>Exemplo educativo: jornada contratual de 8h, segunda a sexta. Na quarta, você ficou duas horas a mais e na sexta saiu duas horas mais cedo. Se o acordo semanal de compensação estiver regular, pode não haver hora extra a pagar. Já se as duas horas extras de quarta só forem compensadas dois meses depois, entra a lógica do banco de horas com prazo e controle de saldo.</p>
+            
+            <h2>Acordo escrito e prazo de compensação</h2>
+            <p>O acordo de banco de horas <strong>individual</strong> deve ser formalizado por escrito, com prazo máximo de compensação de seis meses, contado da data em que a hora extra foi realizada. Sem documento válido, a empresa corre o risco de ter que pagar as horas como extras na rescisão ou quando exigidas. Para o trabalhador, o acordo escrito é a prova de que a compensação foi autorizada — guarde cópia, e-mail de RH ou termo assinado.</p>
+            <p>Em acordo <strong>coletivo</strong>, sindicato e empresas podem definir prazos maiores, regras de adicional, limites diários de prorrogação e formas de controle. A convenção coletiva da categoria (CCT) prevalece sobre acordo individual quando for mais favorável ao empregado. Antes de aceitar escala agressiva, leia a cláusula de compensação: prazo, teto de saldo, adicional em domingos e feriados e o que acontece na demissão.</p>
+            <ol>
+            <li>Peça cópia do acordo de banco de horas (individual ou referência à CCT).</li>
+            <li>Confirme o prazo máximo para compensar cada hora creditada.</li>
+            <li>Verifique se há limite de saldo positivo ou negativo no ponto eletrônico.</li>
+            <li>Registre no calendário pessoal quando créditos estiverem perto de vencer.</li>
+            <li>Na saída da empresa, solicite extrato final do banco e memória de horas não compensadas.</li>
+            </ol>
+            
+            <h2>Banco de horas versus hora extra paga na folha</h2>
+            <p>Quando a hora vai para o banco, o holerite do mês pode mostrar salário base normal, sem rubrica de hora extra — embora a jornada real tenha sido maior. Quando a empresa paga hora extra, aparecem linhas como “HE 50%”, “HE 100%” ou “DSR s/ HE”, com reflexos em INSS, IRRF e, em alguns casos, em médias de férias e 13º. A diferença no bolso pode ser grande: hora extra paga aumenta o bruto imediatamente; hora no banco adia o benefício financeiro para a folga ou para eventual pagamento futuro.</p>
+            <p>Para estimar o valor de referência de cada hora, use salário base ÷ divisor (220h é o usual em jornada 44h semanal) e aplique +50% ou +100% conforme o caso. A <a href="/calculadoras/hora-extra">calculadora de hora extra</a> faz essa conta de forma educativa. Consulte também a <a href="/duvidas/hora-extra-valor-minimo">FAQ sobre valor mínimo de hora extra</a> e o artigo <a href="/blog/hora-extra-como-calcular">hora extra: como calcular</a> para entender adicionais e reflexos.</p>
+            <p>Exemplo educativo: salário de R$ 4.400, divisor 220h. Hora normal ≈ R$ 20,00; hora extra 50% ≈ R$ 30,00; hora extra 100% ≈ R$ 40,00. Dez horas extras 50% no mês representariam cerca de R$ 300 brutos a mais se pagas — no banco, esse valor não entra no holerite até haver pagamento ou conversão na rescisão. Compare sempre o saldo do banco com essa referência para saber o que está “guardado”.</p>
+            
+            <h2>Convenção coletiva e limites práticos</h2>
+            <p>A CCT pode autorizar banco de horas por até um ano, definir percentuais diferenciados, tratar horas noturnas ou estabelecer que créditos não compensados serão quitados em folha com adicional. Também pode limitar prorrogação diária (em regra, até duas horas extras por dia salvo acordo) e exigir controle mensal de saldo. Ignorar a convenção leva a estimativas erradas: o percentual legal mínimo de hora extra não substitui cláusula coletiva mais favorável.</p>
+            <p>Horas noturnas e domingos complicam o banco. Se você trabalha após 22h, o adicional noturno e a hora reduzida alteram a base antes mesmo do adicional de hora extra. Leia <a href="/blog/adicional-noturno-clt-como-calcular">adicional noturno CLT: como calcular</a> e verifique se o ponto separa horas diurnas, noturnas e feriados. Misturar tudo em um saldo único dificulta conferir se a compensação respeitou adicionais devidos.</p>
+            
+            <h2>Como o banco de horas aparece no holerite</h2>
+            <p>Em muitas empresas, o banco de horas <strong>não aparece como linha de provento</strong> enquanto as horas estão apenas creditadas. O holerite mostra salário normal; o controle fica no espelho de ponto, portal RH ou relatório de banco de horas. Quando há pagamento de horas não compensadas, surgem rubricas de hora extra retroativa ou verbas rescisórias específicas.</p>
+            <table>
+            <thead>
+            <tr><th>Situação</th><th>O que observar no holerite</th><th>Estimativa educativa</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Horas creditadas no banco</td><td>Salário base sem HE; saldo no ponto</td><td>Valor “virtual” = horas × hora extra estimada</td></tr>
+            <tr><td>Compensação com folga</td><td>Dias ou horas a menos sem desconto</td><td>Salário proporcional aos dias trabalhados</td></tr>
+            <tr><td>Crédito vencido não compensado</td><td>Rubrica de HE 50%/100% ou rescisão</td><td>Use calculadora de hora extra</td></tr>
+            <tr><td>Rescisão com saldo positivo</td><td>Verba de horas extras / indenização</td><td>Confira TRCT e extrato do banco</td></tr>
+            </tbody>
+            </table>
+            <p>A tabela resume cenários comuns; nomenclatura varia por software de folha. Se o holerite não reflete horas trabalhadas a mais, não conclua automaticamente que houve erro — pode ser compensação via banco. Peça espelho de ponto e saldo atualizado antes de questionar RH.</p>
+            
+            <h2>Passo a passo para estimar e conferir</h2>
+            <ol>
+            <li>Exporte espelho de ponto do mês e identifique horas positivas e negativas.</li>
+            <li>Confirme se existe acordo escrito ou cláusula de CCT aplicável.</li>
+            <li>Estime valor de referência na <a href="/calculadoras/hora-extra">calculadora de hora extra</a> (50% ou 100%).</li>
+            <li>Compare holerite com simulação: se houve pagamento de HE, valide quantidade e percentual.</li>
+            <li>Revise metodologia e tolerâncias em <a href="/como-calculamos">Como calculamos</a>.</li>
+            <li>Se houver dúvida sobre adicional mínimo, leia a <a href="/duvidas/hora-extra-valor-minimo">FAQ de valor mínimo de hora extra</a>.</li>
+            </ol>
+            <p>Para impacto no líquido, leve o bruto estimado de horas extras para a calculadora de salário líquido do mês em que houve pagamento. Horas apenas bancadas não alteram o depósito até serem pagas ou compensadas com folga que reduza dias trabalhados no mês da folga.</p>
+            
+            <h2>Erros comuns ao lidar com banco de horas</h2>
+            <ul>
+            <li>Assumir que hora no banco não precisa de acordo escrito ou coletivo.</li>
+            <li>Ignorar prazo de seis meses (individual) e perder o direito de exigir pagamento.</li>
+            <li>Confundir banco de horas com acordo de compensação semanal dentro da mesma semana.</li>
+            <li>Comparar holerite sem rubrica de HE com mês de referência que teve folga compensatória.</li>
+            <li>Esquecer adicional noturno ou domingo/feriado na base da hora creditada.</li>
+            <li>Não solicitar extrato do banco na rescisão quando ainda há saldo positivo.</li>
+            </ul>
+            <p>Se a diferença entre ponto e holerite for persistente, documente meses, saldos e comunicações com RH. Estimativas educativas ajudam a formular perguntas objetivas, mas não substituem auditoria trabalhista ou orientação sindical.</p>
+            
+            <h2>Perguntas frequentes sobre banco de horas</h2>
+            <h3>Banco de horas pode ser imposto sem minha assinatura?</h3>
+            <p>Acordo individual exige formalização escrita. Acordo coletivo pode estabelecer regras para toda a categoria. Se você não assinou nada e não há cláusula coletiva, questione a base do banco antes de aceitar compensações.</p>
+            <h3>O que acontece com o saldo se eu pedir demissão?</h3>
+            <p>Horas creditadas e não compensadas dentro do prazo legal costumam ser pagas ou negociadas na rescisão, conforme acordo e prática da empresa. Solicite memória de cálculo no TRCT e compare com estimativa na calculadora de hora extra.</p>
+            <h3>Compensação com folga reduz meu salário?</h3>
+            <p>Se a folga for dentro do acordo de banco de horas, o salário mensal normalmente não sofre desconto — você já “pagou” com horas anteriores. Se faltar sem compensação autorizada, pode haver desconto por falta.</p>
+            <h3>Banco de horas elimina o adicional de 50%?</h3>
+            <p>Enquanto compensado no prazo e conforme acordo, as horas podem não gerar pagamento com adicional. Créditos vencidos ou acordo inválido tendem a ser tratados como hora extra devida, com adicional aplicável.</p>
+            
+            <h2>Próximos passos para proteger seu líquido</h2>
+            <p>Trate o banco de horas como parte do pacote remuneratório, não como detalhe de ponto. Acompanhe saldo mensalmente, entenda prazos e saiba quanto valeria cada hora se fosse paga. Na negociação de escala ou promoção, some hora extra habitual, adicional noturno e política de compensação — o hub <a href="/negociar-salario">negociar salário</a> reúne conteúdos sobre holerite, proposta salarial e adicionais para fechar a análise pelo valor líquido real.</p>
+            <p>Para aprofundar cálculos de hora extra e adicionais, leia <a href="/blog/hora-extra-como-calcular">hora extra: como calcular</a> e <a href="/blog/adicional-noturno-clt-como-calcular">adicional noturno CLT</a>. As fórmulas do site estão em <a href="/como-calculamos">Como calculamos</a>; use-as como referência educativa e valide sempre com holerite e documentos oficiais da empresa.</p>
+            
+            """),
+        Article(
+            "ferias-vencidas-e-proporcionais-na-rescisao",
+            "Férias vencidas e proporcionais na rescisão: como estimar no TRCT",
+            "Veja como estimar férias vencidas e proporcionais na rescisão CLT, o terço constitucional e o que conferir no TRCT.",
+            "ferias",
+            "Trabalhista",
+            new DateOnly(2026, 7, 25),
+            """
+            <p>Na rescisão CLT, <strong>férias vencidas</strong> e <strong>férias proporcionais</strong> costumam ser duas das verbas que mais geram dúvida no TRCT — tanto pelo valor quanto pela forma como aparecem nas linhas do documento. Férias vencidas referem-se a períodos aquisitivos já completos que não foram gozados; proporcionais são a fração do período aquisitivo em curso na data do desligamento. Ambas, quando devidas, levam o <strong>terço constitucional</strong> de férias (+ 1/3). Este guia explica como estimar e conferir essas verbas com linguagem educativa, com base nos <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener noreferrer" target="_blank">arts. 129 a 146 da CLT</a> e na prática usual de rescisão, sem substituir homologação ou assessoria jurídica individual.</p>
+            <p>Comece simulando na <a href="/calculadoras/ferias">calculadora de férias</a> e, em seguida, no pacote completo da <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, informando motivo do desligamento, datas e se há férias vencidas. Depois compare linha a linha com o TRCT e use o hub <a href="/desligamento">desligamento CLT</a> para revisar aviso prévio, FGTS, multa e seguro-desemprego quando aplicável.</p>
+            
+            <h2>Férias vencidas na rescisão</h2>
+            <p>Complete-se um <strong>período aquisitivo</strong> de férias a cada 12 meses de contrato (com reduções legais por faltas injustificadas). Quando esse período termina e o empregado não goza férias dentro do <strong>período concessivo</strong> (12 meses seguintes), as férias ficam vencidas. Na rescisão, se ainda houver férias vencidas não gozadas nem pagas, a empresa deve quitá-las — e, quando não concedidas no prazo legal, a regra geral aponta pagamento em dobro. A simulação educativa trata cenários comuns; confirme períodos aquisitivos e orientação aplicável ao seu caso.</p>
+            <p>Além do valor das férias vencidas, incide o <strong>terço constitucional</strong> (acréscimo de um terço sobre o valor das férias). Na prática de folha, o TRCT pode mostrar rubricas separadas: “Férias vencidas”, “1/3 férias vencidas” ou agrupamentos similares. Cada período vencido deve ser identificado — quem acumulou dois períodos sem gozo pode ter linhas duplicadas ou valor dobrado conforme regra aplicada.</p>
+            <p>Exemplo educativo: admissão em março de 2022, desligamento em julho de 2026 sem ter gozado o período aquisitivo 2023–2024. Há férias vencidas desse ciclo. Se o desligamento for demissão sem justa causa, a estimativa inclui férias vencidas + 1/3 e, quando cabível, reflexo de dobro. Valores exatos dependem de salário, médias de horas extras habituais e política da empresa.</p>
+            
+            <h2>Férias proporcionais por avos</h2>
+            <p>As <strong>férias proporcionais</strong> correspondem à fração do período aquisitivo em andamento na data da rescisão. A CLT usa a lógica de <strong>avos</strong>: cada mês completo ou fração igual ou superior a 15 dias conta como um doze avos, salvo faltas que reduzam o direito. Na demissão sem justa causa, acordo 484-A, término de contrato a prazo e <strong>pedido de demissão</strong>, as proporcionais com + 1/3 são, em regra, devidas.</p>
+            <p>Já na <strong>dispensa por justa causa</strong>, em regra não há férias proporcionais — apenas saldo de salário e verbas específicas da modalidade. Essa distinção muda centenas ou milhares de reais no pacote rescisório. Consulte a <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">FAQ sobre pedido de demissão</a> e a <a href="/duvidas/ferias-proporcionais-como-funciona">FAQ de férias proporcionais</a> antes de simular.</p>
+            <p>Exemplo educativo: desligamento em 20/08/2026, admissão em 10/03/2024. O último período aquisitivo começou em março de 2026; de março a agosto há seis meses completos — estimativa de seis doze avos de férias proporcionais + 1/3, se o motivo de rescisão permitir. Se a demissão fosse no dia 05/08 (menos de 15 dias no mês), o sétimo avo poderia não contar — detalhe que altera a estimativa.</p>
+            
+            <h2>Terço constitucional e base de cálculo</h2>
+            <p>O acréscimo de <strong>1/3 sobre férias</strong> vale para férias vencidas, proporcionais e gozadas. A base de cálculo é a remuneração na data da concessão ou pagamento, incluindo, quando habituais, horas extras, adicional noturno e comissões conforme entendimento consolidado e prática de folha. Médias dos últimos 12 meses entram na estimativa quando há variáveis — a calculadora educativa usa salário informado; holerites reais podem integrar médias automaticamente.</p>
+            <p>Para estimar só férias + 1/3 antes da rescisão completa, use a <a href="/calculadoras/ferias">calculadora de férias</a>. Para verbas integradas (aviso, 13º, multa FGTS), use a <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>. Leia também <a href="/blog/como-calcular-ferias">como calcular férias</a> e <a href="/blog/ferias-abono-pecuniario-vale-a-pena">férias e abono pecuniário</a> se houver venda de dias no último ano — abono pago altera o que resta na rescisão.</p>
+            
+            <h2>Dobro de férias: quando entra na estimativa</h2>
+            <p>Férias vencidas não concedidas no prazo legal geram, em regra, pagamento em <strong>dobro</strong>. Na rescisão, isso aparece como valor elevado nas linhas de férias vencidas em relação a um mês de salário simples. Nem todo desligamento inclui dobro: férias gozadas no prazo, acordos específicos ou situações particulares podem alterar o cenário. Não presuma dobro automaticamente — confira períodos aquisitivos no extrato de férias do RH.</p>
+            <p>Proporcionais, em geral, <strong>não são pagas em dobro</strong>: são fração do direito em formação. A confusão mais comum é somar vencidas em dobro + proporcionais simples + 1/3 sobre cada parcela. Separe mentalmente (e na planilha) cada rubrica antes de comparar ao TRCT.</p>
+            
+            <h2>Como conferir férias no TRCT</h2>
+            <p>O Termo de Rescisão do Contrato de Trabalho (TRCT) lista proventos e descontos. Férias costumam aparecer em linhas distintas do saldo de salário, 13º proporcional e aviso prévio. Use esta referência ao conferir:</p>
+            <table>
+            <thead>
+            <tr><th>Linha usual no TRCT</th><th>O que representa</th><th>Conferência educativa</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Férias vencidas</td><td>Período aquisitivo completo não gozado</td><td>Valor ≈ salário (+ médias se houver)</td></tr>
+            <tr><td>1/3 férias vencidas</td><td>Terço sobre vencidas</td><td>≈ 33,33% da linha anterior</td></tr>
+            <tr><td>Férias proporcionais</td><td>Avos do período em curso</td><td>Salário × (avos ÷ 12)</td></tr>
+            <tr><td>1/3 férias proporcionais</td><td>Terço sobre proporcionais</td><td>≈ 33,33% das proporcionais</td></tr>
+            <tr><td>Férias vencidas em dobro</td><td>Penalidade por não concessão</td><td>Pode dobrar base das vencidas</td></tr>
+            </tbody>
+            </table>
+            <p>Nomes de rubricas variam por sistema. Se o TRCT agrupa tudo em “Férias indenizadas”, peça detalhamento ao RH. Compare datas de admissão, desligamento e histórico de gozo. Veja <a href="/blog/aviso-previo-trabalhado-vs-indenizado">aviso prévio trabalhado vs indenizado</a> — a data de término do contrato define avos proporcionais e saldo de salário.</p>
+            
+            <h2>Passo a passo para simular férias na rescisão</h2>
+            <ol>
+            <li>Liste períodos aquisitivos: quais foram gozados, vendidos (abono) ou estão vencidos.</li>
+            <li>Confirme motivo da rescisão (sem justa causa, pedido, acordo, justa causa etc.).</li>
+            <li>Conte avos proporcionais: meses completos + regra dos 15 dias no mês do desligamento.</li>
+            <li>Simule na <a href="/calculadoras/ferias">calculadora de férias</a> e depois no pacote da <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>.</li>
+            <li>Some + 1/3 sobre vencidas e proporcionais devidas; verifique possível dobro nas vencidas.</li>
+            <li>Compare com TRCT; divergência grande exige memória de cálculo ao RH.</li>
+            <li>Revise regras do site em <a href="/como-calculamos">Como calculamos</a>.</li>
+            </ol>
+            <p>As FAQs <a href="/duvidas/ferias-proporcionais-como-funciona">férias proporcionais: como funciona</a> e <a href="/duvidas/rescisao-pedido-demissao-o-que-recebo">rescisão por pedido de demissão</a> complementam casos em que há desconto de aviso ou dúvidas sobre o motivo do desligamento.</p>
+            
+            <h2>Erros comuns ao estimar férias no desligamento</h2>
+            <ul>
+            <li>Contar avos proporcionais sem aplicar regra dos 15 dias no mês da saída.</li>
+            <li>Esquecer + 1/3 sobre vencidas e sobre proporcionais separadamente.</li>
+            <li>Assumir que pedido de demissão não gera proporcionais — em regra, gera; justa causa é que costuma excluir.</li>
+            <li>Ignorar férias já gozadas ou abono pecuniário vendido no último período.</li>
+            <li>Não incluir médias de horas extras habituais na base quando a folha integra.</li>
+            <li>Confundir data do aviso prévio com data de término para contagem de avos.</li>
+            <li>Esperar dobro sobre proporcionais — dobro costuma referir-se a vencidas não concedidas.</li>
+            </ul>
+            <p>Exemplo educativo de impacto: salário R$ 3.600, seis avos proporcionais + 1/3 ≈ R$ 2.400 de férias proporcionais brutas antes de descontos; um período vencido simples + 1/3 ≈ R$ 4.800. Valores ilustrativos — INSS e IRRF na rescisão alteram o líquido. O TRCT oficial prevalece.</p>
+            
+            <h2>Perguntas frequentes sobre férias na rescisão</h2>
+            <h3>Pedido de demissão tem férias proporcionais?</h3>
+            <p>Em regra, sim — com o terço constitucional. Já a justa causa, em regra, não gera proporcionais. Simule na calculadora de rescisão com o motivo correto para ver o pacote estimado.</p>
+            <h3>Posso ter vencidas e proporcionais ao mesmo tempo?</h3>
+            <p>Sim. Vencidas referem-se a período anterior completo não gozado; proporcionais referem-se ao ciclo atual. O TRCT pode listar ambas com terços separados.</p>
+            <h3>Abono pecuniário altera a rescisão?</h3>
+            <p>Se você vendeu 10 dias no último gozo, o período foi parcialmente quitado. Isso muda o que resta vencido ou proporcional. Leia <a href="/blog/ferias-abono-pecuniario-vale-a-pena">férias e abono pecuniário</a>.</p>
+            <h3>Férias coletivas contam como gozo?</h3>
+            <p>Férias coletivas concedidas no prazo legal quitam o período aquisitivo correspondente. Verifique no histórico do RH se o período foi marcado como gozado.</p>
+            <h3>Como aviso prévio afeta avos proporcionais?</h3>
+            <p>A data de término do contrato — incluindo aviso trabalhado ou projeção legal quando aplicável — define quantos avos contam. Veja <a href="/blog/aviso-previo-trabalhado-vs-indenizado">aviso prévio na rescisão</a>.</p>
+            
+            <h2>Próximos passos após conferir férias no TRCT</h2>
+            <p>Depois de validar férias vencidas e proporcionais, feche o restante do pacote: saldo de salário, 13º proporcional, aviso prévio, multa FGTS, saque e prazos de homologação. Guarde recibos de férias anteriores, comunicados de gozo e extratos de abono. Se simulação e TRCT divergirem, peça planilha de avos, períodos aquisitivos e bases usadas antes de assinar.</p>
+            <p>Para aprofundar, leia <a href="/blog/como-calcular-ferias">como calcular férias</a>, use o hub <a href="/desligamento">desligamento CLT</a> e consulte <a href="/como-calculamos">Como calculamos</a> para entender tolerâncias e premissas das calculadoras. Planejar o desligamento com estimativas educativas reduz surpresas entre o valor simulado e o depósito bancário — mas a homologação e o TRCT assinado são a referência final.</p>
+            
+            """),
     ];
 
     private static BlogArticleSeed Article(
@@ -1562,6 +1736,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Simule demissão sem justa causa com aviso indenizado e com data estendida de aviso trabalhado; exporte os dois PDFs e compare o líquido total antes de aceitar saída antecipada.</p>",
             "adicional-noturno-clt-como-calcular" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Guarde três holerites com plantão noturno e calcule a média de horas; use esse número fixo na calculadora de hora extra para prever o líquido dos próximos meses.</p>",
+            "banco-de-horas-clt-como-funciona" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Exporte o saldo do banco de horas e estime o valor das horas positivas na calculadora de hora extra; leve a comparação ao RH antes do crédito vencer.</p>",
+            "ferias-vencidas-e-proporcionais-na-rescisao" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Liste períodos aquisitivos e avos em uma planilha, simule na calculadora de férias e compare linha a linha com o TRCT antes de assinar.</p>",
             _ => string.Empty
         };
 

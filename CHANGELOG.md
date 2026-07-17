@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Sprint 95 / Sprint 70 lote 7 - Editorial contínuo
+- Artigos `banco-de-horas-clt-como-funciona` (20/07) e `ferias-vencidas-e-proporcionais-na-rescisao` (25/07) com capas WebP, hubs e testes.
+
 ### Sprint 93 — Editorial contínuo lote 6 (AdSense Sprint 8)
 - Artigos longos (~5 min): `aviso-previo-trabalhado-vs-indenizado`, `adicional-noturno-clt-como-calcular`.
 - Publicação escalonada em 10/07 e 15/07/2026; cross-links nos hubs `/desligamento` e `/negociar-salario`.
