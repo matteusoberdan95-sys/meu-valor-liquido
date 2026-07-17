@@ -185,12 +185,41 @@ public sealed class NavigationDiscoveryPlaywrightTests(PlaywrightWebAppFixture f
 
             await page.GetByRole(AriaRole.Button, new() { Name = "Personalizar" }).ClickAsync();
 
-            await Assertions.Expect(page.GetByText("Cookies essenciais")).ToBeVisibleAsync();
-            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Salvar preferencias" })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Cookies essenciais", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Analytics", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Personalização", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(page.GetByText("Publicidade", new() { Exact = true })).ToBeVisibleAsync();
+            await Assertions.Expect(page.Locator("[data-cookie-consent-analytics]")).Not.ToBeCheckedAsync();
+            await Assertions.Expect(page.Locator("[data-cookie-consent-personalization]")).Not.ToBeCheckedAsync();
+            await Assertions.Expect(page.Locator("[data-cookie-consent-advertising]")).Not.ToBeCheckedAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Button, new() { Name = "Salvar preferências" })).ToBeVisibleAsync();
 
             var expandedHeight = await page.Locator(".valora-cookie-consent-content")
                 .EvaluateAsync<double>("el => el.getBoundingClientRect().height");
             Assert.True(expandedHeight <= 380, $"Cookie banner mobile expandido ficou alto demais: {expandedHeight}px.");
+
+            await page.GetByRole(AriaRole.Button, new() { Name = "Rejeitar todos" }).ClickAsync();
+            await Assertions.Expect(page.GetByRole(AriaRole.Dialog, new() { Name = "Consentimento de cookies" })).ToBeHiddenAsync();
+
+            var rejectedConsent = await page.EvaluateAsync<string>(
+                "() => localStorage.getItem('mvl-cookie-consent')");
+            Assert.Contains("\"version\":2", rejectedConsent);
+            Assert.Contains("\"policyVersion\":\"2026-07-17\"", rejectedConsent);
+            Assert.Contains("\"analytics\":false", rejectedConsent);
+            Assert.Contains("\"personalization\":false", rejectedConsent);
+            Assert.Contains("\"advertising\":false", rejectedConsent);
+
+            await page.GotoAsync("/politica-de-cookies");
+            await page.GetByRole(AriaRole.Button, new() { Name = "Revisar preferências de cookies" }).ClickAsync();
+            await Assertions.Expect(page.Locator("[data-cookie-consent-preferences]")).ToBeVisibleAsync();
+            await page.Locator("[data-cookie-consent-personalization]").CheckAsync();
+            await page.GetByRole(AriaRole.Button, new() { Name = "Salvar preferências" }).ClickAsync();
+
+            var customizedConsent = await page.EvaluateAsync<string>(
+                "() => localStorage.getItem('mvl-cookie-consent')");
+            Assert.Contains("\"analytics\":false", customizedConsent);
+            Assert.Contains("\"personalization\":true", customizedConsent);
+            Assert.Contains("\"advertising\":false", customizedConsent);
         });
     }
 }

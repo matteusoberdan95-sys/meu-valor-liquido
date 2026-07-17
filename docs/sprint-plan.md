@@ -1,5 +1,27 @@
 # Sprint Plan
 
+## Sprint 90 — Privacidade, cookies e preparação AdSense (concluída)
+
+**Objetivo:** executar a Sprint 5 do plano de aprovação AdSense, alinhando consentimento, políticas e carregamento de scripts ao comportamento real, sem ativar anúncios.
+
+**Entregas:**
+- [x] Categorias Essenciais, Analytics, Personalização e Publicidade, sem opção marcada por padrão.
+- [x] Consentimento versionado (`version: 2`, política `2026-07-17`) com data e reabertura.
+- [x] `Rejeitar todos` desativa Analytics, Personalização e Publicidade.
+- [x] Script AdSense carregado somente após consentimento de Publicidade.
+- [x] Verificação da conta via meta tag `google-adsense-account`, sem script externo.
+- [x] Slots ativos ficam ocultos até Publicidade ser aceita.
+- [x] Analytics e armazenamento local respeitam as categorias correspondentes.
+- [x] Políticas de Privacidade, Cookies, Termos e Aviso Legal alinhadas.
+- [x] `ads.txt` mantido apenas com publisher concreto (sem placeholder inventado).
+- [x] Testes WebApp e Playwright cobrindo banner limpo, rejeição e personalização.
+
+**Fora do escopo:** ativar `Ads:Enabled`, inventar publisher ID, alterar fórmulas e performance mobile.
+
+**Definition of Done:** build sem avisos, suíte automatizada verde e relatório em `docs/adsense/SPRINT_5_REPORT.md`.
+
+---
+
 ## Sprint 89 — SEO técnico e controle de indexação (concluída)
 
 **Objetivo:** executar a Sprint 4 do plano de aprovação AdSense, expondo ao Google somente URLs públicas, canônicas e consolidadas.
@@ -1258,7 +1280,7 @@ Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost
 **Agents:** Monetization/AdSense, WebApp/Frontend, Security.
 
 **Entregas:**
-- Ativar `_AdSenseScript` com `Ads:PublisherId` e slot IDs reais
+- Ativar slots com `Ads:PublisherId` e IDs reais; o script é injetado pelo gestor de consentimento
 - `Ads:Enabled=true` apenas em produção via ambiente
 - Revisão CSP e cookie consent
 - Monitoramento CLS e políticas no painel AdSense
@@ -1330,7 +1352,7 @@ Comparar cada `screen.png` local em `stitch_redesing/.../` com `http://localhost
 - Páginas expandidas: `/sobre`, `/politica-de-privacidade`, `/termos-de-uso`, `/aviso-legal`
 - Nova página `/como-calculamos` com metodologia e tabelas @2026
 - `AdsOptions` + `ConfigurableAdSlotProvider` (placeholders históricos removidos pela Sprint 86)
-- Partial `_AdSenseScript`, banner de cookies quando ads ativos, CSP para domínios Google
+- Partial histórico `_AdSenseScript` (removido pela Sprint 90), banner de cookies e CSP para domínios Google
 - Sitemap, mapa do site e footer atualizados
 
 **Definition of Done:** conteúdo institucional indexável; privacidade menciona AdSense/cookies; `dotnet test` verde; sem publisher ID no código.

@@ -1,11 +1,15 @@
 @inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
 @{
     var adsActive = AdsOptions.Value.IsActive;
+    var adsScriptEnabled = adsActive;
     var publisherId = AdsOptions.Value.PublisherId ?? string.Empty;
 }
 <div class="valora-cookie-consent"
      data-cookie-consent
-     data-ads-enabled="@(adsActive ? "true" : "false")"
+     data-consent-version="2"
+     data-policy-version="2026-07-17"
+     data-ads-slots-enabled="@(adsActive ? "true" : "false")"
+     data-ads-script-enabled="@(adsScriptEnabled ? "true" : "false")"
      data-ads-publisher="@publisherId"
      hidden
      role="dialog"
@@ -16,17 +20,10 @@
             <span class="material-symbols-outlined" aria-hidden="true">close</span>
         </button>
 
-        <h2 class="valora-cookie-consent-title">Este site usa cookies para melhorar sua experiencia</h2>
+        <h2 class="valora-cookie-consent-title">Escolha como seus dados podem ser usados</h2>
         <p class="valora-cookie-consent-text">
-            Usamos cookies para aprimorar sua experiencia de navegacao, lembrar preferencias, analisar uso do site
-            @if (adsActive)
-            {
-                <text> e veicular anuncios personalizados quando voce permitir.</text>
-            }
-            else
-            {
-                <text>. Quando a publicidade estiver ativa, pediremos consentimento para cookies de anuncios.</text>
-            }
+            Cookies essenciais mantêm o site seguro. Com sua permissão, também podemos guardar preferências,
+            medir interações e carregar publicidade do Google. Nenhuma categoria opcional vem marcada.
         </p>
 
         <div class="valora-cookie-consent-actions">
@@ -46,18 +43,32 @@
                 <input type="checkbox" checked disabled />
                 <span>
                     <strong>Cookies essenciais</strong>
-                    <small>Necessarios para funcionamento do site, seguranca e preferencias locais.</small>
+                    <small>Necessários para segurança, formulários e registro da sua escolha.</small>
                 </span>
             </label>
             <label class="valora-cookie-consent-option">
-                <input type="checkbox" data-cookie-consent-advertising @(adsActive ? string.Empty : "disabled") />
+                <input type="checkbox" data-cookie-consent-analytics />
                 <span>
-                    <strong>Publicidade e medicao</strong>
-                    <small>@(adsActive ? "Permite carregar Google AdSense e medir desempenho de anuncios." : "Indisponivel enquanto os anuncios estiverem desligados.")</small>
+                    <strong>Analytics</strong>
+                    <small>Permite medir interações voluntárias, como salvar ou compartilhar uma simulação.</small>
+                </span>
+            </label>
+            <label class="valora-cookie-consent-option">
+                <input type="checkbox" data-cookie-consent-personalization />
+                <span>
+                    <strong>Personalização</strong>
+                    <small>Permite salvar simulações e checklists no armazenamento local deste navegador.</small>
+                </span>
+            </label>
+            <label class="valora-cookie-consent-option">
+                <input type="checkbox" data-cookie-consent-advertising />
+                <span>
+                    <strong>Publicidade</strong>
+                    <small>@(adsScriptEnabled ? "Permite carregar o Google AdSense e medir anúncios." : "Registra sua preferência; nenhum script de publicidade está configurado no momento.")</small>
                 </span>
             </label>
             <button type="button" class="valora-cookie-consent-save" data-cookie-consent-save>
-                Salvar preferencias
+                Salvar preferências
             </button>
         </div>
 

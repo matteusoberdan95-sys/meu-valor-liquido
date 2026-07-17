@@ -231,7 +231,7 @@ URLs `/calculadoras/{slug}?r=...` usam canonical limpo, mas continuam `index,fol
 | Comparações CLT-PJ | `_AdSlot.cshtml` | Provider retorna placeholders |
 | Dúvidas | `_AdSlot.cshtml` e markup no hub | Placeholders visíveis |
 | Assistente | `_AdSlot.cshtml` + fallbacks fixos | Placeholders desktop e mobile visíveis |
-| Script AdSense | `_AdSenseScript.cshtml` | Carrega quando `VerificationEnabled` e publisher existem |
+| Script AdSense | `_AdSenseScript.cshtml` | Comportamento da linha de base; removido e substituído por meta tag + consentimento na Sprint 90 |
 | Inicialização | `wwwroot/js/adsense-init.js` | Carregado em todas as páginas pelo layout |
 
 ### Achados
@@ -298,9 +298,9 @@ Evidência: `src/WebApp/wwwroot/js/cookie-consent.js`.
 
 #### PRIV-P1 — script de verificação pode carregar sem consentimento
 
-`_AdSenseScript.cshtml` carrega diretamente quando `VerificationEnabled=true`, independentemente do consentimento. Confirmar se o script usado apenas para verificação está coberto pela configuração/política aplicável e se produz armazenamento antes de manter essa exceção.
+`_AdSenseScript.cshtml` carregava diretamente quando `VerificationEnabled=true`, independentemente do consentimento. **Resolvido na Sprint 90:** verificação por meta tag e script externo somente após consentimento de Publicidade.
 
-O partial também é renderizado no fim do `<body>`, enquanto a documentação interna determina script de verificação no `<head>`. Alinhar implementação com a instrução vigente fornecida pelo Google.
+O partial também era renderizado no fim do `<body>`. **Resolvido na Sprint 90:** a meta tag de verificação fica no `<head>` e o partial de script foi removido.
 
 #### ADS-P1 — deploy não injeta IDs dos slots
 

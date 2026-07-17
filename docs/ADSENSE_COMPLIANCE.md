@@ -1,6 +1,6 @@
 # AdSense Compliance — Meu Valor Líquido
 
-Regras internas para monetização via Google AdSense de forma **legítima e segura**. Antes da aprovação, permitir apenas o script de verificação solicitado pelo Google; não ativar slots de anúncios até aprovação e revisão deste documento.
+Regras internas para monetização via Google AdSense de forma **legítima e segura**. Antes da aprovação, usar somente a meta tag de verificação da conta; não ativar slots de anúncios até aprovação e revisão deste documento.
 
 > Pré-requisitos de conteúdo: `docs/adsense-checklist.md`
 
@@ -8,7 +8,7 @@ Regras internas para monetização via Google AdSense de forma **legítima e seg
 
 ## O que é permitido
 
-- Script de verificação do AdSense no `<head>` com `Ads:VerificationEnabled=true` e `Ads:Enabled=false`.
+- Meta tag `google-adsense-account` no `<head>` com `Ads:VerificationEnabled=true` e `Ads:Enabled=false`, sem script externo.
 - Nenhum slot, placeholder ou espaço reservado enquanto `Ads:Enabled=false`.
 - Anúncios em áreas claramente separadas do conteúdo interativo.
 - Texto educativo e avisos legais sobre cálculos estimativos.
@@ -90,15 +90,18 @@ Comportamento obrigatório:
 
 Antes de ativar AdSense:
 
-- Atualizar `PoliticaDePrivacidade.cshtml` com cookies de publicidade e parceiros Google.
-- Implementar banner de consentimento se exigido (LGPD / políticas Google).
+- Manter `PoliticaDePrivacidade.cshtml` e `PoliticaDeCookies.cshtml` alinhadas ao comportamento real.
+- Exibir Essenciais, Analytics, Personalização e Publicidade sem seleção opcional por padrão.
+- `Rejeitar todos` deve manter todas as categorias opcionais desativadas.
+- Não carregar `adsbygoogle.js` antes do consentimento de Publicidade.
+- Permitir reabertura e revogação; versão vigente: `2`, política: `2026-07-17`.
 - Documentar em `/como-calculamos` (Sprint 14). **Concluído.**
 
 ---
 
 ## Checklist de revisão pré-ativação
 
-- [x] Verificação de propriedade via script AdSense configurável (`Ads:VerificationEnabled`)
+- [x] Verificação de propriedade via meta tag configurável (`Ads:VerificationEnabled`)
 - [ ] Conta AdSense aprovada
 - [x] Política de privacidade completa (cookies/ads) — Sprint 14
 - [x] Páginas institucionais revisadas — Sprint 14
@@ -106,6 +109,8 @@ Antes de ativar AdSense:
 - [x] Política editorial indexável + autoria visível — Sprint 83
 - [x] Nenhum placeholder ou espaço reservado com anúncios desligados — Sprint 86
 - [x] Nenhuma métrica, avaliação ou prova social sem comprovação na home — Sprint 86
+- [x] Consentimento versionado com quatro categorias e rejeição real — Sprint 90
+- [x] Script AdSense bloqueado até consentimento de Publicidade — Sprint 90
 - [ ] Nenhum texto incentivando clique
 - [ ] Slots com espaçamento validado em desktop e mobile
 - [x] Core Web Vitals — cache, defer, slots com altura fixa (Sprint 12)
@@ -116,10 +121,11 @@ Antes de ativar AdSense:
 
 ## Integração futura (pós-aprovação)
 
-1. Para verificação: configurar `Ads:VerificationEnabled=true`, `Ads:PublisherId` e manter `Ads:Enabled=false`.
+1. Para verificação: configurar `Ads:VerificationEnabled=true`, `Ads:PublisherId` e manter `Ads:Enabled=false`; somente a meta tag será renderizada.
 2. Após aprovação: configurar `Ads:Enabled=true` e IDs reais dos slots.
-3. Manter CSP atualizada para domínios Google Ads.
-4. Monitorar relatório de políticas no painel AdSense.
+3. O JavaScript externo e os slots permanecem bloqueados até consentimento de Publicidade.
+4. Manter CSP atualizada para domínios Google Ads.
+5. Monitorar relatório de políticas no painel AdSense.
 
 ---
 

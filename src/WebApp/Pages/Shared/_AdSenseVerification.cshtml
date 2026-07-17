@@ -1,0 +1,5 @@
+@inject Microsoft.Extensions.Options.IOptions<MeuValorLiquido.Modules.Ads.AdsOptions> AdsOptions
+@if (AdsOptions.Value.ShouldRenderVerificationTag)
+{
+    <meta name="google-adsense-account" content="@AdsOptions.Value.PublisherId" />
+}

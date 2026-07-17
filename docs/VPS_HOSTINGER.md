@@ -112,7 +112,7 @@ sudo docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --buil
 
 ## AdSense
 
-1. Para verificação do site: configure `ADS_VERIFICATION_ENABLED=true`, `ADS_PUBLISHER_ID=ca-pub-...` e mantenha `ADS_ENABLED=false`.
+1. Para verificação do site: configure `ADS_VERIFICATION_ENABLED=true`, `ADS_PUBLISHER_ID=ca-pub-...` e mantenha `ADS_ENABLED=false`; a aplicação emitirá apenas a meta tag `google-adsense-account`.
 2. Depois do deploy, clique em **Adicionei o código** e **Verificar** no painel AdSense.
 3. Após aprovação: `ADS_ENABLED=true` + IDs dos slots no `.env.prod` e rebuild (Sprint 20/51).
 

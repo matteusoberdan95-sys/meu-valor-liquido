@@ -260,7 +260,7 @@ internal static class SecurityHeadersExtensions
         {
             var configuration = context.RequestServices.GetRequiredService<IConfiguration>();
             var adsOptions = configuration.GetSection(AdsOptions.SectionName).Get<AdsOptions>();
-            var adsScriptAllowed = adsOptions is { IsActive: true } or { ShouldRenderVerificationScript: true };
+            var adsScriptAllowed = adsOptions is { IsActive: true };
 
             context.Response.OnStarting(() =>
             {

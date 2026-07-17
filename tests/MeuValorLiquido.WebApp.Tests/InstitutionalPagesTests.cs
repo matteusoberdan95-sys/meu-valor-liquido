@@ -58,6 +58,10 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         html.Should().Contain("Rejeitar todos");
         html.Should().Contain("Personalizar");
         html.Should().Contain("data-cookie-consent-preferences");
+        html.Should().Contain("data-cookie-consent-analytics");
+        html.Should().Contain("data-cookie-consent-personalization");
+        html.Should().Contain("data-cookie-consent-advertising");
+        html.Should().Contain("data-policy-version=\"2026-07-17\"");
         html.Should().Contain("cookie-consent.");
     }
 
@@ -70,7 +74,8 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         script.Should().Contain("data-cookie-consent-customize");
         script.Should().Contain("data-cookie-consent-save");
         script.Should().Contain("data-cookie-consent-advertising");
-        script.Should().Contain("saveConsent(false");
+        script.Should().Contain("saveCategories(false, false, false)");
+        script.Should().Contain("policyVersion = \"2026-07-17\"");
     }
 
     [Fact]
@@ -146,7 +151,7 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
     }
 
     [Fact]
-    public async Task Home_Should_Render_Adsense_Verification_Script_When_Configured()
+    public async Task Home_Should_Use_Scriptless_Adsense_Verification_Tag_When_Configured()
     {
         var configuredClient = factory.WithWebHostBuilder(builder =>
         {
@@ -164,9 +169,11 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         var response = await configuredClient.GetAsync("/");
         var html = await response.Content.ReadAsStringAsync();
 
-        html.Should().Contain("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-test");
-        html.Should().Contain("crossorigin=\"anonymous\"");
+        html.Should().Contain("<meta name=\"google-adsense-account\" content=\"ca-pub-test\"");
+        html.Should().Contain("data-ads-script-enabled=\"false\"");
+        html.Should().Contain("data-ads-publisher=\"ca-pub-test\"");
+        html.Should().NotContain("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-test");
         html.Should().NotContain("data-ad-client=\"ca-pub-test\"");
-        response.Headers.GetValues("Content-Security-Policy").First().Should().Contain("pagead2.googlesyndication.com");
+        response.Headers.GetValues("Content-Security-Policy").First().Should().NotContain("pagead2.googlesyndication.com");
     }
 }

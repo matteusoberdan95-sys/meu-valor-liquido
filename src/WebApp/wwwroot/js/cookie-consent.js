@@ -1,6 +1,8 @@
 (function () {
     var storageKey = "mvl-cookie-consent";
-    var consentVersion = 1;
+    var consentVersion = 2;
+    var policyVersion = "2026-07-17";
+    var personalizationStorageKeys = ["mvl-local-panel-v1", "mvl-rescisao-checklist-v1"];
 
     function parseConsent(raw) {
         if (!raw) {
@@ -9,13 +11,22 @@
 
         try {
             var parsed = JSON.parse(raw);
-            if (parsed && parsed.version === consentVersion) {
-                return parsed;
+            if (parsed
+                && parsed.version === consentVersion
+                && parsed.policyVersion === policyVersion
+                && parsed.essential === true) {
+                return {
+                    version: consentVersion,
+                    policyVersion: policyVersion,
+                    essential: true,
+                    analytics: parsed.analytics === true,
+                    personalization: parsed.personalization === true,
+                    advertising: parsed.advertising === true,
+                    updatedAt: parsed.updatedAt || null
+                };
             }
         } catch (error) {
-            if (raw === "accepted") {
-                return { version: consentVersion, essential: true, advertising: true };
-            }
+            return null;
         }
 
         return null;
@@ -25,9 +36,20 @@
         return parseConsent(localStorage.getItem(storageKey));
     }
 
+    function allows(category) {
+        var consent = readConsent();
+        return !!(consent && consent[category] === true);
+    }
+
     function writeConsent(consent) {
         localStorage.setItem(storageKey, JSON.stringify(consent));
         document.dispatchEvent(new CustomEvent("mvl:cookie-consent", { detail: consent }));
+    }
+
+    function clearPersonalizationStorage() {
+        personalizationStorageKeys.forEach(function (key) {
+            localStorage.removeItem(key);
+        });
     }
 
     function loadScript(src, attributes) {
@@ -52,6 +74,10 @@
         });
     }
 
+    function adSenseScriptSelector() {
+        return 'script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]';
+    }
+
     function loadAdSense(publisherId) {
         if (!publisherId) {
             return;
@@ -67,38 +93,64 @@
             .catch(function () { });
     }
 
-    function applyConsent(consent, banner, adsEnabled, publisherId) {
+    function updateAdSlots(isAllowed) {
+        document.querySelectorAll("[data-ad-consent-required]").forEach(function (slot) {
+            slot.hidden = !isAllowed;
+        });
+    }
+
+    function setPreferenceInputs(banner, consent) {
+        var current = consent || {};
+        var categories = ["analytics", "personalization", "advertising"];
+        categories.forEach(function (category) {
+            var input = banner.querySelector("[data-cookie-consent-" + category + "]");
+            if (input) {
+                input.checked = current[category] === true;
+            }
+        });
+    }
+
+    function applyConsent(consent, banner, adsSlotsEnabled, adsScriptEnabled, publisherId) {
         if (!consent) {
+            updateAdSlots(false);
             return;
         }
 
-        if (banner) {
-            banner.hidden = true;
-        }
+        banner.hidden = true;
+        updateAdSlots(consent.advertising && adsSlotsEnabled);
 
-        if (consent.advertising && adsEnabled) {
+        if (consent.advertising && adsScriptEnabled) {
             loadAdSense(publisherId);
         }
     }
 
-    function saveConsent(advertising, banner, adsEnabled, publisherId) {
-        var consent = {
+    function createConsent(analytics, personalization, advertising) {
+        return {
             version: consentVersion,
+            policyVersion: policyVersion,
             essential: true,
+            analytics: !!analytics,
+            personalization: !!personalization,
             advertising: !!advertising,
             updatedAt: new Date().toISOString()
         };
-
-        writeConsent(consent);
-        applyConsent(consent, banner, adsEnabled, publisherId);
     }
 
-    function showBanner(banner) {
-        if (!banner) {
-            return;
+    function showBanner(banner, consent, openPreferences) {
+        setPreferenceInputs(banner, consent);
+        banner.hidden = false;
+
+        var preferences = banner.querySelector("[data-cookie-consent-preferences]");
+        var customizeButton = banner.querySelector("[data-cookie-consent-customize]");
+        if (preferences && customizeButton) {
+            preferences.toggleAttribute("hidden", !openPreferences);
+            customizeButton.setAttribute("aria-expanded", openPreferences ? "true" : "false");
         }
 
-        banner.hidden = false;
+        var focusTarget = openPreferences
+            ? banner.querySelector("[data-cookie-consent-analytics]")
+            : banner.querySelector("[data-cookie-consent-accept]");
+        focusTarget?.focus();
     }
 
     function init() {
@@ -107,73 +159,88 @@
             return;
         }
 
-        var adsEnabled = banner.getAttribute("data-ads-enabled") === "true";
+        var adsSlotsEnabled = banner.getAttribute("data-ads-slots-enabled") === "true";
+        var adsScriptEnabled = banner.getAttribute("data-ads-script-enabled") === "true";
         var publisherId = banner.getAttribute("data-ads-publisher") || "";
         var consent = readConsent();
 
         if (consent) {
-            applyConsent(consent, banner, adsEnabled, publisherId);
+            applyConsent(consent, banner, adsSlotsEnabled, adsScriptEnabled, publisherId);
         } else {
-            showBanner(banner);
+            showBanner(banner, null, false);
         }
 
-        var acceptButton = banner.querySelector("[data-cookie-consent-accept]");
-        if (acceptButton) {
-            acceptButton.addEventListener("click", function () {
-                saveConsent(adsEnabled, banner, adsEnabled, publisherId);
-            });
+        function saveCategories(analytics, personalization, advertising) {
+            var previous = readConsent();
+            var next = createConsent(analytics, personalization, advertising);
+            if (!next.personalization) {
+                clearPersonalizationStorage();
+            }
+
+            writeConsent(next);
+            applyConsent(next, banner, adsSlotsEnabled, adsScriptEnabled, publisherId);
+
+            if (previous
+                && previous.advertising
+                && !next.advertising
+                && document.querySelector(adSenseScriptSelector())) {
+                window.location.reload();
+            }
         }
 
-        var essentialButton = banner.querySelector("[data-cookie-consent-essential]");
-        if (essentialButton) {
-            essentialButton.addEventListener("click", function () {
-                saveConsent(false, banner, adsEnabled, publisherId);
-            });
-        }
+        banner.querySelector("[data-cookie-consent-accept]")?.addEventListener("click", function () {
+            saveCategories(true, true, true);
+        });
 
-        var closeButton = banner.querySelector("[data-cookie-consent-close]");
-        if (closeButton) {
-            closeButton.addEventListener("click", function () {
-                saveConsent(false, banner, adsEnabled, publisherId);
-            });
-        }
+        banner.querySelector("[data-cookie-consent-essential]")?.addEventListener("click", function () {
+            saveCategories(false, false, false);
+        });
+
+        banner.querySelector("[data-cookie-consent-close]")?.addEventListener("click", function () {
+            var current = readConsent();
+            if (current) {
+                banner.hidden = true;
+                return;
+            }
+
+            saveCategories(false, false, false);
+        });
 
         var preferences = banner.querySelector("[data-cookie-consent-preferences]");
         var customizeButton = banner.querySelector("[data-cookie-consent-customize]");
-        if (customizeButton && preferences) {
-            customizeButton.addEventListener("click", function () {
-                var isOpen = preferences.hasAttribute("hidden");
-                preferences.toggleAttribute("hidden", !isOpen);
-                customizeButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            });
-        }
+        customizeButton?.addEventListener("click", function () {
+            var isOpen = preferences?.hasAttribute("hidden") === true;
+            preferences?.toggleAttribute("hidden", !isOpen);
+            customizeButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
 
-        var saveButton = banner.querySelector("[data-cookie-consent-save]");
-        var advertisingInput = banner.querySelector("[data-cookie-consent-advertising]");
-        if (saveButton) {
-            saveButton.addEventListener("click", function () {
-                saveConsent(!!(advertisingInput && advertisingInput.checked && adsEnabled), banner, adsEnabled, publisherId);
-            });
+        banner.querySelector("[data-cookie-consent-save]")?.addEventListener("click", function () {
+            var analytics = banner.querySelector("[data-cookie-consent-analytics]")?.checked === true;
+            var personalization = banner.querySelector("[data-cookie-consent-personalization]")?.checked === true;
+            var advertising = banner.querySelector("[data-cookie-consent-advertising]")?.checked === true;
+            saveCategories(analytics, personalization, advertising);
+        });
+
+        function manageConsent(event) {
+            event?.preventDefault();
+            showBanner(banner, readConsent(), true);
         }
 
         document.querySelectorAll("[data-cookie-consent-manage]").forEach(function (button) {
-            button.addEventListener("click", function (event) {
-                event.preventDefault();
-                localStorage.removeItem(storageKey);
-                showBanner(banner);
-                if (preferences && customizeButton) {
-                    preferences.setAttribute("hidden", "");
-                    customizeButton.setAttribute("aria-expanded", "false");
-                }
-            });
+            button.addEventListener("click", manageConsent);
         });
 
         window.MvlCookieConsent = {
             get: readConsent,
+            allows: allows,
+            manage: function () { showBanner(banner, readConsent(), true); },
             reset: function () {
                 localStorage.removeItem(storageKey);
-                showBanner(banner);
-            }
+                updateAdSlots(false);
+                showBanner(banner, null, false);
+            },
+            version: consentVersion,
+            policyVersion: policyVersion
         };
     }
 
