@@ -62,6 +62,9 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 - Trilhas **47–96 concluídas** em main (AdSense 86–94 + editorial lotes 6–8).
 - **Trilha ativa:** GO CONDICIONAL AdSense — merge completo; Sprint 51 quando Google aprovar; editorial lote 9.
+- Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
+- Benchmark fiscal: `CalculatorBenchmarkCatalog` + `CalculatorEdgeCaseCatalog`; testes em `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests`.
+- Tabelas fiscais versionadas: `BrTaxTables2025` / `BrTaxTables2026` via `BrTaxTableCatalog` (não sobrescrever anos anteriores).
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Script externo só após consentimento de Publicidade; verificação usa meta tag. Ativação real continua bloqueada até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.
