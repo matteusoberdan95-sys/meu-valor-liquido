@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /health
+Disallow: /*/resultado.pdf$
 
 Sitemap: https://meuvalorliquido.com/sitemap.xml

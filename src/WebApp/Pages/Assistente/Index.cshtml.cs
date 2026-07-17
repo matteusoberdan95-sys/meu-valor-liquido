@@ -44,7 +44,8 @@ public class IndexModel : PageModel
             new SeoMetadata(
                 "Assistente educativo de salário, CLT e descontos",
                 "Tire dúvidas educativas sobre salário líquido, INSS, IRRF, rescisão, férias e CLT vs PJ com links para calculadoras do Meu Valor Líquido.",
-                "/assistente"));
+                "/assistente",
+                SeoMetadataHelper.NoIndexFollowRobots));
     }
 }
 

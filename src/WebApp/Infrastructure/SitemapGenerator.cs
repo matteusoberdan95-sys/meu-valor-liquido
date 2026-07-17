@@ -9,46 +9,41 @@ public static class SitemapGenerator
         XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         var baseUrl = configuration["Site:BaseUrl"]?.TrimEnd('/') ?? "https://meuvalorliquido.com";
 
-        var urls = new List<XElement>
-        {
-            CreateUrl(ns, $"{baseUrl}/", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/calculadoras", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/sobre", new DateOnly(2026, 7, 17)),
-            CreateUrl(ns, $"{baseUrl}/autores/matteus-oberdan", new DateOnly(2026, 7, 17)),
-            CreateUrl(ns, $"{baseUrl}/contato", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/blog", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/newsletter", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/mapa-do-site", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/salario-liquido", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/clt-pj", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/duvidas", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/assistente", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/desligamento", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/negociar-salario", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/virar-pj", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/meu-painel", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/widget", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/politica-de-privacidade", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/politica-de-cookies", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/politica-editorial", new DateOnly(2026, 7, 17)),
-            CreateUrl(ns, $"{baseUrl}/termos-de-uso", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/aviso-legal", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/como-calculamos", SeoBaselineLastModified),
-            CreateUrl(ns, $"{baseUrl}/conferir-holerite", SeoBaselineLastModified)
-        };
+        var urls = SeoRoutePolicyCatalog.IndexableStaticRoutes
+            .Select(route => CreateUrl(ns, $"{baseUrl}{route.Path}", route.LastReviewedAt))
+            .ToList();
 
         var calculators = await db.CalculatorCatalog.AsNoTracking().Where(x => x.IsActive).ToListAsync();
-        urls.AddRange(calculators.Select(c => CreateUrl(ns, $"{baseUrl}/calculadoras/{c.Slug}", SeoBaselineLastModified)));
+        urls.AddRange(
+            calculators
+                .GroupBy(calculator => calculator.Slug, StringComparer.OrdinalIgnoreCase)
+                .Select(group => group.First())
+                .Select(calculator =>
+                {
+                    var lastModified = CalculatorEditorialCatalog.GetBySlug(calculator.Slug)?.LastReviewedAt
+                        ?? SeoBaselineLastModified;
+                    return CreateUrl(ns, $"{baseUrl}/calculadoras/{calculator.Slug}", lastModified);
+                }));
         urls.AddRange(SalaryBandCatalog.GetAllIndexablePaths().Select(path => CreateUrl(ns, $"{baseUrl}{path}", SeoBaselineLastModified)));
         urls.AddRange(CltPjBandCatalog.GetAllIndexablePaths().Select(path => CreateUrl(ns, $"{baseUrl}{path}", SeoBaselineLastModified)));
         urls.AddRange(PopularQuestionsCatalog.GetAll().Select(q => CreateUrl(ns, $"{baseUrl}{PopularQuestionsCatalog.SlugPath(q.Slug)}", SeoBaselineLastModified)));
 
         var posts = await db.BlogPosts.AsNoTracking().Where(x => x.IsPublished).ToListAsync();
-        urls.AddRange(posts.Select(p => CreateUrl(ns, $"{baseUrl}/blog/{p.Slug}", p.PublishedAt)));
+        urls.AddRange(
+            posts
+                .GroupBy(post => post.Slug, StringComparer.OrdinalIgnoreCase)
+                .Select(group => group.OrderByDescending(post => post.PublishedAt).First())
+                .Select(post => CreateUrl(ns, $"{baseUrl}/blog/{post.Slug}", post.PublishedAt)));
+
+        var uniqueUrls = urls
+            .GroupBy(url => url.Element(ns + "loc")!.Value, StringComparer.OrdinalIgnoreCase)
+            .Select(group => group.First())
+            .OrderBy(url => url.Element(ns + "loc")!.Value, StringComparer.Ordinal)
+            .ToList();
 
         var document = new XDocument(
             new XDeclaration("1.0", "utf-8", null),
-            new XElement(ns + "urlset", urls));
+            new XElement(ns + "urlset", uniqueUrls));
 
         return document.ToString();
     }

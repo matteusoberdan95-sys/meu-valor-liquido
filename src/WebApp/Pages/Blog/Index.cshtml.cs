@@ -27,5 +27,10 @@ public class IndexModel : PageModel
         TotalCount = filtered.Count;
         FeaturedPost = filtered.FirstOrDefault();
         FeedPosts = filtered.Count <= 1 ? [] : filtered.Skip(1).ToList();
+
+        if (Request.QueryString.HasValue)
+        {
+            ViewData["Robots"] = SeoMetadataHelper.NoIndexFollowRobots;
+        }
     }
 }

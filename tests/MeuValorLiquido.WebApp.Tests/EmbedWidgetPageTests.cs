@@ -49,7 +49,7 @@ public class EmbedWidgetPageTests
 
         var response = await client.GetAsync("/widget/salario-liquido");
 
-        response.StatusCode.Should().Be(HttpStatusCode.Redirect);
+        response.StatusCode.Should().Be(HttpStatusCode.MovedPermanently);
         response.Headers.Location?.ToString().Should().Contain("/calculadoras/salario-liquido?embed=1");
     }
 
@@ -68,6 +68,11 @@ public class EmbedWidgetPageTests
         response.Headers.GetValues("Content-Security-Policy").First().Should().Contain("frame-ancestors *");
         html.Should().Contain("valora-embed-body");
         html.Should().Contain("noindex,nofollow");
+        html.Should().Contain(
+            "<link rel=\"canonical\" href=\"https://meuvalorliquido.com/calculadoras/salario-liquido\"");
+        html.Should().Contain(
+            "href=\"https://meuvalorliquido.com/calculadoras/salario-liquido\" target=\"_blank\"");
+        html.Should().NotContain("meuvalorliquido.com.br");
         html.Should().NotContain("ad-slot");
         html.Should().NotContain("data-local-panel-save");
     }
@@ -84,13 +89,15 @@ public class EmbedWidgetPageTests
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_Widget_Hub()
+    public async Task Widget_Hub_Should_Be_NoIndex_And_Excluded_From_Sitemap()
     {
         using var factory = new WebApplicationFactory<Program>();
         using var client = factory.WithWebHostBuilder(b => b.UseEnvironment("Testing")).CreateClient();
 
         var xml = await client.GetStringAsync("/sitemap.xml");
+        var html = await client.GetStringAsync("/widget");
 
-        xml.Should().Contain("/widget");
+        xml.Should().NotContain("/widget");
+        html.Should().Contain("noindex,follow");
     }
 }

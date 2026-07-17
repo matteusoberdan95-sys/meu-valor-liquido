@@ -52,6 +52,7 @@ public class IndexModel : PageModel
             new SeoMetadata(
                 "Widget incorporável — calculadoras para seu site",
                 "Incorpore calculadoras de salário, INSS e IRRF no seu blog ou portal com iframe gratuito, sem anúncios e com link de atribuição.",
-                "/widget"));
+                "/widget",
+                SeoMetadataHelper.NoIndexFollowRobots));
     }
 }

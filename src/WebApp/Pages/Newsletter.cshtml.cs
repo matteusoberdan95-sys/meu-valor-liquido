@@ -16,8 +16,15 @@ public class NewsletterModel : PageModel
 
     public bool Subscribed { get; private set; }
 
+    public void OnGet()
+    {
+        ApplySeoMetadata();
+    }
+
     public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
     {
+        ApplySeoMetadata();
+
         if (!ModelState.IsValid)
         {
             return Page();
@@ -28,5 +35,16 @@ public class NewsletterModel : PageModel
         ModelState.Clear();
         Email = string.Empty;
         return Page();
+    }
+
+    private void ApplySeoMetadata()
+    {
+        SeoMetadataHelper.Apply(
+            ViewData,
+            new SeoMetadata(
+                "Newsletter",
+                "Receba novidades sobre calculadoras, conteúdos e atualizações do Meu Valor Líquido.",
+                "/newsletter",
+                SeoMetadataHelper.NoIndexFollowRobots));
     }
 }

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Sprint 89 - SEO técnico e controle de indexação
+- Nova política central separa rotas indexáveis de páginas utilitárias, pessoais, parametrizadas e operacionais.
+- Sitemap XML remove assistente, painel local, newsletter e widget, consolida slugs duplicados e usa revisão editorial real nas calculadoras prioritárias.
+- Calculadoras inexistentes agora retornam `404` real; `/Error` retorna `500` e páginas de erro deixam de emitir canonical.
+- Aliases, caixa alta e barra final são normalizados com `301` para uma única URL canônica.
+- Filtros do blog, presets e resultados de calculadoras recebem `noindex`; APIs, health checks e PDFs usam `X-Robots-Tag`.
+- Matriz de URLs, auditoria técnica e testes protegem canonical, sitemap, redirects, status HTTP e regras de crawl.
+
 ### Sprint 88 - Autoria, autoridade e transparência
 - Novo perfil indexável `/autores/matteus-oberdan` reúne atuação verificável, processo de revisão, LinkedIn, contato e artigos publicados.
 - Assinaturas dos artigos e schema `Person` apontam para o perfil interno; avatar SVG existente substitui a referência anterior a uma imagem ausente.
