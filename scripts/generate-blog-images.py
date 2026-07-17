@@ -82,6 +82,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "ferias-vencidas-e-proporcionais-na-rescisao": "calendário de férias + documento TRCT + badge +1/3",
     "dsr-sobre-horas-extras-como-calcular": "relógio + badge DSR s/ HE + calendário domingo",
     "decimo-terceiro-proporcional-na-rescisao": "badge 13º + avos 7/12 + documento TRCT",
+    "comissao-variavel-no-holerite": "holerite com linha de comissão + gráfico variável mensal",
+    "reserva-impostos-e-provisoes-ao-virar-pj": "cofre PJ + badge impostos + provisões férias/13º",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido
@@ -327,6 +329,18 @@ def draw_motif(draw: ImageDraw.ImageDraw, slug: str, color: tuple[int, int, int]
             draw.text((ox + 40, oy + 140), "avos", fill=COLORS["text"], font=font(22, True))
             rounded_rect(draw, (ox + 165, oy + 50, ox + 285, oy + 190), 12, COLORS["card"], color, 2)
             draw.text((ox + 185, oy + 100), "TRCT", fill=color, font=font(28, True))
+        case "comissao-variavel-no-holerite":
+            rounded_rect(draw, (ox + 20, oy + 40, ox + 280, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 40, oy + 80), "base", fill=COLORS["muted"], font=font(22, True))
+            draw.text((ox + 40, oy + 120), "+ comissao", fill=color, font=font(26, True))
+            draw.text((ox + 40, oy + 155), "variavel", fill=COLORS["text"], font=font(22, True))
+        case "reserva-impostos-e-provisoes-ao-virar-pj":
+            rounded_rect(draw, (ox + 20, oy + 40, ox + 150, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 45, oy + 95), "PJ", fill=color, font=font(36, True))
+            rounded_rect(draw, (ox + 165, oy + 50, ox + 285, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 175, oy + 90), "imp.", fill=color, font=font(26, True))
+            draw.text((ox + 175, oy + 130), "prov.", fill=COLORS["text"], font=font(24, True))
+
         case "aviso-previo-trabalhado-vs-indenizado":
             draw_calendar(draw, ox, oy, color)
             rounded_rect(draw, (ox + 130, oy + 50, ox + 250, oy + 200), 12, COLORS["card"], color, 2)

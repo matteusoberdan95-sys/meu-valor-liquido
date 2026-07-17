@@ -75,7 +75,7 @@ public static class ThematicHubCatalog
             ],
             "proposta-salarial",
             ["proposta-salarial", "salario-liquido", "vale-transporte-hibrido", "salario-bruto-necessario", "inss", "irrf"],
-            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo", "dissidio-salarial-2026-como-avaliar", "vale-refeicao-desconto-holerite", "home-office-clt-descontos", "vale-transporte-home-office-hibrido", "plano-saude-holerite-coparticipacao", "adicional-noturno-clt-como-calcular", "banco-de-horas-clt-como-funciona", "dsr-sobre-horas-extras-como-calcular"],
+            ["como-avaliar-proposta-salarial", "o-que-e-salario-liquido", "como-conferir-holerite", "aumento-salario-quanto-sobra-liquido", "irrf-2026-reducao-imposto", "quanto-preciso-ganhar-para-receber-x", "ferias-coletivas-clt-guia-completo", "dissidio-salarial-2026-como-avaliar", "vale-refeicao-desconto-holerite", "home-office-clt-descontos", "vale-transporte-home-office-hibrido", "plano-saude-holerite-coparticipacao", "adicional-noturno-clt-como-calcular", "banco-de-horas-clt-como-funciona", "dsr-sobre-horas-extras-como-calcular", "comissao-variavel-no-holerite"],
             ["proposta-salarial-como-negociar", "diferenca-salario-bruto-e-liquido", "quanto-preciso-ganhar-para-receber-x-liquido"]),
 
         new(
@@ -100,7 +100,7 @@ public static class ThematicHubCatalog
             ],
             "pj-vs-clt",
             ["pj-vs-clt", "simulador-mei", "custo-funcionario", "salario-liquido"],
-            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes", "mei-desenquadramento-o-que-fazer", "pro-labore-pj-quanto-retirar", "custo-total-clt-para-empregador"],
+            ["pj-ou-clt-qual-melhor", "mei-faturamento-e-das", "simples-nacional-pj-guia-iniciantes", "mei-desenquadramento-o-que-fazer", "pro-labore-pj-quanto-retirar", "custo-total-clt-para-empregador", "reserva-impostos-e-provisoes-ao-virar-pj"],
             ["pj-ou-clt-qual-compensa", "quanto-faturar-pj-para-equivaler-clt", "mei-pode-trabalhar-como-clt"])
     ];
 

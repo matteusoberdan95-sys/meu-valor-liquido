@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Sprint 97 / Sprint 70 lote 9 - Editorial contínuo
+- Artigos `comissao-variavel-no-holerite` e `reserva-impostos-e-provisoes-ao-virar-pj` (17/07) com capas WebP, hubs e testes.
+
 ### Sprint 96 / Sprint 70 lote 8 - Editorial contínuo
 - Artigos `dsr-sobre-horas-extras-como-calcular` e `decimo-terceiro-proporcional-na-rescisao` (17/07) com capas WebP, hubs e testes.
 

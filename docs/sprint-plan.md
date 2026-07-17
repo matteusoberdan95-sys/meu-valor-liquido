@@ -1,5 +1,22 @@
 # Sprint Plan
 
+## Sprint 97 — Editorial contínuo lote 9 / Sprint 70 (concluída)
+
+**Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 9, reforçando hubs de negociação salarial e virar PJ.
+
+**Entregas:**
+- [x] `comissao-variavel-no-holerite` → hub `/negociar-salario`, calc `salario-liquido`, publicado 17/07/2026.
+- [x] `reserva-impostos-e-provisoes-ao-virar-pj` → hub `/virar-pj`, calc `pj-vs-clt`, publicado 17/07/2026.
+- [x] `BlogEditorialCatalog.Sprint70Lote9EditorialSlugs` e `IsSprint70Editorial`.
+- [x] Cross-links em `ThematicHubCatalog`, `AppendPracticalSection`, capas WebP e `Sprint70Lote9BlogTests`.
+- [x] Documentação: `BLOG_EDITORIAL_PLAN.md`, `CHANGELOG.md`, `AGENTS.md`.
+
+**Fora do escopo:** alterar fórmulas, ativar AdSense, inventar métricas.
+
+**Definition of Done:** ≥850 palavras; links calculadora + `/como-calculamos` + FAQ; sitemap; `dotnet test` verde.
+
+---
+
 ## Sprint 96 — Editorial contínuo lote 8 / Sprint 70 (concluída)
 
 **Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 8, reforçando hubs de negociação salarial e desligamento.

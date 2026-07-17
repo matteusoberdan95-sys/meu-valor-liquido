@@ -77,6 +77,12 @@ public static class BlogEditorialCatalog
         "decimo-terceiro-proporcional-na-rescisao"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote9EditorialSlugs =
+    [
+        "comissao-variavel-no-holerite",
+        "reserva-impostos-e-provisoes-ao-virar-pj"
+    ];
+
     public static bool IsSprint70Editorial(string slug) =>
         Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
@@ -85,7 +91,8 @@ public static class BlogEditorialCatalog
         || Sprint70Lote5EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote6EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote7EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote8EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote8EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote9EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)

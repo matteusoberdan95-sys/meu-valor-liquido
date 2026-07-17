@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Merge concluído · Sprint 51 quando Google aprovar · editorial lote 9 |
+| **Próxima sprint** | Deploy/smoke AdSense · Sprint 51 quando Google aprovar · editorial lote 10 |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 96 · Sprint 95 · Sprint 94 · Sprint 93 |
+| **Concluída recente** | Sprint 97 (lote 9) · Sprint 96 · Sprint 95 · Sprint 94 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | Sprint 51 (se AdSense aprovar) ou lote 9 | Monetization / SEO | Após smoke pós-merge |
-| **Contínuo** | 70 (lote 9+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | Deploy/smoke ou Sprint 51 (se aprovado) | Monetization / SEO | Pós-merge 91–96 |
+| **Contínuo** | 70 (lote 10+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -60,8 +60,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–96 concluídas** em main (AdSense 86–94 + editorial lotes 6–8).
-- **Trilha ativa:** GO CONDICIONAL AdSense — merge completo; Sprint 51 quando Google aprovar; editorial lote 9.
+- Trilhas **47–97 concluídas** em main (AdSense 86–94 + editorial lotes 6–9).
+- **Trilha ativa:** GO CONDICIONAL AdSense — deploy/smoke; Sprint 51 quando Google aprovar; editorial lote 10.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` + `CalculatorEdgeCaseCatalog`; testes em `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests`.
 - Tabelas fiscais versionadas: `BrTaxTables2025` / `BrTaxTables2026` via `BrTaxTableCatalog` (não sobrescrever anos anteriores).

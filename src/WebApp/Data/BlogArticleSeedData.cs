@@ -1754,6 +1754,153 @@ public static class BlogArticleSeedData
             <p>Conferir o 13º proporcional exige cruzar calendário de trabalho, tipo de desligamento, holerites anteriores e TRCT. Organize esses documentos antes de simular valores. Lembre-se: diferenças pequenas podem ser arredondamento; diferenças grandes pedem esclarecimento formal.</p>
             <p>Continue por <a href="/desligamento">desligamento</a>, simule com <a href="/calculadoras/decimo-terceiro">calculadora de décimo terceiro</a> e <a href="/calculadoras/rescisao-clt">calculadora de rescisão CLT</a>, leia <a href="/como-calculamos">como calculamos</a> e explore os guias <a href="/blog/guia-decimo-terceiro">guia do décimo terceiro</a>, <a href="/blog/decimo-terceiro-primeira-segunda-parcela">primeira e segunda parcela</a>, <a href="/blog/ferias-vencidas-e-proporcionais-na-rescisao">férias na rescisão</a> e <a href="/blog/aviso-previo-trabalhado-vs-indenizado">aviso prévio</a>.</p>
             """),
+        Article(
+            "comissao-variavel-no-holerite",
+            "Comissão e variável no holerite: como conferir o líquido",
+            "Entenda como comissão e parcelas variáveis alteram bruto, INSS, IRRF e o salário líquido no holerite.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 7, 17),
+            """
+            <p>Quem recebe <strong>comissão</strong> ou outra parcela variável no holerite sabe: o líquido muda todo mês, mesmo com o salário base fixo. A dúvida típica é separar o que é salário fixo, o que é variável, como isso entra em INSS e IRRF e por que a média usada em férias ou 13º parece diferente do contracheque do mês. Este guia organiza a conferência de forma educativa, sem transformar o conteúdo em consultoria individual.</p>
+            <p>Os valores citados são <strong>estimativas</strong>. Convenções coletivas, política da empresa e o sistema de folha podem alterar rubricas e bases. Para entender as premissas das ferramentas do site, veja <a href="/como-calculamos">como calculamos</a>.</p>
+            
+            <h2>O que costuma entrar como variável no holerite</h2>
+            <p>Além da comissão de vendas, aparecem bônus por meta, participação em resultados (quando lançada em folha), gratificação eventual, prêmio por produção e outras rubricas “não fixas”. O ponto prático é: a linha pode aumentar o bruto do mês e, com isso, elevar descontos de INSS e IRRF — o ganho no bolso quase nunca é o valor cheio da comissão.</p>
+            <p>Use o hub <a href="/negociar-salario">negociar salário</a> quando for comparar propostas: um bruto maior “no papel” pode render menos líquido se a variável for instável ou se os descontos do pacote forem pesados.</p>
+            
+            <h2>Como a variável altera INSS e IRRF</h2>
+            <p>Na lógica educativa usual, comissões e prêmios de natureza salarial entram na base de contribuição previdenciária e podem elevar a retenção de IRRF no mês. Um mês com comissão alta pode “empurrar” a base para uma faixa maior; um mês sem variável volta ao padrão do salário base.</p>
+            <p>Exemplo educativo: salário base de R$ 3.500 e comissão de R$ 1.200 no mesmo mês. O bruto sobe para R$ 4.700 antes de outros descontos. O INSS e o IRRF estimados sobre essa base serão maiores do que no mês sem comissão. Por isso, comparar só a linha “comissão” com o depósito bancário gera frustração — falta olhar o conjunto.</p>
+            <p>Simule cenários na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> informando o bruto total do mês (base + variável) e os descontos recorrentes. Depois compare com o holerite real. Veja também a <a href="/duvidas/diferenca-salario-bruto-e-liquido">FAQ sobre salário bruto e líquido</a> e a <a href="/duvidas/como-calcular-salario-liquido">FAQ de cálculo do líquido</a>.</p>
+            
+            <h2>Tabela de referência: o que conferir no contracheque</h2>
+            <table>
+            <thead>
+            <tr><th>Item</th><th>O que observar</th><th>Estimativa educativa</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Salário base</td><td>Rubrica fixa mensal</td><td>Parte previsível do orçamento</td></tr>
+            <tr><td>Comissão / prêmio</td><td>Nome, período de apuração e valor</td><td>Pode integrar base de impostos</td></tr>
+            <tr><td>INSS</td><td>Se sobe no mês da comissão</td><td>Use calculadoras INSS/líquido</td></tr>
+            <tr><td>IRRF</td><td>Retenção maior em meses altos</td><td>Não confunda com IR anual</td></tr>
+            <tr><td>Médias (férias/13º)</td><td>Política da empresa / CCT</td><td>Variável habitual pode entrar</td></tr>
+            </tbody>
+            </table>
+            
+            <h2>Comissão habitual versus eventual</h2>
+            <p>Quando a variável é recorrente, muitas folhas usam médias para férias, 13º e algumas verbas rescisórias. Se a comissão é pontual, o impacto tende a ficar concentrado no mês do pagamento. Essa distinção importa na negociação salarial: uma proposta com “salário baixo + comissão alta” exige olhar a média de vários meses, não só o melhor mês.</p>
+            <p>Exemplo educativo: três meses com comissões de R$ 800, R$ 1.500 e R$ 600. A média simples seria R$ 966. Usar só o mês de R$ 1.500 para planejar contas fixas é arriscado. Monte uma média conservadora e simule o líquido nessa faixa.</p>
+            
+            <h2>Passo a passo para conferir a variável</h2>
+            <ol>
+            <li>Separe no holerite o salário base das rubricas variáveis.</li>
+            <li>Some o bruto do mês e lance na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            <li>Confira se INSS e IRRF do holerite estão na mesma ordem de grandeza da simulação.</li>
+            <li>Anote 3 a 6 meses de variável para calcular uma média pessoal.</li>
+            <li>Se for negociar aumento, compare propostas pelo líquido na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a>.</li>
+            <li>Revise a metodologia em <a href="/como-calculamos">Como calculamos</a>.</li>
+            </ol>
+            
+            <h2>Erros comuns</h2>
+            <ul>
+            <li>Tratar a comissão bruta como dinheiro líquido na conta.</li>
+            <li>Ignorar que meses altos elevam IRRF e distorcem o orçamento do mês seguinte.</li>
+            <li>Negociar só pelo “teto” de comissão, sem média histórica.</li>
+            <li>Esquecer descontos de VT, plano e consignado no mesmo holerite.</li>
+            <li>Não guardar demonstrativos de apuração da comissão (meta, período, glosas).</li>
+            </ul>
+            <p>Se a diferença entre simulação e holerite for grande, peça memória de cálculo ao RH: período da comissão, glosas, estornos e se houve adiantamento. Use também <a href="/conferir-holerite">conferir holerite</a> para separar divergências de imposto e de benefício.</p>
+            
+            <h2>Perguntas frequentes</h2>
+            <h3>Comissão sempre paga INSS?</h3>
+            <p>Quando tem natureza salarial e entra em folha como remuneração, em regra integra a base previdenciária. Detalhes dependem da rubrica e da legislação aplicável — trate como estimativa e confira o holerite.</p>
+            <h3>Posso lançar só a comissão na calculadora?</h3>
+            <p>Melhor lançar o bruto total do mês (base + variável). Assim a estimativa de INSS/IRRF fica mais próxima do contracheque.</p>
+            <h3>Comissão entra em férias e 13º?</h3>
+            <p>Se for habitual, muitas folhas usam médias. Se for eventual, o reflexo pode ser menor ou nulo. Confirme a política da empresa e a CCT.</p>
+            <h3>Como negociar salário com variável alta?</h3>
+            <p>Peça histórico de comissão, simule líquido em mês fraco/médio/forte e compare com uma proposta mais fixa. O hub <a href="/negociar-salario">negociar salário</a> reúne ferramentas para essa conversa.</p>
+            
+            <h2>Próximos passos</h2>
+            <p>Trate a variável como parte do pacote, não como “extra garantido”. Construa média, simule líquido e só então feche orçamento ou proposta. Leia também <a href="/blog/o-que-e-salario-liquido">o que é salário líquido</a>, <a href="/blog/como-conferir-holerite">como conferir holerite</a> e <a href="/blog/aumento-salario-quanto-sobra-liquido">aumento: quanto sobra no líquido</a>.</p>
+            <p>Para aprofundar descontos e bases, use a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> e consulte <a href="/como-calculamos">Como calculamos</a>.</p>
+            """),
+        Article(
+            "reserva-impostos-e-provisoes-ao-virar-pj",
+            "Reserva de impostos e provisões ao virar PJ",
+            "Veja o que reservar de impostos, pró-labore e provisões de férias/13º ao comparar PJ com CLT.",
+            "pj-vs-clt",
+            "Trabalhista",
+            new DateOnly(2026, 7, 17),
+            """
+            <p>Ao sair da CLT para PJ, muita gente compara só o salário líquido mensal com o valor da nota fiscal. Falta a parte que sustenta o modelo no médio prazo: <strong>reserva de impostos</strong>, pró-labore, contador e <strong>provisões</strong> que a CLT “embute” no pacote — férias, 13º, FGTS e intervalos sem faturamento. Este guia ajuda a estimar essas reservas de forma educativa, para a comparação PJ vs CLT ficar menos ilusória.</p>
+            <p>Os números abaixo são <strong>estimativas</strong>. Regime tributário, anexo do Simples, atividade e contrato mudam o resultado. Não substituem contador. Veja as premissas em <a href="/como-calculamos">como calculamos</a>.</p>
+            
+            <h2>Por que o líquido da PJ não é o valor da nota</h2>
+            <p>Na CLT, parte do custo do trabalho aparece no holerite (INSS, IRRF) e parte fica “invisível” no curto prazo (FGTS, 13º, férias + 1/3). Na PJ, você recebe o bruto do serviço e precisa separar o que é imposto, o que é custo operacional e o que é remuneração pessoal. Se gastar tudo o que entrou na conta, o primeiro mês sem cliente ou a primeira guia atrasada vira crise.</p>
+            <p>Use o hub <a href="/virar-pj">virar PJ</a> e a <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a> para comparar cenários lado a lado. Complemente com a <a href="/duvidas/pj-ou-clt-qual-compensa">FAQ PJ ou CLT: qual compensa?</a> e <a href="/duvidas/quanto-faturar-pj-para-equivaler-clt">quanto faturar na PJ para equivaler à CLT</a>.</p>
+            
+            <h2>Reservas típicas a considerar</h2>
+            <table>
+            <thead>
+            <tr><th>Reserva / provisão</th><th>Por que existe</th><th>Estimativa educativa</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Impostos do regime</td><td>DAS, retenções ou apuração do Simples/Lucro</td><td>% sobre faturamento conforme regime</td></tr>
+            <tr><td>Pró-labore + INSS</td><td>Remuneração do sócio e contribuição</td><td>Valor mensal definido com contador</td></tr>
+            <tr><td>Contador / sistemas</td><td>Obrigação acessória e emissão de NF</td><td>Custo fixo mensal</td></tr>
+            <tr><td>Provisão de férias</td><td>CLT pagava descanso; PJ precisa parar</td><td>~1 salário pessoal / ano (referência)</td></tr>
+            <tr><td>Provisão de 13º</td><td>CLT embute; PJ não recebe automático</td><td>~1 salário pessoal / ano (referência)</td></tr>
+            <tr><td>Reserva de ociosidade</td><td>Meses fracos, férias, doença, troca de cliente</td><td>1 a 3 meses de custo fixo</td></tr>
+            </tbody>
+            </table>
+            <p>Esses percentuais e “um salário por ano” são apenas âncoras educativas. Ajuste à sua realidade com o contador e com o histórico real de faturamento.</p>
+            
+            <h2>Exemplo educativo de separação do caixa</h2>
+            <p><strong>Exemplo educativo:</strong> nota de R$ 12.000 no mês. Suponha, só para ilustrar, uma carga efetiva de impostos/encargos de 15% (R$ 1.800), contador de R$ 400, pró-labore de R$ 3.000 e uma provisão combinada de férias+13º de R$ 500 naquele mês. Sobram cerca de R$ 6.300 antes de custos de saúde, equipamentos e reserva de emergência — bem menos que os R$ 12.000 da nota.</p>
+            <p>Se na CLT você recebia R$ 6.000 líquidos com benefícios, a PJ de R$ 12.000 pode parecer o dobro e não ser. Sempre normalize: líquido pessoal + benefícios equivalentes + provisões.</p>
+            
+            <h2>Como usar as calculadoras do Meu Valor Líquido</h2>
+            <ol>
+            <li>Estime o líquido CLT atual na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            <li>Monte o cenário PJ na <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a> com pró-labore, impostos e despesas.</li>
+            <li>Se for MEI, valide faturamento e DAS no <a href="/calculadoras/simulador-mei">simulador MEI</a>.</li>
+            <li>Leia <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT: qual é melhor?</a> e <a href="/blog/pro-labore-pj-quanto-retirar">pró-labore: quanto retirar</a>.</li>
+            <li>Revise premissas em <a href="/como-calculamos">Como calculamos</a>.</li>
+            </ol>
+            
+            <h2>Impostos: o erro de “deixar para depois”</h2>
+            <p>Reservar imposto no mesmo dia em que a nota cai na conta reduz o risco de misturar caixa pessoal e caixa do CNPJ. Muitos profissionais transferem um percentual fixo para uma conta separada assim que recebem. O percentual certo depende do regime — por isso o contador entra antes do primeiro contrato grande.</p>
+            <p>Retenções na fonte (quando aplicáveis) também mudam o valor líquido creditado. Conferir o demonstrativo do cliente evita surpresa de “a nota era X, caiu Y”.</p>
+            
+            <h2>Provisões de férias e 13º na prática</h2>
+            <p>Na CLT, férias + 1/3 e 13º aparecem em momentos específicos do ano. Na PJ, se você não provisionar, o mês de descanso ou de festas vira mês sem receita com custo fixo igual. Uma abordagem educativa é separar todo mês uma fração do rendimento pessoal destinada a cobrir 30 dias de folga e um “13º” de reforço — valores que você redefine conforme a estabilidade dos contratos.</p>
+            <p>Leia também <a href="/blog/custo-total-clt-para-empregador">custo total CLT para o empregador</a> para entender o outro lado da conta: o que a empresa pagava além do seu líquido.</p>
+            
+            <h2>Erros comuns ao virar PJ</h2>
+            <ul>
+            <li>Comparar nota bruta com salário líquido CLT.</li>
+            <li>Não separar conta PJ e conta pessoal.</li>
+            <li>Ignorar meses sem faturamento no preço da hora.</li>
+            <li>Definir pró-labore sem simular INSS e IR.</li>
+            <li>Assinar contrato sem prazo de pagamento e reajuste.</li>
+            </ul>
+            
+            <h2>Perguntas frequentes</h2>
+            <h3>Quanto reservar de imposto todo mês?</h3>
+            <p>Depende do regime e da atividade. Use a estimativa do contador e ajuste com 2–3 meses de guias reais. Até lá, seja conservador e separe no dia do recebimento.</p>
+            <h3>Preciso provisionar férias mesmo como PJ?</h3>
+            <p>Não é obrigação trabalhista da CLT, mas é prudência financeira: sem provisão, pausar trabalho reduz o caixa imediatamente.</p>
+            <h3>MEI precisa das mesmas reservas?</h3>
+            <p>O DAS é mais previsível, mas limite de faturamento, aposentadoria e ausência de 13º/férias CLT continuam pedindo disciplina de caixa. Veja <a href="/blog/mei-faturamento-e-das">MEI: faturamento e DAS</a>.</p>
+            <h3>Como saber se a PJ equivale à minha CLT?</h3>
+            <p>Some líquido pessoal + custos que a CLT cobria (benefício, estabilidade de caixa) e compare com a <a href="/calculadoras/pj-vs-clt">calculadora PJ vs CLT</a>. A FAQ <a href="/duvidas/quanto-faturar-pj-para-equivaler-clt">quanto faturar para equivaler</a> ajuda no raciocínio.</p>
+            
+            <h2>Próximos passos</h2>
+            <p>Antes de pedir demissão ou aceitar pejotização, feche uma planilha mínima: imposto, pró-labore, contador, saúde, provisão de folga e reserva de emergência. Simule no hub <a href="/virar-pj">virar PJ</a>, compare com a CLT e só então negocie preço e prazo de pagamento.</p>
+            <p>Para continuar: <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT</a>, <a href="/blog/pro-labore-pj-quanto-retirar">pró-labore</a>, <a href="/blog/simples-nacional-pj-guia-iniciantes">Simples Nacional</a> e <a href="/como-calculamos">Como calculamos</a>.</p>
+            """),
     ];
 
     private static BlogArticleSeed Article(
@@ -1910,6 +2057,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Some as horas extras do mês, estime o DSR (total HE ÷ dias úteis × domingos/feriados) e compare com a rubrica do holerite antes de questionar o RH.</p>",
             "decimo-terceiro-proporcional-na-rescisao" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Conte os avos até a data de saída, abata a 1ª parcela se já recebeu e compare o resultado com a linha de 13º no TRCT.</p>",
+            "comissao-variavel-no-holerite" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Some base + comissão do mês na calculadora de salário líquido e compare com três meses de variável antes de negociar um aumento só no fixo.</p>",
+            "reserva-impostos-e-provisoes-ao-virar-pj" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>No dia em que a nota cair, transfira logo a fatia de impostos e provisões para uma conta separada — depois simule PJ vs CLT com o que sobrou de fato.</p>",
             _ => string.Empty
         };
 

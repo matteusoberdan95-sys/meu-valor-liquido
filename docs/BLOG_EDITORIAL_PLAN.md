@@ -169,6 +169,12 @@ Antes de propor um artigo, consulte (quando disponível):
 - `decimo-terceiro-proporcional-na-rescisao` -> hub `/desligamento`, calc `decimo-terceiro`, publicado 17/07/2026
 - Testes: `Sprint70Lote8BlogTests`; catálogo: `Sprint70Lote8EditorialSlugs`
 
+## Sprint 70 - lote 9 publicado (jul/2026)
+
+- `comissao-variavel-no-holerite` -> hub `/negociar-salario`, calc `salario-liquido`, publicado 17/07/2026
+- `reserva-impostos-e-provisoes-ao-virar-pj` -> hub `/virar-pj`, calc `pj-vs-clt`, publicado 17/07/2026
+- Testes: `Sprint70Lote9BlogTests`; catálogo: `Sprint70Lote9EditorialSlugs`
+
 ## Rotina GSC CTR
 
 Antes de abrir pauta nova, exporte `Consultas.csv` e `Páginas.csv` do Google Search Console e procure páginas com:
@@ -217,7 +223,7 @@ Para esses casos, otimize primeiro a página existente: title, meta description,
 
 ---
 
-- Sprint 96 concluiu lote 8 editorial. Proximo ciclo recomendado: merge das branches AdSense 91–94 + lotes 7–8, ou Sprint 51 quando Google aprovar.
+- Sprint 97 concluiu lote 9 editorial. Proximo ciclo recomendado: deploy/smoke AdSense ou Sprint 51 quando Google aprovar; próximo editorial = lote 10.
 
 ## Como sugerir novo artigo (template para agents)
 
@@ -235,4 +241,4 @@ Copie e preencha num PR ou issue:
 - **Conflito com slug existente:** não / qual
 ```
 
-Última atualização: **jul/2026** (lote 8 publicado).
+Última atualização: **jul/2026** (lote 9 publicado).
