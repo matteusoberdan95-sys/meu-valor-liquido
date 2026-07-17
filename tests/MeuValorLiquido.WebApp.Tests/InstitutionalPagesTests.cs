@@ -146,8 +146,8 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         html.Should().Contain("rel=\"preload\" as=\"image\"");
         html.Should().Contain("media=\"(min-width: 992px)\"");
         html.Should().Contain("images/hero/home-hero");
-        html.Should().Contain("loading=\"lazy\"");
-        html.Should().NotContain("loading=\"eager\"");
+        html.Should().Contain("loading=\"eager\"");
+        html.Should().Contain("fetchpriority=\"high\"");
     }
 
     [Fact]

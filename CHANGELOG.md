@@ -2,11 +2,18 @@
 
 ## Unreleased
 
+### Sprint 92 - Performance e experiência mobile
+- Hero da home e do artigo priorizam LCP (`eager` + `fetchpriority="high"`); imagens secundárias seguem lazy.
+- `adsense-init.js` só entra no layout com anúncios ativos; fontes carregam mais cedo no idle.
+- Compressão cobre MIME extras; páginas editoriais usam OutputCache de 10 minutos.
+- Touch targets ≥ 44 px, `overflow-x: clip` e aspect-ratio nos heróis; Playwright cobre 360/390/412 px.
+
 ### Sprint 91 - Validação matemática e testes
 - Tabelas fiscais versionadas (`BrTaxTables2025` + `BrTaxTables2026`) com vigência via `BrTaxTableCatalog`.
 - Casos de borda documentados e testados (zero, negativo, inválido, datas invertidas, limites).
 - Arredondamento monetário explícito em `MoneyRounding`; benchmarks recalibrados em 17/07/2026.
 - Evidências internas em `docs/adsense/MATH_VALIDATION_EVIDENCE.md` e vigência exibida em `/como-calculamos`.
+
 
 ### Sprint 90 - Privacidade, cookies e preparação AdSense
 - Banner com Essenciais, Analytics, Personalização e Publicidade; nenhuma categoria opcional vem marcada.

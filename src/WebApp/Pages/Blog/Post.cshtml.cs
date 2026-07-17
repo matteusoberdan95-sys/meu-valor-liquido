@@ -1,5 +1,8 @@
 namespace MeuValorLiquido.WebApp.Pages.Blog;
 
+using Microsoft.AspNetCore.OutputCaching;
+
+[OutputCache(PolicyName = "editorial")]
 public class PostModel : PageModel
 {
     private readonly IContentService contentService;

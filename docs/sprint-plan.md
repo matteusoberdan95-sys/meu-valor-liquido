@@ -1,5 +1,23 @@
 # Sprint Plan
 
+## Sprint 92 — Performance e experiência mobile (concluída)
+
+**Objetivo:** executar a Sprint 7 do plano de aprovação AdSense (Performance), melhorando LCP/CLS/INP e usabilidade em viewports modestos.
+
+**Entregas:**
+- [x] Hero home/blog com `eager` + `fetchpriority="high"`.
+- [x] `adsense-init.js` somente com ads ativos.
+- [x] Compressão com MIME extras; OutputCache editorial (10 min).
+- [x] Touch targets ≥ 44 px, `overflow-x: clip`, aspect-ratio em heróis.
+- [x] Playwright em 360 / 390 / 412 px sem overflow.
+- [x] Relatório e checklist Lighthouse em `docs/adsense/SPRINT_7_REPORT.md` e `LIGHTHOUSE_SPRINT_7.md`.
+
+**Fora do escopo:** ativar AdSense, CMP IAB, scores inventados de Lighthouse em produção.
+
+**Definition of Done:** build sem avisos, suíte verde e relatório da Sprint 7.
+
+---
+
 ## Sprint 91 — Validação matemática e testes (concluída)
 
 **Objetivo:** executar a Sprint 6 do plano de aprovação AdSense, comprovando que as calculadoras prioritárias não apenas parecem corretas.
@@ -16,6 +34,7 @@
 **Fora do escopo:** alterar fórmulas de produção para 2025, ativar AdSense, CMP e performance mobile (Sprint 92).
 
 **Definition of Done:** build sem avisos, suíte automatizada verde e relatório em `docs/adsense/SPRINT_6_REPORT.md`.
+
 
 ---
 
