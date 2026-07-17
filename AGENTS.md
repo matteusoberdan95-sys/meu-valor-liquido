@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 91 — validação matemática das calculadoras (após validação da Sprint 90) |
+| **Próxima sprint** | Sprint 93 — conteúdo editorial contínuo (após validação da Sprint 92) |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 90 · Sprint 89 · Sprint 88 · Sprint 87 · Sprint 86 |
+| **Concluída recente** | Sprint 92 · Sprint 90 · Sprint 89 · Sprint 88 · Sprint 87 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -60,10 +60,11 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–90 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
-- **Trilha ativa:** plano de aprovação AdSense (Sprint 91 após validação) + editorial contínuo.
+- Trilhas **47–92 concluídas** (Sprint 91 matemática em `feat/adsense-sprint-6` se ainda pendente de merge) + Sprint 70 lote 5.
+- **Trilha ativa:** plano de aprovação AdSense (Sprint 93 após validação) + editorial contínuo.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
+- Performance mobile: heróis com prioridade LCP, OutputCache editorial, touch ≥ 44 px e testes 360/390/412.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Script externo só após consentimento de Publicidade; verificação usa meta tag. Ativação real continua bloqueada até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.

@@ -1,5 +1,8 @@
 namespace MeuValorLiquido.WebApp.Pages;
 
+using Microsoft.AspNetCore.OutputCaching;
+
+[OutputCache(PolicyName = "editorial")]
 public class SobreModel : PageModel
 {
     public void OnGet()

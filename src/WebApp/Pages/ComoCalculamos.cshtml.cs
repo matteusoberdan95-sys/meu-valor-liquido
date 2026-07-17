@@ -1,5 +1,8 @@
 namespace MeuValorLiquido.WebApp.Pages;
 
+using Microsoft.AspNetCore.OutputCaching;
+
+[OutputCache(PolicyName = "editorial")]
 public class ComoCalculamosModel : PageModel
 {
     public int TaxYear => BrTaxTables2026.Year;

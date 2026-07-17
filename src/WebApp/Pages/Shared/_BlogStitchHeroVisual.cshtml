@@ -13,7 +13,19 @@
     {
         <span class="valora-stitch-blog-related-badge @categoryClass">@BlogContentHelper.GetCategoryLabel(Model.Category)</span>
     }
-    @if (hasImage)
+    @if (hasImage && Model.PriorityLoading)
+    {
+        <img class="valora-stitch-blog-hero-img"
+             src="@BlogHeroImages.GetPublicPath(Model.Slug)"
+             alt="@BlogHeroImages.GetAltText(Model.Title, Model.Category)"
+             loading="eager"
+             fetchpriority="high"
+             decoding="async"
+             width="1200"
+             height="675" />
+        <span class="valora-stitch-blog-hero-brand" aria-hidden="true">Meu Valor Líquido</span>
+    }
+    else if (hasImage)
     {
         <img class="valora-stitch-blog-hero-img"
              src="@BlogHeroImages.GetPublicPath(Model.Slug)"

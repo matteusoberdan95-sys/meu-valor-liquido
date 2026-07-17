@@ -51,6 +51,15 @@ builder.Services.AddResponseCompression(options =>
     options.EnableForHttps = true;
     options.Providers.Add<BrotliCompressionProvider>();
     options.Providers.Add<GzipCompressionProvider>();
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+    [
+        "application/javascript",
+        "application/json",
+        "application/xml",
+        "image/svg+xml",
+        "text/css",
+        "text/javascript"
+    ]);
 });
 builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
 {
@@ -63,6 +72,9 @@ builder.Services.Configure<GzipCompressionProviderOptions>(options =>
 builder.Services.AddOutputCache(options =>
 {
     options.AddPolicy("sitemap", policy => policy.Expire(PerformanceCacheDurations.Sitemap));
+    options.AddPolicy("editorial", policy => policy
+        .Expire(PerformanceCacheDurations.EditorialPages)
+        .Tag("editorial"));
 });
 
 builder.Services.AddSingleton<SitemapXmlCache>();

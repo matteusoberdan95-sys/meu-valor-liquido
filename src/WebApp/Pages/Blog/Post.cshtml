@@ -21,7 +21,8 @@ else
         Model.Post.Title,
         Model.Post.Category,
         "valora-stitch-blog-article-hero",
-        Decorative: false);
+        Decorative: false,
+        PriorityLoading: true);
 
     @section Head {
         <partial name="Shared/_JsonLdArticle" model="Model.Post" />

@@ -23,9 +23,9 @@
   };
 
   if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(loadFonts, { timeout: 1200 });
+    window.requestIdleCallback(loadFonts, { timeout: 800 });
     return;
   }
 
-  window.setTimeout(loadFonts, 700);
+  window.setTimeout(loadFonts, 400);
 })();

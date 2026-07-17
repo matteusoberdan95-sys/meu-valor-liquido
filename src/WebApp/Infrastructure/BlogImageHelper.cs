@@ -55,4 +55,5 @@ public sealed record BlogHeroVisualModel(
     string? Category,
     string WrapperClass,
     bool Decorative = true,
-    bool ShowCategoryBadge = false);
+    bool ShowCategoryBadge = false,
+    bool PriorityLoading = false);

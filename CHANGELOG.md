@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Sprint 92 - Performance e experiência mobile
+- Hero da home e do artigo priorizam LCP (`eager` + `fetchpriority="high"`); imagens secundárias seguem lazy.
+- `adsense-init.js` só entra no layout com anúncios ativos; fontes carregam mais cedo no idle.
+- Compressão cobre MIME extras; páginas editoriais usam OutputCache de 10 minutos.
+- Touch targets ≥ 44 px, `overflow-x: clip` e aspect-ratio nos heróis; Playwright cobre 360/390/412 px.
+
 ### Sprint 90 - Privacidade, cookies e preparação AdSense
 - Banner com Essenciais, Analytics, Personalização e Publicidade; nenhuma categoria opcional vem marcada.
 - Consentimento versionado (`v2`, política `2026-07-17`) com rejeição real, personalização e reabertura.

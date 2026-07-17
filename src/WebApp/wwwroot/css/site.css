@@ -61,6 +61,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -321,11 +322,15 @@ h1, h2, h3, h4,
 
 .valora-nav-toggle {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--valora-primary);
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
 }
 
 @media (min-width: 768px) {
@@ -2409,6 +2414,8 @@ a.valora-choice.valora-choice--active {
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   transition: transform 0.15s, opacity 0.15s;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
 }
 
 .valora-bottom-nav-item .material-symbols-outlined { font-size: 1.375rem; }
@@ -11145,4 +11152,35 @@ select:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Sprint 92 — CLS/LCP mobile: imagens e tabelas */
+img {
+  max-width: 100%;
+}
+
+.valora-main img[width][height]:not(.valora-brand-logo),
+.valora-stitch-hero-visual[width][height],
+.valora-stitch-blog-hero-img[width][height] {
+  height: auto;
+}
+
+.valora-stitch-hero-visual,
+.valora-stitch-blog-hero-img {
+  aspect-ratio: 1200 / 675;
+  object-fit: cover;
+  width: 100%;
+}
+
+.valora-table-scroll,
+.valora-stitch-metodologia-table-scroll,
+.valora-result-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.valora-assistant-launcher-button {
+  min-width: 2.75rem;
+}
+
 
