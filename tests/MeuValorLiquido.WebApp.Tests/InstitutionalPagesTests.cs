@@ -85,12 +85,19 @@ public class InstitutionalPagesTests : IClassFixture<WebApplicationFactory<Progr
         html.Should().Contain("CLT e criterios internos documentados");
     }
 
-    [Fact]
-    public async Task Ad_Slots_Should_Show_Placeholder_When_Ads_Disabled()
+    [Theory]
+    [InlineData("/")]
+    [InlineData("/calculadoras/salario-liquido")]
+    [InlineData("/duvidas")]
+    [InlineData("/assistente")]
+    public async Task Public_Pages_Should_Not_Show_Ad_Placeholders_When_Ads_Disabled(string url)
     {
-        var html = await client.GetStringAsync("/calculadoras/salario-liquido");
+        var html = await client.GetStringAsync(url);
 
-        html.Should().Contain("Espaço publicitário");
+        html.Should().NotContain("Espaço publicitário");
+        html.Should().NotContain("Espaço Publicitário");
+        html.Should().NotContain("Espaço reservado para anúncio");
+        html.Should().NotContain("ad-slot-wrap");
         html.Should().NotContain("adsbygoogle");
     }
     [Fact]

@@ -81,7 +81,7 @@ Inspiração: Linear, Stripe dark, Vercel — **não** gov.br branco, **não** B
 3. Wizard PJ×CLT em 3 passos
 4. Tooltips (i) nos campos críticos
 5. Desktop: form esquerda + painel resultado sticky direita
-6. Slots AdSense com label "Espaço publicitário" (discreto, sem confundir com conteúdo)
+6. Slots AdSense só quando ativos e configurados; não renderizar placeholder ou espaço vazio antes da aprovação
 
 ---
 

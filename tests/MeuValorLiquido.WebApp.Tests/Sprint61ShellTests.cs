@@ -15,7 +15,8 @@ public sealed class Sprint61ShellTests : IClassFixture<WebApplicationFactory<Pro
         html.Should().Contain("valora-footer-stitch-col--newsletter");
         html.Should().Contain("valora-footer-stitch-newsletter-form");
         html.Should().Contain("Institucional");
-        html.Should().Contain("Design minimalista");
+        html.Should().Contain("Metodologia transparente");
+        html.Should().Contain("Fontes oficiais");
         html.Should().NotContain(">Entrar<");
     }
 

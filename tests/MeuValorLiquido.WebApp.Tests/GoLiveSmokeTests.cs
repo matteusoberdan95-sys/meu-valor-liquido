@@ -77,7 +77,8 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
 
         html.Should().Contain("valora-stitch-calc-hub");
         html.Should().Contain("valora-stitch-calc-featured");
-        html.Should().Contain("Mais utilizada");
+        html.Should().Contain("Estimativas educativas baseadas");
+        html.Should().NotContain("Mais utilizada");
         html.Should().Contain("valora-bottom-nav");
     }
 
@@ -91,9 +92,10 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("valora-stitch-bento");
         html.Should().Contain("valora-nav-search");
         html.Should().Contain("Nossa Metodologia");
-        html.Should().Contain("images/social-proof/avatar-1");
-        html.Should().Contain("valora-stitch-social-proof-rating");
-        html.Should().Contain("valora-stitch-star-icon");
+        html.Should().Contain("Resultados educativos com metodologia");
+        html.Should().NotContain("+250k");
+        html.Should().NotContain("Avaliação 5 de 5 estrelas");
+        html.Should().NotContain("images/social-proof/avatar-1");
     }
 
     [Fact]
@@ -135,7 +137,7 @@ public class GoLiveSmokeTests : IClassFixture<WebApplicationFactory<Program>>
         html.Should().Contain("Como podemos ajudar hoje?");
         html.Should().Contain("Perguntas Populares");
         html.Should().Contain("Regime CLT");
-        html.Should().Contain("Falar com suporte");
+        html.Should().Contain("Entrar em contato");
         html.Should().Contain("valora-bottom-nav");
     }
 

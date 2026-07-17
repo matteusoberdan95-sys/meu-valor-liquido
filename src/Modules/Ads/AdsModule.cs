@@ -10,14 +10,3 @@ public interface IAdSlotProvider
 {
     IReadOnlyList<AdSlotDefinition> GetSlots();
 }
-
-public sealed class PlaceholderAdSlotProvider : IAdSlotProvider
-{
-    private static readonly IReadOnlyList<AdSlotDefinition> Slots =
-    [
-        new("calculator-top", "Espaço reservado para anúncio", true),
-        new("calculator-bottom", "Espaço reservado para anúncio", true)
-    ];
-
-    public IReadOnlyList<AdSlotDefinition> GetSlots() => Slots;
-}

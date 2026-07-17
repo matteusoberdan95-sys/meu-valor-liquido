@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 51 (AdSense) quando aprovar · Sprint 70 lote 6 se precisar manter editorial |
+| **Próxima sprint** | Sprint 87 — conteúdo mínimo completo das calculadoras (após validação da Sprint 86) |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 85 · Sprint 84 · Sprint 70 lote 5 · Sprint 83 |
+| **Concluída recente** | Sprint 86 · Sprint 85 · Sprint 84 · Sprint 70 lote 5 · Sprint 83 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -60,12 +60,12 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–85 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
-- **Trilha ativa:** editorial contínuo (Sprint 70 em lotes mensais) + Sprint 51 quando AdSense aprovar.
+- Trilhas **47–86 concluídas** + Sprint 70 lote 5 (hubs, editorial, seguro-desemprego, VT hibrido, PDF premium, conferir holerite, assistente, diagnostico do holerite, conversao interna, autoridade editorial AdSense).
+- **Trilha ativa:** plano de aprovação AdSense (Sprint 87 após validação) + editorial contínuo.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` (51 cenários); testes em `CalculatorBenchmarkCatalogTests`.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
-- AdSense: infra pronta, **desligado** (`ADS_ENABLED=false`) até aprovação.
+- AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Ativação real continua bloqueada até aprovação e revisão de consentimento/configuração.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/politica-editorial` + LinkedIn do autor; manter esses sinais ao alterar blog/institucional.
 - GSC/CTR: Sprint 85 criou `/calculadoras/vale-transporte-hibrido` e reforcou `/blog/vale-transporte-home-office-hibrido`; medir CTR em 7-14 dias antes de novo title/meta. Priorizar paginas com muitas impressoes, posicao media 1-10 e CTR baixo antes de criar pauta nova.
 

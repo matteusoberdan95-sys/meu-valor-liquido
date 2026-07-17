@@ -10,7 +10,7 @@ Objetivo: WebApp **igual** aos mocks em `stitch_redesign_meu_valor_l_quido/`, se
 | **Documentation** | Este arquivo + `ui-ux-stitch.md` | Inventário Stitch→WebApp; critérios de aceite por tela |
 | **QA/Test** | Regressão | `GoLiveSmokeTests` + asserts de estrutura HTML (nav, search, bento) por página |
 | **SEO/Content** | OG/meta | `og-default.svg` até export Stitch; sem imagens IA |
-| **Monetization/AdSense** | Slots | Manter placeholders “Espaço publicitário” nos pontos do mock |
+| **Monetization/AdSense** | Slots | Manter posições previstas no mock, sem renderizar placeholders quando anúncios estiverem desligados |
 | **Security** | CSP | Evitar URLs `lh3.googleusercontent.com` dos HTMLs Stitch |
 
 ### Estratégia técnica (melhor caminho)

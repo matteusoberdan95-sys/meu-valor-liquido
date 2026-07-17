@@ -67,7 +67,7 @@
                     Domine sua <span class="valora-text-glow">Liberdade</span> Financeira.
                 </h1>
                 <p class="valora-stitch-hero-lead">
-                    Calculadoras precisas e insights profundos para quem busca clareza nos números.
+                    Calculadoras gratuitas e atualizadas para 2026, com premissas e fontes descritas na metodologia.
                 </p>
                 <div class="valora-stitch-hero-actions valora-stitch-hero-actions--mobile">
                     <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
@@ -82,7 +82,7 @@
                     Entenda quanto você recebe, quanto <span class="valora-text-glow">desconta</span> e quanto sobra.
                 </h1>
                 <p class="valora-stitch-hero-lead">
-                    Simplificamos a complexidade tributária brasileira com cálculos precisos e ferramentas intuitivas para sua vida financeira.
+                    Faça estimativas baseadas nas tabelas oficiais indicadas na metodologia e entenda cada etapa do cálculo.
                 </p>
                 <div class="valora-stitch-hero-actions">
                     <a class="valora-stitch-btn valora-stitch-btn--primary" asp-page="/Calculadoras/Details" asp-route-slug="salario-liquido">
@@ -93,28 +93,7 @@
                         Ver todas as calculadoras
                     </a>
                 </div>
-                <div class="valora-stitch-social-proof">
-                    <div class="valora-stitch-social-proof-avatars-wrap">
-                        <div class="valora-stitch-social-proof-avatars" aria-hidden="true">
-                            <span class="valora-stitch-social-proof-avatar">
-                                <img src="~/images/social-proof/avatar-1.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
-                            </span>
-                            <span class="valora-stitch-social-proof-avatar">
-                                <img src="~/images/social-proof/avatar-2.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
-                            </span>
-                            <span class="valora-stitch-social-proof-avatar">
-                                <img src="~/images/social-proof/avatar-3.jpg" asp-append-version="true" alt="" width="40" height="40" loading="lazy" decoding="async" />
-                            </span>
-                        </div>
-                        <div class="valora-stitch-social-proof-rating" role="img" aria-label="Avaliação 5 de 5 estrelas">
-                            @for (var star = 0; star < 5; star++)
-                            {
-                                <span class="material-symbols-outlined valora-stitch-star-icon" aria-hidden="true">star</span>
-                            }
-                        </div>
-                    </div>
-                    <p>+250k cálculos realizados este mês</p>
-                </div>
+                <p class="valora-text-muted valora-text-sm">Resultados educativos com metodologia, fontes e limitações públicas.</p>
             </div>
         </div>
         </section>
@@ -122,7 +101,7 @@
         <section class="valora-stitch-section valora-stitch-section--desktop-bento">
             <div class="valora-stitch-section-head valora-stitch-section-head--desktop-hub">
                 <div>
-                    <span class="valora-stitch-section-kicker">Ferramentas de Precisão</span>
+                    <span class="valora-stitch-section-kicker">Calculadoras em destaque</span>
                     <h2 class="valora-stitch-section-title">Principais Calculadoras</h2>
                 </div>
                 <a class="valora-stitch-link valora-stitch-link--desktop-hub" asp-page="/Calculadoras/Index">
@@ -138,7 +117,6 @@
                             <div class="valora-bento-icon-box valora-bento-icon-box--financeiro valora-stitch-home-featured-icon">
                                 <span class="material-symbols-outlined" aria-hidden="true">@CalculatorUiHelper.GetIcon(featuredDesktop.Slug)</span>
                             </div>
-                            <span class="valora-stitch-home-featured-badge">Mais usada</span>
                         </div>
                         <h3 class="valora-stitch-home-featured-title">@featuredDesktop.Name</h3>
                         <p class="valora-stitch-home-featured-summary">@CalculatorUiHelper.GetHomeDesktopCardSummary(featuredDesktop.Slug)</p>
@@ -161,12 +139,6 @@
                         <span class="material-symbols-outlined valora-stitch-home-hub-card-arrow" aria-hidden="true">open_in_new</span>
                     </a>
                 }
-                <div class="valora-stitch-home-prime-card">
-                    <span class="material-symbols-outlined valora-stitch-home-prime-icon" aria-hidden="true">stars</span>
-                    <h3 class="valora-stitch-home-prime-title">ML Prime</h3>
-                    <p class="valora-stitch-home-prime-text">Relatórios financeiros avançados para seu planejamento anual.</p>
-                    <a class="valora-stitch-btn valora-stitch-btn--primary valora-stitch-btn--inline" asp-page="/MeuPainel/Index">Conheça agora</a>
-                </div>
             </div>
         </section>
     </div>
@@ -198,11 +170,6 @@
     @inject ICalculatorCatalogService WhatIfCalculatorCatalog
     <partial name="Shared/_WhatIfScenarioCards" model="WhatIfScenarioCardBuilder.BuildForHub(null, WhatIfCalculatorCatalog)" />
 
-    <div class="valora-stitch-ad-slot" role="complementary" aria-label="Espaço publicitário">
-        <span class="valora-stitch-ad-label">Espaço publicitário</span>
-        <p class="valora-stitch-ad-text">Publicidade</p>
-    </div>
-
     @if (Model.RecentPosts.Count > 0)
     {
         <section class="valora-stitch-section valora-stitch-section--articles">
@@ -227,8 +194,8 @@
             <div class="valora-stitch-home-methodology-accent" aria-hidden="true"></div>
             <h2 id="home-methodology-title" class="valora-stitch-home-methodology-title">Nossa Metodologia</h2>
             <p>
-                No <strong>Meu Valor Líquido</strong>, nossa missão é democratizar o acesso à informação financeira precisa.
-                Utilizamos algoritmos testados e atualizados conforme as legislações vigentes da Receita Federal e do Ministério do Trabalho.
+                No <strong>Meu Valor Líquido</strong>, nossa missão é facilitar o acesso à educação financeira.
+                As estimativas usam as regras e tabelas oficiais indicadas na página de metodologia.
             </p>
             <p>
                 Cada cálculo considera alíquotas progressivas, deduções por dependentes e benefícios previdenciários,
@@ -241,7 +208,7 @@
                 <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
                 <div>
                     <h3>Dados atualizados</h3>
-                    <p>Sincronização com tabelas tributárias nacionais e cenários de benchmark documentados.</p>
+                    <p>Tabelas tributárias de 2026 e cenários de benchmark documentados.</p>
                 </div>
             </article>
             <article>

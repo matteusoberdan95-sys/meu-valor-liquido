@@ -8,13 +8,14 @@ public sealed class Sprint62HubTests : IClassFixture<WebApplicationFactory<Progr
         client = factory.WithWebHostBuilder(builder => builder.UseEnvironment("Testing")).CreateClient();
 
     [Fact]
-    public async Task CalculadorasHub_Should_Render_Premium_Banner()
+    public async Task CalculadorasHub_Should_Render_Clt_Pj_Banner_Without_Usage_Claims()
     {
         var html = await client.GetStringAsync("/calculadoras");
 
         html.Should().Contain("valora-stitch-calc-premium-banner");
-        html.Should().Contain("Mais usada esta semana");
-        html.Should().Contain("Calculadora CLT vs PJ Premium");
+        html.Should().Contain("Comparação detalhada");
+        html.Should().Contain("Calculadora CLT vs PJ");
+        html.Should().NotContain("Mais usada esta semana");
         html.Should().Contain("Comparar agora");
         html.Should().Contain("/calculadoras/pj-vs-clt");
         html.Should().Contain("Qual cálculo você precisa fazer hoje?");
@@ -39,8 +40,9 @@ public sealed class Sprint62HubTests : IClassFixture<WebApplicationFactory<Progr
 
         html.Should().Contain("Como podemos ajudar com sua vida financeira hoje?");
         html.Should().Contain("Ainda com dúvidas?");
-        html.Should().Contain("Falar com suporte");
+        html.Should().Contain("Entrar em contato");
+        html.Should().Contain("relate uma informação que precisa de revisão");
         html.Should().NotContain("Não encontrou sua resposta?");
-        html.Should().NotContain("Entre em contato conosco");
+        html.Should().NotContain("especialistas financeiros");
     }
 }

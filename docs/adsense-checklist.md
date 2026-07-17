@@ -9,9 +9,11 @@ Não integrar AdSense real no MVP. Regras de layout: `docs/ADSENSE_COMPLIANCE.md
 - [x] 15+ artigos no blog (seed editorial)
 - [x] Sobre, Contato, Privacidade, Termos, Aviso Legal, Como calculamos
 - [x] Sitemap dinâmico e `robots.txt`
-- [x] Slots com label “Espaço publicitário” e altura reservada (CLS)
+- [x] Nenhum slot, placeholder ou altura reservada com `Ads:Enabled=false`
+- [x] Slots reais só são renderizados com publisher e ID configurados
+- [x] Home sem métricas, avaliações ou provas sociais não comprovadas
 - [x] Layout mobile-first (Valores Públicos)
-- [x] `Ads:Enabled=false` por padrão — sem publisher ID no repositório
+- [x] `Ads:Enabled=false` por padrão
 
 ## Antes de solicitar (operacional)
 
