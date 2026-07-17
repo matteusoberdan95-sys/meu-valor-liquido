@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Sprint 96 — editorial lote 8 (merge em andamento) |
+| **Próxima sprint** | Merge concluído · Sprint 51 quando Google aprovar · editorial lote 9 |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 95 · Sprint 94 · Sprint 93 · Sprint 92 |
+| **Concluída recente** | Sprint 96 · Sprint 95 · Sprint 94 · Sprint 93 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google |
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | Merge 91–94 ou 51 | Monetization / SEO | AdSense quando aprovar; merge branches pendentes |
-| **Contínuo** | 70 (lote 8+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | Sprint 51 (se AdSense aprovar) ou lote 9 | Monetization / SEO | Após smoke pós-merge |
+| **Contínuo** | 70 (lote 9+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -60,8 +60,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47+** em merge contínuo das sprints AdSense/editorial.
-- **Trilha ativa:** Sprint 96 — editorial lote 8 (merge em andamento)
+- Trilhas **47–96 concluídas** em main (AdSense 86–94 + editorial lotes 6–8).
+- **Trilha ativa:** GO CONDICIONAL AdSense — merge completo; Sprint 51 quando Google aprovar; editorial lote 9.
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Script externo só após consentimento de Publicidade; verificação usa meta tag. Ativação real continua bloqueada até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.

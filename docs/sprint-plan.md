@@ -1,5 +1,22 @@
 # Sprint Plan
 
+## Sprint 96 — Editorial contínuo lote 8 / Sprint 70 (concluída)
+
+**Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 8, reforçando hubs de negociação salarial e desligamento.
+
+**Entregas:**
+- [x] `dsr-sobre-horas-extras-como-calcular` → hub `/negociar-salario`, calc `hora-extra`, publicado 17/07/2026.
+- [x] `decimo-terceiro-proporcional-na-rescisao` → hub `/desligamento`, calc `decimo-terceiro`, publicado 17/07/2026.
+- [x] `BlogEditorialCatalog.Sprint70Lote8EditorialSlugs` e `IsSprint70Editorial`.
+- [x] Cross-links em `ThematicHubCatalog`, `AppendPracticalSection`, capas WebP e `Sprint70Lote8BlogTests`.
+- [x] Documentação: `BLOG_EDITORIAL_PLAN.md`, `CHANGELOG.md`, `AGENTS.md`.
+
+**Fora do escopo:** alterar fórmulas, ativar AdSense, inventar métricas.
+
+**Definition of Done:** ≥850 palavras; links calculadora + `/como-calculamos` + FAQ; sitemap; `dotnet test` verde.
+
+---
+
 ## Sprint 95 — Editorial contínuo lote 7 / Sprint 70 (concluída)
 
 **Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 7, reforçando hubs de negociação salarial e desligamento.

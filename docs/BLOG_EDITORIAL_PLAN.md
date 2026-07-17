@@ -163,6 +163,12 @@ Antes de propor um artigo, consulte (quando disponível):
 - `ferias-vencidas-e-proporcionais-na-rescisao` -> hub `/desligamento`, calc `ferias`, publicado 17/07/2026
 - Testes: `Sprint70Lote7BlogTests`; catálogo: `Sprint70Lote7EditorialSlugs`
 
+## Sprint 70 - lote 8 publicado (jul/2026)
+
+- `dsr-sobre-horas-extras-como-calcular` -> hub `/negociar-salario`, calc `hora-extra`, publicado 17/07/2026
+- `decimo-terceiro-proporcional-na-rescisao` -> hub `/desligamento`, calc `decimo-terceiro`, publicado 17/07/2026
+- Testes: `Sprint70Lote8BlogTests`; catálogo: `Sprint70Lote8EditorialSlugs`
+
 ## Rotina GSC CTR
 
 Antes de abrir pauta nova, exporte `Consultas.csv` e `Páginas.csv` do Google Search Console e procure páginas com:
@@ -211,7 +217,7 @@ Para esses casos, otimize primeiro a página existente: title, meta description,
 
 ---
 
-- Sprint 95 concluiu lote 7 editorial. Proximo ciclo recomendado: merge das branches AdSense 91–94 ou Sprint 51 quando Google aprovar.
+- Sprint 96 concluiu lote 8 editorial. Proximo ciclo recomendado: merge das branches AdSense 91–94 + lotes 7–8, ou Sprint 51 quando Google aprovar.
 
 ## Como sugerir novo artigo (template para agents)
 
@@ -229,4 +235,4 @@ Copie e preencha num PR ou issue:
 - **Conflito com slug existente:** não / qual
 ```
 
-Última atualização: **jul/2026** (lote 7 publicado).
+Última atualização: **jul/2026** (lote 8 publicado).

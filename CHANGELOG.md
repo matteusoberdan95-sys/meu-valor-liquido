@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Sprint 96 / Sprint 70 lote 8 - Editorial contínuo
+- Artigos `dsr-sobre-horas-extras-como-calcular` e `decimo-terceiro-proporcional-na-rescisao` (17/07) com capas WebP, hubs e testes.
+
 ### Sprint 95 / Sprint 70 lote 7 - Editorial contínuo
 - Artigos `banco-de-horas-clt-como-funciona` (16/07) e `ferias-vencidas-e-proporcionais-na-rescisao` (17/07) com capas WebP, hubs e testes.
 
