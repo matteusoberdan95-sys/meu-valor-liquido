@@ -19,6 +19,9 @@ Não integrar AdSense real no MVP. Regras de layout: `docs/ADSENSE_COMPLIANCE.md
 - [x] Assistente, painel, newsletter, widget, métricas, filtros e resultados parametrizados fora do índice
 - [x] URLs inexistentes retornam 404 real; erros 500 não possuem canonical
 - [x] Aliases e variações de caixa/barra redirecionam permanentemente para a URL canônica
+- [x] Consentimento com quatro categorias, rejeição real e reabertura
+- [x] Script AdSense bloqueado até Publicidade; verificação por meta tag
+- [x] Políticas de Privacidade/Cookies alinhadas ao comportamento real
 - [x] Layout mobile-first (Valores Públicos)
 - [x] `Ads:Enabled=false` por padrão
 

@@ -2,8 +2,14 @@
   const STORAGE_KEY = "mvl-local-panel-v1";
   const MAX_ITEMS = 25;
   const MAX_COMPARE = 2;
+  const personalizationAllowed = () =>
+    window.MvlCookieConsent?.allows("personalization") === true;
 
   const readStore = () => {
+    if (!personalizationAllowed()) {
+      return { version: 1, items: [] };
+    }
+
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) {
@@ -22,6 +28,10 @@
   };
 
   const writeStore = (store) => {
+    if (!personalizationAllowed()) {
+      return false;
+    }
+
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
       return true;
@@ -99,6 +109,10 @@
   const getItems = () => readStore().items;
 
   const saveItem = (entry) => {
+    if (!personalizationAllowed()) {
+      return { ok: false, reason: "consent-required" };
+    }
+
     const sharePath = normalizeShareUrl(entry.shareUrl);
     if (!sharePath) {
       return { ok: false, reason: "missing-url" };
@@ -214,6 +228,12 @@
         });
 
         if (!result.ok) {
+          if (result.reason === "consent-required") {
+            showFeedback(root, "Ative Personalização para salvar no painel.");
+            window.MvlCookieConsent?.manage();
+            return;
+          }
+
           showFeedback(
             root,
             result.reason === "storage-full"

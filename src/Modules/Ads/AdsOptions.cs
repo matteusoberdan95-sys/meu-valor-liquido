@@ -17,6 +17,6 @@ public sealed class AdsOptions
     public bool IsActive =>
         Enabled && !string.IsNullOrWhiteSpace(PublisherId);
 
-    public bool ShouldRenderVerificationScript =>
+    public bool ShouldRenderVerificationTag =>
         VerificationEnabled && !string.IsNullOrWhiteSpace(PublisherId);
 }

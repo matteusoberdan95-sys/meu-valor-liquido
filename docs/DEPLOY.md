@@ -46,7 +46,7 @@ docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
 | `ConnectionStrings__DefaultConnection` | PostgreSQL produção |
 | `ASPNETCORE_ENVIRONMENT` | `Production` |
 | `Ads__Enabled` | `false` até aprovação AdSense (Sprint 51) |
-| `Ads__VerificationEnabled` | `true` somente durante verificação do site no AdSense |
+| `Ads__VerificationEnabled` | `true` somente durante verificação; renderiza meta tag sem script externo |
 | `Ads__PublisherId` | `ca-pub-...` informado pelo AdSense |
 | `Mail__Host` / `Mail__Port` / `Mail__UseSsl` | SMTP real |
 | `Mail__UserName` / `Mail__Password` | Se o provedor exigir auth |
@@ -145,7 +145,8 @@ Rotinas complementares: `docs/SEO_MONTHLY_REVIEW.md`, `docs/CALIBRATION_ROUTINE.
 1. Site público estável com domínio e HTTPS
 2. Solicitar conta em [Google AdSense](https://www.google.com/adsense/)
 3. Após aprovação (Sprint 51): `Ads__Enabled=true`, `Ads__PublisherId`, IDs dos slots
-4. Monitorar Core Web Vitals e políticas
+4. Confirmar que `adsbygoogle.js` só carrega após consentimento de Publicidade
+5. Monitorar Core Web Vitals e políticas
 
 ## 5. Próxima sprint
 

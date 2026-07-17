@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 90 - Privacidade, cookies e preparação AdSense
+- Banner com Essenciais, Analytics, Personalização e Publicidade; nenhuma categoria opcional vem marcada.
+- Consentimento versionado (`v2`, política `2026-07-17`) com rejeição real, personalização e reabertura.
+- Script AdSense só carrega após Publicidade; verificação da conta usa meta tag sem script externo.
+- Slots, métricas de interação e armazenamento local respeitam as categorias correspondentes.
+- Políticas de Privacidade, Cookies, Termos e Aviso Legal alinhadas ao comportamento implementado.
+
 ### Sprint 89 - SEO técnico e controle de indexação
 - Nova política central separa rotas indexáveis de páginas utilitárias, pessoais, parametrizadas e operacionais.
 - Sitemap XML remove assistente, painel local, newsletter e widget, consolida slugs duplicados e usa revisão editorial real nas calculadoras prioritárias.

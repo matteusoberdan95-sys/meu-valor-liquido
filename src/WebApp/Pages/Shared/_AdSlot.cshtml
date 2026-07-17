@@ -3,7 +3,11 @@
 
 @if (AdsOptions.Value.IsActive && !Model.IsPlaceholder && !string.IsNullOrWhiteSpace(Model.AdSlotId))
 {
-    <div class="ad-slot-wrap" role="complementary" aria-label="Publicidade">
+    <div class="ad-slot-wrap"
+         role="complementary"
+         aria-label="Publicidade"
+         data-ad-consent-required
+         hidden>
         <span class="ad-slot-label">Publicidade</span>
         <div class="ad-slot ad-slot--live">
             <ins class="adsbygoogle"

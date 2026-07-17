@@ -1,6 +1,6 @@
 (() => {
   const collect = (eventName, dimension) => {
-    if (!eventName) {
+    if (!eventName || window.MvlCookieConsent?.allows("analytics") !== true) {
       return;
     }
 

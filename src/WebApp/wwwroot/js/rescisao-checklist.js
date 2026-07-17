@@ -1,7 +1,13 @@
 (() => {
   const STORAGE_KEY = "mvl-rescisao-checklist-v1";
+  const personalizationAllowed = () =>
+    window.MvlCookieConsent?.allows("personalization") === true;
 
   const readStore = () => {
+    if (!personalizationAllowed()) {
+      return { version: 1, checked: [] };
+    }
+
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) {
@@ -20,6 +26,10 @@
   };
 
   const writeStore = (store) => {
+    if (!personalizationAllowed()) {
+      return false;
+    }
+
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
       return true;
@@ -56,6 +66,12 @@
 
     toggles.forEach((input) => {
       input.addEventListener("change", () => {
+        if (!personalizationAllowed()) {
+          syncUi(store.checked);
+          window.MvlCookieConsent?.manage();
+          return;
+        }
+
         const id = input.getAttribute("data-rescisao-checklist-toggle");
         if (!id) {
           return;
