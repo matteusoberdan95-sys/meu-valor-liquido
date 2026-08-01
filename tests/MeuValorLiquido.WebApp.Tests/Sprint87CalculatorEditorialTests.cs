@@ -78,6 +78,12 @@ public sealed class Sprint87CalculatorEditorialTests : IClassFixture<WebApplicat
 
         exampleResult.IsFailure.Should().BeFalse();
         html.Should().Contain("Como esta calculadora funciona");
+        html.Should().Contain("aria-label=\"Etapas desta calculadora\"");
+        html.Should().Contain("href=\"#simular\"");
+        html.Should().Contain("href=\"#resultado\"");
+        html.Should().Contain("href=\"#entenda-calculo\"");
+        html.Should().Contain("href=\"#fontes-calculo\"");
+        html.Should().Contain("href=\"#perguntas-frequentes\"");
         html.Should().Contain("O que entra no cálculo");
         html.Should().Contain("O que não entra no cálculo");
         html.Should().Contain("Como interpretar o resultado");
@@ -92,6 +98,10 @@ public sealed class Sprint87CalculatorEditorialTests : IClassFixture<WebApplicat
         html.Should().Contain("Calculadoras relacionadas");
         html.Should().Contain(content.EducationalNotice);
         html.Should().Contain(CalculatorEditorialCatalog.GetFaqs(slug)[0].Question);
+        html.Should().Contain("data-editorial-example");
+        html.Should().Contain("data-editorial-sources");
+        html.Should().Contain("data-editorial-related");
+        html.Should().Contain($"href=\"{EditorialAuthorCatalog.Primary.ProfilePath}\"");
     }
 
     [Theory]
@@ -107,6 +117,41 @@ public sealed class Sprint87CalculatorEditorialTests : IClassFixture<WebApplicat
 
         html.Should().NotContain("valora-calculator-editorial");
         html.Should().NotContain("Exemplo calculado pelo mesmo motor");
+        html.Should().NotContain("Etapas desta calculadora");
+        html.Should().NotContain("data-editorial-example");
+    }
+
+    [Theory]
+    [InlineData("seguro-desemprego")]
+    [InlineData("conversor-salario")]
+    [InlineData("custo-funcionario")]
+    [InlineData("multa-atraso")]
+    public async Task How_To_Use_Block_Should_Prefer_Editorial_Summary(string slug)
+    {
+        var content = CalculatorEditorialCatalog.GetBySlug(slug)!;
+        var html = WebUtility.HtmlDecode(await client.GetStringAsync($"/calculadoras/{slug}"));
+
+        html.Should().Contain("Como usar esta calculadora");
+        html.Should().Contain(content.Summary);
+        html.Should().NotContain("Use os campos indicados para obter uma estimativa educativa");
+    }
+
+    [Fact]
+    public async Task Editorial_Journey_Should_Render_In_Useful_Order()
+    {
+        var html = await client.GetStringAsync("/calculadoras/salario-liquido");
+
+        var formIndex = html.IndexOf("id=\"simular\"", StringComparison.Ordinal);
+        var resultIndex = html.IndexOf("id=\"resultado\"", StringComparison.Ordinal);
+        var editorialIndex = html.IndexOf("id=\"entenda-calculo\"", StringComparison.Ordinal);
+        var sourcesIndex = html.IndexOf("id=\"fontes-calculo\"", StringComparison.Ordinal);
+        var faqIndex = html.IndexOf("id=\"perguntas-frequentes\"", StringComparison.Ordinal);
+
+        formIndex.Should().BeGreaterThan(0);
+        resultIndex.Should().BeGreaterThan(formIndex);
+        editorialIndex.Should().BeGreaterThan(resultIndex);
+        sourcesIndex.Should().BeGreaterThan(editorialIndex);
+        faqIndex.Should().BeGreaterThan(sourcesIndex);
     }
 
     public static TheoryData<string> PriorityCalculatorSlugs()

@@ -159,10 +159,21 @@ else
             {
                 <partial name="Shared/_ConferirHoleritePromoBanner" />
             }
+
+            <nav class="valora-calculator-page-nav" aria-label="Etapas desta calculadora">
+                <p class="valora-calculator-page-nav-title">Nesta página</p>
+                <ol>
+                    <li><a href="#simular"><span>1</span> Simular</a></li>
+                    <li><a href="#resultado"><span>2</span> Ver resultado</a></li>
+                    <li><a href="#entenda-calculo"><span>3</span> Entender o cálculo</a></li>
+                    <li><a href="#fontes-calculo"><span>4</span> Conferir fontes</a></li>
+                    <li><a href="#perguntas-frequentes"><span>5</span> Tirar dúvidas</a></li>
+                </ol>
+            </nav>
         }
 
         <div class="@(Model.IsEmbedMode ? "valora-embed-stack" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-layout" : "valora-stitch-calc-detail-grid")">
-        <div class="valora-stack-md @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-main" : "valora-stitch-calc-detail-main")">
+        <div id="@(Model.IsEmbedMode ? null : "simular")" class="valora-stack-md @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-main" : "valora-stitch-calc-detail-main")">
             @if (Model.IsPjVsCltStitch)
             {
                 <partial name="Shared/_PjVsCltStitchForm" model="Model" />
@@ -785,7 +796,20 @@ else
 
             <section class="valora-card valora-stitch-calc-edu">
                 <h2 class="valora-h3">Como usar esta calculadora</h2>
-                <p class="valora-text-muted valora-text-sm" style="margin: 0;">@(Model.Definition.EducationalContent is null ? "Preencha os campos indicados e use o resultado como estimativa educativa." : Html.Raw(Model.Definition.EducationalContent))</p>
+                <p class="valora-text-muted valora-text-sm" style="margin: 0;">
+                    @if (Model.EditorialContent is not null)
+                    {
+                        @Model.EditorialContent.Content.Summary
+                    }
+                    else if (Model.Definition.EducationalContent is not null)
+                    {
+                        @Html.Raw(Model.Definition.EducationalContent)
+                    }
+                    else
+                    {
+                        @:Preencha os campos indicados e use o resultado como estimativa educativa.
+                    }
+                </p>
             </section>
             }
             else
@@ -797,7 +821,7 @@ else
             }
         </div>
 
-        <aside class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")}{(Model.IsSalarioLiquidoStitch ? " valora-stitch-salario-estimate" : "")}{(Model.IsPropostaSalarialStitch ? " valora-stitch-proposta-estimate" : "")} valora-stack-md{(Model.ResultPanel is null && Model.SalarioLiquidoStitchResult is null && Model.PropostaStitchResult is null ? " valora-stitch-calc-estimate--empty" : "")}")">
+        <aside id="@(Model.IsEmbedMode ? null : "resultado")" class="@(Model.IsEmbedMode ? "valora-embed-result" : Model.IsPjVsCltStitch ? "valora-stitch-cltpj-aside valora-stack-md" : $"valora-stitch-calc-estimate{(Model.IsRescisaoStitch ? " valora-stitch-rescisao-estimate" : "")}{(Model.IsSalarioLiquidoStitch ? " valora-stitch-salario-estimate" : "")}{(Model.IsPropostaSalarialStitch ? " valora-stitch-proposta-estimate" : "")} valora-stack-md{(Model.ResultPanel is null && Model.SalarioLiquidoStitchResult is null && Model.PropostaStitchResult is null ? " valora-stitch-calc-estimate--empty" : "")}")">
             @if (Model.IsPjVsCltStitch)
             {
                 @if (Model.CltPjBreakdown is not null)
@@ -898,7 +922,7 @@ else
 
     @if (!Model.IsEmbedMode)
     {
-        <section class="valora-faq @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-faq" : "valora-stitch-calc-faq")">
+        <section id="perguntas-frequentes" class="valora-faq @(Model.IsPjVsCltStitch ? "valora-stitch-cltpj-faq" : "valora-stitch-calc-faq")">
             <h2 class="valora-h2">@(Model.IsPjVsCltStitch ? "Perguntas Frequentes" : "Perguntas frequentes")</h2>
             @foreach (var faq in Model.PageFaqItems)
             {
