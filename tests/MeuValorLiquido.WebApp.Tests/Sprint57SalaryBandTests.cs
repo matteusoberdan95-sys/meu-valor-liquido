@@ -47,13 +47,16 @@ public sealed class Sprint57SalaryBandTests : IClassFixture<WebApplicationFactor
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_New_Salary_Bands()
+    public async Task Sitemap_Should_Include_Tier1_Salary_Bands()
     {
         var xml = await client.GetStringAsync("/sitemap.xml");
 
-        xml.Should().Contain("/salario-liquido/2200");
-        xml.Should().Contain("/salario-liquido/4200");
-        xml.Should().Contain("/salario-liquido/11000");
+        xml.Should().Contain("/salario-liquido/2000");
+        xml.Should().Contain("/salario-liquido/4000");
+        xml.Should().Contain("/salario-liquido/10000");
+        xml.Should().NotContain("/salario-liquido/2200");
+        xml.Should().NotContain("/salario-liquido/4200");
+        xml.Should().NotContain("/salario-liquido/11000");
     }
 
     [Fact]

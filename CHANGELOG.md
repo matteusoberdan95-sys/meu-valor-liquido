@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Sprint 98 — Correção AdSense (conteúdo de baixo valor)
+- Editorial completo nas 19 calculadoras ativas (`CalculatorEditorialCatalog` + testes Sprint 87).
+- Páginas programáticas: sitemap/index só em 18 faixas Tier 1; demais `noindex,follow` — `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md`.
+- Sprint 70 lote 10: `vale-transporte-vr-orcamento-mensal` e `salario-minimo-impacto-holerite` (01/08/2026), capas WebP, hub `/negociar-salario`, testes `Sprint70Lote10BlogTests`.
+- Checklist pré-revisão e texto para pedir revisão em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` / `docs/adsense/ADSENSE_RE_REVIEW.md`.
+- Anúncios permanecem desligados (`Ads:Enabled=false`).
+
 ### Sprint 97 / Sprint 70 lote 9 - Editorial contínuo
 - Artigos `comissao-variavel-no-holerite` e `reserva-impostos-e-provisoes-ao-virar-pj` (17/07) com capas WebP, hubs e testes.
 

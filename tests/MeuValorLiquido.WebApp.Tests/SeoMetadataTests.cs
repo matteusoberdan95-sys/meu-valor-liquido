@@ -86,7 +86,7 @@ public class SeoMetadataTests : IClassFixture<WebApplicationFactory<Program>>
 
         salaryCalculatorUrls.Should().NotBeEmpty();
         salaryCalculatorUrls.Should().OnlyContain(url =>
-            url.Element(ns + "lastmod") != null && url.Element(ns + "lastmod")!.Value == "2026-07-17");
+            url.Element(ns + "lastmod") != null && url.Element(ns + "lastmod")!.Value == "2026-08-01");
     }
 
     [Fact]

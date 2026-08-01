@@ -1,5 +1,26 @@
 # Sprint Plan
 
+## Sprint 98 — Correção AdSense conteúdo de baixo valor (concluída no código)
+
+**Objetivo:** responder à rejeição AdSense por “Conteúdo de baixo valor” com editorial nas 7 calculadoras restantes, contenção de páginas programáticas e lote 10 do blog — sem ativar anúncios.
+
+**Entregas:**
+- [x] `CalculatorEditorialCatalog` cobre 19/19 calculadoras ativas; matriz em `docs/adsense/CONTENT_QUALITY_MATRIX.md`.
+- [x] Sitemap/index Tier 1 (18 faixas) + `noindex,follow` nas demais — `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md`.
+- [x] Sprint 70 lote 10: `vale-transporte-vr-orcamento-mensal`, `salario-minimo-impacto-holerite`.
+- [x] Checklist e texto de re-review em `docs/adsense/FINAL_PRE_REVIEW_CHECKLIST.md` e `docs/adsense/ADSENSE_RE_REVIEW.md`.
+
+**Operacional (fora do merge):**
+- [ ] Deploy VPS (`/var/www/meu-valor-liquido`) com `Ads:Enabled=false`.
+- [ ] Smoke HTTPS das rotas-chave.
+- [ ] Aguardar 7–14 dias e pedir revisão no AdSense.
+
+**Fora do escopo:** ativar `Ads:Enabled`, Sprint 51, inventar métricas.
+
+**Próximo:** deploy/smoke → re-review Google → Sprint 51 se aprovar; editorial lote 11.
+
+---
+
 ## Sprint 97 — Editorial contínuo lote 9 / Sprint 70 (concluída)
 
 **Objetivo:** publicar 2 artigos long tail do Sprint 70 lote 9, reforçando hubs de negociação salarial e virar PJ.

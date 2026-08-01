@@ -52,9 +52,12 @@ public abstract partial class FaixaPageModelBase : PageModel
         BottomAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-bottom");
 
         var canonicalPath = SalaryBandCatalog.SlugPath(valor, dependents);
+        var robots = SalaryBandCatalog.IsSitemapIndexable(valor, dependents)
+            ? SeoMetadataHelper.DefaultRobots
+            : SeoMetadataHelper.NoIndexFollowRobots;
         SeoMetadataHelper.Apply(
             ViewData,
-            new SeoMetadata(PageContent.Title, PageContent.Description, canonicalPath));
+            new SeoMetadata(PageContent.Title, PageContent.Description, canonicalPath, robots));
 
         var shareUrl = shareLinkBuilder.BuildAbsoluteUrl(canonicalPath, Request);
         var shareText =

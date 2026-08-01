@@ -41,12 +41,16 @@ public abstract partial class ComparacaoPageModelBase : PageModel
         TopAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-top");
         BottomAdSlot = slots.FirstOrDefault(s => s.Key == "calculator-bottom");
 
+        var robots = CltPjBandCatalog.IsSitemapIndexable(valor, dependents)
+            ? SeoMetadataHelper.DefaultRobots
+            : SeoMetadataHelper.NoIndexFollowRobots;
         SeoMetadataHelper.Apply(
             ViewData,
             new SeoMetadata(
                 PageContent.Title,
                 PageContent.Description,
-                CltPjBandCatalog.SlugPath(valor, dependents)));
+                CltPjBandCatalog.SlugPath(valor, dependents),
+                robots));
 
         return Page();
     }

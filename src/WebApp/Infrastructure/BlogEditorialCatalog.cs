@@ -83,6 +83,12 @@ public static class BlogEditorialCatalog
         "reserva-impostos-e-provisoes-ao-virar-pj"
     ];
 
+    public static readonly IReadOnlyList<string> Sprint70Lote10EditorialSlugs =
+    [
+        "vale-transporte-vr-orcamento-mensal",
+        "salario-minimo-impacto-holerite"
+    ];
+
     public static bool IsSprint70Editorial(string slug) =>
         Sprint70EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote2EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
@@ -92,7 +98,8 @@ public static class BlogEditorialCatalog
         || Sprint70Lote6EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote7EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
         || Sprint70Lote8EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
-        || Sprint70Lote9EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
+        || Sprint70Lote9EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)
+        || Sprint70Lote10EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase);
 
     public static bool RequiresEditorialValidation(string slug) =>
         Sprint58EditorialSlugs.Contains(slug, StringComparer.OrdinalIgnoreCase)

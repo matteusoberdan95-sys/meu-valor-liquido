@@ -84,6 +84,8 @@ VISUAL_BRIEF: dict[str, str] = {
     "decimo-terceiro-proporcional-na-rescisao": "badge 13º + avos 7/12 + documento TRCT",
     "comissao-variavel-no-holerite": "holerite com linha de comissão + gráfico variável mensal",
     "reserva-impostos-e-provisoes-ao-virar-pj": "cofre PJ + badge impostos + provisões férias/13º",
+    "vale-transporte-vr-orcamento-mensal": "cartão VT + cartão VR + holerite e planilha de orçamento mensal",
+    "salario-minimo-impacto-holerite": "badge salário mínimo 2026 + holerite com líquido e INSS",
 }
 
 PROMPT_HEADER = """# Gerar capas hero do blog — Meu Valor Líquido
@@ -340,6 +342,16 @@ def draw_motif(draw: ImageDraw.ImageDraw, slug: str, color: tuple[int, int, int]
             rounded_rect(draw, (ox + 165, oy + 50, ox + 285, oy + 190), 12, COLORS["card"], color, 2)
             draw.text((ox + 175, oy + 90), "imp.", fill=color, font=font(26, True))
             draw.text((ox + 175, oy + 130), "prov.", fill=COLORS["text"], font=font(24, True))
+        case "vale-transporte-vr-orcamento-mensal":
+            rounded_rect(draw, (ox + 20, oy + 40, ox + 140, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 45, oy + 95), "VT", fill=color, font=font(36, True))
+            rounded_rect(draw, (ox + 155, oy + 40, ox + 280, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 180, oy + 95), "VR", fill=color, font=font(36, True))
+        case "salario-minimo-impacto-holerite":
+            rounded_rect(draw, (ox + 20, oy + 40, ox + 280, oy + 190), 12, COLORS["card"], color, 2)
+            draw.text((ox + 40, oy + 80), "piso", fill=COLORS["muted"], font=font(22, True))
+            draw.text((ox + 40, oy + 120), "R$ 1621", fill=color, font=font(28, True))
+            draw.text((ox + 40, oy + 155), "liquido", fill=COLORS["text"], font=font(22, True))
 
         case "aviso-previo-trabalhado-vs-indenizado":
             draw_calendar(draw, ox, oy, color)

@@ -1,19 +1,21 @@
-# Pré-revisão final AdSense — Checklist Sprint 94
+# Pré-revisão final AdSense — Checklist (atualizado Sprint 98)
 
-**Data:** 17/07/2026  
-**Branch de auditoria:** `feat/adsense-sprint-9`  
-**Base:** `main` com Sprint 90 mergeada (`8106be6`)
+**Data:** 01/08/2026  
+**Contexto:** rejeição por “Conteúdo de baixo valor”; correções no código antes de pedir nova revisão.
 
 ## Veredito
 
-**GO CONDICIONAL** — sprints 86–96 estão em `main`. Antes de solicitar/reenviar ao Google:
+**GO CONDICIONAL OPERACIONAL** — código pronto para deploy. Antes de pedir revisão:
 
 | Item | Status |
 |------|--------|
-| Merge Sprints 91–96 | FEITO em `main` |
-| Deploy HTTPS + smoke | Validar em produção |
-| Lighthouse mobile | Após deploy |
-| `Ads:Enabled=false` até aprovação | Mantido |
+| Editorial 19/19 calculadoras | FEITO |
+| Programáticas Tier 1 no sitemap | FEITO |
+| Lote 10 blog | FEITO |
+| `Ads:Enabled=false` | Mantido |
+| Deploy HTTPS + smoke | PENDENTE (VPS) |
+| Aguardar 7–14 dias no ar | Após deploy |
+| Pedir revisão no AdSense | Após espera — ver `ADSENSE_RE_REVIEW.md` |
 
 ---
 
@@ -21,62 +23,52 @@
 
 | Item | Status | Evidência |
 |------|--------|-----------|
-| 12 calculadoras prioritárias com editorial completo | PASS | `CalculatorEditorialCatalog` + `Sprint87CalculatorEditorialTests` |
-| Sem páginas vazias nas calculadoras ativas | PASS | `CalculatorSeedData` + páginas Details |
-| 7 calculadoras sem bloco editorial longo | PARTIAL | Aceitável para MVP; opcional pós-aprovação |
-| Sem métricas/avaliações/depoimentos fictícios | PASS | Home + `Sprint83` / `Sprint94` |
-| Datas de revisão reais | PASS | `LastReviewedAt` 2026-07-17; blog sem datas futuras |
-| Artigos lote 6 | PENDING_MERGE | `feat/adsense-sprint-8` |
+| 19 calculadoras ativas com editorial completo | PASS | `CalculatorEditorialCatalog` + `Sprint87CalculatorEditorialTests` |
+| Sem páginas vazias nas calculadoras ativas | PASS | Seed + Details |
+| Sem métricas/avaliações/depoimentos fictícios | PASS | Home + Sprint83 / Sprint94 |
+| Datas de revisão reais | PASS | Editorial `2026-08-01`; lote 10 `2026-08-01` |
+| Artigos lote 10 | PASS | `vale-transporte-vr-orcamento-mensal`, `salario-minimo-impacto-holerite` |
 
-## Institucional
+## Programáticas
+
+| Item | Status | Evidência |
+|------|--------|-----------|
+| Sitemap só Tier 1 (18 faixas × 3 variantes × 2 famílias = 108) | PASS | `SalaryBandCatalog.IsSitemapIndexable` |
+| Faixas fora do Tier 1 com `noindex,follow` | PASS | FaixaPageModelBase / ComparacaoPageModelBase |
+| Decisão documentada | PASS | `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md` |
+
+## Institucional / SEO / Ads
 
 | Item | Status |
 |------|--------|
 | Sobre, Contato, Privacidade, Cookies, Termos, Aviso Legal | PASS |
-| Metodologia (`/como-calculamos`) | PASS |
-| Política Editorial | PASS |
-| Autor `/autores/matteus-oberdan` | PASS |
-| Correções (`noindex,follow`) | PASS |
+| Metodologia, Política Editorial, Autor, Correções | PASS |
+| Sitemap só indexáveis; soft 404 corrigido | PASS |
+| Placeholders off; script só com ads ativos + Publicidade | PASS |
+| `ads.txt` com publisher concreto | PASS |
 
-## SEO
+## Smoke pós-deploy (manual)
 
-| Item | Status |
-|------|--------|
-| Sitemap válido (só indexáveis) | PASS |
-| robots.txt + Sitemap | PASS |
-| Canonical | PASS |
-| Soft 404 de calculadora corrigido (404 real) | PASS |
-| Assistente/painel/newsletter fora do índice | PASS |
+```text
+GET https://meuvalorliquido.com/
+GET https://meuvalorliquido.com/calculadoras/seguro-desemprego
+GET https://meuvalorliquido.com/calculadoras/vale-transporte-hibrido
+GET https://meuvalorliquido.com/blog/vale-transporte-vr-orcamento-mensal
+GET https://meuvalorliquido.com/blog/salario-minimo-impacto-holerite
+GET https://meuvalorliquido.com/sobre
+GET https://meuvalorliquido.com/como-calculamos
+GET https://meuvalorliquido.com/politica-editorial
+GET https://meuvalorliquido.com/autores/matteus-oberdan
+GET https://meuvalorliquido.com/salario-liquido/5800   # deve ter noindex,follow
+GET https://meuvalorliquido.com/sitemap.xml           # sem /5800; com /6000 e lote 10
+```
 
-## UX / anúncios
+Deploy (VPS):
 
-| Item | Status | Evidência |
-|------|--------|-----------|
-| Sem placeholders com ads off | PASS | Partial Ads + Sprint94 |
-| `adsense-init.js` só quando `Ads:Enabled` ativo | PASS | `_Layout.cshtml` + Sprint94 (P0 corrigido nesta sprint) |
-| Sem botões de login falsos | PASS | Auditoria home |
-| Mobile / performance extras (LCP hero, cache, viewports) | PENDING_MERGE | `feat/adsense-sprint-7` |
+```bash
+cd /var/www/meu-valor-liquido
+git pull origin main
+docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+```
 
-## AdSense / privacidade
-
-| Item | Status |
-|------|--------|
-| `Ads:Enabled=false` padrão | PASS |
-| Meta verificação sem script externo | PASS |
-| Script só após Publicidade | PASS |
-| Consentimento v2 (4 categorias) | PASS |
-| `ads.txt` com `pub-4150358596824425` | PASS |
-| CLS com slots live | BLOQUEADO até aprovação |
-
-## Operacional (fora do código)
-
-| Item | Status |
-|------|--------|
-| Domínio HTTPS público | Validar em produção |
-| `Site:BaseUrl` final | Validar em `.env.prod` |
-| SMTP contato/newsletter | Smoke manual |
-| Lighthouse mobile pós-deploy | Após merge Sprint 92 |
-
-## Testes automatizados desta sprint
-
-`Sprint94AdSensePreReviewTests` — trava institucional, SEO, ads off, consentimento, editorial prioritário e `ads.txt`.
+Confirmar `.env.prod`: `ADS_ENABLED=false` (ou `Ads__Enabled=false`).

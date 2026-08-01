@@ -31,7 +31,7 @@ public sealed record CalculatorEditorialViewModel(
 public static class CalculatorEditorialCatalog
 {
     private const string ReviewedBy = "Matteus Oberdan — responsável editorial";
-    private static readonly DateOnly ReviewDate = new(2026, 7, 17);
+    private static readonly DateOnly ReviewDate = new(2026, 8, 1);
 
     private static readonly OfficialSource CltSource = new(
         "Consolidação das Leis do Trabalho (Decreto-Lei nº 5.452/1943)",
@@ -61,6 +61,13 @@ public static class CalculatorEditorialCatalog
         "Banco Central do Brasil — Calculadora do Cidadão",
         "https://www3.bcb.gov.br/CALCIDADAO/jsp/index.jsp");
 
+    private static readonly OfficialSource TransportVoucherSource = new(
+        "Lei nº 7.418/1985 — vale-transporte",
+        "https://www.planalto.gov.br/ccivil_03/leis/l7418.htm");
+
+    private static readonly OfficialSource UnemploymentInsuranceSource = new(
+        "Ministério do Trabalho e Emprego — tabela do seguro-desemprego 2026",
+        "https://www.gov.br/trabalho-e-emprego/pt-br/noticias-e-conteudo/2026/janeiro/mte-reajusta-valores-do-beneficio-seguro-desemprego");
     private static readonly IReadOnlyDictionary<string, CalculatorEditorialContent> Items =
         new Dictionary<string, CalculatorEditorialContent>(StringComparer.OrdinalIgnoreCase)
         {
@@ -446,6 +453,236 @@ public static class CalculatorEditorialCatalog
                 ReviewedBy,
                 ["juros-compostos", "salario-liquido", "pj-vs-clt"],
                 "Simulação financeira educativa. Solicite o CET e as condições contratuais oficiais antes de contratar."
+            ),
+            ["salario-bruto-necessario"] = new(
+                "salario-bruto-necessario",
+                "A calculadora estima o salário bruto necessário para atingir um líquido desejado, considerando INSS, IRRF e descontos informados.",
+                "O motor parte do líquido alvo e busca o bruto compatível com as tabelas de 2026. Em seguida reaplica INSS, IRRF, dependentes e descontos opcionais para confirmar se o líquido estimado alcança a meta.",
+                [
+                    "Salário líquido desejado e número de dependentes.",
+                    "INSS progressivo e IRRF estimados nas tabelas vigentes.",
+                    "Descontos opcionais como vale-transporte, alimentação, plano e outros.",
+                    "Faixa de bruto estimada quando há arredondamento."
+                ],
+                [
+                    "Regras internas da folha ou convenção coletiva.",
+                    "Benefícios fora do holerite e ajustes retroativos.",
+                    "Rubricas que não forem informadas no formulário."
+                ],
+                new(
+                    "Exemplo: líquido desejado de R$ 3.500,00 com descontos",
+                    "Líquido alvo de R$ 3.500,00, vale-transporte de R$ 150,00, vale-refeição de R$ 50,00 e outros descontos de R$ 100,00.",
+                    new CalculatorInput(3500m, TransportDiscount: 150m, MealVoucherDiscount: 50m, OtherDiscounts: 100m),
+                    "O bruto estimado precisa cobrir tributos e os descontos informados. Use o resultado como ponto de partida para negociar, não como valor oficial da proposta."),
+                "O valor principal é o bruto estimado. Confira se os descontos do cenário batem com o que realmente cai no holerite; se o líquido real for menor, o bruto pedido precisa subir.",
+                [
+                    "Informar o bruto atual no campo de líquido desejado.",
+                    "Esquecer descontos recorrentes ao montar a meta de líquido.",
+                    "Tratar a estimativa como proposta fechada sem conferir a folha."
+                ],
+                [TaxTablesSource, IrrfSource],
+                ReviewDate,
+                ReviewedBy,
+                ["salario-liquido", "proposta-salarial", "irrf"],
+                "Estimativa educativa. Confirme bases e descontos no holerite ou com o RH antes de negociar."
+            ),
+            ["proposta-salarial"] = new(
+                "proposta-salarial",
+                "A calculadora compara o salário bruto atual com uma proposta e mostra o ganho líquido estimado, mensal e anual.",
+                "O motor calcula o líquido do salário atual e o líquido da proposta com as mesmas premissas de dependentes e descontos. Depois apresenta a diferença no bolso e os percentuais sobre bruto e líquido.",
+                [
+                    "Salário bruto atual e salário bruto proposto.",
+                    "Dependentes e descontos mantidos iguais nos dois cenários.",
+                    "Ganho líquido mensal e anual estimado.",
+                    "Percentuais de variação no bruto e no líquido."
+                ],
+                [
+                    "Benefícios novos ou removidos que não forem informados.",
+                    "Mudança de jornada, comissões ou bônus não representados.",
+                    "Regras específicas de dissídio ou pacote da empresa."
+                ],
+                new(
+                    "Exemplo: aumento de R$ 4.000,00 para R$ 4.800,00",
+                    "Bruto atual de R$ 4.000,00, proposto de R$ 4.800,00 e vale-transporte de R$ 200,00 nos dois cenários.",
+                    new CalculatorInput(4000m, SecondaryAmount: 4800m, TransportDiscount: 200m),
+                    "Compare o ganho líquido, não só o aumento de bruto. Parte do reajuste pode ir para INSS e IRRF conforme a faixa."),
+                "O resultado útil é o que sobra no bolso. Se o percentual líquido for menor que o percentual bruto, a progressividade tributária está consumindo parte do aumento.",
+                [
+                    "Comparar apenas o bruto e ignorar o líquido.",
+                    "Mudar descontos em só um dos lados da comparação.",
+                    "Assumir que todo o aumento aparece integralmente no depósito."
+                ],
+                [TaxTablesSource, IrrfSource],
+                ReviewDate,
+                ReviewedBy,
+                ["salario-liquido", "salario-bruto-necessario", "conversor-salario"],
+                "Estimativa educativa. Use para preparar a conversa com RH; a proposta formal depende da política da empresa."
+            ),
+            ["seguro-desemprego"] = new(
+                "seguro-desemprego",
+                "A calculadora estima valor e quantidade de parcelas do seguro-desemprego com base na média salarial, tempo de carteira e motivo do desligamento.",
+                "O motor calcula a média dos salários informados, aplica a tabela do MTE vigente em 2026 e define o número de parcelas conforme meses com carteira. Se o motivo não gera direito na regra geral, o total estimado fica zerado.",
+                [
+                    "Últimos salários brutos e média estimada.",
+                    "Meses com carteira nos últimos 36 meses.",
+                    "Quantidade de solicitações anteriores quando informada.",
+                    "Motivo do desligamento e elegibilidade estimada."
+                ],
+                [
+                    "Análise oficial da Caixa ou do gov.br.",
+                    "Exceções legais fora do modelo simplificado.",
+                    "Renda própria ou outros critérios de elegibilidade não informados."
+                ],
+                new(
+                    "Exemplo: média próxima de R$ 2.900,00 com 24 meses de carteira",
+                    "Salários de R$ 3.000,00, R$ 2.900,00 e R$ 2.800,00, 24 meses com carteira e demissão sem justa causa.",
+                    new CalculatorInput(
+                        3000m,
+                        SecondaryAmount: 2900m,
+                        SalaryAverageSupplement: 2800m,
+                        Months: 24,
+                        MonthsWorkedInYear: 12,
+                        TerminationReason: TerminationReason.DismissalWithoutCause),
+                    "Confira parcela mensal e total estimado. O direito definitivo só existe após a análise oficial do benefício."),
+                "Leia a parcela e a quantidade em separado. Tempo de carteira e solicitações anteriores mudam o número de parcelas; o motivo do desligamento pode eliminar o direito.",
+                [
+                    "Simular pedido de demissão como se houvesse direito automático.",
+                    "Usar salário líquido no lugar da média bruta.",
+                    "Tratar a estimativa como valor oficial depositado pela Caixa."
+                ],
+                [UnemploymentInsuranceSource, CltSource],
+                ReviewDate,
+                ReviewedBy,
+                ["rescisao-clt", "fgts", "salario-liquido"],
+                "Estimativa educativa. Solicite o benefício pelos canais oficiais e confirme elegibilidade e valores lá."
+            ),
+            ["vale-transporte-hibrido"] = new(
+                "vale-transporte-hibrido",
+                "A calculadora estima o desconto de vale-transporte proporcional aos dias presenciais no trabalho híbrido.",
+                "O motor multiplica o custo de ida e volta pelos dias presenciais e compara com o limite educativo de 6% do salário base. O desconto esperado é o menor desses valores; se houver desconto atual no holerite, a diferença também é exibida.",
+                [
+                    "Salário base e custo de ida e volta por dia.",
+                    "Quantidade de dias presenciais no mês.",
+                    "Limite educativo de 6% do salário base.",
+                    "Comparação com o desconto atual do holerite, quando informado."
+                ],
+                [
+                    "Política interna, acordo coletivo ou saldo de cartão.",
+                    "Dias informados ao RH diferentes da escala real.",
+                    "Outros benefícios de mobilidade fora do modelo."
+                ],
+                new(
+                    "Exemplo: 8 dias presenciais com custo diário de R$ 16,00",
+                    "Salário base de R$ 4.000,00, R$ 16,00 por dia de deslocamento, 8 dias presenciais e desconto atual de R$ 240,00 no holerite.",
+                    new CalculatorInput(4000m, SecondaryAmount: 16m, Months: 8, TransportDiscount: 240m),
+                    "Compare o desconto esperado com o valor da folha. Se o holerite estiver acima do esperado, leve a diferença para conferência com o RH."),
+                "O resultado principal é o desconto esperado do empregado. Em regime híbrido, dias de home office sem deslocamento casa-trabalho normalmente não entram no custo de VT do período.",
+                [
+                    "Usar 22 dias presenciais quando a escala real é parcial.",
+                    "Assumir que o desconto sempre será exatamente 6%.",
+                    "Ignorar o custo diário real de ida e volta."
+                ],
+                [TransportVoucherSource, CltSource],
+                ReviewDate,
+                ReviewedBy,
+                ["salario-liquido", "proposta-salarial", "salario-bruto-necessario"],
+                "Estimativa educativa. Confirme a política de VT e os dias considerados pela empresa antes de questionar o holerite."
+            ),
+            ["custo-funcionario"] = new(
+                "custo-funcionario",
+                "A calculadora estima o custo mensal total da empresa com um funcionário CLT, somando salário, benefícios e encargos aproximados.",
+                "Sobre o salário bruto, o motor estima FGTS, INSS patronal, provisões de 13º e férias com terço, além de uma parcela estimada de RAT/SAT. Benefícios informados entram no total sem misturar com o líquido do empregado.",
+                [
+                    "Salário bruto e benefícios mensais informados.",
+                    "FGTS de 8% e INSS patronal aproximado.",
+                    "Provisões de décimo terceiro e férias com terço.",
+                    "Estimativa simplificada de RAT/SAT."
+                ],
+                [
+                    "Convenção coletiva, adicional noturno e horas extras não informadas.",
+                    "Benefícios flexíveis, PLR e custos indiretos de estrutura.",
+                    "Alíquotas exatas de cada empresa ou atividade econômica."
+                ],
+                new(
+                    "Exemplo: salário de R$ 4.000,00 com R$ 500,00 de benefícios",
+                    "Salário bruto de R$ 4.000,00 e benefícios mensais de R$ 500,00 (VT, plano etc.).",
+                    new CalculatorInput(4000m, SecondaryAmount: 500m),
+                    "Olhe o custo total e o multiplicador sobre o salário. Contratar pelo bruto sem encargos subestima o pacote CLT."),
+                "O valor principal é o custo mensal estimado para a empresa. Use-o para comparar CLT com PJ pelo lado do empregador, não como líquido do trabalhador.",
+                [
+                    "Confundir custo da empresa com salário líquido do empregado.",
+                    "Ignorar provisões de 13º e férias no orçamento anual.",
+                    "Tratar alíquotas aproximadas como guia oficial da contabilidade."
+                ],
+                [CltSource, FgtsSource, ThirteenthSource],
+                ReviewDate,
+                ReviewedBy,
+                ["pj-vs-clt", "salario-liquido", "fgts"],
+                "Estimativa educativa. Para folha real e enquadramento tributário, consulte contador ou departamento pessoal."
+            ),
+            ["multa-atraso"] = new(
+                "multa-atraso",
+                "A calculadora estima multa e juros simples por atraso de pagamento a partir do valor principal, dias de atraso e percentuais informados.",
+                "O motor aplica o percentual de multa sobre o principal e calcula juros proporcionais aos dias, usando a taxa mensal informada. O total reúne principal, multa e juros do cenário.",
+                [
+                    "Valor em atraso e quantidade de dias.",
+                    "Percentual de multa informado.",
+                    "Taxa de juros mensal e juros proporcionais aos dias.",
+                    "Total com acréscimos do cenário."
+                ],
+                [
+                    "Correção monetária, índices oficiais e capitalização composta.",
+                    "Multas legais específicas de tributos, DAS ou contratos.",
+                    "Honorários, custas e encargos não informados."
+                ],
+                new(
+                    "Exemplo: R$ 1.000,00 em atraso por 45 dias",
+                    "Principal de R$ 1.000,00, 45 dias de atraso, multa de 2% e juros de 1% ao mês.",
+                    new CalculatorInput(1000m, SecondaryAmount: 45m, Rate: 1m, Hours: 2m),
+                    "Separe multa e juros do principal. Ajuste os percentuais ao contrato ou à regra legal aplicável antes de usar o total."),
+                "O resultado mostra o custo do atraso no cenário informado. Se o contrato ou a legislação prevê percentuais diferentes, altere multa e juros; o padrão da tela é apenas referência educativa.",
+                [
+                    "Usar o padrão de 2% + 1% sem conferir o contrato.",
+                    "Confundir juros simples proporcionais com capitalização composta.",
+                    "Tratar a estimativa como guia oficial de cobrança judicial."
+                ],
+                [BcbSource],
+                ReviewDate,
+                ReviewedBy,
+                ["simulador-mei", "financiamento", "juros-compostos"],
+                "Estimativa educativa. Confirme multa, juros e correção na regra do contrato, boleto ou legislação aplicável."
+            ),
+            ["conversor-salario"] = new(
+                "conversor-salario",
+                "A calculadora converte um valor salarial entre bases mensal, diária e por hora usando divisor CLT compatível com a jornada informada.",
+                "Conforme a base escolhida, o motor transforma o valor para mensal, diário (divisão por 30) e horário (divisor mensal da jornada). A jornada padrão de 44 horas usa divisor 220.",
+                [
+                    "Valor informado e base de conversão escolhida.",
+                    "Equivalente mensal, diário e por hora.",
+                    "Divisor de horas conforme a jornada semanal.",
+                    "Comparação rápida entre propostas em unidades diferentes."
+                ],
+                [
+                    "Adicionais, comissões, DSR e reflexos não informados.",
+                    "Regras de banco de horas ou jornada especial da empresa.",
+                    "Impostos e descontos do holerite."
+                ],
+                new(
+                    "Exemplo: salário mensal de R$ 3.000,00",
+                    "Valor de R$ 3.000,00 na base mensal com jornada padrão (divisor 220 horas).",
+                    new CalculatorInput(3000m, SalaryBasis: SalaryConversionBasis.Monthly),
+                    "Use a hora ou o dia apenas como referência de conversão. Para saber o que sobra no bolso, combine com a calculadora de salário líquido."),
+                "O resultado principal é a equivalência entre unidades de tempo. Confirme o divisor da jornada antes de comparar propostas por hora.",
+                [
+                    "Comparar hora sem alinhar a mesma jornada semanal.",
+                    "Tratar conversão bruta como líquido depositado.",
+                    "Ignorar adicionais e descontos ao negociar só pela hora."
+                ],
+                [CltSource],
+                ReviewDate,
+                ReviewedBy,
+                ["salario-liquido", "hora-extra", "proposta-salarial"],
+                "Estimativa educativa. A conversão não substitui o cálculo de líquido, encargos ou regras da convenção coletiva."
             )
         };
 
@@ -511,6 +748,41 @@ public static class CalculatorEditorialCatalog
             [
                 new("Qual é a diferença entre Price e SAC?", "No Price a prestação calculada é fixa; no SAC a amortização é constante e as parcelas tendem a diminuir ao longo do prazo."),
                 new("A taxa digitada representa o CET?", "Não necessariamente. O Custo Efetivo Total pode incluir seguros, tarifas e outros encargos ausentes da taxa nominal.")
+            ],
+            ["salario-bruto-necessario"] =
+            [
+                new("Por que o bruto estimado é maior que o líquido desejado?", "Porque o bruto precisa cobrir INSS, IRRF e os descontos informados para que o líquido estimado chegue à meta."),
+                new("Posso usar o resultado como proposta formal?", "Não. Use a estimativa para planejar a negociação e confirme bases, benefícios e política salarial com o RH.")
+            ],
+            ["proposta-salarial"] =
+            [
+                new("Por que o percentual líquido pode ser menor que o do bruto?", "A progressividade do INSS e do IRRF pode absorver parte do aumento; por isso o ganho no bolso nem sempre acompanha o percentual bruto."),
+                new("Os descontos devem ser iguais nos dois cenários?", "Sim, para a comparação ser justa. Se a proposta muda VT, VR ou plano, ajuste os campos para refletir o pacote real.")
+            ],
+            ["seguro-desemprego"] =
+            [
+                new("Pedido de demissão gera parcelas nesta estimativa?", "Em regra, não. Sem motivo elegível, a ferramenta zera o total estimado mesmo que haja média salarial."),
+                new("O valor da parcela é o depósito oficial?", "Não. O valor definitivo só o governo calcula na solicitação, após conferir requisitos e vínculos.")
+            ],
+            ["vale-transporte-hibrido"] =
+            [
+                new("O desconto esperado é sempre 6% do salário?", "Não. O modelo usa o menor valor entre o custo dos dias presenciais e o limite educativo de 6%."),
+                new("Home office entra no cálculo de VT?", "Em geral, dias sem deslocamento casa-trabalho não entram no custo do período; a estimativa considera os dias presenciais informados.")
+            ],
+            ["custo-funcionario"] =
+            [
+                new("O custo total é o que o empregado recebe?", "Não. É a estimativa do pacote para a empresa, incluindo encargos e provisões além do salário e benefícios."),
+                new("As alíquotas patronais são exatas para toda empresa?", "Não. São aproximações educativas; o enquadramento real depende da atividade e da contabilidade.")
+            ],
+            ["multa-atraso"] =
+            [
+                new("2% de multa e 1% ao mês são obrigatórios?", "Não. São referência comum editável; use os percentuais do contrato, boleto ou regra legal aplicável."),
+                new("Os juros são compostos?", "Não. A estimativa usa juros simples proporcionais aos dias sobre a taxa mensal informada.")
+            ],
+            ["conversor-salario"] =
+            [
+                new("Qual divisor a ferramenta usa na jornada de 44 horas?", "O divisor mensal padrão é 220 horas. Outras jornadas alteram o divisor conforme a opção selecionada."),
+                new("A conversão já desconta INSS e IRRF?", "Não. Ela só equivale bases de tempo; para o líquido, use a calculadora de salário líquido.")
             ]
         };
 

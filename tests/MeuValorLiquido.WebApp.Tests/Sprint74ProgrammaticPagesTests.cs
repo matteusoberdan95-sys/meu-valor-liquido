@@ -85,22 +85,34 @@ public sealed class Sprint74ProgrammaticPagesTests : IClassFixture<WebApplicatio
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_Dependent_Variant_Urls()
+    public async Task Sitemap_Should_Include_Tier1_Dependent_Variant_Urls()
     {
         var xml = await client.GetStringAsync("/sitemap.xml");
 
-        xml.Should().Contain("/salario-liquido/5800");
+        xml.Should().Contain("/salario-liquido/6000");
         xml.Should().Contain("/salario-liquido/6000/1-dependente");
         xml.Should().Contain("/clt-pj/6000/1-dependente");
+        xml.Should().NotContain("/salario-liquido/5800");
+        xml.Should().NotContain("/salario-liquido/2400");
     }
 
     [Fact]
-    public void Indexable_Url_Count_Should_Match_Bands_Times_Variants()
+    public void Indexable_Url_Count_Should_Match_Tier1_Bands_Times_Variants()
     {
-        var bandCount = SalaryBandCatalog.GetAll().Count;
+        var bandCount = SalaryBandCatalog.GetSitemapIndexableBands().Count;
         var variantCount = ProgrammaticDependentsCatalog.IndexedDependentCounts.Length;
 
+        bandCount.Should().Be(18);
         SalaryBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount * variantCount);
         CltPjBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount * variantCount);
+    }
+
+    [Fact]
+    public async Task Non_Tier1_Band_Should_Be_Noindex_But_Reachable()
+    {
+        var html = await client.GetStringAsync("/salario-liquido/5800");
+
+        html.Should().Contain("noindex,follow");
+        html.Should().Contain("5800");
     }
 }

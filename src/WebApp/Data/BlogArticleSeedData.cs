@@ -1901,6 +1901,157 @@ public static class BlogArticleSeedData
             <p>Antes de pedir demissão ou aceitar pejotização, feche uma planilha mínima: imposto, pró-labore, contador, saúde, provisão de folga e reserva de emergência. Simule no hub <a href="/virar-pj">virar PJ</a>, compare com a CLT e só então negocie preço e prazo de pagamento.</p>
             <p>Para continuar: <a href="/blog/pj-ou-clt-qual-melhor">PJ ou CLT</a>, <a href="/blog/pro-labore-pj-quanto-retirar">pró-labore</a>, <a href="/blog/simples-nacional-pj-guia-iniciantes">Simples Nacional</a> e <a href="/como-calculamos">Como calculamos</a>.</p>
             """),
+        Article(
+            "vale-transporte-vr-orcamento-mensal",
+            "VT e VR no orçamento: como encaixar benefícios no salário líquido",
+            "Organize vale-transporte e vale-refeição no orçamento mensal sem confundir crédito no cartão com dinheiro que cai na conta.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 8, 1),
+            """
+            <p>Todo mês o mesmo dilema aparece no holerite: o <strong>vale-transporte (VT)</strong> e o <strong>vale-refeição ou alimentação (VR/VA)</strong> entram no orçamento de formas diferentes. Um desconta do salário; o outro costuma chegar como crédito em cartão. Quem soma tudo como “salário” ou ignora o desconto de 6% do VT termina o mês sem entender por que o depósito bancário ficou menor do que a proposta prometia.</p>
+            <p>Este guia é educativo e focado no funil salário/trabalho. Os exemplos são <strong>estimativas</strong> para organizar o orçamento — não substituem a política da empresa, a convenção coletiva ou o holerite oficial. Revise as premissas em <a href="/como-calculamos">Como calculamos</a>.</p>
+
+            <h2>O que é dinheiro na conta e o que é benefício</h2>
+            <p>O <strong>salário líquido</strong> é o valor creditado em conta após INSS, IRRF e descontos autorizados. O VR/VA, na maioria dos casos, não aumenta esse depósito: ele financia refeições ou compras de mercado. Já o VT pode reduzir o líquido quando há desconto do empregado (limitado, na regra usual, a 6% do salário base) e, ao mesmo tempo, cobrir deslocamento casa-trabalho.</p>
+            <p>Confundir os três bolsos — líquido bancário, crédito de refeição e crédito de transporte — é o erro mais comum ao montar planilha familiar. Separe colunas distintas antes de negociar aumento ou mudar de emprego. O hub <a href="/negociar-salario">negociar salário</a> ajuda a comparar propostas pelo que sobra de fato.</p>
+
+            <h2>Vale-transporte: desconto, limite e híbrido</h2>
+            <p>Na regra educativa clássica, o empregado pode optar pelo benefício e o desconto em folha fica limitado a até 6% do salário base. Se o custo real de deslocamento for maior, a empresa costuma complementar. Se for menor — típico de regime híbrido com poucos dias presenciais — o desconto esperado pode cair abaixo dos 6%.</p>
+            <p><strong>Exemplo educativo:</strong> salário base de R$ 4.000 e custo de ida e volta de R$ 16 por dia, com 8 dias presenciais. O custo do período seria R$ 128. Seis por cento de R$ 4.000 são R$ 240. O desconto esperado do empregado tende a ficar no menor valor (R$ 128), não automaticamente em R$ 240. Simule na <a href="/calculadoras/vale-transporte-hibrido">calculadora de vale-transporte híbrido</a> e leia <a href="/blog/vale-transporte-home-office-hibrido">VT no home office híbrido</a>.</p>
+            <p>Para a regra geral do benefício, veja também <a href="/blog/desconto-vale-transporte">desconto de vale-transporte</a> e a <a href="/duvidas/vale-transporte-desconto-maximo">FAQ de desconto máximo de VT</a>.</p>
+
+            <h2>VR e VA: crédito no cartão não é líquido</h2>
+            <p>O valor carregado no cartão de refeição ou alimentação melhora o poder de compra, mas não deve ser somado ao salário líquido bancário como se fosse dinheiro livre. Se houver desconto em folha pela participação do empregado, esse valor reduz o depósito. Se não houver desconto, o benefício ainda assim não paga aluguel nem boleto — só o uso permitido pelo programa.</p>
+            <p>Na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>, informe o desconto de VR/VA no campo próprio e mantenha o VT separado. Isso evita misturar regras. O guia <a href="/blog/vale-refeicao-desconto-holerite">VR e VA no holerite</a> detalha a conferência linha a linha.</p>
+
+            <h2>Tabela de referência: encaixe no orçamento</h2>
+            <table>
+            <thead>
+            <tr><th>Item</th><th>Onde aparece</th><th>Como tratar no orçamento</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Salário líquido</td><td>Depósito em conta</td><td>Base para contas fixas e reserva</td></tr>
+            <tr><td>Desconto de VT</td><td>Rubrica no holerite</td><td>Reduz o líquido; limite educativo de 6%</td></tr>
+            <tr><td>Crédito de VT</td><td>Cartão / aplicativo</td><td>Só para deslocamento casa-trabalho</td></tr>
+            <tr><td>Desconto de VR/VA</td><td>Rubrica no holerite (se houver)</td><td>Reduz o líquido bancário</td></tr>
+            <tr><td>Crédito de VR/VA</td><td>Cartão de benefícios</td><td>Alimentação — não pague boletos com isso na planilha</td></tr>
+            </tbody>
+            </table>
+
+            <h2>Passo a passo para fechar o mês</h2>
+            <ol>
+            <li>Anote o líquido depositado no extrato bancário.</li>
+            <li>Some descontos de VT e VR/VA no holerite e confira se batem com a política da empresa.</li>
+            <li>Lance o bruto e os descontos na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>.</li>
+            <li>Se a escala for híbrida, refine o VT na <a href="/calculadoras/vale-transporte-hibrido">calculadora de VT híbrido</a>.</li>
+            <li>Monte três colunas no orçamento: conta, refeição e transporte.</li>
+            <li>Ao receber proposta, compare no hub <a href="/negociar-salario">negociar salário</a> e na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a>.</li>
+            </ol>
+
+            <h2>Exemplo educativo de orçamento com benefícios</h2>
+            <p><strong>Exemplo educativo:</strong> bruto de R$ 3.500, desconto de VT de R$ 150, desconto de VR de R$ 50 e sem outros descontos opcionais. O líquido estimado fica abaixo do bruto por causa de INSS/IRRF e desses descontos. No mesmo mês, o cartão de VR pode receber R$ 600 e o de VT o crédito correspondente aos dias de deslocamento. Quem olha só o cartão acha que “ganhou mais”; quem olha só o depósito pode achar que “ganhou menos”. Os dois estão incompletos sem a visão conjunta.</p>
+            <p>Se a meta é um líquido mínimo na conta (aluguel, financiamento), use a <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a> já incluindo VT e VR como descontos recorrentes.</p>
+
+            <h2>Erros comuns ao montar a planilha</h2>
+            <ul>
+            <li>Somar crédito de VR ao salário líquido como se fosse dinheiro livre.</li>
+            <li>Assumir desconto de VT sempre igual a 6%, mesmo em regime híbrido.</li>
+            <li>Negociar aumento só pelo bruto e esquecer benefícios e descontos.</li>
+            <li>Comparar proposta nova com holerite antigo sem alinhar VT/VR.</li>
+            <li>Ignorar meses de férias ou home office integral, quando o VT muda.</li>
+            </ul>
+
+            <h2>Perguntas frequentes</h2>
+            <h3>VT e VR entram no cálculo de INSS?</h3>
+            <p>O desconto de VT/VR no holerite é rubrica de desconto do empregado; o tratamento previdenciário do benefício em si depende da natureza e da legislação aplicável. Para o orçamento pessoal, foque no efeito no líquido e no crédito do cartão. Veja <a href="/duvidas/diferenca-salario-bruto-e-liquido">bruto vs líquido</a>.</p>
+            <h3>Posso recusar o vale-transporte?</h3>
+            <p>Em geral o benefício depende de opção do trabalhador quando há deslocamento. Avalie custo real de transporte versus desconto de até 6%. Simule antes de decidir.</p>
+            <h3>Home office zera o VT?</h3>
+            <p>Se não há deslocamento casa-trabalho, a empresa pode suspender o benefício e o desconto. No híbrido, o cálculo pode ser proporcional — use a calculadora de VT híbrido.</p>
+            <h3>Como falar com o RH sobre divergência?</h3>
+            <p>Leve holerite, escala do mês e a simulação. Peça esclarecimento da política de dias presenciais e do valor carregado no cartão. A ferramenta <a href="/conferir-holerite">conferir holerite</a> ajuda a organizar a conversa.</p>
+
+            <h2>Próximos passos</h2>
+            <p>Separe líquido, VT e VR na planilha, simule o mês na calculadora de salário líquido e refine o transporte se a escala for híbrida. Depois compare qualquer proposta nova com os mesmos descontos. Continue em <a href="/blog/home-office-clt-descontos">home office CLT e descontos</a>, <a href="/blog/vale-refeicao-desconto-holerite">VR/VA no holerite</a> e <a href="/como-calculamos">Como calculamos</a>.</p>
+            """),
+        Article(
+            "salario-minimo-impacto-holerite",
+            "Salário mínimo no holerite: o que muda no líquido em 2026",
+            "Entenda como o salário mínimo nacional de 2026 aparece no holerite, no INSS, no IRRF e no orçamento de quem ganha perto do piso.",
+            "salario-liquido",
+            "Trabalhista",
+            new DateOnly(2026, 8, 1),
+            """
+            <p>Quando o <strong>salário mínimo</strong> é reajustado, muita gente espera que o depósito bancário suba na mesma proporção do anúncio. No holerite, o efeito é mais granular: muda a base do salário, a contribuição previdenciária, possíveis descontos percentuais (como o VT de até 6%) e, em alguns casos, o enquadramento de benefícios oficiais. Em 2026, o piso nacional de referência usado nas nossas estimativas é de <strong>R$ 1.621,00</strong>.</p>
+            <p>Este artigo é educativo. Não substitui a folha oficial, o acordo coletivo da categoria (que pode ter piso próprio) nem orientação do RH. As premissas das calculadoras estão em <a href="/como-calculamos">Como calculamos</a>.</p>
+
+            <h2>Piso nacional versus piso da categoria</h2>
+            <p>O salário mínimo nacional é o piso geral da economia formal. Convenções coletivas podem fixar pisos regionais ou por categoria acima desse valor. Se o seu holerite mostra um valor diferente de R$ 1.621, confira se a empresa aplica piso convencional, adicional de função ou jornada parcial.</p>
+            <p>Para ver a estimativa de líquido no mínimo nacional, use a página programática <a href="/salario-liquido/1621">salário líquido de R$ 1.621</a> e a <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a>. A FAQ <a href="/duvidas/salario-minimo-liquido-2026">salário mínimo líquido 2026</a> resume a dúvida mais comum.</p>
+
+            <h2>O que muda no INSS perto do piso</h2>
+            <p>No modelo progressivo de 2026, salários próximos do mínimo concentram a contribuição nas primeiras faixas do INSS. Um reajuste do piso eleva a base e, portanto, o desconto previdenciário em reais — mesmo que a alíquota efetiva continue nas faixas iniciais.</p>
+            <p><strong>Exemplo educativo:</strong> bruto de R$ 1.621 sem outros descontos. A estimativa de líquido fica abaixo do bruto principalmente pelo INSS; o IRRF mensal costuma não aparecer nessa faixa após as regras de redução legal vigentes. Simule e compare com o holerite real antes de questionar o RH.</p>
+
+            <h2>Tabela de referência: impactos típicos no holerite</h2>
+            <table>
+            <thead>
+            <tr><th>Item</th><th>Efeito do reajuste do mínimo</th><th>O que conferir</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Salário base</td><td>Sobe quando o contrato está no piso nacional</td><td>Rubrica de salário / piso</td></tr>
+            <tr><td>INSS</td><td>Desconto em R$ tende a subir com a base</td><td>Linha de INSS no holerite</td></tr>
+            <tr><td>IRRF</td><td>Em geral permanece isento perto do piso</td><td>Base de cálculo e dependentes</td></tr>
+            <tr><td>VT (até 6%)</td><td>Desconto percentual sobe se o bruto sobe</td><td>Valor em R$ do desconto de VT</td></tr>
+            <tr><td>FGTS (empresa)</td><td>Depósito de 8% sobe com o bruto</td><td>Extrato FGTS — não é líquido do empregado</td></tr>
+            </tbody>
+            </table>
+
+            <h2>Descontos percentuais: o “aumento” que também cresce</h2>
+            <p>Se o holerite desconta vale-transporte próximo de 6% do salário base, o valor em reais do desconto sobe quando o piso sobe. O mesmo raciocínio vale para pensão percentual ou outros descontos atrelados ao bruto. Por isso o ganho líquido pode ser menor que o reajuste anunciado no bruto.</p>
+            <p><strong>Exemplo educativo:</strong> bruto sobe de R$ 1.500 para R$ 1.621 (cenário ilustrativo de reajuste). Se o VT for 6% nos dois meses, o desconto passa de R$ 90 para cerca de R$ 97. O aumento líquido não é igual à diferença de R$ 121 no bruto. Use a calculadora com e sem VT para enxergar o efeito.</p>
+
+            <h2>Benefícios oficiais atrelados ao mínimo</h2>
+            <p>Alguns benefícios e referências legais usam o salário mínimo como piso — por exemplo, o piso do seguro-desemprego na tabela do MTE. Isso não significa que todo trabalhador no mínimo receberá automaticamente esses valores: cada benefício tem requisitos próprios. Estime parcelas na <a href="/calculadoras/seguro-desemprego">calculadora de seguro-desemprego</a> apenas se houver elegibilidade.</p>
+            <p>Para quem está saindo da empresa, o hub <a href="/desligamento">desligamento</a> organiza rescisão, FGTS e próximos passos.</p>
+
+            <h2>Passo a passo para conferir o holerite após o reajuste</h2>
+            <ol>
+            <li>Confirme se o contrato segue o mínimo nacional ou piso da categoria.</li>
+            <li>Compare o bruto do mês anterior com o mês do reajuste.</li>
+            <li>Lance o novo bruto na <a href="/calculadoras/salario-liquido">calculadora de salário líquido</a> com os mesmos descontos.</li>
+            <li>Verifique se o desconto de VT (ou outros percentuais) acompanhou o novo base.</li>
+            <li>Se houver divergência relevante, use <a href="/conferir-holerite">conferir holerite</a> e leve os dois holerites ao RH.</li>
+            <li>Revise a metodologia em <a href="/como-calculamos">Como calculamos</a>.</li>
+            </ol>
+
+            <h2>Negociação e propostas perto do piso</h2>
+            <p>Quem busca vaga ou promoção perto do mínimo deve olhar o pacote completo: VR, VT, plano e jornada. Um bruto um pouco acima do piso com muitos descontos pode render menos líquido do que um piso “cheio” com benefícios mais leves. Compare propostas na <a href="/calculadoras/proposta-salarial">calculadora de proposta salarial</a> e no hub <a href="/negociar-salario">negociar salário</a>.</p>
+            <p>Se a meta é um líquido específico (por exemplo, cobrir aluguel), a <a href="/calculadoras/salario-bruto-necessario">calculadora de salário bruto necessário</a> mostra quanto de bruto pedir, já considerando descontos.</p>
+
+            <h2>Erros comuns</h2>
+            <ul>
+            <li>Esperar que o líquido suba exatamente no percentual do reajuste do mínimo.</li>
+            <li>Ignorar o aumento em reais de descontos percentuais (VT, pensão).</li>
+            <li>Comparar piso nacional com piso da categoria sem ler a convenção.</li>
+            <li>Tratar FGTS depositado pela empresa como aumento do salário líquido.</li>
+            <li>Usar o holerite de um mês atípico (férias, HE) como base do “novo normal”.</li>
+            </ul>
+
+            <h2>Perguntas frequentes</h2>
+            <h3>Qual é o salário mínimo líquido em 2026?</h3>
+            <p>Depende de dependentes e descontos. Partindo de R$ 1.621 brutos sem descontos opcionais, a estimativa fica abaixo do bruto por causa do INSS. Veja a <a href="/duvidas/salario-minimo-liquido-2026">FAQ do mínimo líquido 2026</a> e simule na calculadora.</p>
+            <h3>Todo mundo no mínimo paga IRRF?</h3>
+            <p>Em geral, bases próximas do piso permanecem sem retenção mensal relevante após as regras de redução — mas o caso concreto depende da base tributável e de outras rubricas do mês.</p>
+            <h3>Meu piso é maior que R$ 1.621. O artigo vale?</h3>
+            <p>Sim, a lógica de conferência é a mesma: bruto, descontos percentuais, INSS e benefícios. Troque o valor na calculadora pelo seu piso convencional.</p>
+            <h3>O reajuste do mínimo aumenta automaticamente o VT creditado?</h3>
+            <p>O crédito de VT segue o custo de deslocamento e a política da empresa; o desconto do empregado, quando percentual, pode subir com o bruto. Confira as duas pontas.</p>
+
+            <h2>Próximos passos</h2>
+            <p>Abra o holerite do mês do reajuste, simule o bruto atualizado e compare o líquido estimado com o depósito. Se estiver negociando, avalie o pacote completo — não só o piso. Continue em <a href="/blog/o-que-e-salario-liquido">o que é salário líquido</a>, <a href="/blog/aumento-salario-quanto-sobra-liquido">aumento: quanto sobra no líquido</a> e <a href="/salario-liquido/1621">faixa de R$ 1.621</a>.</p>
+            """),
     ];
 
     private static BlogArticleSeed Article(
@@ -2061,6 +2212,10 @@ public static class BlogArticleSeedData
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>Some base + comissão do mês na calculadora de salário líquido e compare com três meses de variável antes de negociar um aumento só no fixo.</p>",
             "reserva-impostos-e-provisoes-ao-virar-pj" =>
                 "<h2 id=\"dica-pratica\">Dica prática</h2><p>No dia em que a nota cair, transfira logo a fatia de impostos e provisões para uma conta separada — depois simule PJ vs CLT com o que sobrou de fato.</p>",
+            "vale-transporte-vr-orcamento-mensal" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Separe três colunas no orçamento — conta, VR/VA e VT — e só então simule o líquido com os descontos do holerite na calculadora.</p>",
+            "salario-minimo-impacto-holerite" =>
+                "<h2 id=\"dica-pratica\">Dica prática</h2><p>Depois do reajuste do piso, compare o holerite anterior e o atual na calculadora com os mesmos descontos percentuais (VT, pensão) para ver o ganho líquido real.</p>",
             _ => string.Empty
         };
 

@@ -15,12 +15,27 @@ public static class SalaryBandCatalog
 
     public const int MinimumIndexedBands = 40;
 
+    /// <summary>
+    /// Faixas de maior demanda mantidas no sitemap (Tier 1).
+    /// Demais faixas continuam acessíveis, mas com noindex para reduzir thin content em escala.
+    /// </summary>
+    private static readonly HashSet<int> SitemapIndexableBands =
+    [
+        1621, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000,
+        6500, 7000, 8000, 9000, 10000, 12000, 15000, 20000
+    ];
+
     public static IReadOnlyList<int> GetAll() => Bands;
+
+    public static IReadOnlyCollection<int> GetSitemapIndexableBands() => SitemapIndexableBands;
 
     public static bool IsValid(int gross) => Bands.Contains(gross);
 
     public static bool IsValid(int gross, int dependents) =>
         IsValid(gross) && ProgrammaticDependentsCatalog.IsValidCount(dependents);
+
+    public static bool IsSitemapIndexable(int gross, int dependents = 0) =>
+        IsValid(gross, dependents) && SitemapIndexableBands.Contains(gross);
 
     public static int ResolveNearestBand(decimal gross)
     {
@@ -53,6 +68,7 @@ public static class SalaryBandCatalog
 
     public static IEnumerable<string> GetAllIndexablePaths() =>
         from gross in Bands
+        where IsSitemapIndexable(gross)
         from dependents in ProgrammaticDependentsCatalog.IndexedDependentCounts
         select SlugPath(gross, dependents);
 }

@@ -102,7 +102,7 @@ public sealed class Sprint89TechnicalSeoTests : IClassFixture<WebApplicationFact
         entries.Single(entry =>
                 entry.Element(ns + "loc")?.Value == "https://meuvalorliquido.com/calculadoras/salario-liquido")
             .Element(ns + "lastmod")?.Value
-            .Should().Be("2026-07-17");
+            .Should().Be("2026-08-01");
 
         foreach (var noIndexPath in SeoRoutePolicyCatalog.NoIndexPagePaths)
         {

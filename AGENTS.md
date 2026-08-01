@@ -14,11 +14,11 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Deploy/smoke AdSense · Sprint 51 quando Google aprovar · editorial lote 10 |
-| **Em seguida** | Editorial contínuo 2 artigos/mês — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 97 (lote 9) · Sprint 96 · Sprint 95 · Sprint 94 |
+| **Próxima sprint** | Deploy/smoke desta correção AdSense · aguardar 7–14 dias · pedir revisão · Sprint 51 se aprovar |
+| **Em seguida** | Editorial contínuo 2 artigos/mês — lote 11 — ver `docs/BLOG_EDITORIAL_PLAN.md` |
+| **Concluída recente** | Sprint 98 (editorial 19 calcs + programáticas Tier 1 + lote 10) · Sprint 97 |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
-| **Bloqueada** | Sprint 51 — aguardar aprovação Google |
+| **Bloqueada** | Sprint 51 — aguardar aprovação Google após re-review |
 
 ### Onde começar a implementação (decisão dos agents)
 
@@ -26,8 +26,8 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 | Prioridade | Sprint | Quem lidera | Quando |
 |------------|--------|-------------|--------|
-| **1 — agora** | Deploy/smoke ou Sprint 51 (se aprovado) | Monetization / SEO | Pós-merge 91–96 |
-| **Contínuo** | 70 (lote 10+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
+| **1 — agora** | Deploy VPS + smoke + pedir revisão AdSense (após 7–14 dias) | Monetization / SEO | Pós-Sprint 98 |
+| **Contínuo** | 70 (lote 11+) | SEO/Content | 2 artigos/mês — calendário em `BLOG_EDITORIAL_PLAN.md` |
 | **Se AdSense aprovar** | 51 | Monetization | Intercalar; não substitui trilha 69–78 |
 
 **Não duplicar:** antiga Sprint 32 → Sprint 53; antiga Sprint 33 → Sprint 55; antiga Sprint 34 → Sprint 59.
@@ -60,15 +60,15 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 
 ## Estado atual importante
 
-- Trilhas **47–97 concluídas** em main (AdSense 86–94 + editorial lotes 6–9).
-- **Trilha ativa:** GO CONDICIONAL AdSense — deploy/smoke; Sprint 51 quando Google aprovar; editorial lote 10.
+- Trilhas **47–98 concluídas** no código (AdSense 86–94 + editorial lotes 6–10 + correção baixo valor).
+- **Trilha ativa:** deploy/smoke Sprint 98 → 7–14 dias → pedir revisão AdSense → Sprint 51 se aprovar; editorial lote 11.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` + `CalculatorEdgeCaseCatalog`; testes em `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests`.
 - Tabelas fiscais versionadas: `BrTaxTables2025` / `BrTaxTables2026` via `BrTaxTableCatalog` (não sobrescrever anos anteriores).
 - UX confiança: `CalculatorFieldTooltipCatalog`, `CalculatorResultWarningBuilder`, `PayslipValidationService`.
 - AdSense: **desligado** (`ADS_ENABLED=false`); sem placeholders quando inativo. Script externo só após consentimento de Publicidade; verificação usa meta tag. Ativação real continua bloqueada até aprovação.
 - Autoridade editorial: `EditorialAuthorCatalog` + `/autores/matteus-oberdan` + `/politica-editorial` + `/correcoes`; manter autoria visível, schema `Person`, LinkedIn e política ao alterar blog/institucional.
-- Conteúdo de calculadoras: `CalculatorEditorialCatalog` cobre as 12 páginas prioritárias; exemplos devem continuar usando `ICalculatorApplicationService`, nunca valores de saída escritos manualmente.
+- Conteúdo de calculadoras: `CalculatorEditorialCatalog` cobre as **19** calculadoras ativas; exemplos devem continuar usando `ICalculatorApplicationService`, nunca valores de saída escritos manualmente. Páginas programáticas: sitemap Tier 1 — `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md`. Re-review AdSense: `docs/adsense/ADSENSE_RE_REVIEW.md`.
 - SEO técnico: `SeoRoutePolicyCatalog` é a fonte das rotas estáticas indexáveis; páginas `noindex` não podem voltar ao sitemap e aliases definitivos devem permanecer em `301`.
 - Consentimento: `cookie-consent.js` v2 com categorias Essenciais/Analytics/Personalização/Publicidade; política vigente `2026-07-17`; manter alinhado às páginas legais.
 - GSC/CTR: Sprint 85 criou `/calculadoras/vale-transporte-hibrido` e reforcou `/blog/vale-transporte-home-office-hibrido`; medir CTR em 7-14 dias antes de novo title/meta. Priorizar paginas com muitas impressoes, posicao media 1-10 e CTR baixo antes de criar pauta nova.

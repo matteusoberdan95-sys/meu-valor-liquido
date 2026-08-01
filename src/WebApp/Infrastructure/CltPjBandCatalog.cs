@@ -25,8 +25,12 @@ public static class CltPjBandCatalog
 
     public static string FormatCurrency(int amount) => SalaryBandCatalog.FormatCurrency(amount);
 
+    public static bool IsSitemapIndexable(int cltGross, int dependents = 0) =>
+        SalaryBandCatalog.IsSitemapIndexable(cltGross, dependents);
+
     public static IEnumerable<string> GetAllIndexablePaths() =>
         from gross in GetAll()
+        where IsSitemapIndexable(gross)
         from dependents in ProgrammaticDependentsCatalog.IndexedDependentCounts
         select SlugPath(gross, dependents);
 }

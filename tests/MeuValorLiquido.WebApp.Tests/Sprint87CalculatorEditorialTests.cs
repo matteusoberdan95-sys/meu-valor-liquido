@@ -15,7 +15,14 @@ public sealed class Sprint87CalculatorEditorialTests : IClassFixture<WebApplicat
         "pj-vs-clt",
         "simulador-mei",
         "juros-compostos",
-        "financiamento"
+        "financiamento",
+        "salario-bruto-necessario",
+        "proposta-salarial",
+        "seguro-desemprego",
+        "vale-transporte-hibrido",
+        "custo-funcionario",
+        "multa-atraso",
+        "conversor-salario"
     ];
 
     private readonly WebApplicationFactory<Program> factory;
@@ -46,7 +53,7 @@ public sealed class Sprint87CalculatorEditorialTests : IClassFixture<WebApplicat
             content.Sources.Should().OnlyContain(source => source.Url.StartsWith("https://"));
             content.RelatedCalculatorSlugs.Should().HaveCountGreaterThanOrEqualTo(2);
             CalculatorEditorialCatalog.GetFaqs(content.Slug).Should().HaveCountGreaterThanOrEqualTo(2);
-            content.LastReviewedAt.Should().Be(new DateOnly(2026, 7, 17));
+            content.LastReviewedAt.Should().Be(new DateOnly(2026, 8, 1));
             content.ReviewedBy.Should().Contain("Matteus Oberdan");
             content.EducationalNotice.ToLowerInvariant().Should().NotContain("resultado garantido");
         }
