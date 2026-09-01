@@ -1141,11 +1141,22 @@ public static class BlogArticleSeedData
         Article(
             "vale-transporte-home-office-hibrido",
             "Vale-transporte no trabalho híbrido: cálculo proporcional por dias presenciais",
-            "Entenda como calcular vale-transporte no regime híbrido, quando o desconto pode ser proporcional aos dias presenciais e como conferir no holerite.",
+            "Em trabalho híbrido, o vale-transporte pode ser proporcional aos dias presenciais. Veja como calcular o custo do mês, comparar com o limite de 6% e conferir o desconto no holerite.",
             "vale-transporte-hibrido",
             "Trabalhista",
             new DateOnly(2026, 7, 5),
             """
+            <section class="valora-stitch-blog-article-cta" id="calcular-vt-hibrido" aria-labelledby="vt-hibrido-resposta-direta">
+            <div class="valora-stitch-blog-article-cta-head">
+            <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+            <div>
+            <h2 class="valora-stitch-blog-article-cta-title" id="vt-hibrido-resposta-direta">Resposta direta: o VT pode acompanhar os dias presenciais</h2>
+            <p class="valora-stitch-blog-article-cta-text">Em regime híbrido, estime o custo de ida e volta pelos dias de deslocamento do mês e compare com 6% do salário-base. A política da empresa e a convenção coletiva podem trazer regras próprias.</p>
+            </div>
+            </div>
+            <a class="valora-btn valora-btn-primary valora-stitch-blog-article-cta-btn" href="/calculadoras/vale-transporte-hibrido">Calcular meu VT proporcional <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+            </section>
+
             <p>O <strong>vale-transporte no trabalho híbrido</strong> criou uma dúvida muito comum no holerite: se você vai ao escritório só alguns dias por semana, o benefício deve ser cheio, proporcional aos dias presenciais ou suspenso? A resposta depende da escala presencial, da política da empresa e da informação que você passa ao RH. O ponto central é simples: VT existe para deslocamento casa-trabalho. Quando o deslocamento muda no regime híbrido ou no teletrabalho, o benefício e o desconto também podem mudar.</p>
             <p>Para quem olha apenas o salário líquido, a mudança pode confundir. Em um mês presencial, o holerite pode descontar até 6% do salário bruto referente ao vale-transporte. Em um mês híbrido, o cálculo proporcional por dias presenciais pode reduzir o desconto, zerar a linha ou manter o valor igual se a empresa concede crédito maior por segurança operacional. Este guia mostra como pensar no cálculo sem misturar VT com VR, ajuda de custo ou reembolso.</p>
 

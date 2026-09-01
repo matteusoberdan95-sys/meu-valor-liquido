@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 99 — CTR de vale-transporte híbrido
+- Meta description da URL com 4.008 impressões e zero cliques passa a responder diretamente à intenção de VT proporcional no trabalho híbrido.
+- Painel de resposta direta e CTA da calculadora de VT híbrido entram no início do artigo, sem criar URL concorrente nem prometer resultado jurídico individual.
+- `docs/SEO_MONTHLY_REVIEW.md` registra baseline, critérios e comparação obrigatória de 28 dias.
+
 ### Sprint 98 — Correção AdSense (conteúdo de baixo valor)
 - Editorial completo nas 19 calculadoras ativas (`CalculatorEditorialCatalog` + testes Sprint 87).
 - Páginas programáticas: sitemap/index só em 18 faixas Tier 1; demais `noindex,follow` — `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md`.

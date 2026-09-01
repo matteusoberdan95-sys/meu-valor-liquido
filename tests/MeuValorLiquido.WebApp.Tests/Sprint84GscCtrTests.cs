@@ -13,7 +13,7 @@ public sealed class Sprint84GscCtrTests : IClassFixture<WebApplicationFactory<Pr
         var article = BlogArticleSeedData.GetAll().Single(a => a.Slug == "vale-transporte-home-office-hibrido");
 
         article.Title.Should().Be("Vale-transporte no trabalho híbrido: cálculo proporcional por dias presenciais");
-        article.Summary.Should().Contain("vale-transporte no regime híbrido");
+        article.Summary.Should().Contain("vale-transporte pode ser proporcional aos dias presenciais");
         article.Summary.Should().Contain("proporcional aos dias presenciais");
         article.Content.Should().Contain("vale-transporte no trabalho híbrido");
         article.Content.Should().Contain("teletrabalho");
@@ -25,9 +25,11 @@ public sealed class Sprint84GscCtrTests : IClassFixture<WebApplicationFactory<Pr
         var html = WebUtility.HtmlDecode(await client.GetStringAsync("/blog/vale-transporte-home-office-hibrido"));
 
         html.Should().Contain("Vale-transporte no trabalho híbrido: cálculo proporcional por dias presenciais");
-        html.Should().Contain("Entenda como calcular vale-transporte no regime híbrido");
+        html.Should().Contain("Em trabalho híbrido, o vale-transporte pode ser proporcional aos dias presenciais");
         html.Should().Contain("proporcional aos dias presenciais");
         html.Should().Contain("Regime híbrido fixo");
+        html.Should().Contain("Resposta direta: o VT pode acompanhar os dias presenciais");
+        html.Should().Contain("Calcular meu VT proporcional");
     }
 
     [Fact]

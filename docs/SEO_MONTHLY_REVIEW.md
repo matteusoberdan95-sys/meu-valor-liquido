@@ -64,3 +64,17 @@ Próxima revisão: ...
 **Como medir:** no Search Console, filtrar a pagina `/blog/vale-transporte-home-office-hibrido` e comparar 7d/28d antes e depois do deploy. Observar CTR, cliques, posicao media e consultas com "vale transporte hibrido", "dias presenciais", "home office" e "desconto vt".
 
 **Regra de decisao:** aguardar 7 a 14 dias antes de novo ajuste. Se posicao continuar 1-10 e CTR seguir abaixo de 1%, testar novo title/meta. Se CTR subir, manter e criar proximo reforco editorial apenas dentro do funil salario/trabalho.
+
+## Experimento Sprint 99 - resposta direta e CTA acima da dobra (set/2026)
+
+**Origem:** exportação do Search Console em 01/09/2026. Em 3 meses, a URL `/blog/vale-transporte-home-office-hibrido` registrou 4.008 impressões, posição média 3,88 e 0 cliques. A página concentrou a maior oportunidade de CTR do domínio; não foi criada URL concorrente.
+
+**Mudanças aplicadas:**
+
+- meta description passa a responder à intenção no início: VT pode ser proporcional aos dias presenciais;
+- painel editorial “Resposta direta” e CTA para a calculadora específica entram antes do conteúdo longo;
+- preservados slug, title, FAQ, fontes, links internos e avisos de limites por política da empresa/convenção coletiva.
+
+**Como medir:** após recrawl, filtrar a URL no Search Console e comparar 28 dias posteriores à publicação com os 28 dias anteriores. Separar Brasil, celular e computador; se disponível, separar também recursos de IA do relatório de performance.
+
+**Critério de decisão:** não fazer novo ajuste antes de 28 dias, salvo erro técnico. Se impressões permanecerem altas e os cliques continuarem zerados, revisar o SERP manualmente e testar uma única variação de title; não criar artigo duplicado.

@@ -1,5 +1,15 @@
 # Sprint Plan
 
+## Sprint 99 — Conversão da oportunidade de CTR em VT híbrido (concluída no código)
+
+**Objetivo:** responder à maior oportunidade detectada no Search Console sem ampliar o índice: `/blog/vale-transporte-home-office-hibrido` acumulou 4.008 impressões, posição média 3,88 e zero cliques em três meses.
+
+**Entregas:** meta description com resposta direta, painel de resposta e CTA da calculadora acima do conteúdo longo, teste de renderização e registro de mensuração de 28 dias. O slug, o title, FAQ, fontes e links internos foram preservados para isolar o experimento.
+
+**Validação:** `dotnet test .\MeuValorLiquido.slnx`.
+
+**Próximo passo:** fazer deploy/smoke, aguardar recrawl e comparar 28 dias antes/depois no Search Console. Não solicitar nova revisão do AdSense baseado apenas nesta alteração.
+
 ## Sprint 98 — Correção AdSense conteúdo de baixo valor (concluída no código)
 
 **Objetivo:** responder à rejeição AdSense por “Conteúdo de baixo valor” com editorial nas 7 calculadoras restantes, contenção de páginas programáticas e lote 10 do blog — sem ativar anúncios.
