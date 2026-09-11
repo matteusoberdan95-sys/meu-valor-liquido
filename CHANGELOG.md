@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Sprint 100 — Qualidade editorial das páginas programáticas
+- Sitemap reduzido de 108 para 36 URLs programáticas: somente as páginas-base das 18 faixas Tier 1 em salário líquido e CLT × PJ continuam indexáveis.
+- Variações por dependentes seguem disponíveis para cálculo e links internos, mas agora usam `noindex,follow` para não ampliar conteúdo estruturalmente semelhante no índice.
+- Testes passam a proteger a contagem reduzida, a ausência das variantes no sitemap e sua acessibilidade sem indexação.
+
 ### Sprint 99 — CTR de vale-transporte híbrido
 - Meta description da URL com 4.008 impressões e zero cliques passa a responder diretamente à intenção de VT proporcional no trabalho híbrido.
 - Painel de resposta direta e CTA da calculadora de VT híbrido entram no início do artigo, sem criar URL concorrente nem prometer resultado jurídico individual.

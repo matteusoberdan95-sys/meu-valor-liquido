@@ -1,5 +1,19 @@
 # Sprint Plan
 
+## Sprint 100 — Refinamento programático para qualidade editorial (em validação)
+
+**Objetivo:** reduzir a superfície de URLs programáticas similares depois da reprovação por conteúdo de baixo valor, preservando ferramentas e intenção útil.
+
+**Entregas:** as 18 faixas-base Tier 1 permanecem indexáveis em `/salario-liquido` e `/clt-pj`; as variantes por dependentes passam a `noindex,follow`, continuam 200 e continuam acessíveis pelos links internos. O sitemap cai de 108 para 36 páginas programáticas.
+
+**Fora do escopo:** remover calculadoras, alterar fórmulas, criar artigos genéricos, inventar credenciais ou ativar anúncios.
+
+**Validação:** testes de sitemap e de variantes `noindex,follow`, seguidos de `dotnet test .\MeuValorLiquido.slnx`.
+
+**Próximo passo:** publicar junto do acompanhamento da Sprint 99; após o deploy, aguardar o recrawl antes de pedir nova revisão do AdSense.
+
+---
+
 ## Sprint 99 — Conversão da oportunidade de CTR em VT híbrido (concluída no código)
 
 **Objetivo:** responder à maior oportunidade detectada no Search Console sem ampliar o índice: `/blog/vale-transporte-home-office-hibrido` acumulou 4.008 impressões, posição média 3,88 e zero cliques em três meses.

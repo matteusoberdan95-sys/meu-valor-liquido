@@ -31,6 +31,5 @@ public static class CltPjBandCatalog
     public static IEnumerable<string> GetAllIndexablePaths() =>
         from gross in GetAll()
         where IsSitemapIndexable(gross)
-        from dependents in ProgrammaticDependentsCatalog.IndexedDependentCounts
-        select SlugPath(gross, dependents);
+        select SlugPath(gross);
 }

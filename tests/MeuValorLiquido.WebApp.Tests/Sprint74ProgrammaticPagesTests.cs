@@ -85,26 +85,36 @@ public sealed class Sprint74ProgrammaticPagesTests : IClassFixture<WebApplicatio
     }
 
     [Fact]
-    public async Task Sitemap_Should_Include_Tier1_Dependent_Variant_Urls()
+    public async Task Sitemap_Should_Include_Only_Tier1_Base_Urls()
     {
         var xml = await client.GetStringAsync("/sitemap.xml");
 
         xml.Should().Contain("/salario-liquido/6000");
-        xml.Should().Contain("/salario-liquido/6000/1-dependente");
-        xml.Should().Contain("/clt-pj/6000/1-dependente");
+        xml.Should().Contain("/clt-pj/6000-clt-equivale-a-quanto-pj");
+        xml.Should().NotContain("/salario-liquido/6000/1-dependente");
+        xml.Should().NotContain("/clt-pj/6000/1-dependente");
         xml.Should().NotContain("/salario-liquido/5800");
         xml.Should().NotContain("/salario-liquido/2400");
     }
 
     [Fact]
-    public void Indexable_Url_Count_Should_Match_Tier1_Bands_Times_Variants()
+    public void Indexable_Url_Count_Should_Match_Tier1_Base_Bands()
     {
         var bandCount = SalaryBandCatalog.GetSitemapIndexableBands().Count;
-        var variantCount = ProgrammaticDependentsCatalog.IndexedDependentCounts.Length;
 
         bandCount.Should().Be(18);
-        SalaryBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount * variantCount);
-        CltPjBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount * variantCount);
+        SalaryBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount);
+        CltPjBandCatalog.GetAllIndexablePaths().Should().HaveCount(bandCount);
+    }
+
+    [Theory]
+    [InlineData("/salario-liquido/6000/1-dependente")]
+    [InlineData("/clt-pj/6000/1-dependente")]
+    public async Task Tier1_Dependent_Variant_Should_Be_Reachable_But_Noindex(string path)
+    {
+        var html = await client.GetStringAsync(path);
+
+        html.Should().Contain("noindex,follow");
     }
 
     [Fact]

@@ -33,8 +33,8 @@
 
 | Item | Status | Evidência |
 |------|--------|-----------|
-| Sitemap só Tier 1 (18 faixas × 3 variantes × 2 famílias = 108) | PASS | `SalaryBandCatalog.IsSitemapIndexable` |
-| Faixas fora do Tier 1 com `noindex,follow` | PASS | FaixaPageModelBase / ComparacaoPageModelBase |
+| Sitemap só nas bases Tier 1 (18 faixas × 2 famílias = 36) | PASS | `SalaryBandCatalog.IsSitemapIndexable` |
+| Variantes por dependente e faixas fora do Tier 1 com `noindex,follow` | PASS | FaixaPageModelBase / ComparacaoPageModelBase |
 | Decisão documentada | PASS | `docs/adsense/PROGRAMMATIC_INDEXATION_DECISION.md` |
 
 ## Institucional / SEO / Ads
