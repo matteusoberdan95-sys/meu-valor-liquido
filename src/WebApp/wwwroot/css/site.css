@@ -133,12 +133,16 @@ h1, h2, h3, h4,
 
 @media (min-width: 992px) {
   .valora-header-inner {
-    min-height: 4.5rem;
+    min-height: 4.75rem;
     padding: 0.35rem 0;
   }
 
   .valora-header-inner .valora-brand-mark {
     max-width: none;
+  }
+
+  .valora-brand-logo--horizontal {
+    height: 3.75rem;
   }
 }
 
@@ -193,8 +197,8 @@ h1, h2, h3, h4,
 
 @media (min-width: 1200px) {
   .valora-brand-logo--horizontal {
-    height: 3.35rem;
-    max-width: 18rem;
+    height: 4.25rem;
+    max-width: 22rem;
   }
 
   .valora-brand-logo--footer {
@@ -300,6 +304,14 @@ h1, h2, h3, h4,
   font-size: 0.875rem;
   color: var(--valora-on-surface);
   outline: none;
+}
+
+/* O foco é indicado no contêiner inteiro; evita o contorno nativo dentro do campo. */
+.valora-nav-search-input:focus,
+.valora-nav-search-input:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
 }
 
 .valora-nav-search-input::placeholder {
