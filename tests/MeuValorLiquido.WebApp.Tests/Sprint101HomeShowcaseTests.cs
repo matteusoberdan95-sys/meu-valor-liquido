@@ -22,15 +22,13 @@ public sealed class Sprint101HomeShowcaseTests : IClassFixture<WebApplicationFac
     }
 
     [Fact]
-    public async Task Site_Script_Should_Respect_Showcase_Accessibility_And_Manual_Controls()
+    public async Task Site_Script_Should_Automatically_Rotate_And_Respect_Reduced_Motion()
     {
         var script = await client.GetStringAsync("/js/site.js");
 
         script.Should().Contain("data-home-showcase");
-        script.Should().Contain("data-home-showcase-previous");
-        script.Should().Contain("data-home-showcase-next");
         script.Should().Contain("prefers-reduced-motion: reduce");
-        script.Should().Contain("mouseenter");
-        script.Should().Contain("focusin");
+        script.Should().Contain("window.setInterval");
+        script.Should().Contain("6500");
     }
 }

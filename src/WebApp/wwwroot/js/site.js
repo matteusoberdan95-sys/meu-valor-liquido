@@ -33,9 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (homeShowcase) {
     const slides = Array.from(homeShowcase.querySelectorAll("[data-home-showcase-slide]"));
-    const pages = Array.from(homeShowcase.querySelectorAll("[data-home-showcase-page]"));
-    const previous = homeShowcase.querySelector("[data-home-showcase-previous]");
-    const next = homeShowcase.querySelector("[data-home-showcase-next]");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktopViewport = window.matchMedia("(min-width: 992px)");
     let currentSlide = 0;
@@ -50,11 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         slide.setAttribute("aria-hidden", isActive ? "false" : "true");
       });
 
-      pages.forEach((page, pageIndex) => {
-        const isActive = pageIndex === currentSlide;
-        page.classList.toggle("is-active", isActive);
-        page.setAttribute("aria-current", isActive ? "true" : "false");
-      });
     };
 
     const stopRotation = () => {
@@ -72,31 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    previous?.addEventListener("click", () => {
-      showSlide(currentSlide - 1);
-      startRotation();
-    });
-
-    next?.addEventListener("click", () => {
-      showSlide(currentSlide + 1);
-      startRotation();
-    });
-
-    pages.forEach((page, index) => {
-      page.addEventListener("click", () => {
-        showSlide(index);
-        startRotation();
-      });
-    });
-
-    homeShowcase.addEventListener("mouseenter", stopRotation);
-    homeShowcase.addEventListener("mouseleave", startRotation);
-    homeShowcase.addEventListener("focusin", stopRotation);
-    homeShowcase.addEventListener("focusout", (event) => {
-      if (!homeShowcase.contains(event.relatedTarget)) {
-        startRotation();
-      }
-    });
     reducedMotion.addEventListener("change", startRotation);
     desktopViewport.addEventListener("change", startRotation);
     startRotation();

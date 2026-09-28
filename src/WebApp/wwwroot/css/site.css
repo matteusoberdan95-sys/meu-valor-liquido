@@ -8566,6 +8566,7 @@ select:focus-visible {
     right: -6%;
     z-index: 1;
     height: clamp(26rem, 46vw, 34rem);
+    pointer-events: none;
   }
 
   .valora-home-showcase-track {
@@ -8631,51 +8632,6 @@ select:focus-visible {
   .valora-home-showcase-slide figcaption strong {
     color: var(--valora-text);
     font-size: 1.125rem;
-  }
-
-  .valora-home-showcase-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    min-height: 3.25rem;
-  }
-
-  .valora-home-showcase-controls > button,
-  .valora-home-showcase-pagination button {
-    display: inline-grid;
-    width: 2.25rem;
-    height: 2.25rem;
-    place-items: center;
-    border: 1px solid var(--valora-border);
-    border-radius: 999px;
-    background: rgb(20 24 27 / 88%);
-    color: var(--valora-text-muted);
-    cursor: pointer;
-    transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
-  }
-
-  .valora-home-showcase-controls > button:hover,
-  .valora-home-showcase-controls > button:focus-visible {
-    border-color: var(--valora-accent);
-    color: var(--valora-accent);
-  }
-
-  .valora-home-showcase-pagination {
-    display: flex;
-    gap: 0.4rem;
-  }
-
-  .valora-home-showcase-pagination button {
-    width: 0.7rem;
-    height: 0.7rem;
-    border: 0;
-    background: var(--valora-border);
-  }
-
-  .valora-home-showcase-pagination button.is-active {
-    width: 1.75rem;
-    background: var(--valora-accent);
   }
 
   .valora-stitch-home-stage .valora-stitch-hero--split {
