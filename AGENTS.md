@@ -14,9 +14,9 @@ Este repositório é alternado entre **Cursor** e **Codex** (máquinas diferente
 
 | Campo | Valor |
 |-------|--------|
-| **Próxima sprint** | Validar e publicar Sprint 100 + smoke · aguardar recrawl e 28 dias de medição do CTR de VT híbrido |
+| **Próxima sprint** | Publicar Sprint 101 + smoke · aguardar recrawl e 28 dias de medição do CTR de VT híbrido |
 | **Em seguida** | Editorial contínuo 2 artigos/mês — lote 11 — ver `docs/BLOG_EDITORIAL_PLAN.md` |
-| **Concluída recente** | Sprint 99 (CTR VT híbrido) · Sprint 98 (editorial 19 calcs + programáticas Tier 1 + lote 10) |
+| **Concluída recente** | Sprint 101 (carrossel de funcionalidades) · Sprint 99 (CTR VT híbrido) |
 | **Paralelo permitido** | Sprint 51 (AdSense) quando Google aprovar |
 | **Bloqueada** | Sprint 51 — aguardar aprovação Google após re-review |
 
@@ -61,7 +61,7 @@ Leia `docs/sprint-plan.md` § **Trilha diferenciação (Sprints 69–78)**. Resu
 ## Estado atual importante
 
 - Trilhas **47–98 concluídas** no código (AdSense 86–94 + editorial lotes 6–10 + correção baixo valor).
-- **Trilha ativa:** validar/publicar Sprint 100 (redução programática 108 → 36) + smoke; depois recrawl + 28 dias de medição da Sprint 99; editorial lote 11. AdSense segue reprovado por conteúdo de baixo valor e não deve receber novo pedido só por esta alteração.
+- **Trilha ativa:** publicar Sprint 101 (carrossel desktop de funcionalidades) + smoke; Sprint 100 já publicada; depois recrawl + 28 dias de medição da Sprint 99; editorial lote 11. AdSense segue reprovado por conteúdo de baixo valor e não deve receber novo pedido só por esta alteração.
 - Deploy de produção na VPS: `/var/www/meu-valor-liquido` (não `~/meu-valor-liquido`).
 - Benchmark fiscal: `CalculatorBenchmarkCatalog` + `CalculatorEdgeCaseCatalog`; testes em `CalculatorBenchmarkCatalogTests` e `Sprint91MathValidationTests`.
 - Tabelas fiscais versionadas: `BrTaxTables2025` / `BrTaxTables2026` via `BrTaxTableCatalog` (não sobrescrever anos anteriores).

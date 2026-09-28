@@ -1,5 +1,17 @@
 # Sprint Plan
 
+## Sprint 101 — Carrossel de funcionalidades da home (concluída no código)
+
+**Objetivo:** tornar visíveis as funcionalidades reais do produto já na primeira dobra, sem trocar a mensagem principal, criar conteúdo artificial ou aumentar o peso no mobile.
+
+**Entregas:** o visual decorativo desktop da home passa a exibir três telas de produto: salário líquido, conferência de holerite e assistente educativo. O carrossel roda a cada 6,5 segundos apenas no desktop, tem controles manuais, pausa em hover/foco e respeita `prefers-reduced-motion`. As imagens são WebP otimizadas; a home mobile preserva o layout de carregamento enxuto.
+
+**Validação:** assets públicos, renderização dos três slides, controles no `site.js`, acessibilidade e `dotnet test .\MeuValorLiquido.slnx`.
+
+**Fora do escopo:** alterar fórmulas, criar uma IA externa, ativar anúncios ou mudar a mensagem/CTA principal da home.
+
+---
+
 ## Sprint 100 — Refinamento programático para qualidade editorial (em validação)
 
 **Objetivo:** reduzir a superfície de URLs programáticas similares depois da reprovação por conteúdo de baixo valor, preservando ferramentas e intenção útil.

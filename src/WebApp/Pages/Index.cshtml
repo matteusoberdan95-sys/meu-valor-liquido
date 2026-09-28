@@ -39,22 +39,68 @@
 }
 
 @section Head {
-    <link rel="preload" as="image" href="~/images/hero/home-hero.webp" asp-append-version="true" fetchpriority="high" media="(min-width: 992px)" />
+    <link rel="preload" as="image" href="~/images/hero/home-showcase-salary.webp" asp-append-version="true" fetchpriority="high" media="(min-width: 992px)" />
     <script type="application/ld+json">@Html.Raw(JsonSerializer.Serialize(webSiteSchema))</script>
 }
 
 <div class="valora-stitch-home">
     <div class="valora-stitch-home-stage">
-        <div class="valora-stitch-home-hero-backdrop" aria-hidden="true">
-            <img class="valora-stitch-hero-visual"
-                 src="~/images/hero/home-hero.webp"
-                 asp-append-version="true"
-                 alt=""
-                 width="1200"
-                 height="675"
-                 loading="eager"
-                 fetchpriority="high"
-                 decoding="async" />
+        <section class="valora-home-showcase" data-home-showcase aria-roledescription="carrossel" aria-label="Funcionalidades do Meu Valor Líquido">
+            <div class="valora-home-showcase-track">
+                <figure class="valora-home-showcase-slide is-active" data-home-showcase-slide aria-hidden="false">
+                    <img src="~/images/hero/home-showcase-salary.webp"
+                         asp-append-version="true"
+                         alt="Visual da calculadora que detalha o salário líquido, INSS e IRRF."
+                         width="1600"
+                         height="900"
+                         loading="eager"
+                         fetchpriority="high"
+                         decoding="async" />
+                    <figcaption>
+                        <span>Salário líquido</span>
+                        <strong>Veja cada desconto</strong>
+                    </figcaption>
+                </figure>
+                <figure class="valora-home-showcase-slide" data-home-showcase-slide aria-hidden="true">
+                    <img src="~/images/hero/home-showcase-payslip.webp"
+                         asp-append-version="true"
+                         alt="Visual da funcionalidade de conferência educativa de holerite."
+                         width="1600"
+                         height="900"
+                         loading="lazy"
+                         decoding="async" />
+                    <figcaption>
+                        <span>Conferir holerite</span>
+                        <strong>Entenda seus descontos</strong>
+                    </figcaption>
+                </figure>
+                <figure class="valora-home-showcase-slide" data-home-showcase-slide aria-hidden="true">
+                    <img src="~/images/hero/home-showcase-assistant.webp"
+                         asp-append-version="true"
+                         alt="Visual do assistente educativo que direciona para calculadoras e dúvidas relacionadas."
+                         width="1600"
+                         height="900"
+                         loading="lazy"
+                         decoding="async" />
+                    <figcaption>
+                        <span>Assistente educativo</span>
+                        <strong>Encontre o próximo passo</strong>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="valora-home-showcase-controls" aria-label="Controles do carrossel">
+                <button type="button" data-home-showcase-previous aria-label="Ver funcionalidade anterior">
+                    <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                </button>
+                <div class="valora-home-showcase-pagination" aria-label="Selecionar funcionalidade">
+                    <button class="is-active" type="button" data-home-showcase-page="0" aria-label="Ver salário líquido" aria-current="true"></button>
+                    <button type="button" data-home-showcase-page="1" aria-label="Ver conferência de holerite" aria-current="false"></button>
+                    <button type="button" data-home-showcase-page="2" aria-label="Ver assistente educativo" aria-current="false"></button>
+                </div>
+                <button type="button" data-home-showcase-next aria-label="Ver próxima funcionalidade">
+                    <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                </button>
+            </div>
         </div>
 
         <section class="valora-stitch-hero valora-stitch-hero--split">

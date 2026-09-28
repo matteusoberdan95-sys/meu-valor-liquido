@@ -8543,13 +8543,13 @@ select:focus-visible {
 
 .valora-stitch-social-proof-avatar:first-child { margin-left: 0; }
 
-/* Home hero backdrop — ilustração grande atrás do bento desktop (lado direito) */
+/* Home hero showcase — carrossel de funcionalidades reais no desktop. */
 .valora-stitch-home-stage {
   position: relative;
   isolation: isolate;
 }
 
-.valora-stitch-home-hero-backdrop {
+.valora-home-showcase {
   display: none;
 }
 
@@ -8558,25 +8558,124 @@ select:focus-visible {
     margin-bottom: 0.5rem;
   }
 
-  .valora-stitch-home-hero-backdrop {
+  .valora-home-showcase {
     display: block;
     position: absolute;
     top: 0;
     left: 50%;
     right: -6%;
-    z-index: 0;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(to bottom, #000 42%, rgb(0 0 0 / 88%) 72%, transparent 98%);
-    mask-image: linear-gradient(to bottom, #000 42%, rgb(0 0 0 / 88%) 72%, transparent 98%);
+    z-index: 1;
+    height: clamp(26rem, 46vw, 34rem);
   }
 
-  .valora-stitch-home-hero-backdrop .valora-stitch-hero-visual {
+  .valora-home-showcase-track {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.25rem);
+    overflow: hidden;
+    border: 1px solid rgb(88 232 214 / 18%);
+    border-radius: var(--valora-radius-xl);
+    background: #050708;
+    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 42%);
+  }
+
+  .valora-home-showcase-slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.015);
+    transition: opacity 520ms ease, transform 650ms ease;
+  }
+
+  .valora-home-showcase-slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .valora-home-showcase-slide::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(180deg, transparent 42%, rgb(4 7 8 / 92%) 100%);
+  }
+
+  .valora-home-showcase-slide img {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-    object-position: top right;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .valora-home-showcase-slide figcaption {
+    position: absolute;
+    z-index: 1;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .valora-home-showcase-slide figcaption span {
+    color: var(--valora-accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .valora-home-showcase-slide figcaption strong {
+    color: var(--valora-text);
+    font-size: 1.125rem;
+  }
+
+  .valora-home-showcase-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+  }
+
+  .valora-home-showcase-controls > button,
+  .valora-home-showcase-pagination button {
+    display: inline-grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border: 1px solid var(--valora-border);
+    border-radius: 999px;
+    background: rgb(20 24 27 / 88%);
+    color: var(--valora-text-muted);
+    cursor: pointer;
+    transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+  }
+
+  .valora-home-showcase-controls > button:hover,
+  .valora-home-showcase-controls > button:focus-visible {
+    border-color: var(--valora-accent);
+    color: var(--valora-accent);
+  }
+
+  .valora-home-showcase-pagination {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .valora-home-showcase-pagination button {
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 0;
+    background: var(--valora-border);
+  }
+
+  .valora-home-showcase-pagination button.is-active {
+    width: 1.75rem;
+    background: var(--valora-accent);
   }
 
   .valora-stitch-home-stage .valora-stitch-hero--split {
@@ -8615,23 +8714,15 @@ select:focus-visible {
 }
 
 @media (min-width: 1024px) {
-  .valora-stitch-home-hero-backdrop {
+  .valora-home-showcase {
     left: 50%;
     right: -8%;
     top: -0.5rem;
-    height: clamp(26rem, 46vw, 34rem);
-  }
-
-  .valora-stitch-home-hero-backdrop .valora-stitch-hero-visual {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: top right;
   }
 }
 
 @media (min-width: 1280px) {
-  .valora-stitch-home-hero-backdrop {
+  .valora-home-showcase {
     left: 50%;
     right: -10%;
     top: -1rem;

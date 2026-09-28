@@ -14,7 +14,7 @@ public sealed class Sprint92PerformanceMobileTests : IClassFixture<WebApplicatio
     {
         var html = await client.GetStringAsync("/");
 
-        html.Should().Contain("home-hero");
+        html.Should().Contain("home-showcase-salary");
         html.Should().Contain("fetchpriority=\"high\"");
         html.Should().Contain("loading=\"eager\"");
         html.Should().NotContain("/js/adsense-init");

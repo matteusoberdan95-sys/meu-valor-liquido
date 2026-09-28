@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Sprint 101 — Carrossel de funcionalidades
+- O visual desktop da primeira dobra passa a mostrar salário líquido, conferência de holerite e assistente educativo em carrossel de imagens WebP otimizadas.
+- Navegação por setas e indicadores, rotação desktop de 6,5 segundos, pausa em hover/foco e respeito a `prefers-reduced-motion`.
+
 ### Sprint 100 — Qualidade editorial das páginas programáticas
 - Sitemap reduzido de 108 para 36 URLs programáticas: somente as páginas-base das 18 faixas Tier 1 em salário líquido e CLT × PJ continuam indexáveis.
 - Variações por dependentes seguem disponíveis para cálculo e links internos, mas agora usam `noindex,follow` para não ampliar conteúdo estruturalmente semelhante no índice.

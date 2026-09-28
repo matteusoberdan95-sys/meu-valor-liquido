@@ -50,6 +50,9 @@ public class BrandAssetsTests : IClassFixture<WebApplicationFactory<Program>>
     [InlineData("/images/brand/logo-stacked.png")]
     [InlineData("/images/brand/logo-icon.png")]
     [InlineData("/images/hero/home-hero.webp")]
+    [InlineData("/images/hero/home-showcase-salary.webp")]
+    [InlineData("/images/hero/home-showcase-payslip.webp")]
+    [InlineData("/images/hero/home-showcase-assistant.webp")]
     [InlineData("/images/blog/o-que-e-salario-liquido.webp")]
     public async Task Brand_Asset_Should_Be_Served(string path)
     {
